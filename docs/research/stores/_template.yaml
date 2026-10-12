@@ -1,0 +1,73 @@
+# Phase 2 per-store research record — template.
+# Copy to <slug>.yaml and fill in. Tier 3 stores may leave sections minimal;
+# never leave a field blank without a reason in `notes`.
+
+slug: example-mart                 # canonical id, lowercase-hyphenated
+name: Example Mart
+name_variants: []                  # e.g. ["Example Mart & Cie"]
+store_type: traditional            # traditional | ethnic-specialty | warehouse | pharmacy | gen-merch | dollar | other
+footprint: qc-confirmed            # island | greater | qc-confirmed | qc-unverified
+tier: 1                            # 1 = full depth | 2 = medium | 3 = minimal
+
+website:
+  url: https://www.example-mart.ca
+  languages: [fr, en]              # fr-only | en-only | [fr, en]
+  language_switch: param           # param | subdomain | path | toggle | n/a
+  render_tech: ssr                 # ssr | spa | js-heavy
+  bot_protection: none             # none | cloudflare | captcha | rate-limit | blocked (+notes)
+
+parent_company: Example Group
+affiliation: corporate             # corporate | independent-affiliate | banner-group
+banner_family: []                  # related banners under the same group
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly                 # weekly | pharmacy | general-merchandise | ...
+      sources:
+        - name: official site
+          url: https://www.example-mart.ca/flyer
+          kind: official           # official | aggregator
+          format: html            # html | pdf | images | json-api
+          parse_friendliness: high # high | medium | low
+          fetchability: http       # http | browser-needed | blocked (+notes)
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false     # does the flyer vary by location?
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false       # JSON-LD / microdata present?
+      notes: ""
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.example-mart.ca/search?q={query}"
+  location_scoped: true            # must pick a store / postal code first?
+  guest_ok: true
+  kind: json-api                   # json-api | html | spa
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""                        # proxy signal for structured product data
+
+locations:
+  count_estimate: 120
+  locator_url: https://www.example-mart.ca/stores
+  locator_api: ""                  # observed JSON endpoint pattern, if any
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false         # distinct price semantic — record if true
+
+notes: ""
+sources_checked: []                # e.g. [official-site, flipp, rfd-flyers]
+researched_at: "2026-10-12"
+research_status: complete          # complete | partial | minimal
