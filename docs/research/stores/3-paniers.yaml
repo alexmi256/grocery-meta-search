@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Solidarity grocery (opened Jan 2022) with 3-tier sliding-scale pricing: prix solidaire / prix suggéré / prix au suivant — chosen by the shopper at checkout, no proof of income. 300+ products, accepts Carte proximité. All profits reinvested in the Carrefour's programs."
-sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search]
+notes: "Solidarity grocery (opened Jan 2022) with 3-tier sliding-scale pricing: prix solidaire / prix suggéré / prix au suivant — chosen by the shopper at checkout, no proof of income. 300+ products, accepts Carte proximité. All profits reinvested in the Carrefour's programs. CORRECTIVE 2026-10-12: re-verified with page enumeration — fetched carrefoursolidaire.org/sitemap_index.xml (full URL list, no flyer/circulaire/promotions page exists; store page is /activites/3-paniers/ only). No flyer on aggregators or via web search."
+sources_checked: [official-site, official-sitemap, circulaires-club, circulaires.com, rfd-flyers, web-search, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

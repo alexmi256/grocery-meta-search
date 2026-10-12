@@ -65,6 +65,8 @@ notes: >-
   product-search presence on the official site could not be confirmed or denied.
   Flyer absence via aggregators + web search is confirmed; the site itself needs a
   live-browser check.
-sources_checked: [official-site-unrenderable, web-search-circulaire, directories, indianfoodchannel]
+  RE-INVESTIGATION 2026-10-12: fresh web + facebook search ("Marché 786 Montréal circulaire", "Marché 786 facebook spéciaux") — no flyer anywhere; aggregators (circulaires.club, RFD, Flipp, circulaire-en-ligne) negative; no Facebook page found posting specials. Meta AI place data still lists http://marche786.ca/ as an active website, but the domain still yields no renderable content to text fetch (sitemap.xml attempt redirected to /lander — possibly parked/expired). Partial status retained: site body still unverifiable.
+
+sources_checked: [official-site-unrenderable, web-search-circulaire, web-search-recheck, facebook-search, directories, indianfoodchannel, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: partial

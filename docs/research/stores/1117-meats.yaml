@@ -17,9 +17,26 @@ affiliation: independent-affiliate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  types: []
-  notes: "not checked — store out of scope (Toronto only)"
+  has_flyers: true
+  types:
+    - type: monthly
+      sources:
+        - name: official site
+          url: https://www.1117mp.com/flyer
+          kind: official
+          format: pdf
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 30
+      flip_weekday: ""
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [en]
+      archive_available: false
+      structured_data: false
+      notes: "Page titled 'This Month's Flyer' — monthly cadence branded. Download link is a PDF (uploads/.../*.pdf). VERIFIED LIVE 2026-10-12; user supplied the URL."
+  notes: "Monthly flyer exists on the official site despite the store being a Flipp national-listing artifact / out of scope. Recorded per accuracy protocol."
 
 product_search:
   has_search: false
@@ -28,7 +45,7 @@ product_search:
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Flyer page footer shows 'Secure checkout by Square' (Square site builder), but no shop/order page was found on the site during the 2026-10-12 check; ordering is in-store. If a Square store page appears later, record it as product_search."
 
 locations:
   count_estimate: 0
@@ -40,7 +57,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "RECOMMENDED-EXCLUDED: VERIFIED Flipp national-listing artifact. 1117 Meats & Pantry operates exactly one storefront at 1117 Queen St W, Toronto — confirmed via its own site (1117mp.com), the West Queen West BIA directory (westqueenwest.ca/directory), findglocal, and a federal Job Bank market report noting the Toronto opening. No Montreal or Quebec location exists anywhere. Out of Montreal/Greater-Montreal scope."
-sources_checked: [search, directories, official-site, flipp-indexed]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED Flipp national-listing artifact. 1117 Meats & Pantry operates exactly one storefront at 1117 Queen St W, Toronto — confirmed via its own site (1117mp.com), the West Queen West BIA directory (westqueenwest.ca/directory), findglocal, and a federal Job Bank market report noting the Toronto opening. No Montreal or Quebec location exists anywhere. Out of Montreal/Greater-Montreal scope. CORRECTIVE 2026-10-12: monthly flyer at https://www.1117mp.com/flyer recorded (user-verified URL opened live); data recorded despite exclusion per accuracy protocol."
+sources_checked: [search, directories, official-site, flipp-indexed, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

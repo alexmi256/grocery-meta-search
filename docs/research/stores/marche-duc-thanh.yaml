@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Local Asian grocery and butcher, 'in the area for more than 15 years' per its Facebook description. Phone 514-733-7816."
-sources_checked: [facebook, web-search, circulaires.club-directory, rfd-flyers, flipp, pagesjaunes, directories]
+notes: "Local Asian grocery and butcher, 'in the area for more than 15 years' per its Facebook description. Phone 514-733-7816.  RE-INVESTIGATION 2026-10-12: fresh search 'Marché Duc Thanh Montréal' — Facebook page (6430 Av Victoria) confirmed as the store's only web presence; no site, no aggregator flyer (circulaires.club, RFD, Flipp, circulaire-en-ligne negative). Timeline unreadable per standing caveat; search shows no evidence of posted flyers. Verdict stands."
+sources_checked: [facebook, web-search, web-search-recheck, circulaires.club-directory, rfd-flyers, flipp, pagesjaunes, directories, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

@@ -28,7 +28,7 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found. Official site is a static brochure (Locations / Our Story / Wholesale / Gallery / Contact) with no flyer section. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: homepage re-fetched — nav is Locations / Our Story / Wholesale / Gallery / Contact only, no flyer or search link (site is image-heavy static Adobe Muse brochure). Web search 'Sami Fruits circulaire spéciaux' returns only directories/YellowPages, no flyer. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers. Flyer stays FALSE; product_search stays FALSE."
 
 product_search:
   has_search: false
@@ -56,6 +56,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Fruiterie with grocery/wholesale arms; founded 1973 at Jean-Talon Market by Sami Al Asmar (family roots 1910 Beirut). Known for in-store discount pricing; closed Tuesdays in Lasalle."
-sources_checked: [official-site, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, smartcanucks]
+sources_checked: [official-site, official-site-refetch, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, smartcanucks]
 researched_at: "2026-10-12"
 research_status: complete

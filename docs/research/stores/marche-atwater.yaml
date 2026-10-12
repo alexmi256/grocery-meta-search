@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "One of three Montreal public markets managed by the same nonprofit corporation; shares operator site with Jean-Talon and Maisonneuve."
-sources_checked: [official-site, circulaires.club-directory, rfd-flyers, flipp, web-search]
+notes: "One of three Montreal public markets managed by the same nonprofit corporation; shares operator site with Jean-Talon and Maisonneuve.  RE-INVESTIGATION 2026-10-12: targeted search 'marchespublics-mtl.com circulaire promotions' confirms no flyer/promotions page on the operator site (Actualités/Événements only, as before); no market circulaire on any aggregator. Verdict stands."
+sources_checked: [official-site, circulaires.club-directory, rfd-flyers, flipp, web-search, web-search-recheck, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

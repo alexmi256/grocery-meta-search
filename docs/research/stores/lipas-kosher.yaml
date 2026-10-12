@@ -30,9 +30,11 @@ flyers:
   archive_available: false
   structured_data: false
   notes: >-
-    No flyer. Site shows a category catalog with sale prices and a "specials
-    department" instead. Web search "Lipa's flyer/circulaire" found no aggregator
-    listing (Flipp/RFD negative).
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. SPA homepage renders
+    a "Choose an order" ordering app with no flyer link. Probed 14 candidate flyer
+    paths: all 404. Web search "Lipa's flyer/circulaire" found no aggregator
+    listing (Flipp/RFD negative); RFD Montreal flyers page 2026-10-12 (majors
+    only — not listed).
 
 product_search:
   has_search: true
@@ -41,12 +43,14 @@ product_search:
   guest_ok: true
   kind: html                     # category/product pages server-rendered in index
   api_notes: >-
-    Search path confirmed via indexed usage: mothersofmontreal.com links
-    https://www.lipassupermarket.com/search/Baby%20Formula for a Lipa's product
-    lookup. Category pages (/categories/81206/products) and product pages
-    (?catalogProduct=...) are indexed with prices — structured-data signal for
-    Phase 4. Direct homepage fetch timed out (rate limiting); Phase 5 fetches
-    should be conservative.
+    RE-VERIFIED live via text browser 2026-10-12: /search/Baby%20Formula returned
+    "69 results found" with product names, prices, and sale-vs-regular prices —
+    search works end-to-end without login. Search path confirmed via indexed usage:
+    mothersofmontreal.com links https://www.lipassupermarket.com/search/Baby%20Formula
+    for a Lipa's product lookup. Category pages (/categories/81206/products) and
+    product pages (?catalogProduct=...) are indexed with prices — structured-data
+    signal for Phase 4. Direct homepage fetch timed out (rate limiting); Phase 5
+    fetches should be conservative.
   bot_protection: rate-limit
   languages: [en]
 
@@ -71,6 +75,6 @@ notes: >-
   URL CORRECTION: lipassupermarket.com resolves to www.lipassupermarket.com —
   canonical recorded with www. UPGRADE FIND (2026-10-12): tier 3 record said
   "search not verified"; search endpoint confirmed via indexed referral links.
-sources_checked: [official-site-indexed, official-site-fetch-timeout, web-search-flyer, directories, mothersofmontreal-referral]
+sources_checked: [official-site-indexed, official-site-fetch-timeout, official-site-search-verified-live, official-site-path-probes, web-search-flyer, rfd-flyers-page, directories, mothersofmontreal-referral]
 researched_at: "2026-10-12"
 research_status: complete

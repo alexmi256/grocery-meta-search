@@ -67,6 +67,7 @@ notes: >-
   Social-economy enterprise (economie sociale), citizen initiative since 2007,
   operated by Carrefour Solidaire CCA since 2013; participatory/volunteer model.
   Payment: cash, debit, Carte proximité (credit accepted reluctantly).
-sources_checked: [official-site, web-search-circulaire, directories, marchespublicsduquebec]
+  RE-CHECK 2026-10-12 (hardened protocol): fetched carrefoursolidaire.org homepage \u2014 shows news posts (Sept\u2013Oct 2026) and 'Calendrier Manger dans le Centre-Sud \u2013 octobre 2026' (community resources calendar PDF); no flyer/circulaire/sp\u00e9ciaux section. Website verified correct (org's own site; March\u00e9 Solidaire Frontenac and 3 Paniers both under it). No flyer.
+sources_checked: [official-site, web-search-circulaire, directories, marchespublicsduquebec, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

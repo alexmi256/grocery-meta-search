@@ -28,7 +28,7 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found: Facebook-only web presence, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: no flyer. Facebook-only web presence (facebook.com/marchemelimelo.caraibe/ — active Villeray institution, ~30 yrs). Web search 'Marché Méli-Mélo / Meli-Melo / Jarry / Montréal circulaire spéciaux' returns only tastet.ca griot coverage + YellowPages; no standalone site, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers. Flyer and product_search stay FALSE."
 
 product_search:
   has_search: false
@@ -56,6 +56,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Haitian/Caribbean market + restaurant counter (renowned griot takeout); also offers money-transfer/courier services. Villeray institution (~30 years)."
-sources_checked: [official-social, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, tastet]
+sources_checked: [official-social, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, web-search, directories, tastet]
 researched_at: "2026-10-12"
 research_status: complete

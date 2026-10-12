@@ -18,9 +18,26 @@ affiliation: corporate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  types: []
-  notes: "Negative finding (re-verified 2026-10-12). Checked: official microsite (hmartmontreal.com, Wix) — no flyer/circulaire section; Flipp — H Mart flyers exist but ONLY for US cities and Ontario (GTA: York, Mississauga, Brampton, etc.), no Montreal/QC listing; RFD Montreal flyers directory; circulaires.club; supermarches.ca; web search 'H Marché OR H Mart Montréal circulaire flyer'. H Mart national weekly flyers (flyers-on-line 'H Mart Western Canada', offermate.us, kaufino) do not cover the 3 Montreal stores. If Montreal flyers appear later, Flipp merchant id 2782 and the hmart.com ad feed are the likely sources."
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.hmartmontreal.com/weekly-flyer
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-15 (cover image 'cover_portrait_1008-1015.jpg')"
+      per_store_variant: true     # separate image sets per store ('06_decarie.jpg', '07_st-catherine_edited.jpg')
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Page titled 'WEEKLY FLYER | Hmart Montreal' (Wix) with ~10 flyer images: cover (10/08–10/15), weekly promo artboards ('03_promos_semaine_1', 'promos_semaine_2_3_combined'), and per-store sheets. VERIFIED LIVE 2026-10-12; user supplied the URL. Older FLYER_Montreal_260319 image files linger on the page but there is no archive UI."
+  notes: "CORRECTIVE 2026-10-12: earlier 'no Montreal flyer' finding was wrong — the official Montreal microsite has a weekly flyer page (user-verified URL, opened live). Earlier search checked only Flipp/aggregators, never probed the Wix site for a flyer path. Non-obvious flyer URL failure mode."
 
 product_search:
   has_search: false
@@ -50,6 +67,6 @@ loyalty_program:
   notes: "H Point Card mentioned on homepage; H Mart also advertises the Club-H Saving Card (5 pts/$1, 2,500 pts = discount) nationally — no evidence of card-gated prices at Montreal stores."
 
 notes: "H Mart entered Quebec in June 2024 by acquiring 3 Jang Teu grocery stores in Montreal. Montreal arm runs as a minimal Wix microsite (FR/EN headings)."
-sources_checked: [official-site, flipp, rfd-flyers, circulaires.club, supermarches.ca, wikipedia, yellowpages, web-search]
+sources_checked: [official-site, flipp, rfd-flyers, circulaires.club, supermarches.ca, wikipedia, yellowpages, web-search, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

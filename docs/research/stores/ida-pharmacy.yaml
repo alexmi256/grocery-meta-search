@@ -17,9 +17,32 @@ affiliation: banner-group
 banner_family: ["Guardian", "I.D.A.", "Remedy'sRx"]
 
 flyers:
-  has_flyers: false
-  types: []
-  notes: "not checked — no Quebec banner presence"
+  has_flyers: true            # banner-level flyer page exists; no Quebec stores to apply it to (see notes)
+  types:
+    - type: weekly
+      sources:
+        - name: official site — banner flyer
+          url: https://guardian-ida-remedysrx.ca/en/flyer-search
+          kind: official
+          format: html
+          parse_friendliness: low    # location-gated flyer search page; JS-driven, text fetch only shows the lookup form
+          fetchability: browser-needed
+      duration_days: 0
+      flip_weekday: ""                 # not determinable — page requires city/province/postal-code lookup first
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: true         # per participating pharmacy
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: >-
+        CORRECTIVE PASS 2026-10-12: first-pass verdict ("not checked — no
+        Quebec banner presence") conflated store-exclusion with data accuracy.
+        The banner site does publish a flyer program ("Check out the latest
+        deals at your local participating pharmacy", location-gated flyer
+        search at /en/flyer-search). It is recorded here so the dataset stays
+        accurate, but NO Quebec pharmacy operates under this banner, so no
+        Quebec flyer exists. Recommended-exclusion (below) is UNCHANGED.
 
 product_search:
   has_search: false
@@ -40,7 +63,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "RECOMMENDED-EXCLUDED: VERIFIED Flipp national-footer artifact. I.D.A. is a McKesson Canada banner for independent pharmacists active in ON/BC/SK (independent stores: Embrun ON, Sturgeon Falls ON, Callander ON, Mattawa ON, Kamloops BC, Langley BC, etc.), but NO Quebec (let alone Montreal) pharmacy operates under the Guardian/I.D.A./Remedy'sRx banner. McKesson's own contest terms for this banner network state contests are open 'to all residents of Canada, except Quebec residents', and its pharmacy locator has no Quebec listings. McKesson serves Quebec pharmacies under different banners (Uniprix, Proxim). Out of Quebec scope."
-sources_checked: [search, official-site, flipp-indexed, directories]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED Flipp national-footer artifact. I.D.A. is a McKesson Canada banner for independent pharmacists active in ON/BC/SK (independent stores: Embrun ON, Sturgeon Falls ON, Callander ON, Mattawa ON, Kamloops BC, Langley BC, etc.), but NO Quebec (let alone Montreal) pharmacy operates under the Guardian/I.D.A./Remedy'sRx banner. McKesson's own contest terms for this banner network state contests are open 'to all residents of Canada, except Quebec residents', and its pharmacy locator has no Quebec listings. McKesson serves Quebec pharmacies under different banners (Uniprix, Proxim). Out of Quebec scope. RE-INVESTIGATION 2026-10-12: flyer verified present at banner level (/en/flyer-search) — has_flyers flipped False→True for data accuracy; exclusion status unchanged because no Quebec participating pharmacy exists. Website URL verified: guardian-ida-remedysrx.ca is the banner's own site (not a parent org)."
+sources_checked: [search, official-site, official-site-flyer-page-verified, flipp-indexed, directories]
 researched_at: "2026-10-12"
 research_status: complete

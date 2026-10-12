@@ -63,6 +63,7 @@ notes: >-
   Website dead as of 2026-10-12 (previously listed as official site in
   directories). Business itself is active per place data. No social presence
   found.
-sources_checked: [official-site-dead, web-search, facebook-search, directories, boulevardsaintlaurent, yellowpages]
+  RE-CHECK 2026-10-12 (hardened protocol): etoilewaldman.ca still dead (DNS failure); place data still lists it as the official website but it resolves to nothing \u2014 no replacement found. No Facebook page for the store surfaced ('\u00c9toile Waldman facebook' search: directories + unrelated restaurant pages only). Web search circulaire/flyer found no flyer and no aggregator listing. No flyer possible online.
+sources_checked: [official-site-dead, web-search, facebook-search, directories, boulevardsaintlaurent, yellowpages, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

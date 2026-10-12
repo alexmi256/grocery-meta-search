@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Middle Eastern/halal market. Secondary Facebook presence: https://www.facebook.com/426615574351191/ (via grocery10 listing). OpenStreetMap tags it shop=convenience (name: Marché BKR - AL BAKAR)."
-sources_checked: [business-site, facebook, web-search, circulaires.club-directory, rfd-flyers, flipp, pagesjaunes, canpages, directories]
+notes: "Middle Eastern/halal market. Secondary Facebook presence: https://www.facebook.com/426615574351191/ (via grocery10 listing). OpenStreetMap tags it shop=convenience (name: Marché BKR - AL BAKAR).  RE-INVESTIGATION 2026-10-12: opened the newly-surfaced circulaires.com and circulaires.ca 'Marché BKR - Site web' merchant pages — they are template landing pages (ACCUEIL | TROUVER UN MAGASIN | PAGE FACEBOOK | CIRCULAIRE nav) with NO actual flyer content or archive: empty merchant shells. business.site + Facebook remain the only web presence; no catalog/search. Verdict stands."
+sources_checked: [business-site, facebook, web-search, circulaires.club-directory, circulaires-com-merchant-page, circulaires-ca-merchant-page, rfd-flyers, flipp, pagesjaunes, canpages, directories, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

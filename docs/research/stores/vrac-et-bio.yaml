@@ -28,7 +28,13 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found. Site offers a product catalog with prices and stock status instead of a flyer. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
+  notes: >-
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Comelin SPA homepage
+    checked: WebFilterPromotions (specialUrls.discount) and WebFilterLiquidation are
+    catalog product filters (sale/liquidation listings), not dated flyers. Probed 14
+    candidate flyer paths: all 404. Not on Flipp, circulaires.club, circulaires.ca,
+    supermarches.ca; RFD Montreal flyers page 2026-10-12 (majors only — not listed);
+    no '<name> circulaire' web hits.
 
 product_search:
   has_search: true
@@ -56,6 +62,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Certified organic by Ecocert; bulk + organic grocery. Unlike most tier-3 stores, has a live searchable product catalog with prices — a Phase 3 structured-data extraction candidate."
-sources_checked: [official-site, official-site-search-verified, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, comelin]
+sources_checked: [official-site, official-site-search-verified, official-site-path-probes, flipp, circulaires-ca, circulaires-club, rfd-flyers-page, web-search-fr, directories, comelin]
 researched_at: "2026-10-12"
 research_status: complete

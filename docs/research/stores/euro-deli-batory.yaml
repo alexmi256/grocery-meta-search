@@ -64,6 +64,7 @@ notes: >-
   URL CORRECTION: eurodelibatory.ca is dead; primary (and effectively only) web
   presence is the Facebook page facebook.com/432597176815537 (per Meta place
   data).
-sources_checked: [official-site-dead, facebook-place-data, web-search-circulaire, directories, flipp-search-snippet]
+  RE-CHECK 2026-10-12 (hardened protocol): Meta place data still lists the same Facebook page (facebook.com/432597176815537) as the official website \u2014 confirmed correct per protocol 1 (page id matches the recorded URL); no own site exists. Web search 'circulaire flyer sp\u00e9ciaux' found no flyer and no aggregator listing. DoorDash carries a restaurant-style delivery menu (Plats sp\u00e9ciaux/Special Dishes, Desserts) \u2014 NOT linked from the official site and not a grocery product search.
+sources_checked: [official-site-dead, facebook-place-data, web-search-circulaire, directories, flipp-search-snippet, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

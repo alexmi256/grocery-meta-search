@@ -64,6 +64,8 @@ notes: >-
   plans reported to modernize and possibly rename "Kosher Quality by Fooderie".
   If Fooderie rebrands the Victoria store, merge/alias slugs fooderie-kosher and
   kosher-quality in Phase 4.
-sources_checked: [official-site-404, web-search, directories, mk-kosher-guide]
+  RE-INVESTIGATION 2026-10-12: business.site 404 re-confirmed live; web search "Kosher Quality Montréal Victoria specials" surfaced no flyer anywhere — restoenligne.com promotions page states "No current promotion for KOSHER QUALITY". No official site, no social flyer, no aggregator listing (Flipp/RFD/circulaires.club/circulaire-en-ligne). No product search. Verdict stands.
+
+sources_checked: [official-site-404, web-search, web-search-circulaire-recheck, restoenligne, directories, mk-kosher-guide, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

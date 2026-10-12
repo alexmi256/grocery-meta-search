@@ -75,6 +75,7 @@ notes: >-
   FLAG — delivery-only, no physical storefront. Promotions run as signup offers
   on the site (e.g. "Ravivez la Flamme": free Gozney pizza oven + 10 pizzas with
   signup; 5x1000$ contest seen 2026-10-12) rather than flyers.
-sources_checked: [official-site, official-site-search-probe, web-search-circulaire, circulaire-en-ligne, flipp-search-snippet, rfd-flyers-search-snippet]
+  RE-CHECK 2026-10-12 (hardened protocol): homepage re-fetched \u2014 no circulaire/flyer/sp\u00e9ciaux/promotions/solde/aubaines keywords anywhere; ?s= search probe returns HTTP 200. A dated signup offer page exists ('Promotion de la rentr\u00e9e', 2026-10-09: 5 free discovery products with signup) \u2014 a lead-gen offer, not a flyer. No flyer.
+sources_checked: [official-site, official-site-search-probe, web-search-circulaire, circulaire-en-ligne, flipp-search-snippet, rfd-flyers-search-snippet, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

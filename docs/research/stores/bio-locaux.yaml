@@ -6,14 +6,14 @@ footprint: island
 tier: 3
 
 website:
-  url: https://cape.coop
-  languages: [fr]                    # CAPÉ content is FR-first; EN unconfirmed
+  url: https://www.epicerieloco.ca/producteurs/biolocaux/
+  languages: [fr]
   language_switch: n/a
-  render_tech: unknown               # direct fetch failed (see notes); reason documented
-  bot_protection: unknown
+  render_tech: ssr                   # WordPress (wp-content paths observed)
+  bot_protection: none
 
-parent_company: "CAPÉ — Coopérative pour l'agriculture de proximité écologique"
-affiliation: corporate
+parent_company: ""
+affiliation: independent-affiliate
 banner_family: []
 
 flyers:
@@ -22,19 +22,19 @@ flyers:
   notes: "No flyer found. Checked: CAPÉ site (store page https://cape.coop/marche-fermier-promenade-masson/ per search results — direct fetch failed, see website notes), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Bio Locaux\" CAPÉ Masson épicerie circulaire' (press coverage only, no flyer)."
 
 product_search:
-  has_search: false
-  url_pattern: ""
+  has_search: true
+  url_pattern: "https://epicerie-loco-en-ligne.square.site/shop/tous-les-aliments/2"
   location_scoped: false
   guest_ok: true
-  kind: html
-  api_notes: "No online catalog or search; CAPÉ is a co-op information site hosting the store page."
-  bot_protection: unknown
+  kind: spa                      # Square online storefront; JS-heavy (text fetch returned store info only, product grid not rendered in text)
+  api_notes: "Square online shop ('Épicerie LOCO écologique et zéro déchet') — the 'Tous les aliments' shop category is the product catalog with prices. Delivers ('Livraison en 1 à 7 jours'); fresh items delivered Fridays."
+  bot_protection: none
   languages: [fr]
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: "No online ordering. (CAPÉ runs separate winter organic basket subscriptions — a different program from the store.)"
+  notes: "Square online shop: delivery 1–7 days; chilled items delivered Friday or per comment preference. Phone (438) 375-7066."
 
 locations:
   count_estimate: 1
@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "First producer-owned organic grocery in Quebec, opened Oct 26, 2023; run by 250 CAPÉ member farms (Fermiers de famille network) — 70% of sales go directly to producers, 100% local certified-organic. WEBSITE ISSUE: cape.coop does not resolve via the fetch tool as of 2026-10-12 (DNS failure); store-page facts sourced from search snippets. cape.coop is the CAPÉ co-op's main site hosting the store page (cape.coop/marche-fermier-promenade-masson/ and /biolocaux/), not a store-dedicated domain. research_status is partial for this reason only."
-sources_checked: [official-site-attempted, circulaires-club, circulaires.com, rfd-flyers, web-search, web-press]
+notes: "First producer-owned organic grocery in Quebec, opened Oct 26, 2023; run by 250 CAPÉ member farms (Fermiers de famille network) — 70% of sales go directly to producers, 100% local certified-organic. WEBSITE CORRECTED 2026-10-12 (user-verified): real site is epicerieloco.ca (LOCO — L'épicerie écologique zéro déchet), store/producer page /producteurs/biolocaux/. The cape.coop URL previously recorded is the WRONG site — the CAPÉ farmer co-op network, not the store. biolocaux.coop (the co-op's own domain, linked from the LOCO page) does not resolve. flyers: no flyer found — checked LOCO site pages, circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list, RFD Montreal flyers page, web search."
+sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, web-press, corrective-reinvestigation]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

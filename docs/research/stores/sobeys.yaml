@@ -19,11 +19,11 @@ banner_family: [IGA, IGA Extra, FreshCo, Safeway, Foodland, Farm Boy, Rachelle-B
 flyers:
   has_flyers: false
   types: []
-  notes: "No Quebec retail stores operate under the Sobeys banner — no QC flyer exists."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: sobeys.com DOES publish weekly flyers nationally for the Sobeys banner (other provinces) — verified that flyer presence exists at the national level, but zero Quebec retail stores operate under the Sobeys banner, so NO Quebec flyer exists. has_flyers stays FALSE for the Quebec/Montreal pipeline scope. Recommended-excluded stands."
 
 product_search:
   has_search: false
-  notes: "sobeys.com national search exists but is irrelevant for Quebec retail (no stores)."
+  notes: "sobeys.com national search exists but is irrelevant for Quebec retail (no stores). CORRECTIVE RE-INVESTIGATION 2026-10-12: re-confirmed via Wikipedia (IGA (Canada)), Canadian Grocer, The Produce News — Sobeys banner absent from Quebec retail; QC operations run under IGA/IGA Extra banners only."
 
 ecommerce:
   online_ordering: false
@@ -41,6 +41,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "RECOMMENDED-EXCLUDED: VERIFIED NO QUEBEC RETAIL PRESENCE. The Sobeys banner does not operate stores in Quebec. Wikipedia (IGA (Canada)): IGA Extra 'launched in the early 2000s to take the place of Sobeys locations in the Quebec City and Montreal areas'. The Produce News (Sobeys Quebec Inc.): 'Sobeys, which operates under the IGA and IGA Extra banners in Quebec'. Canadian Grocer: 'Sobeys manages nine banners in Quebec, including IGA Extra, IGA, Rachelle-Bery, Marche Bonichoix, Les Marches Tradition, IGA Express, IGA mini, Shell and Bonsoir' — the Sobeys banner is not among them. Sobeys Québec Inc. operates distribution centres in the province but no retail. Any sobeys.com flyer/search data is for other provinces. Out of Quebec retail scope."
-sources_checked: [search, wikipedia, canadiangrocer, theproducenews]
+sources_checked: [search, wikipedia, canadiangrocer, theproducenews, flyer-presence-verified-nationally]
 researched_at: "2026-10-12"
 research_status: complete

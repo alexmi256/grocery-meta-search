@@ -40,7 +40,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "RECOMMENDED-EXCLUDED: VERIFIED CLOSED/ABSORBED. Le Petit Milos was the Spiliadis family specialty-food shop on Park Avenue supplying the Estiatorio Milos restaurant a few doors north (Montreal Gazette). chefdb.com lists 'Petit Milos, Montréal (CLOSED)' at 5551 Avenue du Parc; menupix.com marks it 'Permanently closed'. The address now resolves to the live Estiatorio Milos restaurant (estiatoriomilos.com, 5357 Av du Parc). No official/social site of its own found — website: none found with reason. Nothing to fly or scrape."
-sources_checked: [directories, web-press, official-site, search]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED CLOSED/ABSORBED. Le Petit Milos was the Spiliadis family specialty-food shop on Park Avenue supplying the Estiatorio Milos restaurant a few doors north (Montreal Gazette). chefdb.com lists 'Petit Milos, Montréal (CLOSED)' at 5551 Avenue du Parc; menupix.com marks it 'Permanently closed'. The address now resolves to the live Estiatorio Milos restaurant (estiatoriomilos.com, 5357 Av du Parc). No official/social site of its own found — website: none found with reason. Nothing to fly or scrape. CORRECTIVE RE-INVESTIGATION 2026-10-12: closure evidence stands; no flyer/search check applicable."
+sources_checked: [directories, web-press, official-site, search, closure-reverified]
 researched_at: "2026-10-12"
 research_status: complete

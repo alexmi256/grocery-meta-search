@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "DISTINCT from Marché Gangnam Style (4182 Rue St-Denis), which describes itself as 'une épicerie Coréenne et Japonaise' — different business. Directory fallback: http://www.yellowpages.ca/bus/Quebec/Montreal/Epicerie-Coreenne-et-Japonaise/101697465.html"
-sources_checked: [directories, yellowpages, mapquest, moovit, circulaires-club, circulaires.com, rfd-flyers, web-search]
+notes: "DISTINCT from Marché Gangnam Style (4182 Rue St-Denis), which describes itself as 'une épicerie Coréenne et Japonaise' — different business. Directory fallback: http://www.yellowpages.ca/bus/Quebec/Montreal/Epicerie-Coreenne-et-Japonaise/101697465.html RE-CHECK 2026-10-12 (hardened protocol): web search for official site/Facebook/circulaire surfaced only a Yelp biz page and Yellow Pages (phone 514-779-7456, 1829 Ste-Catherine O) \u2014 no official site, no social page, no flyer. No web presence to host a flyer."
+sources_checked: [directories, yellowpages, mapquest, moovit, circulaires-club, circulaires.com, rfd-flyers, web-search, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

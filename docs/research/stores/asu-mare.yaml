@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Latin-American marché + café (Peru, Colombia, Mexico, Venezuela): curated Latin products + specialty coffee bar."
-sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, registre-entreprises]
+notes: "Latin-American marché + café (Peru, Colombia, Mexico, Venezuela): curated Latin products + specialty coffee bar. CORRECTIVE 2026-10-12: re-verified with page enumeration — fetched asumare.ca/sitemap.xml (pages: /productos, /menu, /blog + product-ish pages). Opened /productos: marketing-only page ('Descubre nuestra selección'), NO products, prices, or catalog — just contact info and newsletter signup ('Recibe ofertas y noticias'). Phone +1-514-242-7196 / +1-438-364-1246 (FR/EN). No flyer on aggregators; web search 'Asu Mare Montréal circulaire offres promos' returned no flyer."
+sources_checked: [official-site, official-sitemap, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, registre-entreprises, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

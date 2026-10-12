@@ -30,8 +30,14 @@ flyers:
   archive_available: false
   structured_data: false
   notes: >-
-    No flyer. circulaire-en-ligne.ca has a directory-only page ("Le Baobab -
-    Épicerie Boutique Ethnique") with no actual flyer. No Flipp/RFD listing.
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Enumerated ALL pages
+    via WordPress sitemap (All in One SEO: post/page/attachment/product/category/
+    product_cat/product_tag sitemaps): pages are only /, contact/, about/, shop/,
+    acceuil/, panier/, commander/, mon-compte/ — no flyer/circulaire/specials page.
+    Probed 14 candidate flyer paths: all 404. circulaire-en-ligne.ca has a
+    directory-only page ("Le Baobab - Épicerie Boutique Ethnique") with no actual
+    flyer (re-confirmed). No Flipp/RFD listing; RFD Montreal flyers page 2026-10-12
+    (majors only — not listed).
 
 product_search:
   has_search: true
@@ -68,6 +74,6 @@ notes: >-
   UPGRADE FIND (2026-10-12): tier 3 record said "no search / no ecommerce";
   full depth found a live WooCommerce store with working product search (login
   required for prices).
-sources_checked: [official-site, official-site-search-probe, web-search-circulaire, circulaire-en-ligne, directories]
+sources_checked: [official-site, official-site-search-probe, official-site-sitemap-enumeration, official-site-path-probes, web-search-circulaire, circulaire-en-ligne, rfd-flyers-page, directories]
 researched_at: "2026-10-12"
 research_status: complete

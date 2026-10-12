@@ -7,34 +7,37 @@ footprint: island
 tier: 3
 
 website:
-  url: http://www.val-mont.ca/
-  languages: n/a                 # domain now serves wholesale content; retail site defunct
+  url: https://epicerievalmont.com/
+  languages: [fr]                # homepage is French; FR-only observed
   language_switch: n/a
-  render_tech: n/a
-  bot_protection: n/a
+  render_tech: ssr                # WordPress (wp-content image paths)
+  bot_protection: none
 
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  types: []
-  sources: []
-  duration_days: 0
-  flip_weekday: ""
-  flip_timezone: America/Toronto
-  validity_example: ""
-  per_store_variant: false
-  languages: []
-  archive_available: false
-  structured_data: false
-  notes: >-
-    No actual flyer. circulaire-en-ligne.ca hosts SEO placeholder pages ("Circulaire
-    Valmont - Fruiterie", a "Circulaire en Cours ... Jusqu'au 14 oct." link) but the
-    link resolves to a recipes page — no real dated flyer content could be opened.
-    circulaires.com has a "Marché Valmont" page (dated June 2026). No Flipp, RFD
-    Montreal flyers, circulaires.club or supermarches.ca listing.
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://epicerievalmont.com/circulaires/
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true    # separate image sets per location (1495/2018 av Mont-Royal E, 205 av Mont-Royal E, Rosemont, Boucherville, Pointe-aux-Trembles)
+      languages: [fr]
+      archive_available: true    # previous week (1er–7 octobre 2026) still listed below current
+      structured_data: false
+      notes: "Page titled 'Circulaires - Val-Mont'. Current cycle 'Circulaires du 8 au 14 octobre 2026' + previous cycle 'du 1er au 7 octobre 2026', each as per-location JPG images (T36/T37 batch codes). VERIFIED LIVE 2026-10-12; user supplied the URL."
+  notes: "Earlier 'not the store's site' resolution was WRONG — epicerievalmont.com hosts real retail circulaires at /circulaires/ (the domain homepage also serves Epicia wholesale content, but the retail circulaires live on this domain and the brand 'Val-Mont' matches 'Fruiterie Valmont')."
 
 product_search:
   has_search: false
@@ -52,21 +55,22 @@ ecommerce:
   notes: ""
 
 locations:
-  count_estimate: 1
+  count_estimate: 5
   locator_url: ""
   locator_api: ""
-  notes: "2147 Av. du Mont-Royal E, Montréal, QC H2H 1J9 (fruits & légumes, charcuterie, boucherie, épicerie fine). Founded 1958; a second branch at 1495 Mont-Royal E is referenced in older sources."
+  notes: "Circulaires page lists 5 store variants: 1495 & 2018 av Mont-Royal E, 205 av Mont-Royal E, Rosemont, Boucherville, Pointe-aux-Trembles. 2147 Av. du Mont-Royal E (fruits & légumes, charcuterie, boucherie, épicerie fine) per directories — the retail original. Founded 1958."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
 notes: >-
-  RESOLVED: epicerievalmont.com is NOT the store's site — it now serves the Epicia
-  wholesale company page (Boucherville). val-mont.ca (still listed as the store's
-  website in directories) ALSO serves the same Epicia wholesale content
-  (Alexandre Monette, 504 rue Albanel, Boucherville). The retail web presence is
-  defunct; the store itself is active per place/directory data.
+  CORRECTIVE 2026-10-12: prior 'retail web presence defunct' finding was wrong — the
+  retail circulaires live at epicerievalmont.com/circulaires/ (user-verified URL,
+  opened live). Weekly FR circulaires with per-location image variants and a
+  visible archive week. Conflicting-evidence lesson: the circulaire-en-ligne.ca
+  SEO placeholders were dismissed correctly (no real content), but the live
+  /circulaires/ path was never checked — non-obvious flyer URL failure mode.
 sources_checked: [official-site-defunct, web-search-circulaire, circulaire-en-ligne, circulaires-com, directories, yellowpages]
 researched_at: "2026-10-12"
 research_status: complete

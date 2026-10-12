@@ -28,7 +28,7 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found: Facebook-only web presence, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: no flyer. Facebook-only web presence (facebook.com/2012417038809524 — active, hours posted). Web search returns directories + food-culture writeups (mauditsfrancais.ca 'best cheap fruiteries'), no standalone site, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, no '<name> circulaire/spéciaux' hits. Flyer and product_search stay FALSE."
 
 product_search:
   has_search: false
@@ -56,6 +56,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Known for cheap produce, bulk goods, cash-friendly no-frills shopping; vegan options noted in reviews."
-sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, yellowpages, canpages, directories]
+sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, web-search, yellowpages, canpages, directories]
 researched_at: "2026-10-12"
 research_status: complete

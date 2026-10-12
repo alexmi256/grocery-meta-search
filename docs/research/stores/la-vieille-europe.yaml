@@ -30,9 +30,12 @@ flyers:
   archive_available: false
   structured_data: false
   notes: >-
-    No flyer. Shopify catalog (collections: Café & Thé, Conserves, Apéritif,
-    etc.). Web search "La Vieille Europe circulaire/flyer" found no aggregator
-    listing.
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Enumerated ALL pages
+    and collections via Shopify sitemaps (FR + /en/): no flyer/circulaire/specials/
+    deals page — only catalog collections (cheese, coffee-tea, condiments, preserves,
+    etc.) and info pages (contact, notre-histoire). Probed 14 candidate flyer paths:
+    all 404. Web search "La Vieille Europe circulaire/flyer" found no aggregator
+    listing; RFD Montreal flyers page 2026-10-12 (majors only — not listed).
 
 product_search:
   has_search: true
@@ -68,6 +71,6 @@ loyalty_program:
 notes: >-
   UPGRADE FIND (2026-10-12): tier 3 record said "no search"; full-depth found a
   live Shopify store with working bilingual product search.
-sources_checked: [official-site, official-site-search-probe, web-search-circulaire, directories]
+sources_checked: [official-site, official-site-search-probe, official-site-sitemap-enumeration, official-site-path-probes, web-search-circulaire, rfd-flyers-page, directories]
 researched_at: "2026-10-12"
 research_status: complete

@@ -55,7 +55,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Historic Ukrainian deli founded 1922 (four generations). Old-fashioned smoked meat, ham, knockwurst, kobassa, pyrohy. No official website found after genuine investigation (official search, directories, Facebook); Facebook page is the authoritative web presence (listed as website by Chamber of Commerce and ProfileCanada)."
-sources_checked: [search, directories, facebook-place-data, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-en, restomontreal, smartshopping]
+notes: "Historic Ukrainian deli founded 1922 (four generations). Old-fashioned smoked meat, ham, knockwurst, kobassa, pyrohy. CORRECTIVE RE-INVESTIGATION 2026-10-12: re-confirmed no official website exists after genuine investigation (official search, directories, Facebook); Facebook page remains the authoritative web presence (listed as website by Chamber of Commerce and ProfileCanada). No flyer anywhere — no Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers (2026-10-12, majors only), and no '<name> flyer' web hits."
+sources_checked: [search, directories, facebook-place-data, flipp, circulaires-ca, circulaires-club, rfd-flyers-page, web-search-en, restomontreal, smartshopping]
 researched_at: "2026-10-12"
 research_status: complete

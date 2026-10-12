@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Not-for-profit self-managed neighbourhood grocery (opened May 2018); members volunteer 3h/month. Community fridge, prepared meals, seasonal produce."
-sources_checked: [official-site, search, circulaires-club, circulaires.com, rfd-flyers, web-search]
+notes: "Not-for-profit self-managed neighbourhood grocery (opened May 2018); members volunteer 3h/month. Community fridge, prepared meals, seasonal produce RE-CHECK 2026-10-12 (hardened protocol): fetched homepage \u2014 one-page WordPress site (product sections, hours, community-fridge info) with no flyer/circulaire/sp\u00e9ciaux/aubaines/promotions section; web search 'facebook sp\u00e9ciaux/promotion' surfaced no flyer (only the unrelated 'Coupons et Circulaires' FB page and a different 'Le D\u00e9tour' restaurant in Saint-J\u00e9r\u00f4me). Website verified correct.."
+sources_checked: [official-site, search, circulaires-club, circulaires.com, rfd-flyers, web-search, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

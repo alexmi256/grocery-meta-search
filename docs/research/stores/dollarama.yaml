@@ -19,15 +19,15 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No official flyer — a deliberate business-model choice (no flyer section anywhere on dollarama.com; homepage 200 OK, no flyer links). Aggregator sites (e.g. flyerbox) publish unofficial 'Dollarama weekly flyer' pages of dubious provenance (identical 5-page templates, no end dates); treat as unreliable, NOT a flyer source."
+  notes: "No official flyer — a deliberate business-model choice (no flyer section anywhere on dollarama.com; homepage 200 OK, no flyer links). Aggregator sites publish unofficial 'Dollarama weekly flyer' pages of dubious provenance. VERIFIED 2026-10-12 per hardened protocol 5: opened the flyerbox.ca 'Dollarama weekly flyer starting Sep 18, 2026' page — it contains only SEO boilerplate text ('The new Dollarama flyer is here! ... 5-page leaflet') with NO actual flyer images, product listings, or validity dates; same template repeated across cities. kimbino.ca pages are identical boilerplate. These are NOT real flyer sources. Web search 'Dollarama circulaire flyer hebdomadaire flipp Montreal' returned only flyerbox/kimbino templated pages — no official or Flipp flyer."
 
 product_search:
-  has_search: false
-  url_pattern: ""
-  location_scoped: false
+  has_search: true
+  url_pattern: "https://dollarama.instacart.com/store/dollarama/storefront"
+  location_scoped: true            # Instacart requires a delivery location/zone
   guest_ok: true
-  kind: html
-  api_notes: "dollarama.com is informational only (locator, corporate, gift cards). The online catalogue lives on an Instacart storefront (shop.dollarama.com resolves to an Instacart-powered storefront; dollarama.com also links dollarama.instacart.com/store/dollarama/storefront); search there is Instacart's, not Dollarama's."
+  kind: third-party-marketplace    # Instacart storefront — hardened protocol 6
+  api_notes: "Verified 2026-10-12 via curl of dollarama.com homepage: it contains the link https://dollarama.instacart.com/store/dollarama/storefront. Dollarama itself has NO own-site product search (informational site only: locator, corporate, gift cards). The Instacart-powered storefront lists Dollarama products with prices and carries Instacart's product search — recorded per protocol 6 (linked from official site, products with prices). The search UI itself is Instacart's, not Dollarama's."
   bot_protection: none
   languages: [fr, en]
 
@@ -46,6 +46,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "No loyalty or points program (confirmed: no loyalty/rewards mentions on site). Gift cards sold online. HQ in Montreal. 1,734 stores in Canada (FY2026). Price ceiling now $5 (raised from $1 in steps 2009–2022)."
-sources_checked: [official-site]
+sources_checked: [official-site, flyerbox-page-opened-and-verified, web-search-flyer, homepage-link-probe-instacart]
 researched_at: "2026-10-12"
 research_status: complete

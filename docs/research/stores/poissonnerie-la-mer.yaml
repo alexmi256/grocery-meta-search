@@ -28,7 +28,17 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found. No flyer/circulaire link on the official site. circulaire-en-ligne.ca has a DIRECTORY listing (circulaire-en-ligne.ca/la-mer) but shows no active dated flyer. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits with a dated flyer."
+  notes: >-
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Opened the two
+    semantic-mismatch candidates live: (1) nav "Promotions" resolves to
+    /collections/speciaux-et-produits-vedettes — a standing sale-products collection,
+    NOT a dated flyer; (2) /pages/arrivages-frais is a daily-fresh-arrivals info page,
+    not a flyer. Enumerated ALL pages + collections via Shopify sitemaps (FR + /en/):
+    no flyer/circulaire page. Probed 14 candidate flyer paths: all 404.
+    circulaire-en-ligne.ca/la-mer re-confirmed as DIRECTORY listing with no active
+    dated flyer. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca;
+    RFD Montreal flyers page 2026-10-12 (majors only — not listed); no
+    '<name> circulaire' web hits with a dated flyer.
 
 product_search:
   has_search: true
@@ -56,6 +66,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Premier seafood/fish market (since 1968) with grocery sections (vegetables, cheese, wine, charcuterie, prepared foods). Also acts as distributor. 200+ fresh fish/seafood varieties. Instagram @poissonnerielamer active."
-sources_checked: [official-site, official-site-search-verified, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories]
+sources_checked: [official-site, official-site-search-verified, official-site-sitemap-enumeration, official-site-path-probes, official-site-nav-semantic-check, flipp, circulaires-ca, circulaires-club, rfd-flyers-page, web-search-fr, directories]
 researched_at: "2026-10-12"
 research_status: complete

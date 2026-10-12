@@ -30,8 +30,12 @@ flyers:
   archive_available: false
   structured_data: false
   notes: >-
-    No flyer. Full-priced Shopify catalog with a "Deal Of The Day" section.
-    Web search "Les 3 Gourmets circulaire" found no aggregator listing.
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Enumerated ALL pages
+    and collections via Shopify sitemaps (FR + /fr/): no flyer/circulaire page.
+    The "Deal Of The Day" homepage section is a sale-products block, not a dated
+    flyer. Probed 14 candidate flyer paths: all 404. Web search "Les 3 Gourmets
+    circulaire" found no aggregator listing; RFD Montreal flyers page 2026-10-12
+    (majors only — not listed).
 
 product_search:
   has_search: true
@@ -68,6 +72,6 @@ notes: >-
   UPGRADE FIND (2026-10-12): tier 3 record said "no search / no ecommerce";
   full depth found a live bilingual Shopify store with working product search,
   priced catalog, and Canada-wide online ordering.
-sources_checked: [official-site, official-site-search-probe, web-search-circulaire, directories, ubereats]
+sources_checked: [official-site, official-site-search-probe, official-site-sitemap-enumeration, official-site-path-probes, web-search-circulaire, rfd-flyers-page, directories, ubereats]
 researched_at: "2026-10-12"
 research_status: complete

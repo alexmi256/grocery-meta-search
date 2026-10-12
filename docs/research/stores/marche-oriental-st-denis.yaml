@@ -20,7 +20,7 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No digital flyer found. The legacy domain marcheoriental.ca (still live, /en/clients.html and /fr/clients.html) advertises 'Check out our Weekly Flyer that comes out every week' / 'Consultez nos speciaux qui sortent chaque semaine' — but NO actual flyer page, PDF, or link exists on either domain (the /en/clients.html page is testimonials only; homepage is a landing page). Absent from circulaires.club directory, circulaires.ca, RFD Montreal flyers, Flipp. Web search 'Marché Oriental St-Denis circulaire' returns only listings. Verdict: marketing claim for a (possibly in-store paper) weekly flyer, but nothing digital/fetchable — treated as no flyer for pipeline purposes."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12 (conflicting-evidence protocol): full pages sitemap of orientalstdenis.ca enumerated — pages are products-1, noodles, snacks, fruits-vegetables, staples-in-asian-cuisine, ready-to-eat, items, fresh-fish-meat, contact-us only; NO flyer/specials page exists (/flyer → 404). Legacy domain marcheoriental.ca/en/clients.html re-opened: the 'Check out our Weekly Flyer' text is a marketing blurb with no link, image, or PDF — the page is testimonials only. So a weekly flyer is claimed in marketing copy but nothing is published digitally. Flyer stays FALSE for pipeline purposes; product_search stays FALSE (brochure pages, no catalog)."
 
 product_search:
   has_search: false
@@ -42,6 +42,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Family-run Asian market 30+ years; ready-to-eat counter, deli/bbq, butcher & fishmonger; wholesaler + retailer importing from Vietnam, Thailand, China, Taiwan, Hong Kong. DISTINCT from H Marché (which trades as 'Marché Oriental Jang Teu') — different business."
-sources_checked: [official-site, legacy-domain, web-search, circulaires.club-directory, circulaires.ca, rfd-flyers, flipp, directories]
+sources_checked: [official-site, official-sitemap-xml, legacy-domain, web-search, circulaires.club-directory, circulaires.ca, rfd-flyers, flipp, directories]
 researched_at: "2026-10-12"
 research_status: complete

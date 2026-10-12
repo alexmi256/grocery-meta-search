@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "FLAG: primarily a family-owned Italian charcuterie MANUFACTURER (founded 1953 by Pasquale Ramacieri Sr; first Quebec-made mortadella), not a classic grocery — kept in scope for the factory outlet. Products widely retailed at Maxi, Provigo, IGA. Runs promos via concours.alimentsroma.com."
-sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
+notes: "FLAG: primarily a family-owned Italian charcuterie MANUFACTURER (founded 1953 by Pasquale Ramacieri Sr; first Quebec-made mortadella), not a classic grocery — kept in scope for the factory outlet. Products widely retailed at Maxi, Provigo, IGA. Runs promos via concours.alimentsroma.com. CORRECTIVE 2026-10-12: re-verified with page enumeration — fetched alimentsroma.com/page-sitemap.xml (pages: a-propos, nos-marques, communaute, services-alimentaires, foodtruck-roma, contactez-nous + EN twins; no flyer/circulaire/deals page). Web search 'Aliments Roma circulaire' returned only brand contests (circulaire-en-ligne.ca concours), IGA/Metro banner flyers featuring Roma products, and unrelated Italian results. No store flyer."
+sources_checked: [official-site, official-sitemap, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

@@ -14,7 +14,7 @@ kind, location count + harvest mechanism (API = JSON endpoint observed).
 | Bulk Barn | ethnic-specialty | [www.bulkbarn.ca](https://www.bulkbarn.ca) | Y (html) | N | 280 (locator) | Bulk Barn Foods Ltd. |
 | Canadian Tire | gen-merch | [www.canadiantire.ca](https://www.canadiantire.ca) | Y (html) | Y (spa) | 500 (locator) | Canadian Tire Corp. |
 | Costco Wholesale | warehouse | [www.costco.ca](https://www.costco.ca) | Y (html) | Y (html) | 115 (locator) | Costco Wholesale Corp. |
-| Dollarama | dollar | [www.dollarama.com](https://www.dollarama.com) | N | N | 1734 (locator) | Dollarama Inc. |
+| Dollarama | dollar | [www.dollarama.com](https://www.dollarama.com) | N | Y (third-party-marketplace) | 1734 (locator) | Dollarama Inc. |
 | Familiprix | pharmacy | [www.familiprix.com](https://www.familiprix.com) | Y (json-api/images) | Y (html) | 358 (locator) | Familiprix Inc. (independent Quebec chain; 100% owned by its member pharmacists) |
 | Giant Tiger | dollar | [www.gianttiger.com](https://www.gianttiger.com) | Y (html) | Y (html) | 260 (locator) | Giant Tiger Stores Ltd. |
 | IGA Extra | traditional | [www.iga.net](https://www.iga.net) | Y (html/images) | Y (html) | 133 (locator) | Sobeys Inc. (Empire Company Limited) |
@@ -40,7 +40,7 @@ kind, location count + harvest mechanism (API = JSON endpoint observed).
 |---|---|---|---|---|---|---|
 | Euro Marché | ethnic-specialty | [euromarche.ca](http://euromarche.ca/) | Y (images) | N | 6 (?) | Independent (family chain) |
 | Marché Frutta Si | ethnic-specialty | [www.marchefruttasi.com](http://www.marchefruttasi.com/) | Y (images) | N | 1 (?) | Independent (family business) |
-| H Marché | ethnic-specialty | [www.hmartmontreal.com](https://www.hmartmontreal.com/) | N | N | 3 (locator) | H Mart |
+| H Marché | ethnic-specialty | [www.hmartmontreal.com](https://www.hmartmontreal.com/) | Y (images) | N | 3 (locator) | H Mart |
 | IGA Express / Mini | other | [www.iga.net](https://www.iga.net/) | Y (images) | Y (spa) | (locator) | Sobeys Inc. (Sobeys Québec / Empire Company Ltd.) |
 | L'intermarché Palumbo | traditional | [www.marchepalumbo.com](https://www.marchepalumbo.com/) | Y (html/images) | Y (html) | 5 (locator) | Palumbo family (independent) |
 | L'Intermarché | traditional | [lintermarche.ca](https://lintermarche.ca/) | Y (images) | N | 35 (?) | AXEP (Loblaw-affiliated banner group) |
@@ -64,17 +64,17 @@ kind, location count + harvest mechanism (API = JSON endpoint observed).
 
 | Store | Type | Website | Flyers | Search | Locations | Parent |
 |---|---|---|---|---|---|---|
-| 1117 Meats and Pantry | ethnic-specialty | [www.1117mp.com](https://www.1117mp.com/) | N | N | 0 (?) |  |
+| 1117 Meats and Pantry | ethnic-specialty | [www.1117mp.com](https://www.1117mp.com/) | Y (pdf) | N | 0 (?) |  |
 | 3 Paniers | other | [carrefoursolidaire.org/activites/3-pani…](http://carrefoursolidaire.org/activites/3-paniers/) | N | N | 1 (?) | Carrefour Solidaire CCA (opérée par Marché Frontenac, OBNL) |
-| Fruits & Légumes 3 Saisons | ethnic-specialty | [www.marche3saisons.com](http://www.marche3saisons.com/) | N | N | 1 (?) | Famille Romanin |
+| Fruits & Légumes 3 Saisons | ethnic-specialty | [www.marche3saisons.com](http://www.marche3saisons.com/) | Y (images) | N | 1 (?) | Famille Romanin |
 | 5 Saisons | other | [www.les5saisons.ca](https://www.les5saisons.ca/) | N | N | 1 (?) | Metro Inc. |
 | Akhavan | ethnic-specialty | [akhavanfood.com](https://akhavanfood.com/) | Y (images/unknown) | Y (html) | 2 (?) |  |
 | Les Aliments Roma | ethnic-specialty | [alimentsroma.com](https://alimentsroma.com/) | N | N | 1 (?) |  |
 | Marché Latino Asu Mare | ethnic-specialty | [asumare.ca](https://asumare.ca/) | N | N | 1 (?) |  |
-| Baia dei Formaggi | ethnic-specialty | [www.labaiadeiformaggi.com](https://www.labaiadeiformaggi.com/) | N | N | 1 (?) |  |
+| Baia dei Formaggi | ethnic-specialty | [www.labaiadeiformaggi.com](https://www.labaiadeiformaggi.com/) | Y (images) | Y (spa) | 1 (?) |  |
 | Bentzy's Food Depot | ethnic-specialty | [www.bentzysfood.com](https://www.bentzysfood.com/) | N | N | 1 (?) |  |
 | Berchicci | ethnic-specialty | [store.berchicci.ca](https://store.berchicci.ca) | N | Y (html) | 1 (?) | Importation Berchicci Ltée |
-| Bio Locaux | other | [cape.coop](https://cape.coop) | N | N | 1 (?) | CAPÉ — Coopérative pour l'agriculture de proximité écologique |
+| Bio Locaux | other | [www.epicerieloco.ca/producteurs/bioloca…](https://www.epicerieloco.ca/producteurs/biolocaux/) | N | Y (spa) | 1 (?) |  |
 | Chouricor | ethnic-specialty | [www.facebook.com/186622011348467](https://www.facebook.com/186622011348467) | N | N | 1 (?) |  |
 | Cité Cacher | ethnic-specialty | [www.facebook.com/572569476146105](https://www.facebook.com/572569476146105) | N | N | 1 (?) |  |
 | Coop Alentour | other | [coopalentour.ca](https://coopalentour.ca) | Y (html) | N | 0 (?) |  |
@@ -84,17 +84,17 @@ kind, location count + harvest mechanism (API = JSON endpoint observed).
 | Épicerie Coréenne et Japonaise | ethnic-specialty | — | N | N | 1 (?) |  |
 | Épicerie Costa | ethnic-specialty | — | N | N | 1 (?) |  |
 | Épicerie Du Bazaar | ethnic-specialty | [www.bazaarfood.ca](https://www.bazaarfood.ca/) | N | N | 2 (?) |  |
-| Épicerie Latina | ethnic-specialty | [www.chezlatina.com](https://www.chezlatina.com/) | N | N | 2 (?) |  |
+| Épicerie Latina | ethnic-specialty | [www.chezlatina.com](https://www.chezlatina.com/) | N | Y (third-party-app) | 2 (?) |  |
 | Épicerie Le Détour | other | [epicerieledetour.org](https://epicerieledetour.org/) | N | N | 1 (?) |  |
 | L'Épicerie (l'épicier) | other | [epicier.ca](https://epicier.ca) | N | N | 0 (?) |  |
 | Étoile Waldman | ethnic-specialty | [www.etoilewaldman.ca](http://www.etoilewaldman.ca/) | N | N | 1 (?) |  |
 | Euro-Deli Batory | ethnic-specialty | [www.facebook.com/432597176815537](https://www.facebook.com/432597176815537) | N | N | 1 (?) |  |
 | The Fooderie Kosher Market | ethnic-specialty | [www.fooderiemarket.com](https://www.fooderiemarket.com/) | N | N | 1 (?) |  |
 | Marché Solidaire Frontenac | other | [carrefoursolidaire.org](https://carrefoursolidaire.org) | N | N | 1 (?) | Carrefour Solidaire CCA (OBNL) |
-| Fruiterie Valmont | ethnic-specialty | [www.val-mont.ca](http://www.val-mont.ca/) | N | N | 1 (?) |  |
+| Fruiterie Valmont | ethnic-specialty | [epicerievalmont.com](https://epicerievalmont.com/) | Y (images) | N | 5 (?) |  |
 | G&D Supermarket | ethnic-specialty | [gdsupermarche.com](https://gdsupermarche.com/) | N | Y (html) | 1 (?) |  |
 | Épicerie Heng Heng Chanchaya | ethnic-specialty | — | N | N | 1 (?) |  |
-| I.D.A. | pharmacy | [www.guardian-ida-remedysrx.ca](https://www.guardian-ida-remedysrx.ca/) | N | N | 0 (locator) | McKesson Canada |
+| I.D.A. | pharmacy | [www.guardian-ida-remedysrx.ca](https://www.guardian-ida-remedysrx.ca/) | Y (html) | N | 0 (locator) | McKesson Canada |
 | Johnny Prosciutto | ethnic-specialty | [johnnyprosciutto.com](https://johnnyprosciutto.com/) | N | Y (html) | 1 (?) |  |
 | Kosher Quality | ethnic-specialty | — | N | N | 1 (?) | Fooderie Market |
 | Marché Latino La Bendición | ethnic-specialty | [marche-bendicion.poi.place](http://marche-bendicion.poi.place/) | N | N | 1 (?) |  |
@@ -103,10 +103,10 @@ kind, location count + harvest mechanism (API = JSON endpoint observed).
 | Le Baobab | ethnic-specialty | [lebaobab.store](https://lebaobab.store/) | N | Y (html) | 1 (?) |  |
 | Épicerie Les 3 Gourmets | ethnic-specialty | [www.epicerie-les3gourmets.ca](https://www.epicerie-les3gourmets.ca/) | N | Y (html) | 1 (?) |  |
 | Lipa's Kosher Market | ethnic-specialty | [www.lipassupermarket.com](https://www.lipassupermarket.com/) | N | Y (html) | 1 (?) |  |
-| Magasin Amira | ethnic-specialty | [magasinamira.ca](https://magasinamira.ca/) | N | Y (html) | 1 (?) |  |
+| Magasin Amira | ethnic-specialty | [magasinamira.ca](https://magasinamira.ca/) | Y (images) | Y (html) | 1 (?) |  |
 | Magazin Istanbul | ethnic-specialty | — | N | N | 1 (?) |  |
 | Marché 786 | ethnic-specialty | [marche786.ca](http://marche786.ca/) | N | N | 1 (?) |  |
-| Marché Andes | ethnic-specialty | [www.marcheandes.com](https://www.marcheandes.com/) | N | N | 1 (?) |  |
+| Marché Andes | ethnic-specialty | [www.marcheandes.com](https://www.marcheandes.com/) | Y (html) | Y (json-api) | 1 (?) |  |
 | Marché Atwater | other | [www.marchespublics-mtl.com/marches/atwa…](http://www.marchespublics-mtl.com/marches/atwater/) | N | N | 1 (?) | Corporation de gestion des marchés publics de Montréal |
 | Marché BKR | ethnic-specialty | [marche-bkr-laurentien.business.site](https://marche-bkr-laurentien.business.site/) | N | N | 1 (?) |  |
 | Marché Bonanza | ethnic-specialty | [bonanzalalumiere.com](https://bonanzalalumiere.com/) | Y (html/images) | Y (html) | 1 (?) |  |
@@ -128,9 +128,9 @@ kind, location count + harvest mechanism (API = JSON endpoint observed).
 | Marché Tharsini | ethnic-specialty | [m.facebook.com/pages/category/Supermark…](https://m.facebook.com/pages/category/Supermarket/Marche-Tharsini-1904387439873150) | N | N | 1 (?) |  |
 | Marché Victoria Orientale | ethnic-specialty | [www.facebook.com/marchevictoria](https://www.facebook.com/marchevictoria/) | N | N | 1 (?) |  |
 | Meli-Melo Essentiel | ethnic-specialty | [www.facebook.com/marchemelimelo.caraibe](https://www.facebook.com/marchemelimelo.caraibe/) | N | N | 1 (?) |  |
-| Milano Fruiterie | ethnic-specialty | [milanofruiterie.ca](https://milanofruiterie.ca/) | N | N | 1 (?) |  |
+| Milano Fruiterie | ethnic-specialty | [milanofruiterie.ca](https://milanofruiterie.ca/) | Y (images) | N | 1 (?) |  |
 | Le Monde au Naturel | other | [mondenaturel.ca](https://mondenaturel.ca) | Y (images) | Y (html) | 0 (?) |  |
-| Mrakovic Meat and Deli | ethnic-specialty | [mrakovic.com](https://mrakovic.com) | N | N | 0 (?) |  |
+| Mrakovic Meat and Deli | ethnic-specialty | [mrakovic.com](https://mrakovic.com) | N | Y (html) | 0 (?) |  |
 | Odessa Poissonnier | ethnic-specialty | [odessapoissonnier.com](https://odessapoissonnier.com) | Y (pdf/images) | Y (json-api) | 6 (?) | Groupe Ferron |
 | One Stop Kosher | ethnic-specialty | — | N | N | 1 (?) |  |
 | Paradise Kosher | ethnic-specialty | [www.paradisekosher.com](http://www.paradisekosher.com/) | N | N | 1 (?) |  |

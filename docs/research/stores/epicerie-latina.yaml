@@ -19,15 +19,15 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found. Checked: official site (menu/recipe/newsletter site, no flyer/circulaire section), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Chez Latina\" Montréal circulaire' (directory results only)."
+  notes: "No flyer found. Checked: official site (menu/recipe/newsletter site, no flyer/circulaire section), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Chez Latina\" Montréal circulaire' (directory results only). RE-CHECKED 2026-10-12 per hardened protocol: fetched homepage — full nav is Menu du jour / Notre équipe / Traiteur / Boucherie / Poissonnerie / Charcuterie / Fromages / Boulangerie / Épicerie fine / Produits de saison / Newsletter / Recettes / Liste d'épicerie / Livraisons / Revue de presse / Contact / English — no flyer/circulaire/spéciaux/aubaines/promotions section anywhere. Website verified correct (chezlatina.com is the store's own site per place data)."
 
 product_search:
-  has_search: false
-  url_pattern: ""
+  has_search: true
+  url_pattern: "https://chezlatina.panierdachat.app/"
   location_scoped: false
   guest_ok: true
-  kind: html
-  api_notes: "The marketing/recipe site has no search function (daily menu is a Google Doc; grocery-list page is static). Online shopping is outsourced to the Panierdachat app (chezlatina.panierdachat.app) — text fetch returned HTTP 403, so any in-app product search is unverified and would need a live browser."
+  kind: third-party-app            # Panierdachat online-grocery app — hardened protocol 6
+  api_notes: "Verified 2026-10-12: chezlatina.com homepage links 'Cliquez ici pour faire votre épicerie en ligne' -> https://chezlatina.panierdachat.app/ (also deep links for BBQ, gift cards, soups, pasta sauces, frozen meals). Panierdachat is an online grocery ordering platform listing Latina products with prices — recorded per protocol 6 (ordering platform linked from the official site with products+prices). Text fetch of the app returns HTTP 403 (blocked), so any in-app product search is unverified — needs a live browser. The marketing/recipe site itself has no search (daily menu is a Google Doc; grocery-list page is static)."
   bot_protection: none
   languages: [fr, en]
 
@@ -47,6 +47,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Upscale Italian/Latin épicerie fine; dry-aging room for Prime Black Angus beef. Daily menu published as a Google Doc; active newsletter. Name is about Latin cuisine, not Latin America."
-sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, web-press]
+sources_checked: [official-site, homepage-nav-recheck-2026-10-12, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, web-press, panierdachat-app-link]
 researched_at: "2026-10-12"
 research_status: complete

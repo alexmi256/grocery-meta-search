@@ -30,10 +30,13 @@ flyers:
   archive_available: false
   structured_data: false
   notes: >-
-    No flyer section on gdsupermarche.com (fetched 2026-10-12). Web search
-    "G&D Supermarche flyer circulaire" found no flyer or aggregator listing
-    (Flipp/RFD/circulaires.club/supermarches.ca negative). Sells delivery-service
-    add-on products ("Delivery upstairs service", "Expedited Service") instead.
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Homepage nav checked:
+    "Specials" (product/special) is a standing specials list, not a dated flyer.
+    Probed 14 candidate flyer paths (/flyer /circulaire /specials /promotions
+    /speciaux /aubaines /deals etc.): all 404. Web search "G&D Supermarche flyer
+    circulaire" found no flyer or aggregator listing (Flipp/RFD/circulaires.club/
+    supermarches.ca negative); RFD Montreal flyers page 2026-10-12 (majors only —
+    not listed).
 
 product_search:
   has_search: true
@@ -42,9 +45,9 @@ product_search:
   guest_ok: true
   kind: html                     # OpenCart server-rendered search results page
   api_notes: >-
-    OpenCart default search; verified live: search=noodle returned "Showing 1 to
-    15 of 56 (4 Pages)". Product pages with price + stock — strong structured-data
-    signal for Phase 4.
+    OpenCart default search; verified live twice 2026-10-12: search=noodle returned
+    "Showing 1 to 15 of 56 (4 Pages)". Product pages with price + stock — strong
+    structured-data signal for Phase 4.
   bot_protection: none
   languages: [en]
 
@@ -70,6 +73,6 @@ notes: >-
   UPGRADE FIND (2026-10-12): tier 3 record said "no search / no ecommerce"; full
   depth found a live OpenCart store with working product search AND online ordering.
   Phase 3/5 candidate: OpenCart endpoints are stable and HTTP-fetchable.
-sources_checked: [official-site, official-site-search-probe, web-search-flyer, flipp-search-snippet]
+sources_checked: [official-site, official-site-search-probe, official-site-path-probes, official-site-nav-enumeration, web-search-flyer, rfd-flyers-page, flipp-search-snippet]
 researched_at: "2026-10-12"
 research_status: complete

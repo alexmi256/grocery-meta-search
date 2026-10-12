@@ -40,7 +40,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "RECOMMENDED-EXCLUDED: VERIFIED PERMANENTLY CLOSED. Place data marks La Coop Alimentaire de Montréal 'Permanently Closed — do not trust other web sources that may still show it as open'. Direct fetches of https://lacoopalimentaire.ca/ and http://lacoopalimentaire.ca/ on 2026-10-12 both return HTTP 200 with an empty (0-byte) body — the site is defunct. Stale directories (find-open.ca, montreal.cdncompanies.com) still show hours, but these are not updated. Nothing to fly or scrape."
-sources_checked: [search, directories, official-site-fetch]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED PERMANENTLY CLOSED. Place data marks La Coop Alimentaire de Montréal 'Permanently Closed — do not trust other web sources that may still show it as open'. Direct fetches of https://lacoopalimentaire.ca/ on 2026-10-12 (both earlier pass and this corrective pass) return HTTP 200 with an empty (0-byte) body — the site is defunct. Stale directories (find-open.ca, montreal.cdncompanies.com) still show hours, but these are not updated. Nothing to fly or scrape."
+sources_checked: [search, directories, official-site-fetch, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

@@ -30,10 +30,17 @@ flyers:
   archive_available: false
   structured_data: false
   notes: >-
-    No dated flyer. Site runs a "Promotions" product category (discounted bundle
-    boxes, e.g. Meat Lover's Box $129.99, expiry-dated promos like BACK 2 School
-    exp. 2026-09-30) instead of a flyer. Web search "Johnny Prosciutto flyer"
-    found no aggregator listing (Flipp/RFD/circulaires.club negative).
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no dated flyer. Opened
+    /product-category/promotions live: it is a standing category of promotional
+    bundle boxes (Bambino Box $35.25, Meat Lover's Box $129.99, 40th Celebration
+    Special $139.99, NHL Center Ice Box, NFL Game Day Box, etc.) with strikethrough
+    pricing but NO dates or validity windows — not a flyer. Direct /?s= search probe
+    and the same URL in a text browser return HTTP 403 (bot protection on that path);
+    pattern is platform-standard WooCommerce. Probed 14 candidate flyer paths via
+    curl: all 503 (same bot gate; homepage/search content verified indexed instead).
+    Web search "Johnny Prosciutto flyer" found no aggregator listing
+    (Flipp/RFD/circulaires.club negative); RFD Montreal flyers page 2026-10-12
+    (majors only — not listed).
 
 product_search:
   has_search: true
@@ -72,6 +79,6 @@ notes: >-
   UPGRADE FIND (2026-10-12): search was "not verified at tier 3"; platform is
   WooCommerce with a standard product search endpoint. Product pages carry price
   + ratings — strong structured-data signal.
-sources_checked: [official-site, official-site-search-probe-403, web-search-flyer, directories]
+sources_checked: [official-site, official-site-search-probe-403, official-site-path-probes-503, official-site-promotions-page-rendered, web-search-flyer, rfd-flyers-page, directories]
 researched_at: "2026-10-12"
 research_status: complete

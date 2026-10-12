@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Peruvian market + hot-food counter (company founded by Peruvians). Alternate domain www.marchelimalimon.com listed on pagesjaunes/yellowpages (canonical per business listings is marchelimalimon.ca). PARTIAL: official site body could not be fetched on 2026-10-12 (DNS/unresolvable to the text-fetch service); languages/render_tech carried from tier-3 record, unverified."
-sources_checked: [official-site-fetch-failed, web-search, circulaires.club-directory, rfd-flyers, flipp, ubereats, toogoodtogo, pagesjaunes, directories]
+notes: "Peruvian market + hot-food counter (company founded by Peruvians). Alternate domain www.marchelimalimon.com listed on pagesjaunes/yellowpages (canonical per business listings is marchelimalimon.ca). PARTIAL: official site body could not be fetched on 2026-10-12 (DNS/unresolvable to the text-fetch service); languages/render_tech carried from tier-3 record, unverified.  RE-INVESTIGATION 2026-10-12: fresh search 'Marché Lima Limon circulaire Montréal' — no flyer (only business/directory listings, Uber Eats hot-food menu, Too Good To Go surprise bag). marchelimalimon.ca verified canonical (Meta AI place data + directories); text fetch of the site still fails — partial status retained. Uber Eats restaurant menu is NOT linked from the official site (site unreadable) so it does not count as product search under the third-party rule; Too Good To Go is a surprise bag, not a catalog."
+sources_checked: [official-site-fetch-failed, web-search, web-search-recheck, circulaires.club-directory, rfd-flyers, flipp, ubereats, toogoodtogo, pagesjaunes, directories, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: partial

@@ -28,7 +28,15 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found. No flyer/circulaire section on the official site (only a /promotion/ page describing the standing 15% own-container discount). circulaire-en-ligne.ca has a DIRECTORY listing (circulaire-en-ligne.ca/vrac-en-folie) but no active dated flyer. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits with a dated flyer."
+  notes: >-
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Enumerated ALL pages
+    via WordPress sitemap_index: no flyer/circulaire page. /promotion/ re-confirmed
+    as a standing 15%-own-container-discount info page, not a dated flyer. Probed 14
+    candidate flyer paths: all 404. circulaire-en-ligne.ca/vrac-en-folie
+    re-confirmed as DIRECTORY listing with no active dated flyer. Not on Flipp,
+    circulaires.club, circulaires.ca, supermarches.ca; RFD Montreal flyers page
+    2026-10-12 (majors only — not listed); no '<name> circulaire' web hits with a
+    dated flyer.
 
 product_search:
   has_search: true
@@ -56,6 +64,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Strong in bulk nuts, chocolates, spices, coffee, flours; sugar-free section popular with diabetic clientele."
-sources_checked: [official-site, official-site-search-verified, official-site-promotion-page, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, premierepage]
+sources_checked: [official-site, official-site-search-verified, official-site-promotion-page, official-site-sitemap-enumeration, official-site-path-probes, flipp, circulaires-ca, circulaires-club, rfd-flyers-page, web-search-fr, directories, premierepage]
 researched_at: "2026-10-12"
 research_status: complete

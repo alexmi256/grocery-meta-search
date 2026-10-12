@@ -17,9 +17,26 @@ affiliation: independent-affiliate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  types: []
-  notes: "No flyer found. Checked: official site (minimal FR site — homepage, À propos, recettes pages; no flyer/circulaire section), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"3 Saisons\" Bois-des-Filion fruiterie circulaire' (directory results only)."
+  has_flyers: true
+  types:
+    - type: unknown
+      sources:
+        - name: official site
+          url: https://www.marche3saisons.com/copy-of-photos-1
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 0
+      flip_weekday: ""
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr]
+      archive_available: false
+      structured_data: false
+      notes: "Page titled 'Circulaire | marche-3-saisons' — per semantic protocol a page titled 'Circulaire' IS a flyer. VERIFIED LIVE 2026-10-12; user supplied the URL (non-obvious Wix 'copy-of-' path). Text fetch rendered headings only ('Votre Marchand Santé du Coin / FRUITS ET LÉGUMES 3 SAISONS'); flyer image content, cadence and dates not verifiable via text fetch."
+  notes: "Circulaire page exists on the official site (missed in earlier pass — the non-obvious /copy-of-photos-1 URL was never probed). Cadence/validity unknown pending image render or a logged-in-browser check."
 
 product_search:
   has_search: false

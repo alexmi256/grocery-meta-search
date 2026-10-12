@@ -3,16 +3,17 @@
 Generated from `docs/research/stores/*.yaml` (the source of truth).
 Chain vs independent is deliberately not a grouping dimension.
 
-**127 stores:** 32 both · 24 flyer only · 13 search only · 58 neither.
+**127 stores:** 35 both · 30 flyer only · 16 search only · 46 neither.
 
 \* flagged as exclusion candidate (recommended-excluded, pending approval).
 
-## Both — weekly flyer and product search (32)
+## Both — weekly flyer and product search (35)
 
 | Store | Type | Website | Flyer | Search | Locations |
 |---|---|---|---|---|---|
 | Akhavan | ethnic-specialty | [akhavanfood.com](https://akhavanfood.com/) | images, unknown (weekly) | html | 2 |
 | Avril Supermarché Santé | ethnic-specialty | [www.avril.ca](https://www.avril.ca) | html (8d) | html | 10 |
+| Baia dei Formaggi | ethnic-specialty | [www.labaiadeiformaggi.com](https://www.labaiadeiformaggi.com/) | images (?) | spa | 1 |
 | Brunet | pharmacy | [www.brunet.ca](https://www.brunet.ca) | images, json-api (weekly) | html | 180 |
 | Canadian Tire | gen-merch | [www.canadiantire.ca](https://www.canadiantire.ca) | html (weekly) | spa | 500 |
 | Costco Wholesale | warehouse | [www.costco.ca](https://www.costco.ca) | html (biweekly) | html | 115 |
@@ -28,6 +29,8 @@ Chain vs independent is deliberately not a grouping dimension.
 | Les Marchés Tau | ethnic-specialty | [marchestau.com](https://marchestau.com/) | html, images (weekly, monthly) | html | 6 |
 | Loblaws | traditional | [www.loblaws.ca](https://www.loblaws.ca) | html, images (weekly) | spa | 15 |
 | M&M Food Market | ethnic-specialty | [www.mmfoodmarket.com](https://www.mmfoodmarket.com) | images, html (weekly) | html | 15 |
+| Magasin Amira | ethnic-specialty | [magasinamira.ca](https://magasinamira.ca/) | images (?) | html | 1 |
+| Marché Andes | ethnic-specialty | [www.marcheandes.com](https://www.marcheandes.com/) | html (?) | json-api | 1 |
 | Marché Bonanza | ethnic-specialty | [bonanzalalumiere.com](https://bonanzalalumiere.com/) | html, images (weekly) | html | 1 |
 | Marché Fu Tai | ethnic-specialty | [www.marchefutai.ca](http://www.marchefutai.ca/) | html, images (weekly) | spa | 1 |
 | Marché Lian Tai | ethnic-specialty | [www.marcheliantai.ca](https://www.marcheliantai.ca/) | images, html (weekly) | spa | 1 |
@@ -44,13 +47,18 @@ Chain vs independent is deliberately not a grouping dimension.
 | Walmart | gen-merch | [www.walmart.ca](https://www.walmart.ca) | html (weekly) | spa | 401 |
 | Wholesale Club | warehouse | [www.wholesaleclub.ca](https://www.wholesaleclub.ca) | html, images (weekly) | html | 8 |
 
-## Flyer only (24)
+## Flyer only (30)
 
 | Store | Type | Website | Flyer | Locations |
 |---|---|---|---|---|
+| 1117 Meats and Pantry * | ethnic-specialty | [www.1117mp.com](https://www.1117mp.com/) | pdf (monthly) | ? |
 | Bulk Barn | ethnic-specialty | [www.bulkbarn.ca](https://www.bulkbarn.ca) | html (weekly) | 280 |
 | Coop Alentour * | other | [coopalentour.ca](https://coopalentour.ca) | html (weekly) | ? |
 | Euro Marché | ethnic-specialty | [euromarche.ca](http://euromarche.ca/) | images (weekly) | 6 |
+| Fruiterie Valmont | ethnic-specialty | [epicerievalmont.com](https://epicerievalmont.com/) | images (weekly) | 5 |
+| Fruits & Légumes 3 Saisons | ethnic-specialty | [www.marche3saisons.com](http://www.marche3saisons.com/) | images (?) | 1 |
+| H Marché | ethnic-specialty | [www.hmartmontreal.com](https://www.hmartmontreal.com/) | images (weekly) | 3 |
+| I.D.A. * | pharmacy | [www.guardian-ida-remedysrx.ca](https://www.guardian-ida-remedysrx.ca/) | html (?) | ? |
 | Kim Phat | ethnic-specialty | [www.kimphat.com](https://www.kimphat.com) | images, json-api (weekly) | 5 |
 | L'Intermarché | traditional | [lintermarche.ca](https://lintermarche.ca/) | images (weekly) | 35 |
 | Le Marché Esposito | ethnic-specialty | [lemarcheesposito.ca](https://lemarcheesposito.ca/) | html (weekly) | 6 |
@@ -66,6 +74,7 @@ Chain vs independent is deliberately not a grouping dimension.
 | Marché Richelieu | traditional | [www.marcherichelieu.ca](https://www.marcherichelieu.ca/) | images (weekly) | 63 |
 | Marché SA et Fils | ethnic-specialty | [www.saetfils.ca](https://www.saetfils.ca/) | html (weekly) | 1 |
 | Marché Sultan | ethnic-specialty | [www.instagram.com/marchesultan.mtl](https://www.instagram.com/marchesultan.mtl) | html+images (weekly) | 1 |
+| Milano Fruiterie | ethnic-specialty | [milanofruiterie.ca](https://milanofruiterie.ca/) | images (monthly) | 1 |
 | Première Moisson | ethnic-specialty | [premieremoisson.com](https://premieremoisson.com/) | html (weekly, monthly) | 25 |
 | Rachelle-Béry | ethnic-specialty | [www.rachellebery.ca](https://www.rachellebery.ca) | html, images (weekly) | 105 |
 | T&T Supermarché | ethnic-specialty | [www.tntsupermarket.com](https://www.tntsupermarket.com) | html, images (weekly) | 2 |
@@ -73,44 +82,39 @@ Chain vs independent is deliberately not a grouping dimension.
 | Voisin | other | [www.mon-voisin.com](https://www.mon-voisin.com) | html (weekly) | 70 |
 | Épicerie PA Nature | ethnic-specialty | [pa-nature.supermarchepa.com](http://pa-nature.supermarchepa.com/) | html, images (biweekly) | 1 |
 
-## Product search only (13)
+## Product search only (16)
 
 | Store | Type | Website | Search | Locations |
 |---|---|---|---|---|
 | Berchicci | ethnic-specialty | [store.berchicci.ca](https://store.berchicci.ca) | html | 1 |
+| Bio Locaux | other | [www.epicerieloco.ca/producteurs/bioloca…](https://www.epicerieloco.ca/producteurs/biolocaux/) | spa | 1 |
+| Dollarama | dollar | [www.dollarama.com](https://www.dollarama.com) | third-party-marketplace | 1734 |
 | G&D Supermarket | ethnic-specialty | [gdsupermarche.com](https://gdsupermarche.com/) | html | 1 |
 | Johnny Prosciutto | ethnic-specialty | [johnnyprosciutto.com](https://johnnyprosciutto.com/) | html | 1 |
 | La Marguerite | ethnic-specialty | [www.lamarguerite.ca](https://www.lamarguerite.ca/) | html | 1 |
 | La Vieille Europe | ethnic-specialty | [lavieilleeurope.com](https://lavieilleeurope.com/) | html | 1 |
 | Le Baobab | ethnic-specialty | [lebaobab.store](https://lebaobab.store/) | html | 1 |
 | Lipa's Kosher Market | ethnic-specialty | [www.lipassupermarket.com](https://www.lipassupermarket.com/) | html | 1 |
-| Magasin Amira | ethnic-specialty | [magasinamira.ca](https://magasinamira.ca/) | html | 1 |
+| Mrakovic Meat and Deli * | ethnic-specialty | [mrakovic.com](https://mrakovic.com) | html | ? |
 | Poissonnerie La Mer | ethnic-specialty | [www.lamer.ca](https://www.lamer.ca) | json-api | 2 |
 | Sabor Latino | ethnic-specialty | [saborlatino.ca](https://saborlatino.ca/) | html | 3 |
 | Vrac En Folie | other | [www.vracenfolie.com](http://www.vracenfolie.com/) | html | 1 |
+| Épicerie Latina | ethnic-specialty | [www.chezlatina.com](https://www.chezlatina.com/) | third-party-app | 2 |
 | Épicerie Les 3 Gourmets | ethnic-specialty | [www.epicerie-les3gourmets.ca](https://www.epicerie-les3gourmets.ca/) | html | 1 |
 | Épicerie Vrac & Bio | other | [epicerievracetbio.com](https://epicerievracetbio.com) | spa | 1 |
 
-## Neither flyer nor product search (58)
+## Neither flyer nor product search (46)
 
 | Store | Type | Website | Locations |
 |---|---|---|---|
-| 1117 Meats and Pantry * | ethnic-specialty | [www.1117mp.com](https://www.1117mp.com/) | ? |
 | 3 Paniers | other | [carrefoursolidaire.org/activites/3-pani…](http://carrefoursolidaire.org/activites/3-paniers/) | 1 |
 | 5 Saisons | other | [www.les5saisons.ca](https://www.les5saisons.ca/) | 1 |
-| Baia dei Formaggi | ethnic-specialty | [www.labaiadeiformaggi.com](https://www.labaiadeiformaggi.com/) | 1 |
 | Bentzy's Food Depot | ethnic-specialty | [www.bentzysfood.com](https://www.bentzysfood.com/) | 1 |
-| Bio Locaux | other | [cape.coop](https://cape.coop) | 1 |
 | Boucherie Épicerie Soares et Fils | ethnic-specialty | [www.lesfillessoares.com](https://www.lesfillessoares.com/) | 1 |
 | Chouricor | ethnic-specialty | [www.facebook.com/186622011348467](https://www.facebook.com/186622011348467) | 1 |
 | Cité Cacher | ethnic-specialty | [www.facebook.com/572569476146105](https://www.facebook.com/572569476146105) | 1 |
-| Dollarama | dollar | [www.dollarama.com](https://www.dollarama.com) | 1734 |
 | Délices du Maghreb | ethnic-specialty | — | 1 |
 | Euro-Deli Batory | ethnic-specialty | [www.facebook.com/432597176815537](https://www.facebook.com/432597176815537) | 1 |
-| Fruiterie Valmont | ethnic-specialty | [www.val-mont.ca](http://www.val-mont.ca/) | 1 |
-| Fruits & Légumes 3 Saisons | ethnic-specialty | [www.marche3saisons.com](http://www.marche3saisons.com/) | 1 |
-| H Marché | ethnic-specialty | [www.hmartmontreal.com](https://www.hmartmontreal.com/) | 3 |
-| I.D.A. * | pharmacy | [www.guardian-ida-remedysrx.ca](https://www.guardian-ida-remedysrx.ca/) | ? |
 | Kosher Quality | ethnic-specialty | — | 1 |
 | L'Épicerie (l'épicier) | other | [epicier.ca](https://epicier.ca) | ? |
 | La Coop Alimentaire Montréal * | other | [lacoopalimentaire.ca](https://lacoopalimentaire.ca/) | ? |
@@ -118,7 +122,6 @@ Chain vs independent is deliberately not a grouping dimension.
 | Les Aliments Roma | ethnic-specialty | [alimentsroma.com](https://alimentsroma.com/) | 1 |
 | Magazin Istanbul | ethnic-specialty | — | 1 |
 | Marché 786 | ethnic-specialty | [marche786.ca](http://marche786.ca/) | 1 |
-| Marché Andes | ethnic-specialty | [www.marcheandes.com](https://www.marcheandes.com/) | 1 |
 | Marché Atwater | other | [www.marchespublics-mtl.com/marches/atwa…](http://www.marchespublics-mtl.com/marches/atwater/) | 1 |
 | Marché BKR | ethnic-specialty | [marche-bkr-laurentien.business.site](https://marche-bkr-laurentien.business.site/) | 1 |
 | Marché Duc Thanh | ethnic-specialty | [www.facebook.com/100772778660036](https://www.facebook.com/100772778660036) | 1 |
@@ -135,8 +138,6 @@ Chain vs independent is deliberately not a grouping dimension.
 | Marché Tharsini | ethnic-specialty | [m.facebook.com/pages/category/Supermark…](https://m.facebook.com/pages/category/Supermarket/Marche-Tharsini-1904387439873150) | 1 |
 | Marché Victoria Orientale | ethnic-specialty | [www.facebook.com/marchevictoria](https://www.facebook.com/marchevictoria/) | 1 |
 | Meli-Melo Essentiel | ethnic-specialty | [www.facebook.com/marchemelimelo.caraibe](https://www.facebook.com/marchemelimelo.caraibe/) | 1 |
-| Milano Fruiterie | ethnic-specialty | [milanofruiterie.ca](https://milanofruiterie.ca/) | 1 |
-| Mrakovic Meat and Deli * | ethnic-specialty | [mrakovic.com](https://mrakovic.com) | ? |
 | One Stop Kosher | ethnic-specialty | — | 1 |
 | Paradise Kosher | ethnic-specialty | [www.paradisekosher.com](http://www.paradisekosher.com/) | 1 |
 | Sami Fruits | ethnic-specialty | [samifruits.com](http://samifruits.com/) | 6 |
@@ -150,6 +151,5 @@ Chain vs independent is deliberately not a grouping dimension.
 | Épicerie Costa | ethnic-specialty | — | 1 |
 | Épicerie Du Bazaar | ethnic-specialty | [www.bazaarfood.ca](https://www.bazaarfood.ca/) | 2 |
 | Épicerie Heng Heng Chanchaya | ethnic-specialty | — | 1 |
-| Épicerie Latina | ethnic-specialty | [www.chezlatina.com](https://www.chezlatina.com/) | 2 |
 | Épicerie Le Détour | other | [epicerieledetour.org](https://epicerieledetour.org/) | 1 |
 | Étoile Waldman | ethnic-specialty | [www.etoilewaldman.ca](http://www.etoilewaldman.ca/) | 1 |

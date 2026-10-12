@@ -18,17 +18,25 @@ affiliation: independent-affiliate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  types: []
-  duration_days: 0
-  flip_weekday: ""
-  flip_timezone: America/Toronto
-  validity_example: ""
-  per_store_variant: false
-  languages: n/a
-  archive_available: false
-  structured_data: false
-  notes: "No flyer found. No flyer/circulaire link anywhere on the official site (checked FR + EN homepages). circulaire-en-ligne.ca has a DIRECTORY listing (circulaire-en-ligne.ca/milano-fruiterie) but shows no active dated flyer — in contrast to stores like Odessa which list current circulars there. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits with a dated flyer."
+  has_flyers: true
+  types:
+    - type: monthly
+      sources:
+        - name: official site
+          url: https://milanofruiterie.ca/promo-du-mois/
+          kind: official
+          format: images            # image-based promo page; text fetch returns only cookie-consent boilerplate
+          parse_friendliness: low   # cookie-consent overlay masks text extraction; images carry the promo content
+          fetchability: http
+      duration_days: 30
+      flip_weekday: ""
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr]
+      archive_available: false
+      structured_data: false
+      notes: "FOUND 2026-10-12 corrective re-investigation via sitemap.xml enumeration (missed in prior pass — page is not linked from the homepage text/nav, and titled 'Promo du mois' rather than flyer/circulaire). Page updated 2026-10-08 per wp-sitemap (fresh monthly content). Not on Flipp, circulaires.club, circulaires.ca, circulaire-en-ligne.ca (directory listing only, no active flyer), supermarches.ca, RFD Montreal flyers (checked 2026-10-12 — only major chains listed)."
 
 product_search:
   has_search: false
@@ -55,7 +63,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "First Italian specialty supermarket in Quebec, founded 1954 by Vincenzo Zaurrini (70+ years). Cheese/charcuterie/bakery/butcher counters, ready-made pasta counter. MAPAQ pistachio recall (Jan 2026) noted on their premises — historical."
-sources_checked: [official-site, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, pagesjaunes, cylex]
+notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: flyer FALSE→TRUE. Failure modes hit: (2) non-obvious flyer URL — /promo-du-mois/ is absent from homepage text/nav and the WordPress sitemap page list was the only way in; (3) semantic mismatch — titled 'Promo du mois', never 'flyer/circulaire'. Prior pass checked homepage + aggregators only and missed it. Product search: re-confirmed none (FR + EN homepages have no search bar; brochure WordPress site)."
+sources_checked: [official-site, official-sitemap-xml, flipp, circulaires-ca, circulaires-club, circulaire-en-ligne, rfd-flyers, web-search-fr, directories, pagesjaunes, cylex]
 researched_at: "2026-10-12"
 research_status: complete

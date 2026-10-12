@@ -59,7 +59,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: ""
-sources_checked: [official-site, web-search-circulaire, directories, pagesjaunes]
+notes: " RE-INVESTIGATION 2026-10-12: web search 'La Bendición Montréal circulaire' returns only mapcarta/OSM listing (9201 Boul Saint-Michel, shop=convenience); poi.place mini-site re-verified as the store's only web presence (hours/amenities/reviews, no flyer section). Aggregators negative (circulaires.club directory, RFD Montreal flyers, Flipp, circulaire-en-ligne.ca). Convenience format; no search/catalog. Verdict stands."
+sources_checked: [official-site, web-search-circulaire, web-search-recheck, directories, pagesjaunes, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

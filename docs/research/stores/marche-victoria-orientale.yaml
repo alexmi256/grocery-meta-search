@@ -28,7 +28,7 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found: Facebook-only web presence, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits. (Cylex references a SayDrop store page web.saydrop.com/en/store/marche-victoria/383279 — a shopping-list directory, not a flyer source.)"
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: no flyer. Facebook-only web presence (facebook.com/marchevictoria/ — active, operating status confirmed via directory data). No listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire/spéciaux' web hits. (Cylex references a SayDrop store page web.saydrop.com/en/store/marche-victoria/383279 — a shopping-list directory, not a flyer source.) Flyer and product_search stay FALSE."
 
 product_search:
   has_search: false
@@ -56,6 +56,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Long-standing family-run Indian/Bangladeshi grocery; competitive pricing, spices, fresh produce and fish. Name confusingly similar to 'Marché Victoria' (755 Rue Jarry O) — different store."
-sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, saydrop, canpages, cylex, pagesjaunes, yellowpages]
+sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, web-search, saydrop, canpages, cylex, pagesjaunes, yellowpages]
 researched_at: "2026-10-12"
 research_status: complete

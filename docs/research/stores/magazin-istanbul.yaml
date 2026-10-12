@@ -64,6 +64,8 @@ notes: >-
   distinct phone 514-276-7930, grocery + smoothie/juice bar + restaurant) is a
   DIFFERENT business from Magazin Istanbul at 1551 Ontario St E — keep slugs
   distinct.
-sources_checked: [meta-business-profile, web-search, directories, mapquest]
+  RE-INVESTIGATION 2026-10-12: fresh search "Magazin Istanbul 1551 Ontario" again surfaces ONLY the Meta AI place listing + directory entries — still no official site, no social, no aggregator flyer (Flipp/RFD/circulaires.club/circulaire-en-ligne negative). Keep distinct from marcheistanbul.com (different business). No search possible. Verdict stands.
+
+sources_checked: [meta-business-profile, web-search, web-search-recheck, directories, mapquest, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

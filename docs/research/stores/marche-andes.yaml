@@ -8,28 +8,73 @@ tier: 3
 
 website:
   url: https://www.marcheandes.com/
-  languages: [fr, en]
-  language_switch: path
-  render_tech: unknown          # page body not inspectable — see bot_protection
-  bot_protection: bot-check    # 2026-10-12: www.marcheandes.com -> apex domain serves a Cloudflare-style "One moment, please..." interstitial; text fetch blocked
+  languages: [fr, en, es]
+  language_switch: path        # /es/, /en/ paths; verified via page-sitemap.xml
+  render_tech: wordpress       # WP + WooCommerce (bot check on homepage; sitemap.xml + wp-json API fetchable)
+  bot_protection: bot-check    # 2026-10-12: homepage serves a Cloudflare-style "One moment, please..." interstitial to text fetch; but sitemap.xml, page-sitemap.xml and wp-json/wc/store API are publicly accessible
 
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  types: []
-  notes: "No digital flyer found. Checked: official site (not inspectable — bot check; no flyer section visible in search snippets), circulaires.club 182-merchant directory (absent), circulaires.ca, RFD Montreal flyers page (majors only), web search 'Marché Andes circulaire/flyer' (business listings only — yellowpages, maps — no flyer)."
+  has_flyers: true
+  types:
+    - type: promotions-page      # standing specials page (not a weekly cadence)
+      sources:
+        - name: official site — Promotions
+          url: https://www.marcheandes.com/promotions/
+          kind: official
+          format: html
+          parse_friendliness: medium   # WooCommerce sale-items block; page JS-rendered in text fetch but underlying product data is in the public Store API
+          fetchability: http           # /promotions/ reachable; product sitemap + wp-json API verified
+      duration_days: 0
+      flip_weekday: ""
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr, en, es]          # /en/promotions/ and /es/promotions/ in page-sitemap.xml
+      archive_available: false
+      structured_data: false
+      notes: >-
+        MISSED IN FIRST PASS: site hosts a Promotions page (FR/EN/ES) listing
+        WooCommerce on-sale products with prices (e.g. Biscuits DUCALES
+        $3.29 -> $2.89). No fixed weekly cadence or dated flyer; it is an
+        ongoing specials page — page type title "Promotions" counts as a flyer
+        per the semantic-mismatch rule. Page body is JS-rendered to text
+        fetch; sale inventory is machine-readable via the public WooCommerce
+        Store API (?on_sale=true). No aggregator flyer
+        (circulaires.club 182-merchant directory, circulaires.ca, RFD
+        Montreal flyers page negative).
 
 product_search:
-  has_search: false
-  notes: "No product catalog or search found; site not inspectable due to bot check. No evidence of online ordering/search anywhere."
+  has_search: true
+  url_pattern: "https://www.marcheandes.com/?s={query}&post_type=product"
+  location_scoped: false
+  guest_ok: true
+  kind: json-api
+  api_notes: >-
+    Public WooCommerce Store API — no auth: GET
+    https://www.marcheandes.com/wp-json/wc/store/v1/products?search={query}
+    (supports per_page, category, on_sale). Returns full product records:
+    name, sku, CAD prices (price/regular_price/sale_price, minor units),
+    on_sale flag, stock status, images, categories, brand/size attributes
+    (pa_marque, pa_contenu). Browseable catalog at /categorie-produit/* and
+    product sitemaps product-sitemap1.xml..7.xml (updated 2026-09). Verified
+    live 2026-10-12 (search "cafe" returned 5 products incl. price $8.39–$22.39).
+  bot_protection: none
+  languages: [fr, en, es]
+  notes: >-
+    MISSED IN FIRST PASS: the homepage bot check made the catalog invisible;
+    the store runs a full WooCommerce shop (purchasable, in-stock flags).
+    Third-party: Uber Eats + DoorDash restaurant-menu ordering linked from the
+    official menu page (/menu/ shows both badges) — restaurant dishes with
+    prices, recorded here as secondary product-search signal.
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: "Loose signal only: store sells surplus bags on Too Good To Go. No own-site ordering."
+  notes: "WooCommerce products are flagged is_purchasable=true (add-to-cart URLs in Store API). Too Good To Go also sells surplus bags. Menu page links Uber Eats / DoorDash for the restaurant counter."
 
 locations:
   count_estimate: 1
@@ -41,7 +86,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION (carried): given domain marcheandes.com resolves to www.marcheandes.com — canonical URL recorded with www. Latin-American grocer founded by the Aguilar family (Héctor Aguilar); épicerie + boulangerie + boucherie + restaurant comptoir. PARTIAL: site body could not be inspected (bot-check interstitial), so languages/language_switch/render_tech are carried from tier-3 record and unverified; flyer absence rests on aggregator + web-search evidence."
-sources_checked: [official-site-bot-blocked, circulaires.club-directory, circulaires.ca, rfd-flyers, web-search, directories]
+notes: "URL CORRECTION (carried): given domain marcheandes.com resolves to www.marcheandes.com — canonical URL recorded with www. Latin-American grocer founded by the Aguilar family (Héctor Aguilar); épicerie + boulangerie + boucherie + restaurant comptoir. RE-INVESTIGATION 2026-10-12 (corrective pass): homepage bot check defeated by reading sitemap.xml — site is WordPress + WooCommerce with 7 product sitemaps, a /promotions/ page (FR/EN/ES, ongoing specials) and a fully open public Store API (searchable product catalog). flyer AND search flipped False→True. Failure modes hit: (a) dismissing site as 'bot-blocked' without enumerating sitemap/API — the original 'official-site-bot-blocked' note masked a fully inspectable backend; (b) no aggregator listing exists for this store, so aggregators alone could never have found it."
+sources_checked: [official-site-bot-blocked, official-site-sitemap, wc-store-api-verified, circulaires.club-directory, circulaires.ca, rfd-flyers, web-search, directories]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

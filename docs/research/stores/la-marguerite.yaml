@@ -30,9 +30,14 @@ flyers:
   archive_available: false
   structured_data: false
   notes: >-
-    No flyer. Full-priced Shopify catalog instead (collections with variant IDs
-    and prices). Web search "La Marguerite circulaire" found no aggregator
-    listing (Flipp/RFD/circulaires.club negative).
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Enumerated ALL pages
+    and collections via Shopify sitemaps (pages + collections): no flyer/circulaire/
+    specials/deals page — only catalog collections (sushi, meats, bakery, passover
+    menus, etc.) and info pages. Probed 14 candidate flyer paths (/flyer /circulaire
+    /specials /promotions /speciaux /aubaines /deals etc.): all 404. Web search
+    "La Marguerite circulaire" found no aggregator listing; RFD Montreal flyers page
+    2026-10-12 (majors only — not listed). Specials are announced via the newsletter
+    ("Abonnez-vous et économisez") and Uber Eats storefront, not a dated flyer.
 
 product_search:
   has_search: true
@@ -68,6 +73,6 @@ loyalty_program:
 notes: >-
   UPGRADE FIND (2026-10-12): tier 3 record said "search not verified"; Shopify
   search confirmed working with 155 results for a single query.
-sources_checked: [official-site, official-site-search-probe, web-search-circulaire, directories, ubereats]
+sources_checked: [official-site, official-site-search-probe, official-site-sitemap-enumeration, official-site-path-probes, web-search-circulaire, rfd-flyers-page, directories, ubereats]
 researched_at: "2026-10-12"
 research_status: complete

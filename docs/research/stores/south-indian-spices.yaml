@@ -55,7 +55,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Kerala-focused Indian grocery; weekend prepared foods. Directory fallback: https://www.cylex-canada.ca/montreal/indian%20grocery%20store.html"
-sources_checked: [directories, cylex, yellowpages, firmania, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-en]
+notes: "Kerala-focused Indian grocery; weekend prepared foods. CORRECTIVE RE-INVESTIGATION 2026-10-12: re-confirmed no official site or social exists (directories only: Cylex, YellowPages, Firmania) and no flyer anywhere — no Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers (2026-10-12, majors only), and no '<name> flyer' web hits. Directory fallback: https://www.cylex-canada.ca/montreal/indian%20grocery%20store.html"
+sources_checked: [directories, cylex, yellowpages, firmania, flipp, circulaires-ca, circulaires-club, rfd-flyers-page, web-search-en]
 researched_at: "2026-10-12"
 research_status: complete

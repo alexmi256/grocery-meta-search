@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "South Asian groceries + prepared foods (schezwan fried rice, sandwiches); open 8am–10pm daily. Phone 514-344-5483."
-sources_checked: [business-site, web-search, circulaires.club-directory, rfd-flyers, flipp, directories, canpages]
+notes: "South Asian groceries + prepared foods (schezwan fried rice, sandwiches); open 8am–10pm daily. Phone 514-344-5483.  RE-INVESTIGATION 2026-10-12: fresh search 'Lavaniya Montréal marché circulaire' — only Meta AI place data (business.site website) + directory listings; no site beyond the Google Business page, no social, no aggregator flyer (circulaires.club, RFD, Flipp, circulaire-en-ligne negative); no search/catalog. Verdict stands."
+sources_checked: [business-site, web-search, web-search-recheck, circulaires.club-directory, rfd-flyers, flipp, directories, canpages, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

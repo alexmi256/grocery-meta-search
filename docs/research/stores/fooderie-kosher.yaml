@@ -73,6 +73,7 @@ notes: >-
   "Kosher Quality by Fooderie". PARTIAL STATUS REASON: site blocks automated fetch
   (403 on catalog path, error ST282 on homepage), so product-search presence could
   not be confirmed or denied; flyer absence is confirmed.
-sources_checked: [official-site, official-site-probe-403, web-search-flyer, flipp-search-snippet, rfd-flyers-search-snippet]
+  RE-CHECK 2026-10-12 (hardened protocol): /categories/94516/products still returns 403; homepage fetch partially renders (ST282 error inside product sections) \u2014 no flyer/circulaire section; specials are promoted via WhatsApp Status signup only (not a flyer). Catalog category pages remain indexed but search presence still unconfirmed. Status stays partial.
+sources_checked: [official-site, official-site-probe-403, web-search-flyer, flipp-search-snippet, rfd-flyers-search-snippet, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: partial

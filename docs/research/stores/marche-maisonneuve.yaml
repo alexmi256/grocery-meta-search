@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Shares the same operator and website as Atwater and Jean-Talon."
-sources_checked: [official-site, circulaires.club-directory, rfd-flyers, flipp, web-search, directories]
+notes: "Shares the same operator and website as Atwater and Jean-Talon. CORRECTIVE RE-INVESTIGATION 2026-10-12: multi-vendor public market hall — operator (marchespublics-mtl.com) publishes Actualités/Événements only, no flyer per vendor or hall; RFD Montreal flyers merchant list re-checked 2026-10-12 (majors only). Flyer and product_search stay FALSE."
+sources_checked: [official-site, circulaires.club-directory, rfd-flyers, rfd-flyers-refetch-2026-10-12, flipp, web-search, directories]
 researched_at: "2026-10-12"
 research_status: complete

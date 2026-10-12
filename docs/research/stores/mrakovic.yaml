@@ -19,11 +19,17 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "not checked — store out of scope (Ontario only)"
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: no flyer page anywhere on the Shopify sitemap (all pages enumerated: about-us, catering, grocery, wholesale, delivery, campaign, recipe, etc.). Search 'mrakovic flyer' returns nothing. Still recommended-excluded (Ontario-only, no QC retail)."
 
 product_search:
-  has_search: false
-  notes: ""
+  has_search: true
+  url_pattern: "https://mrakovic.com/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html                    # Shopify storefront search; SSR HTML results with names + prices
+  api_notes: "Shopify standard /search endpoint. Verified live 2026-10-12: search for 'cevapi' returned product results with prices (e.g. Mrakovic Chevapi 90 $57.00, Chicken Chevapi 20 $17.80). Also /products.json may be probeable."
+  bot_protection: none
+  languages: [en]
 
 ecommerce:
   online_ordering: true
@@ -40,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "RECOMMENDED-EXCLUDED: VERIFIED Flipp national-listing artifact. Bosnian/Balkan family business (since 2003) with exactly two Ontario storefronts — Etobicoke and Oakville — confirmed by mrakovic.com (official site footer lists both, with phones), its social/press postings, and directories (firmania, yably, cylex). No Quebec retail location exists. Mrakovic products are sold wholesale at Costco warehouses (incl. Montreal-area Costco sites), but there is no Mrakovic-branded store in Quebec. Out of Montreal/Greater-Montreal scope."
-sources_checked: [search, directories, official-site, flipp-indexed]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED Flipp national-listing artifact. Bosnian/Balkan family business (since 2003) with exactly two Ontario storefronts — Etobicoke and Oakville — confirmed by mrakovic.com (official site footer lists both, with phones), its social/press postings, and directories (firmania, yably, cylex). No Quebec retail location exists. Mrakovic products are sold wholesale at Costco warehouses (incl. Montreal-area Costco sites), but there is no Mrakovic-branded store in Quebec. Out of Montreal/Greater-Montreal scope. CORRECTIVE RE-INVESTIGATION 2026-10-12: (a) product_search FALSE→TRUE — the Shopify storefront has a working product search (https://mrakovic.com/search?q={query}, verified live, HTML results with prices; failure mode: prior pass never tested /search on the Shopify site); (b) flyer check now properly done — full Shopify sitemap enumeration, no flyer/specials page exists, no aggregator listing, no web hits; flyer stays FALSE."
+sources_checked: [search, directories, official-site, flipp-indexed, official-sitemap-xml, product-search-live-check, web-search]
 researched_at: "2026-10-12"
 research_status: complete

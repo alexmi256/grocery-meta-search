@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Kosher supermarket + butcher + deli ('Montreal Kosher Services'); also branded 'Kosher City' in directories; MK-certified takeout."
-sources_checked: [official-social, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, mk-kosher-guide]
+notes: "Kosher supermarket + butcher + deli ('Montreal Kosher Services'); also branded 'Kosher City' in directories; MK-certified takeout. CORRECTIVE 2026-10-12: web search '\"Cité Cacher\" OR \"Kosher City\" Montréal circulaire flyer spéciaux' returned directory results only — no flyer. Not on circulaires.club, circulaires.com, RFD flyers page. CAVEAT: FB page posts not audited (needs logged-in browser) — if weekly specials exist, they live on the Facebook page."
+sources_checked: [official-social, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, mk-kosher-guide, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

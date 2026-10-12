@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "High-end Metro Inc. banner (épicerie fine since ~1985): imported cheeses, Black Angus AAA, Balik smoked salmon, traiteur."
-sources_checked: [official-site, circulaire-en-ligne, circulaires-club, circulaires.com, rfd-flyers, web-search, metro-corpo-press]
+notes: "High-end Metro Inc. banner (épicerie fine since ~1985): imported cheeses, Black Angus AAA, Balik smoked salmon, traiteur. CORRECTIVE 2026-10-12: re-verified homepage (les5saisons.ca — marketing site + traiteur/product reservation only, no flyer section) and circulaire-en-ligne.ca — the 'Les 5 Saisons Greene' entries are ANNUAIRE (directory) listings for 2 addresses (Greene Westmount, 1180 Av. Bernard Outremont), not circulaires; no flyer content. Not on circulaires.club weekly index, circulaires.com, RFD flyers page; web search 'Les 5 Saisons épicerie Greene circulaire flyer' returned no flyer. Metro BANNER flyer exists on metro.ca but is banner-level, not store-specific."
+sources_checked: [official-site, circulaire-en-ligne, circulaires-club, circulaires.com, rfd-flyers, web-search, metro-corpo-press, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

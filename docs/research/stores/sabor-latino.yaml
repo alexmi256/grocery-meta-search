@@ -28,7 +28,16 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found. No flyer/circulaire link on the official site (checked homepage + boutique). Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
+  notes: >-
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Enumerated ALL pages
+    via WordPress sitemap_index (ES/FR/EN page variants): no flyer/circulaire/
+    specials page — pages are shop, boutique, restaurante, supermercado, recetas,
+    contact, etc. Separately checked the St-Laurent location's own site
+    saborlatinostlaurent.com (Wix): nav is ACCUEIL/MENU/BOULANGERIE/BLOG, no
+    flyer/circulaire/specials keyword hits, no flyer page. Probed 14 candidate flyer
+    paths on saborlatino.ca: all 404. Not on Flipp, circulaires.club,
+    circulaires.ca, supermarches.ca; RFD Montreal flyers page 2026-10-12 (majors
+    only — not listed); no '<name> circulaire' web hits.
 
 product_search:
   has_search: true
@@ -56,6 +65,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Claims 2500+ Latin products / 300 brands; grocery + restaurant counter. On Uber Eats/DoorDash for prepared food. Founded 1984."
-sources_checked: [official-site, official-site-search-verified, official-site-boutique, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories]
+sources_checked: [official-site, official-site-search-verified, official-site-boutique, official-site-sitemap-enumeration, official-site-path-probes, sister-site-saborlatinostlaurent, flipp, circulaires-ca, circulaires-club, rfd-flyers-page, web-search-fr, directories]
 researched_at: "2026-10-12"
 research_status: complete

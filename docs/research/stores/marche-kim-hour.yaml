@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "NOTE: an older 7734 Boul St-Michel location's Facebook page is marked permanently closed — keep slugs distinct; active store is the Van Horne one."
-sources_checked: [facebook, web-search, circulaires.club-directory, rfd-flyers, flipp, pagesjaunes, directories]
+notes: "NOTE: an older 7734 Boul St-Michel location's Facebook page is marked permanently closed — keep slugs distinct; active store is the Van Horne one.  RE-INVESTIGATION 2026-10-12: fresh search 'Marché Kim Hour Montréal' — Facebook page (4785 Av Van Horne) confirmed as the store's only web presence; no site, no aggregator flyer (circulaires.club, RFD, Flipp, circulaire-en-ligne negative); no product search. Timeline unreadable per standing caveat; no evidence of posted flyers. Verdict stands."
+sources_checked: [facebook, web-search, web-search-recheck, circulaires.club-directory, rfd-flyers, flipp, pagesjaunes, directories, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

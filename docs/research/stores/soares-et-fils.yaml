@@ -7,11 +7,12 @@ footprint: island
 tier: 3
 
 website:
-  url: https://www.lesfillessoares.com/
+  url: https://www.lesfillessoares.com/   # SITE CURRENTLY OFFLINE: domain resolves but HTTPS connection fails (curl 000, browser fetch fails) as of 2026-10-12
   languages: [fr]
   language_switch: n/a
   render_tech: ssr
   bot_protection: none
+  notes: "Alternate domain epicerie-soares.ca (listed on mapstr) also unresolvable/unreachable 2026-10-12. Business itself is ACTIVE (Google place open hours, recent directory listings). Active Facebook page (facebook.com/SoaresBoucherie/) is now the store's live web presence."
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -28,7 +29,7 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found. No flyer/circulaire section on the official site (search-indexed site description shows butcher-shop brochure only). Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits. LIMITATION: direct page fetch of lesfillessoares.com failed during this research pass (browser fetch error); findings rely on indexed content and tier-3 record."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: official site www.lesfillessoares.com is OFFLINE (DNS resolves, HTTPS connection fails; earlier pass also failed to fetch). Alternate domain epicerie-soares.ca (from mapstr listing) is also unreachable. Business still active per Google/directories (open hours listed). No flyer/circulaire found anywhere: not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire/spéciaux' web hits — only directory/listings and the Facebook page (facebook.com/SoaresBoucherie/), which has no fetchable flyer content. Flyer stays FALSE; product_search stays FALSE."
 
 product_search:
   has_search: false
@@ -56,6 +57,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Family butcher/grocer created 1970 by the Soares family (Portugal), now run by granddaughters Fatima and Manuela; known for chouriço. Official Facebook page: facebook.com/SoaresBoucherie/."
-sources_checked: [official-site-indexed, official-social, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, ibegin, profilecanada]
+sources_checked: [official-site, official-site-offline-verified-2026-10-12, official-social, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, ibegin, profilecanada, mapstr]
 researched_at: "2026-10-12"
 research_status: partial

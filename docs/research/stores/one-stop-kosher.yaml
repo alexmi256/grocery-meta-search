@@ -28,7 +28,7 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found: no web presence at all; no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> flyer' web hits. MK Kosher guide lists it as take-out only (6735 Darlington)."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: still no web presence of any kind — web search returns only directories (Canpages, CanadaDir, Waze, YellowPages), MK Kosher take-out list, and the dansdeals Montreal kosher master thread. No official site, no official social page, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> flyer/weekly deals' web hits. Flyer and product_search stay FALSE."
 
 product_search:
   has_search: false
@@ -56,6 +56,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Kosher grocery/take-out listed on the MK Kosher certified take-out list. Appears only in directories (Canpages, YellowPages, canadadir) and community threads (dansdeals Montreal master thread)."
-sources_checked: [directories, mk-kosher-guide, canpages, yellowpages, canadadir, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-en]
+sources_checked: [directories, mk-kosher-guide, canpages, yellowpages, canadadir, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-en, dansdeals-thread, waze]
 researched_at: "2026-10-12"
 research_status: complete

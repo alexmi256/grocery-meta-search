@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "African specialty grocery. WEBSITE DEAD as of 2026-10-12: the official Google business.site (epicerie-africaine-de-montreal.business.site) returns HTTP 404 — Google discontinued Business Sites, and this one is gone. No official site or social page found in web search; directory fallback only (firmania, restoenligne)."
-sources_checked: [official-site-dead, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
+notes: "African specialty grocery. WEBSITE DEAD as of 2026-10-12: the official Google business.site (epicerie-africaine-de-montreal.business.site) returns HTTP 404 — Google discontinued Business Sites, and this one is gone. No official site or social page found in web search; directory fallback only (firmania, restoenligne). RE-CHECK 2026-10-12 (hardened protocol): business.site remains dead (HTTP 404); web search for replacement site/Facebook/circulaire surfaced only directories \u2014 no new official web presence found. No flyer."
+sources_checked: [official-site-dead, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

@@ -59,7 +59,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Directory fallback: https://bottinquebec.ca/listing/epicerie-cambodgienne-heng-heng-chan-chaya-inc.html (also lists itself as the 'Website' on place data)."
-sources_checked: [directories, bottinquebec, web-search, yellowpages, mapcarta]
+notes: "Directory fallback: https://bottinquebec.ca/listing/epicerie-cambodgienne-heng-heng-chan-chaya-inc.html (also lists itself as the 'Website' on place data) RE-CHECK 2026-10-12 (hardened protocol): web search for official site/Facebook/circulaire surfaced only directories (Cylex, Pages Jaunes, AnuGo) \u2014 no official site, no social page, no flyer. No web presence to host a flyer.."
+sources_checked: [directories, bottinquebec, web-search, yellowpages, mapcarta, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

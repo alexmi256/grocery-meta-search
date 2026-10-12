@@ -19,7 +19,7 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found. Checked: official site (no flyer/circulaire section — priced online catalog instead), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Épicerie du Bazaar\" Montréal circulaire' (directory/review results only)."
+  notes: "No flyer found. Checked: official site (no flyer/circulaire section — priced online catalog instead), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Épicerie du Bazaar\" Montréal circulaire' (directory/review results only). RE-CHECKED 2026-10-12 per hardened protocol: enumerated the full sitemap.xml — only /about-us, /sale, /shopall, category (/shop/<category>/<id>) and product pages; no /flyer, /flyers, /circulaire, /deals, /specials, /promotions, /aubaines page. The /sale (\u0027Soldes\u0027/\u0027Promotions\u0027) page is a static on-sale product listing with no dates or cadence — NOT a dated flyer. /search?q= returns HTTP 404. Website verified correct (bazaarfood.ca is the store\u2019s own site per place data; westmount/downtown ordering subdomains confirmed). Facebook page has bilingual product posts, not a weekly flyer; web search \u0027facebook spéciaux/promotion/rabais\u0027 surfaced no flyer."
 
 product_search:
   has_search: false
@@ -34,7 +34,7 @@ product_search:
 ecommerce:
   online_ordering: true
   click_and_collect: true
-  notes: "Square-powered online store. Per-location ordering subdomains: westmount.bazaarfood.ca and downtown.bazaarfood.ca (both showed 'Closed' at check time 2026-10-12 ~17:40 EDT — verify in a live browser). Delivery across West Island, Laval, Downtown, Côte Saint-Luc, NDG, LaSalle per the store's own description; in-store pickup mentioned in reviews."
+  notes: "Square-powered online store. Per-location ordering subdomains: westmount.bazaarfood.ca and downtown.bazaarfood.ca (both showed 'Closed' at check time 2026-10-12 ~17:40 EDT — verify in a live browser). Delivery across West Island, Laval, Downtown, Côte Saint-Luc, NDG, LaSalle per the store's own description; in-store pickup mentioned in reviews. Additional channel found 2026-10-12: Uber Eats \u2018Marché Bazaar Westmount\u2019 storefront (https://www.ubereats.com/ca-fr/store/marche-bazaar-westmount/15KsF4rqUXaa3GaMN4mo1Q) with priced products (4.7, 180+ notes) — NOT linked from bazaarfood.ca, so recorded as an ordering channel only, not product search."
 
 locations:
   count_estimate: 2
@@ -47,6 +47,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Persian/Indian/Arab/Turkish products; fresh halal meat, pastry, nuts. Active Facebook page: facebook.com/194567587904499 (bilingual FR/EN posts). Priced online catalog = structured-data signal for Phase 4."
-sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, cylex]
+sources_checked: [official-site, sitemap-enumeration, sale-page-opened, circulaires-club, circulaires.com, rfd-flyers, web-search, web-search-facebook-specials, directories, cylex, ubereats-discovery]
 researched_at: "2026-10-12"
 research_status: complete

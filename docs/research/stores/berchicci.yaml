@@ -19,7 +19,19 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found. Checked: official store site (no flyer/circulaire section), circulaires.club weekly index (218 QC flyers, week of Oct 8-14, 2026 — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page (majors only), circulaire-en-ligne.ca (annuaire directory profile only, no actual circulaire), web search 'Berchicci Montréal circulaire' (directory results only)."
+  notes: >-
+    CORRECTIVE RE-INVESTIGATION 2026-10-12 — still no flyer. Homepage nav checked:
+    "Special of the Month" (store.berchicci.ca/special-of-the-month = OpenCart
+    product/special, currently EMPTY: "There are no products to list in this category")
+    and "Sale" are standing sale-product lists, not dated flyers. Corporate site
+    berchicci.ca nav has a "Spéciaux" link but it is DEAD (404 on /specials.html —
+    conflicting evidence checked and dismissed with actual fetch). Probed 14 candidate
+    flyer paths (/flyer /circulaire /specials /promotions /speciaux /aubaines /deals
+    etc.): all 404. Earlier checks also stand: circulaires.club weekly index (218 QC
+    flyers, week of Oct 8-14, 2026 — not listed), circulaires.com Montreal merchant
+    list (not listed), RFD Montreal flyers page 2026-10-12 (majors only — not listed),
+    circulaire-en-ligne.ca (directory profile only), web search 'Berchicci Montréal
+    circulaire' (directory results only), no Flipp listing.
 
 product_search:
   has_search: true
@@ -27,7 +39,7 @@ product_search:
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: "OpenCart search. Verified 2026-10-12: ?search=olive returned 173 results over 12 pages with CA$ prices, sale/out-of-stock flags, brand logos. Plain GET, no auth, no location scoping."
+  api_notes: "OpenCart search. Verified 2026-10-12: ?search=olive returned 173 results over 12 pages with CA$ prices, sale/out-of-stock flags, brand logos (re-verified same day: 'Showing 1 to 15 of 173', prices present). Plain GET, no auth, no location scoping."
   bot_protection: none
   languages: [en, fr]
 
@@ -47,6 +59,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Founded 1960; first to import Nutella to Canada (1967). Corporate site berchicci.ca; importing co berchicciimporting.ca (11105 Rue Renaude-Lapointe). Direct importer/distributor of Italian specialties across Canada."
-sources_checked: [official-site, circulaires-club, circulaire-en-ligne, circulaires.com, rfd-flyers, web-search, directories]
+sources_checked: [official-site, official-site-search-probe, official-site-path-probes, official-site-nav-enumeration, corporate-site, circulaires-club, circulaire-en-ligne, circulaires.com, rfd-flyers-page, web-search, directories]
 researched_at: "2026-10-12"
 research_status: complete

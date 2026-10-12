@@ -28,7 +28,7 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found. Official site is a catering/takeout menu site with no flyer section. No listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> flyer' web hits."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: homepage re-fetched (catering/takeout menus only); wp-sitemap enumerates only home + 3 order-form pages (order-form, a-la-carte-order-form, passover-online-order) — no flyer/specials page. No listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> flyer' web hits (FR + EN). Flyer stays FALSE."
 
 product_search:
   has_search: false
@@ -36,14 +36,14 @@ product_search:
   location_scoped: false
   guest_ok: false
   kind: ""
-  api_notes: "No search bar on the official site. Menu-only WordPress brochure."
+  api_notes: "No search bar on the official site (confirmed on re-fetch 2026-10-12). A 'Paradise' kosher listing exists on DoorDash with priced items (found via web search), but it is NOT linked from the official site — does not count per protocol rule 6. No grocery shelf-item catalog online."
   bot_protection: none
   languages: n/a
 
 ecommerce:
   online_ordering: true  # site says "shop online or in store"
   click_and_collect: false
-  notes: "Online ordering is for takeout/catering meals (takeout, grill, bakery, deli, home-cooked meals), not grocery shelf items. No structured product catalog."
+  notes: "Online ordering is for takeout/catering meals (takeout, grill, bakery, deli, home-cooked meals), not grocery shelf items. No structured product catalog. Re-confirmed 2026-10-12: order pages are WordPress order forms (catering orders), not a shop."
 
 locations:
   count_estimate: 1
@@ -55,7 +55,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Kosher grocery + deli + grill/fast-food counter + bakery, Moroccan/Israeli specialties; catering for lifecycle events. MK-certified ('Paradise Cachere'). Restaurant-menu aggregators (menuweb.menu) carry its menus — not flyers."
-sources_checked: [official-site, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-en, directories, mk-kosher-guide, menuweb]
+notes: "Kosher grocery + deli + grill/fast-food counter + bakery, Moroccan/Israeli specialties; catering for lifecycle events. MK-certified ('Paradise Cachere'). Restaurant-menu aggregators (menuweb.menu) carry its menus — not flyers. CORRECTIVE RE-INVESTIGATION 2026-10-12: sitemap enumerated, homepage re-fetched; DoorDash 'Paradise' listing noted but not linked from site."
+sources_checked: [official-site, official-sitemap-xml, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-en, web-search-fr, directories, mk-kosher-guide, menuweb]
 researched_at: "2026-10-12"
 research_status: complete

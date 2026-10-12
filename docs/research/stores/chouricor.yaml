@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Portuguese chouriço butcher since 1993 ('Meilleur choriço sur le Plateau'). 200+ Portuguese products, 7+ Portuguese sausage varieties; Quebec pork / AAA Alberta Angus; wholesale and retail."
-sources_checked: [official-social, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
+notes: "Portuguese chouriço butcher since 1993 ('Meilleur choriço sur le Plateau'). 200+ Portuguese products, 7+ Portuguese sausage varieties; Quebec pork / AAA Alberta Angus; wholesale and retail. CORRECTIVE 2026-10-12: web search 'Chouricor Montréal circulaire spéciaux' returned directory/map results only — no flyer. Not on circulaires.club, circulaires.com, RFD flyers page. CAVEAT: FB page posts not audited (needs logged-in browser) — if weekly specials exist, they live on the Facebook page."
+sources_checked: [official-social, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

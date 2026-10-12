@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Moroccan market: 3 departments — épicerie, boucherie halal, pâtisserie maghrébine (makroute, cornes de gazelle, merguez, couscous du jour). WEBSITE DEAD as of 2026-10-12: delicesdumaghreb.ca resolves to a 'Magician Bet' online-casino spam page (domain expired/hijacked). The store's cached site text mentioned ending its allomaroc.ca partnership to build a new platform — no replacement found in web search. Store itself is active (reviews, Uber Eats). No official social page found; directory fallback only."
-sources_checked: [official-site-dead, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, delivery-apps]
+notes: "Moroccan market: 3 departments — épicerie, boucherie halal, pâtisserie maghrébine (makroute, cornes de gazelle, merguez, couscous du jour). WEBSITE DEAD as of 2026-10-12: delicesdumaghreb.ca resolves to a 'Magician Bet' online-casino spam page (domain expired/hijacked). The store's cached site text mentioned ending its allomaroc.ca partnership to build a new platform — no replacement found in web search. Store itself is active (reviews, Uber Eats). No official social page found; directory fallback only. RE-CHECK 2026-10-12 (hardened protocol): delicesdumaghreb.ca still dead (casino spam); web search for replacement site / official Facebook / Instagram / circulaire surfaced only directories (Pages Jaunes, Cylex, YellowPages, SDC C\u00f4te-des-Neiges) \u2014 no new official web presence found. No flyer."
+sources_checked: [official-site-dead, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, delivery-apps, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

@@ -1,6 +1,6 @@
 slug: baia-dei-formaggi
 name: Baia dei Formaggi
-name_variants: ["La Baia Dei Formaggi"]
+name_variants: ["La Baia dei Fromaggi", "La Baia Dei Formaggi"]
 store_type: ethnic-specialty
 footprint: island
 tier: 3
@@ -17,24 +17,41 @@ affiliation: independent-affiliate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  types: []
-  notes: "No flyer found. Checked: official site (single 16-line marketing page, no flyer/circulaire section), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Baia dei Formaggi\" circulaire' (directory/listicle results only)."
+  has_flyers: true
+  types:
+    - type: specials
+      sources:
+        - name: official site
+          url: https://www.labaiadeiformaggi.com/speciaux
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 0
+      flip_weekday: ""
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr]
+      archive_available: false
+      structured_data: false
+      notes: "Page titled 'SPÉCIAUX | La Baia dei Fromaggi' (Wix) hosts a single flyer image (static.wixstatic.com). Per semantic protocol, 'spéciaux' = flyer even without the word 'flyer'. Cadence/validity dates not shown in the fetched text (no date in image filename); cannot be determined without rendering the image. VERIFIED LIVE 2026-10-12; user supplied the URL."
+  notes: "Specials flyer exists on the official site (missed in earlier pass — the homepage is a one-pager but /speciaux is a separate page)."
 
 product_search:
-  has_search: false
-  url_pattern: ""
+  has_search: true
+  url_pattern: "https://labaia.restomate.co/labaia/menus"
   location_scoped: false
   guest_ok: true
-  kind: html
-  api_notes: "Single marketing page; no catalog or search function."
+  kind: spa
+  api_notes: "Restomate ordering menu linked from the official site's order-online page (https://www.labaiadeiformaggi.com/commandez). Lists products with per-weight prices (e.g. cheeses per 100g, pasta per 500g) in categorized menus — counts as product search per third-party-platform protocol. Online ordering itself is PAUSED as of 2026-10-12 ('Nous améliorons notre service de commande en ligne. Les commandes reprendront très bientôt')."
   bot_protection: none
   languages: [fr]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: "No online ordering."
+  notes: "Order-online page exists (official site /commandez -> Restomate menu with prices) but ordering is paused as of 2026-10-12; record changed when it resumes. Prices noted as generally higher online than in store."
 
 locations:
   count_estimate: 1
@@ -46,7 +63,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Italian fromagerie/charcuterie/sandwicherie since 1973 (founded by Francesco Occhiuto; run with daughters Marie-Christine and Luciana). Sister co: Les Importations Mini Italia (daughters Stephany and Patricia). Claims largest cheese selection in eastern Canada (400+ varieties), 80+ charcuteries, 80+ artisanal pasta cuts; private labels Golosini and Della Casa; family olive groves in Calabria."
-sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
+notes: "Italian fromagerie/charcuterie/sandwicherie since 1973 (founded by Francesco Occhiuto; run with daughters Marie-Christine and Luciana). Sister co: Les Importations Mini Italia (daughters Stephany and Patricia). Claims largest cheese selection in eastern Canada (400+ varieties), 80+ charcuteries, 80+ artisanal pasta cuts; private labels Golosini and Della Casa; family olive groves in Calabria. CORRECTIVE 2026-10-12: earlier 'no flyer' finding was wrong — /speciaux (user-verified URL, opened live) hosts a SPÉCIAUX flyer; earlier search covered only the homepage. Restomate menu (linked from official /commandez) lists priced products — recorded as product search. NOTE: site title spells 'La Baia dei Fromaggi' (single g) on some pages vs 'Formaggi' in the logo; both kept in name_variants."
+sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, corrective-reinvestigation]
 researched_at: "2026-10-12"
 research_status: complete

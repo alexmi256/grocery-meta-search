@@ -32,9 +32,9 @@ product_search:
   languages: n/a
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: "No store-owned ordering. Delivery-app presence: Uber Eats (two 'Epicerie Costa inc' listings) and DoorDash ('Desserts du Chef' at this address)."
+  notes: "Third-party ordering only (no store-owned ordering). Uber Eats brand page with menu+prices (grillades/delivery style): https://www.ubereats.com/ca/brand-city/montreal-qc/epicerie-costa-inc (recheck 2026-10-12; NOT a product search — platform menu, not linked from an official site, which does not exist). Also a DoorDash 'Desserts du Chef' listing at this address."
 
 locations:
   count_estimate: 1
@@ -46,7 +46,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Haitian/Caribbean grocery + grillades counter (riz collé, griot, spicy shrimp per reviews; 4.1★ on restomontreal). No official site and no official social page found in web search — no blank website without investigation per standing rule; directory fallback (Pages Jaunes, firmania, restomontreal) only."
-sources_checked: [directories, delivery-apps, circulaires-club, circulaires.com, rfd-flyers, web-search]
+notes: "Haitian/Caribbean grocery + grillades counter (riz collé, griot, spicy shrimp per reviews; 4.1★ on restomontreal). No official site and no official social page found in web search — no blank website without investigation per standing rule; directory fallback (Pages Jaunes, firmania, restomontreal) only. RE-CHECK 2026-10-12 (hardened protocol): web search for official site/Facebook page found none (directories + restomontreal only). Uber Eats brand page https://www.ubereats.com/ca/brand-city/montreal-qc/epicerie-costa-inc lists the store's menu with prices (grillades/delivery style) \u2014 recorded as third-party ordering channel in ecommerce; NOT a product search (platform menu, not linked from an official site, which does not exist). No flyer found."
+sources_checked: [directories, delivery-apps, circulaires-club, circulaires.com, rfd-flyers, web-search, recheck-2026-10-12-hardened-protocol]
 researched_at: "2026-10-12"
 research_status: complete

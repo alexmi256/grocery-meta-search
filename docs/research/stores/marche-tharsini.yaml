@@ -28,7 +28,7 @@ flyers:
   languages: n/a
   archive_available: false
   structured_data: false
-  notes: "No flyer found: Facebook-only web presence, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
+  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: no flyer. Facebook-only web presence (confirmed via web search — only Facebook, directories, tastet.ca griot coverage surface; no standalone site). No listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits. Flyer and product_search stay FALSE."
 
 product_search:
   has_search: false
@@ -56,6 +56,6 @@ loyalty_program:
   card_gated_prices: false
 
 notes: "Well-stocked Indo-Asian grocery; fresh produce, ground coconut, seasonal mangoes. Address appears as both 5670 and 5692 Av. Victoria in directories (same block, likely one storefront spanning listings)."
-sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, pagesjaunes, cylex, canpages, find-open]
+sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, web-search, pagesjaunes, cylex, canpages, find-open]
 researched_at: "2026-10-12"
 research_status: complete
