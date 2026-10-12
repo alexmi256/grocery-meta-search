@@ -1,0 +1,100 @@
+slug: super-c
+name: Super C
+name_variants: ["Super C"]
+store_type: traditional
+footprint: qc-confirmed            # Quebec-only banner
+tier: 1
+
+website:
+  url: https://www.superc.ca
+  languages: [fr, en]              # FR: superc.ca/circulaire ; EN: superc.ca/en/flyer (both fetched 2026-10-12)
+  language_switch: path
+  render_tech: ssr                 # flyer pages return full text on plain fetch; same frontend as metro.ca
+  bot_protection: none             # standard page fetches returned HTTP 200 on 2026-10-12
+
+parent_company: Metro Inc.
+affiliation: corporate
+banner_family: [Metro, Metro Plus, Food Basics, Adonis, Première Moisson, Marché Richelieu, Marché Ami]
+# Discount banner, Quebec only. Founded 1982 as La Ferme Carnaval / Super Carnaval; acquired by Metro-Richelieu 1987; renamed Super C 1991.
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.superc.ca/circulaire
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+        - name: Flipp
+          url: https://flipp.com/en-ca/longueuil-qc/stores/super-c
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: browser-needed
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-super-c-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-super-c-semaine/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: flyerca.com
+          url: https://www.flyerca.com/circulaire-super-c-cette-semaine/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: RFD Montreal flyers page
+          url: https://www.redflagdeals.com/in/montreal/flyers/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true     # page states "You are viewing the flyer for the Super C - Aylmer store"
+      languages: [fr, en]
+      archive_available: false    # official site shows current week only; aggregators keep expired editions
+      structured_data: false      # not verified
+      notes: "Next week's flyer previewable from Tuesday ('Vous pourrez consulter la circulaire de la semaine à venir dès le mardi'); prices valid until Wednesday. Flipp notes flyer 'released on Tuesdays'."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.superc.ca/epicerie-en-ligne/recherche?filter={query}&freeText=true"
+  location_scoped: true
+  guest_ok: true
+  kind: html
+  api_notes: "Pattern inferred from shared Metro Inc. platform (identical frontend to metro.ca) — NOT directly verified on superc.ca. See metro.yaml for platform API notes (api.metro.ca / api2.metro.ca SSR hosts)."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Online ordering on superc.ca with delivery and in-store pickup. Promo observed: free delivery on $50+ orders 2026-08-13 to 2026-09-23 (QC only, participating stores)."
+
+locations:
+  count_estimate: 122
+  locator_url: https://www.superc.ca/trouver-une-epicerie
+  locator_api: ""
+  # 122 stores per retail-insider (Sept 2026); 114th opened mid-2025 per canadiangrocer. Locator path inferred from metro.ca pattern — not directly verified.
+
+loyalty_program:
+  name: "moi"
+  card_gated_prices: true         # member prices in flyer (e.g. "Member Price $1.99")
+  # Flyer promos advertise earning points with the Metro & Moi program (programmemoi.ca).
+
+notes: "Discount banner on the shared Metro Inc. web platform — flyer page copy, asset naming and versioning identical to metro.ca. See metro.yaml for shared platform/API details."
+sources_checked: [official-site, flipp, rfd-flyers, circulaires.club, circulairecanada.com, flyerca.com, fr-search, en-search]
+researched_at: "2026-10-12"
+research_status: complete

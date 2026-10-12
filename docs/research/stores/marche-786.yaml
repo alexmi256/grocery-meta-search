@@ -1,0 +1,34 @@
+slug: marche-786
+name: Marché 786
+name_variants: ["Marche 786", "Marché 786 Inc"]
+store_type: ethnic-specialty  # Indian / Asian grocery
+footprint: island
+tier: 3
+website:
+  url: http://marche786.ca/
+  languages: n/a              # not verified at tier 3
+  language_switch: n/a
+  render_tech: unknown
+  bot_protection: unknown
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer link found at tier 3; official site not deeply crawled."
+product_search:
+  has_search: false
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+locations:
+  count_estimate: 1  # 772 Rue Jean-Talon O, Montréal QC H3N 1S2 (Parc-Extension)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "Indian/Asian grocery known for rice selection; listed in Indian-food directories as an Indian grocery."
+sources_checked: [official-site-search-snippet, directories, indianfoodchannel]
+researched_at: "2026-10-12"
+research_status: minimal

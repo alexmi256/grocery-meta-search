@@ -1,0 +1,82 @@
+# Tier 2 per-store research record.
+slug: euro-marche
+name: Euro Marché
+name_variants: ["Euromarché", "L'Euromarché"]
+store_type: ethnic-specialty
+footprint: greater
+tier: 2
+
+website:
+  url: http://euromarche.ca/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Independent (family chain)
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: http://euromarche.ca/flyer_fr.php
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-euromarche-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: http://circulaire-en-ligne.ca/euromarche/circulaire
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: true
+      structured_data: false
+      notes: "Separate FR and EN flyer pages (flyer_fr.php / flyer_en.php). 5-page weekly flyer; aggregators keep past-week archives. Not listed on Flipp."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+  notes: "No product search on the simple PHP site."
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 6
+  locator_url: http://euromarche.ca/
+  locator_api: ""
+  notes: "Official homepage lists 4 stores (Laval 134 Bellerose E; Montreal 10181 St-Michel and 224 Fleury O; D.D.O. 1125 Hyman). Directories show up to 6-7 (adds Saint-Laurent 11847 Lachapelle and Pointe-Claire 323 Bord-du-Lac). No dedicated locator URL."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Family-owned European specialty grocery chain. Weekly flyers flip Thursday, valid Thu-Wed."
+sources_checked: [official-site, circulaires.club, circulaire-en-ligne, yellowpages, flipp]
+researched_at: "2026-10-12"
+research_status: complete

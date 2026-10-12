@@ -1,0 +1,102 @@
+slug: adonis
+name: Marché Adonis
+name_variants: ["Adonis Market", "Adonis Markets", "Marché Adonis"]
+store_type: ethnic-specialty
+footprint: greater
+tier: 1
+
+website:
+  url: https://www.groupeadonis.ca
+  languages: [fr, en]              # FR homepage + /circulaire ; EN: groupeadonis.ca/en/ (both fetched 2026-10-12)
+  language_switch: path            # /en/ prefix
+  render_tech: ssr                 # homepage and flyer page return text on plain fetch
+  bot_protection: none             # HTTP 200 on fetches 2026-10-12
+
+parent_company: Metro Inc.
+affiliation: corporate
+banner_family: [Metro, Metro Plus, Super C, Food Basics, Première Moisson, Marché Richelieu, Marché Ami]
+# Mediterranean/Middle Eastern banner founded 1978 (Montreal). Metro acquired 55% in 2011, remaining 45% in 2017 → 100% Metro-owned since 2017.
+# NOTE: groupeadonis.ca is a standalone frontend (dist/img asset paths), NOT the shared metro.ca/superc.ca platform — shared ownership, separate site.
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.groupeadonis.ca/circulaire
+          kind: official
+          format: html
+          parse_friendliness: medium   # store selector page is SSR; the flyer viewer itself appears JS-driven (page body mostly selectors on fetch)
+          fetchability: browser-needed # viewer content did not render in text fetch
+        - name: Flipp
+          url: https://flipp.com/en-ca/pierrefonds-qc/stores/metro
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: browser-needed
+          # 'Adonis Weekly' listed among popular flyers on Flipp Montreal pages
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-adonis-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-marche-adonis/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://circulaire-en-ligne.ca/circulaire-adonis/circulaire-de-semaine-marche-adonis
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: RFD Montreal flyers page
+          url: https://www.redflagdeals.com/in/montreal/flyers/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true     # flyer page has Province/Magasin selectors; defaults to one store (2001 Rue Sauvé Ouest)
+      languages: [fr, en]
+      archive_available: false    # official shows current week; aggregators keep expired editions
+      structured_data: false      # not verified
+      notes: "Single weekly flyer (~7-9 pages). Official viewer is JS-driven — prefer aggregator images or a live-browser pass for item extraction."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No product catalog/search on groupeadonis.ca (informational site: flyer, recipes, stores). No API observed."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "No first-party online ordering. Delivery via third parties: Instacart, Uber Eats, DoorDash (homepage banner)."
+
+locations:
+  count_estimate: 16
+  locator_url: https://www.groupeadonis.ca/circulaire
+  locator_api: ""
+  # 16 locations QC & ON per Progressive Grocer (Dec 2025); LinkedIn profile says 15. Store picker lives on the flyer page; no standalone locator URL or JSON API observed.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+  # No loyalty branding or member pricing observed on Adonis flyers; whether the Metro 'moi' program is accepted at Adonis is unverified.
+
+notes: "Metro Inc.-owned (100% since 2017) but runs its own site/platform, separate from the metro.ca/superc.ca shared platform."
+sources_checked: [official-site, flipp, rfd-flyers, circulaires.club, circulairecanada.com, circulaire-en-ligne.ca, fr-search, en-search]
+researched_at: "2026-10-12"
+research_status: complete

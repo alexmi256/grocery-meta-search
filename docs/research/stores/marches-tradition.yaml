@@ -1,0 +1,81 @@
+slug: marches-tradition
+name: Les Marchés Tradition
+name_variants: ["Marché Tradition", "Les Marchés Tradition"]
+store_type: traditional
+footprint: qc-confirmed
+tier: 2
+
+website:
+  url: https://www.marchestradition.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Sobeys Inc. (Sobeys Québec / Empire Company Ltd.)
+affiliation: independent-affiliate
+banner_family: [IGA, IGA Extra, Marché Bonichoix, Rachelle Béry, Voisin]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site (per-store Circulaire links)
+          url: https://www.marchestradition.com/fr/store-locator/
+          kind: official
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-les-marches-tradition-marches-coop-du-1-au-7-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-les-marches-tradition/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true
+      structured_data: false
+      notes: "Banner-wide weekly flyer (~9 pages). Aggregators also carry a co-branded 'Marchés Coop' edition. Flyer advertises Scène+ member prices and points offers."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No site search observed; store locator + per-store pages only."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "No online ordering observed on banner site."
+
+locations:
+  count_estimate: 75
+  locator_url: https://www.marchestradition.com/fr/store-locator/
+  locator_api: ""
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: Scene+
+  card_gated_prices: true
+
+notes: "Sobeys Québec banner for independent affiliated grocers — every store page lists an independent owner ('Propriétaire'), confirming independent-affiliate status. Island-of-Montreal presence not specifically confirmed; stores verified across QC (Aylmer, St-Bruno, Hemmingford, Weedon, Matagami, etc.)."
+sources_checked: [official-site, circulaires-club, circulairecanada, wikipedia, canadiangrocer]
+researched_at: "2026-10-12"
+research_status: complete

@@ -1,0 +1,123 @@
+slug: rachelle-bery
+name: Rachelle-Béry
+name_variants: ["Rachelle Béry", "Rachelle-Béry"]
+store_type: ethnic-specialty       # organic / natural health food
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.rachellebery.ca
+  languages: fr-only               # no EN version observed (all content, incl. homepage, is French)
+  language_switch: n/a
+  render_tech: ssr                 # WordPress; content pages return full text on plain fetch
+  bot_protection: none             # HTTP 200 on fetches 2026-10-12
+
+parent_company: Sobeys Inc. (Empire Company Limited)
+affiliation: corporate
+banner_family: [IGA, IGA Extra]
+# Organic/natural health-food chain, founded Montreal (Rachel & Berri). Acquired by Sobeys in 2005.
+# Operates standalone stores plus 'Rachelle-Béry' boutiques inside IGA / IGA Extra supermarkets.
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.rachellebery.ca/circulaire/
+          kind: official
+          format: html
+          parse_friendliness: low      # page fetch returned only newsletter signup; the digital flyer viewer is JS-embedded
+          fetchability: browser-needed
+        - name: Flipp
+          url: https://flipp.com/en-ca/stores/rachelle-bery
+          kind: aggregator
+          format: images
+          parse_friendliness: high     # Flipp exposes item-level names/prices (observed in indexed flyer text)
+          fetchability: browser-needed
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-rachelle-bery-espace-sante-du-1-au-7-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-rachelle-bery-2/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/rachelle-bery/circulaire-speciaux-promotions-et-rabais-de-cette-semaine/p108986_circulaire-rachelle-bery-espace-sante
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: speciauxquebec.com
+          url: https://speciauxquebec.com/circulaire/circulaire-rachelle-bery-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false    # identical flyer served across cities on Flipp; no store selector observed
+      languages: fr-only
+      archive_available: false    # official shows current flyer only; aggregators keep expired editions
+      structured_data: false      # not verified
+      notes: "Main grocery flyer (~9 pages). Official 'circulaire numérique' viewer is JS-embedded — use Flipp (item-level data) or aggregator images."
+    - type: health
+      sources:
+        - name: Flipp
+          url: https://flipp.com/en-ca/stores/rachelle-bery
+          kind: aggregator
+          format: images
+          parse_friendliness: high
+          fetchability: browser-needed
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/rachelle-bery/circulaire-speciaux-promotions-et-rabais-de-cette-semaine/p108986_circulaire-rachelle-bery-espace-sante
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: fr-only
+      archive_available: false
+      structured_data: false
+      notes: "'Espace Santé' flyer — supplements, vitamins, natural health products (1 page; occasionally ~9-day runs observed, e.g. 2026-01-13 to 2026-01-22)."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No product catalog or search on rachellebery.ca (informational WordPress site: flyer, recipes, articles). No API observed."
+  bot_protection: none
+  languages: fr-only
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "No online ordering observed; in-store only."
+
+locations:
+  count_estimate: 105
+  locator_url: https://www.rachellebery.ca/nos-magasins/
+  locator_api: ""
+  # 105 locations Canada-wide per ScrapeHero (Sept 2025), including in-IGA/IGA Extra boutiques; ~11+ standalone stores per trade press. Locator path not directly verified.
+
+loyalty_program:
+  name: "Scène+"
+  card_gated_prices: true         # "Prix membre Scène+" vs regular pricing in flyer (e.g. 2,88 $ membre vs 3,88 $ sans carte)
+
+notes: "Sobeys-owned but runs its own FR-only WordPress site — separate from the iga.net platform. Shares Sobeys loyalty (Scène+) and the Thursday–Wednesday flyer cycle."
+sources_checked: [official-site, flipp, circulaires.club, circulairecanada.com, circulaire-en-ligne.ca, speciauxquebec.com, fr-search, en-search]
+researched_at: "2026-10-12"
+research_status: complete

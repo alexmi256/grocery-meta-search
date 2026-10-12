@@ -1,0 +1,44 @@
+slug: la-vieille-europe
+name: La Vieille Europe
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://lavieilleeurope.com/
+  languages: [fr, en]
+  language_switch: n/a
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  notes: "no flyer found (tier 3)"
+
+product_search:
+  has_search: false
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "3855 Boul. Saint-Laurent, Montréal, QC H2W 1X9. European deli/cheese shop since 1959."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: ""
+sources_checked: [search, directories, official-site-indexed]
+researched_at: "2026-10-12"
+research_status: minimal

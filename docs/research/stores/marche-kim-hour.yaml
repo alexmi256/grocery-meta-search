@@ -1,0 +1,34 @@
+slug: marche-kim-hour
+name: Marché Kim Hour
+name_variants: ["Marché Kim"]
+store_type: ethnic-specialty  # Asian (Southeast Asian) market
+footprint: island
+tier: 3
+website:
+  url: https://www.facebook.com/170794359599794  # Facebook-only, no official site
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: n/a
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer found; Facebook page is the store's only web presence."
+product_search:
+  has_search: false
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+locations:
+  count_estimate: 1  # 4785 Avenue Van Horne (listed as 4777 in some directories), Montréal QC H3W 1H8
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "NOTE: an older 7734 Boul St-Michel location's Facebook page is marked permanently closed — keep slugs distinct; active store is the Van Horne one."
+sources_checked: [facebook, pagesjaunes, directories, depquebec]
+researched_at: "2026-10-12"
+research_status: minimal

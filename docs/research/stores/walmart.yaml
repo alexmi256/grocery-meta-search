@@ -1,0 +1,73 @@
+slug: walmart
+name: Walmart
+name_variants: [Walmart Canada, Walmart Supercentre]
+store_type: gen-merch
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.walmart.ca
+  languages: [fr, en]
+  language_switch: path
+  render_tech: js-heavy
+  bot_protection: captcha
+
+parent_company: Walmart Canada
+affiliation: corporate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.walmart.ca/flyer
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: browser-needed
+        - name: flipp
+          url: https://flipp.com/en-ca/toronto-on/stores/walmart
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-15 to 2026-10-21"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Walmart is an official Flipp partner. PerimeterX/HUMAN bot protection: px-captcha markers in page; datacenter curl of /flyer and /search is 307-redirected to /blocked — real browsers pass. Regional editions observed (ON, Atlantic, QC)."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.walmart.ca/search?q={query}"
+  location_scoped: true
+  guest_ok: true
+  kind: spa
+  api_notes: "React SPA; internal endpoints behind PerimeterX. No public JSON API observed."
+  bot_protection: captcha
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Full grocery + GM e-commerce with home delivery and store pickup. Walmart+ same-day delivery on $35+."
+
+locations:
+  count_estimate: 401
+  locator_url: https://www.walmart.ca/
+  locator_api: ""
+
+loyalty_program:
+  name: "Walmart+"
+  card_gated_prices: false
+
+notes: "Walmart+ launched in Canada June 2026 ($8.97/mo or $89/yr): unlimited same-day delivery $35+, free shipping no minimum, Crave streaming. Replaced the 2023 Delivery Pass ($89/yr). 401 stores as of 2026-07-31 (345 Supercentres, 56 discount; corporate.walmart.com). Locator URL: store finder is client-rendered in the SPA; no stable HTTP-verifiable locator URL observed."
+sources_checked: [official-site, flipp, flyerseek, flyerca, corporate-walmart]
+researched_at: "2026-10-12"
+research_status: complete

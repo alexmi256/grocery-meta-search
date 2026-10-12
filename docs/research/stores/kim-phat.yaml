@@ -1,0 +1,98 @@
+slug: kim-phat
+name: Kim Phat
+name_variants: ["Les Aliments Kim Phat Inc.", "Kim Phat Inc."]
+store_type: ethnic-specialty
+footprint: qc-confirmed            # Greater Montreal stores; also wholesale distributor across Quebec
+tier: 1
+
+website:
+  url: https://www.kimphat.com
+  languages: fr-only               # FR homepage; /en/ returned 403 (WP firewall) - EN variant unconfirmed
+  language_switch: n/a
+  render_tech: ssr                  # WordPress (wp-content/uploads asset paths)
+  bot_protection: none             # homepage fetched fine; one curl to /circulaire/ got 403 (likely WP firewall/UA filtering)
+
+parent_company: Sobeys Inc. (Empire Company Ltd.) - majority stake since 2018
+# PARENT CONCLUSION: CONFIRMED, not contested. FreshPlaza's CPMA Montreal retail-tour report states verbatim:
+# "Since 2018, Kim Phat has been partnering with Sobey's who purchased a majority stake."
+# Corroboration: (1) Kim Phat private-label products (noodles, sushi vinegar) sold with JSON-LD structured offers on voila.ca,
+# Sobeys/Empire's e-commerce platform; (2) kimphat.com homepage links a promo tile to voila.ca.
+# Caveat: no press release of the 2018 deal found in this pass; the chain still presents itself as independent and
+# kimphat.com makes no mention of Sobeys. Treat as majority-owned, operationally semi-autonomous (like Adonis under Metro).
+affiliation: corporate             # majority-owned by Sobeys
+banner_family: []                  # no sibling-banner linkage advertised; Sobeys group banners (IGA, Voila) noted as related party
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.kimphat.com/circulaire/
+          kind: official
+          format: images            # WordPress flyer page; content rendered by plugin/JS, not in HTML
+          parse_friendliness: low
+          fetchability: browser-needed  # page body nearly empty via HTTP; likely image viewer
+        - name: Flipp
+          url: https://flipp.com/en-ca/beaconsfield-qc/stores/kim-phat
+          kind: aggregator
+          format: json-api
+          parse_friendliness: high
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday        # per Flipp merchant page
+      flip_timezone: America/Toronto
+      validity_example: "weekly cycle; item-level data on Flipp"
+      per_store_variant: false
+      languages: [fr, en]           # Flipp item data is EN; official flyer FR
+      archive_available: false
+      structured_data: false
+      notes: "Flipp carries 'Kim Phat Weekly Flyer' and 'Kim Phat Weekly Savings'."
+    - type: wholesale               # B2B flyer for restaurant/institutional clients
+      sources:
+        - name: official site
+          url: https://www.kimphat.com/circulaire/
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: browser-needed
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr]
+      archive_available: false
+      structured_data: false
+      notes: "Page titled 'Circulaire de promotions grand format de produits alimentaires asiatiques | Kim Phat produits en gros' - targets restaurant/wholesale (Les Aliments Kim Phat Inc. is also an importer-distributor)."
+  api_notes: "No public flyer JSON endpoint observed. Official flyer is WP-plugin-rendered images."
+
+product_search:
+  has_search: false                 # informational WP site; no product catalog or checkout observed (no WooCommerce markers)
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Products searchable on voila.ca (Sobeys) instead: e.g. https://voila.ca/products/kim-phat-gluten-free-noodles-pad-thai-400-g/427377EA with JSON-LD Product offers."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: false            # no own checkout
+  click_and_collect: false
+  notes: "No own e-commerce; Kim Phat private-label products are sold via Voila (Sobeys) - structured data available there, not on kimphat.com."
+
+locations:
+  count_estimate: 5                # Flipp: 'five stores in Quebec'; FreshPlaza: 'four locations in Greater Montreal'; known: Brossard, Cote-des-Neiges (Montreal)
+  locator_url: https://www.kimphat.com/
+  locator_api: ""                  # no dedicated stores page located; site is informational
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Founded 1986 as Asian food retailer + distributor. Dual identity (retailer + Les Aliments Kim Phat Inc. importer/wholesaler) - flyer items overlap with Sobeys/IGA assortments (Kim Phat private label appears in IGA flyers via Flipp)."
+sources_checked: [official-site, flipp, voila.ca, freshplaza]
+researched_at: "2026-10-12"
+research_status: complete

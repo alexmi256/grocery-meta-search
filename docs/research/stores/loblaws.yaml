@@ -1,0 +1,82 @@
+# Phase 2 per-store research record — Loblaws
+# Shared Loblaw platform/API findings: docs/research/stores/_loblaw-platform.md
+
+slug: loblaws
+name: Loblaws
+name_variants: []
+store_type: traditional
+footprint: qc-confirmed            # per Phase 1; banner is Ontario-centric with a small QC footprint
+tier: 1
+
+website:
+  url: https://www.loblaws.ca
+  languages: [en, fr]
+  language_switch: path            # root redirects to /en (geo/IP default EN)
+  render_tech: js-heavy            # UNVERIFIED — see notes
+  bot_protection: blocked          # Akamai edge "Access Denied" (errors.edgesuite.net) to desktop Chrome UA, Googlebot UA, iPhone UA, curl
+
+parent_company: Loblaw Companies Limited
+affiliation: corporate
+banner_family: [Provigo, Maxi, Pharmaprix, T&T Supermarché, No Frills, "Real Canadian Superstore", Zehrs, Fortinos]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.loblaws.ca/flyer
+          kind: official
+          format: html              # UNVERIFIED — path and format unconfirmed; site blocked
+          parse_friendliness: low
+          fetchability: blocked     # Akamai 403 for automated clients; needs live browser
+        - name: Flipp
+          url: https://flipp.com/en-ca/montreal-qc/stores/loblaws
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http        # Flipp historically carries Loblaw banners; confirm in Phase 3
+        - name: flyerbox.ca
+          url: https://www.flyerbox.ca/loblaws/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday        # Loblaw banner norm (Thu-Wed); QC-specific example unverified
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"   # pattern-based; unverified for QC
+      per_store_variant: false     # presumed banner-wide; unverified
+      languages: [en, fr]
+      archive_available: true      # via aggregators (flyerbox keeps past editions)
+      structured_data: false       # UNVERIFIED for official
+      notes: "Legacy official flyer system was eflyer.loblaws.ca image tiles (pre-2020s). Current viewer unknown — needs live-browser check."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.loblaws.ca/search?q={query}"   # UNVERIFIED pattern — site blocked
+  location_scoped: true            # presumed (store selection drives prices); unverified
+  guest_ok: true                   # presumed public; unverified
+  kind: spa                        # UNVERIFIED
+  api_notes: "No API observable — site Akamai-blocked. Grocery e-commerce/search runs through PC Express (pcexpress.ca); see _loblaw-platform.md."
+  bot_protection: blocked
+  languages: [en, fr]
+
+ecommerce:
+  online_ordering: true            # via PC Express (pcexpress.ca), shared Loblaw platform
+  click_and_collect: true          # PC Express pickup
+  notes: "PC Express banner list includes Loblaws. Rapid delivery via PC Express/DoorDash in covered markets."
+
+locations:
+  count_estimate: 15               # rough; banner concentrated in Ontario, small QC presence — verify in Phase 2b harvest
+  locator_url: https://www.loblaws.ca/store-locator   # pattern presumed from maxi.ca; UNVERIFIED
+  locator_api: ""                  # unobservable — site blocked
+
+loyalty_program:
+  name: "PC Optimum"
+  card_gated_prices: true          # Loblaw banner norm (member prices in flyers); QC-specific example unverified
+
+notes: "Flagship Loblaw banner; QC footprint small (Phase 1: qc-confirmed). Render tech, flyer format, and search/API details unverifiable from this network (Akamai block on all paths); needs live-browser pass in Phase 2b. QC flyer cadence assumed Thu-Wed per banner norm — confirm."
+sources_checked: [official-site, web-search]
+researched_at: "2026-10-12"
+research_status: partial

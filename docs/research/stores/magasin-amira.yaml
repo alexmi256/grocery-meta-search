@@ -1,0 +1,41 @@
+slug: magasin-amira
+name: Magasin Amira
+name_variants: []
+store_type: ethnic-specialty  # Middle Eastern nuts, dried fruits, spices
+footprint: island
+tier: 3
+website:
+  url: https://magasinamira.ca/  # Shopify storefront
+  languages: fr-only              # FR observed; EN toggle not verified
+  language_switch: n/a
+  render_tech: spa                # Shopify storefront (JS-rendered)
+  bot_protection: none
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "Online-first shop; no flyer — publishes prices on product pages instead."
+product_search:
+  has_search: true
+  url_pattern: "https://magasinamira.ca/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Shopify default search path; not manually verified at tier 3."
+  bot_protection: none
+  languages: [fr]
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Ships via Postes Canada (shipping insurance offered); physical store at 1445 Rue Mazurette, Montréal QC H4N 1G8. Newsletter advertises special offers."
+locations:
+  count_estimate: 1  # 1445 Rue Mazurette, Montréal QC H4N 1G8 (Cartierville / Saint-Laurent area)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "Middle Eastern nuts/dried fruits/spices/cookware with priced online catalog — strong structured-data signal for Phase 4 (product pages carry price + stock)."
+sources_checked: [official-site, shopify-crawl]
+researched_at: "2026-10-12"
+research_status: minimal

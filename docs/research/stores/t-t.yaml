@@ -1,0 +1,102 @@
+# Phase 2 per-store research record — T&T Supermarché
+# Shared Loblaw platform/API findings: docs/research/stores/_loblaw-platform.md
+# NOTE: T&T is the exception in this batch — its official flyer page was
+# successfully fetched and fully characterized (see below).
+
+slug: t-t
+name: T&T Supermarché
+name_variants: ["T&T Supermarket", "T&T"]
+store_type: ethnic-specialty
+footprint: greater                # Saint-Laurent (island) + Brossard (off-island)
+tier: 1
+
+website:
+  url: https://www.tntsupermarket.com
+  languages: [en, fr, zh]          # trilingual site (EN/FR/Chinese); language toggle
+  language_switch: toggle          # language toggle on site (exact mechanism unverified — site blocked)
+  render_tech: js-heavy            # UNVERIFIED — root path Akamai-blocked for automated clients
+  bot_protection: blocked          # Akamai edge "Access Denied" (errors.edgesuite.net) to curl for / ; /store-flyer retrievable via text-render fetch
+
+parent_company: Loblaw Companies Limited
+affiliation: corporate             # acquired 2009; operates independently of Loblaw grocery platform
+banner_family: []                  # no shared banner family — standalone operation within Loblaw
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.tntsupermarket.com/store-flyer?location=bc
+          kind: official
+          format: html              # VERIFIED via text-render fetch 2026-10-12
+          parse_friendliness: high  # per-item structured HTML: product name, -% discount, sale price, regular price, unit (e.g. /lb)
+          fetchability: browser-needed   # curl gets Akamai 403; content retrievable via text-render fetch (browser.open succeeded)
+        - name: flyerbox.ca
+          url: https://www.flyerbox.ca/tt-supermarket/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: flyerdeals.ca
+          url: https://www.flyerdeals.ca/specials/style/t-t-supermarket
+          kind: aggregator
+          format: html
+          parse_friendliness: high     # per-item rows: offer name, store, regular price, offer price, promotion, start/end dates
+          fetchability: http
+        - name: flyerseek.com
+          url: https://flyerseek.com/tt-supermarket-flyer/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: flyerca.com
+          url: https://www.flyerca.com/tt-flyer-alberta/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium   # splits regional flyers: AB / GTA / BC
+          fetchability: http
+        - name: kimbino.ca
+          url: https://www.kimbino.ca/city/brossard/tt-supermarket/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Friday          # VERIFIED: 2026-10-09 (Fri) to 2026-10-15 (Thu); next 2026-10-16 to 2026-10-22
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-09 to 2026-10-15"
+      per_store_variant: true      # regional variants: BC / GTA / AB flyers observed (flyerca); QC variant unconfirmed — QC stores may follow eastern/GTA variant
+      languages: [en, fr, zh]      # flyer items shown in English on EN page; Chinese prominent in print flyer
+      archive_available: true      # via aggregators (flyerbox/flyerca keep past editions)
+      structured_data: false       # no JSON-LD observed; but per-item HTML is highly parseable
+      notes: "3-page weekly flyer. Official page is location-scoped (?location=bc confirmed; other region values unconfirmed). Best Phase 3 official source in this batch for structured items."
+
+product_search:
+  has_search: false                # unverified — site blocked; no search observed
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: spa                        # UNVERIFIED
+  api_notes: "Site Akamai-blocked; search presence and any API unobservable. Confirm in live browser."
+  bot_protection: blocked
+  languages: [en, fr, zh]
+
+ecommerce:
+  online_ordering: false           # no banner e-commerce found; NOT on PC Express
+  click_and_collect: false
+  notes: "T&T does not participate in PC Express. Third-party delivery availability unverified."
+
+locations:
+  count_estimate: 2                # QC: Saint-Laurent (300 Sainte-Croix Ave, opened 2024, ~70,000 sq ft, largest in Canada) + Brossard (Quartier Dix30, opened Nov 2024). ~38 Canada-wide.
+  locator_url: https://www.tntsupermarket.com/store-locator   # UNVERIFIED — store-locations page referenced by aggregators; exact path unconfirmed
+  locator_api: ""                  # unobservable — site blocked
+
+loyalty_program:
+  name: "T&T Rewards"              # own program — NOT PC Optimum
+  card_gated_prices: false         # points-based (20 points per $20 spent; free rewards cards), no member-gated prices observed
+
+notes: "Parent: Loblaw since 2009 but operates independently (own site, own flyer platform, own loyalty, no PC Express). Official flyer endpoint is the strongest official source found in this batch (structured per-item HTML)."
+sources_checked: [official-site, web-search, flyerbox, flyerdeals, flyerseek, flyerca, kimbino]
+researched_at: "2026-10-12"
+research_status: complete

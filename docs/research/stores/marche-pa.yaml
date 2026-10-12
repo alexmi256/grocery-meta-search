@@ -1,0 +1,88 @@
+slug: marche-pa
+name: Marche PA
+name_variants: ["Supermarche PA"]
+store_type: traditional
+footprint: qc-confirmed            # Greater Montreal (Montreal + Laval)
+tier: 1
+
+website:
+  url: https://www.supermarchepa.com
+  languages: [fr, en]              # bilingual site; split hosts: fr.supermarchepa.com / dev.supermarchepa.com
+  language_switch: subdomain        # fr.supermarchepa.com vs dev.supermarchepa.com (EN)
+  render_tech: ssr                  # new site currently a thin landing (mid-migration)
+  bot_protection: none
+# NOTE: site is mid-migration (Oct 2026). Old supermarchepa.com is a stub pointing to the new hosts;
+# fr.supermarchepa.com shows an 'Account' migration notice asking users to re-create accounts - online ordering is being rebuilt.
+
+parent_company: Independent (chain)  # founded 1989 by Sam and Taso Erimos; family-owned
+affiliation: corporate               # centrally owned independent chain
+banner_family: []                    # PA Nature (natural foods) appears related but unconfirmed as same company - flag
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://fr.supermarchepa.com
+          kind: official
+          format: images            # no flyer page observed on the new site yet (mid-migration)
+          parse_friendliness: low
+          fetchability: browser-needed
+        - name: Flipp
+          url: https://flipp.com/en-ca/westmount-qc/stores/supermarche-pa
+          kind: aggregator
+          format: json-api
+          parse_friendliness: high
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/supermarche-pa/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: flyerbox.ca
+          url: http://flyerbox.ca/fr/pa-supermarche/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Monday           # per Flipp: 'released every Monday'; current cycle Oct 12-18 2026 (Mon-Sun)
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-12 to 2026-10-18 (13 pages)"
+      per_store_variant: false
+      languages: [fr, en]           # Flipp EN item data; official historically FR
+      archive_available: false
+      structured_data: false
+      notes: "Only Monday-flip store in this batch. New official site has no flyer section yet - aggregators are currently the reliable source."
+  api_notes: "No flyer API on official site observed (migration in progress). Flipp is the structured source."
+
+product_search:
+  has_search: false                 # new site is a landing stub; no catalog/search observed
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false            # 'Les commandes en ligne sera bientot disponible' - coming on new site
+  click_and_collect: false
+  notes: "Flipp listing mentions home delivery + online ordering historically; new site is rebuilding it (account migration notice Oct 2026). Re-check post-migration."
+
+locations:
+  count_estimate: 5                # Flipp: 'five stores in Quebec'; new site names: du Parc, du Fort, Samson (Laval)
+  locator_url: https://dev.supermarchepa.com
+  locator_api: ""                  # locator not yet live on new site
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Founded 1989 by Sam and Taso Erimos. Mid website migration (Oct 2026) - several fields (flyer URL, locator API, ecommerce) should be re-verified once the new site launches. PA Nature natural-foods banner may be a sister company."
+sources_checked: [official-site, flipp, circulairecanada, flyerbox]
+researched_at: "2026-10-12"
+research_status: complete

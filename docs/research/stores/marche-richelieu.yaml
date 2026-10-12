@@ -1,0 +1,81 @@
+slug: marche-richelieu
+name: Marché Richelieu
+name_variants: ["Richelieu"]
+store_type: traditional
+footprint: island
+tier: 2
+
+website:
+  url: https://www.marcherichelieu.ca/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Metro Inc.
+affiliation: independent-affiliate
+banner_family: [Metro, Super C, Marché Ami, Marché Extra]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: circulaires.club
+          url: https://circulaires.club/magasins/marche-richelieu/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-richelieu/prochaine-circulaire
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: Flipp
+          url: https://flipp.com/en-ca/dorval-qc/stores/marche-richelieu
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true
+      structured_data: false
+      notes: "Single banner-wide weekly flyer (7-9 pages). Official site store pages reference 'flyer' but no standalone digital flyer was found there; aggregators are the reliable digital source. Flipp store page exists but showed no active flyers in the Dorval view."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No site search observed on static pages; site offers store finder and recipes only."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Not observed on banner site; Metro (parent) offers online grocery separately at metro.ca."
+
+locations:
+  count_estimate: 63
+  locator_url: https://www.marcherichelieu.ca/nous-trouver/
+  locator_api: ""
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Metro Inc. banner for independent affiliated grocers (many are co-ops, e.g. Coop des Méandres; contact page lists stores by independent operator name). Affiliation: independent merchants supplied by Metro, not corporate stores. Montreal stores confirmed (3824 Décarie, 7890 St-Denis, Breakeyville, St-Laurent Nouvelle)."
+sources_checked: [official-site, circulaires-club, circulaire-en-ligne, flipp, pdfflyers, wikipedia]
+researched_at: "2026-10-12"
+research_status: complete

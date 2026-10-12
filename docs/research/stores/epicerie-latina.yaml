@@ -1,0 +1,45 @@
+slug: epicerie-latina
+name: Épicerie Latina
+name_variants: ["Chez Latina", "Latina Gourmet Store"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.chezlatina.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found at tier 3."
+
+product_search:
+  has_search: false
+  notes: "Online gourmet store likely has search but not verified at tier 3."
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Obvious: 'Chez Latina — Online Gourmet Grocery Store' (Panierdachat-powered shop) sells online."
+
+locations:
+  count_estimate: 2
+  locator_url: ""
+  notes: "185 Rue Saint-Viateur O, Montréal, QC (Mile End, flagship) + 1434 Rue Sherbrooke O (downtown 'Latina Gourmet Store', opened ~2024)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "URL CORRECTION: given domain chezlatina.com resolves to www.chezlatina.com — canonical URL recorded with www. FLAG: not a single store — two locations; count_estimate corrected to 2. Upscale Italian/Latin épicerie fine; dry-aging room for Prime Black Angus beef. Name is about Latin cuisine, not Latin America — keep in ethnic-specialty per scope."
+sources_checked: [official-site, directories, web-press]
+researched_at: "2026-10-12"
+research_status: partial

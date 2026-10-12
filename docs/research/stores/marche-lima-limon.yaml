@@ -1,0 +1,45 @@
+slug: marche-lima-limon
+name: Marché Lima Limon
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://marchelimalimon.ca/
+  languages: [fr, en]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found at tier 3."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "1220 Rue Bélanger, Montréal, QC H2S 1H8 (Villeray)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Peruvian market + hot-food counter (company founded by Peruvians); on Uber Eats for prepared food. Languages not verified in depth — site carries FR/EN content."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: minimal

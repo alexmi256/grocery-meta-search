@@ -1,0 +1,137 @@
+slug: familiprix
+name: Familiprix
+name_variants: ["Familiprix Extra", "Familiprix Clinique", "Familiprix Sante"]
+store_type: pharmacy
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.familiprix.com
+  languages: [fr, en]              # /en/ renders
+  language_switch: path            # /fr/... vs /en/...
+  render_tech: spa                  # Ember app (fastboot) + Salesforce chat/auth; storefront on separate SFCC subdomain
+  bot_protection: none             # plain HTTP GET 200; gReCaptcha site key present but not challenged
+
+parent_company: Familiprix Inc. (independent Quebec chain; 100% owned by its member pharmacists)
+affiliation: banner-group           # banner of affiliated pharmacist-owners
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.familiprix.com/fr/circulaire
+          kind: official
+          format: json-api         # Flipp embed inside Ember app (FLIPP config block)
+          parse_friendliness: high
+          fetchability: browser-needed  # page is an Ember SPA; Flipp API reachable via HTTP
+        - name: Flipp
+          url: https://flipp.com/en-ca/westmount-qc/stores/familiprix
+          kind: aggregator
+          format: json-api
+          parse_friendliness: high
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-familiprix-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-familiprix/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14 (11 pages)"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "'Prix membre - 3 jours' member-price sections run Thu-Sat inside the flyer (e.g. Scotties $5.99 member vs $7.99 regular, Oct 8-10 2026)."
+    - type: extra
+      sources:
+        - name: official site
+          url: https://www.familiprix.com/fr/circulaire
+          kind: official
+          format: json-api
+          parse_friendliness: high
+          fetchability: browser-needed
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14 - Circulaire Extra (13 pages)"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: ""
+    - type: clinique
+      sources:
+        - name: official site
+          url: https://www.familiprix.com/fr/circulaire
+          kind: official
+          format: json-api
+          parse_friendliness: high
+          fetchability: browser-needed
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14 - Circulaire Clinique (3 pages)"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: ""
+    - type: sante
+      sources:
+        - name: official site
+          url: https://www.familiprix.com/fr/circulaire
+          kind: official
+          format: json-api
+          parse_friendliness: high
+          fetchability: browser-needed
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14 - Circulaire Sante (3 pages)"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: ""
+  api_notes: "Official flyer page embeds FLIPP config in page source: MERCHANT_ID=1976, MERCHANT_NAME_IDENTIFIER=familiprix, public ACCESS_TOKEN=5827334b52ea1661dea1d95844ee36d9. That token is a direct key to Flipp's item API for this merchant. Auth0 tenant authclients.familiprix.com; Google Maps API key embedded (browser-key, restricted)."
+
+product_search:
+  has_search: true
+  url_pattern: "https://magasiner.familiprix.com/fr/search?q={query}"
+  location_scoped: true            # pickupinstore flow on SFCC storefront
+  guest_ok: true
+  kind: html                        # Salesforce Commerce Cloud, SSR category pages (/fr/c/<slug>)
+  api_notes: "Observed /fr/search/external and /search/autocomplete/SearchBox + /search/autocompleteSecure endpoints on magasiner subdomain. Main site is Ember; media served from assets-api.familiprix.com (headless API signal)."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true             # magasiner.familiprix.com (SFCC)
+  click_and_collect: true           # pickupinstore markers observed
+  notes: "Delivery offered (free over threshold). Strong proxy for structured product data (SFCC catalog)."
+
+locations:
+  count_estimate: 358              # per Wikipedia, 2nd in Quebec
+  locator_url: https://www.familiprix.com/fr/pharmacies
+  locator_api: ""                  # Ember app; Google Maps embedded - API pattern not confirmed
+
+loyalty_program:
+  name: "Familiplus (10th anniversary in 2026)"
+  card_gated_prices: true          # 'Prix membre' sections in weekly flyer: distinct member vs regular prices (confirmed Oct 2026 flyers)
+
+notes: "Only banner in this batch with hard card-gated flyer prices. 100% Quebec-owned by member pharmacists - flag as counter-positioning vs Metro/McKesson banners."
+sources_checked: [official-site, flipp, circulaires.club, circulairecanada]
+researched_at: "2026-10-12"
+research_status: complete

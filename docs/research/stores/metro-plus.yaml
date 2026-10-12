@@ -1,0 +1,77 @@
+slug: metro-plus
+name: Metro Plus
+name_variants: ["Metro Plus"]
+store_type: traditional
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.metro.ca
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+  # No separate site: Metro Plus stores are listed in the metro.ca store locator
+  # (e.g. metro.ca/trouver-une-epicerie/85 resolves a "Metro Plus" location).
+
+parent_company: Metro Inc.
+affiliation: corporate
+banner_family: [Metro, Super C, Food Basics, Adonis, Première Moisson, Marché Richelieu, Marché Ami]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.metro.ca/circulaire
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-metro-plus/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Shares the Metro weekly flyer — flyer fine print: 'Valide dans les magasins Metro et Metro Plus du Québec.' No separate Metro Plus flyer edition observed. See metro.yaml for full flyer enumeration (inserts, Cahier MOI, kosher, seasonal)."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.metro.ca/epicerie-en-ligne/recherche?filter={query}&freeText=true"
+  location_scoped: true
+  guest_ok: true
+  kind: html
+  api_notes: "Same platform as Metro — see metro.yaml (api.metro.ca / api2.metro.ca SSR hosts, product-images.metro.ca)."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Via metro.ca online grocery (shared platform)."
+
+locations:
+  count_estimate: 50
+  locator_url: https://www.metro.ca/trouver-une-epicerie
+  locator_api: ""
+  # Banner-level count not published; 50 is a rough estimate. Locator shared with Metro.
+
+loyalty_program:
+  name: "moi"
+  card_gated_prices: true
+  # Fine print explicitly covers "les magasins Metro et Metro Plus du Québec".
+
+notes: "Banner variant of Metro with no independent web presence — all platform fields mirror metro.yaml. Research consisted of verifying the shared-platform claim (locator entries, flyer fine print)."
+sources_checked: [official-site, circulairecanada.com, fr-search]
+researched_at: "2026-10-12"
+research_status: complete

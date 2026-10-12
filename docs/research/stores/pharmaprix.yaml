@@ -1,0 +1,112 @@
+# Phase 2 per-store research record — Pharmaprix
+# Shared Loblaw platform/API findings: docs/research/stores/_loblaw-platform.md
+# NOTE: pharmaprix.ca homepage fully fetched and characterized (Next.js SSR).
+
+slug: pharmaprix
+name: Pharmaprix
+name_variants: []
+store_type: pharmacy
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.pharmaprix.ca
+  languages: [fr, en]              # defaultLocale en; ?lang=fr param switches to French
+  language_switch: param           # VERIFIED: ?lang=fr (e.g. /flyer?lang=fr); /fr/flyer 301s to /flyer?lang=fr
+  render_tech: ssr                 # VERIFIED: Next.js SSR (__NEXT_DATA__, getServerSideProps, ~959KB rendered homepage HTML)
+  bot_protection: none             # homepage fetchable over plain HTTP; BUT /flyer path returns Akamai 403 even to text-render fetch — path-selective blocking
+
+parent_company: Loblaw Companies Limited
+affiliation: corporate             # Quebec banner of Shoppers Drug Mart (owned by Loblaw)
+banner_family: ["Shoppers Drug Mart", Provigo, Maxi, Loblaws, T&T Supermarché]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly                 # main flyer, ~20 pages
+      sources:
+        - name: official site
+          url: https://www.pharmaprix.ca/flyer?lang=fr
+          kind: official
+          format: html              # UNVERIFIED — endpoint confirmed in site nav ("Circulaire") but returns Akamai 403
+          parse_friendliness: low
+          fetchability: blocked     # 403 via curl AND via text-render fetch; needs live browser
+        - name: Flipp
+          url: https://flipp.com/en-ca/verdun-qc/stores/pharmaprix
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http        # Flipp carries Pharmaprix flyers (FAQ: released Thursdays)
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-pharmaprix-du-10-au-16-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium   # page images + zoom viewer; keeps archive of expired flyers
+          fetchability: http
+        - name: flyerseek.com
+          url: https://flyerseek.com/pharmaprix-weekly-flyer/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium   # per-item deal lists
+          fetchability: http
+        - name: weekly-flyer.ca
+          url: https://weekly-flyer.ca/fr/pharmaprix
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Saturday       # VERIFIED: 2026-10-10 (Sat) to 2026-10-16 (Fri); next 2026-10-17 to 2026-10-22
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-10 to 2026-10-16"
+      per_store_variant: false     # one banner-wide flyer (Shoppers/Pharmaprix chain flyer)
+      languages: [fr, en]
+      archive_available: true      # via circulaires.club (expired flyers kept)
+      structured_data: false       # UNVERIFIED for official flyer page
+      notes: "Main weekly flyer ~20 pages. Heavy PC Optimum integration: 20x points events, redemption weekends (e.g. 50,000 pts = $100)."
+    - type: promo-insert           # short promos alongside the weekly flyer
+      sources:
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-pharmaprix-du-9-au-11-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 3
+      flip_weekday: Friday         # example: 2026-10-09 (Fri) to 2026-10-11 (Sun) weekend bonus-points promo
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-09 to 2026-10-11"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: true
+      structured_data: false
+      notes: "1-page short promos recur: weekend bonus-points promos, 'Événement Famille et Amis' (2026-10-13 to 2026-10-14 observed)."
+
+product_search:
+  has_search: true                 # integrated /shop with category PLPs and product listings
+  url_pattern: "https://www.pharmaprix.ca/shop/search?query={query}"   # UNVERIFIED — search URL pattern not observed; category PLP params documented instead
+  location_scoped: false           # online catalog not store-scoped (showInStock filter exists on PLPs); unverified
+  guest_ok: true                   # public catalog browsing observed; unverified for checkout
+  kind: spa                        # UNVERIFIED — shop may be SSR like homepage; confirm in live browser
+  api_notes: "Category PLPs observed: /shop/categories/<Name>/<name>/c/<id> with ?sort=relevance|newest&page=1&showInStock=true&promotions=Sale — structured catalog behind the shop. Search endpoint pattern unconfirmed. Digital pharmacy on mypharmacy.pharmaprix.ca subdomain."
+  bot_protection: none             # homepage/shop pages fetchable; only /flyer blocked
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true            # VERIFIED: /shop catalog + /shoppingbag flows on site
+  click_and_collect: true          # presumed (buy-online-pickup typical for banner); in-store pickup availability unverified
+  notes: "Ship-to-home via pharmaprix.ca/shop. Same-day delivery via DoorDash Marketplace (Loblaw banners incl. Pharmaprix). Structured product data proxy: strong (PLP params, category IDs)."
+
+locations:
+  count_estimate: 370              # QC Pharmaprix stores (Shoppers/Pharmaprix ~1,300+ Canada-wide per Flipp)
+  locator_url: "https://www.pharmaprix.ca/fr/stores (pattern observed: /fr/stores/<id>-<slug>; detail pages also at stores.pharmaprix.ca/fr/store/<id>)"
+  locator_api: ""                  # unobservable — no JSON endpoint found
+
+loyalty_program:
+  name: "PC Optimum"
+  card_gated_prices: false         # no member-gated shelf/flyer prices; instead 20x points events and redemption weekends
+
+notes: "Quebec banner of Shoppers Drug Mart. Site stack fully characterized (Next.js SSR, CMS view definitions, assetful DAM). Official flyer blocked (403 even to text-render fetch) — aggregators are the Phase 3 path unless a live browser works. Search URL pattern and locator API need a live-browser pass."
+sources_checked: [official-site, web-search, flipp, circulaires-club, flyerseek, weekly-flyer-ca]
+researched_at: "2026-10-12"
+research_status: partial

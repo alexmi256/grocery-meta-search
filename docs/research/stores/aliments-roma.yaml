@@ -1,0 +1,45 @@
+slug: aliments-roma
+name: Les Aliments Roma
+name_variants: ["Roma les Aliments", "Roma Food Products Ltd"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://alimentsroma.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer at tier 3."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "855 Rue Deslauriers, Saint-Laurent, QC H4N 1X3 (factory + distribution centre; retail sale on site)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "FLAG: primarily a family-owned Italian charcuterie MANUFACTURER (founded 1953 by Pasquale Ramacieri Sr, first Quebec-made mortadella) with a factory outlet, not a classic grocery. Sat-hours 7:30-12. Listed with retail service hours, so kept in scope."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: partial

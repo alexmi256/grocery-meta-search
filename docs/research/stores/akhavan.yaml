@@ -1,0 +1,41 @@
+slug: akhavan
+name: Akhavan
+name_variants: ["Akhavan Food Inc.", "Akhavan Supermarket", "Marché Akhavan"]
+store_type: ethnic-specialty  # Iranian / Middle Eastern supermarket
+footprint: island              # Saint-Jacques + Pierrefonds + St-Laurent warehouse all on-island
+tier: 3
+website:
+  url: https://akhavanfood.com/  # WooCommerce storefront
+  languages: [fr, en]            # FR/EN product titles + Persian observed
+  language_switch: path          # /fr/ paths observed
+  render_tech: ssr
+  bot_protection: none
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer found; store publishes priced online catalog instead."
+product_search:
+  has_search: true
+  url_pattern: "https://akhavanfood.com/?s={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "WooCommerce storefront; search URL is conventional pattern, not manually verified."
+  bot_protection: none
+  languages: [fr, en]
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Checkout observed on site ('To find out your shipping cost, Please proceed to checkout'). Head office & warehouse: 9275 Transcanadienne, Ville Saint-Laurent."
+locations:
+  count_estimate: 2  # retail: 6400 Rue St-Jacques Ouest (Montréal H4B 1T6) + 15760 Boul Pierrefonds (Pierrefonds H9H 3P6); plus head office/warehouse (non-retail)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "NOT a single store — 2 retail supermarkets + warehouse. Iranian/Middle Eastern: barbari bread, feta, kebab, stews. Priced online catalog = strong Phase 4 structured-data signal."
+sources_checked: [official-site, woo-crawl]
+researched_at: "2026-10-12"
+research_status: minimal

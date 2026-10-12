@@ -1,0 +1,83 @@
+# Tier 2 per-store research record.
+slug: mayrand
+name: Mayrand Food Group
+name_variants: ["Mayrand"]
+store_type: warehouse
+footprint: greater
+tier: 2
+
+website:
+  url: https://mayrand.ca/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Empire Company Limited (via Sobeys Inc.)
+affiliation: corporate
+banner_family: [Sobeys, IGA, Safeway, FreshCo, Foodland, Thrifty Foods]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://mayrand.ca/en/our-flyers
+          kind: official
+          format: pdf
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaires.com
+          url: https://mayrand.ca/en/our-flyers?language=fr&region=Montreal&ref=circulaires.com
+          kind: aggregator
+          format: pdf
+          parse_friendliness: medium
+          fetchability: http
+        - name: ca-mydeals365.com
+          url: https://ca-mydeals365.com/mayrand/
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Wednesday
+      flip_timezone: America/Toronto
+      validity_example: "2026-07-15 to 2026-07-21"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Bilingual FR/EN PDF flyer (both languages in one document), valid Wed-Tue. PDFs hosted on HubSpot CDN (hubfs) with extractable text including SKU codes. Also a region selector (region=Montreal). Not on Flipp."
+
+product_search:
+  has_search: true
+  url_pattern: "https://mayrand.ca/"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+  notes: "'Our Specials' page lists products with SKU codes and structured prices (weekly specials + EDLP list); exact search URL pattern not verified."
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Open to the public, no membership card required; no online ordering observed."
+
+locations:
+  count_estimate: 4
+  locator_url: https://mayrand.ca/
+  locator_api: ""
+  notes: "4 stores: Anjou, Laval, Brossard, Saint-Jérôme. New Trois-Rivières location under construction (announced Sept 2026). Store list on site; dedicated locator URL not verified."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+  notes: "Explicitly no membership: 'no membership card required', open to public 7 days."
+
+notes: "AFFILIATION FINDING: Empire/Sobeys acquisition announced April 9 2026 via court-approved process CLOSED in June 2026 (Retail Insider, Sept 2026). Mayrand is now an Empire Company Limited subsidiary (via Sobeys Inc.); banner kept distinct as Quebec discount/warehouse format. Founded 1914, ~300 employees."
+sources_checked: [official-site, empire-press-release, retail-insider, canadiangrocer, pulse2, circulaires.com, ca-mydeals365]
+researched_at: "2026-10-12"
+research_status: complete

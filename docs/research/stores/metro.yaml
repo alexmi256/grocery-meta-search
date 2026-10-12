@@ -1,0 +1,169 @@
+slug: metro
+name: Metro
+name_variants: ["Metro (Mon épicier)"]
+store_type: traditional
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.metro.ca
+  languages: [fr, en]
+  language_switch: path           # /en/ prefix for EN; FR paths have no prefix (e.g. /circulaire vs /en/flyer)
+  render_tech: ssr                # flyer + product pages return full text on plain fetch; product pages Google-indexed
+  bot_protection: none           # standard page fetches returned HTTP 200 on 2026-10-12; one query-string search-URL probe returned HTTP 403 (possibly transient WAF) — see notes
+
+parent_company: Metro Inc.
+affiliation: corporate
+banner_family: [Metro Plus, Super C, Food Basics, Adonis, Première Moisson, Marché Richelieu, Marché Ami]
+# Metro Inc. operates ~1000 food stores across all banners (2026 corporate comms); banner-level breakdown not published.
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.metro.ca/circulaire
+          kind: official
+          format: html
+          parse_friendliness: high     # SSR; per-store variant rendered server-side
+          fetchability: http
+        - name: Flipp
+          url: https://flipp.com/en-ca/pierrefonds-qc/stores/metro
+          kind: aggregator
+          format: images
+          parse_friendliness: medium   # page images + item-level JSON (Flipp JSON is public/keyless per third-party analysis)
+          fetchability: browser-needed # Flipp Montreal pages noted JS-heavy in Phase 1
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-metro-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/metro/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: flyerbox.ca
+          url: https://www.flyerbox.ca/fr/offres/amqui/metro/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: RFD Montreal flyers page
+          url: https://www.redflagdeals.com/in/montreal/flyers/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true     # page states "You are viewing the flyer for the Metro Devonshire store"
+      languages: [fr, en]
+      archive_available: false    # official site shows current week only; aggregators (circulaires.club) keep expired editions
+      structured_data: false      # not verified
+      notes: "Next week's flyer previewable from Tuesday (per Super C sibling-site text, same platform). Print/PDF version exists (print.raddar.ca PDF mirrors fine print)."
+    - type: weekly-insert
+      sources:
+        - name: official site
+          url: https://www.metro.ca/circulaire
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "'Mon épicier' / 'My grocer' insert — weekly deals booklet alongside main flyer (seen on flyerbox.ca: 'Metro circulaire - Mon épicier')."
+    - type: loyalty-booklet
+      sources:
+        - name: official site
+          url: https://www.metro.ca/circulaire
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "'Cahier MOI' (4 pages) — moi-loyalty booklet; a 'Cahier mmmaximisez' (7 pages) promo booklet also observed same week."
+    - type: kosher
+      sources:
+        - name: official site
+          url: https://www.metro.ca/circulaire
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+      duration_days: 28
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-09-24 to 2026-10-21"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Kosher flyer runs on a ~4-week cycle (observed 2026-09-24 to 2026-10-21)."
+    - type: seasonal
+      sources:
+        - name: Flipp
+          url: https://flipp.com/en-ca/pierrefonds-qc/stores/metro
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: browser-needed
+      duration_days: 28
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Seasonal booklets observed on Flipp (e.g. 'Get Gardening', 'Here Comes Summer', 'Metro Moi Rewards'); cadence varies."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.metro.ca/epicerie-en-ligne/recherche?filter={query}&freeText=true"
+  location_scoped: true           # must select a store / postal code for accurate prices
+  guest_ok: true                 # search/browse pages are Google-indexed and render without login
+  kind: html                     # server-rendered pages
+  api_notes: "Platform serves SSR pages from api.metro.ca and api2.metro.ca mirror hosts (EN search confirmed via indexed api2.metro.ca/en/online-grocery/search?filter={q}&freeText=true). Product images on product-images.metro.ca. ~15,700 products indexed in FR catalog. JSON API endpoints not directly observed."
+  bot_protection: none           # see website.bot_protection note re one 403 on a query-URL probe
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Delivery or pickup via metro.ca online grocery; promo banner '$25 off your first 3 orders' observed 2026-10-12. Services gated by postal code."
+
+locations:
+  count_estimate: 350
+  locator_url: https://www.metro.ca/trouver-une-epicerie
+  locator_api: ""
+  # Banner-level count not published by Metro Inc. (~1000 food stores across all banners, 2026); 350 is a rough estimate.
+  # Locator: FR path observed (metro.ca/trouver-une-epicerie/<id>); EN presumably /en/find-a-store/. No JSON locator API observed.
+
+loyalty_program:
+  name: "moi"
+  card_gated_prices: true         # "prix membre" / member prices throughout flyer; fine print: points on pre-tax total, 500 pts = $4 redemption
+  # Program site: programmemoi.ca (QC) / moirewards.ca (ON, launched 2024-10-24 for Metro + Food Basics). Fine print: "Valide dans les magasins Metro et Metro Plus du Québec."
+
+notes: "Metro Inc. shared platform: metro.ca and superc.ca run the same frontend (identical page copy, banner image naming userfiles/image/BN-internes, versioned assets ?v=2026.fn.7.d20). Metro Plus uses metro.ca directly (no separate site). See metro-plus.yaml, super-c.yaml."
+sources_checked: [official-site, flipp, rfd-flyers, circulaires.club, circulairecanada.com, flyerbox.ca, fr-search, en-search]
+researched_at: "2026-10-12"
+research_status: complete

@@ -1,0 +1,34 @@
+slug: marche-lavaniya
+name: Marché Lavaniya
+name_variants: ["Marche Lavaniya"]
+store_type: ethnic-specialty  # South Asian grocery
+footprint: island
+tier: 3
+website:
+  url: https://marche-lavaniya.business.site/  # Google Business site, the store's only web presence
+  languages: n/a              # not verified at tier 3
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer link found at tier 3 (business.site pages rarely carry flyers)."
+product_search:
+  has_search: false
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+locations:
+  count_estimate: 1  # 6145 Chemin de la Côte-des-Neiges, Montréal QC H3S 1Z9 (Côte-des-Neiges)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "South Asian groceries + prepared foods (schezwan fried rice, sandwiches); open 8am–10pm daily."
+sources_checked: [business-site, directories, canpages]
+researched_at: "2026-10-12"
+research_status: minimal

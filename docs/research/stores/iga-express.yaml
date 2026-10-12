@@ -1,0 +1,69 @@
+slug: iga-express
+name: IGA Express / Mini
+name_variants: ["IGA Express", "IGA Mini", "IGA express", "Dépanneur IGA Express"]
+store_type: other
+footprint: island
+tier: 2
+
+website:
+  url: https://www.iga.net/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Sobeys Inc. (Sobeys Québec / Empire Company Ltd.)
+affiliation: independent-affiliate
+banner_family: [IGA, IGA Extra, Les Marchés Tradition, Marché Bonichoix]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site (shared IGA flyer)
+          url: https://www.iga.ca/fr/
+          kind: official
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "No separate IGA Express flyer observed; format follows the main IGA weekly flyer (Thu-Wed). iga.net is the given domain; observed store URLs live under www.iga.ca/fr/."
+
+product_search:
+  has_search: true
+  url_pattern: ""
+  location_scoped: true
+  guest_ok: true
+  kind: html
+  api_notes: "iga.ca has site search; store selection / postal code scoping is standard for IGA digital."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Voilà delivery exists for IGA; applicability to Express/Mini format unverified."
+
+locations:
+  count_estimate: null
+  locator_url: https://www.iga.ca/fr/trouver-un-magasin
+  locator_api: ""
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: Scene+
+  card_gated_prices: false
+
+notes: "Small-format Sobeys Québec banner (IGA Express ~4,000 sq ft with Shell gas stations; smaller IGA Mini variant), launched Dec 2013 in St-Augustin-de-Desmaures. Sobeys announced a plan for 60 Express stores over 5 years (~$100M); current live count unverified — active locations observed (Montréal-Nord 24h, L'Ange-Gardien, Shawinigan, Les Coteaux IGA Mini, St-Bruno Lambert). Independent owners per location (e.g. Marché Lambert et Frères inc.), so independent-affiliate. Montreal island presence confirmed (Montréal-Nord)."
+sources_checked: [official-site, canadiangrocer, andnowuknow, perishablenews, mon-voisin, cylex]
+researched_at: "2026-10-12"
+research_status: partial

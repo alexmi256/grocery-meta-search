@@ -1,0 +1,51 @@
+slug: vrac-et-bio
+name: Épicerie Vrac & Bio
+name_variants: []
+store_type: other
+footprint: island
+tier: 3
+
+website:
+  url: https://epicerievracetbio.com
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  notes: "no flyer found; product catalog instead (tier 3)"
+
+product_search:
+  has_search: true
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "bilingual product catalog with prices and in-stock availability (Comelin POS/e-commerce backend); url_pattern not captured at tier 3"
+  bot_protection: ""
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "online ordering with pickup ('no more delivery' notice on site)"
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "1273 rue Ontario E, Montréal, QC H2L 1R7. Bulk + organic grocery."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Unlike most tier-3 stores, this one HAS a live searchable product catalog with prices — worth a deeper Phase 2 look at structured-data extraction."
+sources_checked: [search, official-site-indexed]
+researched_at: "2026-10-12"
+research_status: minimal

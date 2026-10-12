@@ -1,0 +1,61 @@
+slug: marche-sa-et-fils
+name: Marché SA et Fils
+name_variants: ["Marché Sa", "Epicerie Et Boucherie SA & Fils Inc"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.saetfils.ca/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.saetfils.ca/en-ca/
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: ""
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Homepage has a 'Promotions' / 'Our promotions of the week' section — closest to a weekly flyer. Not a paginated circulaire; prices shown as product cards."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Obvious: site offers online ordering + delivery."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "4701 Rue Saint-Urbain, Montréal, QC H2T 2V9 (Plateau/Mile End)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "URL CORRECTION: given domain saetfils.ca resolves to www.saetfils.ca — canonical URL recorded with www. Portuguese/Brazilian family grocer founded 1975 by Balbino Sa. SURPRISE: one of the few tier-3 stores with a weekly promotions section on its own site."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: partial

@@ -1,0 +1,44 @@
+slug: poissonnerie-la-mer
+name: Poissonnerie La Mer
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.lamer.ca
+  languages: [fr, en]
+  language_switch: n/a
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  notes: "no flyer found (tier 3)"
+
+product_search:
+  has_search: false
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "online ordering + home delivery offered per business listings; worth verifying on site in deeper research"
+
+locations:
+  count_estimate: 2
+  locator_url: ""
+  locator_api: ""
+  notes: "1840 Bd René-Lévesque E, Montréal (flagship); 4445 Rue Ontario E, Montréal (Maisonneuve)"
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Premier seafood/fish market with grocery sections (vegetables, cheese, wine, charcuterie, prepared foods). Also acts as distributor."
+sources_checked: [search, directories, official-site-indexed]
+researched_at: "2026-10-12"
+research_status: minimal

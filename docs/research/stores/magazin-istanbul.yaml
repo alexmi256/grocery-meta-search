@@ -1,0 +1,34 @@
+slug: magazin-istanbul
+name: Magazin Istanbul
+name_variants: []
+store_type: ethnic-specialty  # Turkish specialty grocery
+footprint: island
+tier: 3
+website:
+  url: ""  # none found: no official site or social surfaced in search
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: n/a
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer possible — no web presence at all."
+product_search:
+  has_search: false
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+locations:
+  count_estimate: 1  # 1551 Ontario St E, Montréal (Ville-Marie; per Meta business listing)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "CAUTION: MapQuest also lists a 'Marché Istanbul' at 8780 Boul St-Laurent — possibly a related/renamed business, unverified; keep slugs distinct pending confirmation."
+sources_checked: [meta-business-profile, directories]
+researched_at: "2026-10-12"
+research_status: minimal

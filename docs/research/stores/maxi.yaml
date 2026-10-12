@@ -1,0 +1,106 @@
+# Phase 2 per-store research record — Maxi (Maxi & Cie)
+# Shared Loblaw platform/API findings: docs/research/stores/_loblaw-platform.md
+
+slug: maxi
+name: Maxi
+name_variants: ["Maxi & Cie"]
+store_type: traditional
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.maxi.ca
+  languages: [fr, en]
+  language_switch: path            # root redirects to /fr (geo/IP default FR)
+  render_tech: js-heavy            # UNVERIFIED — see notes
+  bot_protection: blocked          # Akamai edge "Access Denied" (errors.edgesuite.net) to desktop Chrome UA, Googlebot UA, iPhone UA, curl
+
+parent_company: Loblaw Companies Limited
+affiliation: corporate
+banner_family: [Provigo, Loblaws, Pharmaprix, T&T Supermarché, No Frills, "Real Canadian Superstore"]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.maxi.ca/flyer
+          kind: official
+          format: html              # UNVERIFIED — path and format unconfirmed; site blocked
+          parse_friendliness: low
+          fetchability: blocked     # Akamai 403 for automated clients; needs live browser
+        - name: circulaires.club
+          url: https://circulaires.club/magasins/maxi/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium   # page images + zoom viewer; keeps archive of expired flyers
+          fetchability: http
+        - name: flyerbox.ca
+          url: https://www.flyerbox.ca/maxi/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-maxi/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: quebectoutcompris.com
+          url: https://www.quebectoutcompris.com/circulaires/maxi/
+          kind: aggregator
+          format: pdf               # generates PDF summaries of each weekly flyer
+          parse_friendliness: medium
+          fetchability: http
+        - name: supermarches.ca
+          url: https://supermarches.ca/
+          kind: aggregator
+          format: html
+          parse_friendliness: high     # per-item rows: description, format, origin, price, dates, store
+          fetchability: http
+        - name: Flipp
+          url: https://flipp.com/en-ca/montreal-qc/stores/maxi
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http        # Flipp historically carries Loblaw banners; confirm in Phase 3
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false     # one banner-wide flyer
+      languages: [fr, en]
+      archive_available: true      # via circulaires.club (expired flyers kept)
+      structured_data: false       # UNVERIFIED for official
+      notes: "19-23 page weekly flyer (2026-10-08 edition: 21 pages). Card-gated pricing confirmed: 'prix membre' vs non-member prices (e.g. member price with limit, higher price after limit)."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.maxi.ca/search?q={query}"   # UNVERIFIED pattern — site blocked
+  location_scoped: true            # presumed (store selection drives prices); unverified
+  guest_ok: true                   # presumed public; unverified
+  kind: spa                        # UNVERIFIED
+  api_notes: "No API observable — site Akamai-blocked. Grocery e-commerce/search runs through PC Express (pcexpress.ca); see _loblaw-platform.md."
+  bot_protection: blocked
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true            # via PC Express (pcexpress.ca), shared Loblaw platform
+  click_and_collect: true          # PC Express pickup at Maxi stores
+  notes: "PC Express: 737+ pickup locations chain-wide (2024)."
+
+locations:
+  count_estimate: 188              # Quebec locations (FreshPlaza retail-tour report, 2026)
+  locator_url: https://www.maxi.ca/store-locator   # CONFIRMED pattern: /store-locator/details/<id> seen in directory listings
+  locator_api: ""                  # unobservable — site blocked
+
+loyalty_program:
+  name: "PC Optimum"
+  card_gated_prices: true          # CONFIRMED: flyer shows 'prix membre' (member) vs regular prices with per-customer limits
+
+notes: "Discount banner of Loblaw in Quebec (division since 1999). Render tech and search/API details unverifiable from this network (Akamai block on all paths); needs live-browser pass in Phase 2b."
+sources_checked: [official-site, web-search, circulaires-club, flyerbox, circulairecanada, quebectoutcompris, supermarches]
+researched_at: "2026-10-12"
+research_status: partial

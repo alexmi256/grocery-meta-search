@@ -1,0 +1,88 @@
+# Tier 2 per-store research record.
+slug: marche-c-t
+name: Marché C&T
+name_variants: ["Marche C & T", "Marché C & T"]
+store_type: ethnic-specialty
+footprint: greater
+tier: 2
+
+website:
+  url: https://www.marchect.ca
+  languages: [fr, en]
+  language_switch: toggle
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Independent (family-owned chain)
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.marchect.ca
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/marche-c-t/circulaire-st-laurent
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: flyerdeals.ca
+          url: https://www.flyerdeals.ca/stores/marche-c-t/flyers-specials
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: kaufino.com
+          url: https://www.kaufino.com/ca/marche-c-t/marche-c-t-flyer-from-thursday-22-05
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: true
+      structured_data: false
+      notes: "Each store location has its own weekly flyer; official site publishes a bilingual (FR/EN) weekly circulaire. Aggregators keep past-week archives."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+  notes: "No product search observed on official site."
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 4
+  locator_url: https://www.marchect.ca
+  locator_api: ""
+  notes: "Stores listed on homepage: Pierrefonds-Roxboro (13057 Boul Gouin O), Cartierville/Montreal (12200 Blvd Laurentien), Greenfield Park (3700 Boul Taschereau); directories also show a Brossard store (8200 Boul Taschereau). No dedicated locator URL observed."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Family-owned Asian grocery chain. Weekly per-store flyers flip Thursday, valid Thu-Wed."
+sources_checked: [official-site, circulaire-en-ligne, flyerdeals, kaufino, yellowpages]
+researched_at: "2026-10-12"
+research_status: complete

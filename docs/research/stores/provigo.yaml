@@ -1,0 +1,106 @@
+# Phase 2 per-store research record — Provigo
+# Shared Loblaw platform/API findings: docs/research/stores/_loblaw-platform.md
+
+slug: provigo
+name: Provigo
+name_variants: []
+store_type: traditional
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.provigo.ca
+  languages: [fr, en]
+  language_switch: path            # root redirects to /fr (geo/IP default FR)
+  render_tech: js-heavy            # UNVERIFIED — see notes
+  bot_protection: blocked          # Akamai edge "Access Denied" (errors.edgesuite.net) to desktop Chrome UA, Googlebot UA, iPhone UA, curl
+
+parent_company: Loblaw Companies Limited
+affiliation: corporate
+banner_family: [Maxi, Loblaws, Pharmaprix, T&T Supermarché, No Frills, "Real Canadian Superstore"]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.provigo.ca/flyer
+          kind: official
+          format: html              # UNVERIFIED — path and format unconfirmed; site blocked
+          parse_friendliness: low
+          fetchability: blocked     # Akamai 403 for automated clients; needs live browser
+        - name: circulaires.club
+          url: https://circulaires.club/magasins/provigo/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium   # page images + zoom viewer; keeps archive of expired flyers
+          fetchability: http
+        - name: flyerdeals.ca
+          url: https://www.flyerdeals.ca/stores/provigo/flyers-specials
+          kind: aggregator
+          format: html
+          parse_friendliness: high     # per-item rows with regular/offer price and dates
+          fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-provigo
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/catalogue/circulaire-provigo-semaine-prochaine/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: quebectoutcompris.com
+          url: https://www.quebectoutcompris.com/circulaires/provigo/
+          kind: aggregator
+          format: pdf               # generates PDF summaries of each weekly flyer
+          parse_friendliness: medium
+          fetchability: http
+        - name: Flipp
+          url: https://flipp.com/en-ca/montreal-qc/stores/provigo
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http        # Flipp historically carries Loblaw banners; confirm in Phase 3
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false     # one banner-wide flyer; "Mon magasin" selects store for prices/hours
+      languages: [fr, en]
+      archive_available: true      # via circulaires.club (expired flyers kept)
+      structured_data: false       # UNVERIFIED for official; aggregators carry per-item data
+      notes: "12-page weekly flyer (2026-10-08 edition). PC Optimum points events printed in flyer."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.provigo.ca/search?q={query}"   # UNVERIFIED pattern — site blocked
+  location_scoped: true            # presumed (store selection drives prices); unverified
+  guest_ok: true                   # presumed public; unverified
+  kind: spa                        # UNVERIFIED
+  api_notes: "No API observable — site Akamai-blocked. Grocery e-commerce/search runs through PC Express (pcexpress.ca); see _loblaw-platform.md."
+  bot_protection: blocked
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true            # via PC Express (pcexpress.ca), shared Loblaw platform
+  click_and_collect: true          # PC Express pickup at Provigo stores
+  notes: "PC Express: 737+ pickup locations chain-wide (2024). Delivery outsourced to DoorDash/UberEats in many markets; PC Express Pass subscription."
+
+locations:
+  count_estimate: 300              # QC-wide estimate; Provigo/Provigo Le Marché
+  locator_url: https://www.provigo.ca/store-locator   # pattern presumed from maxi.ca; UNVERIFIED
+  locator_api: ""                  # unobservable — site blocked
+
+loyalty_program:
+  name: "PC Optimum"
+  card_gated_prices: true          # member-gated prices ("prix membre") and PC Optimum points events appear in flyers
+
+notes: "Acquired by Loblaw 1998/1999. ~20 stores converted to Maxi in 2023. Render tech and search/API details unverifiable from this network (Akamai block on all paths); needs live-browser pass in Phase 2b."
+sources_checked: [official-site, web-search, circulaires-club, flyerdeals, circulaire-en-ligne, circulairecanada, quebectoutcompris]
+researched_at: "2026-10-12"
+research_status: partial

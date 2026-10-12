@@ -1,0 +1,80 @@
+slug: brunet
+name: Brunet
+name_variants: ["Brunet Plus"]
+store_type: pharmacy
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.brunet.ca
+  languages: [fr, en]              # /en/ renders (200)
+  language_switch: path            # /fr/... vs /en/...
+  render_tech: ssr                  # pages server-rendered, fetchable via plain HTTP
+  bot_protection: none
+
+parent_company: Metro Inc.         # long-standing Metro banner (founded 1855)
+affiliation: corporate
+banner_family: [Jean Coutu, Metro, Super C, Adonis, Premiere Moisson]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.brunet.ca/circulaire-en-ligne/
+          kind: official
+          format: images            # iframe to flyertc.brunet.ca (Transcontinental Vue SPA)
+          parse_friendliness: low
+          fetchability: browser-needed  # SPA; content not in HTML
+        - name: Flipp
+          url: https://flipp.com/en-ca/westmount-qc/stores/brunet
+          kind: aggregator
+          format: json-api
+          parse_friendliness: high
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/semaine/du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14 (8 pages)"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: ""
+  api_notes: "Flyer iframe src: https://flyertc.brunet.ca?storeId=5173&language=fr (storeId parameter = per-store scoping possible). Underlying Vue SPA calls Azure Functions endpoints /api/config, /api/getneareststores, /api/suggestions, /api/GeoProxy with function keys embedded in public app.ba3e53ce.js; direct probes returned the SPA fallback HTML, so no stable JSON endpoint confirmed."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.brunet.ca/resultats-de-recherche/?search={query}"
+  location_scoped: true
+  guest_ok: true
+  kind: html
+  api_notes: "Search widget markup byte-identical to jeancoutu.com (data-search-sections incl. 'Produits', 'Succursales', 'pjc-medications') - shared Metro digital platform. Query param name on results page not fully verified."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true           # 'Ramassage' offered
+  notes: "'Livraison express' (< 2h, participating stores) advertised on homepage. Proxy signal for structured product data."
+
+locations:
+  count_estimate: 180              # commonly cited ~180+; part of Metro's ~640 pharmacies across banners
+  locator_url: https://www.brunet.ca/localisateur-succursale/
+  locator_api: ""                  # flyer SPA has /api/getneareststores (banner-scoped); main locator API not probed
+
+loyalty_program:
+  name: "Moi (Metro Inc. program; shared with Jean Coutu, Metro, Super C, Premiere Moisson)"
+  card_gated_prices: false         # points + coupons, no member-only flyer price tiers observed
+
+notes: "Same platform/tech stack as Jean Coutu (Metro): identical search widget, same flyer-viewer vendor family (Transcontinental), same Moi loyalty."
+sources_checked: [official-site, flipp, circulaires.club]
+researched_at: "2026-10-12"
+research_status: complete

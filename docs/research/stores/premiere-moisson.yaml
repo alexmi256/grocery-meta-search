@@ -1,0 +1,87 @@
+# Tier 2 per-store research record.
+slug: premiere-moisson
+name: Première Moisson
+name_variants: []
+store_type: ethnic-specialty
+footprint: greater
+tier: 2
+
+website:
+  url: https://premieremoisson.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Metro Inc.
+affiliation: corporate
+banner_family: [Metro, Metro Plus, Super C, Food Basics, Adonis, Jean Coutu, Brunet]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://premieremoisson.com/fr/circulaire
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: null
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Store-scoped circulaire: must select a bakery by postal code or branch list. Weekly cadence and flip weekday not directly verified (flip_weekday left null). EN variant at /en/circulaire assumed, not verified."
+    - type: seasonal
+      sources:
+        - name: official site
+          url: https://premieremoisson.com/fr/promotions
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+      duration_days: 84
+      flip_weekday: Monday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-05 to 2026-12-27"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Seasonal multi-month promotions (e.g. 2 lasagnes/pâtés chinois for $35, Oct 5 - Dec 27 2026), in-store only at participating bakeries. Historically also distributed 665,000 flyers via Canada Post for May/October campaigns."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+  notes: "No product search observed; circulaire is a store-scoped selector, not a product search."
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "No online ordering observed on own site; Première Moisson products also sold in Metro-banner supermarkets across Quebec and Ontario."
+
+locations:
+  count_estimate: 25
+  locator_url: https://premieremoisson.com/fr/circulaire
+  locator_api: ""
+  notes: "25 retail bakeries across Quebec per Metro (July 2026), concentrated in Greater Montreal (Vaudreuil-Dorion flagship at 189 Bd Harwood; Plateau 860 Av. du Mont-Royal E; DDO 11678 Boul de Salaberry; etc.). Store list accessible via the circulaire bakery selector; dedicated locator URL not verified."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "AFFILIATION FINDINGS (corrections to brief): Metro acquired 75% in 2014 but became 100% owner in 2019 (Canada Post case study), so parent is Metro Inc. outright, not 75%. July 2026: FGF Brands acquired the Baie-D'Urfé commercial production facility ($90M); Première Moisson Group remains a Metro subsidiary retaining the brand, its 25 retail bakeries, artisanal in-store production, and the Vaudreuil-Dorion French pastry facility. Direct fetch of premieremoisson.com timed out once during research; facts confirmed via search index and press coverage."
+sources_checked: [official-site, perishablenews, canadiangrocer, canadapost-case-study, wikipedia, retail-insider]
+researched_at: "2026-10-12"
+research_status: complete

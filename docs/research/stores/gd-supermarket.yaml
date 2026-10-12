@@ -1,0 +1,34 @@
+slug: gd-supermarket
+name: G&D Supermarket
+name_variants: ["G & D Supermarket", "Supermarché G & D"]
+store_type: ethnic-specialty  # Chinese supermarket
+footprint: island
+tier: 3
+website:
+  url: https://gdsupermarche.com/
+  languages: n/a              # not verified at tier 3
+  language_switch: n/a
+  render_tech: unknown
+  bot_protection: unknown
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer link found at tier 3."
+product_search:
+  has_search: false
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Third-party listing (o2osell) advertises local home delivery; not an official ecommerce channel."
+locations:
+  count_estimate: 1  # 1006 Boul Saint-Laurent, Montréal QC H2Z 1J3 (Chinatown)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "Self-described 'biggest Chinese supermarket in Chinatown': fresh produce/meat/seafood + snacks from China, Japan, Vietnam."
+sources_checked: [official-site-search-snippet, directories]
+researched_at: "2026-10-12"
+research_status: minimal

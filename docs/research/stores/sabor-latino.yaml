@@ -1,0 +1,45 @@
+slug: sabor-latino
+name: Sabor Latino
+name_variants: ["Sabor Latino Supermarché"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://saborlatino.ca/
+  languages: [fr, en]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found at tier 3."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 2
+  locator_url: ""
+  notes: "6955 Rue Saint-Hubert, Montréal, QC; second location 4387 Boul. Saint-Laurent (branded Sabor Latino St-Laurent, own site saborlatinostlaurent.com)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "FLAG: not a single store — two Montreal locations (per its own marketing and directories); count_estimate corrected to 2. Founded 1984 as Marché Andes; claims 2500+ Latin products / 300 brands; grocery + restaurant counter."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: minimal

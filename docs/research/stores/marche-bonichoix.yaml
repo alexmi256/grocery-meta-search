@@ -1,0 +1,81 @@
+slug: marche-bonichoix
+name: Marché Bonichoix
+name_variants: ["Bonichoix", "BoniChoix"]
+store_type: traditional
+footprint: island
+tier: 2
+
+website:
+  url: https://www.bonichoix.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Sobeys Inc. (Sobeys Québec / Empire Company Ltd.)
+affiliation: independent-affiliate
+banner_family: [IGA, IGA Extra, Les Marchés Tradition, Rachelle Béry, Voisin]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site (per-store Circulaire links)
+          url: https://www.bonichoix.com/fr/store-locator/
+          kind: official
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-marche-bonichoix-du-1-au-7-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/catalogue/circulaire-bonichoix-semaine-prochaine/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true
+      structured_data: false
+      notes: "Banner-wide weekly flyer (~6-7 pages). Official FAQ says the flyer is distributed in paper via Publisac and electronically. Some Bonichoix stores are converting to the Marchés Tradition banner (e.g. Saint-Bruno, Jan 2026 news)."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No site search observed; store locator + per-store pages only."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "No online ordering observed on banner site."
+
+locations:
+  count_estimate: 42
+  locator_url: https://www.bonichoix.com/fr/store-locator/
+  locator_api: ""
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Sobeys Québec banner for independent affiliated grocers — store locator lists independent operator names per store ('Contactez directement le propriétaire de votre magasin'). Montreal island store confirmed (3350-5199 Sherbrooke Est). Count is directory-based (circulaire-en-ligne: 42); an older Sobeys figure cited 83 — current count needs verification."
+sources_checked: [official-site, circulaires-club, circulairecanada, circulaire-en-ligne, wikipedia, informeaffaires]
+researched_at: "2026-10-12"
+research_status: partial

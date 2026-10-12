@@ -1,0 +1,34 @@
+slug: marche-kim-po
+name: Marché Kim-Po
+name_variants: ["Marché Kim Po"]
+store_type: ethnic-specialty  # Asian supermarket
+footprint: island
+tier: 3
+website:
+  url: http://www.marchekimpo.ca/
+  languages: n/a              # not verified at tier 3
+  language_switch: n/a
+  render_tech: unknown
+  bot_protection: unknown
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer link found at tier 3."
+product_search:
+  has_search: false
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+locations:
+  count_estimate: 1  # 5505 Avenue Victoria, Montréal QC H3W 2R2 (Côte-des-Neiges)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "Neighbourhood Asian market; fresh meat/fish counter, self-described 'one stop grocery store'."
+sources_checked: [official-site-search-snippet, directories]
+researched_at: "2026-10-12"
+research_status: minimal

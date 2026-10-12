@@ -1,0 +1,53 @@
+slug: sobeys
+name: Sobeys (banner)
+name_variants: ["Sobeys"]
+store_type: traditional
+footprint: qc-unverified
+tier: 2
+
+website:
+  url: https://www.sobeys.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Sobeys Inc. (Empire Company Ltd.)
+affiliation: corporate
+banner_family: [IGA, IGA Extra, FreshCo, Safeway, Foodland, Farm Boy]
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No Quebec retail stores operate under the Sobeys banner — no QC flyer exists."
+
+product_search:
+  has_search: true
+  url_pattern: ""
+  location_scoped: true
+  guest_ok: true
+  kind: html
+  api_notes: "sobeys.com national search exists; irrelevant for Quebec retail (no stores)."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Not applicable in Quebec."
+
+locations:
+  count_estimate: 0
+  locator_url: ""
+  locator_api: ""
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "FLAGGED — NO QUEBEC RETAIL PRESENCE: the Sobeys banner operates outside Quebec; in Quebec Sobeys Inc. trades exclusively via IGA / IGA Extra, Marchés Tradition, Marché Bonichoix, Rachelle-Béry, Voisin, etc. Sobeys Québec does operate food distribution centres in the province (e.g. Terrebonne). Do not expect Sobeys-banner stores, flyers, or prices in Quebec data. Record kept minimal per assignment."
+sources_checked: [wikipedia, canadiangrocer, ontario-bakery, depquebec]
+researched_at: "2026-10-12"
+research_status: minimal

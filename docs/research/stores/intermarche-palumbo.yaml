@@ -1,0 +1,75 @@
+slug: intermarche-palumbo
+name: L'intermarché Palumbo
+name_variants: ["Marché Palumbo Inc", "Intermarché Palumbo"]
+store_type: traditional
+footprint: island
+tier: 2
+
+website:
+  url: https://www.marchepalumbo.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Palumbo family (independent)
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site homepage offers
+          url: https://www.marchepalumbo.com/
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-intermarche-palumbo-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true
+      structured_data: false
+      notes: "Official homepage publishes 'Nos meilleures offres' as structured HTML with strikethrough prices (high parseability). Aggregators carry a 1-page weekly flyer (Thu-Wed)."
+
+product_search:
+  has_search: true
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Browsable product catalog by department with pagination (e.g. /en/grocery/, /en/meat/, /en/charcuterie/). Dedicated search box not verified."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Unverified; catalog browsing observed only."
+
+locations:
+  count_estimate: 5
+  locator_url: http://www.marchepalumbo.com/fr/magasines/
+  locator_api: ""
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Family-owned independent chain: Roberto and Tony Gentile are the principal owners of all 5 locations (Laval Duvernay, Laval-des-Rapides, Montréal Chabanel, Montréal Tétreaultville, Pierrefonds); 250+ employees. No parent-group affiliation found — flagged: the 'Intermarché' name overlaps with AXEP's L'Intermarché (Loblaw-affiliated) banner, but no membership evidence was found on either site; treat as naming coincidence unless confirmed."
+sources_checked: [official-site, circulaires-club, canpages, cylex]
+researched_at: "2026-10-12"
+research_status: complete

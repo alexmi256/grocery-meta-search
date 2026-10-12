@@ -1,0 +1,45 @@
+slug: berchicci
+name: Berchicci
+name_variants: ["Magasin Berchicci Ltée", "Importation Berchicci Ltée"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://store.berchicci.ca
+  languages: [fr, en]
+  language_switch: path
+  render_tech: spa
+  bot_protection: none
+
+parent_company: "Importation Berchicci Ltée"
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found at tier 3; online store shows product catalog instead."
+
+product_search:
+  has_search: false
+  notes: "Online store likely has search (cart-based site) but not verified at tier 3."
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Obvious from official online store (store.berchicci.ca): cart, product pages, in-store pickup offered."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "6205 Boul. Couture, Montréal QC H1P 3G7 (Saint-Léonard); warehouse-scale Italian specialty market, ~20000 sq ft."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Founded 1960, first to import Nutella to Canada (1967). Corporate site berchicci.ca; retail webstore is the given store.berchicci.ca. Direct importer of Italian specialties, distributor across Canada."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: partial

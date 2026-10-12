@@ -1,0 +1,45 @@
+slug: milano-fruiterie
+name: Milano Fruiterie
+name_variants: ["Fruiterie Milano"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://milanofruiterie.ca/
+  languages: [fr, en]
+  language_switch: toggle
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer link on official site at tier 3 (aggregator circulaire-en-ligne.ca lists the store but no flyer verified)."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "6862 Boul. Saint-Laurent, Montréal, QC (Little Italy)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "URL CORRECTION: given URL milanofruiterie.com redirects to/ replaced by milanofruiterie.ca — the live official site is milanofruiterie.ca. Italian specialty grocer, cheese/charcuterie counters, ready-made pizza counter. 1-833-645-2662 toll-free suggests possible delivery; not verified at tier 3."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: minimal

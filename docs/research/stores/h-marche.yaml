@@ -1,0 +1,55 @@
+# Tier 2 per-store research record.
+slug: h-marche
+name: H Marché
+name_variants: ["H Mart Montreal"]
+store_type: ethnic-specialty
+footprint: island
+tier: 2
+
+website:
+  url: https://www.hmartmontreal.com/
+  languages: [fr, en]
+  language_switch: toggle
+  render_tech: js-heavy
+  bot_protection: none
+
+parent_company: H Mart
+affiliation: corporate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer section on hmartmontreal.com (Wix microsite for the 3 Montreal stores). H Mart US/Canada national weekly ads may exist elsewhere but were not verified for Montreal."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+  notes: "No product search on the Montreal microsite."
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 3
+  locator_url: https://www.hmartmontreal.com/
+  locator_api: ""
+  notes: "3 stores listed in the Locations section on the homepage: Decarie (2116 Decarie Blvd), Downtown (2109 Saint-Catherine St W), St-Jacques (6785 Rue Saint-Jacques)."
+
+loyalty_program:
+  name: "H Point Card"
+  card_gated_prices: false
+  notes: "H Point Card mentioned on homepage; no evidence of card-gated prices."
+
+notes: "H Mart entered Quebec in June 2024 by acquiring 3 Jang Teu grocery stores in Montreal. Montreal arm runs as a minimal Wix microsite (FR/EN headings)."
+sources_checked: [official-site, wikipedia, yellowpages]
+researched_at: "2026-10-12"
+research_status: complete

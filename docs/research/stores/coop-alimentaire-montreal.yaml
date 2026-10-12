@@ -1,0 +1,44 @@
+slug: coop-alimentaire-montreal
+name: La Coop Alimentaire Montréal
+name_variants: []
+store_type: other
+footprint: island
+tier: 3
+
+website:
+  url: https://lacoopalimentaire.ca/
+  languages: [fr, en]
+  language_switch: n/a
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  notes: "not checked — store likely closed"
+
+product_search:
+  has_search: false
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "5957 Rue Jean-Talon E, Montréal (Saint-Léonard), QC H1S 1M5"
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "FLAG — LIKELY PERMANENTLY CLOSED: place data marks it 'Permanently Closed' and a direct fetch of lacoopalimentaire.ca returned an empty body on 2026-10-12 (site appears defunct). Some stale directories still show hours. RECOMMEND EXCLUSION from scope or re-verify before any Phase 3 work."
+sources_checked: [search, directories]
+researched_at: "2026-10-12"
+research_status: minimal

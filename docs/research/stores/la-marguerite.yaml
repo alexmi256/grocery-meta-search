@@ -1,0 +1,45 @@
+slug: la-marguerite
+name: La Marguerite
+name_variants: ["La Marguerite Traiteur", "La Marguerite Catering"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.lamarguerite.ca/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: spa
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer; site is a catalog of priced products (Shopify-style collections)."
+
+product_search:
+  has_search: false
+  notes: "Site has product collections; search not verified at tier 3."
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Obvious: full online shop with prices and checkout on lamarguerite.ca (boutique hours listed)."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "6630 Chemin de la Côte-Saint-Luc, Montréal, QC H4V 1G8."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "URL CORRECTION: given domain lamarguerite.ca resolves to www.lamarguerite.ca — canonical URL recorded with www. Glatt kosher caterer + boutique (30+ years); FR/EN Shopify-style storefront with account login."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: partial

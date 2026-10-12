@@ -1,0 +1,45 @@
+slug: petit-milos
+name: Le Petit Milos
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: ""
+  languages: [fr]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: "Estiatorio Milos (absorbed)"
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No storefront/flyer to check."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 0
+  locator_url: ""
+  notes: "Former address: 5357 Avenue du Parc, Montréal, QC — now occupied by the Estiatorio Milos restaurant."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "VERIFIED CLOSED/ABSORBED: Le Petit Milos was the specialty-food shop (Spiliadis family) supplying the Estiatorio Milos restaurant a few doors north on Park Ave; press/directory history confirms it was the restaurant's shop and no independent storefront exists anymore — its address 5357 Av du Parc is the live Estiatorio Milos restaurant (estiatoriomilos.com). No official/social site of its own found. website: none found with reason. Recommend excluding from flyer pipeline."
+sources_checked: [directories, web-press, official-site]
+researched_at: "2026-10-12"
+research_status: partial

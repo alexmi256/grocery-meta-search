@@ -1,0 +1,45 @@
+slug: johnny-prosciutto
+name: Johnny Prosciutto
+name_variants: ["Johnny Prosciutto Inc."]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://johnnyprosciutto.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: spa
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer; site runs promotions/discounted bundles instead."
+
+product_search:
+  has_search: false
+  notes: "Site has product catalog (WooCommerce-style shop) but search not verified at tier 3."
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Obvious: full online shop with checkout on johnnyprosciutto.com; wholesale distribution to ~20 Montreal retailers (listed on its 'Where to Buy' page: Berchicci, Milano, Baia dei Formaggi, Marché SA et Fils, Soares & Fils, Chouricor, etc.)."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "2641 Av. Charland, Montréal, QC H1Z 1C7."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Artisanal Italian charcuterie maker (homemade soppressata, prosciutto, cacciatore); products sold wholesale to many other stores on this research list."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: partial

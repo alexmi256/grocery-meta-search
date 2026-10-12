@@ -1,0 +1,75 @@
+slug: marche-axep
+name: Marché Axep
+name_variants: ["Axep"]
+store_type: traditional
+footprint: island
+tier: 2
+
+website:
+  url: https://axep.ca/
+  languages: [fr]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: AXEP (Loblaw-affiliated banner group)
+affiliation: independent-affiliate
+banner_family: [L'Intermarché, Freshmart, SuperValu, Shop Easy]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://axep.ca/
+          kind: official
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-axep-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true
+      structured_data: false
+      notes: "Official site hosts an interactive weekly flyer ('Afficher votre circulaire'; image pages). Brand family per site: L'Intermarché, Freshmart, SuperValu, Shop Easy — a group of independent local brands."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No site search observed on static pages."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "No online ordering observed on banner site."
+
+locations:
+  count_estimate: 22
+  locator_url: ""
+  locator_api: ""
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "AXEP is the Loblaw-affiliated banner group; stores are run by independent owners ('Entrepreneurs fiers' / 'propriétaires de magasins'), so affiliation is independent-affiliate, not corporate. Montreal island stores confirmed (3421 Av du Parc, 50 Av du Mont-Royal O, 2925 Rachel E, 1953 Ste-Catherine O, 2925 Sherbrooke E). Count 22 is from circulaire-en-ligne directory and may be incomplete; family-wide total (all 4 brands) unverified. English version not found."
+sources_checked: [official-site, circulaires-club, circulaire-en-ligne, wikipedia, progressivegrocer, hypestat]
+researched_at: "2026-10-12"
+research_status: partial

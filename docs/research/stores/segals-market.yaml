@@ -1,0 +1,34 @@
+slug: segals-market
+name: Segal's Market
+name_variants: []
+store_type: traditional  # budget no-frills general grocer; batch default ethnic-specialty not accurate
+footprint: island
+tier: 3
+website:
+  url: https://www.facebook.com/2012417038809524  # Facebook-only, no official site
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: n/a
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer found; Facebook page is the store's only web presence."
+product_search:
+  has_search: false
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+locations:
+  count_estimate: 1  # 4001 Boul Saint-Laurent, Montréal QC H2W 1Y4 (Plateau, near Schwartz's)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "Known for cheap produce, bulk goods, cash-friendly no-frills shopping; vegan options noted in reviews."
+sources_checked: [facebook, yellowpages, directories]
+researched_at: "2026-10-12"
+research_status: minimal

@@ -1,0 +1,45 @@
+slug: cite-cacher
+name: Cité Cacher
+name_variants: ["Cite Cachere", "Kosher City"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.facebook.com/572569476146105
+  languages: [fr]
+  language_switch: n/a
+  render_tech: js-heavy
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer at tier 3."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "4765 Av. Van Horne, Montréal, QC H3W 1H8 (also listed as 4767 Van Horne on MK guide)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Given task said 'none found'; official Facebook page exists: facebook.com/572569476146105 — recorded as official-social fallback. Kosher supermarket + butcher + deli ('Montreal Kosher Services'); also branded 'Kosher City' in directories; MK-certified takeout."
+sources_checked: [official-social, directories, mk-kosher-guide]
+researched_at: "2026-10-12"
+research_status: minimal

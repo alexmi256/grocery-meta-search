@@ -1,0 +1,34 @@
+slug: 5-saisons
+name: 5 Saisons
+name_variants: ["Les 5 Saisons"]
+store_type: other  # gourmet épicerie fine, not ethnic-specialty
+footprint: island
+tier: 3
+website:
+  url: https://www.les5saisons.ca/  # CORRECTED: dedicated domain is live (was 'none found')
+  languages: [fr, en]
+  language_switch: path           # /en/index.html observed in search results
+  render_tech: ssr
+  bot_protection: none
+parent_company: Metro Inc.
+affiliation: banner-group
+banner_family: [Metro, Metro Plus, Super C, Food Basics]
+flyers:
+  has_flyers: false
+  notes: "No flyer on les5saisons.ca at tier 3. circulaire-en-ligne.ca has a 'Les 5 Saisons Greene' profile page but no current circular. Possible Metro-banner flyer on metro.ca — not verified."
+product_search:
+  has_search: false
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Site advertises product reservation for catering/events, not online grocery ordering."
+locations:
+  count_estimate: 1  # 1280 Greene Ave, Westmount (reopened post-renovation). Outremont (1180 Ave Bernard) reported permanently closed.
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "High-end Metro Inc. banner (épicerie fine since ~1985): imported cheeses, Black Angus AAA, Balik smoked salmon, traiteur. Outremont location appears closed; Westmount active."
+sources_checked: [official-site, metro-corpo-press, wikipedia, circulaire-en-ligne.ca]
+researched_at: "2026-10-12"
+research_status: minimal

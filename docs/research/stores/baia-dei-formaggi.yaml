@@ -1,0 +1,45 @@
+slug: baia-dei-formaggi
+name: Baia dei Formaggi
+name_variants: ["La Baia Dei Formaggi"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.labaiadeiformaggi.com/
+  languages: [fr, en]
+  language_switch: subdomain
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer link on official site at tier 3."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "1715 Rue Jean-Talon E, Montréal, QC (near Fabre metro)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "URL CORRECTION: given domain labaiadeiformaggi.com resolves to www.labaiadeiformaggi.com — canonical URL recorded with www. Italian fromagerie/charcuterie/sandwicherie since 1973 (founded by Francesco Occhiuto); claims largest cheese selection in eastern Canada (400+ varieties)."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: minimal

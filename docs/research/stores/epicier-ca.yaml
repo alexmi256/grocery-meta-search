@@ -1,0 +1,44 @@
+slug: epicier-ca
+name: L'Épicerie (l'épicier)
+name_variants: ["Alimentation l'Épicier"]
+store_type: other
+footprint: island
+tier: 3
+
+website:
+  url: https://epicier.ca
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  notes: "no flyer; forfait-based pricing model instead (tier 3)"
+
+product_search:
+  has_search: false
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "home grocery delivery service: weekly forfaits (Solo 91$ / Monoparentale 120$ / Duo 134$ / Petite famille 167$ / Grande famille 196$), prices frozen for the contract term"
+
+locations:
+  count_estimate: 0
+  locator_url: ""
+  locator_api: ""
+  notes: "HQ/contact address: 11460 Bd Armand-Bombardier, Montréal, QC H1E 2W9. DELIVERY-ONLY model confirmed — no public storefront; delivers province-wide (QC + parts of ON/NB)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "FLAG — delivery-only, no physical storefront: the Armand-Bombardier address is the business HQ/warehouse, not a shop. Bilingual site (FR/EN) with mobile app for customers."
+sources_checked: [search, directories, official-site-indexed]
+researched_at: "2026-10-12"
+research_status: minimal

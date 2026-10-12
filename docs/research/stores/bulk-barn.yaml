@@ -1,0 +1,73 @@
+slug: bulk-barn
+name: Bulk Barn
+name_variants: []
+store_type: ethnic-specialty
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.bulkbarn.ca
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Bulk Barn Foods Ltd.
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.bulkbarn.ca/home-en/index_deals.html
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+        - name: flyerca
+          url: http://www.flyerca.com/bulk-barn/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: true
+      structured_data: false
+      notes: "Plain static HTML deals page (200 OK over plain HTTP, no bot protection) — the most scrape-friendly official flyer in this batch. FR variant at /home-fr/. Page retains multiple past week blocks (partial archive). Separate printable coupons: $3 off $12 / $5 off $20 with codes SAVE$3 / SAVE$5, plus email-newsletter coupons."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No site search found (only an accessibility-widget form). The weekly deals page is the browse mechanism."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "No proprietary e-commerce. Online ordering/delivery via Instacart partnership (expanded to 38+ locations; ~$3.99 delivery on $35+)."
+
+locations:
+  count_estimate: 280
+  locator_url: https://www.bulkbarn.ca/store_selector/en/
+  locator_api: ""
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "No loyalty program (email coupons only). Franchise model. Founded 1982; ~280 stores Canada-wide (YellowPages 280 results; trade press says 270+). Homepage redirects /en/ -> /home-en/ via meta refresh to index_deals.html."
+sources_checked: [official-site, flyerca, canadiangrocer]
+researched_at: "2026-10-12"
+research_status: complete

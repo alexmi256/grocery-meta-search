@@ -1,0 +1,76 @@
+# Tier 2 per-store research record.
+slug: shop-sante
+name: Shop Santé
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 2
+
+website:
+  url: https://shopsante.ca/
+  languages: [fr, en]
+  language_switch: toggle
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Shop Santé Inc.
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://shopsante.ca/
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: flipp
+          url: https://flipp.com/en-ca/montreal-qc/stores/shop-sante
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: null
+      flip_weekday: null
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Official site has a 'Circulaire' page and homepage 'Découvre notre circulaire' section; flyer cadence, format and flip weekday not directly verified (fields left null). Flipp lists the retailer but its store pages showed no live flyers at last crawl."
+
+product_search:
+  has_search: true
+  url_pattern: "https://shopsante.ca/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+  notes: "'Recherche' link in footer; Shopify storefront, standard /search?q= pattern assumed, not directly verified. Per-product local availability checker on product pages."
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Official transactional site: delivery (GLS, Livrapide, Postes Canada; free $99+) and in-store pickup. Strong structured product data proxy (prices, sale prices, Quebec-origin flags)."
+
+locations:
+  count_estimate: 50
+  locator_url: https://shopsante.ca/
+  locator_api: ""
+  notes: "50 stores chain-wide in Quebec (50th opened Sept 2026 in Sainte-Marie). Per-store pages at /pages/magasins/<slug>; /pages/magasins itself returns 404, so no dedicated locator URL verified. Montreal presence confirmed: Saint-Léonard (7600 Bd Viau) and 1851 Rue Sainte-Catherine O, Montréal; also Laval, Terrebonne, Saint-Jérôme, Gatineau, Lévis, Québec City."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Franchise network: corporate entity 'SHOP SANTE INC.' dba Shop Santé; stores operated by franchisees ('Franchise' link on site). Supplements/natural products chain, not a full grocery."
+sources_checked: [official-site, flipp, pagesjaunes, cylex, moovit]
+researched_at: "2026-10-12"
+research_status: partial

@@ -1,0 +1,45 @@
+slug: la-bendicion
+name: Marché Latino La Bendición
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: http://marche-bendicion.poi.place/
+  languages: [fr]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer at tier 3."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "9201 Bd Saint-Michel, Montréal, QC (Villeray–Saint-Michel–Parc-Extension)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Given URL verified as the store's mini-site on poi.place (a place-directory that hosts per-store pages). Small Latin grocery; secondary listings show 7489 Rue St-Hubert too — likely same owner, not verified at tier 3."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: minimal

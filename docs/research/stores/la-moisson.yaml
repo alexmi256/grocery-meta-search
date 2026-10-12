@@ -1,0 +1,87 @@
+# Tier 2 per-store research record.
+slug: la-moisson
+name: La Moisson Supermarché Santé
+name_variants: []
+store_type: ethnic-specialty
+footprint: greater
+tier: 2
+
+website:
+  url: https://lamoisson.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Independent (single store)
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: biweekly
+      sources:
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/la-moisson-supermarche-sante/circulaire-la-moisson-supermarche-sante
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 14
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-01 to 2026-10-15"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: false
+      structured_data: false
+      notes: "10-page print circulaire, biweekly, FR only on aggregators."
+    - type: online-specials
+      sources:
+        - name: official site
+          url: https://lamoisson.com/collections/en-circulaire-in-flyer
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+      duration_days: 14
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-01 to 2026-10-15"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Ongoing 'en circulaire' collection on the Shopify storefront (FR page; /en/collections/en-circulaire-in-flyer for EN); per-item sale prices, highly parseable."
+
+product_search:
+  has_search: true
+  url_pattern: "https://lamoisson.com/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr, en]
+  notes: "Shopify storefront; standard /search?q= pattern assumed, not directly verified."
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Online boutique with 10,000+ products, Canada-wide delivery (Canada Post/Nationex/LivRapide); free in-store pickup. Strong structured product data proxy."
+
+locations:
+  count_estimate: 1
+  locator_url: https://lamoisson.com/
+  locator_api: ""
+  notes: "Single store: 360 Rue Sicard, Sainte-Thérèse QC (North Shore)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "FLAG: single store in Sainte-Thérèse (North Shore); no Montreal-island presence verified — geography filter should treat island-only queries as out of scope. Organic health supermarket for 30+ years."
+sources_checked: [official-site, circulaire-en-ligne, yellowpages, zipleaf]
+researched_at: "2026-10-12"
+research_status: complete

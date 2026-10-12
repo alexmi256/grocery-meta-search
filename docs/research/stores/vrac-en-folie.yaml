@@ -1,0 +1,51 @@
+slug: vrac-en-folie
+name: Vrac En Folie
+name_variants: []
+store_type: other
+footprint: island
+tier: 3
+
+website:
+  url: http://www.vracenfolie.com/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  notes: "no flyer found; online boutique instead (tier 3)"
+
+product_search:
+  has_search: true
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "WooCommerce-style online boutique with product categories, variant pricing and stock status (e.g. /categorie-produit/bonbons/); url_pattern not captured at tier 3"
+  bot_protection: ""
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "online boutique with delivery across Quebec; in-store prices may differ from online prices"
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "274 Rue Jean-Talon E, Montréal, QC H2R 1S7 (near Jean-Talon market). Bulk food store + wholesaler/distributor, 25+ years."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "15% discount when bringing own containers in store."
+sources_checked: [search, official-site-indexed]
+researched_at: "2026-10-12"
+research_status: minimal

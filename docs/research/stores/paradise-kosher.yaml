@@ -1,0 +1,45 @@
+slug: paradise-kosher
+name: Paradise Kosher
+name_variants: ["Paradise Cachere"]
+store_type: ethnic-specialty
+footprint: greater
+tier: 3
+
+website:
+  url: http://www.paradisekosher.com/
+  languages: [en]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found at tier 3."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Site says 'shop online or in store' for take-out/catering; grocery online ordering not verified at tier 3."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "11608 Blvd de Salaberry, Dollard-des-Ormeaux, QC H9B 2R8."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Given URL verified (http, www). Kosher grocery + deli + grill/fast-food counter + bakery, Moroccan/Israeli specialties; catering for lifecycle events. MK-certified (listed on mk.ca as 'Paradise Cachere'). footprint: greater (Dollard-des-Ormeaux) per assignment."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: minimal

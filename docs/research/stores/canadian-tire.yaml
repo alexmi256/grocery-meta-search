@@ -1,0 +1,73 @@
+slug: canadian-tire
+name: Canadian Tire
+name_variants: []
+store_type: gen-merch
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.canadiantire.ca
+  languages: [fr, en]
+  language_switch: path
+  render_tech: js-heavy
+  bot_protection: blocked
+
+parent_company: Canadian Tire Corp.
+affiliation: corporate
+banner_family: [SportChek, "Mark's", Atmosphere, PartSource]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.canadiantire.ca/en.html
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: browser-needed
+        - name: flipp
+          url: https://flipp.com/en-ca/brampton-on/stores/canadian-tire
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-15 to 2026-10-21"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Akamai bot manager returns HTTP 403 to plain curl on the whole site — browser-needed for everything. Canadian Tire is an official Flipp partner (Flipp-powered digital flyer). Aggregator validity labels are inconsistent (some show multi-week spans); the weekly Thursday flip is the consistent pattern. Separate event flyers exist (Red Thursday/Black Friday, Christmas). Sells groceries in many stores; flyer regularly includes food."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.canadiantire.ca/en/search?q={query}"
+  location_scoped: true
+  guest_ok: true
+  kind: spa
+  api_notes: "URL pattern assumed from site conventions; Akamai 403 blocks plain-HTTP verification. No public JSON API observed."
+  bot_protection: blocked
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Full e-commerce with home delivery and curbside/in-store pickup; in-store availability shown on product pages."
+
+locations:
+  count_estimate: 500
+  locator_url: https://www.canadiantire.ca/en.html
+  locator_api: ""
+
+loyalty_program:
+  name: "Triangle Rewards"
+  card_gated_prices: false
+
+notes: "Triangle Rewards (CT Money) is earn-and-redeem, shared across Canadian Tire, SportChek, Mark's, Atmosphere and gas stations — not price-gating. Locator: store locator lives in site nav; no HTTP-verifiable direct URL (Akamai-blocked). ~500 Canadian Tire stores; ~1,700 locations across all Corp banners."
+sources_checked: [official-site, flipp, flyerseek, caflyers]
+researched_at: "2026-10-12"
+research_status: complete

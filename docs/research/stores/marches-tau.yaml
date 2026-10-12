@@ -1,0 +1,100 @@
+# Tier 2 per-store research record.
+slug: marches-tau
+name: Les Marchés Tau
+name_variants: ["Marchés TAU"]
+store_type: ethnic-specialty
+footprint: greater
+tier: 2
+
+website:
+  url: https://marchestau.com/
+  languages: [fr]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Independent (chain of 6)
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://marchestau.com/
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-marches-tau-de-fruits-et-legumes-du-5-au-11-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: pdfflyers.com
+          url: https://pdfflyers.com/store/marches-tau
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Monday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-05 to 2026-10-11"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true
+      structured_data: false
+      notes: "Weekly 1-page 'Fruits et Légumes' flyer, valid Mon-Sun. Official site has a 'Circulaires' section; exact official URL/format not directly verified."
+    - type: seasonal
+      sources:
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-marches-tau-du-5-octobre-au-15-novembre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 42
+      flip_weekday: Monday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-05 to 2026-11-15"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: false
+      structured_data: false
+      notes: "Seasonal ~16-page flyer (e.g. cold-season essentials); appears roughly monthly-to-bimonthly."
+
+product_search:
+  has_search: true
+  url_pattern: "https://marchestau.com/catalogue"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: ""
+  bot_protection: none
+  languages: [fr]
+  notes: "Faceted catalog search with structured product data (UPC codes, CAD prices, stock status); exact search URL pattern not verified."
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "'Magasiner en Ligne' online store with structured product data (Azure CDN images); pickup options not verified."
+
+locations:
+  count_estimate: 6
+  locator_url: https://marchestau.com/
+  locator_api: ""
+  notes: "6 stores: Montreal St-Denis (4238 R. Saint-Denis), Saint-Léonard (7373 Boul Langelier), Laval (3216 Boul Saint-Martin O), Brossard (6845 Boul Taschereau / 7000 Av. Auteuil), Blainville (1325 Bd Michèle-Bohec), Pointe-Claire (2345 Route Transcanadienne). 'Nos Magasins' page on site; exact URL not verified."
+
+loyalty_program:
+  name: "Tautale"
+  card_gated_prices: false
+  notes: "'Programme fidélité' / Tautale FAQ on official site; no evidence of card-gated prices."
+
+notes: "Independent organic/health grocery chain founded 1978. FR-only site."
+sources_checked: [official-site, circulaires.club, pdfflyers, yellowpages, cylex]
+researched_at: "2026-10-12"
+research_status: complete

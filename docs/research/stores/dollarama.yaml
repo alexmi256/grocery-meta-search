@@ -1,0 +1,51 @@
+slug: dollarama
+name: Dollarama
+name_variants: []
+store_type: dollar
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.dollarama.com
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: Dollarama Inc.
+affiliation: corporate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No official flyer — a deliberate business-model choice (no flyer section anywhere on dollarama.com; homepage 200 OK, no flyer links). Aggregator sites (e.g. flyerbox) publish unofficial 'Dollarama weekly flyer' pages of dubious provenance (identical 5-page templates, no end dates); treat as unreliable, NOT a flyer source."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "dollarama.com is informational only (locator, corporate, gift cards). The online catalogue lives on an Instacart storefront (shop.dollarama.com resolves to an Instacart-powered storefront; dollarama.com also links dollarama.instacart.com/store/dollarama/storefront); search there is Instacart's, not Dollarama's."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "No proprietary e-commerce. Online ordering/delivery is via Instacart only (shop.dollarama.com is Instacart-powered)."
+
+locations:
+  count_estimate: 1734
+  locator_url: https://www.dollarama.com/en-CA/locations/
+  locator_api: ""
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "No loyalty or points program (confirmed: no loyalty/rewards mentions on site). Gift cards sold online. HQ in Montreal. 1,734 stores in Canada (FY2026). Price ceiling now $5 (raised from $1 in steps 2009–2022)."
+sources_checked: [official-site]
+researched_at: "2026-10-12"
+research_status: complete

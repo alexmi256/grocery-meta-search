@@ -1,0 +1,73 @@
+slug: costco
+name: Costco Wholesale
+name_variants: [Costco]
+store_type: warehouse
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.costco.ca
+  languages: [fr, en]
+  language_switch: toggle
+  render_tech: js-heavy
+  bot_protection: none
+
+parent_company: Costco Wholesale Corp.
+affiliation: corporate
+banner_family: [Kirkland Signature]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: warehouse-savings
+      sources:
+        - name: official site
+          url: https://www.costco.ca/in-the-warehouse.html
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: member email handout
+          url: https://www.costco.ca/in-the-warehouse.html
+          kind: official
+          format: html
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 14
+      flip_weekday: Monday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-12 to 2026-10-25"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "No PDF/print flyer. Offers are warehouse handouts + member emails + the Warehouse Savings section on costco.ca (verified 200 OK over plain HTTP; Akamai CDN present but not challenging this client; MUI/React storefront). Separate QC vs West/ON/Atlantic editions (e.g. Costco (QC) Warehouse Offers vs Costco (West, ON & Atlantic)). Individual offers can carry their own date ranges inside the 2-week cycle. 115 warehouses in Canada (FY2026 Q4, investor.costco.com)."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.costco.ca/s?&keyword={query}"
+  location_scoped: true
+  guest_ok: true
+  kind: html
+  api_notes: "Server-rendered HTML results; /CatalogSearch?keyword= 301-redirects to /s?&keyword=. No public JSON API observed."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Members-only checkout (Gold Star/Executive). Browsing and prices visible to guests; purchase requires membership. Same-day grocery via Instacart. Online prices include shipping — higher than warehouse flyer prices."
+
+locations:
+  count_estimate: 115
+  locator_url: https://www.costco.ca/w/-/locations?langId=-24
+  locator_api: ""
+
+loyalty_program:
+  name: "Costco membership (Gold Star / Executive)"
+  card_gated_prices: true
+
+notes: "Membership is the price gate for everything, including online. Executive members earn 2% annual reward. Warehouse flyer prices are in-warehouse only; costco.ca shows 'Online Price'."
+sources_checked: [official-site, flyerca, flyerseek, flipp, investor-relations]
+researched_at: "2026-10-12"
+research_status: complete

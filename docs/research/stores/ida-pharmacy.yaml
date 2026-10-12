@@ -1,0 +1,44 @@
+slug: ida-pharmacy
+name: I.D.A.
+name_variants: ["Ida Guardian Pharmacy", "Guardian, I.D.A. and Remedy'sRx"]
+store_type: pharmacy
+footprint: qc-unverified
+tier: 3
+
+website:
+  url: https://www.guardian-ida-remedysrx.ca/
+  languages: [fr, en]
+  language_switch: n/a
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: McKesson Canada
+affiliation: banner-group
+banner_family: ["Guardian", "I.D.A.", "Remedy'sRx"]
+
+flyers:
+  has_flyers: false
+  notes: "not checked — store out of scope"
+
+product_search:
+  has_search: false
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 0
+  locator_url: ""
+  locator_api: ""
+  notes: "No Quebec locations found. Indexed locations: Ontario, British Columbia, Saskatchewan."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "FLAG — VERIFIED Flipp national-footer artifact: I.D.A. is a McKesson Canada pharmacy banner active in ON/BC/SK but no Quebec (let alone Montreal) pharmacy under this banner was found. RECOMMEND EXCLUSION from the Quebec grocery scope."
+sources_checked: [search, official-site-indexed, flipp-indexed]
+researched_at: "2026-10-12"
+research_status: minimal

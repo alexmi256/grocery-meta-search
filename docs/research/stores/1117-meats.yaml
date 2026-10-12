@@ -1,0 +1,44 @@
+slug: 1117-meats
+name: 1117 Meats and Pantry
+name_variants: []
+store_type: ethnic-specialty
+footprint: qc-unverified
+tier: 3
+
+website:
+  url: https://www.1117mp.com/
+  languages: [fr, en]
+  language_switch: n/a
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  notes: "not checked — store out of scope"
+
+product_search:
+  has_search: false
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "1117 Queen St W, Toronto, ON. NO Quebec presence found."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "FLAG — VERIFIED Flipp national-listing artifact: all search results point to the single Toronto location (1117 Queen St W). No Montreal/Quebec storefront exists. RECOMMEND EXCLUSION from the Quebec grocery scope."
+sources_checked: [search, flipp-indexed]
+researched_at: "2026-10-12"
+research_status: minimal

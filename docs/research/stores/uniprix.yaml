@@ -1,0 +1,97 @@
+slug: uniprix
+name: Uniprix
+name_variants: ["Uniprix Sante", "Uniprix Clinique"]
+store_type: pharmacy
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.uniprix.com
+  languages: [fr, en]              # /en/ homepage renders
+  language_switch: path            # /fr/... vs /en/...
+  render_tech: ssr                  # McKesson/Sitecore; media paths /-/media/mckesson/
+  bot_protection: none
+
+parent_company: McKesson Canada    # acquired March 2017 (US McKesson). Task brief said 'Uniprix Inc. Quebec co-op' - corrected: it was a co-op of independent pharmacists before the 2017 McKesson acquisition.
+affiliation: corporate
+banner_family: []                  # McKesson also owns Proxim in Quebec (separate banner, not researched here)
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.uniprix.com/fr/circulaire
+          kind: official
+          format: json-api         # official page IS a Flipp embed (flippiframe + flyer-flipp-bridge.js)
+          parse_friendliness: high # item-level data comes from Flipp's structured feed
+          fetchability: browser-needed  # page itself is JS (Flipp iframe); Flipp API reachable via HTTP
+        - name: Flipp
+          url: https://flipp.com/en-ca/westmount-qc/stores/uniprix
+          kind: aggregator
+          format: json-api
+          parse_friendliness: high
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-uniprix-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14 (10 pages)"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Flyer bridge JS pushes GA dataLayer events (flipp_flyer_view, flipp_item_click with itemId/name/priceText/sku/category/flyerId) - useful analytics-hook schema if we embed."
+    - type: beauty
+      sources:
+        - name: official site
+          url: https://www.uniprix.com/fr/circulaire
+          kind: official
+          format: json-api
+          parse_friendliness: high
+          fetchability: browser-needed
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14 - Carnet Uniprix Beaute (4 pages)"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Beauty insert ('Carnet Beaute') runs inside the same Flipp embed."
+
+product_search:
+  has_search: false                 # no product catalog/search found; site search only covers health articles (/fr/article/recherche)
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "McKesson Sitecore site is informational + pharmacy services. /fr/boutique-beaute is a showcase page with no cart/checkout markers observed."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "No checkout observed; app offers prescription renewals and coupons only. Weak proxy for structured product data (use Flipp feed instead)."
+
+locations:
+  count_estimate: 360              # ~3rd in Quebec behind Jean Coutu (~382) and Familiprix (~358)
+  locator_url: https://www.uniprix.com/fr/succursales
+  locator_api: ""                  # not probed
+
+loyalty_program:
+  name: ""                          # no banner-wide points program
+  card_gated_prices: false
+  # Notes: Carte Privilege Beaute and Carte Privilege 60+ (10% off for 60+) are discount cards, not flyer-price programs; 'macarte Uniprix' exists in only 5 Estrie stores.
+
+notes: "Owned by McKesson (also owns Proxim) - flag for possible shared platform with Proxim in Phase 2b. Official flyer relies entirely on Flipp."
+sources_checked: [official-site, flipp, circulaires.club]
+researched_at: "2026-10-12"
+research_status: complete

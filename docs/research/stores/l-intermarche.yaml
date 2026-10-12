@@ -1,0 +1,81 @@
+slug: l-intermarche
+name: L'Intermarché
+name_variants: ["L'Intermarché", "Intermarché (Québec)"]
+store_type: traditional
+footprint: qc-confirmed
+tier: 2
+
+website:
+  url: https://lintermarche.ca/
+  languages: [fr]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: AXEP (Loblaw-affiliated banner group)
+affiliation: independent-affiliate
+banner_family: [Axep, Freshmart, SuperValu, Shop Easy]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://lintermarche.ca/
+          kind: official
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-intermarche/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-intermarche-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true
+      structured_data: false
+      notes: "Official site hosts an interactive weekly flyer ('Afficher votre circulaire'; image pages). Site is a Loblaw/Provigo creative-asset build (assetful.loblaw.ca) celebrating independent store owners."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No site search observed on static pages."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "No online ordering observed on banner site."
+
+locations:
+  count_estimate: null
+  locator_url: ""
+  locator_api: ""
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
+  # research. Record the mechanism here.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "AXEP is the Loblaw-affiliated banner group (listed among Provigo/Loblaw banners); stores are run by independent owners ('Nous célébrons nos formidables propriétaires de magasins'), so affiliation is independent-affiliate, not corporate. English version not found (site is French-only); shopeasy.ca is the English twin for the Freshmart brand, not L'Intermarché. Store count unverified — locator URL not captured."
+sources_checked: [official-site, circulairecanada, circulaires-club, circulaire-en-ligne, wikipedia, progressivegrocer]
+researched_at: "2026-10-12"
+research_status: partial

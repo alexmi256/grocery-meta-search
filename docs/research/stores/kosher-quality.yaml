@@ -1,0 +1,45 @@
+slug: kosher-quality
+name: Kosher Quality
+name_variants: ["Kosher Quality Bakery Ltd"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://kosher-quality-bakery-ltd.business.site/
+  languages: [en]
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer on the Google business site at tier 3."
+
+product_search:
+  has_search: false
+  notes: ""
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "5855 Av. Victoria, Montréal, QC H3W 2R6 (Snowdon)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "URL CORRECTION: given task said 'none found', but the official Google business site exists: kosher-quality-bakery-ltd.business.site. Kosher bakery + takeout (Shabbat meals to go, party sandwiches, salads); MK-certified ('Kosher Quality Bakery', 5855 Victoria)."
+sources_checked: [official-site, directories, mk-kosher-guide]
+researched_at: "2026-10-12"
+research_status: minimal

@@ -1,0 +1,45 @@
+slug: lipas-kosher
+name: Lipa's Kosher Market
+name_variants: ["Lipa's Supermarket"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.lipassupermarket.com/
+  languages: [en]
+  language_switch: n/a
+  render_tech: spa
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer; site shows category catalog with sale prices instead."
+
+product_search:
+  has_search: false
+  notes: "Site has catalog categories + a 'Can't find item?' prompt; search not verified at tier 3."
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Obvious: site has cart/checkout ('0 items in cart', 'Choose an order')."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  notes: "5573 Av. du Parc, Montréal, QC H2V 4H2 (Mile End)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "URL CORRECTION: given domain lipassupermarket.com resolves to www.lipassupermarket.com — canonical URL recorded with www. Kosher supermarket; site is EN-first (kosher market, English content dominates)."
+sources_checked: [official-site, directories]
+researched_at: "2026-10-12"
+research_status: partial

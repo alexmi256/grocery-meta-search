@@ -1,0 +1,87 @@
+slug: jean-coutu
+name: Jean Coutu
+name_variants: ["PJC Jean Coutu"]
+store_type: pharmacy
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.jeancoutu.com
+  languages: [fr, en]              # /en/ homepage exists and renders
+  language_switch: path            # /fr/... vs /en/...
+  render_tech: ssr                  # product category pages are server-rendered and crawlable
+  bot_protection: none             # plain HTTP GET returned 200, no challenge
+
+parent_company: Metro Inc.         # acquired May 2018 for ~$4.5B (Competition Bureau cleared with 10 divestitures)
+affiliation: corporate
+banner_family: [Brunet, Metro, Super C, Adonis, Premiere Moisson]
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.jeancoutu.com/magasiner/circulaire
+          kind: official
+          format: images            # Transcontinental "flyertc" viewer iframe (Vue SPA)
+          parse_friendliness: low
+          fetchability: browser-needed  # iframe src jeancoutu-canadacentral.azurewebsites.net; Vue SPA, no SSR content
+        - name: Flipp
+          url: https://flipp.com/en-ca/westmount-qc/stores/jean-coutu
+          kind: aggregator
+          format: json-api
+          parse_friendliness: high
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-jean-coutu-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: flyerca.com
+          url: https://www.flyerca.com/circulaire-jean-coutu-cette-semaine/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday        # next week's flyer previewable from Tuesday, valid Thursday onward
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Inserts run alongside the weekly flyer: Cahier MOI (2-week), Cahier Prestige (2-week), Cahier Pharmacien."
+  api_notes: "Official flyer embeds TC Media flyer viewer via iframe to https://jeancoutu-canadacentral.azurewebsites.net/ (tc-flyer-iframe), postMessage API for shopping-list add/remove (action=addToShoppingList). Same 'flyertc' platform family as Brunet's flyer (flyertc.brunet.ca)."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.jeancoutu.com/magasiner/recherche?search={query}"
+  location_scoped: true            # product pages show 'Disponible dans d'autres succursales' - availability is store-scoped
+  guest_ok: true
+  kind: html                        # SSR catalog; product pages indexed by search engines
+  api_notes: "Search widget sections: Produits, Succursales, Conseils, Medicaments. Markup identical to brunet.ca search widget (shared Metro digital platform)."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true            # /magasiner boutique; promo codes observed (OCT10PJC $10 off $60)
+  click_and_collect: true           # pickup at selected participating stores
+  notes: "Delivery offered. Strong proxy signal for structured product data (SSR catalog with prices, per-unit pricing)."
+
+locations:
+  count_estimate: 380              # ~382 per Wikipedia; Metro reports ~640 pharmacies across JC/Brunet/Metro Pharmacy/Food Basics banners
+  locator_url: https://www.jeancoutu.com/localisateur-succursale/
+  locator_api: ""                  # not probed; store-search input exists on locator page
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: "Moi (Metro Inc. program; also Metro, Super C, Brunet, Premiere Moisson)"
+  card_gated_prices: false         # Moi is points + app coupons; no member-only flyer price tiers observed
+
+notes: "Shared digital platform with Brunet (both Metro Inc.): identical search-bar markup/data attributes, same Transcontinental flyer-viewer family, same Moi loyalty program."
+sources_checked: [official-site, flipp, circulaires.club, flyerca]
+researched_at: "2026-10-12"
+research_status: complete

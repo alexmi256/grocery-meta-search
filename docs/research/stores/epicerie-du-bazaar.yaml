@@ -1,0 +1,41 @@
+slug: epicerie-du-bazaar
+name: Épicerie Du Bazaar
+name_variants: ["Bazaar Grocery", "Marche Bazaar", "Épicerie Du Bazaar - Boucherie Halal, Pâtisserie, Noix & Épicerie"]
+store_type: ethnic-specialty  # Persian / Indian / Middle Eastern grocery
+footprint: island
+tier: 3
+website:
+  url: https://www.bazaarfood.ca/  # online store
+  languages: [fr, en]              # bilingual marketing observed (FR posts + EN site copy)
+  language_switch: n/a
+  render_tech: unknown
+  bot_protection: unknown
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: false
+  notes: "No flyer; store publishes priced online catalog instead."
+product_search:
+  has_search: true
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Online store advertised ('we developed our online store'); search URL pattern not identified at tier 3."
+  bot_protection: unknown
+  languages: n/a
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Online ordering with delivery across West Island, Laval, Downtown, Côte Saint-Luc, NDG, LaSalle per the store's own description. Facebook page also active: facebook.com/194567587904499."
+locations:
+  count_estimate: 1  # 1905 Rue Sainte-Catherine O, Montréal QC H3H 1M3 (Shaughnessy Village / downtown)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "Persian/Indian/Arab/Turkish products; fresh halal meat, pastry, nuts. Priced online catalog = structured-data signal for Phase 4."
+sources_checked: [official-site, directories, cylex]
+researched_at: "2026-10-12"
+research_status: minimal

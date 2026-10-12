@@ -1,0 +1,57 @@
+slug: marche-sheng-tai
+name: Marché Sheng Tai
+name_variants: ["盛泰超市"]
+store_type: ethnic-specialty  # Asian supermarket
+footprint: island              # Dollard-des-Ormeaux is a de-merged municipality on the island
+tier: 3
+website:
+  url: https://www.marcheshengtai.ca/
+  languages: n/a              # not verified at tier 3
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: circulaires.ca
+          url: https://www.circulaires.ca/sheng-tai/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true
+      structured_data: false
+      notes: "Aggregator only; circular 'available every Thursday, one day in advance, web and image versions'."
+product_search:
+  has_search: true
+  url_pattern: "https://www.marcheshengtai.ca/?s={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "WooCommerce-style storefront; search URL is conventional pattern, not manually verified."
+  bot_protection: unknown
+  languages: n/a
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Live shopping cart observed on homepage; delivery/pickup scope not verified at tier 3."
+locations:
+  count_estimate: 1  # 4850 Boul des Sources, Dollard-des-Ormeaux QC H8Y 3C7 (West Island)
+  locator_url: ""
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+notes: "Smaller Asian supermarket (Chinese community focus; also African/Latin items); butcher & fishmonger in back. DISTINCT from Marché Sheng Tang (1425 Rue du Fort) — different business."
+sources_checked: [official-site, circulaires.ca, circulaires.com, directories]
+researched_at: "2026-10-12"
+research_status: minimal

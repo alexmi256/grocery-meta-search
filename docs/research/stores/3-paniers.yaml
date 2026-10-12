@@ -1,0 +1,44 @@
+slug: 3-paniers
+name: 3 Paniers
+name_variants: ["Épicerie populaire 3 paniers", "Trois Paniers"]
+store_type: other
+footprint: island
+tier: 3
+
+website:
+  url: http://carrefoursolidaire.org/activites/3-paniers/
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: Carrefour Solidaire (opérée par Marché Frontenac, OBNL)
+affiliation: corporate
+banner_family: ["Marché Solidaire Frontenac"]
+
+flyers:
+  has_flyers: false
+  notes: "no flyer found (tier 3)"
+
+product_search:
+  has_search: false
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "2375 rue Sainte-Catherine E, Montréal, QC H2K 2J5. Solidarity grocery with 3-tier sliding-scale pricing (prix solidaire / suggéré / au suivant)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Open year-round, 300+ products, accepts Carte proximité. Same organization as Marché Solidaire Frontenac."
+sources_checked: [search, official-site]
+researched_at: "2026-10-12"
+research_status: minimal

@@ -1,0 +1,44 @@
+slug: fruiterie-valmont
+name: Fruiterie Valmont
+name_variants: ["Fruiterie Val-Mont"]
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: http://www.val-mont.ca/
+  languages: [fr, en]
+  language_switch: n/a
+  render_tech: ""
+  bot_protection: ""
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  notes: "no flyer found (tier 3)"
+
+product_search:
+  has_search: false
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "2147 Av. du Mont-Royal E, Montréal, QC H2H 1J9"
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "URL CORRECTION NEEDED: given URL val-mont.ca is referenced as the business site in directory listings, but epicerievalmont.com appears to be the newer/current official site. Verify in deeper research."
+sources_checked: [search, directories]
+researched_at: "2026-10-12"
+research_status: minimal

@@ -1,0 +1,76 @@
+slug: iga-extra
+name: IGA Extra
+name_variants: ["IGA extra", "IGA Extra"]
+store_type: traditional
+footprint: qc-confirmed
+tier: 1
+
+website:
+  url: https://www.iga.net
+  languages: [fr, en]
+  language_switch: path
+  render_tech: ssr
+  bot_protection: none
+  # No separate site: IGA Extra stores use iga.net (same flyer page, same online grocery).
+
+parent_company: Sobeys Inc. (Empire Company Limited)
+affiliation: corporate
+banner_family: [IGA, IGA Express]
+# Larger-format IGA banner (~133 stores in QC, 2025). Many locations host in-store Rachelle-Béry boutiques.
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://www.iga.net/circulaire
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+        - name: Flipp
+          url: https://flipp.com/en-ca/verdun-qc/flyer/7725575-iga-quebec-weekly-eflyer
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: browser-needed
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
+      per_store_variant: true
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Shares the IGA Québec weekly eFlyer — no separate IGA Extra flyer edition observed. See iga.yaml for full flyer enumeration (seasonal, catering, coupon, personalized)."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.iga.net/fr/epicerie_en_ligne/parcourir/{category-path}?pageSize=24"
+  location_scoped: true
+  guest_ok: true
+  kind: html
+  api_notes: "Same platform as IGA — see iga.yaml."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: "Via iga.net online grocery (shared platform); registered account required to order."
+
+locations:
+  count_estimate: 133
+  locator_url: https://www.iga.net/en/stores
+  locator_api: ""
+  # 133 IGA Extra stores in QC (2025). Locator shared with IGA.
+
+loyalty_program:
+  name: "Scène+"
+  card_gated_prices: true
+
+notes: "Banner variant of IGA with no independent web presence — all platform fields mirror iga.yaml. Research consisted of verifying the shared-platform claim."
+sources_checked: [official-site, flipp, fr-search]
+researched_at: "2026-10-12"
+research_status: complete
