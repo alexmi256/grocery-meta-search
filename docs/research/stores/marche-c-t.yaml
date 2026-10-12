@@ -1,4 +1,4 @@
-# Tier 2 per-store research record.
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: marche-c-t
 name: Marché C&T
 name_variants: ["Marche C & T", "Marché C & T"]
@@ -54,7 +54,7 @@ flyers:
       languages: [fr, en]
       archive_available: true
       structured_data: false
-      notes: "Each store location has its own weekly flyer; official site publishes a bilingual (FR/EN) weekly circulaire. Aggregators keep past-week archives."
+      notes: "Each store location has its own weekly flyer; official site publishes a bilingual (FR/EN) weekly circulaire. Per-store editions confirmed 2026-10-12: Brossard (8 pages), St-Laurent (4 pages), Pierrefonds-Roxboro (8 pages), Greenfield Park (4 pages) — all valid Oct 8-14 2026. Aggregators keep past-week archives."
 
 product_search:
   has_search: false
@@ -62,10 +62,10 @@ product_search:
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: ""
+  api_notes: "No search URL or form surfaced via homepage fetch or web search."
   bot_protection: none
   languages: [fr, en]
-  notes: "No product search observed on official site."
+  notes: "Negative finding (re-verified 2026-10-12): homepage text fetch and targeted web search surfaced no search box, no /search or ?s= pattern; site is brochure + flyer only."
 
 ecommerce:
   online_ordering: false
@@ -76,13 +76,14 @@ locations:
   count_estimate: 4
   locator_url: https://www.marchect.ca
   locator_api: ""
-  notes: "Stores listed on homepage: Pierrefonds-Roxboro (13057 Boul Gouin O), Cartierville/Montreal (12200 Blvd Laurentien), Greenfield Park (3700 Boul Taschereau); directories also show a Brossard store (8200 Boul Taschereau). No dedicated locator URL observed."
+  notes: "Stores listed on homepage: Pierrefonds-Roxboro (13057 Boul Gouin O), Cartierville/Montreal (12200 Blvd Laurentien), Greenfield Park (3700 Boul Taschereau), Brossard (8200 Boul Taschereau — confirmed via per-store flyer editions). No dedicated locator URL observed."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
 notes: "Family-owned Asian grocery chain. Weekly per-store flyers flip Thursday, valid Thu-Wed."
-sources_checked: [official-site, circulaire-en-ligne, flyerdeals, kaufino, yellowpages]
+sources_checked: [official-site, circulaire-en-ligne, flyerdeals, kaufino, circulaires.club, yellowpages, web-search]
 researched_at: "2026-10-12"
 research_status: complete

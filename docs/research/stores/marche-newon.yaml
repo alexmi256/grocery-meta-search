@@ -1,34 +1,70 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
+# UPGRADED: was "assumed no flyer" at tier 3 — now confirmed to HAVE a weekly flyer (aggregator + own-site section).
 slug: marche-newon
 name: Marché Newon
-name_variants: []
+name_variants: ["Marché NewWon"]
 store_type: ethnic-specialty  # Asian supermarket
 footprint: island
 tier: 3
+
 website:
   url: http://www.marchenewon.com/
-  languages: n/a              # not verified at tier 3
+  languages: [fr]              # homepage observed in French (+ Chinese 蒙特利尔); EN version not verified
   language_switch: n/a
-  render_tech: unknown
-  bot_protection: unknown
+  render_tech: ssr              # Wix site (static.wixstatic.com assets); page text extracts cleanly
+  bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
-  has_flyers: false
-  notes: "No flyer link found at tier 3."
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: http://www.marchenewon.com/
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/marche-newon/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Friday        # circulaires.club: "valide du vendredi 9 au jeudi 15 octobre 2026"
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-09 to 2026-10-15"
+      per_store_variant: true    # circulaires.club carries SEPARATE Jean-Talon and Ste-Catherine editions (15 parutions each)
+      languages: [fr]
+      archive_available: true    # 30 editions on circulaires.club (15 per location)
+      structured_data: false
+      notes: "Homepage has a 'Circulaire Hebdomadaire' / 'Produits Vedettes' section (official weekly specials). circulaires.club: 4 pages per edition, per-store editions for both locations, current Oct 9–15, 2026. Flipp has a store page but its cached listing shows 0 active flyers — not a current source."
+
 product_search:
   has_search: false
+  notes: "Wix /search?q={query} endpoint renders but returned ZERO results for test queries ('lait', 'riz') — catalog appears empty or JS-driven. No functional product search confirmed. Re-verify with live browser in Phase 3 before pipeline use."
+
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: "Uber Eats presence observed for prepared-food counter (1616 Ste-Catherine location)."
+  notes: "Wix Stores site: 'Online Grocery Store | Marchenewon', 'Best Sell', 'Subscribe Coupon', 'Votre première commande' (first-order promo) — online ordering offered. Delivery/pickup scope not verified. Uber Eats carries the prepared-food counter (1616 Ste-Catherine location)."
+
 locations:
-  count_estimate: 2  # 1616 Rue Ste-Catherine O #302 (downtown); 4906 Rue Jean-Talon O — second location shares marchenewon.com per business listings, same-banner match not fully verified
+  count_estimate: 2
   locator_url: ""
+  locator_api: ""
+  notes: "CONFIRMED 2 locations (both on official homepage): 4906 Rue Jean-Talon O, Montréal H4P 1W9 (métro Namur), tel 514-739-8868; 1616 Rue Sainte-Catherine O, Suite 302, Montréal H3H 1L7 (downtown), tel 514-935-6338 / 514-931-6338. Both open 9h–21h daily. Same-banner match confirmed via official site + per-store flyer editions."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Large Asian supermarket downtown with hot-food bar (bibimbap, dumplings). Second Jean-Talon location noted — NOT a single store, flag for verification."
-sources_checked: [official-site-search-snippet, directories, ubereats]
+
+notes: "KEY FIND: tier-3 'no flyer' assumption was wrong — Marché Newon publishes a weekly circulaire (official site + circulaires.club with per-store variants), and has 2 confirmed locations."
+sources_checked: [official-site, circulaires.club, flipp, rfd-flyers, web-search, directories, ubereats]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

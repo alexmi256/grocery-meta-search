@@ -4,38 +4,49 @@ name_variants: ["Bazaar Grocery", "Marche Bazaar", "Épicerie Du Bazaar - Bouche
 store_type: ethnic-specialty  # Persian / Indian / Middle Eastern grocery
 footprint: island
 tier: 3
+
 website:
   url: https://www.bazaarfood.ca/  # online store
-  languages: [fr, en]              # bilingual marketing observed (FR posts + EN site copy)
+  languages: [fr, en]              # FR storefront observed; EN marketing copy on directory profiles
   language_switch: n/a
-  render_tech: unknown
-  bot_protection: unknown
+  render_tech: ssr                  # Square Online platform (/shop/<category>/<id> URLs, /static/icons; checkout "sécurisé par Square")
+  bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer; store publishes priced online catalog instead."
+  types: []
+  notes: "No flyer found. Checked: official site (no flyer/circulaire section — priced online catalog instead), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Épicerie du Bazaar\" Montréal circulaire' (directory/review results only)."
+
 product_search:
-  has_search: true
+  has_search: false
   url_pattern: ""
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: "Online store advertised ('we developed our online store'); search URL pattern not identified at tier 3."
-  bot_protection: unknown
-  languages: n/a
+  api_notes: "No search UI found on the homepage; /search?q= returns HTTP 404. Catalog is browsed via /shop/<category>/<id> category pages (Square Online). Search not confirmed — recorded as absent."
+  bot_protection: none
+  languages: [fr, en]
+
 ecommerce:
   online_ordering: true
-  click_and_collect: false
-  notes: "Online ordering with delivery across West Island, Laval, Downtown, Côte Saint-Luc, NDG, LaSalle per the store's own description. Facebook page also active: facebook.com/194567587904499."
+  click_and_collect: true
+  notes: "Square-powered online store. Per-location ordering subdomains: westmount.bazaarfood.ca and downtown.bazaarfood.ca (both showed 'Closed' at check time 2026-10-12 ~17:40 EDT — verify in a live browser). Delivery across West Island, Laval, Downtown, Côte Saint-Luc, NDG, LaSalle per the store's own description; in-store pickup mentioned in reviews."
+
 locations:
-  count_estimate: 1  # 1905 Rue Sainte-Catherine O, Montréal QC H3H 1M3 (Shaughnessy Village / downtown)
+  count_estimate: 2
   locator_url: ""
+  locator_api: ""
+  notes: "CORRECTED to 2 (was 1): 1905 Rue Sainte-Catherine O, Montréal QC H3H 1M3 (downtown) + Westmount location (4051 Ste-Catherine W per firmania 'Marché Bazaar Westmount'). The westmount.bazaarfood.ca / downtown.bazaarfood.ca ordering subdomains confirm two shops. No locator page observed."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Persian/Indian/Arab/Turkish products; fresh halal meat, pastry, nuts. Priced online catalog = structured-data signal for Phase 4."
-sources_checked: [official-site, directories, cylex]
+
+notes: "Persian/Indian/Arab/Turkish products; fresh halal meat, pastry, nuts. Active Facebook page: facebook.com/194567587904499 (bilingual FR/EN posts). Priced online catalog = structured-data signal for Phase 4."
+sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, cylex]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

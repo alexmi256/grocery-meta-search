@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: marche-ami
 name: Marché Ami
 name_variants: ["Marché AMI", "Marche Ami"]
@@ -9,7 +10,7 @@ website:
   url: https://marcheami.ca/
   languages: [fr]
   language_switch: n/a
-  render_tech: ssr
+  render_tech: js-heavy           # homepage fetch returned near-empty content (2 lines); likely client-rendered
   bot_protection: none
 
 parent_company: Metro Inc.
@@ -45,6 +46,12 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.ca
+          url: https://www.circulaires.ca/marche-ami/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto
@@ -53,7 +60,7 @@ flyers:
       languages: [fr]
       archive_available: true
       structured_data: false
-      notes: "Banner-wide weekly flyer (~5 pages, Thu-Wed). One aggregator (depquebec.com) notes the Marché Ami flyer is a copy of the Marché Extra! flyer — same Metro marketing serves both banners."
+      notes: "Banner-wide weekly flyer (5-6 pages, Thu-Wed). circulaires.ca serves it in image AND interactive formats, 'disponible tous les jeudis... deux jours à l'avance' (early release). One aggregator (depquebec.com) notes the Marché Ami flyer is a copy of the Marché Extra! flyer — same Metro marketing serves both banners."
 
 product_search:
   has_search: false
@@ -61,27 +68,28 @@ product_search:
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: "Official-site fetch timed out once; search not verified. Treat as unverified."
+  api_notes: "Official-site homepage fetch returned near-empty content (site may be JS-rendered); no search form verified anywhere. metro.ca (parent) has its own search, out of scope for the banner record."
   bot_protection: none
   languages: [fr]
+  notes: "Negative finding (2026-10-12): no product search observed or documented on marcheami.ca; official flyer presence confirmed via site references ('Consultez la circulaire')."
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: "Not verified; metro.ca offers online grocery separately."
+  notes: "Not observed on banner site; metro.ca offers online grocery separately."
 
 locations:
   count_estimate: 187
   locator_url: ""
   locator_api: ""
-  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
-  # research. Record the mechanism here.
+  notes: "No dedicated banner locator URL verified. Metro claims 187 stores but only ~96 publicly display the banner (depquebec.com); directories list ~55; circulaires.ca says '~90 Marché Ami, Marché Extra et autres marchés affiliés'. Montreal island store confirmed (3824 Décarie). Parent metro.ca 'find a store' covers all banners."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
-notes: "Metro Inc. banner operating as a franchise ('Entente de franchise') with independent merchants; name comes from Association des Marchands Indépendants (AMI). Metro claims 187 stores but only ~96 publicly display the banner (depquebec.com); directory lists ~55. Montreal island store confirmed (3824 Décarie). Official-site fetch timed out (transient, no bot evidence); official flyer presence confirmed via site references ('Consultez la circulaire')."
-sources_checked: [official-site, flipp, circulairecanada, circulaires-club, circulaire-en-ligne, depquebec]
+notes: "Metro Inc. banner operating as a franchise ('Entente de franchise') with independent merchants; name comes from Association des Marchands Indépendants (AMI)."
+sources_checked: [official-site, flipp, circulairecanada, circulaires-club, circulaire-en-ligne, circulaires.ca, depquebec]
 researched_at: "2026-10-12"
 research_status: complete

@@ -6,11 +6,11 @@ footprint: island
 tier: 3
 
 website:
-  url: https://epicerie-africaine-de-montreal.business.site/
-  languages: [fr]
+  url: ""                            # none found — see notes
+  languages: n/a
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: n/a
+  bot_protection: n/a
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,11 +19,17 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer link on the Google business site or directories at tier 3."
+  notes: "No flyer found. Checked: (dead) official web presence (see website notes), directory listings, circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Épicerie Africaine de Montréal\" circulaire' (only other African grocers surfaced)."
 
 product_search:
   has_search: false
-  notes: "No product search; single-page Google business site."
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: html
+  api_notes: "No web presence to host search."
+  bot_protection: n/a
+  languages: n/a
 
 ecommerce:
   online_ordering: false
@@ -33,13 +39,14 @@ ecommerce:
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "1364 Rue Sauvé E, Montréal, QC."
+  locator_api: ""
+  notes: "1364 Rue Sauvé E, Montréal, QC H2C 2A2 (Ahuntsic). Hours: Mon-Sat 10:00-18:00 per restoenligne (firmania shows Sun 8:00-16:30, Tue-Thu 8:00-18:30/19:00 — hours vary by source, verify by phone 514-327-2666)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "African specialty grocery (Ahuntsic). Official web presence is a Google business site only — official → directory fallback per standing rule. FR-first content."
-sources_checked: [official-site, google-business, directories]
+notes: "African specialty grocery. WEBSITE DEAD as of 2026-10-12: the official Google business.site (epicerie-africaine-de-montreal.business.site) returns HTTP 404 — Google discontinued Business Sites, and this one is gone. No official site or social page found in web search; directory fallback only (firmania, restoenligne)."
+sources_checked: [official-site-dead, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

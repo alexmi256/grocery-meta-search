@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — etoile-waldman (full depth 2026-10-12).
 slug: etoile-waldman
 name: Étoile Waldman
 name_variants: ["Etoile Waldman Inc"]
@@ -7,10 +8,10 @@ tier: 3
 
 website:
   url: http://www.etoilewaldman.ca/
-  languages: [fr, en]
+  languages: n/a                 # domain no longer resolves; language unverified
   language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  render_tech: n/a               # dead domain — nothing to fingerprint
+  bot_protection: n/a
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,10 +19,30 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer possible online: official domain etoilewaldman.ca no longer resolves
+    (DNS failure on direct fetch 2026-10-12). No Facebook/social page surfaced in
+    search. No flyer/aggregator listing found under "Étoile Waldman".
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: "No working site; no search possible."
+  bot_protection: n/a
+  languages: []
 
 ecommerce:
   online_ordering: false
@@ -32,13 +53,16 @@ locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "4128 Boul. Saint-Laurent, Montréal, QC H2W 1Y8. Fish market + butcher + gourmet grocery + deli."
+  notes: "4128 Boul. Saint-Laurent, Montréal, QC H2W 1Y8. Fish market + butcher + gourmet grocery + deli. Phone 514-849-9696. Directory fallback: boulevardsaintlaurent.com/en/repertoire/etoile-waldman and YellowPages."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: ""
-sources_checked: [search, directories]
+notes: >-
+  Website dead as of 2026-10-12 (previously listed as official site in
+  directories). Business itself is active per place data. No social presence
+  found.
+sources_checked: [official-site-dead, web-search, facebook-search, directories, boulevardsaintlaurent, yellowpages]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

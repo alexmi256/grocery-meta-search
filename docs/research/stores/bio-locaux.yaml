@@ -7,10 +7,10 @@ tier: 3
 
 website:
   url: https://cape.coop
-  languages: [fr, en]
+  languages: [fr]                    # CAPÉ content is FR-first; EN unconfirmed
   language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  render_tech: unknown               # direct fetch failed (see notes); reason documented
+  bot_protection: unknown
 
 parent_company: "CAPÉ — Coopérative pour l'agriculture de proximité écologique"
 affiliation: corporate
@@ -18,27 +18,35 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  notes: "No flyer found. Checked: CAPÉ site (store page https://cape.coop/marche-fermier-promenade-masson/ per search results — direct fetch failed, see website notes), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Bio Locaux\" CAPÉ Masson épicerie circulaire' (press coverage only, no flyer)."
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No online catalog or search; CAPÉ is a co-op information site hosting the store page."
+  bot_protection: unknown
+  languages: [fr]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "No online ordering. (CAPÉ runs separate winter organic basket subscriptions — a different program from the store.)"
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "2884 Rue Masson, Montréal, QC (Rosemont). Organic grocery run by the CAPÉ organic-farmers co-op; store page: cape.coop/marche-fermier-promenade-masson/."
+  notes: "2884 Rue Masson, Montréal, QC H1Y 1W9 (Rosemont, Promenade Masson). Hours: Sun 10:00-18:00, Mon-Tue 12:00-18:30, Wed-Fri 11:30-18:30, Sat 10:00-18:00. Phone +1-438-969-1324."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "cape.coop is the CAPÉ co-op's main site (it hosts the store page), not a store-dedicated domain — matches the given website value."
-sources_checked: [search, official-site-indexed]
+notes: "First producer-owned organic grocery in Quebec, opened Oct 26, 2023; run by 250 CAPÉ member farms (Fermiers de famille network) — 70% of sales go directly to producers, 100% local certified-organic. WEBSITE ISSUE: cape.coop does not resolve via the fetch tool as of 2026-10-12 (DNS failure); store-page facts sourced from search snippets. cape.coop is the CAPÉ co-op's main site hosting the store page (cape.coop/marche-fermier-promenade-masson/ and /biolocaux/), not a store-dedicated domain. research_status is partial for this reason only."
+sources_checked: [official-site-attempted, circulaires-club, circulaires.com, rfd-flyers, web-search, web-press]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: partial

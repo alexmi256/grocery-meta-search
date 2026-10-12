@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — lipas-kosher (full depth 2026-10-12).
 slug: lipas-kosher
 name: Lipa's Kosher Market
 name_variants: ["Lipa's Supermarket"]
@@ -9,8 +10,8 @@ website:
   url: https://www.lipassupermarket.com/
   languages: [en]
   language_switch: n/a
-  render_tech: spa
-  bot_protection: none
+  render_tech: js-heavy          # custom SPA storefront; homepage fetch timed out
+  bot_protection: rate-limit     # homepage fetch timed out; catalog pages indexed but direct fetch unreliable
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,27 +20,57 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer; site shows category catalog with sale prices instead."
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer. Site shows a category catalog with sale prices and a "specials
+    department" instead. Web search "Lipa's flyer/circulaire" found no aggregator
+    listing (Flipp/RFD negative).
 
 product_search:
-  has_search: false
-  notes: "Site has catalog categories + a 'Can't find item?' prompt; search not verified at tier 3."
+  has_search: true
+  url_pattern: "https://www.lipassupermarket.com/search/{query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html                     # category/product pages server-rendered in index
+  api_notes: >-
+    Search path confirmed via indexed usage: mothersofmontreal.com links
+    https://www.lipassupermarket.com/search/Baby%20Formula for a Lipa's product
+    lookup. Category pages (/categories/81206/products) and product pages
+    (?catalogProduct=...) are indexed with prices — structured-data signal for
+    Phase 4. Direct homepage fetch timed out (rate limiting); Phase 5 fetches
+    should be conservative.
+  bot_protection: rate-limit
+  languages: [en]
 
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "Obvious: site has cart/checkout ('0 items in cart', 'Choose an order')."
+  notes: >-
+    Site has cart/checkout ("0 items in cart", "Choose an order") per indexed
+    category pages. Kosher supermarket with delivery.
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "5573 Av. du Parc, Montréal, QC H2V 4H2 (Mile End)."
+  locator_api: ""
+  notes: "5573 Av. du Parc, Montréal, QC H2V 4H2 (Mile End). Kosher supermarket; EN-first site."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given domain lipassupermarket.com resolves to www.lipassupermarket.com — canonical URL recorded with www. Kosher supermarket; site is EN-first (kosher market, English content dominates)."
-sources_checked: [official-site, directories]
+notes: >-
+  URL CORRECTION: lipassupermarket.com resolves to www.lipassupermarket.com —
+  canonical recorded with www. UPGRADE FIND (2026-10-12): tier 3 record said
+  "search not verified"; search endpoint confirmed via indexed referral links.
+sources_checked: [official-site-indexed, official-site-fetch-timeout, web-search-flyer, directories, mothersofmontreal-referral]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

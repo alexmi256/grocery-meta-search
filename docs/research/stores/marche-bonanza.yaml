@@ -1,34 +1,82 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
+# UPGRADED: was "assumed no flyer/search" at tier 3 — now confirmed to have BOTH.
 slug: marche-bonanza
 name: Marché Bonanza
 name_variants: ["Marché Bónanza", "Marché Bonanza Lalumière"]
 store_type: ethnic-specialty  # Italian / Mediterranean market
 footprint: island
 tier: 3
+
 website:
   url: https://bonanzalalumiere.com/
-  languages: n/a              # not verified at tier 3
+  languages: [fr]              # homepage and all content observed in French; EN version not verified
   language_switch: n/a
-  render_tech: unknown
-  bot_protection: unknown
+  render_tech: ssr              # Shopify storefront (collections/products paths, variant IDs); page text extracts cleanly
+  bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
-  has_flyers: false
-  notes: "No flyer link found at tier 3."
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://bonanzalumiere.com/
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/bonanza-lalumiere/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: flyerdeals.ca
+          url: ""
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Wednesday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-07 to 2026-10-13"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true   # 15 editions archived on circulaires.club (Jul–Oct 2026)
+      structured_data: false
+      notes: "Homepage: 'Chaque mercredi, nous publions notre circulaire hebdomadaire présentant toutes nos offres célèbres sur les fruits et légumes, la viande, les articles d'épicerie et plus encore!' circulaires.club confirms Wednesday flip (15 weekly editions, all starting Wednesday), 3–4 pages. flyerdeals.ca indexes Bonanza flyer offers (item-level)."
+
 product_search:
-  has_search: false
+  has_search: true
+  url_pattern: "https://bonanzalalumiere.com/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Shopify storefront — /search works natively; verified 2026-10-12: /search?q=lait returns product results (LAIT 2% BIDON, etc.) with prices. Also /search/suggest.json standard. Brand-indexed product pages (/collections/<brand>) with variant IDs observed — structured product data available."
+  bot_protection: none
+  languages: [fr]
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: "In-store pickup mentioned in reviews; not confirmed as online service."
+  notes: "Shopify cart/product pages exist but checkout is not the offer: store advertises 'Livraison à domicile' ($6.49) for customers who already bought IN-STORE, to postal codes H1K/H1J/H1L/H1M/H1P/H1R/H1S/H1T. No confirmed online ordering."
+
 locations:
-  count_estimate: 1  # 6852 Rue Jean-Talon E, Saint-Léonard, QC H1S 1N1
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "6852 Rue Jean-Talon E, Saint-Léonard, QC H1S 1N1, (514) 252-8277. Single store; no locator page."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Budget Mediterranean grocery with full-service meat counter and imported Italian products."
-sources_checked: [official-site-search-snippet, directories]
+
+notes: "Budget Mediterranean grocery with full-service meat counter and imported Italian products. KEY FIND: official weekly flyer + working Shopify product search — the tier-3 'no flyer/search' assumption was wrong."
+sources_checked: [official-site, circulaires.club, flyerdeals.ca, rfd-flyers, flipp, web-search, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

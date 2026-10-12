@@ -1,16 +1,17 @@
+# Phase 2 per-store research record (full depth).
 slug: vrac-et-bio
 name: Épicerie Vrac & Bio
 name_variants: []
-store_type: other
+store_type: other  # bulk + organic grocery (Ecocert certified)
 footprint: island
 tier: 3
 
 website:
   url: https://epicerievracetbio.com
-  languages: [fr, en]
+  languages: [fr, en]  # /fr/ and /en/ paths (e.g. /en/default.aspx, /fr/Nouveautes)
   language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  render_tech: spa  # Comelin e-commerce platform (comelin.com), Vue-based SPA templates visible in HTML
+  bot_protection: none  # plain HTTP fetch works
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,34 +19,43 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found; product catalog instead (tier 3)"
+  types: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found. Site offers a product catalog with prices and stock status instead of a flyer. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
 
 product_search:
   has_search: true
-  url_pattern: ""
+  url_pattern: ""  # no stable URL: SPA search overlay (#divSearchOpen) — in-app, JS-driven
   location_scoped: false
   guest_ok: true
-  kind: html
-  api_notes: "bilingual product catalog with prices and in-stock availability (Comelin POS/e-commerce backend); url_pattern not captured at tier 3"
-  bot_protection: ""
+  kind: spa  # Comelin Vue-based search overlay; catalog pages at /fr/... category routes
+  api_notes: "Search bar confirmed on homepage ('Recherche'/'Search'). Comelin platform renders search client-side; catalog has prices + in-stock availability. Category routes like /fr/Nouveautes; search likely hits a Comelin JSON endpoint — Phase 3 work to identify."
+  bot_protection: none
   languages: [fr, en]
 
 ecommerce:
   online_ordering: true
-  click_and_collect: true
-  notes: "online ordering with pickup ('no more delivery' notice on site)"
+  click_and_collect: true  # site notes pickup; 'no more delivery' notice on site
+  notes: "Online ordering with in-store pickup; delivery discontinued per site notice."
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "1273 rue Ontario E, Montréal, QC H2L 1R7. Bulk + organic grocery."
+  notes: "1273 Rue Ontario E, Montréal QC H2L 1R7 (Village)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Unlike most tier-3 stores, this one HAS a live searchable product catalog with prices — worth a deeper Phase 2 look at structured-data extraction."
-sources_checked: [search, official-site-indexed]
+notes: "Certified organic by Ecocert; bulk + organic grocery. Unlike most tier-3 stores, has a live searchable product catalog with prices — a Phase 3 structured-data extraction candidate."
+sources_checked: [official-site, official-site-search-verified, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, comelin]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

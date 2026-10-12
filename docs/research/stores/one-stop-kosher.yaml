@@ -1,16 +1,17 @@
+# Phase 2 per-store research record (full depth).
 slug: one-stop-kosher
 name: One Stop Kosher
-name_variants: ["One Stop Kosher Grocery"]
-store_type: ethnic-specialty
+name_variants: ["One Stop Kosher Grocery", "One Stop Kosher Supermarket"]
+store_type: ethnic-specialty  # kosher grocery
 footprint: island
 tier: 3
 
 website:
-  url: ""
-  languages: [en]
+  url: ""  # none found: no official site and no official social page surfaced in search
+  languages: n/a
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: n/a
+  bot_protection: n/a
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,11 +20,25 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer at tier 3."
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found: no web presence at all; no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> flyer' web hits. MK Kosher guide lists it as take-out only (6735 Darlington)."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No website exists; no product search possible."
+  bot_protection: n/a
+  languages: n/a
 
 ecommerce:
   online_ordering: false
@@ -33,13 +48,14 @@ ecommerce:
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "6735 Av. de Darlington, Montréal, QC H3S 2J7 (Côte-des-Neiges area)."
+  locator_api: ""
+  notes: "6735 Av. de Darlington, Montréal QC H3S 2J7. Tel 514-738-3207. Closed Saturday (Shabbat)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "website: none found with reason — no official site and no official social page found in web search; appears only in directories (Canpages, YellowPages) and on the MK Kosher certified take-out list (6735 Darlington). No blank website without investigation per standing rule."
-sources_checked: [directories, mk-kosher-guide]
+notes: "Kosher grocery/take-out listed on the MK Kosher certified take-out list. Appears only in directories (Canpages, YellowPages, canadadir) and community threads (dansdeals Montreal master thread)."
+sources_checked: [directories, mk-kosher-guide, canpages, yellowpages, canadadir, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-en]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

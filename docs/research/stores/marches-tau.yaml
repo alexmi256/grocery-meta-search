@@ -1,4 +1,4 @@
-# Tier 2 per-store research record.
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: marches-tau
 name: Les Marchés Tau
 name_variants: ["Marchés TAU"]
@@ -69,19 +69,19 @@ flyers:
 
 product_search:
   has_search: true
-  url_pattern: "https://marchestau.com/catalogue"
+  url_pattern: "https://marchestau.com/<brand-or-category>/catalogue"
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: ""
+  api_notes: "Faceted 'Magasiner en Ligne' catalog VERIFIED via indexed pages (2026-10-12): brand/category URLs like /pure?page=2, /bonterra/catalogue, /green-table/catalogue, /alasko/catalogue; facets for Catalogue, Marque, Format, Promotion, Disponibilité; pagination; sort ('Trier par'); per-item structured data: UPC ('Code'), CAD prices with discount %, unit pricing, stock status ('En inventaire' / 'Non disponible'). Dedicated free-text search box not confirmed, but the faceted catalog functions as product search."
   bot_protection: none
   languages: [fr]
-  notes: "Faceted catalog search with structured product data (UPC codes, CAD prices, stock status); exact search URL pattern not verified."
+  notes: "has_search: true on the strength of the fully browsable, faceted online catalog with structured product data (UPC codes, prices, stock)."
 
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "'Magasiner en Ligne' online store with structured product data (Azure CDN images); pickup options not verified."
+  notes: "'Magasiner en Ligne' online store with cart ('Qté') and structured product data (Azure CDN images); pickup options not verified."
 
 locations:
   count_estimate: 6
@@ -95,6 +95,6 @@ loyalty_program:
   notes: "'Programme fidélité' / Tautale FAQ on official site; no evidence of card-gated prices."
 
 notes: "Independent organic/health grocery chain founded 1978. FR-only site."
-sources_checked: [official-site, circulaires.club, pdfflyers, yellowpages, cylex]
+sources_checked: [official-site, circulaires.club, pdfflyers, yellowpages, cylex, web-search]
 researched_at: "2026-10-12"
 research_status: complete

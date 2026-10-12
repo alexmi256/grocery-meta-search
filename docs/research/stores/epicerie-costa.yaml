@@ -1,16 +1,16 @@
 slug: epicerie-costa
 name: Épicerie Costa
 name_variants: ["Epicerie Costa Inc"]
-store_type: ethnic-specialty
+store_type: ethnic-specialty  # Haitian / Caribbean grocery + grillades counter
 footprint: island
 tier: 3
 
 website:
-  url: ""
-  languages: [fr]
+  url: ""                            # none found: no official site and no official social page found in web search
+  languages: n/a
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: n/a
+  bot_protection: n/a
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,27 +19,34 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer at tier 3."
+  notes: "No flyer found. Checked: no web presence (directories + delivery apps only); not on the circulaires.club weekly index (218 QC flyers), circulaires.com Montreal merchant list, or RFD flyers page; web search '\"Épicerie Costa\" Montréal circulaire' (place-data and restomontreal results only, no flyer)."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: html
+  api_notes: "No web presence to host search."
+  bot_protection: n/a
+  languages: n/a
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "No store-owned ordering. Delivery-app presence: Uber Eats (two 'Epicerie Costa inc' listings) and DoorDash ('Desserts du Chef' at this address)."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "9305 Blvd Pie-IX, Montréal, QC. Listed in directories (Haitian/Caribbean profile); two 'Epicerie Costa inc' listings on Uber Eats suggest possibly more than one counter."
+  locator_api: ""
+  notes: "9305 Blvd Pie-IX, Montréal, QC H1Z 3W4 (Villeray–Saint-Michel). Hours: daily 9:00-22:00. Phone +1-438-386-1286 (per place data). Two 'Epicerie Costa inc' listings on Uber Eats suggest possibly more than one counter — unverified."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "website: none found with reason — no official site and no official social page found in web search; store appears only in directories (Pages Jaunes/Canpages) and on Uber Eats. No blank website without investigation per standing rule."
-sources_checked: [directories, delivery-apps]
+notes: "Haitian/Caribbean grocery + grillades counter (riz collé, griot, spicy shrimp per reviews; 4.1★ on restomontreal). No official site and no official social page found in web search — no blank website without investigation per standing rule; directory fallback (Pages Jaunes, firmania, restomontreal) only."
+sources_checked: [directories, delivery-apps, circulaires-club, circulaires.com, rfd-flyers, web-search]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

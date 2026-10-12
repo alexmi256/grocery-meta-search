@@ -1,34 +1,47 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-bkr
 name: Marché BKR
 name_variants: ["Marché BKR - AL BAKAR", "Super Marché BKR Laurentien"]
 store_type: ethnic-specialty  # Middle Eastern / halal grocery
 footprint: island
 tier: 3
+
 website:
-  url: https://marche-bkr-laurentien.business.site/  # Google Business site
-  languages: n/a              # not verified at tier 3
+  url: https://marche-bkr-laurentien.business.site/  # Google Business site — the store's primary web presence
+  languages: n/a               # Google Business sites are auto-rendered; not a real multilingual site
   language_switch: n/a
   render_tech: ssr
   bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer link found at tier 3."
+  types: []
+  notes: "No flyer found. Checked: web search 'Marché BKR circulaire/flyer' (returns only business listings, a MAPAQ food-safety notice, directories — no flyer), circulaires.club 182-merchant directory (absent), RFD Montreal flyers page (majors only), Flipp (no store page; Flipp weak on small independents). Google Business sites do not carry flyers. grocery10's 'publie des nouvelles et des promotions' is its own notification feature, not a store flyer."
+
 product_search:
   has_search: false
+  notes: "No website beyond the Google Business page; no search or catalog anywhere."
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 12251 Boul Laurentien, Montréal QC H4K 1N5 (Ahuntsic-Cartierville)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "12251 Boul Laurentien, Montréal QC H4K 1N5 (Ahuntsic-Cartierville), near Mosquée Al-Rawdah. Single store; no locator needed."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Middle Eastern market near Mosquée Al-Rawdah; secondary Facebook presence: https://www.facebook.com/426615574351191/ (via grocery10 listing)."
-sources_checked: [business-site, directories, pagesjaunes, canpages]
+
+notes: "Middle Eastern/halal market. Secondary Facebook presence: https://www.facebook.com/426615574351191/ (via grocery10 listing). OpenStreetMap tags it shop=convenience (name: Marché BKR - AL BAKAR)."
+sources_checked: [business-site, facebook, web-search, circulaires.club-directory, rfd-flyers, flipp, pagesjaunes, canpages, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

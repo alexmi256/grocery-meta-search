@@ -1,16 +1,17 @@
+# Phase 2 per-store research record (full depth).
 slug: voisin
 name: Voisin
-name_variants: ["Dépanneur Voisin"]
-store_type: other
+name_variants: ["Dépanneur Voisin", "Boni-Soir"]
+store_type: other  # convenience banner, Sobeys-owned
 footprint: qc-confirmed
 tier: 3
 
 website:
   url: https://www.mon-voisin.com
   languages: [fr, en]
-  language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  language_switch: path  # /fr/ and /en/ path prefixes
+  render_tech: js-heavy  # store locator is JS-driven (2286+ lines of listing content rendered client-side)
+  bot_protection: rate-limit  # direct curl gets HTTP 403; search-engine cache and text-fetch browser work
 
 parent_company: Sobeys (Sobeys Québec — secteur Multi-surfaces et Pétrole)
 affiliation: banner-group
@@ -22,40 +23,48 @@ flyers:
     - type: weekly
       sources:
         - name: official site
-          url: https://www.mon-voisin.com/en/store-locator/
+          url: https://www.mon-voisin.com/fr/trouver-un-magasin/
           kind: official
-          format: html
+          format: html  # per-store "Weekly Flyer" link on locator result cards; target format unverified
           parse_friendliness: medium
-          fetchability: http
+          fetchability: blocked  # HTTP 403 to plain curl; text-fetch browser + indexed content work
       duration_days: 7
-      flip_weekday: ""
+      flip_weekday: ""  # validity/dates not verified (bot protection blocked direct fetch)
       flip_timezone: America/Toronto
       validity_example: ""
-      per_store_variant: false
+      per_store_variant: true  # "Weekly Flyer" link appears per store card — likely the same chain flyer, unconfirmed
       languages: [fr, en]
       archive_available: false
       structured_data: false
-      notes: "store-locator pages show a 'Weekly Flyer' link per store; validity/duration not yet checked (tier 3)"
+      notes: "Flyer links were NOT found on individual store detail pages (checked mon-voisin.com/en/stores/depanneur-voisin/) — they appear on the locator result cards only. Exact flyer URL pattern unverified due to 403 bot block. Not found on Flipp (Sobeys banners use Flipp but Voisin convenience flyers were not located there)."
+  notes: "Sobeys dépanneur/convenience banner — NOT a full grocery store. Relevant only for convenience items."
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No product search on mon-voisin.com (locator-only site). No search bar in FR or EN."
+  bot_protection: rate-limit
+  languages: n/a
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Individual stores may list on Uber Eats (e.g. Gatineau location) but there is no banner-level e-commerce."
 
 locations:
   count_estimate: 70
-  locator_url: https://www.mon-voisin.com/en/store-locator/
-  locator_api: ""
-  notes: "'Plus de 70 marchands propriétaires indépendants' per the banner's own description; province-wide, includes greater Montreal."
+  locator_url: https://www.mon-voisin.com/fr/trouver-un-magasin/
+  locator_api: ""  # locator is JS-driven; endpoint pattern not extracted (403 to curl)
+  notes: "'Plus de 70 marchands propriétaires indépendants' per the banner's own description; province-wide including greater Montreal. Locator also lists Boni-Soir and IGA express entries."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Sobeys dépanneur/convenience banner — NOT a full grocery store. Relevant only for convenience items. Has a weekly flyer (flyer-check item for deeper research)."
-sources_checked: [search, official-site-indexed]
+notes: "Independent-merchant convenience banner owned by Sobeys Québec. Location entries carry owner names (e.g. 'Dépanneur Voisin Lecavalier inc.')."
+sources_checked: [official-site, official-site-locator, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, cylex]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: partial

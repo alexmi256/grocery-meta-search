@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: iga-express
 name: IGA Express / Mini
 name_variants: ["IGA Express", "IGA Mini", "IGA express", "Dépanneur IGA Express"]
@@ -10,7 +11,7 @@ website:
   languages: [fr, en]
   language_switch: path
   render_tech: ssr
-  bot_protection: none
+  bot_protection: akamai            # direct fetch of iga.ca returned HTTP 403 (Akamai denial) 2026-10-12
 
 parent_company: Sobeys Inc. (Sobeys Québec / Empire Company Ltd.)
 affiliation: independent-affiliate
@@ -26,6 +27,12 @@ flyers:
           kind: official
           format: images
           parse_friendliness: medium
+          fetchability: blocked           # Akamai 403 on direct fetch; aggregators reliable
+        - name: Flipp
+          url: https://flipp.com/en-ca/montreal-qc/stores/iga
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
           fetchability: http
       duration_days: 7
       flip_weekday: Thursday
@@ -33,37 +40,38 @@ flyers:
       validity_example: "2026-10-08 to 2026-10-14"
       per_store_variant: false
       languages: [fr, en]
-      archive_available: false
+      archive_available: true
       structured_data: false
-      notes: "No separate IGA Express flyer observed; format follows the main IGA weekly flyer (Thu-Wed). iga.net is the given domain; observed store URLs live under www.iga.ca/fr/."
+      notes: "No separate IGA Express flyer observed; format follows the main IGA weekly flyer (Thu-Wed). iga.net is the given domain; live store URLs live under www.iga.ca/fr/."
 
 product_search:
   has_search: true
-  url_pattern: ""
-  location_scoped: true
-  guest_ok: true
-  kind: html
-  api_notes: "iga.ca has site search; store selection / postal code scoping is standard for IGA digital."
-  bot_protection: none
+  url_pattern: "https://www.voila.ca/"   # Voilà par IGA: search bar + category browse + filters; postal-code/account gating
+  location_scoped: true                   # postal code required to confirm service; availability per fulfillment zone
+  guest_ok: false                         # account + postal code needed for product availability/order flow
+  kind: spa                               # Ocado-powered storefront
+  api_notes: "No dedicated Express/Mini banner search. IGA-family product search lives on Voilà par IGA (voila.ca): search bar, category browse, organic/kosher filters; IGA.net offers per-store shopping where Voilà doesn't cover. IGA.ca itself hosts recipe/product content pages (e.g. /articles/*) and 'Browse All Products'."
+  bot_protection: akamai
   languages: [fr, en]
+  notes: "Search confirmed via Voilà by IGA coverage (Milesopedia, SavvyNewCanadians): 'If you know what you want, the search bar might be quicker'; up to 39,000-product assortment; serves the QC corridor (Gatineau–Montreal–Quebec City) from the Pointe-Claire automated warehouse."
 
 ecommerce:
-  online_ordering: false
-  click_and_collect: false
-  notes: "Voilà delivery exists for IGA; applicability to Express/Mini format unverified."
+  online_ordering: true
+  click_and_collect: true
+  notes: "Voilà par IGA delivery (1-hour windows, $35 minimum, refrigerated trucks) covers Greater Montreal; IGA.net handles areas outside Voilà coverage with per-store delivery/pickup. Express/Mini format applicability unverified — small-format stores likely excluded from Voilà fulfillment."
 
 locations:
   count_estimate: null
   locator_url: https://www.iga.ca/fr/trouver-un-magasin
   locator_api: ""
-  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
-  # research. Record the mechanism here.
+  notes: "Current live Express/Mini count unverified (kept null). Active locations observed (Montréal-Nord 24h, L'Ange-Gardien, Shawinigan, Les Coteaux IGA Mini, St-Bruno Lambert). Independent owners per location (e.g. Marché Lambert et Frères inc.), confirming independent-affiliate. Montreal island presence confirmed (Montréal-Nord)."
 
 loyalty_program:
   name: Scene+
   card_gated_prices: false
+  notes: ""
 
-notes: "Small-format Sobeys Québec banner (IGA Express ~4,000 sq ft with Shell gas stations; smaller IGA Mini variant), launched Dec 2013 in St-Augustin-de-Desmaures. Sobeys announced a plan for 60 Express stores over 5 years (~$100M); current live count unverified — active locations observed (Montréal-Nord 24h, L'Ange-Gardien, Shawinigan, Les Coteaux IGA Mini, St-Bruno Lambert). Independent owners per location (e.g. Marché Lambert et Frères inc.), so independent-affiliate. Montreal island presence confirmed (Montréal-Nord)."
-sources_checked: [official-site, canadiangrocer, andnowuknow, perishablenews, mon-voisin, cylex]
+notes: "Small-format Sobeys Québec banner (IGA Express ~4,000 sq ft with Shell gas stations; smaller IGA Mini variant), launched Dec 2013 in St-Augustin-de-Desmaures. Sobeys announced a plan for 60 Express stores over 5 years (~$100M)."
+sources_checked: [official-site, voila.ca, canadiangrocer, andnowuknow, perishablenews, mon-voisin, cylex, milesopedia, savvynewcanadians, supermarketnews]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

@@ -1,16 +1,17 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-jean-talon
 name: Marché Jean-Talon
 name_variants: []
-store_type: other
+store_type: other              # public market hall — multi-vendor, not a single grocer
 footprint: island
 tier: 3
 
 website:
   url: https://www.marchespublics-mtl.com
   languages: [fr, en]
-  language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  language_switch: path        # /en/ confirmed 2026-10-12 (renders in English)
+  render_tech: ssr              # Drupal (/sites/default/files/... paths), server-rendered HTML
+  bot_protection: none
 
 parent_company: Corporation de gestion des marchés publics de Montréal
 affiliation: corporate
@@ -18,10 +19,12 @@ banner_family: ["Marché Atwater", "Marché Maisonneuve", "Marché Lachine"]
 
 flyers:
   has_flyers: false
-  notes: "no weekly flyer; site publishes event/programming news only (tier 3)"
+  types: []
+  notes: "No weekly flyer. Site publishes Actualités/Événements (news, events, vendor calls) only — confirmed by homepage fetch 2026-10-12. Absent from circulaires.club merchant directory, RFD Montreal flyers page, Flipp. Web search shows no market-issued circulaire."
 
 product_search:
   has_search: false
+  notes: "No product/item search. Multi-vendor public market — per-item data lives with individual vendors, not the market operator. No store/search bar on the operator site (FR and EN homepages checked)."
 
 ecommerce:
   online_ordering: false
@@ -32,13 +35,13 @@ locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "222 Place du Marché-du-Nord, Montréal, QC H2S 1A1. Multi-vendor public market (not a single store); largest of the three."
+  notes: "222 Place du Marché-du-Nord, Montréal, QC H2S 1A1. Multi-vendor public market (not a single store); largest of the three. Single hall — no locator needed."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
 notes: "Shares the same operator and website as Atwater and Maisonneuve."
-sources_checked: [search, directories, official-site-indexed]
+sources_checked: [official-site, circulaires.club-directory, rfd-flyers, flipp, web-search, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

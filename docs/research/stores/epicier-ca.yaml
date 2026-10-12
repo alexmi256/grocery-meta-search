@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — epicier-ca (full depth 2026-10-12).
 slug: epicier-ca
 name: L'Épicerie (l'épicier)
 name_variants: ["Alimentation l'Épicier"]
@@ -9,8 +10,8 @@ website:
   url: https://epicier.ca
   languages: [fr, en]
   language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  render_tech: ssr                # WordPress; ?s= search returns server-rendered results
+  bot_protection: none
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,27 +19,62 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer; forfait-based pricing model instead (tier 3)"
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer/circulaire section on epicier.ca (homepage + ?s= fetched 2026-10-12).
+    Web search "l'épicier epicier.ca circulaire" returned only a directory listing
+    on circulaire-en-ligne.ca (annuaire entry, no actual flyer); "Circulaire mon
+    épicier" hits are Metro's branding, unrelated. No Flipp, RFD Montreal flyers,
+    circulaires.club or supermarches.ca listing. Forfait/contract pricing model
+    (prices frozen for the contract term) replaces flyers.
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: >-
+    WordPress site-content search (?s=) exists and works (fetched
+    https://epicier.ca/?s=forfait — returns page/form results), but there is NO
+    product catalog or product search; the business runs on a forfait signup
+    model (contact form -> advisor -> delivery plan).
+  bot_protection: none
+  languages: [fr, en]
 
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "home grocery delivery service: weekly forfaits (Solo 91$ / Monoparentale 120$ / Duo 134$ / Petite famille 167$ / Grande famille 196$), prices frozen for the contract term"
+  notes: >-
+    Delivery-only home grocery service: weekly forfaits (Solo 91$ / Monoparentale
+    120$ / Duo 134$ / Petite famille 167$ / Grande famille 196$ — from homepage
+    2026-10-12), signup via lead-gen form, phone 1-888-466-1146, mobile app.
+    Ships/delivers QC + parts of ON/NB. No checkout cart; no structured product
+    catalog on the site.
 
 locations:
   count_estimate: 0
   locator_url: ""
   locator_api: ""
-  notes: "HQ/contact address: 11460 Bd Armand-Bombardier, Montréal, QC H1E 2W9. DELIVERY-ONLY model confirmed — no public storefront; delivers province-wide (QC + parts of ON/NB)."
+  notes: "DELIVERY-ONLY model confirmed — no public storefront. HQ/contact address: 11460 Bd Armand-Bombardier, Montréal, QC H1E 2W9."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "FLAG — delivery-only, no physical storefront: the Armand-Bombardier address is the business HQ/warehouse, not a shop. Bilingual site (FR/EN) with mobile app for customers."
-sources_checked: [search, directories, official-site-indexed]
+notes: >-
+  FLAG — delivery-only, no physical storefront. Promotions run as signup offers
+  on the site (e.g. "Ravivez la Flamme": free Gozney pizza oven + 10 pizzas with
+  signup; 5x1000$ contest seen 2026-10-12) rather than flyers.
+sources_checked: [official-site, official-site-search-probe, web-search-circulaire, circulaire-en-ligne, flipp-search-snippet, rfd-flyers-search-snippet]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

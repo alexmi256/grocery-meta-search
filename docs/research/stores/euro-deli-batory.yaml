@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — euro-deli-batory (full depth 2026-10-12).
 slug: euro-deli-batory
 name: Euro-Deli Batory
 name_variants: []
@@ -6,11 +7,11 @@ footprint: island
 tier: 3
 
 website:
-  url: https://eurodelibatory.ca
-  languages: [fr, en]
+  url: https://www.facebook.com/432597176815537   # Meta place data lists this as the official website
+  languages: [fr]
   language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  render_tech: n/a                # Facebook page — not an own site
+  bot_protection: n/a
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,27 +19,51 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found on site or aggregators (tier 3)"
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    eurodelibatory.ca returns no content (dead domain; listed in some directories
+    but Meta place data now lists the Facebook page as the website). Web search
+    "Euro-Deli Batory circulaire" found no flyer and no aggregator listing
+    (Flipp/RFD/circulaires.club/circulaire-en-ligne/supermarches.ca all negative).
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: "No own site; Facebook page only — no product search."
+  bot_protection: n/a
+  languages: [fr]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: "listed on DoorDash/Uber Eats for restaurant-style delivery; no own-store ordering found"
+  notes: "Listed on DoorDash/Uber Eats for restaurant-style delivery; no own-store ordering found."
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "115 Rue Saint-Viateur O, Montréal, QC H2T 2L2"
+  notes: "115 Rue Saint-Viateur O, Montréal, QC H2T 2L2. Polish deli + épicerie fine + small restaurant (Mile End/Outremont). Phone 514-948-2161."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Polish deli + épicerie fine + small restaurant in Mile End. Domain eurodelibatory.ca is listed as the business website in directories (Yably) but a direct fetch returned no content 2026-10-12; primary web presence is the Facebook page (facebook.com/432597176815537). Site tech not checked."
-sources_checked: [search, directories, facebook-place-data]
+notes: >-
+  URL CORRECTION: eurodelibatory.ca is dead; primary (and effectively only) web
+  presence is the Facebook page facebook.com/432597176815537 (per Meta place
+  data).
+sources_checked: [official-site-dead, facebook-place-data, web-search-circulaire, directories, flipp-search-snippet]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

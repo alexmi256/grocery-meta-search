@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: l-intermarche
 name: L'Intermarché
 name_variants: ["L'Intermarché", "Intermarché (Québec)"]
@@ -58,6 +59,7 @@ product_search:
   api_notes: "No site search observed on static pages."
   bot_protection: none
   languages: [fr]
+  notes: "Negative finding (re-verified 2026-10-12): static banner site with flyer + owner-showcase pages only; no search form observed."
 
 ecommerce:
   online_ordering: false
@@ -65,17 +67,17 @@ ecommerce:
   notes: "No online ordering observed on banner site."
 
 locations:
-  count_estimate: null
+  count_estimate: 35
   locator_url: ""
   locator_api: ""
-  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
-  # research. Record the mechanism here.
+  notes: "No locator URL verified on the official site (none found in 2026-10-12 review). Count is directory-based (YellowPages lists ~35+ L'Intermarché locations QC-wide; figures also vary with aggregator annuaires). Montreal island presence confirmed (Intermarché St Michel, 10181 boul Saint-Michel, Montréal-Nord)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
-notes: "AXEP is the Loblaw-affiliated banner group (listed among Provigo/Loblaw banners); stores are run by independent owners ('Nous célébrons nos formidables propriétaires de magasins'), so affiliation is independent-affiliate, not corporate. English version not found (site is French-only); shopeasy.ca is the English twin for the Freshmart brand, not L'Intermarché. Store count unverified — locator URL not captured."
-sources_checked: [official-site, circulairecanada, circulaires-club, circulaire-en-ligne, wikipedia, progressivegrocer]
+notes: "AXEP is the Loblaw-affiliated banner group (listed among Provigo/Loblaw banners); stores are run by independent owners ('Nous célébrons nos formidables propriétaires de magasins'), so affiliation is independent-affiliate, not corporate. English version not found (site is French-only); shopeasy.ca is the English twin for the Freshmart brand, not L'Intermarché."
+sources_checked: [official-site, circulairecanada, circulaires-club, circulaire-en-ligne, wikipedia, progressivegrocer, yellowpages]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

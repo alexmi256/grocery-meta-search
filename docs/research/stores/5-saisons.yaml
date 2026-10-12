@@ -4,31 +4,49 @@ name_variants: ["Les 5 Saisons"]
 store_type: other  # gourmet épicerie fine, not ethnic-specialty
 footprint: island
 tier: 3
+
 website:
-  url: https://www.les5saisons.ca/  # CORRECTED: dedicated domain is live (was 'none found')
+  url: https://www.les5saisons.ca/
   languages: [fr, en]
   language_switch: path           # /en/index.html observed in search results
-  render_tech: ssr
+  render_tech: ssr                 # custom static site (/img/ticker/... paths)
   bot_protection: none
+
 parent_company: Metro Inc.
 affiliation: banner-group
 banner_family: [Metro, Metro Plus, Super C, Food Basics]
+
 flyers:
   has_flyers: false
-  notes: "No flyer on les5saisons.ca at tier 3. circulaire-en-ligne.ca has a 'Les 5 Saisons Greene' profile page but no current circular. Possible Metro-banner flyer on metro.ca — not verified."
+  types: []
+  notes: "No store-specific flyer. Checked: les5saisons.ca (marketing site + traiteur PDFs only, no flyer section); circulaire-en-ligne.ca 'Les 5 Saisons Greene' profile is an annuaire DIRECTORY listing, not a circulaire — the tier-3 'possible flyer' note is now resolved as negative; not on the circulaires.club weekly index (218 QC flyers), circulaires.com Montreal merchant list, or RFD flyers page; web search 'Les 5 Saisons épicerie circulaire' returned no flyer. Note: the Metro BANNER flyer exists on metro.ca, but it is banner-level, not store-specific."
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No search bar or product catalog; site advertises product reservation for catering/events only."
+  bot_protection: none
+  languages: [fr, en]
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: "Site advertises product reservation for catering/events, not online grocery ordering."
+  notes: "Catering/tray reservation by phone or in-store only."
+
 locations:
-  count_estimate: 1  # 1280 Greene Ave, Westmount (reopened post-renovation). Outremont (1180 Ave Bernard) reported permanently closed.
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "1280 Greene Ave, Westmount QC H3Z 1C2 (reopened post-renovation; hours daily 8:00-21:00; phone 514-931-0249). Outremont location (1180 Av. Bernard) is permanently closed per place data — count is 1."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "High-end Metro Inc. banner (épicerie fine since ~1985): imported cheeses, Black Angus AAA, Balik smoked salmon, traiteur. Outremont location appears closed; Westmount active."
-sources_checked: [official-site, metro-corpo-press, wikipedia, circulaire-en-ligne.ca]
+
+notes: "High-end Metro Inc. banner (épicerie fine since ~1985): imported cheeses, Black Angus AAA, Balik smoked salmon, traiteur."
+sources_checked: [official-site, circulaire-en-ligne, circulaires-club, circulaires.com, rfd-flyers, web-search, metro-corpo-press]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

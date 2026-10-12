@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — fruiterie-valmont (full depth 2026-10-12).
 slug: fruiterie-valmont
 name: Fruiterie Valmont
 name_variants: ["Fruiterie Val-Mont"]
@@ -7,10 +8,10 @@ tier: 3
 
 website:
   url: http://www.val-mont.ca/
-  languages: [fr, en]
+  languages: n/a                 # domain now serves wholesale content; retail site defunct
   language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  render_tech: n/a
+  bot_protection: n/a
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,10 +19,32 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No actual flyer. circulaire-en-ligne.ca hosts SEO placeholder pages ("Circulaire
+    Valmont - Fruiterie", a "Circulaire en Cours ... Jusqu'au 14 oct." link) but the
+    link resolves to a recipes page — no real dated flyer content could be opened.
+    circulaires.com has a "Marché Valmont" page (dated June 2026). No Flipp, RFD
+    Montreal flyers, circulaires.club or supermarches.ca listing.
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: "No working retail site; no search possible."
+  bot_protection: n/a
+  languages: []
 
 ecommerce:
   online_ordering: false
@@ -32,13 +55,18 @@ locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "2147 Av. du Mont-Royal E, Montréal, QC H2H 1J9"
+  notes: "2147 Av. du Mont-Royal E, Montréal, QC H2H 1J9 (fruits & légumes, charcuterie, boucherie, épicerie fine). Founded 1958; a second branch at 1495 Mont-Royal E is referenced in older sources."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION NEEDED: given URL val-mont.ca is referenced as the business site in directory listings, but epicerievalmont.com appears to be the newer/current official site. Verify in deeper research."
-sources_checked: [search, directories]
+notes: >-
+  RESOLVED: epicerievalmont.com is NOT the store's site — it now serves the Epicia
+  wholesale company page (Boucherville). val-mont.ca (still listed as the store's
+  website in directories) ALSO serves the same Epicia wholesale content
+  (Alexandre Monette, 504 rue Albanel, Boucherville). The retail web presence is
+  defunct; the store itself is active per place/directory data.
+sources_checked: [official-site-defunct, web-search-circulaire, circulaire-en-ligne, circulaires-com, directories, yellowpages]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

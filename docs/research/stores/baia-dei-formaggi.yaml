@@ -7,9 +7,9 @@ tier: 3
 
 website:
   url: https://www.labaiadeiformaggi.com/
-  languages: [fr, en]
-  language_switch: subdomain
-  render_tech: ssr
+  languages: [fr]                   # FR-only one-pager observed; earlier 'subdomain' language-switch claim unconfirmed
+  language_switch: n/a
+  render_tech: ssr                   # static single-page marketing site
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +19,34 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer link on official site at tier 3."
+  notes: "No flyer found. Checked: official site (single 16-line marketing page, no flyer/circulaire section), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Baia dei Formaggi\" circulaire' (directory/listicle results only)."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Single marketing page; no catalog or search function."
+  bot_protection: none
+  languages: [fr]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "No online ordering."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "1715 Rue Jean-Talon E, Montréal, QC (near Fabre metro)."
+  locator_api: ""
+  notes: "1715 Rue Jean-Talon E, Montréal, QC H2E 1T3 (near Fabre metro). Hours: Sun 9:00-15:00, Mon-Wed 9:00-18:00, Thu-Fri 9:00-19:00, Sat 9:00-17:30. Phone 514-727-8850."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given domain labaiadeiformaggi.com resolves to www.labaiadeiformaggi.com — canonical URL recorded with www. Italian fromagerie/charcuterie/sandwicherie since 1973 (founded by Francesco Occhiuto); claims largest cheese selection in eastern Canada (400+ varieties)."
-sources_checked: [official-site, directories]
+notes: "Italian fromagerie/charcuterie/sandwicherie since 1973 (founded by Francesco Occhiuto; run with daughters Marie-Christine and Luciana). Sister co: Les Importations Mini Italia (daughters Stephany and Patricia). Claims largest cheese selection in eastern Canada (400+ varieties), 80+ charcuteries, 80+ artisanal pasta cuts; private labels Golosini and Della Casa; family olive groves in Calabria."
+sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

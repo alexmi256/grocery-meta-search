@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: marche-axep
 name: Marché Axep
 name_variants: ["Axep"]
@@ -52,6 +53,7 @@ product_search:
   api_notes: "No site search observed on static pages."
   bot_protection: none
   languages: [fr]
+  notes: "Negative finding (re-verified 2026-10-12): static banner site (flyer + brand pages); no search form."
 
 ecommerce:
   online_ordering: false
@@ -62,14 +64,14 @@ locations:
   count_estimate: 22
   locator_url: ""
   locator_api: ""
-  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
-  # research. Record the mechanism here.
+  notes: "No locator URL verified on the official site. Count confirmed at 22 via circulaire-en-ligne.ca's Axep annuaire (directory listing with per-store addresses). Banner stores carry varied names (e.g. 'Marché Jovi (Axep)' Mont-Tremblant, 'Marche Prospect - AXEP' Sherbrooke, 'Marché Axep Frampton'). Montreal island stores confirmed (3421 Av du Parc, 50 Av du Mont-Royal O, 2925 Rachel E, 1953 Ste-Catherine O, 2925 Sherbrooke E). Family-wide total (all 4 brands) unverified."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
-notes: "AXEP is the Loblaw-affiliated banner group; stores are run by independent owners ('Entrepreneurs fiers' / 'propriétaires de magasins'), so affiliation is independent-affiliate, not corporate. Montreal island stores confirmed (3421 Av du Parc, 50 Av du Mont-Royal O, 2925 Rachel E, 1953 Ste-Catherine O, 2925 Sherbrooke E). Count 22 is from circulaire-en-ligne directory and may be incomplete; family-wide total (all 4 brands) unverified. English version not found."
-sources_checked: [official-site, circulaires-club, circulaire-en-ligne, wikipedia, progressivegrocer, hypestat]
+notes: "AXEP is the Loblaw-affiliated banner group; stores are run by independent owners ('Entrepreneurs fiers' / 'propriétaires de magasins'), so affiliation is independent-affiliate, not corporate. English version not found."
+sources_checked: [official-site, circulaires-club, circulaire-en-ligne, wikipedia, progressivegrocer, hypestat, canpages, cylex]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

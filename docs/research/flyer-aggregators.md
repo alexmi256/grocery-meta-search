@@ -232,3 +232,11 @@ completeness:
 Standing rules observed: RFD forums never used as a flyer source; no commits
 made. Refinement validation (sample-first) applies to any pipeline work
 built on these.
+
+## Caution: placeholder "Circulaire <store>" pages (added 2026-10-12)
+
+circulaires.ca, circulaires.com, and circulaire-en-ligne.ca carry
+directory-only "Circulaire <store>" profile pages for some small stores
+(e.g. Les 5 Saisons Greene, Val-Mont) with **no actual flyer behind them** —
+SEO placeholders. A merchant-profile page on these sites does NOT prove a
+flyer exists; only dated flyer editions with validity periods count.

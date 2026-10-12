@@ -1,34 +1,65 @@
+# Phase 2 per-store research record — heng-heng-chanchaya (full depth 2026-10-12).
 slug: heng-heng-chanchaya
 name: Épicerie Heng Heng Chanchaya
 name_variants: ["Epicerie Heng Heng Chanchaya Inc", "Épicerie cambodgienne Heng Heng Chan Chaya"]
 store_type: ethnic-specialty  # Cambodian / Vietnamese grocery
 footprint: island
 tier: 3
+
 website:
-  url: ""  # none found: no official site or social surfaced in search
+  url: ""                        # none found: no official site or social surfaced in search
   languages: n/a
   language_switch: n/a
   render_tech: n/a
   bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer possible — no web presence at all."
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer possible — no web presence at all. Deep search 2026-10-12 surfaced
+    only directory listings (bottinquebec, YellowPages, Mapcarta, findlocations,
+    loc8nearme); no official site, Facebook, or aggregator flyer listing.
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: "No web presence; no search possible."
+  bot_protection: n/a
+  languages: []
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 1071 Boul Saint-Laurent, Montréal QC H2Z 1J6 (Chinatown / Quartier chinois)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "1071 Boul Saint-Laurent, Montréal QC H2Z 1J6 (Chinatown). Phone 514-861-4550. Known for banh mi and Vietnamese/Cambodian groceries; 4.7 stars on loc8nearme."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Directory fallback: https://bottinquebec.ca/listing/epicerie-cambodgienne-heng-heng-chan-chaya-inc.html — known for banh mi and Vietnamese groceries."
-sources_checked: [directories, bottinquebec]
+
+notes: "Directory fallback: https://bottinquebec.ca/listing/epicerie-cambodgienne-heng-heng-chan-chaya-inc.html (also lists itself as the 'Website' on place data)."
+sources_checked: [directories, bottinquebec, web-search, yellowpages, mapcarta]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

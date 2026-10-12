@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — la-vieille-europe (full depth 2026-10-12).
 slug: la-vieille-europe
 name: La Vieille Europe
 name_variants: []
@@ -8,9 +9,9 @@ tier: 3
 website:
   url: https://lavieilleeurope.com/
   languages: [fr, en]
-  language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  language_switch: path          # FR and EN content observed on search pages
+  render_tech: ssr                # Shopify (cdn/shop/files, collections)
+  bot_protection: none
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,27 +19,55 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer. Shopify catalog (collections: Café & Thé, Conserves, Apéritif,
+    etc.). Web search "La Vieille Europe circulaire/flyer" found no aggregator
+    listing.
 
 product_search:
-  has_search: false
+  has_search: true
+  url_pattern: "https://lavieilleeurope.com/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html                     # Shopify server-rendered search results
+  api_notes: >-
+    Verified live 2026-10-12: /search?q=fromage returned 14 results with product
+    names, prices and variant IDs; works in both FR and EN. Fetchable via plain
+    HTTP — good Phase 5 target.
+  bot_protection: none
+  languages: [fr, en]
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: ""
+  notes: >-
+    Shopify storefront with priced products and variant IDs (standard Shopify
+    checkout assumed; cart/checkout flow not explicitly rendered in fetch but
+    platform-standard).
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "3855 Boul. Saint-Laurent, Montréal, QC H2W 1X9. European deli/cheese shop since 1959."
+  notes: "3855 Boul. Saint-Laurent, Montréal, QC H2W 1X9. European deli/cheese shop since 1959; coffee roastery since 1981. Phone 514-842-5773."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: ""
-sources_checked: [search, directories, official-site-indexed]
+notes: >-
+  UPGRADE FIND (2026-10-12): tier 3 record said "no search"; full-depth found a
+  live Shopify store with working bilingual product search.
+sources_checked: [official-site, official-site-search-probe, web-search-circulaire, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

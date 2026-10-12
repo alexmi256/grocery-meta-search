@@ -1,7 +1,8 @@
+# Phase 2 per-store research record (full depth).
 slug: soares-et-fils
 name: Boucherie Épicerie Soares et Fils
-name_variants: ["Soares et Fils"]
-store_type: ethnic-specialty
+name_variants: ["Soares et Fils", "Soares Inc"]
+store_type: ethnic-specialty  # Portuguese family butcher/grocer
 footprint: island
 tier: 3
 
@@ -19,11 +20,25 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found at tier 3."
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found. No flyer/circulaire section on the official site (search-indexed site description shows butcher-shop brochure only). Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits. LIMITATION: direct page fetch of lesfillessoares.com failed during this research pass (browser fetch error); findings rely on indexed content and tier-3 record."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No search bar on the official site per indexed content. Brochure-style site."
+  bot_protection: none
+  languages: n/a
 
 ecommerce:
   online_ordering: false
@@ -33,13 +48,14 @@ ecommerce:
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "130 Av. Duluth E, Montréal, QC (Plateau)."
+  locator_api: ""
+  notes: "130 Av. Duluth E, Montréal QC H2W 1H1 (Plateau / Little Portugal). Tel 514-288-2451. Closed Sunday."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given domain lesfillessoares.com resolves to www.lesfillessoares.com — canonical URL recorded with www. Family butcher/grocer known for chouriço; Portuguese community shop. Also supplied by Johnny Prosciutto."
-sources_checked: [official-site, directories]
+notes: "Family butcher/grocer created 1970 by the Soares family (Portugal), now run by granddaughters Fatima and Manuela; known for chouriço. Official Facebook page: facebook.com/SoaresBoucherie/."
+sources_checked: [official-site-indexed, official-social, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, ibegin, profilecanada]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: partial

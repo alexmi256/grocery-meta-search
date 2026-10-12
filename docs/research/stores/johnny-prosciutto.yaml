@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — johnny-prosciutto (full depth 2026-10-12).
 slug: johnny-prosciutto
 name: Johnny Prosciutto
 name_variants: ["Johnny Prosciutto Inc."]
@@ -9,8 +10,8 @@ website:
   url: https://johnnyprosciutto.com/
   languages: [fr, en]
   language_switch: path
-  render_tech: spa
-  bot_protection: none
+  render_tech: ssr                # WordPress + WooCommerce (wp-content)
+  bot_protection: rate-limit      # homepage fetches fine; /?s= search probe returned HTTP 403 2026-10-12
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,27 +20,58 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer; site runs promotions/discounted bundles instead."
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No dated flyer. Site runs a "Promotions" product category (discounted bundle
+    boxes, e.g. Meat Lover's Box $129.99, expiry-dated promos like BACK 2 School
+    exp. 2026-09-30) instead of a flyer. Web search "Johnny Prosciutto flyer"
+    found no aggregator listing (Flipp/RFD/circulaires.club negative).
 
 product_search:
-  has_search: false
-  notes: "Site has product catalog (WooCommerce-style shop) but search not verified at tier 3."
+  has_search: true
+  url_pattern: "https://johnnyprosciutto.com/?s={query}&post_type=product"
+  location_scoped: false
+  guest_ok: true
+  kind: html                     # WooCommerce server-rendered results
+  api_notes: >-
+    WooCommerce/WordPress platform — product search is standard. Direct /?s= probe
+    2026-10-12 returned HTTP 403 (bot protection on that path); pattern not
+    manually rendered, but catalog pages are indexed and searchable content exists.
+    Phase 5 may need browser or header-tuned fetches for search pages.
+  bot_protection: rate-limit
+  languages: [fr, en]
 
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "Obvious: full online shop with checkout on johnnyprosciutto.com; wholesale distribution to ~20 Montreal retailers (listed on its 'Where to Buy' page: Berchicci, Milano, Baia dei Formaggi, Marché SA et Fils, Soares & Fils, Chouricor, etc.)."
+  notes: >-
+    Full online shop with checkout on johnnyprosciutto.com (cart, volume pricing,
+    free shipping over $100); wholesale distribution to ~20 Montreal retailers
+    (Where to Buy page: Berchicci, Milano, Baia dei Formaggi, Marché SA et Fils,
+    Soares & Fils, Chouricor, etc.).
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "2641 Av. Charland, Montréal, QC H1Z 1C7."
+  locator_api: ""
+  notes: "2641 Av. Charland, Montréal, QC H1Z 1C7. Artisanal Italian charcuterie maker (soppressata, prosciutto, cacciatore); products sold wholesale to many other stores on this research list."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Artisanal Italian charcuterie maker (homemade soppressata, prosciutto, cacciatore); products sold wholesale to many other stores on this research list."
-sources_checked: [official-site, directories]
+notes: >-
+  UPGRADE FIND (2026-10-12): search was "not verified at tier 3"; platform is
+  WooCommerce with a standard product search endpoint. Product pages carry price
+  + ratings — strong structured-data signal.
+sources_checked: [official-site, official-site-search-probe-403, web-search-flyer, directories]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

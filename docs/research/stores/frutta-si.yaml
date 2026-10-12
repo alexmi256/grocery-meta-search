@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: frutta-si
 name: Marché Frutta Si
 name_variants: ["Frutta Si"]
@@ -7,9 +8,9 @@ tier: 2
 
 website:
   url: http://www.marchefruttasi.com/
-  languages: [en]                 # homepage observed in English only
+  languages: [en]                 # homepage observed in English only; FR unconfirmed
   language_switch: n/a
-  render_tech: ssr                 # WordPress brochure site
+  render_tech: ssr                 # WordPress + Elementor brochure site
   bot_protection: none
 
 parent_company: Independent (family business)  # 20+ years in LaSalle; no parent found
@@ -21,10 +22,10 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official site homepage
           url: http://www.marchefruttasi.com/
           kind: official
-          format: images            # "Our Weekly Deals" flyer section on homepage
+          format: images            # "Flyer" section: "Exciting Specials and Big Savings: Our Weekly Deals!" + flyer image
           parse_friendliness: low
           fetchability: http
         - name: circulairecanada.com
@@ -47,10 +48,18 @@ flyers:
       languages: [fr]               # aggregator circulars in French; EN version unconfirmed
       archive_available: false
       structured_data: false
-      notes: ""
+      notes: "Official flyer presence confirmed on homepage ('Flyer' section with 'Our Weekly Deals!' heading and flyer image). Not observed on Flipp."
 
 product_search:
-  has_search: false                # brochure site, no search observed
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "WordPress ?s= pattern never surfaced; no search form markup observed in homepage fetch."
+  bot_protection: none
+  languages: [en]
+  notes: "Negative finding (2026-10-12): full homepage text fetch (264 lines) contains no 'search' string and no search box; brochure-style WordPress/Elementor site (About, Reviews, Selection, Flyer sections only)."
 
 ecommerce:
   online_ordering: false
@@ -60,12 +69,15 @@ ecommerce:
 locations:
   count_estimate: 1  # 1255 Boul Shevchenko, LaSalle QC H8N 1N8; tel 514-595-9111
   locator_url: ""
+  locator_api: ""
+  notes: "Hours on site: Mo-We 8a.m.-7p.m., Th-Fr 8a.m.-8p.m., Sa 8a.m.-6p.m., Su 8a.m.-5p.m. No dedicated locator (single store)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
 notes: "Italian/international neighbourhood grocery (organic produce, Italian specialties, halal meat, olive bar). Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list."
-sources_checked: [official-site, rfd-flyers, circulairecanada.com, yellowpages]
+sources_checked: [official-site, rfd-flyers, circulairecanada.com, yellowpages, chamberofcommerce]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

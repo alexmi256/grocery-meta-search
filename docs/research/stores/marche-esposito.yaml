@@ -1,18 +1,22 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-esposito
 name: Le Marché Esposito
 name_variants: []
 store_type: ethnic-specialty  # Italian / Mediterranean grocer
 footprint: greater            # 4 on-island + Boisbriand + Lachenaie (off-island)
 tier: 3
+
 website:
   url: https://lemarcheesposito.ca/
-  languages: n/a              # not verified at tier 3
-  language_switch: n/a
-  render_tech: unknown
-  bot_protection: unknown
+  languages: [fr, en]          # FR site + ?lang=en pages observed (e.g. /greek-lamb-roast/?lang=en)
+  language_switch: param        # ?lang=en WordPress-style param
+  render_tech: ssr              # WordPress (recipe URLs, ?lang=, /category-style slugs)
+  bot_protection: unknown       # direct open rate-limited by browser service (429) on 2026-10-12 — site-side protection not assessable; do not conflate with a site block
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: true
   types:
@@ -24,27 +28,42 @@ flyers:
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/le-marche-esposito/circulaire
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"
       per_store_variant: false
       languages: [fr]
       archive_available: true
       structured_data: false
-      notes: "Aggregator only; official-site flyer not verified at tier 3. Circular 'available every Thursday, two days in advance, web and image versions'."
+      notes: "circulaires.ca: 'La circulaire est disponible tous les jeudis, deux jours à l'avance, en version web et image.' circulaire-en-ligne.ca shows current edition valid 'Jusqu'au 14 oct.' Official-site flyer section NOT verified — direct open of lemarcheesposito.ca was rate-limited by the browser service on 2026-10-12 and not retried."
+
 product_search:
   has_search: false
+  notes: "No product/item search found. WordPress site (recipes blog, ?lang=en). The WordPress ?s= pattern would search the blog, not a grocery catalog — the site sells nothing online and publishes no product catalog; treated as no product search."
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 6  # 5737 Sherbrooke O; 340 Marcel-Laurin; 5375 Henri-Bourassa E; 7030 St-Michel; 392 Grande-Côte Boisbriand; 540-570 Montée des Pionniers Lachenaie (via shopping-canada.com)
+  count_estimate: 6
   locator_url: ""
+  locator_api: ""
+  notes: "5737 Sherbrooke O; 340 Marcel-Laurin; 5375 Henri-Bourassa E; 7030 St-Michel; 392 Grande-Côte Boisbriand; 540-570 Montée des Pionniers Lachenaie (via shopping-canada.com). ~6-location local chain — no locator page found on official site."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "NOT a single store — ~6-location local chain despite batch default. Italian/Mediterranean specialty + kosher section noted in reviews."
-sources_checked: [official-site-search-snippet, circulaires.ca, shopping-canada.com, directories]
+
+notes: "Italian/Mediterranean specialty + kosher section noted in reviews. PARTIAL: official-site flyer presence unverified (browser rate-limit, not retried); aggregator coverage is solid (two independent aggregators, current edition + archive)."
+sources_checked: [official-site-search-snippet, circulaires.ca, circulaire-en-ligne.ca, circulaires.club-directory, rfd-flyers, flipp, shopping-canada.com, web-search, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: partial

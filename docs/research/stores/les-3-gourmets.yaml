@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — les-3-gourmets (full depth 2026-10-12).
 slug: les-3-gourmets
 name: Épicerie Les 3 Gourmets
 name_variants: ["Epicerie Les 3 Gourmets"]
@@ -6,11 +7,11 @@ footprint: island
 tier: 3
 
 website:
-  url: http://www.epicerie-les3gourmets.ca/
+  url: https://www.epicerie-les3gourmets.ca/
   languages: [fr, en]
-  language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  language_switch: path          # /fr/ collections observed
+  render_tech: ssr                # Shopify (cdn/shop, Liquid-rendered)
+  bot_protection: none
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,27 +19,55 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer. Full-priced Shopify catalog with a "Deal Of The Day" section.
+    Web search "Les 3 Gourmets circulaire" found no aggregator listing.
 
 product_search:
-  has_search: false
+  has_search: true
+  url_pattern: "https://www.epicerie-les3gourmets.ca/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html                     # Shopify server-rendered search results
+  api_notes: >-
+    Verified live 2026-10-12: /search?q=fanta returned "28 results" with product
+    names, CAD prices and variant IDs. Fetchable via plain HTTP — good Phase 5
+    target.
+  bot_protection: none
+  languages: [fr, en]
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: ""
+  notes: >-
+    Online-first: free delivery on first order and over $250 (Quebec only);
+    customer testimonials show Canada-wide shipping. Uber Eats storefront exists
+    but is closed ("Closed on Uber Eats as of Nov 26, 2025").
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "1266 Avenue du Mont-Royal E, Montréal, QC"
+  notes: "1266 Avenue du Mont-Royal E, Montréal, QC H2J 1Y3. Contact contact@epicerie-les3gourmets.ca / +1 (438) 226-6971. European/exotic grocery (Belle France, Ducros, exotic Fanta)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: ""
-sources_checked: [search, official-site-indexed]
+notes: >-
+  UPGRADE FIND (2026-10-12): tier 3 record said "no search / no ecommerce";
+  full depth found a live bilingual Shopify store with working product search,
+  priced catalog, and Canada-wide online ordering.
+sources_checked: [official-site, official-site-search-probe, web-search-circulaire, directories, ubereats]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

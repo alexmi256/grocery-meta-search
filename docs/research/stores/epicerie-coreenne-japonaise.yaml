@@ -4,31 +4,49 @@ name_variants: []
 store_type: ethnic-specialty  # Korean + Japanese grocery
 footprint: island
 tier: 3
+
 website:
-  url: ""  # none found: no official site or social surfaced in search
+  url: ""                            # none found: no official site or social surfaced in search
   languages: n/a
   language_switch: n/a
   render_tech: n/a
   bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer possible — no web presence at all."
+  types: []
+  notes: "No flyer possible — no web presence at all. Also not on the circulaires.club weekly index (218 QC flyers), circulaires.com Montreal merchant list, or RFD flyers page; web search '\"Épicerie Coréenne et Japonaise\" Montréal circulaire' surfaced no flyer (only the distinct Marché Gangnam Style)."
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: html
+  api_notes: "No web presence to host search."
+  bot_protection: n/a
+  languages: n/a
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 1829 Rue Ste-Catherine O, Montréal QC H3H 1M2 (per Yellow Pages); Moovit suggests a possible second/relocated address near Sherbrooke in NDG — unverified
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "1829 Rue Ste-Catherine O, Montréal QC H3H 1M2 (per Yellow Pages; firmania still lists it as active). Moovit suggested a possible second/relocated address near Sherbrooke in NDG — unverified."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Directory fallback: http://www.yellowpages.ca/bus/Quebec/Montreal/Epicerie-Coreenne-et-Japonaise/101697465.html. DISTINCT from Marché Gangnam Style (4182 Rue St-Denis), which describes itself as 'une épicerie Coréenne et Japonaise' — different business."
-sources_checked: [directories, yellowpages, mapquest, moovit]
+
+notes: "DISTINCT from Marché Gangnam Style (4182 Rue St-Denis), which describes itself as 'une épicerie Coréenne et Japonaise' — different business. Directory fallback: http://www.yellowpages.ca/bus/Quebec/Montreal/Epicerie-Coreenne-et-Japonaise/101697465.html"
+sources_checked: [directories, yellowpages, mapquest, moovit, circulaires-club, circulaires.com, rfd-flyers, web-search]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

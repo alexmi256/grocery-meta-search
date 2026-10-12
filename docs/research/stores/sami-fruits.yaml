@@ -1,27 +1,44 @@
+# Phase 2 per-store research record (full depth).
 slug: sami-fruits
 name: Sami Fruits
-name_variants: ["La Maison Sami"]
-store_type: ethnic-specialty
-footprint: island
+name_variants: ["La Maison Sami", "Maison Sami TA Fruits inc."]
+store_type: ethnic-specialty  # fruiterie with grocery/wholesale arms (Lebanese family business)
+footprint: greater  # Montreal + Laval + DDO
 tier: 3
 
 website:
   url: http://samifruits.com/
-  languages: [fr, en]
-  language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  languages: [en, fr]  # EN-first with "Français" link
+  language_switch: toggle  # FR toggle link
+  render_tech: ssr  # static Adobe Muse site (image-heavy), server-rendered
+  bot_protection: none
 
-parent_company: ""
+parent_company: ""  # family business (Al Asmar family, 4 generations); no parent company
 affiliation: independent-affiliate
 banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found. Official site is a static brochure (Locations / Our Story / Wholesale / Gallery / Contact) with no flyer section. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No search on the static brochure site."
+  bot_protection: none
+  languages: n/a
 
 ecommerce:
   online_ordering: false
@@ -29,16 +46,16 @@ ecommerce:
   notes: ""
 
 locations:
-  count_estimate: 4
-  locator_url: ""
+  count_estimate: 6
+  locator_url: ""  # no locator page/API; store list hardcoded as images on homepage
   locator_api: ""
-  notes: "400 Av. Lafleur, LaSalle; 1505 Rue Legendre O, Montréal; 1320 Bd Jules-Poitras, Montréal; 8200 19e Avenue, Montréal. Fruiterie with grocery/wholesale arms."
+  notes: "Retail: Lasalle 400 Av. Lafleur; Saint-Léonard 8200 19e Av; Chomedey 1550 Bd Daniel-Johnson, Laval; Saint-Laurent 1320 Bd Jules-Poitras; Dollard-des-Ormeaux 3000 Rue du Marché; Laval 1768 Bd des Laurentides. Head office/warehouse (not retail): 1505 Rue Legendre O, Montréal. All confirmed on official homepage."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: ""
-sources_checked: [search, directories, official-site-indexed]
+notes: "Fruiterie with grocery/wholesale arms; founded 1973 at Jean-Talon Market by Sami Al Asmar (family roots 1910 Beirut). Known for in-store discount pricing; closed Tuesdays in Lasalle."
+sources_checked: [official-site, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, smartcanucks]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

@@ -1,16 +1,17 @@
+# Phase 2 per-store research record (full depth).
 slug: vrac-en-folie
 name: Vrac En Folie
 name_variants: []
-store_type: other
+store_type: other  # bulk food store + wholesaler/distributor
 footprint: island
 tier: 3
 
 website:
   url: http://www.vracenfolie.com/
-  languages: [fr, en]
+  languages: [fr, en]  # /en/ path works (vracenfolie.com/en/)
   language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  render_tech: ssr  # WordPress + WooCommerce, server-rendered
+  bot_protection: none  # plain HTTP fetch works
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,34 +19,43 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found; online boutique instead (tier 3)"
+  types: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found. No flyer/circulaire section on the official site (only a /promotion/ page describing the standing 15% own-container discount). circulaire-en-ligne.ca has a DIRECTORY listing (circulaire-en-ligne.ca/vrac-en-folie) but no active dated flyer. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits with a dated flyer."
 
 product_search:
   has_search: true
-  url_pattern: ""
+  url_pattern: "https://www.vracenfolie.com/?s={query}&post_type=product"
   location_scoped: false
   guest_ok: true
-  kind: html
-  api_notes: "WooCommerce-style online boutique with product categories, variant pricing and stock status (e.g. /categorie-produit/bonbons/); url_pattern not captured at tier 3"
-  bot_protection: ""
+  kind: html  # WooCommerce product search, HTML results
+  api_notes: "Verified live: /?s=sucre&post_type=product returns 'Sucre - Vrac En Folie' product results page. WooCommerce exposes /wp-json/wc/store/v1/products (Store API) for structured data."
+  bot_protection: none
   languages: [fr, en]
 
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "online boutique with delivery across Quebec; in-store prices may differ from online prices"
+  notes: "WooCommerce boutique with delivery across Quebec; in-store prices may differ from online prices. 15% discount when bringing own containers applies in store only (from $15 purchase)."
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "274 Rue Jean-Talon E, Montréal, QC H2R 1S7 (near Jean-Talon market). Bulk food store + wholesaler/distributor, 25+ years."
+  notes: "274 Rue Jean-Talon E, Montréal QC H2R 1S7 (near Jean-Talon market). Tel 514-279-9440. Bulk food store + wholesaler/distributor, 25+ years."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "15% discount when bringing own containers in store."
-sources_checked: [search, official-site-indexed]
+notes: "Strong in bulk nuts, chocolates, spices, coffee, flours; sugar-free section popular with diabetic clientele."
+sources_checked: [official-site, official-site-search-verified, official-site-promotion-page, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, premierepage]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

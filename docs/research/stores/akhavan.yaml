@@ -4,38 +4,77 @@ name_variants: ["Akhavan Food Inc.", "Akhavan Supermarket", "Marché Akhavan"]
 store_type: ethnic-specialty  # Iranian / Middle Eastern supermarket
 footprint: island              # Saint-Jacques + Pierrefonds + St-Laurent warehouse all on-island
 tier: 3
+
 website:
-  url: https://akhavanfood.com/  # WooCommerce storefront
-  languages: [fr, en]            # FR/EN product titles + Persian observed
-  language_switch: path          # /fr/ paths observed
-  render_tech: ssr
+  url: https://akhavanfood.com/
+  languages: [fr, en]
+  language_switch: path           # /fr/ paths observed
+  render_tech: ssr                 # WordPress + WooCommerce (wp-content paths)
   bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
-  has_flyers: false
-  notes: "No flyer found; store publishes priced online catalog instead."
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-akhavan-du-7-au-13-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium   # single page image; needs OCR
+          fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/akhavan
+          kind: aggregator
+          format: unknown
+          parse_friendliness: unknown
+          fetchability: http
+        - name: Instagram @marcheakhavan (official site "Weekly Flyer" link target)
+          url: https://www.instagram.com/marcheakhavan
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: browser-needed  # Instagram is JS/login-gated
+      duration_days: 7
+      flip_weekday: Wednesday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-07 to 2026-10-13"
+      per_store_variant: false
+      languages: [fr]
+      archive_available: true          # circulaires.club keeps expired circulaires too
+      structured_data: false
+      notes: "Flip weekday Wednesday is a single-cycle observation (Oct 7-13, 2026 on circulaires.club); confirm against more cycles. 1-page flyer. Also indexed in the circulaires.com Montreal merchant list. Official homepage 'Weekly Flyer' nav link resolves to the store's Instagram (@marcheakhavan, ~3304 followers), where the weekly flyer is posted as images."
+
 product_search:
   has_search: true
   url_pattern: "https://akhavanfood.com/?s={query}"
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: "WooCommerce storefront; search URL is conventional pattern, not manually verified."
+  api_notes: "WordPress + WooCommerce search; returns priced product cards (EN/FR/Persian titles). Verified 2026-10-12 with ?s=olive (olive products with prices returned). Plain GET, no auth."
   bot_protection: none
   languages: [fr, en]
+
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "Checkout observed on site ('To find out your shipping cost, Please proceed to checkout'). Head office & warehouse: 9275 Transcanadienne, Ville Saint-Laurent."
+  notes: "WooCommerce checkout; ships Canada-wide ('To find out your shipping cost, please proceed to checkout')."
+
 locations:
-  count_estimate: 2  # retail: 6400 Rue St-Jacques Ouest (Montréal H4B 1T6) + 15760 Boul Pierrefonds (Pierrefonds H9H 3P6); plus head office/warehouse (non-retail)
+  count_estimate: 2
   locator_url: ""
+  locator_api: ""
+  notes: "Retail: 6400 Rue St-Jacques Ouest, Montréal H4B 1T6 + 15760 Boul Pierrefonds, Pierrefonds H9H 3P6. Head office & wholesale warehouse: 9275 Transcanadienne, Ville Saint-Laurent (non-retail). No store-locator page observed."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "NOT a single store — 2 retail supermarkets + warehouse. Iranian/Middle Eastern: barbari bread, feta, kebab, stews. Priced online catalog = strong Phase 4 structured-data signal."
-sources_checked: [official-site, woo-crawl]
+
+notes: "Iranian/Middle Eastern supermarket (est. 1989; 'Akhavan' = 'the brothers' in Persian). Direct importer/wholesaler of Mediterranean foods across Canada. Priced online catalog = strong Phase 4 structured-data signal."
+sources_checked: [official-site, circulaires-club, circulaire-en-ligne, circulaires.com, rfd-flyers, web-search]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

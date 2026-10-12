@@ -1,15 +1,16 @@
+# Phase 2 per-store research record (full depth).
 slug: paradise-kosher
 name: Paradise Kosher
-name_variants: ["Paradise Cachere"]
-store_type: ethnic-specialty
+name_variants: ["Paradise Cachere", "Kosher Paradise", "Paradise Kosher Catering"]
+store_type: ethnic-specialty  # kosher grocery + deli + catering
 footprint: greater
 tier: 3
 
 website:
   url: http://www.paradisekosher.com/
-  languages: [en]
+  languages: [en]  # EN-only WordPress site
   language_switch: n/a
-  render_tech: ssr
+  render_tech: ssr  # WordPress, server-rendered
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +20,42 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found at tier 3."
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found. Official site is a catering/takeout menu site with no flyer section. No listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> flyer' web hits."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No search bar on the official site. Menu-only WordPress brochure."
+  bot_protection: none
+  languages: n/a
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true  # site says "shop online or in store"
   click_and_collect: false
-  notes: "Site says 'shop online or in store' for take-out/catering; grocery online ordering not verified at tier 3."
+  notes: "Online ordering is for takeout/catering meals (takeout, grill, bakery, deli, home-cooked meals), not grocery shelf items. No structured product catalog."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "11608 Blvd de Salaberry, Dollard-des-Ormeaux, QC H9B 2R8."
+  locator_api: ""
+  notes: "11608 Blvd de Salaberry, Dollard-des-Ormeaux QC H9B 2R8 (Marché de l'Ouest). Tel 514-421-0421. Closed Saturday."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Given URL verified (http, www). Kosher grocery + deli + grill/fast-food counter + bakery, Moroccan/Israeli specialties; catering for lifecycle events. MK-certified (listed on mk.ca as 'Paradise Cachere'). footprint: greater (Dollard-des-Ormeaux) per assignment."
-sources_checked: [official-site, directories]
+notes: "Kosher grocery + deli + grill/fast-food counter + bakery, Moroccan/Israeli specialties; catering for lifecycle events. MK-certified ('Paradise Cachere'). Restaurant-menu aggregators (menuweb.menu) carry its menus — not flyers."
+sources_checked: [official-site, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-en, directories, mk-kosher-guide, menuweb]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

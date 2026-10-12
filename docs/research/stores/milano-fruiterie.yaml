@@ -1,15 +1,16 @@
+# Phase 2 per-store research record (full depth).
 slug: milano-fruiterie
 name: Milano Fruiterie
 name_variants: ["Fruiterie Milano"]
-store_type: ethnic-specialty
+store_type: ethnic-specialty  # Italian specialty grocer
 footprint: island
 tier: 3
 
 website:
   url: https://milanofruiterie.ca/
-  languages: [fr, en]
-  language_switch: toggle
-  render_tech: ssr
+  languages: [fr, en]  # FR-first homepage with EN link; /en/ path works
+  language_switch: path
+  render_tech: ssr  # WordPress + Elementor, server-rendered
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +20,42 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer link on official site at tier 3 (aggregator circulaire-en-ligne.ca lists the store but no flyer verified)."
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found. No flyer/circulaire link anywhere on the official site (checked FR + EN homepages). circulaire-en-ligne.ca has a DIRECTORY listing (circulaire-en-ligne.ca/milano-fruiterie) but shows no active dated flyer — in contrast to stores like Odessa which list current circulars there. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits with a dated flyer."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No search bar on the official site (checked FR + EN homepages). Brochure-style WordPress site."
+  bot_protection: none
+  languages: n/a
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Toll-free 1-833-645-2662 advertised on site (possibly delivery-related); not verified as online ordering."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "6862 Boul. Saint-Laurent, Montréal, QC (Little Italy)."
+  locator_api: ""
+  notes: "6862 Boul. Saint-Laurent, Montréal QC H2S 3C7 (Little Italy). Tel 514-273-8558."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given URL milanofruiterie.com redirects to/ replaced by milanofruiterie.ca — the live official site is milanofruiterie.ca. Italian specialty grocer, cheese/charcuterie counters, ready-made pizza counter. 1-833-645-2662 toll-free suggests possible delivery; not verified at tier 3."
-sources_checked: [official-site, directories]
+notes: "First Italian specialty supermarket in Quebec, founded 1954 by Vincenzo Zaurrini (70+ years). Cheese/charcuterie/bakery/butcher counters, ready-made pasta counter. MAPAQ pistachio recall (Jan 2026) noted on their premises — historical."
+sources_checked: [official-site, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, pagesjaunes, cylex]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

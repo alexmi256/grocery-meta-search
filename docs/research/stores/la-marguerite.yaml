@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — la-marguerite (full depth 2026-10-12).
 slug: la-marguerite
 name: La Marguerite
 name_variants: ["La Marguerite Traiteur", "La Marguerite Catering"]
@@ -8,8 +9,8 @@ tier: 3
 website:
   url: https://www.lamarguerite.ca/
   languages: [fr, en]
-  language_switch: path
-  render_tech: spa
+  language_switch: path          # /fr/ path and /a/l/fr observed
+  render_tech: ssr                # Shopify (cdn/shop, Liquid-rendered)
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +20,54 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer; site is a catalog of priced products (Shopify-style collections)."
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer. Full-priced Shopify catalog instead (collections with variant IDs
+    and prices). Web search "La Marguerite circulaire" found no aggregator
+    listing (Flipp/RFD/circulaires.club negative).
 
 product_search:
-  has_search: false
-  notes: "Site has product collections; search not verified at tier 3."
+  has_search: true
+  url_pattern: "https://www.lamarguerite.ca/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html                     # Shopify server-rendered search results
+  api_notes: >-
+    Verified live 2026-10-12: /search?q=sushi returned "155 results", showing
+    product names, prices and variant IDs with Add to cart. Structured-data
+    signal: search HTML embeds product variants.
+  bot_protection: none
+  languages: [fr, en]
 
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "Obvious: full online shop with prices and checkout on lamarguerite.ca (boutique hours listed)."
+  notes: >-
+    Full online shop with cart/checkout on lamarguerite.ca (account login,
+    wishlist). Also on Uber Eats as "La Marguerite Gourmet" (sandwiches, salads,
+    sushi, kosher). Boutique hours: Tue–Wed 9–17, Thu 9–18:30, Fri 7:30–14, Mon/Sun orders only.
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "6630 Chemin de la Côte-Saint-Luc, Montréal, QC H4V 1G8."
+  locator_api: ""
+  notes: "6630 Chemin de la Côte-Saint-Luc, Montréal, QC H4V 1G8. Glatt kosher caterer + boutique (30+ years)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given domain lamarguerite.ca resolves to www.lamarguerite.ca — canonical URL recorded with www. Glatt kosher caterer + boutique (30+ years); FR/EN Shopify-style storefront with account login."
-sources_checked: [official-site, directories]
+notes: >-
+  UPGRADE FIND (2026-10-12): tier 3 record said "search not verified"; Shopify
+  search confirmed working with 155 results for a single query.
+sources_checked: [official-site, official-site-search-probe, web-search-circulaire, directories, ubereats]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

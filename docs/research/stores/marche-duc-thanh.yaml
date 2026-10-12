@@ -1,34 +1,47 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-duc-thanh
 name: Marché Duc Thanh
 name_variants: ["Marche Duc Thanh"]
 store_type: ethnic-specialty  # Asian grocery & butcher
 footprint: island
 tier: 3
+
 website:
   url: https://www.facebook.com/100772778660036  # Facebook-only, no official site
   languages: n/a
   language_switch: n/a
   render_tech: n/a
   bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer found; Facebook page is the store's only web presence."
+  types: []
+  notes: "No flyer found. Facebook page is the store's only web presence (no official site to host a flyer section). Checked: web search 'Marché Duc Thanh circulaire/flyer' (returns only the Facebook page + directory listings — no flyer), circulaires.club 182-merchant directory (absent), RFD Montreal flyers page (majors only), Flipp (no store page)."
+
 product_search:
   has_search: false
+  notes: "No website; no search or catalog. Facebook timeline not readable with project tooling (standing caveat)."
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 6430 Avenue Victoria, Montréal QC H3W 2S6 (Côte-des-Neiges)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "6430 Avenue Victoria, Montréal QC H3W 2S6 (Côte-des-Neiges). Single store; no locator needed."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Local Asian grocery and butcher, 'in the area for more than 15 years' per its Facebook description."
-sources_checked: [facebook, pagesjaunes, directories]
+
+notes: "Local Asian grocery and butcher, 'in the area for more than 15 years' per its Facebook description. Phone 514-733-7816."
+sources_checked: [facebook, web-search, circulaires.club-directory, rfd-flyers, flipp, pagesjaunes, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

@@ -1,34 +1,69 @@
+# Phase 2 per-store research record — magazin-istanbul (full depth 2026-10-12).
 slug: magazin-istanbul
 name: Magazin Istanbul
 name_variants: []
 store_type: ethnic-specialty  # Turkish specialty grocery
 footprint: island
 tier: 3
+
 website:
-  url: ""  # none found: no official site or social surfaced in search
+  url: ""                        # none found: no official site or social surfaced in search
   languages: n/a
   language_switch: n/a
   render_tech: n/a
   bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer possible — no web presence at all."
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer possible — no web presence at all. Deep search 2026-10-12 surfaced
+    only a Meta AI place listing (place_id 1214295050866002) and directory
+    entries; no site, social, or aggregator flyer listing.
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: "No web presence; no search possible."
+  bot_protection: n/a
+  languages: []
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 1551 Ontario St E, Montréal (Ville-Marie; per Meta business listing)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "1551 Ontario St E, Montréal QC (Ville-Marie; per Meta business listing). Turkish specialty grocery: halal meats, breads/pastries, canned goods, cheeses, produce."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "CAUTION: MapQuest also lists a 'Marché Istanbul' at 8780 Boul St-Laurent — possibly a related/renamed business, unverified; keep slugs distinct pending confirmation."
-sources_checked: [meta-business-profile, directories]
+
+notes: >-
+  CAUTION CONFIRMED: "Marché Istanbul" at 8780 Boul Saint-Laurent (marcheistanbul.com,
+  distinct phone 514-276-7930, grocery + smoothie/juice bar + restaurant) is a
+  DIFFERENT business from Magazin Istanbul at 1551 Ontario St E — keep slugs
+  distinct.
+sources_checked: [meta-business-profile, web-search, directories, mapquest]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

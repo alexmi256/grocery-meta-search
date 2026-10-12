@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — la-bendicion (full depth 2026-10-12).
 slug: la-bendicion
 name: Marché Latino La Bendición
 name_variants: []
@@ -9,7 +10,7 @@ website:
   url: http://marche-bendicion.poi.place/
   languages: [fr]
   language_switch: n/a
-  render_tech: ssr
+  render_tech: ssr                # poi.place directory mini-site
   bot_protection: none
 
 parent_company: ""
@@ -19,11 +20,29 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer at tier 3."
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    poi.place mini-site fetched 2026-10-12 (hours, amenities, reviews only) — no
+    flyer section. Web search "La Bendición circulaire" found no flyer or
+    aggregator listing. Convenience-store format; no flyer operation.
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: "Directory mini-site only; no catalog, no search."
+  bot_protection: none
+  languages: [fr]
 
 ecommerce:
   online_ordering: false
@@ -33,13 +52,14 @@ ecommerce:
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "9201 Bd Saint-Michel, Montréal, QC (Villeray–Saint-Michel–Parc-Extension)."
+  locator_api: ""
+  notes: "9201 Bd Saint-Michel, Montréal, QC H1Z 3G6 (Villeray–Saint-Michel–Parc-Extension). Hours per mini-site: Mon–Fri 10–17, Sat 10–15, Sun closed. Secondary listing at 7489 Rue St-Hubert — likely same owner, unverified."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Given URL verified as the store's mini-site on poi.place (a place-directory that hosts per-store pages). Small Latin grocery; secondary listings show 7489 Rue St-Hubert too — likely same owner, not verified at tier 3."
-sources_checked: [official-site, directories]
+notes: ""
+sources_checked: [official-site, web-search-circulaire, directories, pagesjaunes]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

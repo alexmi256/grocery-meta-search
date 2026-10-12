@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — le-baobab (full depth 2026-10-12).
 slug: le-baobab
 name: Le Baobab
 name_variants: ["Le Baobab Épicerie Africaine"]
@@ -9,7 +10,7 @@ website:
   url: https://lebaobab.store/
   languages: [fr]
   language_switch: n/a
-  render_tech: ssr
+  render_tech: ssr                # WordPress + WooCommerce (wp-content/uploads)
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +20,54 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer link found at tier 3."
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer. circulaire-en-ligne.ca has a directory-only page ("Le Baobab -
+    Épicerie Boutique Ethnique") with no actual flyer. No Flipp/RFD listing.
 
 product_search:
-  has_search: false
-  notes: ""
+  has_search: true
+  url_pattern: "https://lebaobab.store/?s={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html                     # WordPress server-rendered search results
+  api_notes: >-
+    Verified live 2026-10-12: /?s=arraw returned "arraw - Épicerie" with a product
+    result (Arraw de mil). WooCommerce catalog grid; prices hidden behind login
+    ("Connexion requise pour voir le prix").
+  bot_protection: none
+  languages: [fr]
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: ""
+  notes: >-
+    WooCommerce shop; product pages show "Connexion requise pour voir le prix" —
+    prices/cart gated behind account login. Guest can browse and search; ordering
+    needs an account.
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "5190-A Chemin de la Côte-des-Neiges, Montréal, QC (2 min from Côte-des-Neiges metro)."
+  locator_api: ""
+  notes: "5190-A Chemin de la Côte-des-Neiges, Montréal, QC H3T 1X8. Senegalese/African boutique-épicerie: groceries + cosmetics + wax clothing. Site title also mentions Repentigny — second location UNVERIFIED. Phone 514-739-0007. Older domain lebaobab.ca also exists; lebaobab.store is current."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Senegalese/African boutique-épicerie (Côte-des-Neiges); groceries + cosmetics + wax clothing. Older site lebaobab.ca also exists; lebaobab.store is the current listed website."
-sources_checked: [official-site, directories]
+notes: >-
+  UPGRADE FIND (2026-10-12): tier 3 record said "no search / no ecommerce";
+  full depth found a live WooCommerce store with working product search (login
+  required for prices).
+sources_checked: [official-site, official-site-search-probe, web-search-circulaire, circulaire-en-ligne, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

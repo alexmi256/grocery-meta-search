@@ -1,15 +1,16 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-sa-et-fils
 name: Marché SA et Fils
 name_variants: ["Marché Sa", "Epicerie Et Boucherie SA & Fils Inc"]
-store_type: ethnic-specialty
+store_type: ethnic-specialty  # Portuguese/Brazilian grocer
 footprint: island
 tier: 3
 
 website:
   url: https://www.saetfils.ca/
   languages: [fr, en]
-  language_switch: path
-  render_tech: ssr
+  language_switch: path        # /en-ca/ confirmed (renders in English)
+  render_tech: ssr              # custom PHP site (.php URLs), server-rendered
   bot_protection: none
 
 parent_company: ""
@@ -22,40 +23,41 @@ flyers:
     - type: weekly
       sources:
         - name: official site
-          url: https://www.saetfils.ca/en-ca/
+          url: https://www.saetfils.ca/
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: http
       duration_days: 7
-      flip_weekday: ""
+      flip_weekday: ""           # flip day not stated; "Spéciaux de la semaine" rotates weekly
       flip_timezone: America/Toronto
       validity_example: ""
       per_store_variant: false
       languages: [fr, en]
       archive_available: false
       structured_data: false
-      notes: "Homepage has a 'Promotions' / 'Our promotions of the week' section — closest to a weekly flyer. Not a paginated circulaire; prices shown as product cards."
+      notes: "Homepage has a 'Promotions' / 'Spéciaux de la semaine' ('Our promotions of the week') section — closest to a weekly flyer. Not a paginated circulaire; prices shown as product cards. Absent from circulaires.club, circulaires.ca, RFD flyers, Flipp."
 
 product_search:
   has_search: false
-  notes: ""
+  notes: "No search anywhere. /search?q= returns 404; sitemap.xml lists only category/article/contact pages (produits-portugais.php, etc.) — no search, cart, or product-detail URLs. Custom PHP site, no search UI."
 
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "Obvious: site offers online ordering + delivery."
+  notes: "'Commandez' buttons across the site point to deliver.biz (third-party ordering platform); product pages say 'Passez votre commande en ligne... livraison rapide partout à Montréal et dans les environs'. Online ordering is real but outsourced — structured item data, if any, lives on deliver.biz, not saetfils.ca."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "4701 Rue Saint-Urbain, Montréal, QC H2T 2V9 (Plateau/Mile End)."
+  locator_api: ""
+  notes: "4701 Rue Saint-Urbain, Montréal, QC H2T 2V9 (Plateau/Mile End). Mon–Wed 9–19, Thu–Fri 9–20, Sat 8–18, Sun 10–17. Single store; no locator needed."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given domain saetfils.ca resolves to www.saetfils.ca — canonical URL recorded with www. Portuguese/Brazilian family grocer founded 1975 by Balbino Sa. SURPRISE: one of the few tier-3 stores with a weekly promotions section on its own site."
-sources_checked: [official-site, directories]
+notes: "URL CORRECTION (carried): given domain saetfils.ca resolves to www.saetfils.ca — canonical URL recorded with www. Portuguese/Brazilian family grocer founded 1975 by Balbino Sa. Sitemap also reveals SEO geo-pages (produits-portugais-gatineau.php etc.) — same-store SEO, not extra locations."
+sources_checked: [official-site, sitemap.xml, circulaires.club-directory, circulaires.ca, rfd-flyers, flipp, web-search, directories]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

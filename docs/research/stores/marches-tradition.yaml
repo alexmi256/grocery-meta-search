@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: marches-tradition
 name: Les Marchés Tradition
 name_variants: ["Marché Tradition", "Les Marchés Tradition"]
@@ -58,6 +59,7 @@ product_search:
   api_notes: "No site search observed; store locator + per-store pages only."
   bot_protection: none
   languages: [fr, en]
+  notes: "Negative finding (re-verified 2026-10-12): homepage text fetch contains no 'rechercher' string and no search box; nav is store locator, Scène+ offers, recipes, community content only."
 
 ecommerce:
   online_ordering: false
@@ -68,14 +70,14 @@ locations:
   count_estimate: 75
   locator_url: https://www.marchestradition.com/fr/store-locator/
   locator_api: ""
-  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
-  # research. Record the mechanism here.
+  notes: "Sobeys Québec banner for independent affiliated grocers — every store page lists an independent owner ('Propriétaire'), confirming independent-affiliate status. Island-of-Montreal presence not specifically confirmed; stores verified across QC (Aylmer, St-Bruno, Hemmingford, Weedon, Matagami, etc.)."
 
 loyalty_program:
   name: Scene+
   card_gated_prices: true
+  notes: "Flyer advertises Scène+ member prices and points offers — card-gated price semantic confirmed."
 
-notes: "Sobeys Québec banner for independent affiliated grocers — every store page lists an independent owner ('Propriétaire'), confirming independent-affiliate status. Island-of-Montreal presence not specifically confirmed; stores verified across QC (Aylmer, St-Bruno, Hemmingford, Weedon, Matagami, etc.)."
+notes: "Some Bonichoix stores are converting to the Marchés Tradition banner (e.g. Saint-Bruno, Jan 2026 news)."
 sources_checked: [official-site, circulaires-club, circulairecanada, wikipedia, canadiangrocer]
 researched_at: "2026-10-12"
 research_status: complete

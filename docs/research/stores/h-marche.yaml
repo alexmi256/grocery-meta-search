@@ -1,4 +1,4 @@
-# Tier 2 per-store research record.
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: h-marche
 name: H Marché
 name_variants: ["H Mart Montreal"]
@@ -10,7 +10,7 @@ website:
   url: https://www.hmartmontreal.com/
   languages: [fr, en]
   language_switch: toggle
-  render_tech: js-heavy
+  render_tech: js-heavy             # Wix microsite
   bot_protection: none
 
 parent_company: H Mart
@@ -20,7 +20,7 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer section on hmartmontreal.com (Wix microsite for the 3 Montreal stores). H Mart US/Canada national weekly ads may exist elsewhere but were not verified for Montreal."
+  notes: "Negative finding (re-verified 2026-10-12). Checked: official microsite (hmartmontreal.com, Wix) — no flyer/circulaire section; Flipp — H Mart flyers exist but ONLY for US cities and Ontario (GTA: York, Mississauga, Brampton, etc.), no Montreal/QC listing; RFD Montreal flyers directory; circulaires.club; supermarches.ca; web search 'H Marché OR H Mart Montréal circulaire flyer'. H Mart national weekly flyers (flyers-on-line 'H Mart Western Canada', offermate.us, kaufino) do not cover the 3 Montreal stores. If Montreal flyers appear later, Flipp merchant id 2782 and the hmart.com ad feed are the likely sources."
 
 product_search:
   has_search: false
@@ -28,28 +28,28 @@ product_search:
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: ""
+  api_notes: "Wix microsite; no search app/page observed."
   bot_protection: none
   languages: [fr, en]
-  notes: "No product search on the Montreal microsite."
+  notes: "Negative finding: no product search on the Montreal microsite (Home, About, Locations, Contact-style pages only). H Mart US site has its own search/app, out of scope for the Montreal arm."
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "H Mart app offers shopping elsewhere; not observed for the Montreal microsite."
 
 locations:
   count_estimate: 3
   locator_url: https://www.hmartmontreal.com/
   locator_api: ""
-  notes: "3 stores listed in the Locations section on the homepage: Decarie (2116 Decarie Blvd), Downtown (2109 Saint-Catherine St W), St-Jacques (6785 Rue Saint-Jacques)."
+  notes: "3 stores listed in the Locations section on the homepage: Decarie (2116 Decarie Blvd), Downtown (2109 Saint-Catherine St W), St-Jacques (6785 Rue Saint-Jacques). No dedicated locator URL."
 
 loyalty_program:
   name: "H Point Card"
   card_gated_prices: false
-  notes: "H Point Card mentioned on homepage; no evidence of card-gated prices."
+  notes: "H Point Card mentioned on homepage; H Mart also advertises the Club-H Saving Card (5 pts/$1, 2,500 pts = discount) nationally — no evidence of card-gated prices at Montreal stores."
 
 notes: "H Mart entered Quebec in June 2024 by acquiring 3 Jang Teu grocery stores in Montreal. Montreal arm runs as a minimal Wix microsite (FR/EN headings)."
-sources_checked: [official-site, wikipedia, yellowpages]
+sources_checked: [official-site, flipp, rfd-flyers, circulaires.club, supermarches.ca, wikipedia, yellowpages, web-search]
 researched_at: "2026-10-12"
 research_status: complete

@@ -1,7 +1,8 @@
+# Phase 2 per-store research record (full depth).
 slug: meli-melo
 name: Meli-Melo Essentiel
-name_variants: ["Marché Méli-Mélo Caraibe", "Meli-Melo Market"]
-store_type: ethnic-specialty
+name_variants: ["Marché Méli-Mélo Caraibe", "Meli-Melo Market", "Marché Méli-Mélo"]
+store_type: ethnic-specialty  # Haitian / Caribbean grocery + takeout counter
 footprint: island
 tier: 3
 
@@ -19,11 +20,25 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer at tier 3."
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found: Facebook-only web presence, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No website; Facebook page only, no product search."
+  bot_protection: n/a
+  languages: n/a
 
 ecommerce:
   online_ordering: false
@@ -33,13 +48,14 @@ ecommerce:
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "640 Rue Jarry E, Montréal, QC (Haitian/Caribbean market + restaurant). A second listing 'Meli-Melo Essentiel' at 3965 Bd Henri-Bourassa E appears in directories — possibly a sister shop, not verified at tier 3."
+  locator_api: ""
+  notes: "640 Rue Jarry E, Montréal QC (Villeray; near Jarry metro). A second directory listing 'Meli-Melo Essentiel' at 3965 Bd Henri-Bourassa E exists — possibly a sister shop, unverified."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Given task noted 'none found'; a Facebook page exists: facebook.com/marchemelimelo.caraibe — recorded as official-social fallback. Also offers money-transfer/courier services on site."
-sources_checked: [official-social, directories]
+notes: "Haitian/Caribbean market + restaurant counter (renowned griot takeout); also offers money-transfer/courier services. Villeray institution (~30 years)."
+sources_checked: [official-social, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories, tastet]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

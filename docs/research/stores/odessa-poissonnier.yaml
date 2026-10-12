@@ -1,44 +1,82 @@
+# Phase 2 per-store research record (full depth).
 slug: odessa-poissonnier
 name: Odessa Poissonnier
-name_variants: []
-store_type: ethnic-specialty
-footprint: island
+name_variants: ["Les Poissonneries Odessa"]
+store_type: ethnic-specialty  # fish market chain
+footprint: qc-confirmed
 tier: 3
 
 website:
   url: https://odessapoissonnier.com
-  languages: [fr, en]
-  language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  languages: [fr, en]  # FR-first; Weglot translation plugin active
+  language_switch: toggle  # Weglot language toggle
+  render_tech: ssr  # Shopify theme, server-rendered
+  bot_protection: none  # plain HTTP fetch works (Cloudflare CDN, no challenge)
 
-parent_company: ""
-affiliation: independent-affiliate
+parent_company: Groupe Ferron  # family business since 1982 (Canada Post case study); also runs Groupe Alimentaire Nordique (processing) and Nepco (distribution)
+affiliation: corporate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  notes: "no flyer found (tier 3)"
-
-product_search:
-  has_search: false
-
-ecommerce:
-  online_ordering: false
-  click_and_collect: false
+  has_flyers: true
+  types:
+    - type: biweekly
+      sources:
+        - name: official site
+          url: https://odessapoissonnier.com/pages/circulaire
+          kind: official
+          format: pdf  # e.g. .../files/20_-_8_au_21_octobre_-_visuel_circulaire-planche.pdf (issue #20)
+          parse_friendliness: low  # PDF, image-based pages (planche)
+          fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-odessa-poissonnier-du-8-au-21-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/odessa-poissonnier/circulaire-speciaux-promotions-et-rabais-de-cette-semaine
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 14
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-21"
+      per_store_variant: false  # same 13-page flyer chain-wide
+      languages: [fr]
+      archive_available: true  # older flyers transcribed on fr.readkong.com (e.g. Feb 4–17 flyer); back issues reachable there
+      structured_data: false
+      notes: "Past circulars were distributed via Publisac per the Canada Post case study — now digital-first. Filename pattern suggests numbered issues ('20_-_8_au_21_octobre')."
   notes: ""
 
+product_search:
+  has_search: true
+  url_pattern: "https://odessapoissonnier.com/search?q={query}"
+  location_scoped: true  # online orders require choosing a pickup store (6 locations offered)
+  guest_ok: true
+  kind: json-api  # /products.json public (verified 200 with product JSON), plus Shopify predictive-search API
+  api_notes: "products.json public (limit/pagination params work). Shopify search returns HTML results; predictive search suggest endpoint likely available."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true  # "Ramassage en succursale", ready in ~48h
+  notes: "Boutique en ligne with home delivery + in-store pickup at 6 locations."
+
 locations:
-  count_estimate: 5
-  locator_url: ""
+  count_estimate: 6
+  locator_url: ""  # no dedicated locator page; stores listed as pickup options on /pages/circulaire and at checkout
   locator_api: ""
-  notes: "MTL: 4900 Rue Molson #100; 7500 Bd des Galeries d'Anjou; HQ 6569 Av. Papineau. Also St-Jean-sur-Richelieu and Brossard (Quartier DIX30). Founded 1982; largest fish-market chain in Quebec."
+  notes: "Molson 4900 Rue Molson #100, Montréal; Anjou 7500 Bd des Galeries d'Anjou; Brossard 7200 Bd du Quartier (DIX30); St-Jean-sur-Richelieu 145 Boul Saint-Joseph; Beloeil 338 Boul Sir-Wilfrid-Laurier; Sorel-Tracy 6950 QC-132. (6569 Av. Papineau appears to be offices, not retail.)"
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Multi-location fish market chain; has catering/takeout counter."
-sources_checked: [search, directories, official-site-indexed]
+notes: "Largest fish-market chain in Quebec (since 1982). Catering/takeout counter. Facebook/Instagram/TikTok active."
+sources_checked: [official-site, official-site-circulaire-page, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, readkong, canada-post-case-study]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

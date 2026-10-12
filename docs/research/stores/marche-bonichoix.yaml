@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: marche-bonichoix
 name: Marché Bonichoix
 name_variants: ["Bonichoix", "BoniChoix"]
@@ -58,6 +59,7 @@ product_search:
   api_notes: "No site search observed; store locator + per-store pages only."
   bot_protection: none
   languages: [fr, en]
+  notes: "Negative finding (re-verified 2026-10-12): EN and FR homepage fetches contain no 'search'/'recherch' strings and no search box; nav is store locator, per-store pages and brand content only."
 
 ecommerce:
   online_ordering: false
@@ -68,14 +70,14 @@ locations:
   count_estimate: 42
   locator_url: https://www.bonichoix.com/fr/store-locator/
   locator_api: ""
-  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
-  # research. Record the mechanism here.
+  notes: "Sobeys Québec banner for independent affiliated grocers — store locator lists independent operator names per store ('Contactez directement le propriétaire de votre magasin'). Montreal island store confirmed (3350-5199 Sherbrooke Est). Count is directory-based (circulaire-en-ligne: 42); an older Sobeys figure cited 83 — current count needs verification."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: "No Bonichoix-specific loyalty program observed. (Scene+ member prices are advertised on the sibling Marchés Tradition flyer; no evidence it applies to Bonichoix.)"
 
-notes: "Sobeys Québec banner for independent affiliated grocers — store locator lists independent operator names per store ('Contactez directement le propriétaire de votre magasin'). Montreal island store confirmed (3350-5199 Sherbrooke Est). Count is directory-based (circulaire-en-ligne: 42); an older Sobeys figure cited 83 — current count needs verification."
+notes: "Sobeys Québec banner for independent affiliated grocers. Some stores converting to the Marchés Tradition banner."
 sources_checked: [official-site, circulaires-club, circulairecanada, circulaire-en-ligne, wikipedia, informeaffaires]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

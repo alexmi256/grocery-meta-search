@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — fooderie-kosher (full depth 2026-10-12).
 slug: fooderie-kosher
 name: The Fooderie Kosher Market
 name_variants: ["The Fooderie"]
@@ -9,8 +10,8 @@ website:
   url: https://www.fooderiemarket.com/
   languages: [en]
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: unknown            # custom e-commerce platform; homepage fetch threw error ST282
+  bot_protection: rate-limit      # 403 on /categories/94516/products probe; error ST282 on homepage
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,27 +20,59 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found at tier 3."
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer for the Montreal store. "Fooderie Flyer" hits (westorangefooderie.com)
+    are a DIFFERENT business (West Orange, NJ, USA) — must not conflate. Montreal
+    site promotes specials via a WhatsApp Status signup ("Sign up to see our
+    WhatsApp Status", homepage 2026-10-12). No Flipp/RFD/circulaires.club listing.
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: unknown
+  api_notes: >-
+    Catalog category pages are indexed (/categories/{id}/products), but no
+    /search/ path was observed and direct fetches are blocked (403 / error
+    ST282). Search presence NOT confirmed — do not treat as searchable.
+  bot_protection: rate-limit
+  languages: [en]
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: ""
+  notes: >-
+    Home delivery with zone minimums (Outremont/Vimy/Westbury/TMR/Hampstead/Côte
+    St-Luc $50; NDG/Ville St-Laurent $100; Westmount/Laval $150; Downtown $200;
+    $4.95 service fee; sale items and cases excluded) — homepage 2026-10-12.
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "6680 Av. du Parc, Montréal, QC H2V 4J1."
+  locator_api: ""
+  notes: "6680 Av. du Parc, Montréal, QC H2V 4J1. 'Largest only kosher supermarket in Montreal' (supermarket + butcher + bakery + sushi/pizza counter). MK-certified (mk.ca kosher guide: Fooderie/Deli 365)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given domain fooderiemarket.com resolves to www.fooderiemarket.com — canonical URL recorded with www. Describes itself as 'the largest only kosher supermarket in Montreal' (supermarket + butcher + bakery + sushi/pizza counter). MK-certified (listed on mk.ca kosher guide as Fooderie/Deli 365)."
-sources_checked: [official-site, directories]
+notes: >-
+  URL CORRECTION: fooderiemarket.com resolves to www.fooderiemarket.com — canonical
+  recorded with www. Acquired Kosher Quality (5855 Victoria) ~2025 (The Suburban
+  via diningandcooking.com) — see kosher-quality.yaml; possible rebrand to
+  "Kosher Quality by Fooderie". PARTIAL STATUS REASON: site blocks automated fetch
+  (403 on catalog path, error ST282 on homepage), so product-search presence could
+  not be confirmed or denied; flyer absence is confirmed.
+sources_checked: [official-site, official-site-probe-403, web-search-flyer, flipp-search-snippet, rfd-flyers-search-snippet]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: partial

@@ -7,10 +7,10 @@ tier: 3
 
 website:
   url: https://www.bentzysfood.com/
-  languages: [en]
+  languages: [en]                    # unverified — site unreachable at research time; per earlier record
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: unknown               # site unreachable; reason in notes
+  bot_protection: unknown
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,27 +19,34 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found at tier 3."
+  notes: "No flyer found. Checked: official site unreachable (see website notes); not on the circulaires.club weekly index (218 QC flyers), circulaires.com Montreal merchant list, or RFD flyers page; web search '\"Bentzy's\" Montréal circulaire' returned only directory listings."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Cannot verify — official site unreachable; no search evidence in directories."
+  bot_protection: unknown
+  languages: [en]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "No online ordering portal found. Directory blurbs advertise 'fast and free delivery' — phone orders at (514) 807-4901."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "5540 Rue Hutchison, Montréal, QC H2V 4B3 (Outremont)."
+  locator_api: ""
+  notes: "5540 Rue Hutchison, Montréal, QC H2V 4B3 (Outremont). Hours vary by source (YP: Mon-Thu 7:00-23:00, Fri 7:00-17:00, Sun 7:30-23:00; closed Sat per some listings) — verify by phone."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given domain bentzysfood.com resolves to www.bentzysfood.com — canonical URL recorded with www. Kosher supermarket ('fastest growing kosher supermarket in Montreal' per its own blurb); 'Bentzy's Service Included In Every Order... FREE' slogan suggests delivery service — not verified at tier 3."
-sources_checked: [official-site, directories]
+notes: "Kosher supermarket ('fastest growing kosher supermarket in Montreal' per its own blurb). WEBSITE ISSUE: www.bentzysfood.com is listed in directories (fyple, Yellow Pages) and was reachable at tier-3 time, but DNS fails to resolve via the fetch tool as of 2026-10-12 — possibly a temporary outage or expired hosting. Treat as temporarily unreachable, not confirmed dead; re-check before any scrape work."
+sources_checked: [official-site-attempted, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: partial

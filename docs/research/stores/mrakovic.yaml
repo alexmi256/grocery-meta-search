@@ -7,7 +7,7 @@ tier: 3
 
 website:
   url: https://mrakovic.com
-  languages: [fr, en]
+  languages: [en]
   language_switch: n/a
   render_tech: ""
   bot_protection: ""
@@ -18,27 +18,29 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "not checked — store out of scope"
+  types: []
+  notes: "not checked — store out of scope (Ontario only)"
 
 product_search:
   has_search: false
-
-ecommerce:
-  online_ordering: false
-  click_and_collect: false
   notes: ""
 
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "ships products Canada-wide from mrakovic.com (Shopify); products also listed at Costco warehouses incl. Quebec — wholesale only, not a retail storefront"
+
 locations:
-  count_estimate: 2
+  count_estimate: 0
   locator_url: ""
   locator_api: ""
-  notes: "44 Wellesworth Dr, Etobicoke, ON; also Oakville, ON. NO Quebec presence found."
+  notes: "Two Ontario locations only: 44 Wellesworth Dr, Etobicoke ON M9C 4R1 and 220 North Service Rd W, Oakville ON. No Quebec storefront."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "FLAG — VERIFIED Flipp national-listing artifact: Bosnian/Balkan family business (since 2003) with only Ontario locations (Etobicoke + Oakville). No Montreal/Quebec storefront. RECOMMEND EXCLUSION from the Quebec grocery scope."
-sources_checked: [search, directories, official-site-indexed]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED Flipp national-listing artifact. Bosnian/Balkan family business (since 2003) with exactly two Ontario storefronts — Etobicoke and Oakville — confirmed by mrakovic.com (official site footer lists both, with phones), its social/press postings, and directories (firmania, yably, cylex). No Quebec retail location exists. Mrakovic products are sold wholesale at Costco warehouses (incl. Montreal-area Costco sites), but there is no Mrakovic-branded store in Quebec. Out of Montreal/Greater-Montreal scope."
+sources_checked: [search, directories, official-site, flipp-indexed]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

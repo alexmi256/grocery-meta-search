@@ -1,34 +1,61 @@
+# Phase 2 per-store research record (full depth).
 slug: marche-tharsini
 name: Marché Tharsini
 name_variants: ["Super Marché Tharsini", "Tharsini Super Market"]
 store_type: ethnic-specialty  # Indo-Asian (Tamil / South Indian) grocery
 footprint: island
 tier: 3
+
 website:
-  url: https://m.facebook.com/pages/category/Supermarket/Marche-Tharsini-1904387439873150  # Facebook-only, no official site
+  url: https://m.facebook.com/pages/category/Supermarket/Marche-Tharsini-1904387439873150
   languages: n/a
   language_switch: n/a
   render_tech: n/a
   bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer found; Facebook page is the store's only web presence."
+  types: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found: Facebook-only web presence, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No website; Facebook page only, no product search."
+  bot_protection: n/a
+  languages: n/a
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 5670 Avenue Victoria, Montréal QC H3W 2P8 (Côte-des-Neiges)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "5670 Avenue Victoria, Montréal QC H3W 2P8 (Côte-des-Neiges). Tel 514-737-1261. Open daily 9am–11pm."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Well-stocked Indo-Asian grocery; fresh produce, ground coconut, seasonal mangoes; open late (9am–11pm daily)."
-sources_checked: [facebook, pagesjaunes, cylex, canpages]
+
+notes: "Well-stocked Indo-Asian grocery; fresh produce, ground coconut, seasonal mangoes. Address appears as both 5670 and 5692 Av. Victoria in directories (same block, likely one storefront spanning listings)."
+sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, pagesjaunes, cylex, canpages, find-open]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

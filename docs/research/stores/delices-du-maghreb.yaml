@@ -4,31 +4,49 @@ name_variants: ["Delice Du Maghreb", "Delices Du Maghreb Inc."]
 store_type: ethnic-specialty  # Moroccan / North African market (grocery + halal butcher + pâtisserie)
 footprint: island
 tier: 3
+
 website:
-  url: http://www.delicesdumaghreb.ca/
-  languages: fr-only          # FR observed; EN toggle not verified
+  url: ""                            # none found — see notes
+  languages: n/a
   language_switch: n/a
-  render_tech: unknown
-  bot_protection: unknown
+  render_tech: n/a
+  bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer link found at tier 3."
+  types: []
+  notes: "No flyer found. Checked: official domain (DEAD — see website notes), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Délices du Maghreb\" Montréal circulaire' (press/directory results only)."
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: html
+  api_notes: "No web presence to host search."
+  bot_protection: n/a
+  languages: n/a
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: "Uber Eats presence observed (couscous/meals delivery from 5627a Chemin de la Côte-des-Neiges)."
+  notes: "No store-owned ordering. Delivery-app presence only: Uber Eats lists the store (couscous/meals delivery)."
+
 locations:
-  count_estimate: 1  # 5627A Chemin de la Côte-des-Neiges, Montréal QC H3T 1Y8 (Côte-des-Neiges)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "5627A Chemin de la Côte-des-Neiges, Montréal QC H3T 1Y8 (Côte-des-Neiges). Hours: daily 10:00-20:00 (Thu opens 9:30) per place data. Phone 514-344-5691."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "3 departments: épicerie, boucherie halal, pâtisserie maghrébine (khlii, merguez noted in reviews)."
-sources_checked: [official-site-search-snippet, yellowpages, cylex, ubereats]
+
+notes: "Moroccan market: 3 departments — épicerie, boucherie halal, pâtisserie maghrébine (makroute, cornes de gazelle, merguez, couscous du jour). WEBSITE DEAD as of 2026-10-12: delicesdumaghreb.ca resolves to a 'Magician Bet' online-casino spam page (domain expired/hijacked). The store's cached site text mentioned ending its allomaroc.ca partnership to build a new platform — no replacement found in web search. Store itself is active (reviews, Uber Eats). No official social page found; directory fallback only."
+sources_checked: [official-site-dead, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, delivery-apps]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

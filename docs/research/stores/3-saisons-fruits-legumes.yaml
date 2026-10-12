@@ -7,38 +7,46 @@ tier: 3
 
 website:
   url: http://www.marche3saisons.com/
-  languages: [fr, en]
+  languages: [fr]                    # FR-only content observed; EN toggle not found
   language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  render_tech: unknown               # small static site-builder site (Wix-style page URLs like /copy-of-recettes); renders as plain text
+  bot_protection: none               # fetched without issue
 
-parent_company: ""
+parent_company: "Famille Romanin"    # per the site's À propos page; 50+ years in the trade
 affiliation: independent-affiliate
 banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  notes: "No flyer found. Checked: official site (minimal FR site — homepage, À propos, recettes pages; no flyer/circulaire section), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"3 Saisons\" Bois-des-Filion fruiterie circulaire' (directory results only)."
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No catalog or search function on the site."
+  bot_protection: none
+  languages: [fr]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Walk-in only."
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "694 Boul Adolphe-Chapleau, Bois-des-Filion, QC J6Z 1L5 (off-island, North Shore). Seasonal greengrocer + fromagerie/charcuterie/boulangerie."
+  notes: "694 Boul Adolphe-Chapleau, Bois-des-Filion, QC J6Z 1L5 (off-island, North Shore). Hours: Sun 9:00-19:00, Mon-Sat 9:00-20:00 (Thu-Fri to 21:00 per one directory). Phone (450) 965-1951."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: ""
-sources_checked: [search, directories, official-site-indexed]
+notes: "Seasonal greengrocer + fromagerie / charcuterie / boulangerie / épicerie fine. 4.8★ on reviews; a few recent reviews complain about upkeep — not engine-relevant."
+sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

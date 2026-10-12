@@ -7,38 +7,46 @@ tier: 3
 
 website:
   url: http://carrefoursolidaire.org/activites/3-paniers/
-  languages: [fr, en]
-  language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  languages: [fr]                    # FR-only content observed on the store page; EN version not found
+  language_switch: n/a
+  render_tech: ssr                   # WordPress (wp-content paths)
+  bot_protection: none
 
-parent_company: Carrefour Solidaire (opérée par Marché Frontenac, OBNL)
-affiliation: corporate
+parent_company: "Carrefour Solidaire CCA (opérée par Marché Frontenac, OBNL)"
+affiliation: independent-affiliate   # OBNL social-economy project, not a corporate chain
 banner_family: ["Marché Solidaire Frontenac"]
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  notes: "No flyer found. Checked: official store page (WordPress content page, no circulaire/flyer section), parent org site, circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '3 Paniers épicerie circulaire' (only press/quebeccirculaire.org project pages)."
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No search bar on the store page or parent org site; WordPress content site, no product catalog."
+  bot_protection: none
+  languages: [fr]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Walk-in only. Gift certificates sold at the register."
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "2375 rue Sainte-Catherine E, Montréal, QC H2K 2J5. Solidarity grocery with 3-tier sliding-scale pricing (prix solidaire / suggéré / au suivant)."
+  notes: "2375 rue Sainte-Catherine E, Montréal, QC H2K 2J5 (Centre-Sud). Hours: Mon-Fri 11:00-19:00, Sat-Sun 10:00-17:00. Phone 514 525-6611 x2."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Open year-round, 300+ products, accepts Carte proximité. Same organization as Marché Solidaire Frontenac."
-sources_checked: [search, official-site]
+notes: "Solidarity grocery (opened Jan 2022) with 3-tier sliding-scale pricing: prix solidaire / prix suggéré / prix au suivant — chosen by the shopper at checkout, no proof of income. 300+ products, accepts Carte proximité. All profits reinvested in the Carrefour's programs."
+sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

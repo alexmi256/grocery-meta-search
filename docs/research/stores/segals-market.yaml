@@ -1,34 +1,61 @@
+# Phase 2 per-store research record (full depth).
 slug: segals-market
 name: Segal's Market
 name_variants: []
-store_type: traditional  # budget no-frills general grocer; batch default ethnic-specialty not accurate
+store_type: traditional  # budget no-frills general grocer
 footprint: island
 tier: 3
+
 website:
-  url: https://www.facebook.com/2012417038809524  # Facebook-only, no official site
+  url: https://www.facebook.com/2012417038809524
   languages: n/a
   language_switch: n/a
   render_tech: n/a
   bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer found; Facebook page is the store's only web presence."
+  types: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found: Facebook-only web presence, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No website; Facebook page only, no product search."
+  bot_protection: n/a
+  languages: n/a
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 4001 Boul Saint-Laurent, Montréal QC H2W 1Y4 (Plateau, near Schwartz's)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "4001 Boul Saint-Laurent, Montréal QC H2W 1Y4 (Plateau, near Schwartz's). Tel 514-845-4716."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
+
 notes: "Known for cheap produce, bulk goods, cash-friendly no-frills shopping; vegan options noted in reviews."
-sources_checked: [facebook, yellowpages, directories]
+sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, yellowpages, canpages, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

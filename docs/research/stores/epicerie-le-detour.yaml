@@ -8,37 +8,45 @@ tier: 3
 website:
   url: https://epicerieledetour.org/
   languages: [fr, en]
-  language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  language_switch: path              # /fr/ and /en/ on wordpress.epicerieledetour.org
+  render_tech: ssr                   # WordPress (resolves to wordpress.epicerieledetour.org)
+  bot_protection: none
 
 parent_company: ""
-affiliation: independent-affiliate
+affiliation: independent-affiliate   # OBNL, member-run
 banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  notes: "No flyer found. Checked: official site (one-page WordPress site, no flyer/circulaire section), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Épicerie Le Détour\" Montréal circulaire' (org pages + wordpress.epicerieledetour.org results only)."
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "One-page WordPress site; no search bar or product catalog."
+  bot_protection: none
+  languages: [fr, en]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Walk-in only."
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "1900 rue Le Ber, local 120, Montréal, QC H3K 2A4 (Bâtiment 7, Pointe-Saint-Charles). Not-for-profit self-managed neighbourhood grocery; members volunteer 3h/month."
+  notes: "1900 rue Le Ber, local 120, Montréal, QC H3K 2A4 (Bâtiment 7, Pointe-Saint-Charles). Hours: Tue-Fri 9:00-19:00, Sat-Sun 9:00-18:00, closed Monday. Phone 438-476-5471."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "epicerieledetour.org resolves to a WordPress site (wordpress.epicerieledetour.org); bilingual FR/EN."
-sources_checked: [search, official-site]
+notes: "Not-for-profit self-managed neighbourhood grocery (opened May 2018); members volunteer 3h/month. Community fridge, prepared meals, seasonal produce."
+sources_checked: [official-site, search, circulaires-club, circulaires.com, rfd-flyers, web-search]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

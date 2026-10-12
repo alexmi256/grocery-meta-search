@@ -1,18 +1,22 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-fu-tai
 name: Marché Fu Tai
 name_variants: ["Marché FuTai", "福泰超市"]
 store_type: ethnic-specialty  # Asian supermarket, ~35,000 sq ft
 footprint: island
 tier: 3
+
 website:
   url: http://www.marchefutai.ca/
-  languages: [fr, en]          # store's own bilingual self-description observed
-  language_switch: n/a
-  render_tech: unknown
-  bot_protection: unknown
+  languages: [fr, en]          # store's own bilingual self-description; homepage title also shows Chinese (福泰超市)
+  language_switch: n/a         # not determined (JS-rendered nav)
+  render_tech: js-heavy        # WooCommerce storefront; homepage and /weekly-flyer render "Your shopping cart is empty!" to text fetch — content is JS-driven
+  bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: true
   types:
@@ -22,29 +26,56 @@ flyers:
           url: http://www.marchefutai.ca/weekly-flyer
           kind: official
           format: html
+          parse_friendliness: low
+          fetchability: browser-needed   # page title "Marché FuTai Weekly Flyer" confirms the page exists; body is JS-rendered, plain-HTTP text fetch returns nothing usable
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/marche-fu-tai/
+          kind: aggregator
+          format: images
           parse_friendliness: medium
           fetchability: http
+        - name: shopping-canada.com
+          url: ""
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
       duration_days: 7
-      flip_weekday: Thursday
+      flip_weekday: Friday              # CORRECTION (was Thursday): circulaires.club — "les 6 circulaires hebdomadaires publiées ont toutes commencé un vendredi", Fri–Thu
       flip_timezone: America/Toronto
+      validity_example: "2026-10-09 to 2026-10-15"
       per_store_variant: false
       languages: [fr, en]
-      archive_available: false
+      archive_available: true           # 6 editions on circulaires.club; shopping-canada.com carries older editions (e.g. Dec 2023)
       structured_data: false
-      notes: "SURPRISE: official weekly flyer on the store's own domain (listed as the business website in Meta/Google profile). Also carried by circulaires.com (aggregator)."
+      notes: "One of the few independent ethnic stores with an OFFICIAL weekly flyer on its own domain. circulaires.club: 5 pages per edition, current Oct 9–15, 2026."
+
 product_search:
-  has_search: false
+  has_search: true
+  url_pattern: "http://www.marchefutai.ca/?s={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: spa
+  api_notes: "WooCommerce storefront with shopping cart ('Your shopping cart is empty!') — ?s= is the native search pattern, but results are JS-rendered: text fetch of ?s=lait returned only the site chrome, no results. Verify with live browser in Phase 3; also check WooCommerce Store API (/wp-json/wc/store/v1) as a possible structured route."
+  bot_protection: none
+  languages: [fr, en]
+
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: ""
+  notes: "WooCommerce shopping cart is live on the site; checkout/delivery scope not verified (food court on site; Uber Eats carries the prepared-food counter per old record)."
+
 locations:
-  count_estimate: 1  # 6700 Chemin de la Côte-des-Neiges, Montréal QC H3S 2B2 (CDN/NDG)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "6700 Chemin de la Côte-des-Neiges, Montréal QC H3S 2B2 (CDN/NDG). Single store; no locator page."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Large Asian supermarket with food court; also carries Latino/African items. One of few independent ethnic stores with an OFFICIAL flyer."
-sources_checked: [official-site-search-snippet, meta-business-profile, circulaires.com, premierepage, directories]
+
+notes: "Large Asian supermarket with food court; also carries Latino/African items."
+sources_checked: [official-site, circulaires.club, circulaires.ca, shopping-canada.com, rfd-flyers, flipp, meta-business-profile, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

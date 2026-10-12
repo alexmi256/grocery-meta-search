@@ -1,34 +1,61 @@
+# Phase 2 per-store research record (full depth).
 slug: marche-victoria-orientale
 name: Marché Victoria Orientale
-name_variants: ["Marché Victoria Orientale Regd", "Marche Victoria Orientale Regd"]
+name_variants: ["Marché Victoria Orientale Regd", "Marche Victoria Orientale Regd", "Marché Victoria ADP"]
 store_type: ethnic-specialty  # Indian / South Asian grocery
 footprint: island
 tier: 3
+
 website:
-  url: https://www.facebook.com/marchevictoria/  # Facebook-only, no official site
+  url: https://www.facebook.com/marchevictoria/
   languages: n/a
   language_switch: n/a
   render_tech: n/a
   bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer found; Facebook page is the store's only web presence."
+  types: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found: Facebook-only web presence, no listing on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits. (Cylex references a SayDrop store page web.saydrop.com/en/store/marche-victoria/383279 — a shopping-list directory, not a flyer source.)"
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No website; Facebook page only, no product search."
+  bot_protection: n/a
+  languages: n/a
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 6324 Avenue Victoria, Montréal QC H3W 2S5 (Côte-des-Neiges / Plamondon)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "6324 Avenue Victoria, Montréal QC H3W 2S5 (Côte-des-Neiges / Plamondon). Tel 514-737-4715."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Long-standing family-run Indian/Bangladeshi grocery; competitive pricing, spices, fresh produce and fish. Note: name confusingly similar to 'Marché Victoria' (755 Rue Jarry O) — different store."
-sources_checked: [facebook, canpages, cylex, directories]
+
+notes: "Long-standing family-run Indian/Bangladeshi grocery; competitive pricing, spices, fresh produce and fish. Name confusingly similar to 'Marché Victoria' (755 Rue Jarry O) — different store."
+sources_checked: [facebook, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, saydrop, canpages, cylex, pagesjaunes, yellowpages]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

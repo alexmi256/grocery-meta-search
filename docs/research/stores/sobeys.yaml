@@ -9,12 +9,12 @@ website:
   url: https://www.sobeys.com/
   languages: [fr, en]
   language_switch: path
-  render_tech: ssr
-  bot_protection: none
+  render_tech: ""
+  bot_protection: ""
 
 parent_company: Sobeys Inc. (Empire Company Ltd.)
 affiliation: corporate
-banner_family: [IGA, IGA Extra, FreshCo, Safeway, Foodland, Farm Boy]
+banner_family: [IGA, IGA Extra, FreshCo, Safeway, Foodland, Farm Boy, Rachelle-Béry, Les Marchés Tradition, Marché Bonichoix]
 
 flyers:
   has_flyers: false
@@ -22,32 +22,25 @@ flyers:
   notes: "No Quebec retail stores operate under the Sobeys banner — no QC flyer exists."
 
 product_search:
-  has_search: true
-  url_pattern: ""
-  location_scoped: true
-  guest_ok: true
-  kind: html
-  api_notes: "sobeys.com national search exists; irrelevant for Quebec retail (no stores)."
-  bot_protection: none
-  languages: [fr, en]
+  has_search: false
+  notes: "sobeys.com national search exists but is irrelevant for Quebec retail (no stores)."
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: "Not applicable in Quebec."
+  notes: "Not applicable in Quebec under the Sobeys banner."
 
 locations:
   count_estimate: 0
   locator_url: ""
   locator_api: ""
-  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
-  # research. Record the mechanism here.
+  notes: "Zero Sobeys-banner retail stores in Quebec."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "FLAGGED — NO QUEBEC RETAIL PRESENCE: the Sobeys banner operates outside Quebec; in Quebec Sobeys Inc. trades exclusively via IGA / IGA Extra, Marchés Tradition, Marché Bonichoix, Rachelle-Béry, Voisin, etc. Sobeys Québec does operate food distribution centres in the province (e.g. Terrebonne). Do not expect Sobeys-banner stores, flyers, or prices in Quebec data. Record kept minimal per assignment."
-sources_checked: [wikipedia, canadiangrocer, ontario-bakery, depquebec]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED NO QUEBEC RETAIL PRESENCE. The Sobeys banner does not operate stores in Quebec. Wikipedia (IGA (Canada)): IGA Extra 'launched in the early 2000s to take the place of Sobeys locations in the Quebec City and Montreal areas'. The Produce News (Sobeys Quebec Inc.): 'Sobeys, which operates under the IGA and IGA Extra banners in Quebec'. Canadian Grocer: 'Sobeys manages nine banners in Quebec, including IGA Extra, IGA, Rachelle-Bery, Marche Bonichoix, Les Marches Tradition, IGA Express, IGA mini, Shell and Bonsoir' — the Sobeys banner is not among them. Sobeys Québec Inc. operates distribution centres in the province but no retail. Any sobeys.com flyer/search data is for other provinces. Out of Quebec retail scope."
+sources_checked: [search, wikipedia, canadiangrocer, theproducenews]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

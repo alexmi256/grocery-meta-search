@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: mm-food-market
 name: M&M Food Market
 name_variants: ["M&M Meat Shops"]   # former name, rebranded
@@ -21,6 +22,30 @@ flyers:
   types:
     - type: weekly
       sources:
+        - name: flyers-on-line.com (QC edition)
+          url: https://www.flyers-on-line.com/m-m-meat-shops/quebec
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: flyerseek.com
+          url: https://flyerseek.com/mm-meats-flyer/
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
+        - name: ca-mydeals365.com
+          url: https://ca-mydeals365.com/m-m-food-market/
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
+        - name: kimbino.ca
+          url: https://www.kimbino.ca/city/montreal/mm-food-market/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
         - name: RFD Montreal flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
@@ -28,40 +53,43 @@ flyers:
           parse_friendliness: low
           fetchability: http
       duration_days: 7
-      flip_weekday: Thursday        # assumed standard Thu-Wed; verify
+      flip_weekday: Thursday        # VERIFIED: Oct 8-14 and Oct 15-21 2026 editions (Thu-Wed)
       flip_timezone: America/Toronto
-      validity_example: ""
+      validity_example: "2026-10-08 to 2026-10-14"
       per_store_variant: false
       languages: [fr, en]
-      archive_available: false
+      archive_available: true       # flyerseek / flyers-on-line keep past weeks
       structured_data: false
-      notes: "Weekly flyer cadence assumed from RFD listing; flip day not yet verified."
+      notes: "Flip day now VERIFIED (previously assumed): weekly Thu-Wed editions observed on flyerseek (Oct 15-21, next Oct 22), flyers-on-line (QC, Oct 8-14) and theceliacscene ('Thursday, October 8 to Wednesday, October 14'). QC regional editions exist. Not on Flipp (not observed)."
 
 product_search:
   has_search: true
   url_pattern: "https://www.mmfoodmarket.com/search?q={query}"
-  location_scoped: false
+  location_scoped: true            # 'Select a store' selector on search results; availability shown per store ('Unavailable at your store')
   guest_ok: true
-  kind: html                       # Shopify /search; pattern assumed from platform, not directly observed
-  api_notes: "Shopify storefront — /search?q= pattern assumed; verify on site."
+  kind: html                       # Shopify /search VERIFIED by direct fetch 2026-10-12
+  api_notes: "Shopify storefront — /search?q= VERIFIED by direct fetch: /search?q=chicken returned 137 results with filters (Sub category, Cooking methods, Cooking time, Main ingredient, Occasion, Ingredients to avoid), unit pricing ($/100g), sale badges ('Rewards sale'), and per-variant availability."
   bot_protection: none
   languages: [fr, en]
+  notes: "Verified 2026-10-12 via direct page fetch; server-rendered results."
 
 ecommerce:
   online_ordering: true            # "Same-day delivery — check your address for availability"
   click_and_collect: false
-  notes: "Delivery advertised on homepage; in-store pickup not confirmed."
+  notes: "Delivery advertised on homepage; 'Express Shopping' link in footer; in-store pickup not confirmed."
 
 locations:
   count_estimate: 15  # Greater Montreal incl. LaSalle (8453 Newman), 7864 Sherbrooke E, 1005 Ste-Catherine E, St-Laurent (3155 Pitfield), Anjou, Pointe-aux-Trembles, Longueuil, Laval, Kirkland, Pointe-Claire, DDO
   locator_url: https://mmfoodmarket.com/fr/store_locations/
-  locator_api: ""                  # per-store pages at /fr/store_locations/<id> observed; JSON endpoint not yet probed
+  locator_api: ""
+  notes: "Per-store pages at /fr/store_locations/<id>; JSON endpoint not yet probed."
 
 loyalty_program:
   name: "M&M rewards"              # ~2M active members cited at acquisition
-  card_gated_prices: false
+  card_gated_prices: true
+  notes: "'Rewards sale' prices observed on search results (strikethrough regular prices with 'Save $X' badges) — card-gated price semantic confirmed."
 
-notes: "Canada's leading frozen-food retailer (40+ years). Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list."
-sources_checked: [official-site, rfd-flyers, openinghours.ca, mmfoodmarket.com-press]
+notes: "Canada's leading frozen-food retailer (40+ years). Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list. 'Tuesday is Seniors Day — 10% off in-store or online' (theceliacscene)."
+sources_checked: [official-site, rfd-flyers, flyerseek, flyers-on-line, ca-mydeals365, kimbino, theceliacscene, openinghours.ca, mmfoodmarket.com-press, web-search]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

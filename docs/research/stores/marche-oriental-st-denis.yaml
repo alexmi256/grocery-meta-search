@@ -1,34 +1,47 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-oriental-st-denis
 name: Marché Oriental (St-Denis)
 name_variants: ["Marché Oriental St-Denis", "Marche Oriental Saint-Denis"]
 store_type: ethnic-specialty  # Asian (Vietnamese/Thai/Chinese) market
 footprint: island
 tier: 3
+
 website:
   url: http://orientalstdenis.ca/  # current domain; legacy domain marcheoriental.ca resolves to same business (same address/phone)
-  languages: [fr, en]              # both FR and EN homepages observed
-  language_switch: path            # /fr/ and /en/ paths
+  languages: [fr, en]              # both FR and EN homepages observed (current domain renders EN; legacy domain has /fr/ and /en/ paths)
+  language_switch: path            # /fr/ and /en/ paths on legacy domain
   render_tech: ssr
   bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "Legacy domain marcheoriental.ca says 'Consultez nos speciaux qui sortent chaque semaine' but no actual flyer page was found on either domain at tier 3. DISTINCT from H Marché (which trades as 'Marché Oriental Jang Teu') — different business."
+  types: []
+  notes: "No digital flyer found. The legacy domain marcheoriental.ca (still live, /en/clients.html and /fr/clients.html) advertises 'Check out our Weekly Flyer that comes out every week' / 'Consultez nos speciaux qui sortent chaque semaine' — but NO actual flyer page, PDF, or link exists on either domain (the /en/clients.html page is testimonials only; homepage is a landing page). Absent from circulaires.club directory, circulaires.ca, RFD Montreal flyers, Flipp. Web search 'Marché Oriental St-Denis circulaire' returns only listings. Verdict: marketing claim for a (possibly in-store paper) weekly flyer, but nothing digital/fetchable — treated as no flyer for pipeline purposes."
+
 product_search:
   has_search: false
+  notes: "No search bar, no product catalog on either domain (brochure sites)."
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 7101 Rue Saint-Denis, Montréal QC H2S 2S5 (La Petite-Patrie)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "7101 Rue Saint-Denis, Montréal QC H2S 2S5 (La Petite-Patrie). Tel (514) 271-7878. Single store; no locator needed."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Family-run Asian market 30+ years; ready-to-eat counter, deli/bbq, butcher & fishmonger; wholesaler + retailer importing from Vietnam, Thailand, China, Taiwan, Hong Kong."
-sources_checked: [official-site, legacy-domain, directories]
+
+notes: "Family-run Asian market 30+ years; ready-to-eat counter, deli/bbq, butcher & fishmonger; wholesaler + retailer importing from Vietnam, Thailand, China, Taiwan, Hong Kong. DISTINCT from H Marché (which trades as 'Marché Oriental Jang Teu') — different business."
+sources_checked: [official-site, legacy-domain, web-search, circulaires.club-directory, circulaires.ca, rfd-flyers, flipp, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

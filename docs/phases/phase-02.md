@@ -25,6 +25,12 @@ pipelines.
 - **Tier 3** — independents / single stores. Minimal record: website or social,
   flyers (usually none), the single location, no search section.
 
+**Update 2026-10-12:** per user request, ALL stores are being researched at full
+depth regardless of tier. The explicit goal is to definitively confirm, for each
+store, whether it has flyers, product search, both, or neither — negative
+findings must document what was checked. Tiers remain as a pipeline-priority
+signal only.
+
 ## Per-store fields
 
 See `docs/research/stores/_template.yaml`. The YAML files are the table of record;

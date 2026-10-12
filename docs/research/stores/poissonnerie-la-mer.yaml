@@ -1,16 +1,17 @@
+# Phase 2 per-store research record (full depth).
 slug: poissonnerie-la-mer
 name: Poissonnerie La Mer
 name_variants: []
-store_type: ethnic-specialty
+store_type: ethnic-specialty  # premier seafood/fish market + grocery sections
 footprint: island
 tier: 3
 
 website:
   url: https://www.lamer.ca
-  languages: [fr, en]
-  language_switch: n/a
-  render_tech: ""
-  bot_protection: ""
+  languages: [fr, en]  # FR-first; EN available (site fetched in FR)
+  language_switch: toggle  # FR/EN toggle in header
+  render_tech: ssr  # Shopify, server-rendered
+  bot_protection: none  # plain HTTP fetch works
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -18,27 +19,43 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found. No flyer/circulaire link on the official site. circulaire-en-ligne.ca has a DIRECTORY listing (circulaire-en-ligne.ca/la-mer) but shows no active dated flyer. Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits with a dated flyer."
 
 product_search:
-  has_search: false
+  has_search: true
+  url_pattern: "https://www.lamer.ca/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: json-api  # Shopify: /products.json + predictive search suggest API available
+  api_notes: "Verified live: /search?q=saumon&type=product returns '75 résultats trouvés'. products.json should be open (standard Shopify)."
+  bot_protection: none
+  languages: [fr, en]
 
 ecommerce:
   online_ordering: true
-  click_and_collect: false
-  notes: "online ordering + home delivery offered per business listings; worth verifying on site in deeper research"
+  click_and_collect: true  # "Ramassage en magasin" with secure pickup code
+  notes: "Full online ordering: $10 local delivery on island/Laval/Longueuil/Brossard over $50; fixed $50 priority shipping QC+Ontario (ships Wednesdays); in-store pickup. Strong proxy for structured product data."
 
 locations:
   count_estimate: 2
   locator_url: ""
   locator_api: ""
-  notes: "1840 Bd René-Lévesque E, Montréal (flagship); 4445 Rue Ontario E, Montréal (Maisonneuve)"
+  notes: "1840 Bd René-Lévesque E, Montréal (flagship); 4445 Rue Ontario E, Montréal (Maisonneuve)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Premier seafood/fish market with grocery sections (vegetables, cheese, wine, charcuterie, prepared foods). Also acts as distributor."
-sources_checked: [search, directories, official-site-indexed]
+notes: "Premier seafood/fish market (since 1968) with grocery sections (vegetables, cheese, wine, charcuterie, prepared foods). Also acts as distributor. 200+ fresh fish/seafood varieties. Instagram @poissonnerielamer active."
+sources_checked: [official-site, official-site-search-verified, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

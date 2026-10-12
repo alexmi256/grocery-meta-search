@@ -7,9 +7,9 @@ tier: 3
 
 website:
   url: https://asumare.ca/
-  languages: [fr, en]
+  languages: [en, es]              # EN + ES observed on homepage; FR presence unconfirmed
   language_switch: n/a
-  render_tech: ssr
+  render_tech: ssr                  # Zyro site builder (assets.zyrosite.com)
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +19,34 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found at tier 3."
+  notes: "No flyer found. Checked: official site (no flyer/circulaire section; newsletter signup only), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Asu Mare\" Montréal circulaire' (official site + unrelated film results)."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Zyro marketing site; no shop, catalog, or search function."
+  bot_protection: none
+  languages: [en, es]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "No online ordering portal; newsletter signup ('Recibe ofertas y noticias') only."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "5900 Bd Monk, Montréal, QC."
+  locator_api: ""
+  notes: "5900 Boulevard Monk, Montréal, QC H4E 3H6. Hours: Mon-Sat 9:00-23:00, Sun 10:00-21:00. Registered business name: 'Marché et Café Latino Asu Mare' (Registraire des entreprises, 2025-02-28); admin address 2386 rue Jacques-Hertel differs from the storefront."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Latin-American marché + café (Peru, Colombia, Mexico, Venezuela); site mentions online ordering as a possibility but not verified — treated as walk-in only at tier 3."
-sources_checked: [official-site, directories]
+notes: "Latin-American marché + café (Peru, Colombia, Mexico, Venezuela): curated Latin products + specialty coffee bar."
+sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, registre-entreprises]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

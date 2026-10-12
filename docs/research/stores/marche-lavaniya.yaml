@@ -1,34 +1,47 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-lavaniya
 name: Marché Lavaniya
 name_variants: ["Marche Lavaniya"]
 store_type: ethnic-specialty  # South Asian grocery
 footprint: island
 tier: 3
+
 website:
   url: https://marche-lavaniya.business.site/  # Google Business site, the store's only web presence
-  languages: n/a              # not verified at tier 3
+  languages: n/a               # Google Business sites are auto-rendered; not a real multilingual site
   language_switch: n/a
   render_tech: ssr
   bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer link found at tier 3 (business.site pages rarely carry flyers)."
+  types: []
+  notes: "No flyer found. Google Business site is the only web presence (business.site pages do not carry flyers). Checked: web search 'Marché Lavaniya circulaire/flyer' (returns only Canpages/directory listings — no flyer), circulaires.club 182-merchant directory (absent), RFD Montreal flyers page (majors only), Flipp (no store page)."
+
 product_search:
   has_search: false
+  notes: "No website beyond the Google Business page; no search or catalog anywhere."
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 6145 Chemin de la Côte-des-Neiges, Montréal QC H3S 1Z9 (Côte-des-Neiges)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "6145 Chemin de la Côte-des-Neiges, Montréal QC H3S 1Z9 (Côte-des-Neiges). Single store; no locator needed."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "South Asian groceries + prepared foods (schezwan fried rice, sandwiches); open 8am–10pm daily."
-sources_checked: [business-site, directories, canpages]
+
+notes: "South Asian groceries + prepared foods (schezwan fried rice, sandwiches); open 8am–10pm daily. Phone 514-344-5483."
+sources_checked: [business-site, web-search, circulaires.club-directory, rfd-flyers, flipp, directories, canpages]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

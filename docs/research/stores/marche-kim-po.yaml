@@ -1,34 +1,47 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-kim-po
 name: Marché Kim-Po
 name_variants: ["Marché Kim Po"]
 store_type: ethnic-specialty  # Asian supermarket
 footprint: island
 tier: 3
+
 website:
   url: http://www.marchekimpo.ca/
-  languages: n/a              # not verified at tier 3
+  languages: [en]              # homepage observed in English ("MARCHE KIM PO ... Discover the best quality of things at Marche Kim Po!")
   language_switch: n/a
-  render_tech: unknown
-  bot_protection: unknown
+  render_tech: ssr              # simple static brochure page, extracts cleanly
+  bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer link found at tier 3."
+  types: []
+  notes: "No flyer found. Official site is a single-page brochure (departments list only — Meats, Fish & Seafood, Milk products & Eggs, etc.) with no flyer section. Checked: web search 'Marché Kim-Po circulaire' (returns only business/map listings — mapcarta, untappd — no flyer), circulaires.club 182-merchant directory (absent), RFD Montreal flyers page (majors only), Flipp (no store page)."
+
 product_search:
   has_search: false
+  notes: "No search bar, no product catalog — single static brochure page (FR and EN checked via search snippets; page itself is English)."
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 5505 Avenue Victoria, Montréal QC H3W 2R2 (Côte-des-Neiges)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "5505 Avenue Victoria, Montréal QC H3W 2R2 (Côte-des-Neiges). Single store; no locator needed."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Neighbourhood Asian market; fresh meat/fish counter, self-described 'one stop grocery store'."
-sources_checked: [official-site-search-snippet, directories]
+
+notes: "Neighbourhood Asian market; fresh meat/fish counter, self-described 'one stop grocery store'. Phone 514-343-4321."
+sources_checked: [official-site, web-search, circulaires.club-directory, rfd-flyers, flipp, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

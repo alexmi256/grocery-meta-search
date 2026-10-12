@@ -1,16 +1,17 @@
+# Phase 2 per-store research record (full depth).
 slug: sabor-latino
 name: Sabor Latino
-name_variants: ["Sabor Latino Supermarché"]
-store_type: ethnic-specialty
-footprint: island
+name_variants: ["Sabor Latino Supermarché", "Marché Andes"]
+store_type: ethnic-specialty  # Latin American grocery + restaurant counter
+footprint: greater  # 2 Montreal + 1 Brossard
 tier: 3
 
 website:
   url: https://saborlatino.ca/
-  languages: [fr, en]
-  language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  languages: [fr, es, en]  # FR/ES primarily (search page title is Spanish: "Has buscado"); /en/ redirects
+  language_switch: path  # /en/ exists (301)
+  render_tech: ssr  # WordPress + WooCommerce, server-rendered
+  bot_protection: none  # plain HTTP fetch works
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,27 +20,42 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found at tier 3."
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: n/a
+  archive_available: false
+  structured_data: false
+  notes: "No flyer found. No flyer/circulaire link on the official site (checked homepage + boutique). Not on Flipp, circulaires.club, circulaires.ca, supermarches.ca, RFD Montreal flyers, and no '<name> circulaire' web hits."
 
 product_search:
-  has_search: false
-  notes: ""
+  has_search: true
+  url_pattern: "https://saborlatino.ca/?s={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html  # WordPress search page (returns posts/products HTML)
+  api_notes: "Verified live: /?s=cafe returns 'Has buscado cafe'. WooCommerce also exposes /wp-json/wc/store/v1/products (Store API) for structured product data."
+  bot_protection: none
+  languages: [fr, es, en]
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true  # "Achetez en ligne et nous vous livrerons à votre porte" — WooCommerce /boutique/
   click_and_collect: false
-  notes: ""
+  notes: "WooCommerce boutique (/boutique/) with online checkout and delivery. Strong proxy for structured product data (wc/store API)."
 
 locations:
-  count_estimate: 2
+  count_estimate: 3
   locator_url: ""
-  notes: "6955 Rue Saint-Hubert, Montréal, QC; second location 4387 Boul. Saint-Laurent (branded Sabor Latino St-Laurent, own site saborlatinostlaurent.com)."
+  locator_api: ""
+  notes: "6955 Rue Saint-Hubert, Montréal (flagship, founded 1984 as Marché Andes); 4387 Boul. Saint-Laurent, Montréal (branded Sabor Latino St-Laurent, separate site saborlatinostlaurent.com); 7800 Boul. Taschereau, Brossard. All confirmed on the official site footer + place data."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "FLAG: not a single store — two Montreal locations (per its own marketing and directories); count_estimate corrected to 2. Founded 1984 as Marché Andes; claims 2500+ Latin products / 300 brands; grocery + restaurant counter."
-sources_checked: [official-site, directories]
+notes: "Claims 2500+ Latin products / 300 brands; grocery + restaurant counter. On Uber Eats/DoorDash for prepared food. Founded 1984."
+sources_checked: [official-site, official-site-search-verified, official-site-boutique, flipp, circulaires-ca, circulaires-club, rfd-flyers, web-search-fr, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

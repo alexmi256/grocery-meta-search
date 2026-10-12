@@ -1,16 +1,17 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-lima-limon
 name: Marché Lima Limon
 name_variants: []
-store_type: ethnic-specialty
+store_type: ethnic-specialty  # Peruvian market + hot-food counter
 footprint: island
 tier: 3
 
 website:
   url: https://marchelimalimon.ca/
-  languages: [fr, en]
+  languages: [fr, en]          # carried from tier-3 record (site "carries FR/EN content"); not re-verifiable — see below
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: unknown          # text fetch failed — see below
+  bot_protection: unknown       # text fetch failed 2026-10-12 ("requires a resolvable public HTTP(S) URL" / DNS); not assessable
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -19,27 +20,28 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found at tier 3."
+  notes: "No flyer found. Checked: web search 'Marché Lima Limon circulaire/flyer' (returns only business/directory listings, Too Good To Go, Uber Eats — no flyer), circulaires.club 182-merchant directory (absent), RFD Montreal flyers page (majors only), Flipp (no store page)."
 
 product_search:
   has_search: false
-  notes: ""
+  notes: "No product catalog or search evidence anywhere; site body not inspectable (fetch failed)."
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Third-party only: Uber Eats (prepared food, 'Livraison non disponible'), Too Good To Go (surprise bags). No own-site ordering."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "1220 Rue Bélanger, Montréal, QC H2S 1H8 (Villeray)."
+  locator_api: ""
+  notes: "1220 Rue Bélanger, Montréal, QC H2S 1H8 (Villeray). Single store; no locator needed. Phone 514-274-1700."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Peruvian market + hot-food counter (company founded by Peruvians); on Uber Eats for prepared food. Languages not verified in depth — site carries FR/EN content."
-sources_checked: [official-site, directories]
+notes: "Peruvian market + hot-food counter (company founded by Peruvians). Alternate domain www.marchelimalimon.com listed on pagesjaunes/yellowpages (canonical per business listings is marchelimalimon.ca). PARTIAL: official site body could not be fetched on 2026-10-12 (DNS/unresolvable to the text-fetch service); languages/render_tech carried from tier-3 record, unverified."
+sources_checked: [official-site-fetch-failed, web-search, circulaires.club-directory, rfd-flyers, flipp, ubereats, toogoodtogo, pagesjaunes, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: partial

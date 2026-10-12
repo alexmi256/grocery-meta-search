@@ -9,7 +9,7 @@ website:
   url: https://www.facebook.com/186622011348467
   languages: [fr]
   language_switch: n/a
-  render_tech: js-heavy
+  render_tech: js-heavy              # Facebook; login wall for full content
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +19,34 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer at tier 3."
+  notes: "No flyer found. Checked: Facebook page (FB-only web presence — no independent site found in web search); not on the circulaires.club weekly index (218 QC flyers), circulaires.com Montreal merchant list, or RFD flyers page; web search 'Chouricor Montréal circulaire' (directory results only). CAVEAT: FB page posts were not audited (needs logged-in browser) — if the store posts weekly specials, they would live there."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No website; Facebook page has no product catalog or search."
+  bot_protection: none
+  languages: [fr]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Wholesale + retail by phone/visit."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "4031 Rue de Bullion, Montréal, QC (Plateau)."
+  locator_api: ""
+  notes: "4031 Rue de Bullion, Montréal, QC H2W 2E3 (Plateau). Hours: Mon-Fri 6:00-17:30, Sat 6:00-16:00, closed Sunday. Phone 514-849-3808."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Given URL verified as the official Facebook page (Facebook-only web presence; no independent site found). Portuguese chouriço butcher; 'Chouriçor' is the OSM/directory spelling. Supplied by Johnny Prosciutto per its where-to-buy list."
-sources_checked: [official-social, directories]
+notes: "Portuguese chouriço butcher since 1993 ('Meilleur choriço sur le Plateau'). 200+ Portuguese products, 7+ Portuguese sausage varieties; Quebec pork / AAA Alberta Angus; wholesale and retail."
+sources_checked: [official-social, circulaires-club, circulaires.com, rfd-flyers, web-search, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

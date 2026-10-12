@@ -1,34 +1,70 @@
+# Phase 2 per-store research record (full depth).
 slug: marche-sultan
 name: Marché Sultan
 name_variants: []
 store_type: ethnic-specialty  # Middle Eastern / halal grocery
 footprint: island
 tier: 3
+
 website:
-  url: https://www.instagram.com/marchesultan.mtl  # Instagram-only, no official site
+  url: https://www.instagram.com/marchesultan.mtl
   languages: n/a
   language_switch: n/a
   render_tech: n/a
   bot_protection: n/a
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
-  has_flyers: false
-  notes: "No flyer found; Instagram is the store's only web presence."
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: circulaires.ca
+          url: https://www.circulaires.ca/marche-sultan/?region=Montreal
+          kind: aggregator
+          format: html+images  # "version interactive et image" per the aggregator page
+          parse_friendliness: medium
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday  # "disponible tous les jeudis, un jour à l'avance"
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr]
+      archive_available: false  # only current flyer shown on the store page
+      structured_data: false
+      notes: "Aggregator states the flyer is released Thursdays in interactive and image versions."
+  notes: ""
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: false
+  kind: ""
+  api_notes: "No website; Instagram-only web presence has no product search."
+  bot_protection: n/a
+  languages: n/a
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 3337 Rue Jarry E, Montréal QC H1Z 2E7 (Villeray–Saint-Michel)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "3337 Rue Jarry E, Montréal QC H1Z 2E7 (Villeray–Saint-Michel). Tel 514-727-3337."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Fresh produce, local + imported, meats, charcuteries, nuts, dairy. Self-description is FR-first."
-sources_checked: [instagram, directories, cylex]
+
+notes: "Fresh produce, local + imported, meats, charcuteries, nuts, dairy. Self-description is FR-first. MAPAQ advisory (2026-10-09) re: halal hummus E. coli — store active."
+sources_checked: [instagram, circulaires-ca, flipp, rfd-flyers, circulaires-club, web-search-fr, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

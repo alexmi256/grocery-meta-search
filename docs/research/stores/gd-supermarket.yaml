@@ -1,34 +1,75 @@
+# Phase 2 per-store research record — gd-supermarket (full depth 2026-10-12).
 slug: gd-supermarket
 name: G&D Supermarket
 name_variants: ["G & D Supermarket", "Supermarché G & D"]
 store_type: ethnic-specialty  # Chinese supermarket
 footprint: island
 tier: 3
+
 website:
   url: https://gdsupermarche.com/
-  languages: n/a              # not verified at tier 3
+  languages: [en]               # EN observed; FR/ZH switch not observed
   language_switch: n/a
-  render_tech: unknown
-  bot_protection: unknown
+  render_tech: ssr               # OpenCart (image/cache/catalog paths, index.php?route=)
+  bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer link found at tier 3."
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer section on gdsupermarche.com (fetched 2026-10-12). Web search
+    "G&D Supermarche flyer circulaire" found no flyer or aggregator listing
+    (Flipp/RFD/circulaires.club/supermarches.ca negative). Sells delivery-service
+    add-on products ("Delivery upstairs service", "Expedited Service") instead.
+
 product_search:
-  has_search: false
+  has_search: true
+  url_pattern: "https://gdsupermarche.com/index.php?route=product/search&search={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html                     # OpenCart server-rendered search results page
+  api_notes: >-
+    OpenCart default search; verified live: search=noodle returned "Showing 1 to
+    15 of 56 (4 Pages)". Product pages with price + stock — strong structured-data
+    signal for Phase 4.
+  bot_protection: none
+  languages: [en]
+
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: "Third-party listing (o2osell) advertises local home delivery; not an official ecommerce channel."
+  notes: >-
+    Full OpenCart online store: priced catalog (fresh produce, meat, seafood,
+    frozen, snacks), cart/checkout, delivery-service add-ons. Phone 514-397-8828.
+    Third-party delivery (o2osell) is secondary.
+
 locations:
-  count_estimate: 1  # 1006 Boul Saint-Laurent, Montréal QC H2Z 1J3 (Chinatown)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "1006 Boul Saint-Laurent, Montréal QC H2Z 1J3 (Chinatown). Self-described 'biggest Chinese supermarket in Chinatown': fresh produce/meat/seafood + snacks from China, Japan, Vietnam."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Self-described 'biggest Chinese supermarket in Chinatown': fresh produce/meat/seafood + snacks from China, Japan, Vietnam."
-sources_checked: [official-site-search-snippet, directories]
+
+notes: >-
+  UPGRADE FIND (2026-10-12): tier 3 record said "no search / no ecommerce"; full
+  depth found a live OpenCart store with working product search AND online ordering.
+  Phase 3/5 candidate: OpenCart endpoints are stable and HTTP-fetchable.
+sources_checked: [official-site, official-site-search-probe, web-search-flyer, flipp-search-snippet]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

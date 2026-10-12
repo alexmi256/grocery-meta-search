@@ -8,7 +8,7 @@ tier: 3
 website:
   url: https://www.guardian-ida-remedysrx.ca/
   languages: [fr, en]
-  language_switch: n/a
+  language_switch: param
   render_tech: ""
   bot_protection: ""
 
@@ -18,10 +18,12 @@ banner_family: ["Guardian", "I.D.A.", "Remedy'sRx"]
 
 flyers:
   has_flyers: false
-  notes: "not checked — store out of scope"
+  types: []
+  notes: "not checked — no Quebec banner presence"
 
 product_search:
   has_search: false
+  notes: ""
 
 ecommerce:
   online_ordering: false
@@ -30,15 +32,15 @@ ecommerce:
 
 locations:
   count_estimate: 0
-  locator_url: ""
+  locator_url: https://www.guardian-ida-remedysrx.ca/en/pharmacies
   locator_api: ""
-  notes: "No Quebec locations found. Indexed locations: Ontario, British Columbia, Saskatchewan."
+  notes: "McKesson's store locator lists pharmacies by province — indexed entries cover Ontario, British Columbia, Saskatchewan. No Quebec section; contest rules on the same site explicitly exclude Quebec residents."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "FLAG — VERIFIED Flipp national-footer artifact: I.D.A. is a McKesson Canada pharmacy banner active in ON/BC/SK but no Quebec (let alone Montreal) pharmacy under this banner was found. RECOMMEND EXCLUSION from the Quebec grocery scope."
-sources_checked: [search, official-site-indexed, flipp-indexed]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED Flipp national-footer artifact. I.D.A. is a McKesson Canada banner for independent pharmacists active in ON/BC/SK (independent stores: Embrun ON, Sturgeon Falls ON, Callander ON, Mattawa ON, Kamloops BC, Langley BC, etc.), but NO Quebec (let alone Montreal) pharmacy operates under the Guardian/I.D.A./Remedy'sRx banner. McKesson's own contest terms for this banner network state contests are open 'to all residents of Canada, except Quebec residents', and its pharmacy locator has no Quebec listings. McKesson serves Quebec pharmacies under different banners (Uniprix, Proxim). Out of Quebec scope."
+sources_checked: [search, official-site, flipp-indexed, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

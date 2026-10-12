@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: marche-richelieu
 name: Marché Richelieu
 name_variants: ["Richelieu"]
@@ -58,6 +59,7 @@ product_search:
   api_notes: "No site search observed on static pages; site offers store finder and recipes only."
   bot_protection: none
   languages: [fr, en]
+  notes: "Negative finding (re-verified 2026-10-12): homepage text fetch contains no 'recherch' string and no search box; nav is banners, store finder, newsletter, recipes only."
 
 ecommerce:
   online_ordering: false
@@ -68,14 +70,14 @@ locations:
   count_estimate: 63
   locator_url: https://www.marcherichelieu.ca/nous-trouver/
   locator_api: ""
-  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual
-  # research. Record the mechanism here.
+  notes: "Metro Inc. banner for independent affiliated grocers (many are co-ops, e.g. Coop des Méandres; contact page lists stores by independent operator name). Montreal stores confirmed (3824 Décarie, 7890 St-Denis, Breakeyville, St-Laurent Nouvelle)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
-notes: "Metro Inc. banner for independent affiliated grocers (many are co-ops, e.g. Coop des Méandres; contact page lists stores by independent operator name). Affiliation: independent merchants supplied by Metro, not corporate stores. Montreal stores confirmed (3824 Décarie, 7890 St-Denis, Breakeyville, St-Laurent Nouvelle)."
+notes: "Metro Inc. banner for independent affiliated grocers. Affiliation: independent merchants supplied by Metro, not corporate stores."
 sources_checked: [official-site, circulaires-club, circulaire-en-ligne, flipp, pdfflyers, wikipedia]
 researched_at: "2026-10-12"
 research_status: complete

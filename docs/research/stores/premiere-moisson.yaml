@@ -1,4 +1,4 @@
-# Tier 2 per-store research record.
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: premiere-moisson
 name: Première Moisson
 name_variants: []
@@ -36,7 +36,7 @@ flyers:
       languages: [fr, en]
       archive_available: false
       structured_data: false
-      notes: "Store-scoped circulaire: must select a bakery by postal code or branch list. Weekly cadence and flip weekday not directly verified (flip_weekday left null). EN variant at /en/circulaire assumed, not verified."
+      notes: "Store-scoped circulaire (re-verified 2026-10-12): must select a bakery by postal code or branch list ('Rechercher par code postal ou par succursales'); account login offered to set a default branch. Weekly cadence and flip weekday still not directly verified (flip_weekday left null). EN variant at /en/circulaire assumed, not verified."
     - type: seasonal
       sources:
         - name: official site
@@ -64,7 +64,7 @@ product_search:
   api_notes: ""
   bot_protection: none
   languages: [fr, en]
-  notes: "No product search observed; circulaire is a store-scoped selector, not a product search."
+  notes: "Negative finding (re-verified 2026-10-12): the /fr/circulaire page is a bakery/store selector (postal code + branch list), not a product search; no product search observed elsewhere on the site."
 
 ecommerce:
   online_ordering: false
@@ -80,8 +80,9 @@ locations:
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
-notes: "AFFILIATION FINDINGS (corrections to brief): Metro acquired 75% in 2014 but became 100% owner in 2019 (Canada Post case study), so parent is Metro Inc. outright, not 75%. July 2026: FGF Brands acquired the Baie-D'Urfé commercial production facility ($90M); Première Moisson Group remains a Metro subsidiary retaining the brand, its 25 retail bakeries, artisanal in-store production, and the Vaudreuil-Dorion French pastry facility. Direct fetch of premieremoisson.com timed out once during research; facts confirmed via search index and press coverage."
+notes: "AFFILIATION FINDINGS (corrections to brief): Metro acquired 75% in 2014 but became 100% owner in 2019 (Canada Post case study), so parent is Metro Inc. outright, not 75%. July 2026: FGF Brands acquired the Baie-D'Urfé commercial production facility ($90M); Première Moisson Group remains a Metro subsidiary retaining the brand, its 25 retail bakeries, artisanal in-store production, and the Vaudreuil-Dorion French pastry facility."
 sources_checked: [official-site, perishablenews, canadiangrocer, canadapost-case-study, wikipedia, retail-insider]
 researched_at: "2026-10-12"
 research_status: complete

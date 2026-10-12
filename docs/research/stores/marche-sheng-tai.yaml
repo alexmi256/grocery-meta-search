@@ -1,23 +1,33 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-sheng-tai
 name: Marché Sheng Tai
 name_variants: ["盛泰超市"]
 store_type: ethnic-specialty  # Asian supermarket
 footprint: island              # Dollard-des-Ormeaux is a de-merged municipality on the island
 tier: 3
+
 website:
   url: https://www.marcheshengtai.ca/
-  languages: n/a              # not verified at tier 3
-  language_switch: n/a
-  render_tech: ssr
+  languages: [fr, en]          # homepage title "Marché ShengTai | 盛泰超市" bilingual FR/EN (+ Chinese)
+  language_switch: n/a         # not determined (JS-rendered nav)
+  render_tech: js-heavy        # WooCommerce storefront; homepage renders "Your shopping cart is empty!" to text fetch — content is JS-driven
   bot_protection: none
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: true
   types:
     - type: weekly
       sources:
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/marche-sheng-tai/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
         - name: circulaires.ca
           url: https://www.circulaires.ca/sheng-tai/
           kind: aggregator
@@ -25,33 +35,41 @@ flyers:
           parse_friendliness: medium
           fetchability: http
       duration_days: 7
-      flip_weekday: Thursday
+      flip_weekday: Friday       # CORRECTION (was Thursday): circulaires.club — "les 15 circulaires hebdomadaires publiées ont toutes commencé un vendredi", Fri–Thu
       flip_timezone: America/Toronto
+      validity_example: "2026-10-09 to 2026-10-15"
       per_store_variant: false
       languages: [fr]
-      archive_available: true
+      archive_available: true   # 15 editions on circulaires.club (Jul–Oct 2026)
       structured_data: false
-      notes: "Aggregator only; circular 'available every Thursday, one day in advance, web and image versions'."
+      notes: "circulaires.club: 4 pages per edition, current Oct 9–15, 2026. No official-site flyer page found."
+
 product_search:
   has_search: true
   url_pattern: "https://www.marcheshengtai.ca/?s={query}"
   location_scoped: false
   guest_ok: true
-  kind: html
-  api_notes: "WooCommerce-style storefront; search URL is conventional pattern, not manually verified."
-  bot_protection: unknown
-  languages: n/a
+  kind: spa
+  api_notes: "WooCommerce storefront with live shopping cart — ?s= is the native search pattern, but results are JS-rendered: text fetch of ?s=lait returned only site chrome, no results. Verify with live browser in Phase 3; also check WooCommerce Store API (/wp-json/wc/store/v1) as a possible structured route."
+  bot_protection: none
+  languages: [fr, en]
+
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "Live shopping cart observed on homepage; delivery/pickup scope not verified at tier 3."
+  notes: "Live shopping cart observed on homepage ('Your shopping cart is empty!'); delivery/pickup scope not verified."
+
 locations:
-  count_estimate: 1  # 4850 Boul des Sources, Dollard-des-Ormeaux QC H8Y 3C7 (West Island)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "4850 Boul des Sources, Dollard-des-Ormeaux QC H8Y 3C7 (West Island). Single store; no locator page."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
+
 notes: "Smaller Asian supermarket (Chinese community focus; also African/Latin items); butcher & fishmonger in back. DISTINCT from Marché Sheng Tang (1425 Rue du Fort) — different business."
-sources_checked: [official-site, circulaires.ca, circulaires.com, directories]
+sources_checked: [official-site, circulaires.club, circulaires.ca, rfd-flyers, flipp, directories]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

@@ -2,12 +2,12 @@ slug: monde-au-naturel
 name: Le Monde au Naturel
 name_variants: []
 store_type: other
-footprint: qc-unverified
+footprint: qc-confirmed
 tier: 3
 
 website:
   url: https://mondenaturel.ca
-  languages: [fr, en]
+  languages: [fr]
   language_switch: n/a
   render_tech: ""
   bot_protection: ""
@@ -27,6 +27,12 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/le-monde-au-naturel-nutrition-sante
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
       duration_days: 30
       flip_weekday: ""
       flip_timezone: America/Toronto
@@ -35,7 +41,7 @@ flyers:
       languages: fr-only
       archive_available: false
       structured_data: false
-      notes: "monthly supplements flyer found on circulaires.club aggregator; official-site publication not verified at tier 3"
+      notes: "monthly supplements flyer found on circulaires.club and circulaire-en-ligne.ca aggregators; official-site publication not found (no circulaire page on mondenaturel.ca)"
 
 product_search:
   has_search: true
@@ -43,26 +49,26 @@ product_search:
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: "online boutique shop.mondenaturel.ca lists 7000+ products with prices (5292 supplements shown in search index); url_pattern not captured at tier 3"
+  api_notes: "online boutique shop.mondenaturel.ca lists 7000+ products with prices (5292 supplements shown in search index); url_pattern not captured"
   bot_protection: ""
-  languages: fr-only
+  languages: [fr]
 
 ecommerce:
   online_ordering: true
   click_and_collect: false
-  notes: "online boutique delivers to QC and ON; B2B ordering platform also exists (commandes.mondenaturel.ca)"
+  notes: "online boutique (shop.mondenaturel.ca) delivers to QC and ON from Trois-Rivières; B2B ordering platform also exists (commandes.mondenaturel.ca)"
 
 locations:
-  count_estimate: 1
+  count_estimate: 0
   locator_url: ""
   locator_api: ""
-  notes: "65 Blvd Sainte-Madeleine, Trois-Rivières, QC G8T 3K8. Natural-products distributor since 1990."
+  notes: "Single physical store: 65 Blvd Sainte-Madeleine, Trois-Rivières, QC G8T 3K8 (since 1990). NO Montreal/Greater-Montreal storefront; online-only for Montreal."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "FLAG — NO Montreal storefront: physical store is in Trois-Rivières; online-only for Montreal. qc-unverified footprint confirmed as non-MTL. Exclude or keep as online-only source per coordinator decision. French-only site."
-sources_checked: [search, official-site-indexed]
+notes: "RECOMMENDED-EXCLUDED (geographic scope): VERIFIED Trois-Rivières only. mondenaturel.ca/a-propos traces the company history: 1990 opening of the first store in Trois-Rivières, 2000 store became a distribution centre, 2020 launch of the online boutique delivering 'partout au Québec et en Ontario'. No Montreal/Greater-Montreal storefront exists. Flyers: monthly (supplements) via aggregators only, images, FR-only. Product search: via online boutique (7000+ products, prices). Candidate as an ONLINE-ONLY source for the search engine if QC-wide ecommerce is in scope; excluded from Montreal retail coverage. French-only site."
+sources_checked: [search, official-site, aggregators]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

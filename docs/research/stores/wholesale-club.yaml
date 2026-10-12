@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: wholesale-club
 name: Wholesale Club
 name_variants: ["Real Canadian Wholesale Club", "Presto - Wholesale Club"]  # former QC branding
@@ -7,7 +8,7 @@ tier: 2
 
 website:
   url: https://www.wholesaleclub.ca
-  languages: [fr, en]              # /en/ observed; Loblaw platform supports /fr/
+  languages: [fr, en]              # /en/ and /fr/ path variants
   language_switch: path
   render_tech: ssr                 # Loblaw e-commerce platform (server-rendered product listings observed)
   bot_protection: none
@@ -21,6 +22,30 @@ flyers:
   types:
     - type: weekly
       sources:
+        - name: official flyer platform (flyers.wholesaleclub.ca)
+          url: https://flyers.wholesaleclub.ca/
+          kind: official
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+        - name: flyerdeals.ca
+          url: https://www.flyerdeals.ca/stores/wholesale-club/flyers-specials
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: flyerify (wholesaleclub.flyerify.com)
+          url: https://wholesaleclub.flyerify.com/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: weeklyflyer.com
+          url: https://weeklyflyer.com/store/wholesale-club-mississauga-on
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
         - name: RFD Montreal flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
@@ -28,40 +53,43 @@ flyers:
           parse_friendliness: low
           fetchability: http
       duration_days: 7
-      flip_weekday: Thursday        # assumed standard Thu-Wed; verify
+      flip_weekday: Thursday        # VERIFIED: regional weekly editions (e.g. QC Sept 10-16, Sept 17-23 2026), Thu-Wed
       flip_timezone: America/Toronto
-      validity_example: ""
-      per_store_variant: false
+      validity_example: "2026-09-10 to 2026-09-16"
+      per_store_variant: true       # regional variants: West, QC, Atlantic, ON (separate weekly editions)
       languages: [fr, en]
-      archive_available: false
+      archive_available: true       # flyerify / weeklyflyer keep past-week editions
       structured_data: false
-      notes: "Official-site flyer section not yet checked; RFD listing confirms a flyer exists."
+      notes: "NEW FINDING (2026-10-12): official flyer platform found at flyers.wholesaleclub.ca (Loblaw FlyerKit-style). Weekly regional editions (West / QC / Atlantic / ON) — a dedicated 'Wholesale Club (QC)' flyer exists. QC validity example: Sept 10-16 2026."
 
 product_search:
   has_search: true
-  url_pattern: ""
-  location_scoped: true            # Loblaw platform typically requires store selection for pickup/delivery
+  url_pattern: "https://www.wholesaleclub.ca/en/search?text={query}"
+  location_scoped: true            # search URLs observed with ?storeId= param; store selector for pickup/delivery
   guest_ok: true
-  kind: json-api                   # Loblaw e-commerce platform; API pattern not yet observed — verify
-  api_notes: "Same platform family as other Loblaw banners; search API endpoint not yet probed."
+  kind: html                       # Loblaw e-commerce platform; server-rendered 'Products for Sale' search pages
+  api_notes: "Search path VERIFIED: /en/search indexed as 'Products for Sale' pages (e.g. /en/search?page=243). Loblaw platform family (PC Express); API endpoint not yet probed. Bot check: none observed on plain fetch."
   bot_protection: none
   languages: [fr, en]
+  notes: "Verified 2026-10-12 via indexed search pages: full catalog search with prices, unit pricing, stock states ('Low Stock', 'Out of Stock'), sale/limit labels, and PC Optimum promo hooks."
 
 ecommerce:
   online_ordering: true            # "Shop Online for Pickup & Delivery"; PC Express with code promos
   click_and_collect: true          # PC Express pickup
-  notes: "Full e-commerce with product listings, prices, and PC Optimum integration — strong structured-data signal."
+  notes: "Full e-commerce with product listings, prices, and PC Optimum integration — strong structured-data signal. Also delivery.wholesaleclub.ca help subdomain."
 
 locations:
   count_estimate: 8  # QC: LaSalle (island), Longueuil, Joliette (939 Boul Firestone), Trois-Rivières (500 boul de la Commune), Jonquière (2460 Cantin), Charlesbourg, Sherbrooke — per Loblaw careers postings
   locator_url: ""
-  locator_api: ""                  # not yet probed
+  locator_api: ""
+  notes: "No locator URL verified on the site during 2026-10-12 review. City list sourced from Loblaw careers postings."
 
 loyalty_program:
   name: "PC Optimum"
   card_gated_prices: false         # points promos observed, not card-gated shelf prices
+  notes: "PC Optimum integration (points offers, e.g. 'Earn 50,000 PC Optimum points on first PC Express order $300+ with code WSC50')."
 
 notes: "Loblaw cash-and-carry banner aimed at restaurants, dépanneurs and consumers (bulk formats). NOT Ontario/West-only — has LaSalle and Longueuil locations, so it clears the Montreal-presence bar. Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list."
-sources_checked: [official-site, rfd-flyers, careers.loblaw.ca, depquebec.com]
+sources_checked: [official-site, rfd-flyers, flyerdeals.ca, flyerify, weeklyflyer, careers.loblaw.ca, depquebec.com, web-search]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

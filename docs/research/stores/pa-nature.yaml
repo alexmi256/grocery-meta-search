@@ -1,3 +1,4 @@
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: pa-nature
 name: Épicerie PA Nature
 name_variants: ["PA Nature"]
@@ -7,8 +8,8 @@ tier: 2
 
 website:
   url: http://pa-nature.supermarchepa.com/
-  languages: [fr]                 # observed in French; EN unconfirmed
-  language_switch: n/a
+  languages: [fr, en]             # EN toggle link observed on homepage
+  language_switch: toggle
   render_tech: ssr
   bot_protection: none
 
@@ -19,41 +20,58 @@ banner_family: []
 flyers:
   has_flyers: true
   types:
-    - type: weekly
+    - type: biweekly-specials
       sources:
+        - name: official site ("Nos spéciaux" / "Les vedettes de la semaine")
+          url: http://pa-nature.supermarchepa.com/
+          kind: official
+          format: html
+          parse_friendliness: high
+          fetchability: http
         - name: RFD Montreal flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
           format: images
           parse_friendliness: low
           fetchability: http
-      duration_days: 7
-      flip_weekday: Thursday        # assumed standard Thu-Wed; verify
+      duration_days: 14
+      flip_weekday: Monday         # inferred from observed "12 > 25 Octobre 2026" window; verify on next cycle
       flip_timezone: America/Toronto
-      validity_example: ""
-      per_store_variant: false
-      languages: [fr]
+      validity_example: "2026-10-12 to 2026-10-25"
+      per_store_variant: false     # single store
+      languages: [fr, en]
       archive_available: false
       structured_data: false
-      notes: "Listed as flyer merchant on RFD Montreal flyers directory; cadence assumed."
+      notes: "NEW FINDING (2026-10-12): the subdomain publishes structured weekly specials directly ('Les vedettes de la semaine' with product name, price, origin 'Québec/Biologique' flags — e.g. TOMATES SUR VIGNE BIOLOGIQUES 2.99). This is a higher-parseability official source than the RFD listing recorded previously."
 
 product_search:
-  has_search: false                # no search observed on subdomain
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No search URL pattern observed."
+  bot_protection: none
+  languages: [fr, en]
+  notes: "Negative finding (2026-10-12): homepage fetch shows the nav is Accueil, Nos spéciaux, Commandes en ligne, Contactez-nous, MÉDIAS SOCIAUX, EN — no search box anywhere."
 
 ecommerce:
-  online_ordering: false
+  online_ordering: true
   click_and_collect: false
-  notes: "Marché PA main site is mid-migration rebuilding online ordering; PA Nature subdomain shows no ordering."
+  notes: "'Commandes en ligne' link in site nav — destination/fulfillment scope unverified; Marché PA main site is mid-migration rebuilding online ordering (per prior record)."
 
 locations:
   count_estimate: 1  # 5029 Av. du Parc, Montréal; tel 514-271-8788
   locator_url: ""
+  locator_api: ""
+  notes: "Hours on site: daily 8h-21h30. No dedicated locator (single store)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
-notes: "Natural/organic foods store of the Marché PA group (organic products, cheese, kimchi, etc.). Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list. marche-pa.yaml flagged this as unconfirmed; now confirmed via subdomain."
+notes: "Natural/organic foods store of the Marché PA group (organic products, cheese, kimchi, etc.). Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list."
 sources_checked: [official-site, rfd-flyers]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

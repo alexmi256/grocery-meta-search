@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — kosher-quality (full depth 2026-10-12).
 slug: kosher-quality
 name: Kosher Quality
 name_variants: ["Kosher Quality Bakery Ltd"]
@@ -6,24 +7,42 @@ footprint: island
 tier: 3
 
 website:
-  url: https://kosher-quality-bakery-ltd.business.site/
-  languages: [en]
+  url: ""                        # Google business.site is gone (see notes)
+  languages: n/a
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: n/a
+  bot_protection: n/a
 
-parent_company: ""
+parent_company: "Fooderie Market"   # sold ~2025 to Simi Wenger / Fooderie Market (The Suburban, via diningandcooking.com)
 affiliation: independent-affiliate
-banner_family: []
+banner_family: ["The Fooderie"]
 
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer on the Google business site at tier 3."
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No website, no flyer. Google discontinued business.site (March 2024); the
+    former kosher-quality-bakery-ltd.business.site now 404s. No replacement site
+    or aggregator flyer found.
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: "No web presence; no search possible."
+  bot_protection: n/a
+  languages: []
 
 ecommerce:
   online_ordering: false
@@ -33,13 +52,18 @@ ecommerce:
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "5855 Av. Victoria, Montréal, QC H3W 2R6 (Snowdon)."
+  locator_api: ""
+  notes: "5855 Av. Victoria, Montréal, QC H3W 2R6 (Snowdon). Kosher bakery + takeout (Shabbat meals to go, party sandwiches, salads); MK-certified."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given task said 'none found', but the official Google business site exists: kosher-quality-bakery-ltd.business.site. Kosher bakery + takeout (Shabbat meals to go, party sandwiches, salads); MK-certified ('Kosher Quality Bakery', 5855 Victoria)."
-sources_checked: [official-site, directories, mk-kosher-guide]
+notes: >-
+  Sold by David Klein to Simi Wenger's Fooderie Market ~2025 after ~50 years;
+  plans reported to modernize and possibly rename "Kosher Quality by Fooderie".
+  If Fooderie rebrands the Victoria store, merge/alias slugs fooderie-kosher and
+  kosher-quality in Phase 4.
+sources_checked: [official-site-404, web-search, directories, mk-kosher-guide]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

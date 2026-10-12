@@ -1,4 +1,4 @@
-# Tier 2 per-store research record.
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: la-moisson
 name: La Moisson Supermarché Santé
 name_variants: []
@@ -61,10 +61,10 @@ product_search:
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: ""
+  api_notes: "Shopify storefront; standard /search?q= pattern VERIFIED by direct fetch 2026-10-12."
   bot_protection: none
   languages: [fr, en]
-  notes: "Shopify storefront; standard /search?q= pattern assumed, not directly verified."
+  notes: "Verified 2026-10-12: https://lamoisson.com/search?q=pomme returned 363 results server-rendered with product names, prices, 'EN MAGASIN SEULEMENT' flags and variant IDs — full structured results page."
 
 ecommerce:
   online_ordering: true
@@ -80,6 +80,7 @@ locations:
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
 notes: "FLAG: single store in Sainte-Thérèse (North Shore); no Montreal-island presence verified — geography filter should treat island-only queries as out of scope. Organic health supermarket for 30+ years."
 sources_checked: [official-site, circulaire-en-ligne, yellowpages, zipleaf]

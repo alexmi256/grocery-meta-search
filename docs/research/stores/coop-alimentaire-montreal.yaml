@@ -18,10 +18,12 @@ banner_family: []
 
 flyers:
   has_flyers: false
-  notes: "not checked — store likely closed"
+  types: []
+  notes: "not checked — store closed"
 
 product_search:
   has_search: false
+  notes: ""
 
 ecommerce:
   online_ordering: false
@@ -29,16 +31,16 @@ ecommerce:
   notes: ""
 
 locations:
-  count_estimate: 1
+  count_estimate: 0
   locator_url: ""
   locator_api: ""
-  notes: "5957 Rue Jean-Talon E, Montréal (Saint-Léonard), QC H1S 1M5"
+  notes: "Former location: 5957 Rue Jean-Talon E, Montréal (Saint-Léonard), QC H1S 1M5. Permanently closed."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "FLAG — LIKELY PERMANENTLY CLOSED: place data marks it 'Permanently Closed' and a direct fetch of lacoopalimentaire.ca returned an empty body on 2026-10-12 (site appears defunct). Some stale directories still show hours. RECOMMEND EXCLUSION from scope or re-verify before any Phase 3 work."
-sources_checked: [search, directories]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED PERMANENTLY CLOSED. Place data marks La Coop Alimentaire de Montréal 'Permanently Closed — do not trust other web sources that may still show it as open'. Direct fetches of https://lacoopalimentaire.ca/ and http://lacoopalimentaire.ca/ on 2026-10-12 both return HTTP 200 with an empty (0-byte) body — the site is defunct. Stale directories (find-open.ca, montreal.cdncompanies.com) still show hours, but these are not updated. Nothing to fly or scrape."
+sources_checked: [search, directories, official-site-fetch]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

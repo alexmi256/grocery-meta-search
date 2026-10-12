@@ -1,3 +1,4 @@
+# Phase 2 per-store research record — frontenac-solidaire (full depth 2026-10-12).
 slug: frontenac-solidaire
 name: Marché Solidaire Frontenac
 name_variants: []
@@ -8,20 +9,43 @@ tier: 3
 website:
   url: https://carrefoursolidaire.org
   languages: [fr, en]
-  language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  language_switch: path          # /en/ variant observed
+  render_tech: ssr                # WordPress (wp-content paths)
+  bot_protection: none
 
-parent_company: Carrefour Solidaire (opérée par Marché Frontenac, OBNL)
-affiliation: corporate
+parent_company: Carrefour Solidaire CCA (OBNL)
+affiliation: independent-affiliate   # social-economy nonprofit; market + 3 Paniers épicerie populaire under same org
 banner_family: ["3 Paniers"]
 
 flyers:
   has_flyers: false
-  notes: "no flyer found (tier 3)"
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    Seasonal solidarity market (May 18 – Nov 1 2026 per carrefoursolidaire.org);
+    no flyer. The org publishes a monthly "Calendrier Manger dans le Centre-Sud"
+    (community resources PDF) and newsletters — informational, not a grocery flyer.
+    No Flipp/RFD/aggregator listing.
 
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: >-
+    WordPress blog search (?s=) exists for site content only; there is no product
+    catalog — the market sells fresh/local produce in person only.
+  bot_protection: none
+  languages: [fr, en]
 
 ecommerce:
   online_ordering: false
@@ -32,13 +56,17 @@ locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "2570A rue Ontario E, Montréal, QC H2K 1W7. SEASONAL solidarity market (mid-May to end of October); also operates outside Frontenac metro."
+  notes: "2570A rue Ontario E, Montréal, QC H2K 0E5 (esplanade du métro Frontenac). Seasonal: mid-May to end of October/early November; 2026 season open Mon–Sun 11am–7pm. Also operates outside Frontenac metro (3 Paniers épicerie populaire at 2375 rue Sainte-Catherine E, open year-round)."
 
 loyalty_program:
-  name: ""
+  name: "Carte proximité"
   card_gated_prices: false
+  # Carte proximité is an accepted payment method at the market, not a loyalty program with gated prices.
 
-notes: "Participatory model (members volunteer); same organization as 3 Paniers."
-sources_checked: [search, official-site]
+notes: >-
+  Social-economy enterprise (economie sociale), citizen initiative since 2007,
+  operated by Carrefour Solidaire CCA since 2013; participatory/volunteer model.
+  Payment: cash, debit, Carte proximité (credit accepted reluctantly).
+sources_checked: [official-site, web-search-circulaire, directories, marchespublicsduquebec]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

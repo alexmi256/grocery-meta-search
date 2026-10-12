@@ -1,4 +1,4 @@
-# Tier 2 per-store research record.
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: shop-sante
 name: Shop Santé
 name_variants: []
@@ -10,7 +10,7 @@ website:
   url: https://shopsante.ca/
   languages: [fr, en]
   language_switch: toggle
-  render_tech: ssr
+  render_tech: ssr                 # Shopify storefront
   bot_protection: none
 
 parent_company: Shop Santé Inc.
@@ -20,9 +20,15 @@ banner_family: []
 flyers:
   has_flyers: true
   types:
-    - type: weekly
+    - type: monthly
       sources:
-        - name: official site
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-shop-sante-du-1-au-31-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: official site ("Circulaire" footer link / homepage 'Découvre notre circulaire')
           url: https://shopsante.ca/
           kind: official
           format: html
@@ -34,15 +40,15 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
-      duration_days: null
+      duration_days: 30
       flip_weekday: null
       flip_timezone: America/Toronto
-      validity_example: ""
+      validity_example: "2026-10-01 to 2026-10-31"
       per_store_variant: false
       languages: [fr, en]
       archive_available: false
       structured_data: false
-      notes: "Official site has a 'Circulaire' page and homepage 'Découvre notre circulaire' section; flyer cadence, format and flip weekday not directly verified (fields left null). Flipp lists the retailer but its store pages showed no live flyers at last crawl."
+      notes: "CORRECTION (2026-10-12): the flyer is MONTHLY, not weekly — circulaires.club carries a 22-page October 2026 edition (Oct 1-31). Flipp lists the retailer but its store pages showed no live flyers at last crawl. Official site has a 'Circulaire' footer link; cadence on the official page not yet directly verified."
 
 product_search:
   has_search: true
@@ -50,10 +56,10 @@ product_search:
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: ""
+  api_notes: "Shopify storefront — /search?q= VERIFIED by direct fetch 2026-10-12."
   bot_protection: none
   languages: [fr, en]
-  notes: "'Recherche' link in footer; Shopify storefront, standard /search?q= pattern assumed, not directly verified. Per-product local availability checker on product pages."
+  notes: "Verified 2026-10-12: https://shopsante.ca/search?q=vitamine returned 381 results, 24/page, with sale prices, 'Québec' origin flags and per-product local availability checker. 'Recherche' link in site footer."
 
 ecommerce:
   online_ordering: true
@@ -62,15 +68,16 @@ ecommerce:
 
 locations:
   count_estimate: 50
-  locator_url: https://shopsante.ca/
+  locator_url: ""
   locator_api: ""
-  notes: "50 stores chain-wide in Quebec (50th opened Sept 2026 in Sainte-Marie). Per-store pages at /pages/magasins/<slug>; /pages/magasins itself returns 404, so no dedicated locator URL verified. Montreal presence confirmed: Saint-Léonard (7600 Bd Viau) and 1851 Rue Sainte-Catherine O, Montréal; also Laval, Terrebonne, Saint-Jérôme, Gatineau, Lévis, Québec City."
+  notes: "50 stores chain-wide in Quebec (50th opened Sept 2026 in Sainte-Marie). Per-store pages at /pages/magasins/<slug>; /pages/magasins itself returns 404, so no dedicated locator URL verified. Montreal presence confirmed: Saint-Léonard (7600 Bd Viau) and 1851 Rue Sainte-Catherine O, Montréal; also Laval, Terrebonne, Saint-Jérôme, Gatineau, Lévis, Québec City. 'Télécharge Notre App!' — mobile app exists."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: "'Concours 50 succursales. 50 000 $* à gagner' contest observed; no loyalty program found."
 
 notes: "Franchise network: corporate entity 'SHOP SANTE INC.' dba Shop Santé; stores operated by franchisees ('Franchise' link on site). Supplements/natural products chain, not a full grocery."
-sources_checked: [official-site, flipp, pagesjaunes, cylex, moovit]
+sources_checked: [official-site, flipp, circulaires.club, pagesjaunes, cylex, moovit]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

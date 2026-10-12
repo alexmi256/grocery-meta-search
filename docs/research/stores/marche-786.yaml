@@ -1,34 +1,70 @@
+# Phase 2 per-store research record — marche-786 (full depth 2026-10-12).
 slug: marche-786
 name: Marché 786
 name_variants: ["Marche 786", "Marché 786 Inc"]
 store_type: ethnic-specialty  # Indian / Asian grocery
 footprint: island
 tier: 3
+
 website:
   url: http://marche786.ca/
-  languages: n/a              # not verified at tier 3
+  languages: n/a                 # site not renderable; language unverified
   language_switch: n/a
-  render_tech: unknown
+  render_tech: unknown            # fetch returned "no extractable content" (JS-heavy or empty)
   bot_protection: unknown
+
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
+
 flyers:
   has_flyers: false
-  notes: "No flyer link found at tier 3; official site not deeply crawled."
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    No flyer found. Web search "Marché 786 circulaire/flyer" found no flyer or
+    aggregator listing (Flipp/RFD/circulaires.club negative). The official site
+    could not be rendered to check for a flyer section (see partial-status note).
+
 product_search:
   has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: n/a
+  api_notes: "Site not renderable; search presence unconfirmable."
+  bot_protection: unknown
+  languages: []
+
 ecommerce:
   online_ordering: false
   click_and_collect: false
   notes: ""
+
 locations:
-  count_estimate: 1  # 772 Rue Jean-Talon O, Montréal QC H3N 1S2 (Parc-Extension)
+  count_estimate: 1
   locator_url: ""
+  locator_api: ""
+  notes: "772 Rue Jean-Talon O, Montréal QC H3N 1S2 (Parc-Extension). Indian/Asian grocery known for rice selection. Phone 514-277-1555."
+
 loyalty_program:
   name: ""
   card_gated_prices: false
-notes: "Indian/Asian grocery known for rice selection; listed in Indian-food directories as an Indian grocery."
-sources_checked: [official-site-search-snippet, directories, indianfoodchannel]
+
+notes: >-
+  PARTIAL STATUS REASON: marche786.ca exists per directories but the fetch
+  returned no extractable content (likely JS-heavy or empty page), so flyer and
+  product-search presence on the official site could not be confirmed or denied.
+  Flyer absence via aggregators + web search is confirmed; the site itself needs a
+  live-browser check.
+sources_checked: [official-site-unrenderable, web-search-circulaire, directories, indianfoodchannel]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: partial

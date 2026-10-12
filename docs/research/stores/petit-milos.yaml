@@ -1,6 +1,6 @@
 slug: petit-milos
 name: Le Petit Milos
-name_variants: []
+name_variants: ["Petit Milos"]
 store_type: ethnic-specialty
 footprint: island
 tier: 3
@@ -9,8 +9,8 @@ website:
   url: ""
   languages: [fr]
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: ""
+  bot_protection: ""
 
 parent_company: "Estiatorio Milos (absorbed)"
 affiliation: independent-affiliate
@@ -19,7 +19,7 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No storefront/flyer to check."
+  notes: "No storefront/flyer to check — business closed."
 
 product_search:
   has_search: false
@@ -33,13 +33,14 @@ ecommerce:
 locations:
   count_estimate: 0
   locator_url: ""
-  notes: "Former address: 5357 Avenue du Parc, Montréal, QC — now occupied by the Estiatorio Milos restaurant."
+  locator_api: ""
+  notes: "Former shop address (5551 Avenue du Parc / 5357 Avenue du Parc, Montréal) is now the active Estiatorio Milos restaurant. No independent storefront remains."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "VERIFIED CLOSED/ABSORBED: Le Petit Milos was the specialty-food shop (Spiliadis family) supplying the Estiatorio Milos restaurant a few doors north on Park Ave; press/directory history confirms it was the restaurant's shop and no independent storefront exists anymore — its address 5357 Av du Parc is the live Estiatorio Milos restaurant (estiatoriomilos.com). No official/social site of its own found. website: none found with reason. Recommend excluding from flyer pipeline."
-sources_checked: [directories, web-press, official-site]
+notes: "RECOMMENDED-EXCLUDED: VERIFIED CLOSED/ABSORBED. Le Petit Milos was the Spiliadis family specialty-food shop on Park Avenue supplying the Estiatorio Milos restaurant a few doors north (Montreal Gazette). chefdb.com lists 'Petit Milos, Montréal (CLOSED)' at 5551 Avenue du Parc; menupix.com marks it 'Permanently closed'. The address now resolves to the live Estiatorio Milos restaurant (estiatoriomilos.com, 5357 Av du Parc). No official/social site of its own found — website: none found with reason. Nothing to fly or scrape."
+sources_checked: [directories, web-press, official-site, search]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

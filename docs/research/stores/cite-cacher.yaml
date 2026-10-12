@@ -9,7 +9,7 @@ website:
   url: https://www.facebook.com/572569476146105
   languages: [fr]
   language_switch: n/a
-  render_tech: js-heavy
+  render_tech: js-heavy              # Facebook; login wall for full content
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +19,34 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer at tier 3."
+  notes: "No flyer found. Checked: Facebook page (FB-only web presence); not on the circulaires.club weekly index (218 QC flyers), circulaires.com Montreal merchant list, or RFD flyers page; web search 'Cité Cacher / Kosher City Montréal circulaire' (directory results only). CAVEAT: FB page posts were not audited (needs logged-in browser) — if the store posts weekly specials, they would live there."
 
 product_search:
   has_search: false
-  notes: ""
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No website; Facebook page has no product catalog or search."
+  bot_protection: none
+  languages: [fr]
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "Walk-in only."
 
 locations:
   count_estimate: 1
   locator_url: ""
-  notes: "4765 Av. Van Horne, Montréal, QC H3W 1H8 (also listed as 4767 Van Horne on MK guide)."
+  locator_api: ""
+  notes: "4765 Av. Van Horne, Montréal, QC H3W 1H8 (also listed as 4767 Van Horne). Hours: Mon-Fri 9:00-19:00, Sat 10:00-19:00, closed Sunday. Phone (514) 733-2838."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Given task said 'none found'; official Facebook page exists: facebook.com/572569476146105 — recorded as official-social fallback. Kosher supermarket + butcher + deli ('Montreal Kosher Services'); also branded 'Kosher City' in directories; MK-certified takeout."
-sources_checked: [official-social, directories, mk-kosher-guide]
+notes: "Kosher supermarket + butcher + deli ('Montreal Kosher Services'); also branded 'Kosher City' in directories; MK-certified takeout."
+sources_checked: [official-social, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, mk-kosher-guide]
 researched_at: "2026-10-12"
-research_status: minimal
+research_status: complete

@@ -8,8 +8,8 @@ tier: 3
 website:
   url: https://www.chezlatina.com/
   languages: [fr, en]
-  language_switch: path
-  render_tech: ssr
+  language_switch: path              # /eng for the English version (observed)
+  render_tech: ssr                   # static marketing site
   bot_protection: none
 
 parent_company: ""
@@ -19,27 +19,34 @@ banner_family: []
 flyers:
   has_flyers: false
   types: []
-  notes: "No flyer found at tier 3."
+  notes: "No flyer found. Checked: official site (menu/recipe/newsletter site, no flyer/circulaire section), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Chez Latina\" Montréal circulaire' (directory results only)."
 
 product_search:
   has_search: false
-  notes: "Online gourmet store likely has search but not verified at tier 3."
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "The marketing/recipe site has no search function (daily menu is a Google Doc; grocery-list page is static). Online shopping is outsourced to the Panierdachat app (chezlatina.panierdachat.app) — text fetch returned HTTP 403, so any in-app product search is unverified and would need a live browser."
+  bot_protection: none
+  languages: [fr, en]
 
 ecommerce:
   online_ordering: true
-  click_and_collect: false
-  notes: "Obvious: 'Chez Latina — Online Gourmet Grocery Store' (Panierdachat-powered shop) sells online."
+  click_and_collect: true
+  notes: "Online grocery via the Panierdachat app (linked from the official site; platform blocked text fetch with 403 — verify in live browser). Delivery or in-store pickup: service@chezlatina.com."
 
 locations:
   count_estimate: 2
   locator_url: ""
-  notes: "185 Rue Saint-Viateur O, Montréal, QC (Mile End, flagship) + 1434 Rue Sherbrooke O (downtown 'Latina Gourmet Store', opened ~2024)."
+  locator_api: ""
+  notes: "185 Rue Saint-Viateur O, Montréal, QC H2T 2L4 (Mile End, flagship; hours Mon-Fri 8:00-20:00, Sat 10:00-20:00, Sun 10:00-20:00) + 1434 Rue Sherbrooke O (downtown 'Latina Gourmet Store'). CAVEAT: one place-data source marks the Sherbrooke location 'Permanently Closed' — needs live verification."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "URL CORRECTION: given domain chezlatina.com resolves to www.chezlatina.com — canonical URL recorded with www. FLAG: not a single store — two locations; count_estimate corrected to 2. Upscale Italian/Latin épicerie fine; dry-aging room for Prime Black Angus beef. Name is about Latin cuisine, not Latin America — keep in ethnic-specialty per scope."
-sources_checked: [official-site, directories, web-press]
+notes: "Upscale Italian/Latin épicerie fine; dry-aging room for Prime Black Angus beef. Daily menu published as a Google Doc; active newsletter. Name is about Latin cuisine, not Latin America."
+sources_checked: [official-site, circulaires-club, circulaires.com, rfd-flyers, web-search, directories, web-press]
 researched_at: "2026-10-12"
-research_status: partial
+research_status: complete

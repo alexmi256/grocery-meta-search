@@ -1,4 +1,4 @@
-# Tier 2 per-store research record.
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: euro-marche
 name: Euro Marché
 name_variants: ["Euromarché", "L'Euromarché"]
@@ -9,8 +9,8 @@ tier: 2
 website:
   url: http://euromarche.ca/
   languages: [fr, en]
-  language_switch: path
-  render_tech: ssr
+  language_switch: path          # flyer_fr.php / flyer_en.php
+  render_tech: ssr               # bare static PHP site; homepage fetch returns 2 lines of text
   bot_protection: none
 
 parent_company: Independent (family chain)
@@ -56,10 +56,10 @@ product_search:
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: ""
+  api_notes: "No platform patterns apply (bare static PHP, not Shopify/WordPress/Magento)."
   bot_protection: none
   languages: [fr, en]
-  notes: "No product search on the simple PHP site."
+  notes: "Negative finding (re-verified 2026-10-12): homepage fetch returns only store addresses, no nav and no search form anywhere on the site; flyer pages are static image pages."
 
 ecommerce:
   online_ordering: false
@@ -68,13 +68,14 @@ ecommerce:
 
 locations:
   count_estimate: 6
-  locator_url: http://euromarche.ca/
+  locator_url: ""
   locator_api: ""
-  notes: "Official homepage lists 4 stores (Laval 134 Bellerose E; Montreal 10181 St-Michel and 224 Fleury O; D.D.O. 1125 Hyman). Directories show up to 6-7 (adds Saint-Laurent 11847 Lachapelle and Pointe-Claire 323 Bord-du-Lac). No dedicated locator URL."
+  notes: "No dedicated locator URL. Homepage lists 4 stores (Laval 134 Bellerose E; Montreal 10181 St-Michel and 224 Fleury O; D.D.O. 1125 Hyman). Directories show up to 6-7 (adds Saint-Laurent 11847 Lachapelle and Pointe-Claire 323 Bord-du-Lac)."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
+  notes: ""
 
 notes: "Family-owned European specialty grocery chain. Weekly flyers flip Thursday, valid Thu-Wed."
 sources_checked: [official-site, circulaires.club, circulaire-en-ligne, yellowpages, flipp]

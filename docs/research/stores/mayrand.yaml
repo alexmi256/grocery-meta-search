@@ -1,4 +1,4 @@
-# Tier 2 per-store research record.
+# Tier 2 per-store research record (full depth, 2026-10-12).
 slug: mayrand
 name: Mayrand Food Group
 name_variants: ["Mayrand"]
@@ -40,26 +40,32 @@ flyers:
           format: html
           parse_friendliness: low
           fetchability: http
+        - name: flyerdeals.ca
+          url: https://www.flyerdeals.ca/stores/mayrand/flyers-specials
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
       duration_days: 7
       flip_weekday: Wednesday
       flip_timezone: America/Toronto
       validity_example: "2026-07-15 to 2026-07-21"
       per_store_variant: false
       languages: [fr, en]
-      archive_available: false
+      archive_available: true          # ca-mydeals365 and flyerdeals.ca keep past-week offers
       structured_data: false
       notes: "Bilingual FR/EN PDF flyer (both languages in one document), valid Wed-Tue. PDFs hosted on HubSpot CDN (hubfs) with extractable text including SKU codes. Also a region selector (region=Montreal). Not on Flipp."
 
 product_search:
   has_search: true
-  url_pattern: "https://mayrand.ca/"
+  url_pattern: "https://www.mayrand.ca/en/our-products/"
   location_scoped: false
   guest_ok: true
   kind: html
-  api_notes: ""
+  api_notes: "Full browsable product catalog VERIFIED via indexed pages (2026-10-12): category pages (/en/our-products/kitchen-ware/?page=44) and product pages with SKU, UPC (case + unit), CAD prices, per-store stock status ('In stock' / 'Coming soon'), aisle ('Alley') and section numbers; 15,000 products advertised. Dedicated free-text search box not confirmed in site nav (nav: Our Products, Our specials, Our stores, Our Offer, Our services, Business Members Program, About us)."
   bot_protection: none
   languages: [fr, en]
-  notes: "'Our Specials' page lists products with SKU codes and structured prices (weekly specials + EDLP list); exact search URL pattern not verified."
+  notes: "has_search: true on the strength of the fully browsable, structured product catalog with per-store availability; free-text search box unconfirmed."
 
 ecommerce:
   online_ordering: false
@@ -68,16 +74,16 @@ ecommerce:
 
 locations:
   count_estimate: 4
-  locator_url: https://mayrand.ca/
+  locator_url: https://mayrand.ca/en/our-stores/mayrand-anjou-store
   locator_api: ""
-  notes: "4 stores: Anjou, Laval, Brossard, Saint-Jérôme. New Trois-Rivières location under construction (announced Sept 2026). Store list on site; dedicated locator URL not verified."
+  notes: "4 stores with dedicated pages (e.g. /en/our-stores/mayrand-anjou-store): Anjou (9701 boul Louis-H.-La Fontaine), Laval (3615 Autoroute Jean-Noel Lavoie), Brossard (2151 Boul Lapinière S100), Saint-Jérôme (400 Rue Lamontagne). New Trois-Rivières location under construction (announced Sept 2026)."
 
 loyalty_program:
-  name: ""
-  card_gated_prices: false
-  notes: "Explicitly no membership: 'no membership card required', open to public 7 days."
+  name: "Business Members Program"
+  card_gated_prices: true
+  notes: "Business membership card (register in store): 1% immediate discount on regular purchases + 1.5-2.5% twice a year + personalized consulting. Distinct price semantic — card-gated prices confirmed."
 
 notes: "AFFILIATION FINDING: Empire/Sobeys acquisition announced April 9 2026 via court-approved process CLOSED in June 2026 (Retail Insider, Sept 2026). Mayrand is now an Empire Company Limited subsidiary (via Sobeys Inc.); banner kept distinct as Quebec discount/warehouse format. Founded 1914, ~300 employees."
-sources_checked: [official-site, empire-press-release, retail-insider, canadiangrocer, pulse2, circulaires.com, ca-mydeals365]
+sources_checked: [official-site, empire-press-release, retail-insider, canadiangrocer, pulse2, circulaires.com, ca-mydeals365, flyerdeals.ca, web-search]
 researched_at: "2026-10-12"
 research_status: complete
