@@ -195,3 +195,7 @@ Four parallel research tracks:
 - **No "Marché Central" grocery store found** — only the Marché Central area; likely not a banner.
 - **Name collision:** "Marché Oriental" (7101 Rue St-Denis) and "Marché Oriental Jang Teu"
   (H Marché/H Mart, 3 stores) are different businesses sharing a name.
+- **RFD thread shorthand** (useful when parsing round-up posts in later phases): SupC=Super C,
+  Pro=Provigo, Ado=Adonis, Met=Metro, GT=Giant Tiger, WM=Walmart, PA=Marché PA, KP=Kim Phat,
+  CT=Canadian Tire. The weekly series covers MAXI, SUPER C, IGA, PROVIGO, METRO, ADONIS,
+  Marché PA, WALMART, GIANT TIGER weekly; KIM PHAT and C&T added Thursdays.
