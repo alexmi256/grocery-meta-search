@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-12
 **Status:** raw research output — Phase 1 only (list). Not yet DB-loaded or location-verified.
+**Scope decision (user, 2026-10-12):** include everything that sells food — all 122 stores in scope.
+Geography default: Greater Montreal; `footprint` tags allow island-only filtering later.
 
 ## Method
 
