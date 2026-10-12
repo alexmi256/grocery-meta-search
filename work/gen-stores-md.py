@@ -1,6 +1,12 @@
 """Generate docs/research/stores.md summary table from per-store YAMLs."""
 import glob
+import os
+import sys
+
 import yaml
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from mdutil import md_link
 
 STORES_DIR = "/home/hatch/workspace/grocery-meta-search/docs/research/stores"
 OUT = "/home/hatch/workspace/grocery-meta-search/docs/research/stores.md"
@@ -62,10 +68,7 @@ for tier in (1, 2, 3):
     lines.append("| Store | Type | Website | Flyers | Search | Locations | Parent |")
     lines.append("|---|---|---|---|---|---|---|")
     for d in batch:
-        web = (d.get("website") or {}).get("url") or ""
-        web = web.replace("https://", "").replace("http://", "").rstrip("/")
-        if len(web) > 34:
-            web = web[:33] + "…"
+        web = md_link((d.get("website") or {}).get("url"))
         lines.append(
             "| " + " | ".join([
                 esc(d.get("name")),

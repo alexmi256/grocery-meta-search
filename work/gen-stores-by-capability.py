@@ -4,19 +4,16 @@ Re-run after YAML changes: python3 work/gen-stores-by-capability.py"""
 
 import glob
 import os
-import re
+import sys
 
 import yaml
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from mdutil import md_link
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STORES_DIR = os.path.join(BASE, "docs", "research", "stores")
 OUT = os.path.join(BASE, "docs", "research", "stores-by-capability.md")
-
-
-def short_url(url: str) -> str:
-    url = (url or "").strip()
-    url = re.sub(r"^https?://", "", url)
-    return url.rstrip("/")
 
 
 def cadence_label(days) -> str:
@@ -76,7 +73,7 @@ def main() -> None:
         row = {
             "name": name,
             "type": d.get("store_type", "?"),
-            "website": short_url((d.get("website") or {}).get("url", "")),
+            "website": md_link((d.get("website") or {}).get("url", "")),
             "locations": locations(d),
             "flyer": flyer_info(d),
             "search": search_info(d),
