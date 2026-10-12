@@ -1,0 +1,67 @@
+slug: wholesale-club
+name: Wholesale Club
+name_variants: ["Real Canadian Wholesale Club", "Presto - Wholesale Club"]  # former QC branding
+store_type: warehouse              # cash-and-carry wholesale club
+footprint: qc-confirmed            # 7-8 QC locations incl. LaSalle (island) and Longueuil
+tier: 2
+
+website:
+  url: https://www.wholesaleclub.ca
+  languages: [fr, en]              # /en/ observed; Loblaw platform supports /fr/
+  language_switch: path
+  render_tech: ssr                 # Loblaw e-commerce platform (server-rendered product listings observed)
+  bot_protection: none
+
+parent_company: Loblaw Companies Limited
+affiliation: corporate
+banner_family: [Provigo, Maxi, Pharmaprix, T&T]  # Loblaw QC-relevant banners
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: RFD Montreal flyers
+          url: https://www.redflagdeals.com/in/montreal/flyers/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday        # assumed standard Thu-Wed; verify
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Official-site flyer section not yet checked; RFD listing confirms a flyer exists."
+
+product_search:
+  has_search: true
+  url_pattern: ""
+  location_scoped: true            # Loblaw platform typically requires store selection for pickup/delivery
+  guest_ok: true
+  kind: json-api                   # Loblaw e-commerce platform; API pattern not yet observed — verify
+  api_notes: "Same platform family as other Loblaw banners; search API endpoint not yet probed."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true            # "Shop Online for Pickup & Delivery"; PC Express with code promos
+  click_and_collect: true          # PC Express pickup
+  notes: "Full e-commerce with product listings, prices, and PC Optimum integration — strong structured-data signal."
+
+locations:
+  count_estimate: 8  # QC: LaSalle (island), Longueuil, Joliette (939 Boul Firestone), Trois-Rivières (500 boul de la Commune), Jonquière (2460 Cantin), Charlesbourg, Sherbrooke — per Loblaw careers postings
+  locator_url: ""
+  locator_api: ""                  # not yet probed
+
+loyalty_program:
+  name: "PC Optimum"
+  card_gated_prices: false         # points promos observed, not card-gated shelf prices
+
+notes: "Loblaw cash-and-carry banner aimed at restaurants, dépanneurs and consumers (bulk formats). NOT Ontario/West-only — has LaSalle and Longueuil locations, so it clears the Montreal-presence bar. Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list."
+sources_checked: [official-site, rfd-flyers, careers.loblaw.ca, depquebec.com]
+researched_at: "2026-10-12"
+research_status: partial

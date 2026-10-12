@@ -16,7 +16,7 @@ website:
 
 parent_company: Independent (chain)  # founded 1989 by Sam and Taso Erimos; family-owned
 affiliation: corporate               # centrally owned independent chain
-banner_family: []                    # PA Nature (natural foods) appears related but unconfirmed as same company - flag
+banner_family: []                    # PA Nature (natural foods) CONFIRMED related 2026-10-12: pa-nature.supermarchepa.com subdomain; see pa-nature.yaml
 
 flyers:
   has_flyers: true

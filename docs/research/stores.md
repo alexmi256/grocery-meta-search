@@ -34,11 +34,12 @@ kind, location count + harvest mechanism (API = JSON endpoint observed).
 | Uniprix | pharmacy | www.uniprix.com | Y (json-api/images) | N | 360 (locator) | McKesson Canada |
 | Walmart | gen-merch | www.walmart.ca | Y (html) | Y (spa) | 401 (locator) | Walmart Canada |
 
-## Tier 2 — banners / small chains (medium depth) (17 stores)
+## Tier 2 — banners / small chains (medium depth) (21 stores)
 
 | Store | Type | Website | Flyers | Search | Locations | Parent |
 |---|---|---|---|---|---|---|
 | Euro Marché | ethnic-specialty | euromarche.ca | Y (images) | N | 6 (locator) | Independent (family chain) |
+| Marché Frutta Si | ethnic-specialty | www.marchefruttasi.com | Y (images) | N | 1 (?) | Independent (family business) |
 | H Marché | ethnic-specialty | www.hmartmontreal.com | N | N | 3 (locator) | H Mart |
 | IGA Express / Mini | other | www.iga.net | Y (images) | Y (html) | (locator) | Sobeys Inc. (Sobeys Québec / Empire Company Ltd.) |
 | L'intermarché Palumbo | traditional | www.marchepalumbo.com | Y (html/images) | Y (html) | 5 (locator) | Palumbo family (independent) |
@@ -52,9 +53,12 @@ kind, location count + harvest mechanism (API = JSON endpoint observed).
 | Les Marchés Tau | ethnic-specialty | marchestau.com | Y (html/images) | Y (html) | 6 (locator) | Independent (chain of 6) |
 | Les Marchés Tradition | traditional | www.marchestradition.com | Y (images) | N | 75 (locator) | Sobeys Inc. (Sobeys Québec / Empire Company Ltd.) |
 | Mayrand Food Group | warehouse | mayrand.ca | Y (pdf/html) | Y (html) | 4 (locator) | Empire Company Limited (via Sobeys Inc.) |
+| M&M Food Market | ethnic-specialty | www.mmfoodmarket.com | Y (images) | Y (html) | 15 (locator) | Parkland Corporation |
+| Épicerie PA Nature | ethnic-specialty | pa-nature.supermarchepa.com | Y (images) | N | 1 (?) | Marché PA (independent family chain) |
 | Première Moisson | ethnic-specialty | premieremoisson.com | Y (html) | N | 25 (locator) | Metro Inc. |
 | Shop Santé | ethnic-specialty | shopsante.ca | Y (html/images) | Y (html) | 50 (locator) | Shop Santé Inc. |
 | Sobeys (banner) | traditional | www.sobeys.com | N | Y (html) | 0 (?) | Sobeys Inc. (Empire Company Ltd.) |
+| Wholesale Club | warehouse | www.wholesaleclub.ca | Y (images) | Y (json-api) | 8 (?) | Loblaw Companies Limited |
 
 ## Tier 3 — independents (minimal) (81 stores)
 

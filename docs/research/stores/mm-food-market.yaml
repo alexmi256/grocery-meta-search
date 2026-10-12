@@ -1,0 +1,67 @@
+slug: mm-food-market
+name: M&M Food Market
+name_variants: ["M&M Meat Shops"]   # former name, rebranded
+store_type: ethnic-specialty       # frozen-food specialty chain
+footprint: qc-confirmed            # QC-wide; ~15 locations in Greater Montreal
+tier: 2
+
+website:
+  url: https://www.mmfoodmarket.com
+  languages: [fr, en]              # /fr/ and /en/ observed
+  language_switch: path
+  render_tech: ssr                 # Shopify storefront
+  bot_protection: none
+
+parent_company: Parkland Corporation  # acquired Jan 18 2022 (closed Feb 18 2022), ~C$322M; 300+ stores national
+affiliation: corporate             # franchise + corporate stores; brand leadership retained
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: RFD Montreal flyers
+          url: https://www.redflagdeals.com/in/montreal/flyers/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday        # assumed standard Thu-Wed; verify
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: [fr, en]
+      archive_available: false
+      structured_data: false
+      notes: "Weekly flyer cadence assumed from RFD listing; flip day not yet verified."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.mmfoodmarket.com/search?q={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html                       # Shopify /search; pattern assumed from platform, not directly observed
+  api_notes: "Shopify storefront — /search?q= pattern assumed; verify on site."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true            # "Same-day delivery — check your address for availability"
+  click_and_collect: false
+  notes: "Delivery advertised on homepage; in-store pickup not confirmed."
+
+locations:
+  count_estimate: 15  # Greater Montreal incl. LaSalle (8453 Newman), 7864 Sherbrooke E, 1005 Ste-Catherine E, St-Laurent (3155 Pitfield), Anjou, Pointe-aux-Trembles, Longueuil, Laval, Kirkland, Pointe-Claire, DDO
+  locator_url: https://mmfoodmarket.com/fr/store_locations/
+  locator_api: ""                  # per-store pages at /fr/store_locations/<id> observed; JSON endpoint not yet probed
+
+loyalty_program:
+  name: "M&M rewards"              # ~2M active members cited at acquisition
+  card_gated_prices: false
+
+notes: "Canada's leading frozen-food retailer (40+ years). Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list."
+sources_checked: [official-site, rfd-flyers, openinghours.ca, mmfoodmarket.com-press]
+researched_at: "2026-10-12"
+research_status: partial

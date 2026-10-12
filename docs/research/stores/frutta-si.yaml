@@ -1,0 +1,71 @@
+slug: frutta-si
+name: Marché Frutta Si
+name_variants: ["Frutta Si"]
+store_type: ethnic-specialty       # Italian / international grocery, organic produce focus
+footprint: island                 # single store: 1255 Boul Shevchenko, LaSalle
+tier: 2
+
+website:
+  url: http://www.marchefruttasi.com/
+  languages: [en]                 # homepage observed in English only
+  language_switch: n/a
+  render_tech: ssr                 # WordPress brochure site
+  bot_protection: none
+
+parent_company: Independent (family business)  # 20+ years in LaSalle; no parent found
+affiliation: corporate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: http://www.marchefruttasi.com/
+          kind: official
+          format: images            # "Our Weekly Deals" flyer section on homepage
+          parse_friendliness: low
+          fetchability: http
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-marche-frutta-si/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: RFD Montreal flyers
+          url: https://www.redflagdeals.com/in/montreal/flyers/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: Thursday        # circulaire observed Oct 1-7 2026 (Thu-Wed)
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-01 to 2026-10-07"
+      per_store_variant: false      # single store
+      languages: [fr]               # aggregator circulars in French; EN version unconfirmed
+      archive_available: false
+      structured_data: false
+      notes: ""
+
+product_search:
+  has_search: false                # brochure site, no search observed
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1  # 1255 Boul Shevchenko, LaSalle QC H8N 1N8; tel 514-595-9111
+  locator_url: ""
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Italian/international neighbourhood grocery (organic produce, Italian specialties, halal meat, olive bar). Surfaced via RFD Montreal flyers directory (?order=name) — was missing from the 123-store list."
+sources_checked: [official-site, rfd-flyers, circulairecanada.com, yellowpages]
+researched_at: "2026-10-12"
+research_status: partial
