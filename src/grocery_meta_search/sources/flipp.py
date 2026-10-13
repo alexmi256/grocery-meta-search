@@ -42,6 +42,7 @@ class BrandConfig:
     brand_slug: str
     access_token: str
     store_code: str
+    flyer_type_filter: str | None = None
 
 
 def _to_date(value: Any) -> str | None:
@@ -260,6 +261,12 @@ class FlyerKitClient:
     ) -> list[FlyerEdition]:
         """Fetch active publications and their products, merged across locales."""
         publications = self.get_publications(cfg, locales[0])
+        if cfg.flyer_type_filter:
+            publications = [
+                p
+                for p in publications
+                if p.get("flyer_type") == cfg.flyer_type_filter
+            ]
         editions: list[FlyerEdition] = []
         for pub in publications:
             pub_id = pub.get("id")

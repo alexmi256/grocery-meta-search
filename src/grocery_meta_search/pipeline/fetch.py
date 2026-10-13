@@ -159,6 +159,7 @@ def fetch_store(
         brand_slug=cfg_data["brand_slug"],
         access_token=cfg_data["access_token"],
         store_code=cfg_data["store_code"],
+        flyer_type_filter=cfg_data.get("flyer_type_filter"),
     )
     try:
         editions = client.fetch_store_editions(cfg)
