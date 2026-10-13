@@ -11,6 +11,7 @@ open-source grocery_flyer scraper); they can be rotated by Flipp at any time.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
@@ -73,11 +74,53 @@ def _conditions_of(product: dict[str, Any]) -> dict[str, Any]:
     return conditions
 
 
+_MEMBER_RE = re.compile(r"\bmembres?\b|\bmembers?\b", re.IGNORECASE)
+_PROGRAM_RES = [
+    (re.compile(r"pc\s*optimum", re.IGNORECASE), "PC Optimum"),
+    (re.compile(r"sc[eè]ne\s*\+", re.IGNORECASE), "Scène+"),
+    (
+        re.compile(
+            r"prix[^.]{0,30}\bmoi\b|\bcarte\s+moi\b|\bprogramme\s+moi\b",
+            re.IGNORECASE,
+        ),
+        "Moi",
+    ),
+]
+
+# Banner slug -> loyalty program backing its "membre" prices.
+BANNER_PROGRAMS = {
+    "maxi": "PC Optimum",
+    "provigo": "PC Optimum",
+    "loblaws": "PC Optimum",
+    "igaquebec": "Scène+",
+}
+
+# Fields carrying price conditions. The product NAME is excluded: a name like
+# "... - IGA Scene+" marks a points offer, not necessarily a gated price.
+_PRICE_TEXT_FIELDS = (
+    "sale_story",
+    "pre_price_text",
+    "post_price_text",
+    "disclaimer_text",
+    "description",
+)
+
+
+def _price_text_blob(product: dict[str, Any]) -> str:
+    return " ".join(str(product.get(k) or "") for k in _PRICE_TEXT_FIELDS)
+
+
+def loyalty_program_of(product: dict[str, Any], default: str | None = None) -> str | None:
+    """Name the loyalty program gating this item's price, if identifiable."""
+    text = _price_text_blob(product) + " " + str(product.get("name") or "")
+    for pattern, program in _PROGRAM_RES:
+        if pattern.search(text):
+            return program
+    return default
+
+
 def _is_loyalty_gated(product: dict[str, Any]) -> bool:
-    text = " ".join(
-        str(product.get(k) or "") for k in ("sale_story", "name", "disclaimer_text")
-    ).lower()
-    return "membre" in text or "member" in text or "moi " in text
+    return bool(_MEMBER_RE.search(_price_text_blob(product)))
 
 
 def edition_from_publication(pub: dict[str, Any]) -> FlyerEdition:
@@ -89,12 +132,20 @@ def edition_from_publication(pub: dict[str, Any]) -> FlyerEdition:
     )
 
 
-def item_from_product(product: dict[str, Any], locale: str) -> FlyerItem:
+def item_from_product(
+    product: dict[str, Any], locale: str, default_program: str | None = None
+) -> FlyerItem:
     name = (product.get("name") or "").strip() or None
     price_text = product.get("price_text") or None
     price_value, price_unit = parse_price_text(price_text or "")
     valid_from = _to_date(product.get("valid_from"))
     valid_to = _to_date(product.get("valid_to"))
+    gated = _is_loyalty_gated(product)
+    conditions = _conditions_of(product)
+    if gated:
+        program = loyalty_program_of(product, default_program)
+        if program:
+            conditions["loyalty_program"] = program
     return FlyerItem(
         name_fr=name if locale.startswith("fr") else None,
         name_en=name if locale.startswith("en") else None,
@@ -105,8 +156,8 @@ def item_from_product(product: dict[str, Any], locale: str) -> FlyerItem:
         bbox=_bbox_of(product),
         sku=product.get("sku"),
         brand=product.get("brand"),
-        conditions=_conditions_of(product),
-        loyalty_gated=_is_loyalty_gated(product),
+        conditions=conditions,
+        loyalty_gated=gated,
         valid_from=valid_from,
         valid_to=valid_to,
         languages=[locale],
@@ -217,7 +268,10 @@ class FlyerKitClient:
             edition = edition_from_publication(pub)
             edition.languages = list(locales)
             per_locale = [
-                [item_from_product(p, loc) for p in self.get_products(pub_id, cfg, loc)]
+                [
+                    item_from_product(p, loc, BANNER_PROGRAMS.get(cfg.brand_slug))
+                    for p in self.get_products(pub_id, cfg, loc)
+                ]
                 for loc in locales
             ]
             items = per_locale[0]

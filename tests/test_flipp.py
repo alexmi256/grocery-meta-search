@@ -11,6 +11,7 @@ from grocery_meta_search.sources.flipp import (
     _to_date,
     edition_from_publication,
     item_from_product,
+    loyalty_program_of,
     merge_locales,
 )
 
@@ -82,3 +83,51 @@ def test_merge_locales_en_only_kept() -> None:
     en_only = [m for m in merged if m.name_fr is None]
     assert en_only
     assert all(m.name_en for m in en_only)
+
+
+def test_loyalty_camembert_not_gated() -> None:
+    """'member' inside 'camembert' must not flag loyalty gating."""
+    item = item_from_product({"name": "FROMAGE BRIE OU CAMEMBERT ILE DE FRANCE"}, "fr")
+    assert not item.loyalty_gated
+
+
+def test_loyalty_scene_plus() -> None:
+    item = item_from_product(
+        {"name": "CRAQUELINS CHEEZ-IT", "pre_price_text": "Prix Membre Scène+"}, "fr"
+    )
+    assert item.loyalty_gated
+    assert loyalty_program_of({"pre_price_text": "Prix Membre Scène+"}) == "Scène+"
+
+
+def test_loyalty_pc_optimum() -> None:
+    product = {
+        "name": "BOEUF HACHÉ",
+        "pre_price_text": "Prix membre*",
+        "disclaimer_text": "Prix pour les membres PC Optimum.",
+    }
+    item = item_from_product(product, "fr")
+    assert item.loyalty_gated
+    assert loyalty_program_of(product) == "PC Optimum"
+    assert item.conditions["loyalty_program"] == "PC Optimum"
+
+
+def test_loyalty_banner_default_program() -> None:
+    item = item_from_product(
+        {"name": "BOEUF HACHÉ", "pre_price_text": "Prix membre*"},
+        "fr",
+        default_program="PC Optimum",
+    )
+    assert item.loyalty_gated
+    assert item.conditions["loyalty_program"] == "PC Optimum"
+
+
+def test_loyalty_program_not_set_when_not_gated() -> None:
+    item = item_from_product({"name": "POMMES"}, "fr", default_program="PC Optimum")
+    assert not item.loyalty_gated
+    assert "loyalty_program" not in item.conditions
+
+
+def test_loyalty_name_only_scene_plus_not_gated() -> None:
+    """'Scene+' in the name alone is a points offer, not a gated price."""
+    item = item_from_product({"name": "SIROP - IGA Scene+", "price_text": "5.99"}, "fr")
+    assert not item.loyalty_gated
