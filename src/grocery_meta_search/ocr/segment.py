@@ -1,0 +1,548 @@
+"""Flyer page segmentation: price anchors + name lines -> items.
+
+Strategy ``anchor`` (most flyers): prices are the visual anchors — tall
+digit glyphs. Cluster price fragments (dollars + superscript cents),
+parse the value, then grow a name-line set outward from the line nearest
+the price and re-OCR that region with Tesseract for clean text.
+
+Strategy ``prix_line`` (Costco savings book): the big number is the
+*discount*, not the price. The real price is a small ``Prix 1 234,56 $``
+line; names are the text lines in the same grid cell above it.
+"""
+
+from __future__ import annotations
+
+import re
+import unicodedata
+from dataclasses import dataclass
+
+from PIL import Image
+
+from ..sources.base import FlyerItem
+from .engine import OcrLine, ocr_crop_text
+
+# Lines that are never product names, in any store.
+DEFAULT_STOPLIST = (
+    r"net\s*wt",
+    r"poids net",
+    r"prix incroyable",
+    r"circulaire",
+    r"entrepot et en ligne",
+    r"n[o°]\s*d['’]?\s*article",
+    r"valide du",
+    r"economisez",
+    r"aussi offert",
+    r"offert pour livraison",
+    r"en entrepot",
+    r"ecofrais",
+    r"^\s*economie\b",
+    r"20\d{2}",  # dates (validity lines)
+    r"pas encore membre",
+    r"inscrivez-vous",
+)
+
+_DETAIL_LINE_RE = re.compile(
+    r"(reg\.|regular|\$/kg|\$/lb|selection variee|assorted|produit du|product of"
+    r"|^\d+\s*(g|kg|ml|l|oz|lb)\b|^\d+\s*x\s*\d+)",
+    re.IGNORECASE,
+)
+_SIZE_ONLY_RE = re.compile(r"\d\s*(g|kg|ml|l|oz|lb)\b", re.IGNORECASE)
+_CJK_RE = re.compile(r"[\u3400-\u9fff\uf900-\ufaff]")
+_AMOUNT_RE = re.compile(r"(\d[\d\s]*),(\d{2})\s*\$?")
+_DIGITS_RE = re.compile(r"^[\d/.,$¢\s]+$")
+
+
+@dataclass
+class OcrStoreConfig:
+    """Per-store OCR tuning. Fractions are relative to page height."""
+
+    price_strategy: str = "anchor"  # "anchor" | "prix_line"
+    name_case: str = "caps"  # "caps" | "any"
+    price_min_h_frac: float = 0.02
+    name_min_h_frac: float = 0.004
+    name_max_h_frac: float = 0.02
+    block_y_gap_frac: float = 0.016
+    match_max_dist_frac: float = 0.24  # of page width
+    min_line_conf: float = 0.7
+    tesseract_psm: int = 6
+    bare_int_is_cents: bool = False  # T&T renders "68¢" with no dollar part
+    stoplist: tuple[str, ...] = ()
+
+
+@dataclass
+class PriceAnchor:
+    value: float
+    price_text: str
+    box: tuple[float, float, float, float]
+    conf: float
+    multibuy: tuple[int, float] | None = None  # (count, total price)
+
+
+def _squash(text: str) -> str:
+    """Lowercase, strip accents and all whitespace (stoplist matching)."""
+    text = unicodedata.normalize("NFKD", text.lower())
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    return re.sub(r"[\s'’]+", "", text)
+
+
+def _stop_match(text: str, patterns: tuple[str, ...]) -> bool:
+    squashed = _squash(text)
+    for pattern in patterns:
+        if re.search(pattern, text, re.IGNORECASE):
+            return True
+        literal = _squash(re.sub(r"[^a-z0-9 ]", " ", pattern))
+        if literal and len(literal) >= 5 and literal in squashed:
+            return True
+    return False
+
+
+def _is_digitish(text: str) -> bool:
+    t = text.strip()
+    if not t or not _DIGITS_RE.match(t):
+        return False
+    digits = sum(c.isdigit() for c in t)
+    return digits >= 1 and digits / max(len(t), 1) >= 0.5
+
+
+def _is_caps(text: str) -> bool:
+    letters = [c for c in text if c.isalpha()]
+    return len(letters) >= 3 and sum(1 for c in letters if c.isupper()) / len(letters) > 0.8
+
+
+def _parse_fragment_value(
+    texts: list[str],
+) -> tuple[float, str, tuple[int, float] | None] | None:
+    """Parse clustered price fragments into (value, price_text, multibuy)."""
+    joined = "".join(texts)
+    m = re.fullmatch(r"(\d+)/(\d+)", joined)
+    if m:  # "2/500" -> 2 for 5.00; "2/11" -> 2 for 11.00
+        count, total_raw = int(m.group(1)), m.group(2)
+        if len(total_raw) >= 3:
+            total = int(total_raw[:-2]) + int(total_raw[-2:]) / 100
+        else:
+            total = float(total_raw)
+        return total / count, f"{count}/{total:.2f}", (count, total)
+    if len(texts) == 1:
+        t = texts[0].replace(",", ".").rstrip("/-")
+        if re.fullmatch(r"\d+\.\d{2}", t):
+            return float(t), t, None
+        if re.fullmatch(r"\d{3,4}", t):  # merged dollars+cents: "1599", "744"
+            return int(t[:-2]) + int(t[-2:]) / 100, f"{t[:-2]}.{t[-2:]}", None
+        if re.fullmatch(r"\d{1,2}", t):  # whole dollars, or cents (see cfg)
+            return float(t), t, None
+        return None
+    if len(texts) == 2:  # dollars + cents fragments: "6" + "49"
+        d, c = texts
+        if re.fullmatch(r"\d+", d) and re.fullmatch(r"\d{2}", c):
+            return int(d) + int(c) / 100, f"{d}.{c}", None
+    return None
+
+
+def find_price_anchors(
+    lines: list[OcrLine], page_w: int, page_h: int, cfg: OcrStoreConfig
+) -> list[PriceAnchor]:
+    min_h = cfg.price_min_h_frac * page_h
+    frags = [ln for ln in lines if ln.h >= min_h and ln.conf >= 0.5 and _is_digitish(ln.text)]
+    frags.sort(key=lambda z: (z.y, z.x))
+    clusters: list[list[OcrLine]] = []
+    for frag in frags:
+        placed = False
+        for cluster in clusters:
+            for member in cluster:
+                y_overlap = min(frag.bottom, member.bottom) - max(frag.y, member.y)
+                x_gap = max(0, max(frag.x, member.x) - min(frag.right, member.right))
+                if y_overlap > 0.3 * min(frag.h, member.h) and x_gap < 0.09 * page_w:
+                    cluster.append(frag)
+                    placed = True
+                    break
+            if placed:
+                break
+        if not placed:
+            clusters.append([frag])
+    anchors: list[PriceAnchor] = []
+    parsed_clusters: list[tuple[list[OcrLine], float, str, tuple[int, float] | None]] = []
+    for cluster in clusters:
+        cluster.sort(key=lambda z: z.x)
+        parsed = _parse_fragment_value([c.text.strip() for c in cluster])
+        if parsed is not None:
+            parsed_clusters.append((cluster, *parsed))
+    if not parsed_clusters:
+        return anchors
+    heights = sorted(max(c.h for c in cl) for cl, *_ in parsed_clusters)
+    median_h = heights[len(heights) // 2]
+    for cluster, value, price_text, multibuy in parsed_clusters:
+        cluster_h = max(c.h for c in cluster)
+        lone_int = (
+            multibuy is None
+            and value == int(value)
+            and 0 < value < 100
+            and len(cluster) == 1
+            and len(cluster[0].text.strip()) <= 2
+        )
+        if lone_int and cluster_h < 0.7 * median_h:
+            # Sub-size lone digits are usually a price fragment whose dollar
+            # digit OCR missed (e.g. "1 48" -> "48"): skip rather than guess.
+            continue
+        if lone_int and cfg.bare_int_is_cents:
+            value = value / 100
+            price_text = f"{value:.2f}"
+        box = (
+            min(c.x for c in cluster),
+            min(c.y for c in cluster),
+            max(c.right for c in cluster),
+            max(c.bottom for c in cluster),
+        )
+        anchors.append(
+            PriceAnchor(
+                value=value,
+                price_text=price_text,
+                box=box,
+                conf=min(c.conf for c in cluster),
+                multibuy=multibuy,
+            )
+        )
+    return anchors
+
+
+def name_candidates(lines: list[OcrLine], page_h: int, cfg: OcrStoreConfig) -> list[OcrLine]:
+    """Lines that may belong to a product name block."""
+    patterns = DEFAULT_STOPLIST + cfg.stoplist
+    cands: list[OcrLine] = []
+    for line in lines:
+        if not (cfg.name_min_h_frac * page_h <= line.h <= cfg.name_max_h_frac * page_h):
+            continue
+        if line.conf < cfg.min_line_conf:
+            continue
+        text = line.text.strip()
+        if len([c for c in text if c.isalpha()]) < 3:
+            continue
+        if _CJK_RE.search(text) and len(_CJK_RE.findall(text)) / max(len(text), 1) > 0.3:
+            continue
+        if cfg.name_case == "caps" and not _is_caps(text):
+            continue
+        if _is_digitish(text) or _SIZE_ONLY_RE.fullmatch(text):
+            continue
+        if _stop_match(text, patterns):
+            continue
+        cands.append(line)
+    return cands
+
+
+def _edge_dist(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> float:
+    dx = max(0.0, max(a[0], b[0]) - min(a[2], b[2]))
+    dy = max(0.0, max(a[1], b[1]) - min(a[3], b[3]))
+    return float((dx * dx + dy * dy) ** 0.5)
+
+
+def _line_box(line: OcrLine) -> tuple[float, float, float, float]:
+    return (line.x, line.y, line.right, line.bottom)
+
+
+def _grow_name_lines(
+    anchor: PriceAnchor,
+    cands: list[OcrLine],
+    claimed: set[int],
+    stack: dict[int, int],
+    page_w: int,
+    page_h: int,
+    cfg: OcrStoreConfig,
+) -> list[OcrLine]:
+    """Seed = nearest unclaimed candidate (stack-aware); grow by stacking."""
+    max_dist = cfg.match_max_dist_frac * page_w
+    available = [ln for ln in cands if id(ln) not in claimed]
+    if not available:
+        return []
+
+    def seed_score(line: OcrLine) -> float:
+        return _edge_dist(anchor.box, _line_box(line)) - 35 * min(stack.get(id(line), 0), 3)
+
+    seed = min(available, key=seed_score)
+    if _edge_dist(anchor.box, _line_box(seed)) > max_dist:
+        return []
+    selected = [seed]
+    max_gap = cfg.block_y_gap_frac * page_h
+    changed = True
+    while changed:
+        changed = False
+        for line in available:
+            if line in selected or id(line) in claimed:
+                continue
+            if _edge_dist(anchor.box, _line_box(line)) > max_dist:
+                continue
+            for sel in selected:
+                y_gap = max(line.y - sel.bottom, sel.y - line.bottom)
+                x_overlap = min(line.right, sel.right) - max(line.x, sel.x)
+                if y_gap <= max_gap and x_overlap > -0.02 * page_w:
+                    selected.append(line)
+                    changed = True
+                    break
+    return sorted(selected, key=lambda z: (z.y, z.x))
+
+
+def _stack_counts(
+    cands: list[OcrLine], page_w: int, page_h: int, cfg: OcrStoreConfig
+) -> dict[int, int]:
+    """How many other candidates stack vertically with each candidate."""
+    max_gap = cfg.block_y_gap_frac * page_h
+    counts: dict[int, int] = {}
+    for line in cands:
+        n = 0
+        for other in cands:
+            if other is line:
+                continue
+            y_gap = max(other.y - line.bottom, line.y - other.bottom)
+            x_overlap = min(line.right, other.right) - max(line.x, other.x)
+            if y_gap <= max_gap and x_overlap > -0.02 * page_w:
+                n += 1
+        counts[id(line)] = n
+    return counts
+
+
+def _tokens(text: str) -> set[str]:
+    squashed = _squash(text)
+    return {t for t in re.split(r"[^a-z0-9]+", squashed) if len(t) >= 3}
+
+
+def _shares_content(a: str, b: str) -> bool:
+    """True when two OCR texts share a long common substring (same content,
+    possibly different spacing/accents)."""
+    import difflib
+
+    sa, sb = _squash(a), _squash(b)
+    if not sa or not sb:
+        return False
+    match = difflib.SequenceMatcher(None, sa, sb).find_longest_match(0, len(sa), 0, len(sb))
+    return match.size >= 7
+
+
+def _name_from_text(block_text: str | None, fallback_lines: list[OcrLine]) -> str:
+    """Product name: leading all-caps run of the clean block text.
+
+    Falls back to the detected lines when the re-OCR text shares no token
+    with them (its crop picked up a neighbouring badge or photo text).
+    """
+    fallback = "\n".join(ln.text for ln in fallback_lines)
+    source = block_text if block_text else fallback
+    name_lines: list[str] = []
+    for raw in source.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        if not name_lines and not _is_caps(line):
+            continue  # skip garbled/badge lead-in lines before the name
+        if name_lines and (not _is_caps(line) or _DETAIL_LINE_RE.search(line)):
+            break
+        if _DETAIL_LINE_RE.search(line) and name_lines:
+            break
+        name_lines.append(line)
+        if len(name_lines) >= 5:
+            break
+    name = re.sub(r"\s+", " ", " ".join(name_lines)).strip(" .|")
+    if block_text and name and not _shares_content(name, fallback):
+        return _name_from_text(None, fallback_lines)
+    return name
+
+
+def _name_from_lines_any(lines: list[OcrLine]) -> str:
+    """Name for mixed-case layouts (T&T): first stacked lines, sans details."""
+    parts: list[str] = []
+    for line in lines:
+        text = line.text.strip()
+        if _DETAIL_LINE_RE.search(text) and parts:
+            break
+        parts.append(text)
+        if len(parts) >= 3:
+            break
+    return re.sub(r"\s+", " ", " ".join(parts)).strip(" .|")
+
+
+def segment_page(
+    image: Image.Image,
+    lines: list[OcrLine],
+    cfg: OcrStoreConfig,
+    *,
+    page_url: str,
+    page_number: int,
+) -> list[FlyerItem]:
+    """Extract items from one flyer page."""
+    page_w, page_h = image.size
+    if cfg.price_strategy == "prix_line":
+        return _segment_prix_line(image, lines, cfg, page_url, page_number)
+    anchors = find_price_anchors(lines, page_w, page_h, cfg)
+    cands = name_candidates(lines, page_h, cfg)
+    stack = _stack_counts(cands, page_w, page_h, cfg)
+
+    def anchor_priority(anchor: PriceAnchor) -> float:
+        if not cands:
+            return float("inf")
+        return min(
+            _edge_dist(anchor.box, _line_box(ln)) - 35 * min(stack.get(id(ln), 0), 3)
+            for ln in cands
+        )
+
+    claimed: set[int] = set()
+    line_owner: dict[int, FlyerItem] = {}
+    items: list[FlyerItem] = []
+    for anchor in sorted(anchors, key=anchor_priority):
+        grown = _grow_name_lines(anchor, cands, claimed, stack, page_w, page_h, cfg)
+        if not grown:
+            # Maybe a second price for an item already extracted (multibuy
+            # or dual price sharing one name block): fold into alt prices.
+            near = [
+                ln
+                for ln in cands
+                if _edge_dist(anchor.box, _line_box(ln)) <= cfg.match_max_dist_frac * page_w
+            ]
+            for line in near:
+                owner = line_owner.get(id(line))
+                if owner is not None:
+                    alts = owner.conditions.setdefault("alt_prices", [])
+                    if isinstance(alts, list):
+                        alts.append(anchor.price_text)
+                    break
+            continue
+        for line in grown:
+            claimed.add(id(line))
+        bx = (
+            min(ln.x for ln in grown),
+            min(ln.y for ln in grown),
+            max(ln.right for ln in grown),
+            max(ln.bottom for ln in grown),
+        )
+        block_text = ocr_crop_text(image, bx, psm=cfg.tesseract_psm)
+        if cfg.name_case == "any":
+            name = _name_from_lines_any(grown)
+        else:
+            name = _name_from_text(block_text, grown)
+        if not name:
+            continue
+        region = (
+            min(anchor.box[0], bx[0]),
+            min(anchor.box[1], bx[1]),
+            max(anchor.box[2], bx[2]),
+            max(anchor.box[3], bx[3]),
+        )
+        conditions: dict[str, object] = {}
+        if anchor.multibuy:
+            count, total = anchor.multibuy
+            conditions["multibuy"] = {"count": count, "total": total}
+        item = FlyerItem(
+            name_fr=name,
+            price_text=anchor.price_text,
+            price_value=anchor.value,
+            image_url=page_url,
+            bbox={
+                "left": round(region[0] / page_w * 1000),
+                "top": round(region[1] / page_h * 1000),
+                "right": round(region[2] / page_w * 1000),
+                "bottom": round(region[3] / page_h * 1000),
+                "page": page_number,
+            },
+            conditions=conditions,
+            languages=["fr"],
+            raw={"block_text": block_text, "ocr_lines": [ln.text for ln in grown]},
+            confidence=round(min(anchor.conf, 0.99), 2),
+        )
+        items.append(item)
+        for line in grown:
+            line_owner[id(line)] = item
+    return items
+
+
+def _segment_prix_line(
+    image: Image.Image,
+    lines: list[OcrLine],
+    cfg: OcrStoreConfig,
+    page_url: str,
+    page_number: int,
+) -> list[FlyerItem]:
+    """Costco-style: price from 'Prix X,XX $' lines, name from the cell above."""
+    page_w, page_h = image.size
+    patterns = DEFAULT_STOPLIST + cfg.stoplist
+    items: list[FlyerItem] = []
+    labels = [ln for ln in lines if ln.text.strip().lower() == "prix"]
+    amount_lines = [
+        ln for ln in lines if _AMOUNT_RE.search(ln.text) and not ln.text.strip().startswith("-")
+    ]
+    all_amounts = [ln for ln in lines if _AMOUNT_RE.search(ln.text)]
+    derived = False
+    for label in labels:
+        row = [a for a in amount_lines if abs(a.cy - label.cy) < 0.01 * page_h and a.x > label.x]
+        derived = False
+        if row:
+            amount = min(row, key=lambda a: abs(a.cy - label.cy))
+            m = _AMOUNT_RE.search(amount.text)
+            if not m:
+                continue
+            value = int(m.group(1).replace(" ", "")) + int(m.group(2)) / 100
+        else:
+            # The Prix amount itself was garbled: derive it from the
+            # "En entrepot" amount minus the "Economie" amount above.
+            # Amounts are right-aligned inside the cell (label is at left).
+            above = sorted(
+                (
+                    a
+                    for a in all_amounts
+                    if label.x - 0.02 * page_w <= a.x <= label.x + 0.27 * page_w
+                    and label.y - 0.05 * page_h <= a.y < label.y
+                ),
+                key=lambda a: a.y,
+            )
+            if len(above) < 2:
+                continue
+            vals: list[float] = []
+            for a in above[-2:]:
+                mm = _AMOUNT_RE.search(a.text)
+                if not mm:
+                    vals = []
+                    break
+                vals.append(int(mm.group(1).replace(" ", "")) + int(mm.group(2)) / 100)
+            if len(vals) != 2 or vals[0] <= vals[1]:
+                continue
+            value = round(vals[0] - vals[1], 2)
+            amount = above[-1]
+            derived = True
+        band_x0, band_x1 = label.x - 0.02 * page_w, amount.right + 0.02 * page_w
+        cands = [
+            ln
+            for ln in lines
+            if band_x0 <= ln.cx <= band_x1
+            and label.y - 0.30 * page_h <= ln.y < label.y
+            and len([c for c in ln.text if c.isalpha()]) >= 4
+            and not _stop_match(ln.text, patterns)
+            and not _AMOUNT_RE.search(ln.text)
+        ]
+        if not cands:
+            continue
+        cands.sort(key=lambda z: z.y)
+        name_lines = [ln.text.strip() for ln in cands if len(ln.text.strip()) > 12]
+        if not name_lines:
+            name_lines = [max(cands, key=lambda z: len(z.text)).text.strip()]
+        name = re.sub(r"\s+", " ", " ".join(name_lines[:3])).strip()
+        if not name:
+            continue
+        region = (
+            min([label.x] + [ln.x for ln in cands]),
+            min(ln.y for ln in cands),
+            amount.right,
+            amount.bottom,
+        )
+        items.append(
+            FlyerItem(
+                name_fr=name,
+                price_text=f"{value:.2f}".replace(".", ",") + " $",
+                price_value=value,
+                image_url=page_url,
+                bbox={
+                    "left": round(region[0] / page_w * 1000),
+                    "top": round(region[1] / page_h * 1000),
+                    "right": round(region[2] / page_w * 1000),
+                    "bottom": round(region[3] / page_h * 1000),
+                    "page": page_number,
+                },
+                languages=["fr"],
+                raw={"strategy": "prix_line", "price_derived": derived},
+                confidence=0.7 if derived else 0.85,
+            )
+        )
+    return items

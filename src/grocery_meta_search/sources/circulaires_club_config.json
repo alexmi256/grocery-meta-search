@@ -1,0 +1,1 @@
+{"_note":"Per-store OCR settings for circulaires.club pages (see ocr/segment.py OcrStoreConfig). Keys not listed use defaults: anchor strategy, caps names. Tuned on 2026-10-13 samples.","costco":{"price_strategy":"prix_line"},"t-t":{"bare_int_is_cents":true,"name_case":"any","price_min_h_frac":0.016}}

@@ -65,6 +65,7 @@ def seed_flyer_sources(
     data: dict[str, Any],
     brand_configs: dict[str, dict[str, Any]],
     search_configs: dict[str, dict[str, Any]],
+    cc_configs: dict[str, Any] | None = None,
 ) -> int:
     count = 0
     for flyer_type in (data.get("flyers") or {}).get("types", []):
@@ -77,6 +78,10 @@ def seed_flyer_sources(
                     api_config = brand_configs[slug]
                 elif slug in search_configs:
                     api_config = search_configs[slug]
+            elif name == "circulaires.club" and cc_configs and slug in cc_configs:
+                cc_value = cc_configs[slug]
+                cc_slugs = cc_value if isinstance(cc_value, list) else [cc_value]
+                api_config = {"cc_slugs": cc_slugs}
             conn.execute(
                 """
                 INSERT INTO flyer_sources
@@ -107,6 +112,7 @@ def seed(
     slugs: list[str] | None = None,
     brands_path: Path | None = None,
     search_merchants_path: Path | None = None,
+    cc_stores_path: Path | None = None,
 ) -> dict[str, int]:
     brand_configs: dict[str, dict[str, Any]] = {}
     if brands_path and brands_path.exists():
@@ -114,6 +120,9 @@ def seed(
     search_configs: dict[str, dict[str, Any]] = {}
     if search_merchants_path and search_merchants_path.exists():
         search_configs = json.loads(search_merchants_path.read_text(encoding="utf-8"))
+    cc_configs: dict[str, Any] = {}
+    if cc_stores_path and cc_stores_path.exists():
+        cc_configs = json.loads(cc_stores_path.read_text(encoding="utf-8"))
 
     conn = connect(db_path)
     init_schema(conn)
@@ -127,7 +136,9 @@ def seed(
             continue
         seed_store(conn, data)
         stats["stores"] += 1
-        stats["sources"] += seed_flyer_sources(conn, slug, data, brand_configs, search_configs)
+        stats["sources"] += seed_flyer_sources(
+            conn, slug, data, brand_configs, search_configs, cc_configs
+        )
     conn.commit()
     conn.close()
     return stats
@@ -144,9 +155,15 @@ def main() -> None:
         type=Path,
         help="flipp_search_merchants.json path",
     )
+    parser.add_argument(
+        "--cc-stores",
+        default=None,
+        type=Path,
+        help="circulaires_club_stores.json path",
+    )
     args = parser.parse_args()
     slugs = [s.strip() for s in args.slugs.split(",") if s.strip()] or None
-    stats = seed(args.db, slugs, args.brands, args.search_merchants)
+    stats = seed(args.db, slugs, args.brands, args.search_merchants, args.cc_stores)
     print(f"seeded {stats['stores']} stores, {stats['sources']} flyer sources -> {args.db}")
 
 

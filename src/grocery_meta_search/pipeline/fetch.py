@@ -20,9 +20,15 @@ from pathlib import Path
 from typing import Any
 
 from ..db import connect, init_schema
+from ..ocr.engine import detect_lines
+from ..ocr.segment import OcrStoreConfig, segment_page
 from ..sources.base import FlyerEdition, FlyerItem
+from ..sources.circulaires_club import CirculairesClubClient, CirculairesClubError
 from ..sources.flipp import BrandConfig, FlyerKitClient, FlyerKitError
 from ..sources.flipp_search import FlippSearchClient, FlippSearchError, SearchConfig
+
+_CC_CONFIG_PATH = Path(__file__).parent.parent / "sources" / "circulaires_club_config.json"
+_cc_client: CirculairesClubClient | None = None
 
 _WS_RE = re.compile(r"\s+")
 
@@ -46,6 +52,82 @@ def get_flipp_source(conn: sqlite3.Connection, store_slug: str) -> sqlite3.Row |
     ).fetchone()
     assert row is None or isinstance(row, sqlite3.Row)
     return row
+
+
+def get_cc_source(conn: sqlite3.Connection, store_slug: str) -> sqlite3.Row | None:
+    row = conn.execute(
+        "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = 'circulaires.club'"
+        " AND api_config IS NOT NULL LIMIT 1",
+        (store_slug,),
+    ).fetchone()
+    assert row is None or isinstance(row, sqlite3.Row)
+    return row
+
+
+def _cc_ocr_config(store_slug: str) -> OcrStoreConfig:
+    overrides: dict[str, Any] = {}
+    if _CC_CONFIG_PATH.exists():
+        data = json.loads(_CC_CONFIG_PATH.read_text(encoding="utf-8"))
+        overrides = data.get(store_slug, {})
+    valid = set(OcrStoreConfig.__dataclass_fields__)
+    return OcrStoreConfig(**{k: v for k, v in overrides.items() if k in valid})
+
+
+def _shared_cc_client() -> CirculairesClubClient:
+    global _cc_client
+    if _cc_client is None:
+        _cc_client = CirculairesClubClient()
+    return _cc_client
+
+
+def fetch_store_cc(
+    conn: sqlite3.Connection, src: sqlite3.Row, store_slug: str, cfg_data: dict[str, Any]
+) -> dict[str, Any]:
+    """Fetch a store's flyers from circulaires.club and OCR the pages."""
+    import io
+
+    import requests
+    from PIL import Image
+
+    report: dict[str, Any] = {"store": store_slug, "editions": 0, "items": 0}
+    client = _shared_cc_client()
+    ocr_cfg = _cc_ocr_config(store_slug)
+    try:
+        cc_editions = client.fetch_current_editions(list(cfg_data["cc_slugs"]))
+    except CirculairesClubError as exc:
+        report["error"] = str(exc)
+        return report
+    editions: list[FlyerEdition] = []
+    for cc_edition in cc_editions:
+        items: list[FlyerItem] = []
+        for page_number, page_url in enumerate(cc_edition.page_images, start=1):
+            try:
+                resp = requests.get(page_url, timeout=60)
+                resp.raise_for_status()
+                image = Image.open(io.BytesIO(resp.content))
+                image.load()
+            except Exception as exc:  # one bad page should not sink the edition
+                report.setdefault("page_errors", []).append(f"{page_url}: {exc}")
+                continue
+            lines = detect_lines(image)
+            for item in segment_page(
+                image, lines, ocr_cfg, page_url=page_url, page_number=page_number
+            ):
+                item.valid_from = cc_edition.valid_from.isoformat()
+                item.valid_to = cc_edition.valid_to.isoformat()
+                items.append(item)
+        editions.append(
+            FlyerEdition(
+                valid_from=cc_edition.valid_from.isoformat(),
+                valid_to=cc_edition.valid_to.isoformat(),
+                flyer_type=cc_edition.flyer_type,
+                source_ref=cc_edition.edition_ref,
+                languages=["fr"],
+                raw={"cc_slug": cc_edition.cc_slug, "page_url": cc_edition.page_url},
+                items=items,
+            )
+        )
+    return store_editions(conn, src, store_slug, editions, report)
 
 
 def fetch_store_flyerkit(
@@ -104,6 +186,9 @@ def store_editions(
 
 def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
     """Fetch active flyers for one store. Returns a small report dict."""
+    cc_src = get_cc_source(conn, store_slug)
+    if cc_src is not None:
+        return fetch_store_cc(conn, cc_src, store_slug, json.loads(cc_src["api_config"]))
     src = get_flipp_source(conn, store_slug)
     if src is None or not src["api_config"]:
         return {
