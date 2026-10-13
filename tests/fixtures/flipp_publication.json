@@ -1,0 +1,24 @@
+{
+ "id": 8172743,
+ "flyer_run_id": 1172109,
+ "valid_from": "2026-10-08T00:00:00-04:00",
+ "valid_to": "2026-10-14T23:59:59-04:00",
+ "available_from": "2026-10-06T00:00:00-04:00",
+ "available_to": "2026-10-14T23:59:59-04:00",
+ "locale": "fr",
+ "pdf_url": "https://f.wishabi.net/flyers/17171617/9b5fe47e4664576f.pdf",
+ "postal_code": "H3N2Y8",
+ "merchant_name": "Maxi",
+ "merchant_logo_url": "https://images.wishabi.net/merchants/2349/1400708398/large",
+ "deep_link": "https://www.maxi.ca/print-flyer?flyer_run_id=1172109&flyer_type_name=flyer&locale=fr&postal_code=H3N2Y8&store_code=4558",
+ "flyer_type_id": 5813,
+ "sfml_url": "https://aq.flippenterprise.net/storefronts/1172109/8172743/08963a02ac5f875f3afacc608e40c695c287aab85c6d23a84a3682c20554c47c?merchant_id=2349",
+ "name": "Circulaire hebdomadaire",
+ "flyer_type": "flyer",
+ "external_display_name": "",
+ "first_page_thumbnail_400h_url": "https://f.wishabi.net/flyers/8172743/stock_premium/1791207026.jpg",
+ "storefront_images": {
+  "carousel_organic": "https://f.wishabi.net/flyers/8172743/storefront_carousel_organic/1791207026.jpg"
+ },
+ "correction_notices": []
+}

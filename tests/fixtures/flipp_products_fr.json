@@ -1,0 +1,562 @@
+[
+ {
+  "id": 1045194451,
+  "name": "CROUSTILLES PRINGLES | POTATO CHIPS",
+  "sale_story": null,
+  "sku": "21003832_EA",
+  "description": "Certaines variétés\n\nselected varieties",
+  "disclaimer_text": null,
+  "valid_from_timestamp": "2026-10-08T00:00:00-04:00",
+  "valid_to_timestamp": "2026-10-14T23:59:59-04:00",
+  "image_url": "https://f.wishabi.net/page_pdf_images/24243293/ddf0f2ce-bddc-11f1-9d37-12f6bb1b2a41/x_large",
+  "custom_id_field_1": "21003832_EA",
+  "custom_id_field_2": "21003833_EA",
+  "custom_id_field_3": null,
+  "custom_id_field_4": null,
+  "custom_id_field_5": null,
+  "custom_id_field_6": null,
+  "valid_from": "2026-10-08",
+  "valid_to": "2026-10-14",
+  "categories": [
+   "Collations"
+  ],
+  "pre_price_text": "",
+  "price_text": "2.50",
+  "post_price_text": "+ tx",
+  "hosted_coupon_image": null,
+  "hide_brand_in_pop": false,
+  "left": 28263.3,
+  "bottom": -2208.19,
+  "right": 29230.8,
+  "top": -1626.63,
+  "page": 15,
+  "item_categories": {
+   "l1": {
+    "confidence": null,
+    "category_name": "Food, Beverages & Tobacco",
+    "google_category_id": 319
+   },
+   "l2": {
+    "confidence": null,
+    "category_name": "Food Items",
+    "google_category_id": 342
+   },
+   "l3": {
+    "confidence": null,
+    "category_name": "Snack Foods",
+    "google_category_id": 358
+   },
+   "l4": null,
+   "l5": null,
+   "l6": null,
+   "l7": null
+  },
+  "flyer_id": 8172743,
+  "page_destination": null,
+  "in_store_only": false,
+  "item_type": 1,
+  "average_rating": null,
+  "web_commission_url": "https://www.maxi.ca/p/21003832_EA",
+  "item_web_url": "https://www.maxi.ca/p/21003832_EA",
+  "brand": "Pringles",
+  "images": [
+   "https://f.wishabi.net/page_pdf_images/24243293/ddf0f2ce-bddc-11f1-9d37-12f6bb1b2a41/x_large"
+  ],
+  "original_price": null,
+  "hide_flyer_item_ttm_links_outside_validity": false,
+  "sub_items": []
+ },
+ {
+  "id": 1045190597,
+  "name": "LÉGUMINEUSES 540 ML OU TOMATES 796 ML UNICO",
+  "sale_story": null,
+  "sku": "20313447001_EA",
+  "description": "Certaines variétés",
+  "disclaimer_text": null,
+  "valid_from_timestamp": "2026-10-08T00:00:00-04:00",
+  "valid_to_timestamp": "2026-10-14T23:59:59-04:00",
+  "image_url": "https://f.wishabi.net/page_pdf_images/24243383/c0ff45f0-bddf-11f1-8135-964e96f5df87/x_large",
+  "custom_id_field_1": "20313447001_EA",
+  "custom_id_field_2": "20314629006_EA",
+  "custom_id_field_3": null,
+  "custom_id_field_4": null,
+  "custom_id_field_5": null,
+  "custom_id_field_6": null,
+  "valid_from": "2026-10-08",
+  "valid_to": "2026-10-14",
+  "categories": [
+   "Aliments En Conserve"
+  ],
+  "pre_price_text": "",
+  "price_text": "1.33",
+  "post_price_text": "",
+  "hosted_coupon_image": null,
+  "hide_brand_in_pop": false,
+  "left": 1218.24,
+  "bottom": -3648.98,
+  "right": 1833.92,
+  "top": -3268.27,
+  "page": 1,
+  "item_categories": {
+   "l1": {
+    "confidence": null,
+    "category_name": "Food, Beverages & Tobacco",
+    "google_category_id": 319
+   },
+   "l2": {
+    "confidence": null,
+    "category_name": "Food Items",
+    "google_category_id": 342
+   },
+   "l3": {
+    "confidence": null,
+    "category_name": "Fruits & Vegetables",
+    "google_category_id": 351
+   },
+   "l4": {
+    "confidence": null,
+    "category_name": "Canned & Prepared Beans",
+    "google_category_id": 2772
+   },
+   "l5": null,
+   "l6": null,
+   "l7": null
+  },
+  "flyer_id": 8172743,
+  "page_destination": null,
+  "in_store_only": false,
+  "item_type": 1,
+  "average_rating": null,
+  "web_commission_url": "https://www.maxi.ca/p/20313447001_EA",
+  "item_web_url": "https://www.maxi.ca/p/20313447001_EA",
+  "brand": "Unico",
+  "images": [
+   "https://f.wishabi.net/page_pdf_images/24243383/c0ff45f0-bddf-11f1-8135-964e96f5df87/x_large"
+  ],
+  "original_price": null,
+  "hide_flyer_item_ttm_links_outside_validity": false,
+  "sub_items": []
+ },
+ {
+  "id": 1045190953,
+  "name": "LEGUMES SANS NOM®, 341/398 ML",
+  "sale_story": null,
+  "sku": "20305292_EA",
+  "description": "Certaines variétés",
+  "disclaimer_text": null,
+  "valid_from_timestamp": "2026-10-08T00:00:00-04:00",
+  "valid_to_timestamp": "2026-10-14T23:59:59-04:00",
+  "image_url": "https://f.wishabi.net/page_pdf_images/24243386/b4a7848e-bddf-11f1-8c86-926f8c16cc89/x_large",
+  "custom_id_field_1": "20305292_EA",
+  "custom_id_field_2": null,
+  "custom_id_field_3": null,
+  "custom_id_field_4": null,
+  "custom_id_field_5": null,
+  "custom_id_field_6": null,
+  "valid_from": "2026-10-08",
+  "valid_to": "2026-10-14",
+  "categories": [
+   "Aliments En Conserve"
+  ],
+  "pre_price_text": "",
+  "price_text": "1.00",
+  "post_price_text": "",
+  "hosted_coupon_image": null,
+  "hide_brand_in_pop": false,
+  "left": 2291.55,
+  "bottom": -472.74,
+  "right": 2730.69,
+  "top": -10.04,
+  "page": 2,
+  "item_categories": {
+   "l1": {
+    "confidence": null,
+    "category_name": "Food, Beverages & Tobacco",
+    "google_category_id": 319
+   },
+   "l2": {
+    "confidence": null,
+    "category_name": "Food Items",
+    "google_category_id": 342
+   },
+   "l3": {
+    "confidence": null,
+    "category_name": "Fruits & Vegetables",
+    "google_category_id": 351
+   },
+   "l4": {
+    "confidence": null,
+    "category_name": "Canned & Prepared Beans",
+    "google_category_id": 2772
+   },
+   "l5": null,
+   "l6": null,
+   "l7": null
+  },
+  "flyer_id": 8172743,
+  "page_destination": null,
+  "in_store_only": false,
+  "item_type": 1,
+  "average_rating": null,
+  "web_commission_url": "https://www.maxi.ca/p/20305292_EA",
+  "item_web_url": "https://www.maxi.ca/p/20305292_EA",
+  "brand": "sans nom®",
+  "images": [
+   "https://f.wishabi.net/page_pdf_images/24243386/b4a7848e-bddf-11f1-8c86-926f8c16cc89/x_large"
+  ],
+  "original_price": null,
+  "hide_flyer_item_ttm_links_outside_validity": false,
+  "sub_items": []
+ },
+ {
+  "id": 1045192382,
+  "name": "MINI BEIGNES DÉLICES DU MARCHÉ | MINI DONUTS, 40 un.",
+  "sale_story": null,
+  "sku": "21559343_EA",
+  "description": "certaines variétés\n\nselected varieties",
+  "disclaimer_text": null,
+  "valid_from_timestamp": "2026-10-08T00:00:00-04:00",
+  "valid_to_timestamp": "2026-10-14T23:59:59-04:00",
+  "image_url": "https://f.wishabi.net/page_pdf_images/24243257/044747b6-bddd-11f1-9e67-ce216e6cd4c1/x_large",
+  "custom_id_field_1": "21559343_EA",
+  "custom_id_field_2": null,
+  "custom_id_field_3": null,
+  "custom_id_field_4": null,
+  "custom_id_field_5": null,
+  "custom_id_field_6": null,
+  "valid_from": "2026-10-08",
+  "valid_to": "2026-10-14",
+  "categories": [
+   "Boulangerie"
+  ],
+  "pre_price_text": "",
+  "price_text": "5.00",
+  "post_price_text": "",
+  "hosted_coupon_image": null,
+  "hide_brand_in_pop": false,
+  "left": 9837.09,
+  "bottom": -3470.44,
+  "right": 10332.4,
+  "top": -3009.07,
+  "page": 6,
+  "item_categories": {
+   "l1": {
+    "confidence": null,
+    "category_name": "Food, Beverages & Tobacco",
+    "google_category_id": 319
+   },
+   "l2": {
+    "confidence": null,
+    "category_name": "Food Items",
+    "google_category_id": 342
+   },
+   "l3": {
+    "confidence": null,
+    "category_name": "Bakery",
+    "google_category_id": 343
+   },
+   "l4": {
+    "confidence": null,
+    "category_name": "Donuts",
+    "google_category_id": 2673
+   },
+   "l5": null,
+   "l6": null,
+   "l7": null
+  },
+  "flyer_id": 8172743,
+  "page_destination": null,
+  "in_store_only": false,
+  "item_type": 1,
+  "average_rating": null,
+  "web_commission_url": "https://www.maxi.ca/p/21559343_EA",
+  "item_web_url": "https://www.maxi.ca/p/21559343_EA",
+  "brand": "DÉLICES DU MARCHÉ",
+  "images": [
+   "https://f.wishabi.net/page_pdf_images/24243257/044747b6-bddd-11f1-9e67-ce216e6cd4c1/x_large"
+  ],
+  "original_price": null,
+  "hide_flyer_item_ttm_links_outside_validity": false,
+  "sub_items": []
+ },
+ {
+  "id": 1045191492,
+  "name": "VINAIGRETTE OU TREMPETTES MARZETTI, 340 g",
+  "sale_story": null,
+  "sku": "20322970_EA",
+  "description": "Certaines variétés, produit des É.-U.",
+  "disclaimer_text": null,
+  "valid_from_timestamp": "2026-10-08T00:00:00-04:00",
+  "valid_to_timestamp": "2026-10-14T23:59:59-04:00",
+  "image_url": "https://f.wishabi.net/page_pdf_images/24243251/dd438c7e-bddc-11f1-b291-8e529b0d7163/x_large",
+  "custom_id_field_1": "20322970_EA",
+  "custom_id_field_2": null,
+  "custom_id_field_3": null,
+  "custom_id_field_4": null,
+  "custom_id_field_5": null,
+  "custom_id_field_6": null,
+  "valid_from": "2026-10-08",
+  "valid_to": "2026-10-14",
+  "categories": [
+   "Garde-Manger"
+  ],
+  "pre_price_text": "",
+  "price_text": "4.00",
+  "post_price_text": "",
+  "hosted_coupon_image": null,
+  "hide_brand_in_pop": false,
+  "left": 6755.08,
+  "bottom": -2554.75,
+  "right": 7258.75,
+  "top": -1981.59,
+  "page": 4,
+  "item_categories": {
+   "l1": {
+    "confidence": null,
+    "category_name": "Food, Beverages & Tobacco",
+    "google_category_id": 319
+   },
+   "l2": {
+    "confidence": null,
+    "category_name": "Food Items",
+    "google_category_id": 342
+   },
+   "l3": {
+    "confidence": null,
+    "category_name": "Condiments & Sauces",
+    "google_category_id": 345
+   },
+   "l4": {
+    "confidence": null,
+    "category_name": "Salad Dressing",
+    "google_category_id": 2702
+   },
+   "l5": null,
+   "l6": null,
+   "l7": null
+  },
+  "flyer_id": 8172743,
+  "page_destination": null,
+  "in_store_only": false,
+  "item_type": 1,
+  "average_rating": null,
+  "web_commission_url": "https://www.maxi.ca/p/20322970_EA",
+  "item_web_url": "https://www.maxi.ca/p/20322970_EA",
+  "brand": "Marzetti",
+  "images": [
+   "https://f.wishabi.net/page_pdf_images/24243251/dd438c7e-bddc-11f1-b291-8e529b0d7163/x_large"
+  ],
+  "original_price": null,
+  "hide_flyer_item_ttm_links_outside_validity": false,
+  "sub_items": []
+ },
+ {
+  "id": 1045191898,
+  "name": "POULET HACHÉ OU HACHIS DE DINDE PC™ | GROUND CHICKEN OR MINCED TURKEY, 454 G",
+  "sale_story": null,
+  "sku": "21100092_EA",
+  "description": null,
+  "disclaimer_text": null,
+  "valid_from_timestamp": "2026-10-08T00:00:00-04:00",
+  "valid_to_timestamp": "2026-10-14T23:59:59-04:00",
+  "image_url": "https://f.wishabi.net/page_pdf_images/24243255/e0560dc4-bddc-11f1-b591-d6fdd23a640c/x_large",
+  "custom_id_field_1": "21100092_EA",
+  "custom_id_field_2": null,
+  "custom_id_field_3": null,
+  "custom_id_field_4": null,
+  "custom_id_field_5": null,
+  "custom_id_field_6": null,
+  "valid_from": "2026-10-08",
+  "valid_to": "2026-10-14",
+  "categories": [
+   "Viande et fruits de mer"
+  ],
+  "pre_price_text": "",
+  "price_text": "9.00",
+  "post_price_text": "",
+  "hosted_coupon_image": null,
+  "hide_brand_in_pop": false,
+  "left": 7782.37,
+  "bottom": -1508.22,
+  "right": 8756.75,
+  "top": -1004.94,
+  "page": 5,
+  "item_categories": {
+   "l1": {
+    "confidence": null,
+    "category_name": "Food, Beverages & Tobacco",
+    "google_category_id": 319
+   },
+   "l2": {
+    "confidence": null,
+    "category_name": "Food Items",
+    "google_category_id": 342
+   },
+   "l3": {
+    "confidence": null,
+    "category_name": "Prepared Foods",
+    "google_category_id": 356
+   },
+   "l4": {
+    "confidence": null,
+    "category_name": "Prepared Meals & Entr�es",
+    "google_category_id": 2925
+   },
+   "l5": null,
+   "l6": null,
+   "l7": null
+  },
+  "flyer_id": 8172743,
+  "page_destination": null,
+  "in_store_only": false,
+  "item_type": 1,
+  "average_rating": null,
+  "web_commission_url": "https://www.maxi.ca/p/21100092_EA",
+  "item_web_url": "https://www.maxi.ca/p/21100092_EA",
+  "brand": "PC",
+  "images": [
+   "https://f.wishabi.net/page_pdf_images/24243255/e0560dc4-bddc-11f1-b591-d6fdd23a640c/x_large"
+  ],
+  "original_price": null,
+  "hide_flyer_item_ttm_links_outside_validity": false,
+  "sub_items": []
+ },
+ {
+  "id": 1045195004,
+  "name": "BARRES FORMAT COLLATION ASSORTIES ET FRIANDISES NESTLÉ, 12 un.",
+  "sale_story": "1,50$ de rabais",
+  "sku": null,
+  "description": null,
+  "disclaimer_text": null,
+  "valid_from_timestamp": "2026-10-08T00:00:00-04:00",
+  "valid_to_timestamp": "2026-10-14T23:59:59-04:00",
+  "image_url": "https://f.wishabi.net/page_pdf_images/24243309/01d6d53c-bddd-11f1-9d63-96549f35c3c6/x_large",
+  "custom_id_field_1": null,
+  "custom_id_field_2": null,
+  "custom_id_field_3": null,
+  "custom_id_field_4": null,
+  "custom_id_field_5": null,
+  "custom_id_field_6": null,
+  "valid_from": "2026-10-08",
+  "valid_to": "2026-10-14",
+  "categories": [
+   "Garde-Manger"
+  ],
+  "pre_price_text": "",
+  "price_text": "",
+  "post_price_text": "",
+  "hosted_coupon_image": null,
+  "hide_brand_in_pop": false,
+  "left": 39529.8,
+  "bottom": -3498.07,
+  "right": 39951.7,
+  "top": -3073.08,
+  "page": 20,
+  "item_categories": {
+   "l1": {
+    "confidence": null,
+    "category_name": "Food, Beverages & Tobacco",
+    "google_category_id": 319
+   },
+   "l2": {
+    "confidence": null,
+    "category_name": "Food Items",
+    "google_category_id": 342
+   },
+   "l3": {
+    "confidence": null,
+    "category_name": "Candy & Chocolate",
+    "google_category_id": 2682
+   },
+   "l4": null,
+   "l5": null,
+   "l6": null,
+   "l7": null
+  },
+  "flyer_id": 8172743,
+  "page_destination": null,
+  "in_store_only": false,
+  "item_type": 1,
+  "average_rating": null,
+  "web_commission_url": null,
+  "item_web_url": null,
+  "brand": "Nestle",
+  "images": [
+   "https://f.wishabi.net/page_pdf_images/24243309/01d6d53c-bddd-11f1-9d63-96549f35c3c6/x_large"
+  ],
+  "original_price": null,
+  "hide_flyer_item_ttm_links_outside_validity": false,
+  "sub_items": []
+ },
+ {
+  "id": 1045195018,
+  "name": "SUPPLÉMENT NUTRITIONNEL ENSURE, 6x235/ 237 mL",
+  "sale_story": "3$ de rabais",
+  "sku": null,
+  "description": "certaines variétés",
+  "disclaimer_text": null,
+  "valid_from_timestamp": "2026-10-08T00:00:00-04:00",
+  "valid_to_timestamp": "2026-10-14T23:59:59-04:00",
+  "image_url": "https://f.wishabi.net/page_pdf_images/24243309/021996ba-bddd-11f1-9d63-96549f35c3c6/x_large",
+  "custom_id_field_1": null,
+  "custom_id_field_2": null,
+  "custom_id_field_3": null,
+  "custom_id_field_4": null,
+  "custom_id_field_5": null,
+  "custom_id_field_6": null,
+  "valid_from": "2026-10-08",
+  "valid_to": "2026-10-14",
+  "categories": [
+   "Garde-Manger"
+  ],
+  "pre_price_text": "",
+  "price_text": "",
+  "post_price_text": "",
+  "hosted_coupon_image": null,
+  "hide_brand_in_pop": false,
+  "left": 39955.7,
+  "bottom": -3495.92,
+  "right": 40386.0,
+  "top": -3077.61,
+  "page": 20,
+  "item_categories": {
+   "l1": {
+    "confidence": null,
+    "category_name": "Health & Beauty",
+    "google_category_id": 709
+   },
+   "l2": {
+    "confidence": null,
+    "category_name": "Health Care",
+    "google_category_id": 710
+   },
+   "l3": {
+    "confidence": null,
+    "category_name": "Fitness & Nutrition",
+    "google_category_id": 717
+   },
+   "l4": {
+    "confidence": null,
+    "category_name": "Nutrition Drinks & Shakes",
+    "google_category_id": 3376
+   },
+   "l5": null,
+   "l6": null,
+   "l7": null
+  },
+  "flyer_id": 8172743,
+  "page_destination": null,
+  "in_store_only": false,
+  "item_type": 1,
+  "average_rating": null,
+  "web_commission_url": null,
+  "item_web_url": null,
+  "brand": "Ensure",
+  "images": [
+   "https://f.wishabi.net/page_pdf_images/24243309/021996ba-bddd-11f1-9d63-96549f35c3c6/x_large"
+  ],
+  "original_price": null,
+  "hide_flyer_item_ttm_links_outside_validity": false,
+  "sub_items": []
+ }
+]

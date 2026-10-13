@@ -90,3 +90,12 @@ curl -s "https://dam.flippenterprise.net/flyerkit/publication/8176847/products?d
 - Card-gated "prix membre" pricing exists on these banners' flyers; the products
   response has `original_price` and `sale_story` fields that may encode it —
   needs a member-price flyer spot check in Phase 3.
+
+## Store-code caveat (2026-10-12, found during group-1 build)
+
+Flipp maps publications to only a **subset** of valid store codes. Two swept-valid
+Provigo codes (8460 Provigo LaSalle, 9045 PGO Boily Rouyn-Noranda) returned `[]`
+from /publications; code 7115 (Provigo Le Marché Boucherville, J2B1R2) returned
+the weekly flyer. Always verify a candidate code against /publications, not just
+/store. A `find_store.py`-style sweep utility will be needed when onboarding the
+other ~17 Flipp stores.
