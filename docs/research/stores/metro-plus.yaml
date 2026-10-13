@@ -35,6 +35,13 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: flipp
+          url: https://flipp.com/en-ca/montreal-qc/stores/metro
+          kind: aggregator
+          format: json-api
+          parse_friendliness: high
+          fetchability: http
+          notes: "Shares the Metro banner flyer (via Flipp search API); verified live 2026-10-13." 
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto
