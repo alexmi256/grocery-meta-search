@@ -25,6 +25,7 @@ from .engine import OcrLine, ocr_crop_text
 DEFAULT_STOPLIST = (
     r"net\s*wt",
     r"poids net",
+    r"prix reg",
     r"prix incroyable",
     r"circulaire",
     r"entrepot et en ligne",
@@ -81,14 +82,21 @@ class OcrStoreConfig:
 
     price_strategy: str = "anchor"  # "anchor" | "prix_line"
     name_case: str = "caps"  # "caps" | "any"
+    name_position: str = "any"  # "any" | "above" | "above_left" | "below"
     price_min_h_frac: float = 0.02
     name_min_h_frac: float = 0.004
     name_max_h_frac: float = 0.02
     block_y_gap_frac: float = 0.016
+    block_x_gap_frac: float = 0.02  # stacking tolerance: allowed negative x-overlap
+    block_min_overlap_frac: float = 0.0  # >0: a line joins a block only if this
+    # fraction of its width overlaps the block's x-extent (wide detection
+    # boxes otherwise bridge neighbouring product columns)
     match_max_dist_frac: float = 0.24  # of page width
+    match_dx_weight: float = 1.0  # >1: prefer names in the price's column
     min_line_conf: float = 0.7
     tesseract_psm: int = 6
     bare_int_is_cents: bool = False  # T&T renders "68¢" with no dollar part
+    bare_int_anchor: bool = True  # False: a bare whole number is never a price (Odessa badges)
     ignore_below_frac: float = 1.0  # ignore name lines below this page fraction (legal footers)
     stoplist: tuple[str, ...] = ()
 
@@ -170,7 +178,7 @@ def _split_dual_prices(texts: list[str]) -> list[tuple[float, str]] | None:
 
 
 def _parse_fragment_value(
-    texts: list[str],
+    texts: list[str], raw_joined: str = ""
 ) -> tuple[float, str, tuple[int, float] | None] | None:
     """Parse clustered price fragments into (value, price_text, multibuy)."""
     joined = "".join(texts)
@@ -179,6 +187,8 @@ def _parse_fragment_value(
         count, total_raw = int(m.group(1)), m.group(2)
         if len(total_raw) >= 3:
             total = int(total_raw[:-2]) + int(total_raw[-2:]) / 100
+        elif "¢" in raw_joined:
+            total = int(total_raw) / 100  # "2/99¢" -> 2 for 0.99
         else:
             total = float(total_raw)
         return total / count, f"{count}/{total:.2f}", (count, total)
@@ -195,6 +205,46 @@ def _parse_fragment_value(
         d, c = texts
         if re.fullmatch(r"\d+", d) and re.fullmatch(r"\d{2}", c):
             return int(d) + int(c) / 100, f"{d}.{c}", None
+    return None
+
+
+_MERGED_RUN_RE = re.compile(r"^\s*(\d{3,4})(?![\d.,])")
+
+
+def _scan_merged_run(text: str) -> tuple[float, str] | None:
+    """Price token at the start of a tall non-digitish line.
+
+    Odessa renders "10⁹⁹ $/lb" and OCR returns one line "1099 S/6": the
+    amount is the leading merged digit run and the rest is unit junk. The
+    junk must contain a price marker ($, /, ¢) so addresses, phone
+    numbers and dates at the start of a line do not qualify.
+    """
+    m = _MERGED_RUN_RE.match(text)
+    if not m:
+        return None
+    rest = text[m.end() :]
+    if not any(ch in rest for ch in "$/¢"):
+        return None
+    return _parse_one_price(m.group(1))
+
+
+def _parse_fragment_token(
+    core: str, raw: str = ""
+) -> tuple[float, str, tuple[int, float] | None] | None:
+    """Recover a price from one fragment whose cluster did not parse whole.
+
+    Either the fragment parses on its own (multibuy "2/$5", merged "2423")
+    or its first whitespace-separated token is a full price ("2423 8" ->
+    24.23; "099 8/1" -> 0.99, the dollar digit itself misread).
+    """
+    single = _parse_fragment_value([core], raw_joined=raw or core)
+    if single is not None:
+        return single
+    parts = core.split()
+    if len(parts) > 1:
+        parsed = _parse_one_price(parts[0])
+        if parsed is not None:
+            return parsed[0], parsed[1], None
     return None
 
 
@@ -233,9 +283,26 @@ def find_price_anchors(
             for value, price_text in dual:
                 parsed_clusters.append((cluster, value, price_text, None))
             continue
-        parsed = _parse_fragment_value(cleaned)
+        parsed = _parse_fragment_value(cleaned, raw_joined="".join(c.text for c in cluster))
         if parsed is not None:
             parsed_clusters.append((cluster, *parsed))
+            continue
+        # Recovery: the cluster as a whole did not parse — OCR glued unit
+        # junk or a garbled sibling fragment onto a good price ("2423 8",
+        # "099 8/1" clustered with "1982"). Recover a token per fragment.
+        for member in cluster:
+            token = _parse_fragment_token(_price_core(member.text.strip()), raw=member.text)
+            if token is not None:
+                parsed_clusters.append(([member], *token))
+    # Tall lines that never became fragments can still carry a price as a
+    # leading merged digit run followed by unit junk ("1099 S/6").
+    frag_ids = {id(f) for f in frags}
+    for ln in lines:
+        if id(ln) in frag_ids or ln.h < min_h or ln.conf < 0.5:
+            continue
+        scanned = _scan_merged_run(ln.text)
+        if scanned is not None:
+            parsed_clusters.append(([ln], scanned[0], scanned[1], None))
     if not parsed_clusters:
         return anchors
     heights = sorted(max(c.h for c in cl) for cl, *_ in parsed_clusters)
@@ -252,6 +319,10 @@ def find_price_anchors(
         if lone_int and cluster_h < 0.7 * median_h:
             # Sub-size lone digits are usually a price fragment whose dollar
             # digit OCR missed (e.g. "1 48" -> "48"): skip rather than guess.
+            continue
+        if lone_int and not cfg.bare_int_is_cents and not cfg.bare_int_anchor:
+            # Store config: real prices always carry cents, so a bare whole
+            # number is a discount badge ("RABAIS 8 $") or a stray digit.
             continue
         if lone_int and cfg.bare_int_is_cents:
             value = value / 100
@@ -300,10 +371,25 @@ def name_candidates(lines: list[OcrLine], page_h: int, cfg: OcrStoreConfig) -> l
     return cands
 
 
-def _edge_dist(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> float:
+def _edge_gaps(
+    a: tuple[float, float, float, float], b: tuple[float, float, float, float]
+) -> tuple[float, float]:
     dx = max(0.0, max(a[0], b[0]) - min(a[2], b[2]))
     dy = max(0.0, max(a[1], b[1]) - min(a[3], b[3]))
+    return dx, dy
+
+
+def _edge_dist(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> float:
+    dx, dy = _edge_gaps(a, b)
     return float((dx * dx + dy * dy) ** 0.5)
+
+
+def _match_dist(
+    a: tuple[float, float, float, float], b: tuple[float, float, float, float], dx_weight: float
+) -> float:
+    """Edge distance with horizontal gaps weighted (column preference)."""
+    dx, dy = _edge_gaps(a, b)
+    return float(((dx_weight * dx) ** 2 + dy**2) ** 0.5)
 
 
 def _boxes_near(a: OcrLine, b: OcrLine) -> bool:
@@ -349,25 +435,33 @@ def _grow_name_lines(
         return []
 
     def seed_score(line: OcrLine) -> float:
-        return _edge_dist(anchor.box, _line_box(line)) - 35 * min(stack.get(id(line), 0), 3)
+        return _match_dist(anchor.box, _line_box(line), cfg.match_dx_weight) - 35 * min(
+            stack.get(id(line), 0), 3
+        )
 
     seed = min(available, key=seed_score)
-    if _edge_dist(anchor.box, _line_box(seed)) > max_dist:
+    if _match_dist(anchor.box, _line_box(seed), cfg.match_dx_weight) > max_dist:
         return []
     selected = [seed]
     max_gap = cfg.block_y_gap_frac * page_h
     changed = True
     while changed:
         changed = False
+        ux0 = min(s.x for s in selected)
+        ux1 = max(s.right for s in selected)
         for line in available:
             if line in selected or id(line) in claimed:
                 continue
             if _edge_dist(anchor.box, _line_box(line)) > max_dist:
                 continue
+            if cfg.block_min_overlap_frac > 0:
+                u_overlap = min(line.right, ux1) - max(line.x, ux0)
+                if u_overlap < cfg.block_min_overlap_frac * line.w:
+                    continue
             for sel in selected:
                 y_gap = max(line.y - sel.bottom, sel.y - line.bottom)
                 x_overlap = min(line.right, sel.right) - max(line.x, sel.x)
-                if y_gap <= max_gap and x_overlap > -0.02 * page_w:
+                if y_gap <= max_gap and x_overlap > -cfg.block_x_gap_frac * page_w:
                     selected.append(line)
                     changed = True
                     break
@@ -387,7 +481,7 @@ def _stack_counts(
                 continue
             y_gap = max(other.y - line.bottom, line.y - other.bottom)
             x_overlap = min(line.right, other.right) - max(line.x, other.x)
-            if y_gap <= max_gap and x_overlap > -0.02 * page_w:
+            if y_gap <= max_gap and x_overlap > -cfg.block_x_gap_frac * page_w:
                 n += 1
         counts[id(line)] = n
     return counts
@@ -467,20 +561,58 @@ def segment_page(
     cands = _dedupe_candidates(name_candidates(lines, page_h, cfg))
     stack = _stack_counts(cands, page_w, page_h, cfg)
 
-    def anchor_priority(anchor: PriceAnchor) -> float:
-        if not cands:
-            return float("inf")
-        return min(
-            _edge_dist(anchor.box, _line_box(ln)) - 35 * min(stack.get(id(ln), 0), 3)
-            for ln in cands
-        )
-
     claimed: set[int] = set()
     line_owner: dict[int, FlyerItem] = {}
     _item_anchor_box: dict[int, tuple[float, float, float, float]] = {}
     items: list[FlyerItem] = []
+
+    def positioned(anchor: PriceAnchor) -> list[OcrLine]:
+        """Name candidates on the configured side of the price anchor.
+
+        Some layouts (Palumbo) stack name / photo / price vertically with
+        the *next* product's name just below this price; unrestricted
+        nearest-neighbour matching then swaps names between products.
+        """
+        if cfg.name_position == "above":
+            return [ln for ln in cands if ln.bottom <= anchor.box[1] + 0.01 * page_h]
+        if cfg.name_position == "above_left":
+            # Diagonal layouts (Bulk Barn): the name sits at the top-left
+            # of the product cell, the price at the bottom-right; the
+            # neighbouring column's name is nearer but its centre is to
+            # the RIGHT of the price centre.
+            anchor_cx = (anchor.box[0] + anchor.box[2]) / 2
+            return [
+                ln
+                for ln in cands
+                if ln.bottom <= anchor.box[1] + 0.01 * page_h and ln.cx <= anchor_cx + 0.05 * page_w
+            ]
+        if cfg.name_position == "below":
+            return [ln for ln in cands if ln.y >= anchor.box[3] - 0.01 * page_h]
+        return cands
+
+    def anchor_priority(anchor: PriceAnchor) -> float:
+        pool = positioned(anchor)
+        if not pool:
+            return float("inf")
+        return min(
+            _match_dist(anchor.box, _line_box(ln), cfg.match_dx_weight)
+            - 35 * min(stack.get(id(ln), 0), 3)
+            for ln in pool
+        )
+
     for anchor in sorted(anchors, key=anchor_priority):
-        grown = _grow_name_lines(anchor, cands, claimed, stack, page_w, page_h, cfg)
+        # Dual pricing (sale + regular in one cluster) yields two anchors
+        # with the same box: fold the later one into the existing item.
+        twin = next(
+            (o for o in items if _edge_dist(anchor.box, _item_anchor_box[id(o)]) <= 0.01 * page_w),
+            None,
+        )
+        if twin is not None:
+            alts = twin.conditions.setdefault("alt_prices", [])
+            if isinstance(alts, list):
+                alts.append(anchor.price_text)
+            continue
+        grown = _grow_name_lines(anchor, positioned(anchor), claimed, stack, page_w, page_h, cfg)
         if not grown:
             # Maybe a second price for an item already extracted (multibuy
             # or dual price sharing one name block): fold into alt prices.
@@ -518,9 +650,10 @@ def segment_page(
         # duplicating the product.
         dup_of: FlyerItem | None = None
         for other in items:
-            if _shares_content(name, other.name_fr or "") and _edge_dist(
-                anchor.box, _item_anchor_box[id(other)]
-            ) <= 0.06 * page_w:
+            if (
+                _shares_content(name, other.name_fr or "")
+                and _edge_dist(anchor.box, _item_anchor_box[id(other)]) <= 0.06 * page_w
+            ):
                 dup_of = other
                 break
         if dup_of is not None:

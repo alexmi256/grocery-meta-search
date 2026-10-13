@@ -4,6 +4,54 @@ Golden samples for the Phase 3b OCR pipeline. Line dumps (RapidOCR) live in
 `tests/fixtures/cc_{store}_p1_lines.json`; page images were read visually to
 establish ground truth. Tests: `tests/test_ocr_segment.py`.
 
+## Round 2 (2026-10-13 evening): low-yield store fixes
+
+First-pass yields were near zero for 6 stores. All diagnosed visually +
+with line-level debug (`work/cc-check/debug_page.py`); fixes are a mix of
+segmentation features and per-store configs. New fixtures:
+`cc_odessa_p2_lines.json`, `cc_palumbo_p1_lines.json`.
+
+- **Low-res pages** (Odessa 993px, Palumbo 1020px, Frutta Si 832px):
+  pipeline now upscales pages to ≥1600px wide before OCR
+  (`upscale_for_ocr`); relative-fraction configs are unaffected.
+- **Odessa** (magazine layout, 2 products/page): prices print as
+  "10⁹⁹ $/lb" and OCR returns junk-glued lines ("1099 S/6", "2423 8/kg*")
+  that the fragment parser rejected. Fixes: merged-run scan of tall
+  non-digitish lines, per-fragment token recovery when a cluster fails
+  to parse whole, `bare_int_anchor=false` (the "RABAIS 8 $" badges are
+  discounts, not prices), `name_max_h_frac=0.032` (names are tall on
+  low-res pages). Known miss: goberge "8⁹⁹" reads "099" → 0.99 stored
+  as alt price (true $/lb price), 19.82 $/kg is primary.
+- **Palumbo** (dense 1-pager): names sit ABOVE prices with the next
+  product's name just below each price → nearest-neighbour swapped
+  names. Fixes: `name_position=above`, `match_dx_weight=2.5` (column
+  preference), `block_min_overlap_frac=0.25` (a wide detection box —
+  "HARICOTSBLANCS" 50→486 — bridged two product columns),
+  dual-anchor same-box pre-fold. Result 7/8 products correct; wart:
+  the oil sometimes takes its regular price (14.99) as primary when
+  the sale anchor's name seed is the "CEDAR" bottle-brand line.
+- **Bulk Barn** (diagonal grid: name top-left, price circle
+  bottom-right): added `name_position=above_left` (correct name's
+  centre is always left of the price centre); stoplist for the
+  "était/was" reg-price lines and "DE RABAIS" banners. 6/6 on p1.
+- **Tau**: `name_case=any` + `bare_int_anchor=false` (kills the
+  "ÉCONOMISEZ 27 $" badge item). p1: 2 → 11 items.
+- **Valmont**: `name_case=any` + cents. p1: ~4 → 15 items. Remaining
+  errors are glyph confusions: "99"→"66" (10.99→10.66, 5.99→5.66),
+  "2/7$"→"2.17" ("/" read as ".1"), "2/99¢"→"21.99", and a lone "14"
+  dollar fragment read as 0.14 under bare_int_is_cents. Phase 4
+  quarantine candidates (price outliers), not fixable in segmentation.
+- **Frutta Si**: grid prices' dollar digits are invisible to the
+  detector at any tried enhancement (only superscript cents are found,
+  often misread "99"→"66"). Upscaling recovers the hero prices:
+  ~7 correct items/page of ~35. Documented limitation; a cents-anchor
+  dollar-crop recovery is a Phase 4 candidate.
+- **Shop Santé**: genuinely sparse lookbook (1 product/page, small
+  price tags) + the site serves 1×1 placeholder webps for pages 4 and
+  11 of the current edition. Pipeline handles both fine; no config.
+- **La Moisson**: low yield is genuine (mostly %-off promos, almost
+  no priced items).
+
 ## marche-bonichoix p1 (1600×3549) — classic weekly flyer
 
 Ground truth (10 items): bavette de bœuf 15.99 $/lb; combo de saucisses

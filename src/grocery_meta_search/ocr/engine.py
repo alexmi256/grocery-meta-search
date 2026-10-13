@@ -110,6 +110,25 @@ def _tess_env_for(binary: Path) -> dict[str, str]:
     return env
 
 
+def upscale_for_ocr(
+    image: Image.Image, min_width: int = 1600, max_scale: float = 2.0
+) -> Image.Image:
+    """Upscale low-resolution flyer pages before OCR.
+
+    Some circulaires.club pages are served at 800-1000px wide; the OCR
+    detector misses glyphs at that size. Fractions in the segmentation
+    config are relative, so upscaling is segmentation-neutral and also
+    improves the Tesseract name crops.
+    """
+    if image.width >= min_width:
+        return image
+    scale = min(min_width / image.width, max_scale)
+    return image.resize(
+        (round(image.width * scale), round(image.height * scale)),
+        Image.Resampling.LANCZOS,
+    )
+
+
 def ocr_crop_text(
     image: Image.Image,
     box: tuple[float, float, float, float],

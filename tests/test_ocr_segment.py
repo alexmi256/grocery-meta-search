@@ -55,9 +55,7 @@ def _load(name: str) -> tuple[list[OcrLine], int, int]:
 
 
 def _load_fixture(filename: str) -> tuple[list[OcrLine], int, int]:
-    data: dict[str, Any] = json.loads(
-        (FIXTURES / filename).read_text(encoding="utf-8")
-    )
+    data: dict[str, Any] = json.loads((FIXTURES / filename).read_text(encoding="utf-8"))
     lines = [
         OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"])
         for d in data["lines"]
@@ -125,6 +123,81 @@ def test_costco_prix_line_items() -> None:
     assert "Plancher" in by_price[24.99]
 
 
+def _load_named(name: str) -> tuple[list[OcrLine], int, int]:
+    data: dict[str, Any] = json.loads(
+        (FIXTURES / f"cc_{name}_lines.json").read_text(encoding="utf-8")
+    )
+    lines = [
+        OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"])
+        for d in data["lines"]
+    ]
+    return lines, int(data["page_w"]), int(data["page_h"])
+
+
+def _prices_with_alts(item: Any) -> set[float]:
+    values = {item.price_value}
+    for alt in item.conditions.get("alt_prices", []):
+        values.add(float(alt))
+    return values
+
+
+def test_odessa_page2() -> None:
+    """Magazine layout: prices carry unit suffixes ("1099 S/6" = 10,99 $/lb),
+    the "RABAIS 8 $" badges are discounts, not prices, and the low-res
+    page (993px) needs a taller name window."""
+    lines, w, h = _load_named("odessa_p2")
+    cfg = OcrStoreConfig(name_max_h_frac=0.032, bare_int_anchor=False)
+    anchors = find_price_anchors(lines, w, h, cfg)
+    values = {a.value for a in anchors}
+    assert {10.99, 24.23, 19.82} <= values
+    assert 8.0 not in values and 4.0 not in values  # rabais badges
+    image = Image.new("RGB", (w, h))
+    items = segment_page(image, lines, cfg, page_url="fixture://", page_number=2)
+    assert len(items) == 2
+    tilapia = next(it for it in items if "TILAPIA" in (it.name_fr or ""))
+    goberge = next(it for it in items if "GOBERGE" in (it.name_fr or ""))
+    assert _prices_with_alts(tilapia) == {10.99, 24.23}  # $/lb + $/kg
+    assert _prices_with_alts(goberge) == {19.82, 0.99}  # 0.99: "8" misread as "0"
+
+
+def test_palumbo_page1() -> None:
+    """Dense one-pager: names above prices, tight columns, sale+reg pairs.
+    The giant anniversary "50" must not become an item."""
+    lines, w, h = _load_named("palumbo_p1")
+    cfg = OcrStoreConfig(
+        block_min_overlap_frac=0.25,
+        block_x_gap_frac=0.0,
+        match_dx_weight=2.5,
+        match_max_dist_frac=0.35,
+        name_max_h_frac=0.032,
+        name_position="above",
+        stoplist=(
+            "au service de notre",
+            "serving the",
+            "plus de",
+            "more than",
+            "years",
+            "communaute",
+            "community",
+        ),
+    )
+    image = Image.new("RGB", (w, h))
+    items = segment_page(image, lines, cfg, page_url="fixture://", page_number=1)
+    assert len(items) >= 6
+    assert all(it.price_value != 50.0 for it in items)
+    by_name = {it.name_fr or "": it for it in items}
+    # The oil's name block seeds from its "CEDAR" brand line in the line
+    # dump (production Tesseract crops recover the full name); identify
+    # the item by its sale+reg price pair instead.
+    huile = next(it for it in items if _prices_with_alts(it) == {9.99, 14.99})
+    assert huile is not None
+    steak = next(it for n, it in by_name.items() if "STEAK" in n)
+    assert steak.price_value == 8.99
+    fromage = next(it for n, it in by_name.items() if "FROMAGE" in n)
+    assert "POIS" not in (fromage.name_fr or "")
+    assert fromage.price_value == 2.50
+
+
 def test_price_core_strips_units() -> None:
     assert _price_core("0,99 $/lb") == "0,99"
     assert _price_core("2,95$/KG") == "2,95"
@@ -179,9 +252,7 @@ def test_lamoisson_unit_prices() -> None:
     anchors = find_price_anchors(lines, w, h, OcrStoreConfig())
     assert sorted(a.value for a in anchors) == [1.95, 1.95, 2.95, 3.45, 4.95]
     image = Image.new("RGB", (w, h))
-    items = segment_page(
-        image, lines, OcrStoreConfig(), page_url="fixture://", page_number=1
-    )
+    items = segment_page(image, lines, OcrStoreConfig(), page_url="fixture://", page_number=1)
     by_price = {it.price_value: it.name_fr or "" for it in items}
     assert len(items) == 5
     assert "BANANE" in by_price[2.95]

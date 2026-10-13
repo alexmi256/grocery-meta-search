@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Any
 
 from ..db import connect, init_schema
-from ..ocr.engine import detect_lines
+from ..ocr.engine import detect_lines, upscale_for_ocr
 from ..ocr.segment import OcrStoreConfig, segment_page
 from ..sources.base import FlyerEdition, FlyerItem
 from ..sources.circulaires_club import CirculairesClubClient, CirculairesClubError
@@ -104,8 +104,9 @@ def fetch_store_cc(
             try:
                 resp = requests.get(page_url, timeout=60)
                 resp.raise_for_status()
-                image = Image.open(io.BytesIO(resp.content))
-                image.load()
+                opened = Image.open(io.BytesIO(resp.content))
+                opened.load()
+                image = upscale_for_ocr(opened.convert("RGB"))
             except Exception as exc:  # one bad page should not sink the edition
                 report.setdefault("page_errors", []).append(f"{page_url}: {exc}")
                 continue
