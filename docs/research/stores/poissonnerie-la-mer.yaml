@@ -65,7 +65,9 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Premier seafood/fish market (since 1968) with grocery sections (vegetables, cheese, wine, charcuterie, prepared foods). Also acts as distributor. 200+ fresh fish/seafood varieties. Instagram @poissonnerielamer active."
+notes: "Premier seafood/fish market (since 1968) with grocery sections (vegetables, cheese, wine, charcuterie, prepared foods). Also acts as distributor. 200+ fresh fish/seafood varieties. Instagram @poissonnerielamer active.
+
+MARCHÉ MAISONNEUVE (2026-10-12): Poissonnerie La Mer also operates a fish counter at Marché Maisonneuve (vendor page: poissonnerie-mer, same business and same site https://www.lamer.ca) — covered by this record, not duplicated."
 sources_checked: [official-site, official-site-search-verified, official-site-sitemap-enumeration, official-site-path-probes, official-site-nav-semantic-check, flipp, circulaires-ca, circulaires-club, rfd-flyers-page, web-search-fr, directories]
 researched_at: "2026-10-12"
 research_status: complete

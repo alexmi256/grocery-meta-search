@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: douceurs-du-marche
+name: Les Douceurs du Marché
+name_variants: []
+store_type: traditional            # épicerie fine (gourmet pantry: coffee, tea, spices, oils, wines, caramels)
+footprint: island
+tier: 3
+
+website:
+  url: https://www.lesdouceursdumarche.ca/
+  languages: [fr]                 # FR-only content observed
+  language_switch: n/a
+  render_tech: ssr                 # Wix (static.wixstatic.com assets), server-rendered
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official site (sections: engagement qualité, sélection produits, catégories — no circulaire/promotions section); web search 'Douceurs du Marché circulaire' (official site + vendor page only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Wix showcase site with product categories (sels, boissons sans alcool, gourmandises, vins et cidres, huiles, caramels, épices et sels, sauces, panettone, café) — browsing only, no search function observed, no prices."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Showcase only — no cart/checkout."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "Marché Atwater, 150 Avenue Atwater, Montréal QC H3J 2J4. Tel 514-939-3902. 30+ years at the market."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Épicerie fine: gourmet coffees, teas, spices, salts, oils, sauces, wines/ciders, caramels, panettone. Instagram @Lesdouceursdumarche1. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/les-douceurs-du-marche"
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

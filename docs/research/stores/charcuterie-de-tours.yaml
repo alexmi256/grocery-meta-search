@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: charcuterie-de-tours
+name: Charcuterie de Tours
+name_variants: []
+store_type: traditional            # charcuterie (artisan local + French/Italian/Spanish imports; prêt-à-manger)
+footprint: island
+tier: 3
+
+website:
+  url: ""                          # vendor page lists charcuteriedetours.ca but the domain currently serves a registrar 'Coming Soon' placeholder (checked 2026-10-12) — effectively no working site.
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate  # complementary boutique to Boucherie de Tours
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official domain is parked (no content); web search 'Charcuterie de Tours Atwater circulaire' (vendor page + directory results only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No working website; no product catalog or search."
+  bot_protection: none
+  languages: n/a
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "Marché Atwater, 138 Avenue Atwater, Montréal, QC — stall. Single location. Sister shop of Boucherie de Tours."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Charcuterie boutique at Marché Atwater complementary to Boucherie de Tours: local artisan charcuteries, French/Italian/Spanish imports, William J. Walter sausages, plus prêt-à-manger (choucroute, soupe, quiche, tourtière) made on site. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/charcuterie-de-tours"
+sources_checked: [official-domain, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

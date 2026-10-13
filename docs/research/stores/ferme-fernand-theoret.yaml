@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: ferme-fernand-theoret
+name: Ferme Fernand Théorêt
+name_variants: []
+store_type: traditional            # maraîcher + acériculteur (maple from mid-March; fruits/vegetables in season)
+footprint: island
+tier: 3
+
+website:
+  url: ""                          # none found — vendor page lists phone (514 989-8080) + Instagram only; web search returns vendor page + directory listings only.
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: no official website (IG only — posts not audited, needs logged-in browser); web search 'Ferme Fernand Théorêt circulaire' (vendor page + directory results only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No website; no product catalog or search."
+  bot_protection: none
+  languages: n/a
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "Marché Atwater stall (70+ years at the market; Temps des Sucres to mid-November). Specialties: maïs, tomates, crucifères (choux, brocolis)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Family farm at Marché Atwater for 70+ years: maple products from mid-March, wide range of fruits/vegetables as season warms. Vendor page: https://www.marchespublics-mtl.com/marchands/ferme-fernand-theoret/"
+sources_checked: [vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

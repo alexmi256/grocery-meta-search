@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Shares the same operator and website as Atwater and Maisonneuve.  RE-INVESTIGATION 2026-10-12: same as Atwater (shared operator site) — no circulaire/promotions page on marchespublics-mtl.com; aggregators negative. Verdict stands."
+notes: "Shares the same operator and website as Atwater and Maisonneuve.  RE-INVESTIGATION 2026-10-12: same as Atwater (shared operator site) — no circulaire/promotions page on marchespublics-mtl.com; aggregators negative. Verdict stands. MULTI-VENDOR MARKETPLACE: this record covers the market hall itself; individual vendors are enumerated separately — 106 vendor pages at Jean-Talon per the 2026-10-12 sweep of the operator directory (sitemap.xml canonical, 176 merchant pages total across the three markets). Grocery vendors have their own tier-3 YAMLs in this directory (e.g. aliments-merci, ayke, boucherie-nordest); restaurant/prepared-food-only and non-food vendors (florists, Christmas trees, tabagie) have no YAML."
 sources_checked: [official-site, circulaires.club-directory, rfd-flyers, flipp, web-search, web-search-recheck, directories, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

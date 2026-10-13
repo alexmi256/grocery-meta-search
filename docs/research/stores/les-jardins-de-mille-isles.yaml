@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: les-jardins-de-mille-isles
+name: Les Jardins de Mille-Isles
+name_variants: []
+store_type: traditional
+footprint: qc-confirmed
+tier: 3
+
+website:
+  url: 
+  languages: []
+  language_switch: n/a
+  render_tech: unknown
+  bot_protection: none
+  notes: 'No official website found after genuine investigation.'
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: marchespublics-mtl.com vendor page (no website field); FR+EN web search for business name + 'circulaire'/'flyer' — only directory/third-party listings surfaced; not on Flipp, RFD Montreal flyers, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ''
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'No official site; nothing searchable. Stall sells fresh produce in person at the market.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: 'In-person market stall only.'
+
+locations:
+  notes: 'Stall at Marché Jean-Talon (222 Place du Marché-du-Nord, Montréal).'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Seasonal produce stall at Marché Jean-Talon; no independent online presence found.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: complete

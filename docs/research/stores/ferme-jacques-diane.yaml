@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: ferme-jacques-diane
+name: Ferme Jacques et Diane
+name_variants: []
+store_type: traditional
+footprint: qc-unverified
+tier: 3
+
+website:
+  url: https://www.fermejacquesetdiane.ca/
+  languages: ['fr']
+  language_switch: n/a
+  render_tech: unknown
+  bot_protection: none
+  notes: "DEAD: Wix 'ConnectYourDomain' error — domain disconnected from the site builder."
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: 'Could not check: site dead; no flyer surfaced via FR+EN web search.'
+
+product_search:
+  has_search: false
+  url_pattern: ''
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'Site dead; nothing searchable.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: 'Site dead.'
+
+locations:
+  notes: 'Stall at Marché Jean-Talon.'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Farm stall at Jean-Talon; official domain disconnected as of 2026-10-12.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: partial

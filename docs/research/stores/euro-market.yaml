@@ -1,0 +1,94 @@
+# Phase 2 per-store research record — euro-market (2026-10-12).
+# PART C sweep find: French/European specialty grocery with Shopify + working
+# product search; same miss class as epicure-market (invisible to aggregator-based discovery).
+slug: euro-market
+name: Euro Market
+name_variants: ["Euro-Market", "Euro Market - Épicerie Française"]
+store_type: ethnic-specialty  # French / European grocery
+footprint: island
+tier: 3
+
+website:
+  url: https://euro-market.ca/
+  languages: [fr, en]           # /en homepage verified; FR default
+  language_switch: path
+  render_tech: ssr               # Shopify Liquid storefront (cdn/shop/files assets)
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  sources: []
+  duration_days: 0
+  flip_weekday: ""
+  flip_timezone: America/Toronto
+  validity_example: ""
+  per_store_variant: false
+  languages: []
+  archive_available: false
+  structured_data: false
+  notes: >-
+    Negative finding 2026-10-12: no flyer/circulaire page on the official site
+    (pages sitemap: nous-contacter, delivery, FAQ, subscription program, login —
+    no flyer page). circulaire-en-ligne.ca/euro-market is a DIRECTORY-ONLY
+    placeholder (no dated editions) — the exact caution case in
+    flyer-aggregators.md. No Flipp/RFD/circulaires.club listing found.
+
+product_search:
+  has_search: true
+  url_pattern: "https://euro-market.ca/search?q={query}&type=product"
+  location_scoped: false
+  guest_ok: true
+  kind: html                      # Shopify server-rendered search results
+  api_notes: >-
+    VERIFIED LIVE 2026-10-12: /search?q=confiture&type=product returned
+    41 results with CAD prices + live stock ("Seulement, 9, restants!") +
+    best-before dates. Predictive-search JSON API also verified:
+    /search/suggest.json?q={query}&resources[type]=product returns structured
+    JSON (price, available, tags, type, vendor, image). Site also has a
+    /pages/rapid-search-results instant-search app page.
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: true
+  notes: >-
+    Shopify checkout; "Ramassage en magasin ou livraison partout au Canada"
+    (in-store pickup or Canada-wide delivery) per directory profile;
+    coparking.ch also lists in-store pickup for online orders. Product
+    subscription program page (/pages/programme-dabonnement).
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: >-
+    CONFIRMED single storefront: 4992 Chemin Queen Mary, Montréal QC H3W 1X2
+    (514-344-3260) — Google 4.8★ (273 reviews), YellowPages, ProfileCanada,
+    immigrer.com all agree; Category: Specialty/Gourmet Grocery Store.
+    NOTE: Uber Eats lists "EURO MARKET (EPICERIE FRANÇAISE)" at 9500 Rue
+    Meilleur #603 (Ahuntsic) — likely a separate dark-kitchen/delivery entry,
+    NOT counted as a second storefront. Official contact page gives only
+    "Montréal, Québec" without street address.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+  notes: "/pages/programme-dabonnement is a product subscription program, not a loyalty card."
+
+notes: >-
+  French/European specialty grocery (dry goods: biscuits, confitures, chips,
+  hygiene, baby — reviews note NO fresh produce/meat/deli). Surfaced via PART C
+  European-grocer sweep (EN web search for European grocery Montreal online
+  shop); same miss class as epicure-market: Shopify + working search, zero
+  aggregator footprint, never surfaced by FR/EN query tracks or the
+  ethnic-search track (which covered Batory, Vieille Europe, Euro-Deli but not
+  this one).
+sources_checked: [official-site, official-site-search-probe, official-site-sitemap-enumeration, official-site-contact-page, web-search, directories, circulaire-en-ligne-ca, ubereats, rfd-flyers-page, flipp-web-search]
+researched_at: "2026-10-12"
+research_status: complete

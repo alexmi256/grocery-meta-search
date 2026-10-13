@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: teochew-foodie-atwater
+name: Teochew Foodie
+name_variants: []
+store_type: ethnic-specialty        # Chinese artisanal food processor (handmade wontons, crispy oils)
+footprint: island
+tier: 3
+
+website:
+  url: ""                          # vendor page lists a 'Site web' link but the target URL was not exposed in the fetched page text; no dedicated site surfaced in web search.
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: no working official website found (FB/IG only — posts not audited, needs logged-in browser); web search 'Teochew Foodie circulaire' (vendor page + directory/review results only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No working website; no product catalog or search."
+  bot_protection: none
+  languages: n/a
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 2
+  locator_url: ""
+  locator_api: ""
+  notes: "Market stalls at Marché Atwater and Marché Jean-Talon (since 2025). Production on the island of Montréal. Category: specialized food retailers."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "BORDERLINE grocery/restaurant: official vendor page says 'sold in retail format (no on-site consumption)' — artisanal processor (handmade wontons — Certified Québec Prepared Foods, crispy oils); some review sites treat it as a restaurant. Treated as grocery per vendor-page retail statement. Vendor page: https://www.marchespublics-mtl.com/en/merchants/teochew-foodie"
+sources_checked: [vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

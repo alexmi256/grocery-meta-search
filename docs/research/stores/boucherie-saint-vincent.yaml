@@ -1,0 +1,54 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Merged 2026-10-12: boucherie-saint-vincent-atwater.yaml + boucheries-ferme-saint-vincent-viande-biologique.yaml (same family business, stalls at both markets; JT file had the verified website).
+slug: boucherie-saint-vincent
+name: Boucherie Saint-Vincent
+name_variants: ["Boucherie les viandes Saint-Vincent", "Boucheries & Ferme Saint-Vincent - viande biologique"]
+store_type: traditional            # organic butcher (certified-organic Charolais beef, free-range poultry)
+footprint: island
+tier: 3
+
+website:
+  url: https://www.saint-vincentbio.com/
+  languages: [fr]
+  language_switch: n/a
+  render_tech: ssr                 # WooCommerce shop (~259 products observed)
+  bot_protection: cloudflare       # Cloudflare on some paths; homepage fetched fine
+
+parent_company: "Ferme Saint-Vincent"  # family farm, Lanaudière (founded 1958, Québec Vrai certified)
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No dated flyer found. Checked: official site sitemap + homepage — /promotions/ page has seasonal online promos (e.g. Thanksgiving turkey), not dated weekly editions; path patterns /flyer /circulaire /speciaux /weekly-flyer probed; FR+EN web search — no dated flyer; not on Flipp, RFD Montreal flyers, or circulaires.club."
+
+product_search:
+  has_search: true
+  url_pattern: "https://www.saint-vincentbio.com/?s={query}"
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "WooCommerce on-site search; ~259 product pages with prices observed."
+  bot_protection: cloudflare
+  languages: [fr]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "WooCommerce e-commerce."
+
+locations:
+  count_estimate: 2
+  locator_url: ""
+  locator_api: ""
+  notes: "Organic butcher stall at Marché Atwater (138 Avenue Atwater, nearly 20 years at the market) + butcher counter at Marché Jean-Talon. Farm in Lanaudière."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Organic butcher: 100% certified-organic meats from Ferme Saint-Vincent (Charolais beef cow-calf, free-range turkeys, geese, ducks, guinea fowl, chicken, laying hens). Vendor pages: https://www.marchespublics-mtl.com/fr/marchands/boucherie-les-viandes-saint-vincent-du-marche-atwater"
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club, atwater-overlap]
+researched_at: "2026-10-12"
+research_status: complete

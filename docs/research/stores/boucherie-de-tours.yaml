@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: boucherie-de-tours
+name: Boucherie de Tours
+name_variants: []
+store_type: traditional            # artisan butcher (bœuf, porc, volaille, gibier, charcuterie)
+footprint: island
+tier: 3
+
+website:
+  url: https://boucheriedetours.ca/
+  languages: [fr]                 # FR-only content observed on homepage
+  language_switch: n/a
+  render_tech: ssr                 # simple static brochure site
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official site nav (Offres et services, Contactez-nous — no circulaire/promotions section); web search 'Boucherie de Tours Atwater circulaire' (official site + directory results only); not on Flipp, RFD Montreal flyers page, or circulaires.club (vendor scale — single market stall)."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Brochure site only; no shop, catalog, or search function."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "138 Avenue Atwater #8, Montréal, QC H4C 2G3 — stall inside Marché Atwater. Single location."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Artisan butcher at Marché Atwater since 1988 (institution). Traditional cuts (bœuf, porc, volailles), abats, gibier; expanded into charcuterie. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/boucherie-de-tours"
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

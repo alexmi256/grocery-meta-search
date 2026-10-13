@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: maam-caraibes
+name: Maam Caraibes
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.maamcaraibe.com/
+  languages: ['fr']
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+  notes: "Wix; Caribbean sauces; 'Points de vente'; 'Achetez' buy flow."
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: 'No flyer found. Checked: official site (no circulaire section); FR+EN web search — no dated flyer; not on Flipp, RFD Montreal flyers, or circulaires.club.'
+
+product_search:
+  has_search: false
+  url_pattern: ''
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'Wix site with buy flow; on-site product search not individually confirmed.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "'Achetez' buy flow on Wix site."
+
+locations:
+  notes: 'Stall at Marché Jean-Talon.'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Caribbean sauce stall at Jean-Talon.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: complete

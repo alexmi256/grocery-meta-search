@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: poissonnerie-atwater-marche
+name: Poissonnerie du Marché Atwater
+name_variants: ["Poissonnerie Atwater"]
+store_type: traditional            # fishmonger (poissons, fruits de mer)
+footprint: island
+tier: 3
+
+website:
+  url: https://poissonnerieatwater.com/
+  languages: [fr]                 # FR-only content observed
+  language_switch: n/a
+  render_tech: ssr                 # WordPress, server-rendered
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official site (nav: coups de cœur / produits, réputation/témoignages — no circulaire/promotions section); web search 'Poissonnerie Atwater circulaire' (official site + vendor page only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Site has a product showcase page ('Voir les produits' / Nos coups de cœur) but no search function observed on homepage."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Site advertises a 'système d'achat et de livraison en ligne' (online purchase + delivery); checkout flow not audited."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "154 Avenue Atwater, Montréal, QC H4C 2G3 — inside Marché Atwater (family fishmonger, 40+ years, two generations). Single location."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Family fishmonger at Marché Atwater for 40+ years: wide selection of fish and seafood. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/poissonnerie-du-marche-atwater"
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

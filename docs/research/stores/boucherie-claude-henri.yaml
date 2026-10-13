@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: boucherie-claude-henri
+name: Boucherie Claude & Henri
+name_variants: ["Boucherie Claude et Henri"]
+store_type: traditional            # artisan butcher/charcutier/saucissier (veau, bœuf, agneau, porc, volaille, gibier)
+footprint: island
+tier: 3
+
+website:
+  url: https://boucherieclaudeethenri.ca/
+  languages: [fr]                 # FR-only content observed
+  language_switch: n/a
+  render_tech: ssr                 # simple brochure site
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official site (nav: spécialités, saucisses, foie gras, produits, événement — no circulaire/promotions section); web search 'Boucherie Claude Henri Atwater circulaire' (official site + directory results only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Brochure site; no product catalog or search function. Site mentions online ordering for holiday events (Noël, Pâques, etc.) but no persistent shop found."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: "Site mentions 'commandez en ligne' for holiday events only (seasonal order forms); no standing e-commerce."
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "138 Avenue Atwater, Montréal, QC H4C 2G3 — stall inside Marché Atwater (open year-round, since 1984). Single location. Family business, also cattle producers (Saint-Fabien-de-Panet)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Artisan butcher at Marché Atwater since 1984. Custom cuts, charcuterie maison, saucisses maison, foie gras de canard. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/boucherie-claude-henri"
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

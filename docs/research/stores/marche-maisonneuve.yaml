@@ -41,7 +41,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Shares the same operator and website as Atwater and Jean-Talon. CORRECTIVE RE-INVESTIGATION 2026-10-12: multi-vendor public market hall — operator (marchespublics-mtl.com) publishes Actualités/Événements only, no flyer per vendor or hall; RFD Montreal flyers merchant list re-checked 2026-10-12 (majors only). Flyer and product_search stay FALSE."
+notes: "Shares the same operator and website as Atwater and Jean-Talon. CORRECTIVE RE-INVESTIGATION 2026-10-12: multi-vendor public market hall — operator (marchespublics-mtl.com) publishes Actualités/Événements only, no flyer per vendor or hall; RFD Montreal flyers merchant list re-checked 2026-10-12 (majors only). Flyer and product_search stay FALSE. MULTI-VENDOR MARKETPLACE: this record covers the market hall itself; individual vendors are enumerated separately — 11 vendor pages at Maisonneuve per the 2026-10-12 sweep of the operator directory (sitemap.xml canonical, 176 merchant pages total across the three markets). Grocery vendors have their own tier-3 YAMLs in this directory (e.g. aliments-merci, ayke, boucherie-du-marche-maisonneuve, fromagerie-maisonneuve); restaurant/prepared-food-only and non-food vendors (florist, Christmas trees, tabagie) have no YAML."
 sources_checked: [official-site, circulaires.club-directory, rfd-flyers, rfd-flyers-refetch-2026-10-12, flipp, web-search, directories]
 researched_at: "2026-10-12"
 research_status: complete

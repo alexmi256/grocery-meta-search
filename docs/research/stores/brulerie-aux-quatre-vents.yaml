@@ -1,0 +1,54 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Merged 2026-10-12: brulerie-quatre-vents-atwater.yaml + brulerie-aux-quatre-vents-jean-talon.yaml (same business at both markets).
+slug: brulerie-aux-quatre-vents
+name: Brûlerie aux Quatre Vents
+name_variants: ["Brûlerie aux Quatre Vents - Atwater"]
+store_type: traditional            # coffee roaster (torréfaction, café de spécialité, équipement)
+footprint: island
+tier: 3
+
+website:
+  url: https://brulerie4vents.com/
+  languages: [fr]                 # FR-only content observed
+  language_switch: n/a
+  render_tech: ssr                 # Shopify (cdn.shopify.com assets), server-rendered
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official site (Shopify catalog: cafés, équipement — no circulaire/promotions section); web search 'Brûlerie Quatre Vents circulaire' (official site + vendor pages only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Shopify storefront with full product catalog and CAD prices (19 coffee blends 21.00–36.00$, brewing equipment); no search bar observed on homepage — browse via 'Voir nos cafés' collections."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Shopify checkout (product links with prices sitewide); cart flow not audited."
+
+locations:
+  count_estimate: 2
+  locator_url: "https://brulerie4vents.com/ (Nos deux adresses)"
+  locator_api: ""
+  notes: "Comptoir at Marché Atwater (138 Avenue Atwater) + market counter at Marché Jean-Talon + roasting atelier in Mercier. Roasting in-house weekly since 1997 (Martine & Pierre; Francis)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Coffee roaster (not reseller): green-bean sourcing, weekly roasting in Mercier, grinding for your machine. 19 coffee blends + brewing equipment online. Vendor pages: https://www.marchespublics-mtl.com/fr/marchands/brulerie-aux-quatre-vents-atwater (Atwater + Jean-Talon listings)."
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club, atwater-overlap]
+researched_at: "2026-10-12"
+research_status: complete

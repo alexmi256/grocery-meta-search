@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon;Maisonneuve (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: ayke
+name: AYKÉ
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://ayke.ca
+  languages: ['fr']
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+  notes: 'WooCommerce shop; maple products. FR site (EN shipping note observed).'
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: 'No flyer found. Checked: official site sitemap + homepage (no circulaire/promotions section); FR+EN web search — no dated flyer; not on Flipp, RFD Montreal flyers, or circulaires.club.'
+
+product_search:
+  has_search: true
+  url_pattern: 'https://ayke.ca/?s={query}'
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'WooCommerce on-site search; ships across Canada/US.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: 'Full WooCommerce e-commerce; ships.'
+
+locations:
+  notes: 'Stalls at Marché Jean-Talon and Marché Maisonneuve.'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Maple products; stalls at both Jean-Talon and Maisonneuve.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: complete

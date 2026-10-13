@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: vergers-alain-dauphinais
+name: Les Vergers Alain Dauphinais
+name_variants: []
+store_type: traditional            # verger (20+ apple varieties, petits fruits: bleuets, fraises, groseilles, framboises)
+footprint: island
+tier: 3
+
+website:
+  url: ""                          # none found — vendor page shows no contact/website; web search returns vendor page + directory listings only.
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: no official website or socials on vendor page; web search 'Vergers Alain Dauphinais circulaire' (vendor page + directory results only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No website; no product catalog or search."
+  bot_protection: none
+  languages: n/a
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "Marché Atwater stall (seasonal; family since 1960). Note: 'Les Jardins Dauphinais / Fruiterie Maisonneuve' is a separate vendor at Marché Maisonneuve."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Orchard at Marché Atwater since 1960: 20+ apple varieties, bleuets, fraises, groseilles, framboises — direct from the farm. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/les-vergers-alain-dauphinais"
+sources_checked: [vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

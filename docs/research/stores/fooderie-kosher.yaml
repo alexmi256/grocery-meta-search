@@ -10,8 +10,8 @@ website:
   url: https://www.fooderiemarket.com/
   languages: [en]
   language_switch: n/a
-  render_tech: unknown            # custom e-commerce platform; homepage fetch threw error ST282
-  bot_protection: rate-limit      # 403 on /categories/94516/products probe; error ST282 on homepage
+  render_tech: spa                # My Cloud Grocer (MCG) Angular SPA; category pages server-render
+  bot_protection: cloudflare      # Cloudflare "Just a moment..." challenge: curl gets 403; fetcher partially works; product sections throw error ST282 for bots
 
 parent_company: ""
 affiliation: independent-affiliate
@@ -36,16 +36,29 @@ flyers:
     WhatsApp Status", homepage 2026-10-12). No Flipp/RFD/circulaires.club listing.
 
 product_search:
-  has_search: false
-  url_pattern: ""
+  has_search: true
+  url_pattern: "https://www.fooderiemarket.com/search"
   location_scoped: false
-  guest_ok: true
-  kind: unknown
+  guest_ok: true                 # presumed: catalog browses without login; search is header-level — live check pending
+  kind: spa
   api_notes: >-
-    Catalog category pages are indexed (/categories/{id}/products), but no
-    /search/ path was observed and direct fetches are blocked (403 / error
-    ST282). Search presence NOT confirmed — do not treat as searchable.
-  bot_protection: rate-limit
+    USER REPORT CONFIRMED 2026-10-12: site has product search. Platform
+    identified as My Cloud Grocer (MCG) white-label grocery eCommerce
+    (mycloudgrocer.com; Wikipedia; MCG mobile apps com.mycloudgrocer.* offer
+    "search and order products"). Sibling MCG sites (mykoshermarket.com,
+    wesleykosheronline.com, shopevergreenkosher.com, atozglattkosher.com) share
+    the same markers: /categories/{id}/products, ?catalogProduct=,
+    "Can't find item?" search prompt, error ST282. The site's own robots.txt
+    carries "Disallow: /search*" — the /search route exists; a fetcher load of
+    /search returned service HTTP 200 with no extractable content (empty SPA
+    shell, consistent with an Angular client-side route). EXACT QUERY-STRING
+    FORMAT NOT VERIFIED: Cloudflare blocks automated probes (curl 403 on
+    homepage; 403 on /catalogsearch/result/?q=milk and /search?q=milk via
+    fetcher), and the fetcher cannot execute the SPA search — no live query was
+    run. The query parameter (e.g. ?q= vs ?query=) needs a live-browser check;
+    url_pattern above is the verified route base only, no {query} placeholder
+    recorded until the param format is confirmed.
+  bot_protection: cloudflare
   languages: [en]
 
 ecommerce:
@@ -73,7 +86,17 @@ notes: >-
   "Kosher Quality by Fooderie". PARTIAL STATUS REASON: site blocks automated fetch
   (403 on catalog path, error ST282 on homepage), so product-search presence could
   not be confirmed or denied; flyer absence is confirmed.
+  SEARCH VERIFICATION 2026-10-12 (user report): platform identified as My Cloud
+  Grocer (MCG); the site's own robots.txt carries "Disallow: /search*" —
+  the /search route exists (fetcher load returned HTTP 200 with an empty SPA
+  shell). Exact query-string format and a live query could NOT be executed
+  (Cloudflare blocks automated probes) — needs a live-browser check; see
+  product_search.api_notes. research_status stays partial for that reason.
+  FLYER RE-CHECK 2026-10-12: robots.txt + sitemap index + sitemap-pages-1.xml
+  enumerated — product ?catalogProduct= URLs only, no circulars/flyer/specials
+  page. MCG markets "digital circulars" as a platform feature, but Fooderie
+  does not expose one. has_flyers stays false.
   RE-CHECK 2026-10-12 (hardened protocol): /categories/94516/products still returns 403; homepage fetch partially renders (ST282 error inside product sections) \u2014 no flyer/circulaire section; specials are promoted via WhatsApp Status signup only (not a flyer). Catalog category pages remain indexed but search presence still unconfirmed. Status stays partial.
-sources_checked: [official-site, official-site-probe-403, web-search-flyer, flipp-search-snippet, rfd-flyers-search-snippet, recheck-2026-10-12-hardened-protocol]
+sources_checked: [official-site, official-site-probe-403, web-search-flyer, flipp-search-snippet, rfd-flyers-search-snippet, recheck-2026-10-12-hardened-protocol, robots-txt, sitemap-enumeration, search-verification-2026-10-12]
 researched_at: "2026-10-12"
 research_status: partial

@@ -1,0 +1,109 @@
+# Phase 2 per-store research record — epicure-market (full depth 2026-10-12).
+# Added 2026-10-12 from user report (search bar observed by user; was missed by all discovery sources).
+slug: epicure-market
+name: Epicure Market
+name_variants: ["Marché Epicure", "Marche Epicure"]
+store_type: ethnic-specialty  # European / Eastern-European specialty grocery
+footprint: island              # all 3 stores on the island of Montreal
+tier: 2
+
+website:
+  url: https://shopepicure.ca/
+  languages: [en, fr]           # Shopify Markets; /en homepage verified, /fr/ sitemaps present
+  language_switch: path
+  render_tech: ssr               # Shopify Liquid storefront
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true               # flyer PROGRAM confirmed, but dormant — see notes
+  types:
+    - type: weekly
+      sources:
+        - name: pdfflyers.com (stale)
+          url: https://pdfflyers.com/store/marche-epicure
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7            # aggregator described it as a weekly flyer; unverified
+      flip_weekday: ""
+      flip_timezone: America/Toronto
+      validity_example: ""
+      per_store_variant: false
+      languages: []
+      archive_available: false
+      structured_data: false
+      notes: >-
+        Flyer program EXISTS but is DORMANT: pdfflyers.com carried a
+        "Marché Epicure" store page ("weekly flyer for Montréal, Pointe-Claire,
+        and Côte Saint-Luc stores") whose snippet (crawled ~3 days ago) said
+        "no live flyers at the moment" — the page now redirects to the
+        aggregator homepage. The legacy epicuremarket.ca (2017 snapshot) had
+        "flyer promotions" / "get latest flyer" nav items, and the current
+        shopepicure.ca newsletter invites signups "for Flyer, News and
+        announcements". NO live edition verifiable 2026-10-12 and NO flyer page
+        on shopepicure.ca. Treat as dormant until a live edition surfaces;
+        re-check before Phase 3 pipeline use.
+  notes: ""
+
+product_search:
+  has_search: true
+  url_pattern: "https://shopepicure.ca/search?q={query}&type=product"
+  location_scoped: false
+  guest_ok: true
+  kind: html                      # Shopify server-rendered search results
+  api_notes: >-
+    VERIFIED LIVE 2026-10-12 (user-reported search bar): /search?q=caviar&type=product
+    returned 33 results with CAD prices (LUXE sturgeon caviar $45–$165,
+    S&F lumpfish $6.99–$10.99, Krinos tarama $10.49, ECO CATCH ikura $89).
+    Predictive-search JSON API also verified live:
+    /search/suggest.json?q={query}&resources[type]=product returns structured
+    JSON (id, title, price, available, image, vendor, type, url) — prime Phase 5
+    source.
+  bot_protection: none
+  languages: [en, fr]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: >-
+    Shopify store with cart/checkout ("shop now"). Third-party directory
+    profiles mention delivery + in-store pickup; NOT verified on
+    shopepicure.ca checkout 2026-10-12.
+
+locations:
+  count_estimate: 3
+  locator_url: https://shopepicure.ca/pages/our-locations
+  locator_api: ""
+  notes: >-
+    CONFIRMED 3 (official locations page + site footer): 5252 Paré St,
+    Montréal QC H4P 1P5 (514-904-0595); 5555 Westminster Ave N, Côte Saint-Luc
+    QC H4W 2J2 (514-368-1741); 323 Chemin du Bord-du-Lac (Lakeshore),
+    Pointe-Claire QC H9S 4L6 (514-505-9977). Legacy domain epicuremarket.ca
+    (HTTP 500 on 2026-10-12) appears retired in favour of shopepicure.ca.
+
+loyalty_program:
+  name: "Club Épicurien"
+  card_gated_prices: false
+  notes: >-
+    Legacy site (2017 snapshot) advertised a "Club Épicurien" membership card
+    ("activate info"); no evidence of card-gated prices and no loyalty mention
+    on the current site.
+
+notes: >-
+  European (Eastern-European) specialty grocery — self-described "largest
+  European food chain in Quebec": hot buffet, bakery, salad bar, Eastern
+  European meats/cheeses, ready-to-eat, plus Epicure Signature catering
+  platters. Directory categories: Specialty/Gourmet Grocery Store (4.7★,
+  113 reviews, Montréal location). WHY MISSED: no presence on RFD's
+  55-merchant flyers directory, Flipp, circulaires.club, or supermarches.ca;
+  FR/EN query tracks never surfaced "Epicure"; ethnic-search track covered
+  Polish (Batory) and French (Vieille Europe) but not this European chain.
+  See parent report for full source-by-source analysis.
+sources_checked: [official-site, official-site-search-probe, official-site-sitemap-enumeration, official-site-locations-page, web-search, directories, pdfflyers-com, legacy-site-mirror, rfd-flyers-page, flipp-web-search]
+researched_at: "2026-10-12"
+research_status: complete

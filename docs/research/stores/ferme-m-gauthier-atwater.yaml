@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: ferme-m-gauthier-atwater
+name: Ferme M. Gauthier
+name_variants: []
+store_type: traditional            # acériculteur (pure maple products + maple-based preparations: BBQ sauces, marinades, candies, dressings)
+footprint: island                  # new 2026 Atwater vendor
+tier: 3
+
+website:
+  url: ""                          # none found — new 2026 vendor with no dedicated website surfaced; web search returns only the markets' announcement.
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: no official website or socials found; web search 'Ferme M. Gauthier érable circulaire' (markets announcement only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No website; no product catalog or search."
+  bot_protection: none
+  languages: n/a
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "New 2026 vendor at Marché Atwater. Production location not published."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Specialist in pure maple products and maple-based preparations: BBQ sauces, marinades, candies, salad dressings. Announced as new Atwater vendor: https://www.marchespublics-mtl.com/fr/nouvelles/de-nouvelles-entreprises-aux-marches-publics-de-montreal"
+sources_checked: [market-news-announcement, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

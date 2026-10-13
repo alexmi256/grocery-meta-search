@@ -1,47 +1,70 @@
 # Phase 2 per-store research record — full depth (2026-10-12).
 slug: marche-bkr
 name: Marché BKR
-name_variants: ["Marché BKR - AL BAKAR", "Super Marché BKR Laurentien"]
+name_variants: ["Marché BKR - AL BAKAR", "Marché et Restaurant Bakar Montréal", "محلات البقار"]
 store_type: ethnic-specialty  # Middle Eastern / halal grocery
 footprint: island
 tier: 3
 
 website:
-  url: https://marche-bkr-laurentien.business.site/  # Google Business site — the store's primary web presence
-  languages: n/a               # Google Business sites are auto-rendered; not a real multilingual site
+  url: https://www.circulaires.com/marche-bkr/web/
+  # Old business.site URL (https://marche-bkr-laurentien.business.site/) verified DEAD
+  # 2026-10-12 (HTTP 404). The circulaires.com "/web/" merchant page is now the store's
+  # primary web presence (nav: ACCUEIL | TROUVER UN MAGASIN | PAGE FACEBOOK | CIRCULAIRE).
+  languages: fr-only            # page is French (with an Arabic tagline)
   language_switch: n/a
-  render_tech: ssr
-  bot_protection: none
+  render_tech: ssr              # plain-HTTP fetch returns full page text
+  bot_protection: none          # no challenge observed on any circulaires.com fetch
 
 parent_company: ""
 affiliation: independent-affiliate
 banner_family: []
 
 flyers:
-  has_flyers: false
-  types: []
-  notes: "No flyer found. Checked: web search 'Marché BKR circulaire/flyer' (returns only business listings, a MAPAQ food-safety notice, directories — no flyer), circulaires.club 182-merchant directory (absent), RFD Montreal flyers page (majors only), Flipp (no store page; Flipp weak on small independents). Google Business sites do not carry flyers. grocery10's 'publie des nouvelles et des promotions' is its own notification feature, not a store flyer."
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: circulaires.com
+          url: https://www.circulaires.com/marche-bkr/
+          kind: aggregator
+          format: images            # merchant page states "version interactive et image"
+          parse_friendliness: medium  # merchant page is text-fetchable; the flyer
+                                    # viewer itself is JS-rendered (edition URLs
+                                    # were not visible in the text fetch)
+          fetchability: http        # merchant pages fetch fine over plain HTTP
+      duration_days: 7              # weekly per merchant statement ("tous les jeudis")
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: ""          # not observed: edition date ranges are inside the
+                                    # JS flyer viewer and were not visible in text fetch
+      per_store_variant: false      # single store
+      languages: [fr]
+      archive_available: false      # not observed on the merchant page
+      structured_data: false         # not observed
+      notes: "Merchant page (circulaires.com, crawled hours before research; page text fetched 2026-10-12) states: flyer published every Thursday, two days in advance, in interactive + image versions. Mirror at https://www.circulaires.ca/marche-bkr/ carries the same statement."
+  notes: "CORRECTION 2026-10-12: previous 'no flyer' verdict was wrong. Flyers are live on circulaires.com. Caveat: edition-level URLs/dates could not be extracted via text fetch (JS viewer); a live-browser check could capture the current edition's date range."
 
 product_search:
   has_search: false
-  notes: "No website beyond the Google Business page; no search or catalog anywhere."
+  notes: "No website beyond the circulaires.com merchant page + Facebook; no catalog or search anywhere."
 
 ecommerce:
   online_ordering: false
   click_and_collect: false
-  notes: ""
+  notes: "The merchant page advertises home delivery ('service de livraison') by phone, but no online ordering system observed."
 
 locations:
   count_estimate: 1
   locator_url: ""
   locator_api: ""
-  notes: "12251 Boul Laurentien, Montréal QC H4K 1N5 (Ahuntsic-Cartierville), near Mosquée Al-Rawdah. Single store; no locator needed."
+  notes: "12251 Boul Laurentien, Montréal QC H4K 1N5 (Ahuntsic-Cartierville), near Mosquée Al-Rawdah; (514) 337-7066; daily 08:30–21:00 (per merchant page). Caveat: an older circulaires.com crawl listed a second spot 'Marché et Restaurant BKR Montréal, 690 Rue Jean-Talon O.' (514) 379-1910 — the current /web/ page lists only the Laurentien address; the Jean-Talon location is unverified and may be closed or a stale listing."
 
 loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Middle Eastern/halal market. Secondary Facebook presence: https://www.facebook.com/426615574351191/ (via grocery10 listing). OpenStreetMap tags it shop=convenience (name: Marché BKR - AL BAKAR).  RE-INVESTIGATION 2026-10-12: opened the newly-surfaced circulaires.com and circulaires.ca 'Marché BKR - Site web' merchant pages — they are template landing pages (ACCUEIL | TROUVER UN MAGASIN | PAGE FACEBOOK | CIRCULAIRE nav) with NO actual flyer content or archive: empty merchant shells. business.site + Facebook remain the only web presence; no catalog/search. Verdict stands."
-sources_checked: [business-site, facebook, web-search, circulaires.club-directory, circulaires-com-merchant-page, circulaires-ca-merchant-page, rfd-flyers, flipp, pagesjaunes, canpages, directories, reinvestigation-2026-10-12]
+notes: "Middle Eastern/halal market (name: Marché BKR - AL BAKAR). Secondary Facebook presence: https://www.facebook.com/426615574351191/ (via grocery10 listing). OpenStreetMap tags it shop=convenience. CORRECTION 2026-10-12: website corrected to circulaires.com/marche-bkr/web/ after the Google Business site died (404); flyers confirmed live on circulaires.com (weekly, Thursdays)."
+sources_checked: [circulaires-com-web, circulaires-com-merchant, circulaires-ca-merchant, business-site-404, facebook, web-search, circulaires.club-directory, rfd-flyers, flipp, pagesjaunes, directories]
 researched_at: "2026-10-12"
 research_status: complete

@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: bar-a-beurre
+name: Bar à Beurre
+name_variants: []
+store_type: traditional            # bakery/pastry (boules de beurre, macarons, biscuits, brownies)
+footprint: island                  # boutique Vieux-Montréal + seasonal market stalls (Atwater, Jean-Talon, Maisonneuve)
+tier: 3
+
+website:
+  url: https://www.barabeurre.com/
+  languages: [fr, en]             # mixed FR/EN content observed (newsletter FR, 'the butter club!' EN)
+  language_switch: n/a
+  render_tech: ssr                 # Weebly/Square (editmysite.com CDN), server-rendered
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official site (newsletter signup 'the butter club!', no circulaire/promotions section); web search 'Bar à Beurre circulaire' (official site + socials only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Weebly/Square site; no product catalog search observed on homepage."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: "Site shows 'Secure checkout by Square' (Apple Pay, Google Pay, Visa, Mastercard, Amex, Interac) — online ordering present; catalog depth not audited."
+
+locations:
+  count_estimate: 2
+  locator_url: ""
+  locator_api: ""
+  notes: "Boutique: 348 rue Notre-Dame Est, Montréal (Vieux-Montréal, since 2012). Seasonal market stalls: Marché Atwater, Marché Jean-Talon, Marché Maisonneuve (May-October, since 2025)."
+
+loyalty_program:
+  name: "the butter club!"
+  card_gated_prices: false        # newsletter club, no gated prices observed
+
+notes: "Italian/Québécois butter-sweets boutique (boule de beurre — butter cookies with cream filling, macarons, brownies, giant cookies, date squares). Seasonal stalls at all three public markets. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/bar-a-beurre"
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

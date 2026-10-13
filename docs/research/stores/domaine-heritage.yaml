@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon;Atwater (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: domaine-heritage
+name: Domaine Héritage
+name_variants: []
+store_type: traditional
+footprint: island
+tier: 3
+
+website:
+  url: https://www.instagram.com/domaine_heritage/?hl=fr
+  languages: ['fr']
+  language_switch: n/a
+  render_tech: spa
+  bot_protection: none
+  notes: 'Website field in directory is Instagram only; Instagram content unreadable with available tools.'
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: 'Could not verify: Instagram unreadable; no flyer surfaced via FR+EN web search.'
+
+product_search:
+  has_search: false
+  url_pattern: ''
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'Instagram only; nothing searchable.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: 'No e-commerce observed.'
+
+locations:
+  notes: 'Stalls at Marché Jean-Talon and Marché Atwater.'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Also operates at Marché Atwater — flag for the Atwater sweep teammate. Stall at Jean-Talon.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: partial

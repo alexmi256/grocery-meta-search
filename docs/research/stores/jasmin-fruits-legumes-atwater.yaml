@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: jasmin-fruits-legumes-atwater
+name: Jasmin Fruits et Légumes
+name_variants: ["Jasmin & Fils"]
+store_type: traditional            # maraîcher (fruits/légumes year-round + annual flowers in spring)
+footprint: island
+tier: 3
+
+website:
+  url: ""                          # none found — vendor page lists Facebook/Instagram only; web search returns vendor page + directory listings only.
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: no official website (FB/IG only — page posts not audited, needs logged-in browser); web search 'Jasmin fruits légumes Atwater circulaire' (vendor page + directory results only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No website; no product catalog or search."
+  bot_protection: none
+  languages: n/a
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "Marché Atwater, 138 Avenue Atwater, Montréal, QC — stall (open year-round, since 1957; 56+ years, family: Luc & Lucie Jasmin). Production in Mercier."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Family produce grower at Marché Atwater for 56+ years (since 1957): Québec + imported fruits/vegetables year-round, annual flowers in spring. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/jasmin-fruits-legumes"
+sources_checked: [vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: boucherie-adelard-belanger-fils
+name: Boucherie Adélard Bélanger et fils
+name_variants: ["Boucherie Adélard Bélanger et Ses Fils"]
+store_type: traditional            # centennial family butcher (porc, bœuf, veau, volaille, plats cuisinés maison)
+footprint: island
+tier: 3
+
+website:
+  url: ""                          # none working — a Google business.site (adelardbelangerfils.business.site) appears in search but returns 404 (checked 2026-10-12); directory listings only otherwise.
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: no working official site; web search 'Boucherie Adélard Bélanger Atwater circulaire' (vendor page + directory results only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No website; no product catalog or search."
+  bot_protection: none
+  languages: n/a
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "138 Avenue Atwater, Montréal, QC H4C 2G3 — stall inside Marché Atwater (operating continuously since the market opened in 1933; 4th generation). Single location."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Centennial family butcher at Marché Atwater since 1933. Artisanal: everything deboned, prepared and cooked on site (porc, bœuf, veau, volaille, plats cuisinés maison). Vendor page: https://www.marchespublics-mtl.com/fr/marchands/boucherie-adelard-belanger-fils"
+sources_checked: [vendor-page-marchespublics-mtl, web-search, dead-business-site, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

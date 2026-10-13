@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon;Maisonneuve (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: les-jardins-de-minga
+name: Les Jardins de la Minga
+name_variants: []
+store_type: traditional
+footprint: greater
+tier: 3
+
+website:
+  url: https://www.jardinsdelaminga.ca/
+  languages: ['fr']
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+  notes: "Organic farm (Baie-Saint-Paul); simple FR informational site (curl failed; renders in browser). Note: the farm also runs 'Apothicari'."
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: 'No flyer found. Checked: official site (no circulaire section); FR+EN web search — no dated flyer; not on Flipp, RFD Montreal flyers, or circulaires.club.'
+
+product_search:
+  has_search: false
+  url_pattern: ''
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'Informational site; no shop, catalog, or search.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: 'Informational site only.'
+
+locations:
+  notes: 'Stalls at Marché Jean-Talon and Marché Maisonneuve; farm in Baie-Saint-Paul.'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Organic farm stalls at both Jean-Talon and Maisonneuve.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: complete

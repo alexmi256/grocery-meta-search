@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: les-filles-fattoush
+name: Les Filles Fattoush
+name_variants: []
+store_type: ethnic-specialty
+footprint: island
+tier: 3
+
+website:
+  url: https://www.lesfillesfattoush.com/
+  languages: ['fr']
+  language_switch: n/a
+  render_tech: unknown
+  bot_protection: none
+  notes: 'Earlier fetch was rate-limited by their host (transient); site responds again as of 2026-10-12. Render tech not confirmed.'
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: 'Could not fully check: site fetch was rate-limited earlier; no flyer surfaced via FR+EN web search; not on Flipp, RFD Montreal flyers, or circulaires.club.'
+
+product_search:
+  has_search: false
+  url_pattern: ''
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'On-site search not confirmed (fetch was rate-limited).'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: 'Not confirmed.'
+
+locations:
+  notes: 'Counter at Marché Jean-Talon.'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Lebanese grocery + restaurant counter at Jean-Talon; vendor page lists Specialized food retailers, Groceries & bulk, and Restaurant owners.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: partial

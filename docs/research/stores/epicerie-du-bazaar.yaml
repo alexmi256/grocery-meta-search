@@ -22,12 +22,27 @@ flyers:
   notes: "No flyer found. Checked: official site (no flyer/circulaire section — priced online catalog instead), circulaires.club weekly index (218 QC flyers — not listed), circulaires.com Montreal merchant list (not listed), RFD Montreal flyers page, web search '\"Épicerie du Bazaar\" Montréal circulaire' (directory/review results only). RE-CHECKED 2026-10-12 per hardened protocol: enumerated the full sitemap.xml — only /about-us, /sale, /shopall, category (/shop/<category>/<id>) and product pages; no /flyer, /flyers, /circulaire, /deals, /specials, /promotions, /aubaines page. The /sale (\u0027Soldes\u0027/\u0027Promotions\u0027) page is a static on-sale product listing with no dates or cadence — NOT a dated flyer. /search?q= returns HTTP 404. Website verified correct (bazaarfood.ca is the store\u2019s own site per place data; westmount/downtown ordering subdomains confirmed). Facebook page has bilingual product posts, not a weekly flyer; web search \u0027facebook spéciaux/promotion/rabais\u0027 surfaced no flyer."
 
 product_search:
-  has_search: false
+  has_search: true
   url_pattern: ""
   location_scoped: false
   guest_ok: true
-  kind: html
-  api_notes: "No search UI found on the homepage; /search?q= returns HTTP 404. Catalog is browsed via /shop/<category>/<id> category pages (Square Online). Search not confirmed — recorded as absent."
+  kind: spa
+  api_notes: >-
+    USER REPORT CONFIRMED 2026-10-12: search bar exists behind the header
+    magnifier-glass icon. Verified in the site's own config/JS (Square Online /
+    Weebly eCommerce): "disableSearch":false, featureset "search":true, plan
+    flags "site_search":true,"product_search":true; a Vue search store module
+    with searchQuery/searchResults/autocomplete and RELEVANCE sorting; the
+    "search" magnifier icon registered in the site's icon set. NO server-side
+    search results URL exists: /search?q= -> HTTP 404, /shop/search?query= ->
+    SPA 404 view, /store/search?q= and /apps/search?q= -> 404, and no search URL
+    in sitemap.xml. Search is an SPA overlay — results render client-side;
+    url_pattern left empty rather than invent one. LIVE QUERY NOT RUN: the
+    products JSON API (/app/store/api/v29/users/{userID}/sites/{siteID}/products?q=...&autocomplete=true)
+    returned 401 "Unauthenticated" for a direct probe (needs session cookies),
+    so executing a query needs a live browser with JS. Search is header-level
+    with no login and no location picker on www.bazaarfood.ca (westmount./downtown.
+    subdomains are separate ordering storefronts), FR/EN storefront.
   bot_protection: none
   languages: [fr, en]
 
@@ -46,7 +61,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "Persian/Indian/Arab/Turkish products; fresh halal meat, pastry, nuts. Active Facebook page: facebook.com/194567587904499 (bilingual FR/EN posts). Priced online catalog = structured-data signal for Phase 4."
-sources_checked: [official-site, sitemap-enumeration, sale-page-opened, circulaires-club, circulaires.com, rfd-flyers, web-search, web-search-facebook-specials, directories, cylex, ubereats-discovery]
+notes: "Persian/Indian/Arab/Turkish products; fresh halal meat, pastry, nuts. Active Facebook page: facebook.com/194567587904499 (bilingual FR/EN posts). Priced online catalog = structured-data signal for Phase 4. FLYER RE-CHECK 2026-10-12: sitemap.xml re-enumerated (about-us, /sale, /shopall, /shop/<category>/<id>, product pages — no flyer/circulaire/specials/promotions page); /sale remains a static undated on-sale listing, NOT a dated flyer. has_flyers stays false. SEARCH VERIFIED 2026-10-12 per user report — see product_search.api_notes; exact results-page behavior needs a live browser."
+sources_checked: [official-site, sitemap-enumeration, sale-page-opened, circulaires-club, circulaires.com, rfd-flyers, web-search, web-search-facebook-specials, directories, cylex, ubereats-discovery, sitemap-reenumeration-2026-10-12, search-verification-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

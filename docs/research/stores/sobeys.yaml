@@ -1,46 +1,82 @@
+# Phase 2 per-store research record — full depth (2026-10-12).
+# KEPT PER USER 2026-10-12: not excluded despite zero Quebec retail stores under the
+# Sobeys banner (QC retail runs under IGA/IGA Extra). Retained for future geographic
+# expansion research; flyer + ecommerce data recorded at national level.
 slug: sobeys
 name: Sobeys (banner)
 name_variants: ["Sobeys"]
 store_type: traditional
-footprint: qc-unverified
+footprint: qc-unverified   # zero QC retail stores under the Sobeys banner (IGA/IGA Extra instead)
 tier: 2
 
 website:
   url: https://www.sobeys.com/
   languages: [fr, en]
-  language_switch: path
-  render_tech: ""
-  bot_protection: ""
+  language_switch: path    # /en/ and /fr/ both verified live 2026-10-12
+  render_tech: ssr          # homepage + store-locator return full text over plain HTTP;
+                           # dynamic sections (recipes, offers) show "Loading..." placeholders (JS widgets)
+  bot_protection: none     # no challenge on /en/, /fr/, /flyer, /en/store-locator/
 
-parent_company: Sobeys Inc. (Empire Company Ltd.)
+parent_company: "Sobeys Inc. (Empire Company Limited; HQ Stellarton, NS)"
 affiliation: corporate
-banner_family: [IGA, IGA Extra, FreshCo, Safeway, Foodland, Farm Boy, Rachelle-Béry, Les Marchés Tradition, Marché Bonichoix]
+banner_family: [IGA, IGA Extra, Safeway, FreshCo, Foodland, Thrifty Foods, Farm Boy, Longo's, Lawtons Drugs, Rachelle-Béry, Les Marchés Tradition, Marché Bonichoix]
+# Empire Company Ltd Q2F26 MD&A: 1,600+ stores across all banners in 10 provinces.
 
 flyers:
-  has_flyers: false
-  types: []
-  notes: "CORRECTIVE RE-INVESTIGATION 2026-10-12: sobeys.com DOES publish weekly flyers nationally for the Sobeys banner (other provinces) — verified that flyer presence exists at the national level, but zero Quebec retail stores operate under the Sobeys banner, so NO Quebec flyer exists. has_flyers stays FALSE for the Quebec/Montreal pipeline scope. Recommended-excluded stands."
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: sobeys.com
+          url: https://www.sobeys.com/flyer
+          kind: official
+          format: html             # "Find Flyer Offers & Weekly Deals" page with embedded
+                                   # digital flyer widget ("Flyer Display", "Print This Flyer")
+          parse_friendliness: medium  # widget is JS-rendered and requires region/store
+                                    # selection; underlying item API not identified
+          fetchability: http       # page itself fetches fine over plain HTTP;
+                                   # item-level data likely needs browser/JS
+      duration_days: 7
+      flip_weekday: Thursday
+      flip_timezone: America/Toronto
+      validity_example: "2026-10-08 to 2026-10-14"   # observed on third-party mirror
+                                   # caflyers.ca for the Sobeys Ontario edition
+      per_store_variant: true      # regional editions; flyer page requires region/store selection
+      languages: [fr, en]
+      archive_available: false     # not observed
+      structured_data: false       # not observed
+      notes: "Current edition confirmed live: Sobeys Ontario flyer Oct 8–14, 2026 (Thursday–Wednesday cadence, Thanksgiving-week edition). Flyer page also offers 'Subscribe to Weekly Flyer' email signup."
+  notes: ""
 
 product_search:
-  has_search: false
-  notes: "sobeys.com national search exists but is irrelevant for Quebec retail (no stores). CORRECTIVE RE-INVESTIGATION 2026-10-12: re-confirmed via Wikipedia (IGA (Canada)), Canadian Grocer, The Produce News — Sobeys banner absent from Quebec retail; QC operations run under IGA/IGA Extra banners only."
+  has_search: true
+  # sobeys.com itself is a brand/flyer/locator site — no native product catalog search
+  # was found. The banner's product search + ecommerce channel is Voilà (Ocado-powered).
+  url_pattern: "https://www.voila.ca/"   # SPA; exact search URL pattern not observed in text fetch
+  location_scoped: true            # delivery-area / postal-code scoped; serves Greater Montreal
+  guest_ok: false                  # account required to shop (not directly verified; standard for Voilà)
+  kind: spa                        # Ocado web app; homepage text fetch was thin
+  api_notes: "Ocado platform; no public API observed. QC storefront brand is 'Voilà par IGA'."
+  bot_protection: not-tested
+  languages: [en, fr]
 
 ecommerce:
-  online_ordering: false
-  click_and_collect: false
-  notes: "Not applicable in Quebec under the Sobeys banner."
+  online_ordering: true
+  click_and_collect: true
+  notes: "Via Voilà (voila.ca), Ocado-powered. Home delivery operates in Ontario and Quebec (Empire, Jan 2026); Alberta CFCs (Calgary/Edmonton) shut down Jan 2026 ($750M writedown), Vancouver expansion paused; Empire partnered with DoorDash (Apr 2026) for same-day delivery across 500+ Empire-banner stores. Voilà Curbside Pickup (click-and-collect) at Sobeys/Safeway stores — historically all provinces except Quebec; current QC availability not re-verified."
 
 locations:
-  count_estimate: 0
-  locator_url: ""
+  count_estimate: 230
+  locator_url: https://www.sobeys.com/en/store-locator/
   locator_api: ""
-  notes: "Zero Sobeys-banner retail stores in Quebec."
+  notes: "Count ~230 derived from the full server-rendered store list on the locator page (fetched 2026-10-12; includes a few duplicates, so treat as rough). Mechanism: complete store list embedded in locator page HTML (region filter UI; no visible JSON API). Zero stores in Quebec under the Sobeys banner — QC footprint is via IGA/IGA Extra. National banner only."
 
 loyalty_program:
-  name: ""
-  card_gated_prices: false
+  name: "Scene+"
+  card_gated_prices: true   # flyer shows separate Scene+ member-price boxes; homepage promotes
+                            # personalized "Scene+ Offers Just For You" behind sign-in
 
-notes: "RECOMMENDED-EXCLUDED: VERIFIED NO QUEBEC RETAIL PRESENCE. The Sobeys banner does not operate stores in Quebec. Wikipedia (IGA (Canada)): IGA Extra 'launched in the early 2000s to take the place of Sobeys locations in the Quebec City and Montreal areas'. The Produce News (Sobeys Quebec Inc.): 'Sobeys, which operates under the IGA and IGA Extra banners in Quebec'. Canadian Grocer: 'Sobeys manages nine banners in Quebec, including IGA Extra, IGA, Rachelle-Bery, Marche Bonichoix, Les Marches Tradition, IGA Express, IGA mini, Shell and Bonsoir' — the Sobeys banner is not among them. Sobeys Québec Inc. operates distribution centres in the province but no retail. Any sobeys.com flyer/search data is for other provinces. Out of Quebec retail scope."
-sources_checked: [search, wikipedia, canadiangrocer, theproducenews, flyer-presence-verified-nationally]
+notes: "Flagship corporate banner of Sobeys Inc. (Empire Company Ltd). Kept in dataset for geographic expansion research per user 2026-10-12. QC retail presence is via sister banners IGA/IGA Extra (plus Rachelle-Béry, Marchés Tradition, Bonichoix); Sobeys Québec Inc. runs QC distribution centres, not Sobeys-banner retail. Flyer cadence is Thursday–Wednesday nationally."
+sources_checked: [official-site-en, official-site-fr, sobeys-flyer-page, store-locator, caflyers, canadiangrocer, empire-quarterly-mdna, perishablenews, web-search]
 researched_at: "2026-10-12"
 research_status: complete

@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Maisonneuve (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: les-jardins-dauphinais-fruiterie-maisonneuve
+name: Les Jardins Dauphinais (Fruiterie Maisonneuve)
+name_variants: []
+store_type: traditional
+footprint: island
+tier: 3
+
+website:
+  url: 
+  languages: []
+  language_switch: n/a
+  render_tech: unknown
+  bot_protection: none
+  notes: 'No official website found after genuine investigation.'
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: 'No flyer found. Checked: vendor page (no website field); FR+EN web search — PagesJaunes listing only, no dated flyer; not on Flipp, RFD Montreal flyers, or circulaires.club.'
+
+product_search:
+  has_search: false
+  url_pattern: ''
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'No official site; nothing searchable.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: 'In-person stall only.'
+
+locations:
+  notes: 'Stall at Marché Maisonneuve (4445 Rue Ontario E, Montréal).'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Fruit/vegetable stall at Marché Maisonneuve (angle William-David/Ontario); no official website found.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: complete

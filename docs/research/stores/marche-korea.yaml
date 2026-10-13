@@ -1,0 +1,110 @@
+# Phase 2 per-store research record — marche-korea (full depth 2026-10-12).
+# Added 2026-10-12 from user report (was missed by all discovery sources).
+slug: marche-korea
+name: Marché Korea
+name_variants: ["한국식품", "Montreal Korean Food"]
+store_type: ethnic-specialty  # Korean grocery
+footprint: island
+tier: 2
+
+website:
+  url: https://marchekorea.com/
+  languages: [ko, fr, en]       # KO default at root; WPML path prefixes /en/ /fr/
+  language_switch: path
+  render_tech: ssr               # WordPress + WooCommerce; page text extracts cleanly
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site (EN)
+          url: https://marchekorea.com/en/weekly-flyer/
+          kind: official
+          format: images            # 3 portrait PNG flyer pages via Jetpack CDN (i0.wp.com)
+          parse_friendliness: low
+          fetchability: http
+        - name: official site (FR)
+          url: https://marchekorea.com/fr/weekly-flyer/
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: http
+        - name: official site (KO)
+          url: https://marchekorea.com/weekly-flyer/
+          kind: official
+          format: images
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7             # page titled "Weekly Flyer"; homepage "금주의 스페셜 SPECIAL" / "SPÉCIAL DE LA SEMAINE"
+      flip_weekday: ""             # unknown: flyer images are not text-readable; page lastmod 2026-10-06 (Tue)
+      flip_timezone: America/Toronto
+      validity_example: ""        # no validity dates in page text; current edition images uploaded 2026/10
+      per_store_variant: false    # single flyer image set served on KO/FR/EN pages
+      languages: [en]             # current edition images are the English versions (filenames end 영문); same images on all 3 locale pages
+      archive_available: false
+      structured_data: false
+      notes: >-
+        VERIFIED LIVE 2026-10-12 (user supplied the /en/weekly-flyer/ URL).
+        All three locale pages render the same 3 flyer images
+        (황금쌀-영문.png, 고구마-영문-1.png, 담요-영문-1.png — "영문" = English).
+        FR flyer URL keeps the English slug (/fr/weekly-flyer/, NOT a translated
+        slug — /fr/circulaire-hebdomadaire/ 404s). Homepage "금주의 스페셜"
+        section mirrors flyer deals as WooCommerce sale products. No aggregator
+        (Flipp/RFD/circulaires.club/supermarches.ca) carries this flyer.
+  notes: ""
+
+product_search:
+  has_search: true
+  url_pattern: "https://marchekorea.com/?s={query}&post_type=product"
+  location_scoped: false
+  guest_ok: true
+  kind: html                      # WooCommerce server-rendered search results
+  api_notes: >-
+    VERIFIED LIVE 2026-10-12: ?s=kimchi&post_type=product returned ~39 priced
+    products (KOBON kimchi stew $3.99 sale, JONGGA/SRS kimchi $5.99–$13.99,
+    MARCHEK house kimchi line, kimchi cafeteria items). CAD prices, sale
+    strikethroughs, stock status (품절 = sold out). No login. WPML locale
+    prefixes (/en/, /fr/) also scope the search.
+  bot_protection: none
+  languages: [ko, fr, en]
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: >-
+    Full WooCommerce store: priced catalog (grocery, kimchi, noodles, frozen,
+    meat, bakery, cafeteria prepared foods), cart + checkout
+    (/en/checkout-4/ in sitemap), shipping-info page. Local pickup /
+    click-and-collect not verified.
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: >-
+    CONFIRMED: 6170 rue Sherbrooke Ouest, Montréal (NDG flagship — "NDG 본점"),
+    via 2026-02-15 job posting (sales@marchekorea.com, 514-621-4208). The
+    "본점" (main store) wording hints at possible additional branches, but no
+    second location surfaced anywhere; the site has no locator page (EN sitemap
+    lists only weekly-flyer, shipping-info, cafeteria, event, top-items,
+    new-items pages).
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: >-
+  WHY MISSED: Korean-language-first site (몬트리올 한국식품) invisible to
+  EN/FR query tracks; not on RFD's 55-merchant flyers directory, Flipp, or any
+  aggregator; ethnic-search track covered Kim Phat/T&T/C&T/H Mart/Newon/Kim
+  Hour/Kim Po/Épicerie Coréenne et Japonaise but never this NDG independent.
+  See parent report for full source-by-source analysis.
+sources_checked: [official-site, official-site-search-probe, official-site-sitemap-enumeration, official-site-flyer-pages, web-search, directories, hanca-job-posting, flipp-web-search, rfd-flyers-page, circulaires-club-search]
+researched_at: "2026-10-12"
+research_status: complete

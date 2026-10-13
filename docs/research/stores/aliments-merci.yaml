@@ -1,0 +1,70 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon;Maisonneuve (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: aliments-merci
+name: Aliments Merci
+name_variants: []
+store_type: traditional
+footprint: island
+tier: 3
+
+website:
+  url: https://alimentsmerci.com/
+  languages: ['fr']
+  language_switch: n/a
+  render_tech: ssr
+  bot_protection: none
+  notes: 'WooCommerce shop. FR site (some EN shipping text).'
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: true
+  types:
+    - type: weekly
+      sources:
+        - name: official site
+          url: https://alimentsmerci.com/circulaire/
+          kind: official
+          format: pdf
+          parse_friendliness: low
+          fetchability: http
+      duration_days: 7
+      flip_weekday: ''
+      flip_timezone: 'America/Toronto'
+      validity_example: 'September 2026 edition live 2026-10-12'
+      per_store_variant: False
+      languages: ['fr']
+      archive_available: True
+      structured_data: False
+      notes: "'Circulaire de la semaine' page; dated PDFs (e.g. Circulaire-SEPTEMBRE26VV.pdf current, Circulaire-Fevrier-2026.pdf archived)."
+  notes: 'Dated weekly flyer confirmed.'
+
+product_search:
+  has_search: true
+  url_pattern: 'https://alimentsmerci.com/?s={query}'
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'WooCommerce on-site search; product pages with prices.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: 'Full WooCommerce e-commerce.'
+
+locations:
+  notes: 'Stalls at Marché Jean-Talon (222 Place du Marché-du-Nord) and Marché Maisonneuve (4445 Rue Ontario E).'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: 'Operates stalls at both Jean-Talon and Maisonneuve.'
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: complete

@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: pasta-bella-atwater
+name: Pasta Bella Boutique
+name_variants: ["Pasta Bella"]
+store_type: ethnic-specialty        # Italian specialty grocery (fresh/dry pasta, take-away sauces)
+footprint: qc-confirmed            # 3 locations: Laval, Brossard, Atwater
+tier: 3
+
+website:
+  url: https://pastabella.ca/
+  languages: [fr, en]             # FR/EN toggle (contact page in both)
+  language_switch: y
+  render_tech: ssr
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official site (About, Our Products — no circulaire/promotions section); web search 'Pasta Bella circulaire' (official site + directory results only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Brochure site (about, products, contact); no online catalog or search function."
+  bot_protection: none
+  languages: [fr, en]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 3
+  locator_url: "https://pastabella.ca/fr/contactez-nous/"
+  locator_api: ""
+  notes: "Marché Atwater #15 (138 Avenue Atwater; 514-933-1858) + Marché 440, Laval (450-687-4644) + Quartier DIX30, Brossard (450-678-3888). Founded 1983."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "BORDERLINE grocery/restaurant: official vendor directory lists it under 'Specialized Food Retailers' (take-away sauces and pasta, specialty/classic/stuffed pasta); Google also categorizes the boutique as Italian Restaurant. Treated as grocery (retail take-home products). Vendor page: https://www.marchespublics-mtl.com/fr/marchands/pasta-bella"
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

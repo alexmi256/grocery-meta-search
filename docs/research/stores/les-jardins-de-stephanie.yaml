@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+# Market vendor: Jean-Talon (Marché Jean-Talon / Marché Maisonneuve sweep).
+slug: les-jardins-de-stephanie
+name: Les Jardins de Stéphanie
+name_variants: []
+store_type: traditional
+footprint: island
+tier: 3
+
+website:
+  url: https://les-jardins-de-stephanie.panierdachat.app/fr
+  languages: ['fr']
+  language_switch: n/a
+  render_tech: spa
+  bot_protection: none
+  notes: 'Vendor page lists a panierdachat.app storefront (Quebec farm e-commerce platform) as its website — online ordering with products.'
+
+parent_company: ''
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: 'No flyer found. Checked: panierdachat storefront (no flyer section); FR+EN web search — no dated flyer; not on Flipp, RFD Montreal flyers, or circulaires.club.'
+
+product_search:
+  has_search: true
+  url_pattern: 'https://les-jardins-de-stephanie.panierdachat.app/fr'
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: 'panierdachat.app storefront with product listings and ordering.'
+  bot_protection: none
+  languages: ['fr']
+
+ecommerce:
+  online_ordering: true
+  click_and_collect: false
+  notes: 'Ordering via panierdachat.app.'
+
+locations:
+  notes: 'Stall at Marché Jean-Talon.'
+  # Full per-location lat/lng harvest is a Phase 2b scripted task, not manual research.
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Farm stall at Jean-Talon; online store is a third-party platform storefront linked as the vendor's website."
+sources_checked: ['marchespublics-directory', 'official-site', 'web-search-fr-en']
+researched_at: "2026-10-12"
+research_status: complete

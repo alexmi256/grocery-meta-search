@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: erabliere-pmg
+name: Érablière PMG
+name_variants: []
+store_type: traditional            # acériculteur (organic maple products + maple-cranberry line)
+footprint: island
+tier: 3
+
+website:
+  url: ""                          # vendor page has a 'Website' link but no URL exposed; erablierespmg.com (from email info@erablierespmg.com) does not resolve. Facebook only.
+  languages: n/a
+  language_switch: n/a
+  render_tech: n/a
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: no working official website (erablierespmg.com does not resolve; FB only — posts not audited, needs logged-in browser); web search 'Érablière PMG circulaire' (vendor page + PPAQ docs only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "No working website; no product catalog or search."
+  bot_protection: none
+  languages: n/a
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 1
+  locator_url: ""
+  locator_api: ""
+  notes: "Marché Atwater kiosk 49, pop-up days only (since 2025; e.g. select Saturdays Jul-Oct + Oct 13, 2026). Sugar shack in Villeroy (Centre-du-Québec)."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Organic family maple farm: maple products (soft sugar loaves, gelato, meringues, maple butter) + unique maple-cranberry line (Cherry Blossom version Québec, cranberry butter for cheese/terrine). Vendor page: https://www.marchespublics-mtl.com/fr/marchands/erabliere-pmg"
+sources_checked: [vendor-page-marchespublics-mtl, domain-check, web-search, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

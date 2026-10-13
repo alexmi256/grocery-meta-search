@@ -41,7 +41,19 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
-notes: "One of three Montreal public markets managed by the same nonprofit corporation; shares operator site with Jean-Talon and Maisonneuve.  RE-INVESTIGATION 2026-10-12: targeted search 'marchespublics-mtl.com circulaire promotions' confirms no flyer/promotions page on the operator site (Actualités/Événements only, as before); no market circulaire on any aggregator. Verdict stands."
+notes: "One of three Montreal public markets managed by the same nonprofit corporation; shares operator site with Jean-Talon and Maisonneuve.  RE-INVESTIGATION 2026-10-12: targeted search 'marchespublics-mtl.com circulaire promotions' confirms no flyer/promotions page on the operator site (Actualités/Événements only, as before); no market circulaire on any aggregator. Verdict stands.
+
+VENDOR SWEEP 2026-10-12: multi-vendor marketplace — ~50+ vendors enumerated via sitemap + targeted web search (vendor directory is JS-rendered; browser.open returns header/footer only). Vendors researched individually in docs/research/stores/<slug>.yaml rather than duplicated here.
+
+GROCERY vendors with full Phase 2 YAMLs (37): boucherie-de-tours, boucherie-les-deux-freres, boucherie-claude-henri, sos-boucher, charcuterie-de-tours, terrines-pates, boucherie-saint-vincent-atwater, boucherie-adelard-belanger-fils, poissonnerie-atwater-marche, fromagerie-hamel-atwater, fromagerie-atwater, paradis-du-fromage-atwater, ferme-jodoin-atwater, bleuetiere-adoree, jasmin-fruits-legumes-atwater, potager-asiatique-atwater, ferme-fernand-theoret, septieme-micro-pousse, petite-tomate-atwater, trouvailles-gourmandes-fanny, marois-freres-atwater, vergers-alain-dauphinais, bar-a-beurre, atelier-cookie-caro, maison-cuillere, tartinades-punch, erabliere-pmg, delices-mg, brulerie-quatre-vents-atwater, olives-olives-atwater, ave-greene-atwater (partial — site 403), vrac-du-marche-atwater, douceurs-du-marche, pasta-bella-atwater (borderline restaurant), coin-gourmand-atwater, teochew-foodie-atwater (borderline restaurant), jardins-lakou, ferme-m-gauthier-atwater. Première Moisson (existing YAML) also has an Atwater bakery branch — note appended there.
+
+FLYER/SEARCH SUMMARY: no vendor has flyers (all negatives documented). Only Olives & Olives has a product search bar. Online ordering present at: Poissonnerie Atwater (own site), Bar à Beurre (Square), Atelier Cookie (Shopify), Tartinades Punch (boutique), Brûlerie aux Quatre Vents (Shopify), Olive & Olives (e-commerce), Les Jardins Lakou (veg-basket delivery). Dead/hijacked domains: boucherie2freres.com (no DNS), charcuteriedetours.ca (parked), fermejodoin.com (HIJACKED — gambling spam). Blocked: avegreene.com (403).
+
+NOT classified (restaurant/prepared-only, no YAML): 3 Pierres 1 Feu (user-confirmed restaurant), Aylwin Deli, Aylwin Barbecue, Campo, Ca Lem, Boba Boba, Le Petit Sao, Chez Layla, Lucille's, Falafel Yoni, Satay Brothers, Léché, Havre aux Glaces, Pizza Mia, Sushi Shop, Margot Bar à Jus, Super Super, Aqua Mare, Les Filles Fattoush, Boîte aux Huîtres, Les Pops, Ferment, Bouffe-moi, Balkani, Gourmands d'ici, La Crêperie du Marché, Mazorca MTL.
+
+OTHER (no YAML): Fleuriste Chez Louisette, Fleurs de Mon Jardin et des Champs, Homefield Ferme Florale, Centre Jardin Atwater, Tabagie Etcetera, Ferme Conrad Pitre, Ferme Denis Perrier & Fils, Ferme Michel Meunier, Les Serres Y.G. Pinsonneault, Christmas-tree vendors (seasonal).
+
+UNCLASSIFIED (insufficient info, no directory page or conflicting signals): Mycovore, La Fleur d'Ail, Génération en Génération, Justin Marois, Richard Marois, Les Délices de la Mer (appears to be Jean-Talon, per market news), Le Palais du Fromage (no vendor page — likely Le Paradis du Fromage)."
 sources_checked: [official-site, circulaires.club-directory, rfd-flyers, flipp, web-search, web-search-recheck, reinvestigation-2026-10-12]
 researched_at: "2026-10-12"
 research_status: complete

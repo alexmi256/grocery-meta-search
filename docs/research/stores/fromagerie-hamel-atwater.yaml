@@ -1,0 +1,53 @@
+# Phase 2 per-store research record — tier 3 (2026-10-12).
+slug: fromagerie-hamel-atwater
+name: La Fromagerie Hamel
+name_variants: ["Fromagerie Hamel"]
+store_type: traditional            # cheesemonger (fromages fins, charcuteries)
+footprint: greater                 # multiple boutiques (Atwater + Jean-Talon area)
+tier: 3
+
+website:
+  url: https://www.fromageriehamel.com/
+  languages: [fr]                 # FR content observed; EN presence unconfirmed
+  language_switch: n/a
+  render_tech: ssr                 # WordPress (Bedrock layout: /app/themes, /app/uploads), server-rendered
+  bot_protection: none
+
+parent_company: ""
+affiliation: independent-affiliate
+banner_family: []
+
+flyers:
+  has_flyers: false
+  types: []
+  notes: "No flyer found. Checked: official site (sections: produits gourmands, nos boutiques, recettes, blogue — no circulaire/promotions section); web search 'Fromagerie Hamel circulaire' (official site + vendor page only); not on Flipp, RFD Montreal flyers page, or circulaires.club."
+
+product_search:
+  has_search: false
+  url_pattern: ""
+  location_scoped: false
+  guest_ok: true
+  kind: html
+  api_notes: "Marketing site ('Découvrez nos produits gourmands' showcase, recettes, blogue); no shop, catalog search, or e-commerce observed."
+  bot_protection: none
+  languages: [fr]
+
+ecommerce:
+  online_ordering: false
+  click_and_collect: false
+  notes: ""
+
+locations:
+  count_estimate: 2
+  locator_url: "https://www.fromageriehamel.com/ (Nos boutiques)"
+  locator_api: ""
+  notes: "1er étage du Marché Atwater, 138 Avenue Atwater, Montréal, QC; plus a second boutique (Jean-Talon area, 220 rue Jean-Talon Est per directories). 'Nos boutiques' page on official site lists locations."
+
+loyalty_program:
+  name: ""
+  card_gated_prices: false
+
+notes: "Cheesemonger (fromages fins d'ici et d'ailleurs, charcuteries) on the 1st floor of Marché Atwater; in-store tastings. Vendor page: https://www.marchespublics-mtl.com/fr/marchands/fromagerie-hamel"
+sources_checked: [official-site, vendor-page-marchespublics-mtl, web-search, directories, flipp, rfd-flyers, circulaires-club]
+researched_at: "2026-10-12"
+research_status: complete

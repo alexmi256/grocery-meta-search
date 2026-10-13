@@ -82,7 +82,11 @@ loyalty_program:
   card_gated_prices: false
   notes: ""
 
-notes: "AFFILIATION FINDINGS (corrections to brief): Metro acquired 75% in 2014 but became 100% owner in 2019 (Canada Post case study), so parent is Metro Inc. outright, not 75%. July 2026: FGF Brands acquired the Baie-D'Urfé commercial production facility ($90M); Première Moisson Group remains a Metro subsidiary retaining the brand, its 25 retail bakeries, artisanal in-store production, and the Vaudreuil-Dorion French pastry facility."
+notes: "AFFILIATION FINDINGS (corrections to brief): Metro acquired 75% in 2014 but became 100% owner in 2019 (Canada Post case study), so parent is Metro Inc. outright, not 75%. July 2026: FGF Brands acquired the Baie-D'Urfé commercial production facility ($90M); Première Moisson Group remains a Metro subsidiary retaining the brand, its 25 retail bakeries, artisanal in-store production, and the Vaudreuil-Dorion French pastry facility.
+
+MARCHÉ ATWATER (2026-10-12): Première Moisson also operates a bakery branch at Marché Atwater (138 Avenue Atwater) — listed among market vendors alongside its breads, viennoiseries and pastries to take home.
+
+MARCHÉ JEAN-TALON + MAISONNEUVE (2026-10-12): Première Moisson also operates branches at Marché Jean-Talon and Marché Maisonneuve (separate vendor pages: premiere-moisson-jean-talon, premiere-moisson-maisonneuve) — full vendor research is under the single premiere-moisson.yaml record, not duplicated per market."
 sources_checked: [official-site, perishablenews, canadiangrocer, canadapost-case-study, wikipedia, retail-insider]
 researched_at: "2026-10-12"
 research_status: complete
