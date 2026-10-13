@@ -46,10 +46,33 @@ _DETAIL_LINE_RE = re.compile(
     r"|^\d+\s*(g|kg|ml|l|oz|lb)\b|^\d+\s*x\s*\d+)",
     re.IGNORECASE,
 )
-_SIZE_ONLY_RE = re.compile(r"\d\s*(g|kg|ml|l|oz|lb)\b", re.IGNORECASE)
+_SIZE_ONLY_RE = re.compile(
+    r"\d\s*(g|kg|ml|l|oz|lb)\b(?:[\s\-/]*\d+\s*(?:g|kg|ml|l|oz|lb)\b)?",
+    re.IGNORECASE,
+)
 _CJK_RE = re.compile(r"[\u3400-\u9fff\uf900-\ufaff]")
 _AMOUNT_RE = re.compile(r"(\d[\d\s]*),(\d{2})\s*\$?")
 _DIGITS_RE = re.compile(r"^[\d/.,$¢\s]+$")
+# Trailing unit on a price line: "2,95 $/KG", "0,99 $/lb", "3,99 ch.",
+# "499s/ch" (Odessa renders $ as s), "1,40 $/1b" (OCR misread of /lb).
+# Stripped before the digitish check so the amount itself can anchor;
+# size-only lines ("4,43 l", "227 g") do not match and are still rejected.
+_PRICE_UNIT_RE = re.compile(
+    r"\s*(?:/\s*(?:lb|1b|kg|un|ch|ea|l)\b|s\s*/\s*ch\.?|(?<=\d)\s*(?:ch|lb|kg)\.?)\s*\*?\s*$",
+    re.IGNORECASE,
+)
+_PRICE_TRAIL_RE = re.compile(r"\s*[*$¢]\s*$")
+_PRICE_LEAD_RE = re.compile(r"^\s*[$¢]\s*")
+_PRICE_S_TRAIL_RE = re.compile(r"(?<=\d)\s*[sS]\s*$")  # $ misread as S: "4,40S", "4S"
+
+
+def _price_core(text: str) -> str:
+    """Amount part of a price line, with unit suffix and $ stripped."""
+    core = _PRICE_LEAD_RE.sub("", text.strip())
+    core = _PRICE_UNIT_RE.sub("", core)
+    core = _PRICE_TRAIL_RE.sub("", core)
+    core = _PRICE_S_TRAIL_RE.sub("", core)
+    return core.strip()
 
 
 @dataclass
@@ -66,7 +89,13 @@ class OcrStoreConfig:
     min_line_conf: float = 0.7
     tesseract_psm: int = 6
     bare_int_is_cents: bool = False  # T&T renders "68¢" with no dollar part
+    ignore_below_frac: float = 1.0  # ignore name lines below this page fraction (legal footers)
     stoplist: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        # Configs loaded from JSON carry stoplist as a list; the matching
+        # code concatenates it with a tuple.
+        self.stoplist = tuple(self.stoplist)
 
 
 @dataclass
@@ -109,13 +138,44 @@ def _is_caps(text: str) -> bool:
     return len(letters) >= 3 and sum(1 for c in letters if c.isupper()) / len(letters) > 0.8
 
 
+def _parse_one_price(t: str) -> tuple[float, str] | None:
+    """Parse one cleaned price text ("15.99", "1599", "7.97") -> (value, text)."""
+    t = t.replace(",", ".").rstrip("/-").strip()
+    if re.fullmatch(r"\d+\.\d{2}", t):
+        return float(t), t
+    if re.fullmatch(r"\d{3,4}", t):  # merged dollars+cents: "1599", "744"
+        return int(t[:-2]) + int(t[-2:]) / 100, f"{t[:-2]}.{t[-2:]}"
+    return None
+
+
+def _split_dual_prices(texts: list[str]) -> list[tuple[float, str]] | None:
+    """Two sale/regular prices glued in one cluster ("24992999", ["1499","1699"]).
+
+    M&M-style layouts print member price + regular price side by side; OCR
+    merges them into one line or two adjacent digitish fragments that the
+    normal dollars+cents parse rejects. Returns both prices (sale first)
+    when every fragment is independently a full price, else None.
+    """
+    if len(texts) == 1 and re.fullmatch(r"\d{8}", texts[0]):
+        t = texts[0]
+        halves = [t[:4], t[4:]]
+    elif len(texts) == 2:
+        halves = list(texts)
+    else:
+        return None
+    parsed = [_parse_one_price(h) for h in halves]
+    if any(p is None for p in parsed):
+        return None
+    return [p for p in parsed if p is not None]
+
+
 def _parse_fragment_value(
     texts: list[str],
 ) -> tuple[float, str, tuple[int, float] | None] | None:
     """Parse clustered price fragments into (value, price_text, multibuy)."""
     joined = "".join(texts)
-    m = re.fullmatch(r"(\d+)/(\d+)", joined)
-    if m:  # "2/500" -> 2 for 5.00; "2/11" -> 2 for 11.00
+    m = re.fullmatch(r"(\d+)/\$?(\d+)", joined)
+    if m:  # "2/500" -> 2 for 5.00; "2/$5" -> 2 for 5.00; "2/11" -> 2 for 11.00
         count, total_raw = int(m.group(1)), m.group(2)
         if len(total_raw) >= 3:
             total = int(total_raw[:-2]) + int(total_raw[-2:]) / 100
@@ -142,7 +202,11 @@ def find_price_anchors(
     lines: list[OcrLine], page_w: int, page_h: int, cfg: OcrStoreConfig
 ) -> list[PriceAnchor]:
     min_h = cfg.price_min_h_frac * page_h
-    frags = [ln for ln in lines if ln.h >= min_h and ln.conf >= 0.5 and _is_digitish(ln.text)]
+    frags = [
+        ln
+        for ln in lines
+        if ln.h >= min_h and ln.conf >= 0.5 and _is_digitish(_price_core(ln.text))
+    ]
     frags.sort(key=lambda z: (z.y, z.x))
     clusters: list[list[OcrLine]] = []
     for frag in frags:
@@ -163,7 +227,13 @@ def find_price_anchors(
     parsed_clusters: list[tuple[list[OcrLine], float, str, tuple[int, float] | None]] = []
     for cluster in clusters:
         cluster.sort(key=lambda z: z.x)
-        parsed = _parse_fragment_value([c.text.strip() for c in cluster])
+        cleaned = [_price_core(c.text.strip()) for c in cluster]
+        dual = _split_dual_prices(cleaned)
+        if dual is not None:
+            for value, price_text in dual:
+                parsed_clusters.append((cluster, value, price_text, None))
+            continue
+        parsed = _parse_fragment_value(cleaned)
         if parsed is not None:
             parsed_clusters.append((cluster, *parsed))
     if not parsed_clusters:
@@ -177,7 +247,7 @@ def find_price_anchors(
             and value == int(value)
             and 0 < value < 100
             and len(cluster) == 1
-            and len(cluster[0].text.strip()) <= 2
+            and len(_price_core(cluster[0].text.strip())) <= 2
         )
         if lone_int and cluster_h < 0.7 * median_h:
             # Sub-size lone digits are usually a price fragment whose dollar
@@ -209,6 +279,8 @@ def name_candidates(lines: list[OcrLine], page_h: int, cfg: OcrStoreConfig) -> l
     patterns = DEFAULT_STOPLIST + cfg.stoplist
     cands: list[OcrLine] = []
     for line in lines:
+        if line.y > cfg.ignore_below_frac * page_h:
+            continue
         if not (cfg.name_min_h_frac * page_h <= line.h <= cfg.name_max_h_frac * page_h):
             continue
         if line.conf < cfg.min_line_conf:
@@ -232,6 +304,29 @@ def _edge_dist(a: tuple[float, float, float, float], b: tuple[float, float, floa
     dx = max(0.0, max(a[0], b[0]) - min(a[2], b[2]))
     dy = max(0.0, max(a[1], b[1]) - min(a[3], b[3]))
     return float((dx * dx + dy * dy) ** 0.5)
+
+
+def _boxes_near(a: OcrLine, b: OcrLine) -> bool:
+    """True when two lines substantially overlap (same text detected twice)."""
+    y_overlap = min(a.bottom, b.bottom) - max(a.y, b.y)
+    x_overlap = min(a.right, b.right) - max(a.x, b.x)
+    return y_overlap > 0.4 * min(a.h, b.h) and x_overlap > 0.2 * min(a.w, b.w)
+
+
+def _dedupe_candidates(cands: list[OcrLine]) -> list[OcrLine]:
+    """Drop lower-confidence duplicates of the same text in the same spot.
+
+    RapidOCR sometimes emits the same line twice with slightly different
+    spacing ("Pommesdeterre augratin supremes" vs "Pommes deterre
+    augratinsupremes"); without dedup, dual price anchors each claim one
+    copy and the product is extracted twice.
+    """
+    kept: list[OcrLine] = []
+    for ln in sorted(cands, key=lambda z: (-z.conf, z.y, z.x)):
+        if any(_shares_content(ln.text, k.text) and _boxes_near(ln, k) for k in kept):
+            continue
+        kept.append(ln)
+    return kept
 
 
 def _line_box(line: OcrLine) -> tuple[float, float, float, float]:
@@ -369,7 +464,7 @@ def segment_page(
     if cfg.price_strategy == "prix_line":
         return _segment_prix_line(image, lines, cfg, page_url, page_number)
     anchors = find_price_anchors(lines, page_w, page_h, cfg)
-    cands = name_candidates(lines, page_h, cfg)
+    cands = _dedupe_candidates(name_candidates(lines, page_h, cfg))
     stack = _stack_counts(cands, page_w, page_h, cfg)
 
     def anchor_priority(anchor: PriceAnchor) -> float:
@@ -382,6 +477,7 @@ def segment_page(
 
     claimed: set[int] = set()
     line_owner: dict[int, FlyerItem] = {}
+    _item_anchor_box: dict[int, tuple[float, float, float, float]] = {}
     items: list[FlyerItem] = []
     for anchor in sorted(anchors, key=anchor_priority):
         grown = _grow_name_lines(anchor, cands, claimed, stack, page_w, page_h, cfg)
@@ -416,6 +512,31 @@ def segment_page(
             name = _name_from_text(block_text, grown)
         if not name:
             continue
+        # Dual-price fold: member + regular price in one badge grow
+        # near-identical names from adjacent anchors. Merge into the
+        # existing item (lower price wins as the main price) instead of
+        # duplicating the product.
+        dup_of: FlyerItem | None = None
+        for other in items:
+            if _shares_content(name, other.name_fr or "") and _edge_dist(
+                anchor.box, _item_anchor_box[id(other)]
+            ) <= 0.06 * page_w:
+                dup_of = other
+                break
+        if dup_of is not None:
+            alts = dup_of.conditions.setdefault("alt_prices", [])
+            if isinstance(alts, list):
+                if anchor.value < (dup_of.price_value or float("inf")):
+                    if dup_of.price_text:
+                        alts.append(dup_of.price_text)
+                    dup_of.price_value = anchor.value
+                    dup_of.price_text = anchor.price_text
+                else:
+                    alts.append(anchor.price_text)
+            for line in grown:
+                claimed.add(id(line))
+                line_owner[id(line)] = dup_of
+            continue
         region = (
             min(anchor.box[0], bx[0]),
             min(anchor.box[1], bx[1]),
@@ -444,6 +565,7 @@ def segment_page(
             confidence=round(min(anchor.conf, 0.99), 2),
         )
         items.append(item)
+        _item_anchor_box[id(item)] = anchor.box
         for line in grown:
             line_owner[id(line)] = item
     return items
