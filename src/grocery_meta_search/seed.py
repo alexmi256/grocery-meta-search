@@ -64,13 +64,19 @@ def seed_flyer_sources(
     slug: str,
     data: dict[str, Any],
     brand_configs: dict[str, dict[str, Any]],
+    search_configs: dict[str, dict[str, Any]],
 ) -> int:
     count = 0
     for flyer_type in (data.get("flyers") or {}).get("types", []):
         ftype = flyer_type.get("type", "weekly")
         for src in flyer_type.get("sources", []):
             name = (src.get("name") or "").strip().lower()
-            api_config = brand_configs.get(slug) if name == "flipp" else None
+            api_config = None
+            if name == "flipp":
+                if slug in brand_configs:
+                    api_config = brand_configs[slug]
+                elif slug in search_configs:
+                    api_config = search_configs[slug]
             conn.execute(
                 """
                 INSERT INTO flyer_sources
@@ -100,10 +106,14 @@ def seed(
     db_path: Path,
     slugs: list[str] | None = None,
     brands_path: Path | None = None,
+    search_merchants_path: Path | None = None,
 ) -> dict[str, int]:
     brand_configs: dict[str, dict[str, Any]] = {}
     if brands_path and brands_path.exists():
         brand_configs = json.loads(brands_path.read_text(encoding="utf-8"))
+    search_configs: dict[str, dict[str, Any]] = {}
+    if search_merchants_path and search_merchants_path.exists():
+        search_configs = json.loads(search_merchants_path.read_text(encoding="utf-8"))
 
     conn = connect(db_path)
     init_schema(conn)
@@ -117,7 +127,7 @@ def seed(
             continue
         seed_store(conn, data)
         stats["stores"] += 1
-        stats["sources"] += seed_flyer_sources(conn, slug, data, brand_configs)
+        stats["sources"] += seed_flyer_sources(conn, slug, data, brand_configs, search_configs)
     conn.commit()
     conn.close()
     return stats
@@ -128,9 +138,15 @@ def main() -> None:
     parser.add_argument("--db", required=True, type=Path)
     parser.add_argument("--slugs", default="", help="comma-separated store slugs (default: all)")
     parser.add_argument("--brands", default=None, type=Path, help="flipp_brands.json path")
+    parser.add_argument(
+        "--search-merchants",
+        default=None,
+        type=Path,
+        help="flipp_search_merchants.json path",
+    )
     args = parser.parse_args()
     slugs = [s.strip() for s in args.slugs.split(",") if s.strip()] or None
-    stats = seed(args.db, slugs, args.brands)
+    stats = seed(args.db, slugs, args.brands, args.search_merchants)
     print(f"seeded {stats['stores']} stores, {stats['sources']} flyer sources -> {args.db}")
 
 

@@ -22,6 +22,7 @@ from typing import Any
 from ..db import connect, init_schema
 from ..sources.base import FlyerEdition, FlyerItem
 from ..sources.flipp import BrandConfig, FlyerKitClient, FlyerKitError
+from ..sources.flipp_search import FlippSearchClient, FlippSearchError, SearchConfig
 
 _WS_RE = re.compile(r"\s+")
 
@@ -47,6 +48,83 @@ def get_flipp_source(conn: sqlite3.Connection, store_slug: str) -> sqlite3.Row |
     return row
 
 
+def fetch_store_flyerkit(
+    conn: sqlite3.Connection, src: sqlite3.Row, store_slug: str, cfg_data: dict[str, Any]
+) -> dict[str, Any]:
+    report: dict[str, Any] = {"store": store_slug, "editions": 0, "items": 0}
+    cfg = BrandConfig(
+        store_slug=store_slug,
+        brand_slug=cfg_data["brand_slug"],
+        access_token=cfg_data["access_token"],
+        store_code=cfg_data["store_code"],
+        flyer_type_filter=cfg_data.get("flyer_type_filter"),
+    )
+    try:
+        editions = FlyerKitClient().fetch_store_editions(cfg)
+    except FlyerKitError as exc:
+        report["error"] = str(exc)
+        return report
+    return store_editions(conn, src, store_slug, editions, report)
+
+
+def fetch_store_search(
+    conn: sqlite3.Connection, src: sqlite3.Row, store_slug: str, cfg_data: dict[str, Any]
+) -> dict[str, Any]:
+    report: dict[str, Any] = {"store": store_slug, "editions": 0, "items": 0}
+    cfg = SearchConfig(
+        store_slug=store_slug,
+        merchant_name=cfg_data["merchant_name"],
+        postal_code=cfg_data["postal_code"],
+    )
+    try:
+        editions = FlippSearchClient().fetch_store_editions(cfg)
+    except FlippSearchError as exc:
+        report["error"] = str(exc)
+        return report
+    return store_editions(conn, src, store_slug, editions, report)
+
+
+def store_editions(
+    conn: sqlite3.Connection,
+    src: sqlite3.Row,
+    store_slug: str,
+    editions: list[FlyerEdition],
+    report: dict[str, Any],
+) -> dict[str, Any]:
+    for edition in editions:
+        flyer_id, is_new = upsert_edition(conn, store_slug, int(src["id"]), edition)
+        report["editions"] += 1
+        if is_new:
+            report["items"] += insert_items(conn, flyer_id, store_slug, edition.items)
+        else:
+            report["skipped"] = report.get("skipped", 0) + len(edition.items)
+    conn.commit()
+    return report
+
+
+def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
+    """Fetch active flyers for one store. Returns a small report dict."""
+    src = get_flipp_source(conn, store_slug)
+    if src is None or not src["api_config"]:
+        return {
+            "store": store_slug,
+            "editions": 0,
+            "items": 0,
+            "error": "no flipp source with api_config",
+        }
+    cfg_data = json.loads(src["api_config"])
+    if "brand_slug" in cfg_data:
+        return fetch_store_flyerkit(conn, src, store_slug, cfg_data)
+    if "merchant_name" in cfg_data:
+        return fetch_store_search(conn, src, store_slug, cfg_data)
+    return {
+        "store": store_slug,
+        "editions": 0,
+        "items": 0,
+        "error": f"unknown api_config shape: {sorted(cfg_data)}",
+    }
+
+
 def upsert_edition(
     conn: sqlite3.Connection,
     store_slug: str,
@@ -58,24 +136,33 @@ def upsert_edition(
         """
         SELECT id FROM flyers
         WHERE store_slug = ? AND flyer_type = ?
+          AND COALESCE(source_ref, '') = COALESCE(?, '')
           AND COALESCE(valid_from, '') = COALESCE(?, '')
           AND COALESCE(valid_to, '') = COALESCE(?, '')
           AND COALESCE(flyer_source_id, -1) = COALESCE(?, -1)
         """,
-        (store_slug, edition.flyer_type, edition.valid_from, edition.valid_to, source_id),
+        (
+            store_slug,
+            edition.flyer_type,
+            edition.source_ref,
+            edition.valid_from,
+            edition.valid_to,
+            source_id,
+        ),
     ).fetchone()
     if row:
         return int(row["id"]), False
     cur = conn.execute(
         """
-        INSERT INTO flyers (store_slug, flyer_source_id, flyer_type, valid_from, valid_to,
-                            languages, fetch_status, raw)
-        VALUES (?, ?, ?, ?, ?, ?, 'ok', ?)
+        INSERT INTO flyers (store_slug, flyer_source_id, flyer_type, source_ref,
+                            valid_from, valid_to, languages, fetch_status, raw)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 'ok', ?)
         """,
         (
             store_slug,
             source_id,
             edition.flyer_type,
+            edition.source_ref,
             edition.valid_from,
             edition.valid_to,
             json.dumps(edition.languages, ensure_ascii=False),
@@ -144,44 +231,10 @@ def insert_items(
     return count
 
 
-def fetch_store(
-    conn: sqlite3.Connection, client: FlyerKitClient, store_slug: str
-) -> dict[str, Any]:
-    """Fetch active flyers for one store. Returns a small report dict."""
-    report: dict[str, Any] = {"store": store_slug, "editions": 0, "items": 0}
-    src = get_flipp_source(conn, store_slug)
-    if src is None or not src["api_config"]:
-        report["error"] = "no flipp source with api_config"
-        return report
-    cfg_data = json.loads(src["api_config"])
-    cfg = BrandConfig(
-        store_slug=store_slug,
-        brand_slug=cfg_data["brand_slug"],
-        access_token=cfg_data["access_token"],
-        store_code=cfg_data["store_code"],
-        flyer_type_filter=cfg_data.get("flyer_type_filter"),
-    )
-    try:
-        editions = client.fetch_store_editions(cfg)
-    except FlyerKitError as exc:
-        report["error"] = str(exc)
-        return report
-    for edition in editions:
-        flyer_id, is_new = upsert_edition(conn, store_slug, int(src["id"]), edition)
-        report["editions"] += 1
-        if is_new:
-            report["items"] += insert_items(conn, flyer_id, store_slug, edition.items)
-        else:
-            report["skipped"] = report.get("skipped", 0) + len(edition.items)
-    conn.commit()
-    return report
-
-
 def run(db_path: Path, slugs: list[str]) -> list[dict[str, Any]]:
     conn = connect(db_path)
     init_schema(conn)
-    client = FlyerKitClient()
-    reports = [fetch_store(conn, client, slug) for slug in slugs]
+    reports = [fetch_store(conn, slug) for slug in slugs]
     conn.close()
     return reports
 

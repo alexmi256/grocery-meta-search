@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS flyers (
     store_slug TEXT NOT NULL REFERENCES stores(slug),
     flyer_source_id INTEGER REFERENCES flyer_sources(id),
     flyer_type TEXT NOT NULL DEFAULT 'weekly',
+    source_ref TEXT,                 -- source-native edition ID (FlyerKit publication ID, Flipp flyer ID)
     valid_from TEXT,                 -- ISO date
     valid_to TEXT,                   -- ISO date
     flip_weekday TEXT,
@@ -56,7 +57,7 @@ CREATE TABLE IF NOT EXISTS flyers (
     created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 CREATE UNIQUE INDEX IF NOT EXISTS idx_flyers_edition
-    ON flyers(store_slug, flyer_type, valid_from, valid_to, flyer_source_id);
+    ON flyers(store_slug, flyer_type, COALESCE(source_ref, ''), COALESCE(valid_from, ''), COALESCE(valid_to, ''), COALESCE(flyer_source_id, -1));
 CREATE INDEX IF NOT EXISTS idx_flyers_valid ON flyers(store_slug, valid_from);
 
 CREATE TABLE IF NOT EXISTS flyer_items (

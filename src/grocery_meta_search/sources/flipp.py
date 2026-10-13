@@ -125,10 +125,12 @@ def _is_loyalty_gated(product: dict[str, Any]) -> bool:
 
 
 def edition_from_publication(pub: dict[str, Any]) -> FlyerEdition:
+    pub_id = pub.get("id")
     return FlyerEdition(
         valid_from=_to_date(pub.get("valid_from")),
         valid_to=_to_date(pub.get("valid_to")),
         flyer_type=str(pub.get("flyer_type") or "weekly"),
+        source_ref=str(pub_id) if pub_id is not None else None,
         raw=pub,
     )
 
@@ -262,11 +264,7 @@ class FlyerKitClient:
         """Fetch active publications and their products, merged across locales."""
         publications = self.get_publications(cfg, locales[0])
         if cfg.flyer_type_filter:
-            publications = [
-                p
-                for p in publications
-                if p.get("flyer_type") == cfg.flyer_type_filter
-            ]
+            publications = [p for p in publications if p.get("flyer_type") == cfg.flyer_type_filter]
         editions: list[FlyerEdition] = []
         for pub in publications:
             pub_id = pub.get("id")

@@ -1,0 +1,111 @@
+{
+ "flyers": [
+  {
+   "id": 8179372,
+   "premium": false
+  }
+ ],
+ "merchants": [
+  {
+   "country": 1,
+   "id": 3290,
+   "logo_url": "https://images.wishabi.net/merchants/89ffb32b-f5ae-4284-b0ac-8912def24ce9/mini_magick20221102-1-ahmcad.png",
+   "name": "Kim Phat",
+   "store_locator_url": "",
+   "storefront_logo_url": "https://images.wishabi.net/merchants/bee0ac05-55c8-41d6-9799-4582e677d818/RackMultipart20221102-1-r15gpc.jpg",
+   "us_based": false
+  }
+ ],
+ "items": [
+  {
+   "_L1": "Food, Beverages & Tobacco",
+   "_L2": "Food Items",
+   "bottom": -777.738,
+   "clean_image_url": "https://f.wishabi.net/page_items/436674862/1791333605/extra_large.jpg",
+   "clipping_image_url": "https://f.wishabi.net/page_items/436674862/1791333605/extra_large.jpg",
+   "current_price": 0.68,
+   "flyer_id": 8179372,
+   "flyer_item_id": 1046099959,
+   "id": 1046099959,
+   "indexed": false,
+   "item_type": "flyer",
+   "item_weight": 3.7341,
+   "left": 1107.3,
+   "merchant_id": 3290,
+   "merchant_logo": "https://images.wishabi.net/merchants/bee0ac05-55c8-41d6-9799-4582e677d818/RackMultipart20221102-1-r15gpc.jpg",
+   "merchant_name": "Kim Phat",
+   "name": "CAROTTE",
+   "original_price": 0.89,
+   "post_price_text": "/LB",
+   "pre_price_text": null,
+   "premium": false,
+   "right": 1484.03,
+   "sale_story": null,
+   "score": 33492.703,
+   "top": -411.6,
+   "valid_from": "2026-10-08T04:00:00+00:00",
+   "valid_to": "2026-10-15T03:59:59+00:00"
+  },
+  {
+   "_L1": "Food, Beverages & Tobacco",
+   "_L2": "Food Items",
+   "bottom": -1955.32,
+   "clean_image_url": "https://f.wishabi.net/page_items/436675170/1791333602/extra_large.jpg",
+   "clipping_image_url": "https://f.wishabi.net/page_items/436675170/1791333602/extra_large.jpg",
+   "current_price": 2.69,
+   "flyer_id": 8179372,
+   "flyer_item_id": 1046100119,
+   "id": 1046100119,
+   "indexed": false,
+   "item_type": "flyer",
+   "item_weight": 9.8577,
+   "left": 8612.95,
+   "merchant_id": 3290,
+   "merchant_logo": "https://images.wishabi.net/merchants/bee0ac05-55c8-41d6-9799-4582e677d818/RackMultipart20221102-1-r15gpc.jpg",
+   "merchant_name": "Kim Phat",
+   "name": "SOC D'ÉPAULE DE PORC DÉSOSSÉ",
+   "original_price": 2.99,
+   "post_price_text": "/LB",
+   "pre_price_text": null,
+   "premium": false,
+   "right": 9065.5,
+   "sale_story": null,
+   "score": 36342.625,
+   "top": -1666.02,
+   "valid_from": "2026-10-08T04:00:00+00:00",
+   "valid_to": "2026-10-15T03:59:59+00:00"
+  },
+  {
+   "_L1": "Food, Beverages & Tobacco",
+   "_L2": "Food Items",
+   "bottom": -2270.53,
+   "brand_ids": [
+    "26603"
+   ],
+   "clean_image_url": "https://f.wishabi.net/page_items/436675102/1791333606/extra_large.jpg",
+   "clipping_image_url": "https://f.wishabi.net/page_items/436675102/1791333606/extra_large.jpg",
+   "current_price": 2.88,
+   "flyer_id": 8179372,
+   "flyer_item_id": 1046100087,
+   "id": 1046100087,
+   "indexed": false,
+   "item_type": "flyer",
+   "item_weight": 6.6501,
+   "left": 7075.13,
+   "merchant_id": 3290,
+   "merchant_logo": "https://images.wishabi.net/merchants/bee0ac05-55c8-41d6-9799-4582e677d818/RackMultipart20221102-1-r15gpc.jpg",
+   "merchant_name": "Kim Phat",
+   "name": "JEUNE DINDON",
+   "original_price": 4.49,
+   "post_price_text": "/LB",
+   "pre_price_text": null,
+   "premium": false,
+   "right": 7555.52,
+   "sale_story": null,
+   "score": 35092.09,
+   "top": -1942.95,
+   "valid_from": "2026-10-08T04:00:00+00:00",
+   "valid_to": "2026-10-15T03:59:59+00:00"
+  }
+ ]
+}

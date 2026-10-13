@@ -36,6 +36,7 @@ class FlyerEdition:
     valid_from: str | None
     valid_to: str | None
     flyer_type: str = "weekly"
+    source_ref: str | None = None  # source-native edition ID
     languages: list[str] = field(default_factory=list)
     raw: dict[str, Any] = field(default_factory=dict)
     items: list[FlyerItem] = field(default_factory=list)
