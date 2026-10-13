@@ -21,7 +21,7 @@ flyers:
   types:
     - type: unknown
       sources:
-        - name: official site
+        - name: official:wix
           url: https://www.marche3saisons.com/copy-of-photos-1
           kind: official
           format: images

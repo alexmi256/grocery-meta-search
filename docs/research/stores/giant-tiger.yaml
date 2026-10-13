@@ -21,7 +21,7 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:shopify
           url: https://www.gianttiger.com/collections/flyers-and-deals?view=flyers
           kind: official
           format: html
@@ -33,6 +33,21 @@ flyers:
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/tigre-geant/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: flyerca.com
+          url: https://www.flyerca.com/giant-tiger-deals/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+
       duration_days: 7
       flip_weekday: Wednesday
       flip_timezone: America/Toronto

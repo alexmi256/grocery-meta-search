@@ -21,18 +21,76 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:flipp
           url: https://www.walmart.ca/flyer
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: browser-needed
+          notes: 'Platform call 2026-10-12: see normalization report for evidence.'
         - name: flipp
           url: https://flipp.com/en-ca/toronto-on/stores/walmart
           kind: aggregator
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/walmart/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-walmart/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: flyerseek.com
+          url: https://flyerseek.com/walmart-flyer/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+        - name: kimbino.ca
+          url: https://www.kimbino.ca/city/montreal/walmart/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en, fr]
+        - name: flyerbox.ca
+          url: https://www.flyerbox.ca/fr/offres/montreal/walmart/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr, en]
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-walmart
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: flyerdeals.ca
+          url: https://www.flyerdeals.ca/stores/walmart/flyers-specials
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+          notes: "store-page text snapshot showed July 2026 editions; homepage lists current flyers"
+        - name: speciauxquebec.com
+          url: https://speciauxquebec.com/circulaire/circulaire-walmart-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

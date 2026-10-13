@@ -26,9 +26,11 @@ flyers:
     - type: weekly
       sources:
         - name: circulaires.com
-          url: https://www.circulaires.com/marche-bkr/
+          url: https://www.circulaires.com/marche-bkr/web/
           kind: aggregator
           format: images            # merchant page states "version interactive et image"
+                                    # (user-verified 2026-10-12: this merchant-hosted
+                                    # flyer page is distinct from the SEO directory pages)
           parse_friendliness: medium  # merchant page is text-fetchable; the flyer
                                     # viewer itself is JS-rendered (edition URLs
                                     # were not visible in the text fetch)

@@ -34,12 +34,26 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/dorval-qc/stores/marche-richelieu
           kind: aggregator
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaires.ca
+          url: https://www.circulaires.ca/?region=Monteregie
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

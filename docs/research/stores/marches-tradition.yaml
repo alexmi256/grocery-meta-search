@@ -22,12 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site (per-store Circulaire links)
+        - name: official:custom
           url: https://www.marchestradition.com/fr/store-locator/
           kind: official
           format: images
           parse_friendliness: medium
           fetchability: http
+          notes: "Source renamed 2026-10-12: 'official site (per-store Circulaire links)'. official:custom (Per-store Circulaire links; Metro-affiliated banner; platform unverified.)"
         - name: circulaires.club
           url: https://circulaires.club/circulaire/circulaire-les-marches-tradition-marches-coop-du-1-au-7-octobre-2026/
           kind: aggregator
@@ -40,6 +41,20 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-les-marches-tradition
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: flyers-on-line.com
+          url: https://www.flyers-on-line.com/march-s-tradition/quebec
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+          languages: [en]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

@@ -22,12 +22,13 @@ flyers:
   types:
     - type: promotions-page      # standing specials page (not a weekly cadence)
       sources:
-        - name: official site — Promotions
+        - name: official:wordpress
           url: https://www.marcheandes.com/promotions/
           kind: official
           format: html
           parse_friendliness: medium   # WooCommerce sale-items block; page JS-rendered in text fetch but underlying product data is in the public Store API
           fetchability: http           # /promotions/ reachable; product sitemap + wp-json API verified
+          notes: "Source renamed 2026-10-12: 'official site — Promotions'."
       duration_days: 0
       flip_weekday: ""
       flip_timezone: America/Toronto

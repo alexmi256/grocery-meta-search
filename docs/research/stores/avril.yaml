@@ -21,18 +21,27 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:reebee
           url: https://avril.ca/fr/circulaire
           kind: official
           format: html
           parse_friendliness: high
           fetchability: http
+          notes: 'Platform call 2026-10-12: see normalization report for evidence.'
         - name: flipp
           url: https://flipp.com/en-ca/granby-qc/stores/avril-supermarche-sante
           kind: aggregator
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/avril/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+
       duration_days: 8
       flip_weekday: Wednesday
       flip_timezone: America/Toronto

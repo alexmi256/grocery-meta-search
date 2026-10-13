@@ -22,12 +22,22 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://epicerievalmont.com/circulaires/
           kind: official
           format: images
           parse_friendliness: low
           fetchability: http
+          notes: official:custom (Per-location JPG circulaires at /circulaires/; platform unverified.)
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/val-mont/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+          notes: 'Store page identity verified 2026-10-12: name_variants include "Fruiterie Val-Mont"; locations Plateau Mont-Royal/Boucherville/Rosemont match.'
+
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

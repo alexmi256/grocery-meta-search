@@ -24,7 +24,7 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:woocommerce
           url: https://alimentsmerci.com/circulaire/
           kind: official
           format: pdf
@@ -34,10 +34,10 @@ flyers:
       flip_weekday: ''
       flip_timezone: 'America/Toronto'
       validity_example: 'September 2026 edition live 2026-10-12'
-      per_store_variant: False
+      per_store_variant: false
       languages: ['fr']
-      archive_available: True
-      structured_data: False
+      archive_available: true
+      structured_data: false
       notes: "'Circulaire de la semaine' page; dated PDFs (e.g. Circulaire-SEPTEMBRE26VV.pdf current, Circulaire-Fevrier-2026.pdf archived)."
   notes: 'Dated weekly flyer confirmed.'
 

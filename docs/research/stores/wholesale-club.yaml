@@ -22,20 +22,15 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official flyer platform (flyers.wholesaleclub.ca)
+        - name: official:flyerify
           url: https://flyers.wholesaleclub.ca/
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: http
+          notes: "Source renamed 2026-10-12: 'official flyer platform (flyers.wholesaleclub.ca)'. Merged duplicate source (same canonical name); alternate URL: https://wholesaleclub.flyerify.com/. Merged note: Source renamed 2026-10-12: 'flyerify (wholesaleclub.flyerify.com)'."
         - name: flyerdeals.ca
           url: https://www.flyerdeals.ca/stores/wholesale-club/flyers-specials
-          kind: aggregator
-          format: images
-          parse_friendliness: low
-          fetchability: http
-        - name: flyerify (wholesaleclub.flyerify.com)
-          url: https://wholesaleclub.flyerify.com/
           kind: aggregator
           format: images
           parse_friendliness: low
@@ -46,12 +41,19 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
-        - name: RFD Montreal flyers
+        - name: rfd-flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: flyers-on-line.com
+          url: https://www.flyers-on-line.com/wholesale-club/quebec
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+          languages: [en]
       duration_days: 7
       flip_weekday: Thursday        # VERIFIED: regional weekly editions (e.g. QC Sept 10-16, Sept 17-23 2026), Thu-Wed
       flip_timezone: America/Toronto

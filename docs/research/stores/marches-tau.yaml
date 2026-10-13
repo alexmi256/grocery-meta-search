@@ -22,12 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://marchestau.com/
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: http
+          notes: official:custom (Official "Circulaires" section; exact stack unverified.)
         - name: circulaires.club
           url: https://circulaires.club/circulaire/circulaire-marches-tau-de-fruits-et-legumes-du-5-au-11-octobre-2026/
           kind: aggregator
@@ -40,6 +41,20 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-tau-marche-dalimentation-naturelle/circulaire-marche-tau-speciaux-promotions-conseils-en-vigueur
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: flyers-on-line.com
+          url: https://www.flyers-on-line.com/marches-tau/quebec
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+          languages: [en]
       duration_days: 7
       flip_weekday: Monday
       flip_timezone: America/Toronto

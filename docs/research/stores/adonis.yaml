@@ -23,13 +23,14 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://www.groupeadonis.ca/circulaire
           kind: official
           format: html
           parse_friendliness: medium   # store selector page is SSR; the flyer viewer itself appears JS-driven (page body mostly selectors on fetch)
           fetchability: browser-needed # viewer content did not render in text fetch
-        - name: Flipp
+          notes: official:custom (Proprietary JS-driven viewer (groupeadonis.ca/circulaire).)
+        - name: flipp
           url: https://flipp.com/en-ca/pierrefonds-qc/stores/metro
           kind: aggregator
           format: images
@@ -54,7 +55,7 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
-        - name: RFD Montreal flyers page
+        - name: rfd-flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
           format: html

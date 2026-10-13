@@ -22,13 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:metro-azure
           url: https://www.superc.ca/circulaire
           kind: official
           format: html
           parse_friendliness: high
           fetchability: http
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/longueuil-qc/stores/super-c
           kind: aggregator
           format: images
@@ -52,12 +52,19 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
-        - name: RFD Montreal flyers page
+        - name: rfd-flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-super-c
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

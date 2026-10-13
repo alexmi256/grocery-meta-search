@@ -26,12 +26,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:loblaw
           url: https://www.tntsupermarket.com/store-flyer?location=bc
           kind: official
           format: html              # VERIFIED via text-render fetch 2026-10-12
           parse_friendliness: high  # per-item structured HTML: product name, -% discount, sale price, regular price, unit (e.g. /lb)
           fetchability: browser-needed   # curl gets Akamai 403; content retrievable via text-render fetch (browser.open succeeded)
+          notes: 'Platform call 2026-10-12: see normalization report for evidence.'
         - name: flyerbox.ca
           url: https://www.flyerbox.ca/tt-supermarket/
           kind: aggregator
@@ -62,6 +63,13 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/supermarche-tt/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Friday          # VERIFIED: 2026-10-09 (Fri) to 2026-10-15 (Thu); next 2026-10-16 to 2026-10-22
       flip_timezone: America/Toronto

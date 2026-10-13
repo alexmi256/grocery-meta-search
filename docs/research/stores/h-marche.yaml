@@ -22,7 +22,7 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:wix
           url: https://www.hmartmontreal.com/weekly-flyer
           kind: official
           format: images

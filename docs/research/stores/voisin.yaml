@@ -22,12 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://www.mon-voisin.com/fr/trouver-un-magasin/
           kind: official
           format: html  # per-store "Weekly Flyer" link on locator result cards; target format unverified
           parse_friendliness: medium
           fetchability: blocked  # HTTP 403 to plain curl; text-fetch browser + indexed content work
+          notes: official:custom (Sobeys depanneur banner (mon-voisin.com); platform unverified.)
       duration_days: 7
       flip_weekday: ""  # validity/dates not verified (bot protection blocked direct fetch)
       flip_timezone: America/Toronto

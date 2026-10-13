@@ -24,7 +24,7 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:loblaw
           url: https://www.provigo.ca/flyer
           kind: official
           format: html              # UNVERIFIED — path and format unconfirmed; site blocked
@@ -60,7 +60,7 @@ flyers:
           format: pdf               # generates PDF summaries of each weekly flyer
           parse_friendliness: medium
           fetchability: http
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/montreal-qc/stores/provigo
           kind: aggregator
           format: images

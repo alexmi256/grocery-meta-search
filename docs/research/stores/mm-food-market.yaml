@@ -22,12 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: flyers-on-line.com (QC edition)
+        - name: flyers-on-line.com
           url: https://www.flyers-on-line.com/m-m-meat-shops/quebec
           kind: aggregator
           format: images
           parse_friendliness: low
           fetchability: http
+          notes: QC edition.
         - name: flyerseek.com
           url: https://flyerseek.com/mm-meats-flyer/
           kind: aggregator
@@ -46,12 +47,33 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
-        - name: RFD Montreal flyers
+        - name: rfd-flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-les-aliments-mm-du-8-au-14-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-aliments-mm/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/les-aliments-mm
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday        # VERIFIED: Oct 8-14 and Oct 15-21 2026 editions (Thu-Wed)
       flip_timezone: America/Toronto

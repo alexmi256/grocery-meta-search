@@ -28,6 +28,13 @@ flyers:
           format: html+images  # "version interactive et image" per the aggregator page
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday  # "disponible tous les jeudis, un jour à l'avance"
       flip_timezone: America/Toronto

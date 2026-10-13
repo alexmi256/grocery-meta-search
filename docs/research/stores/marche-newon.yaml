@@ -23,7 +23,7 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:wix
           url: http://www.marchenewon.com/
           kind: official
           format: html
@@ -35,6 +35,20 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/marche-newon/circulaire-cdn-jean-talon
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Friday        # circulaires.club: "valide du vendredi 9 au jeudi 15 octobre 2026"
       flip_timezone: America/Toronto

@@ -25,13 +25,13 @@ flyers:
   types:
     - type: weekly                 # main flyer, ~20 pages
       sources:
-        - name: official site
+        - name: official:loblaw
           url: https://www.pharmaprix.ca/flyer?lang=fr
           kind: official
           format: html              # UNVERIFIED — endpoint confirmed in site nav ("Circulaire") but returns Akamai 403
           parse_friendliness: low
           fetchability: blocked     # 403 via curl AND via text-render fetch; needs live browser
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/verdun-qc/stores/pharmaprix
           kind: aggregator
           format: images
@@ -55,6 +55,21 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-pharmaprix
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-pharmaprix/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+          notes: "page live; edition snapshot was Sept 12-17, 2026"
       duration_days: 7
       flip_weekday: Saturday       # VERIFIED: 2026-10-10 (Sat) to 2026-10-16 (Fri); next 2026-10-17 to 2026-10-22
       flip_timezone: America/Toronto

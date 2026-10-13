@@ -79,6 +79,7 @@ loyalty_program:
   name: ""
   card_gated_prices: false
 
+sources_checked: [official-site, official-site-probe-403, web-search-flyer, flipp-search-snippet, rfd-flyers-search-snippet, recheck-2026-10-12-hardened-protocol, robots-txt, sitemap-enumeration, search-verification-2026-10-12, live-browser-check-2026-10-12-blocked]
 notes: >-
   URL CORRECTION: fooderiemarket.com resolves to www.fooderiemarket.com — canonical
   recorded with www. Acquired Kosher Quality (5855 Victoria) ~2025 (The Suburban
@@ -96,7 +97,7 @@ notes: >-
   enumerated — product ?catalogProduct= URLs only, no circulars/flyer/specials
   page. MCG markets "digital circulars" as a platform feature, but Fooderie
   does not expose one. has_flyers stays false.
-  RE-CHECK 2026-10-12 (hardened protocol): /categories/94516/products still returns 403; homepage fetch partially renders (ST282 error inside product sections) \u2014 no flyer/circulaire section; specials are promoted via WhatsApp Status signup only (not a flyer). Catalog category pages remain indexed but search presence still unconfirmed. Status stays partial.
-sources_checked: [official-site, official-site-probe-403, web-search-flyer, flipp-search-snippet, rfd-flyers-search-snippet, recheck-2026-10-12-hardened-protocol, robots-txt, sitemap-enumeration, search-verification-2026-10-12]
+  RE-CHECK 2026-10-12 (hardened protocol): /categories/94516/products still returns 403; homepage fetch partially renders (ST282 error inside product sections) — no flyer/circulaire section; specials are promoted via WhatsApp Status signup only (not a flyer). Catalog category pages remain indexed but search presence still unconfirmed. Status stays partial.
+  LIVE-BROWSER CHECK 2026-10-12 (~20:57–21:05 EDT): attempted. www.fooderiemarket.com is gated site-wide by an interactive Cloudflare Turnstile "Verify you are human" challenge; automated checkbox clicks were rejected as non-human (challenge looped with new Ray IDs). No search question answered: search box presence, "milk" query, result URL format, guest access, platform identity — all still unverified. Resumption path: one genuine human click on the checkbox (browser takeover), clearance should persist in-session, then the check (search "milk", record URL format, confirm guest access) can complete without further help. research_status stays partial.
 researched_at: "2026-10-12"
 research_status: partial

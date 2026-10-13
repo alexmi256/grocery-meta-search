@@ -24,7 +24,7 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:loblaw
           url: https://www.maxi.ca/flyer
           kind: official
           format: html              # UNVERIFIED — path and format unconfirmed; site blocked
@@ -60,12 +60,26 @@ flyers:
           format: html
           parse_friendliness: high     # per-item rows: description, format, origin, price, dates, store
           fetchability: http
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/montreal-qc/stores/maxi
           kind: aggregator
           format: images
           parse_friendliness: low
           fetchability: http        # Flipp historically carries Loblaw banners; confirm in Phase 3
+        - name: flyerseek.com
+          url: https://flyerseek.com/maxi-flyer/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-maxi
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

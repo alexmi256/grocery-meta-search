@@ -34,6 +34,20 @@ flyers:
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasins/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

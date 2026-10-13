@@ -22,7 +22,7 @@ flyers:
   types:
     - type: monthly
       sources:
-        - name: official site
+        - name: official:wordpress
           url: https://milanofruiterie.ca/promo-du-mois/
           kind: official
           format: images            # image-based promo page; text fetch returns only cookie-consent boilerplate

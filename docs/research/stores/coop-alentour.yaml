@@ -21,12 +21,29 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://coopalentour.ca
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: http
+          notes: official:custom (Circulaire advertised on site; fetch path not captured; platform unverified.)
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-coop-alentour-du-7-au-13-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/coop-alentour/circulaire/p108597_circulaire-coop-alentour-plus-deconomies
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
+          languages: [fr]
+          notes: 'Article-style page; prose summaries of items rather than structured data.'
+
       duration_days: 7
       flip_weekday: ""
       flip_timezone: America/Toronto

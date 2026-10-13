@@ -22,12 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: http://euromarche.ca/flyer_fr.php
           kind: official
           format: images
           parse_friendliness: low
           fetchability: http
+          notes: official:custom (Bare static PHP page; platform unverified.)
         - name: circulaires.club
           url: https://circulaires.club/circulaire/circulaire-euromarche-du-8-au-14-octobre-2026/
           kind: aggregator

@@ -22,18 +22,13 @@ flyers:
   types:
     - type: occasional              # irregular, dated flyer editions (not weekly)
       sources:
-        - name: official site — Circulaire page
+        - name: official:shopify
           url: https://magasinamira.ca/pages/circulaire
           kind: official
           format: images            # embeds flyer image(s); page content is otherwise sparse
           parse_friendliness: low
           fetchability: http
-        - name: official site — flyer collections
-          url: https://magasinamira.ca/collections/flyer-12-juin-2025
-          kind: official
-          format: images            # flyer pages uploaded as WhatsApp screenshots (WhatsApp_Image_*, Screenshot2025-07-23*)
-          parse_friendliness: low
-          fetchability: http
+          notes: "Source renamed 2026-10-12: 'official site — Circulaire page'. Merged duplicate source (same canonical name); alternate URL: https://magasinamira.ca/collections/flyer-12-juin-2025. Merged note: Source renamed 2026-10-12: 'official site — flyer collections'."
       duration_days: 0              # irregular; no fixed validity window observed
       flip_weekday: ""
       flip_timezone: America/Toronto

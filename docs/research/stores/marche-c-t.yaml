@@ -22,12 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://www.marchect.ca
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: http
+          notes: "official:custom (Per-store bilingual weekly circulaire; platform unverified.)"
         - name: circulaire-en-ligne.ca
           url: https://www.circulaire-en-ligne.ca/marche-c-t/circulaire-st-laurent
           kind: aggregator
@@ -46,6 +47,13 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

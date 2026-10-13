@@ -21,13 +21,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:metro-azure
           url: https://www.jeancoutu.com/magasiner/circulaire
           kind: official
           format: images            # Transcontinental "flyertc" viewer iframe (Vue SPA)
           parse_friendliness: low
           fetchability: browser-needed  # iframe src jeancoutu-canadacentral.azurewebsites.net; Vue SPA, no SSR content
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/westmount-qc/stores/jean-coutu
           kind: aggregator
           format: json-api
@@ -45,6 +45,30 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: flyerseek.com
+          url: https://flyerseek.com/jean-coutu-circular/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/catalogue/circulaire-jean-coutu-semaine-prochaine/
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
+          languages: [fr]
+          notes: 'AI-written prose summaries of items.'
+        - name: supermarches.ca
+          url: https://www.supermarches.ca/
+          kind: aggregator
+          format: html
+          parse_friendliness: high
+          fetchability: http
+          languages: [fr]
+          notes: 'Portal URL; per-store structured item listings under the "Centre des aubaines" section (see flyer-aggregators.md).'
+
       duration_days: 7
       flip_weekday: Thursday        # next week's flyer previewable from Tuesday, valid Thursday onward
       flip_timezone: America/Toronto

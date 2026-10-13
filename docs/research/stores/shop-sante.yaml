@@ -28,12 +28,13 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
-        - name: official site ("Circulaire" footer link / homepage 'Découvre notre circulaire')
+        - name: official:shopify
           url: https://shopsante.ca/
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: http
+          notes: "Source renamed 2026-10-12: 'official site (\"Circulaire\" footer link / homepage 'Découvre notre circulaire')'."
         - name: flipp
           url: https://flipp.com/en-ca/montreal-qc/stores/shop-sante
           kind: aggregator
@@ -41,7 +42,7 @@ flyers:
           parse_friendliness: low
           fetchability: http
       duration_days: 30
-      flip_weekday: null
+      flip_weekday:
       flip_timezone: America/Toronto
       validity_example: "2026-10-01 to 2026-10-31"
       per_store_variant: false

@@ -22,7 +22,7 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:woocommerce
           url: http://www.marchefutai.ca/weekly-flyer
           kind: official
           format: html
@@ -40,6 +40,13 @@ flyers:
           format: html
           parse_friendliness: low
           fetchability: http
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Friday              # CORRECTION (was Thursday): circulaires.club — "les 6 circulaires hebdomadaires publiées ont toutes commencé un vendredi", Fri–Thu
       flip_timezone: America/Toronto

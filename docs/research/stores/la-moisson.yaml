@@ -28,6 +28,27 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasins/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaires.ca
+          url: https://www.circulaires.ca/la-moisson/?region=Laval
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaires.com
+          url: http://www.circulaires.com/la-moisson/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 14
       flip_weekday: Thursday
       flip_timezone: America/Toronto
@@ -39,7 +60,7 @@ flyers:
       notes: "10-page print circulaire, biweekly, FR only on aggregators."
     - type: online-specials
       sources:
-        - name: official site
+        - name: official:shopify
           url: https://lamoisson.com/collections/en-circulaire-in-flyer
           kind: official
           format: html

@@ -21,18 +21,43 @@ flyers:
   types:
     - type: warehouse-savings
       sources:
-        - name: official site
+        - name: official:custom
           url: https://www.costco.ca/in-the-warehouse.html
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: http
-        - name: member email handout
+          notes: official:custom (Proprietary costco.ca (MUI/React) Warehouse Savings section.)
+        - name: official:email
           url: https://www.costco.ca/in-the-warehouse.html
           kind: official
           format: html
           parse_friendliness: low
           fetchability: http
+          notes: "Source renamed 2026-10-12: 'member email handout'."
+        - name: circulaires.club
+          url: https://circulaires.club/circulaire/circulaire-costco-du-28-septembre-au-25-octobre-2026/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: kimbino.ca
+          url: https://www.kimbino.ca/city/montreal/costco/
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+          languages: [en]
+        - name: ca-mydeals365.com
+          url: https://ca-mydeals365.com/costco/costco-circulaire-from-sep-28-2026-weekly-specials-deals-4109557/
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
+          languages: [en]
+          notes: 'Per-edition article URLs (no stable brand hub found); editorial prose.'
+
       duration_days: 14
       flip_weekday: Monday
       flip_timezone: America/Toronto

@@ -23,13 +23,14 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://www.iga.net/circulaire
           kind: official
           format: html
           parse_friendliness: high    # SSR; store selection + regional eFlyer links server-rendered
           fetchability: http
-        - name: Flipp
+          notes: official:custom (Sobeys/IGA platform (iga.net/circulaire); no finer platform id.)
+        - name: flipp
           url: https://flipp.com/en-ca/verdun-qc/flyer/7725575-iga-quebec-weekly-eflyer
           kind: aggregator
           format: images
@@ -41,12 +42,43 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
-        - name: RFD Montreal flyers page
+        - name: rfd-flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: flyerbox.ca
+          url: https://www.flyerbox.ca/fr/iga/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr, en]
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-iga-semaine-prochaine/
+          kind: aggregator
+          format: html
+          parse_friendliness: low
+          fetchability: http
+          languages: [fr]
+          notes: 'AI-written prose summaries of items; no stable brand hub.'
+        - name: flyerseek.com
+          url: http://flyerseek.com/iga-weekly-flyer/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+        - name: supermarches.ca
+          url: https://www.supermarches.ca/
+          kind: aggregator
+          format: html
+          parse_friendliness: high
+          fetchability: http
+          languages: [fr]
+          notes: 'Portal URL; per-store structured item listings under the "Centre des aubaines" section (see flyer-aggregators.md).'
+
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto
@@ -58,12 +90,13 @@ flyers:
       notes: "Official page offers 'Digital flyer' vs 'Personalized flyer' display modes. Regional editions: Québec, New Brunswick, Iles-de-la-Madeleine weekly eFlyers."
     - type: seasonal
       sources:
-        - name: official site
+        - name: official:custom
           url: https://www.iga.net/circulaire
           kind: official
           format: html
           parse_friendliness: high
           fetchability: http
+          notes: official:custom (Sobeys/IGA platform (iga.net/circulaire); no finer platform id.)
       duration_days: 90
       flip_weekday: Thursday
       flip_timezone: America/Toronto
@@ -75,12 +108,13 @@ flyers:
       notes: "Seasonal booklets listed on flyer page (observed 'Autumn - QC' and 'Autumn - NB'); ~quarterly cadence, duration estimated."
     - type: catering
       sources:
-        - name: official site
+        - name: official:custom
           url: https://www.iga.net/circulaire
           kind: official
           format: html
           parse_friendliness: high
           fetchability: http
+          notes: official:custom (Sobeys/IGA platform (iga.net/circulaire); no finer platform id.)
       duration_days: 90
       flip_weekday: Thursday
       flip_timezone: America/Toronto
@@ -92,12 +126,13 @@ flyers:
       notes: "'Catering QC' / 'Catering NB' booklets listed on flyer page (traiteur.iga.net PDF editions observed for prior seasons)."
     - type: coupon
       sources:
-        - name: official site
+        - name: official:custom
           url: https://www.iga.net/circulaire
           kind: official
           format: html
           parse_friendliness: high
           fetchability: http
+          notes: official:custom (Sobeys/IGA platform (iga.net/circulaire); no finer platform id.)
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

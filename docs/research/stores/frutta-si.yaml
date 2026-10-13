@@ -22,24 +22,33 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site homepage
+        - name: official:wordpress
           url: http://www.marchefruttasi.com/
           kind: official
           format: images            # "Flyer" section: "Exciting Specials and Big Savings: Our Weekly Deals!" + flyer image
           parse_friendliness: low
           fetchability: http
+          notes: "Source renamed 2026-10-12: 'official site homepage'."
         - name: circulairecanada.com
           url: https://www.circulairecanada.com/p/circulaire-marche-frutta-si/
           kind: aggregator
           format: images
           parse_friendliness: low
           fetchability: http
-        - name: RFD Montreal flyers
+        - name: rfd-flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/frutta-si/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+
       duration_days: 7
       flip_weekday: Thursday        # circulaire observed Oct 1-7 2026 (Thu-Wed)
       flip_timezone: America/Toronto

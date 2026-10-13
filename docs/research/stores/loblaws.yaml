@@ -24,13 +24,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:loblaw
           url: https://www.loblaws.ca/flyer
           kind: official
           format: html              # UNVERIFIED — path and format unconfirmed; site blocked
           parse_friendliness: low
           fetchability: blocked     # Akamai 403 for automated clients; needs live browser
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/montreal-qc/stores/loblaws
           kind: aggregator
           format: images
@@ -42,6 +42,48 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaire-en-ligne.ca
+          url: http://www.circulaire-en-ligne.ca/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: kimbino.ca
+          url: https://www.kimbino.ca/city/kanata/loblaws/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en, fr]
+        - name: kaufino.com
+          url: http://kaufino.com/ca/lobways
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+        - name: weeklyflyer.com
+          url: https://weeklyflyer.com/store/loblaws-north-york?page=1
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+        - name: pdfflyers.com
+          url: https://pdfflyers.com/flyers/loblaws-canada
+          kind: aggregator
+          format: pdf
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
       duration_days: 7
       flip_weekday: Thursday        # Loblaw banner norm (Thu-Wed); QC-specific example unverified
       flip_timezone: America/Toronto

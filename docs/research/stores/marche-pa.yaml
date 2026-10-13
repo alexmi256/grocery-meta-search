@@ -23,13 +23,14 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://fr.supermarchepa.com
           kind: official
           format: images            # no flyer page observed on the new site yet (mid-migration)
           parse_friendliness: low
           fetchability: browser-needed
-        - name: Flipp
+          notes: "official:custom (New official site has no flyer section yet; platform unverified.)"
+        - name: flipp
           url: https://flipp.com/en-ca/westmount-qc/stores/supermarche-pa
           kind: aggregator
           format: json-api
@@ -47,6 +48,27 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasins/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaire-en-ligne.ca
+          url: http://www.circulaire-en-ligne.ca/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Monday           # per Flipp: 'released every Monday'; current cycle Oct 12-18 2026 (Mon-Sun)
       flip_timezone: America/Toronto

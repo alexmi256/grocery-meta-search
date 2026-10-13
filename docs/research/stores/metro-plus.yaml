@@ -23,7 +23,7 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:metro-azure
           url: https://www.metro.ca/circulaire
           kind: official
           format: html

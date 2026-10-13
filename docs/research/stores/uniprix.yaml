@@ -21,13 +21,14 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:flipp
           url: https://www.uniprix.com/fr/circulaire
           kind: official
           format: json-api         # official page IS a Flipp embed (flippiframe + flyer-flipp-bridge.js)
           parse_friendliness: high # item-level data comes from Flipp's structured feed
           fetchability: browser-needed  # page itself is JS (Flipp iframe); Flipp API reachable via HTTP
-        - name: Flipp
+          notes: 'Platform call 2026-10-12: see normalization report for evidence.'
+        - name: flipp
           url: https://flipp.com/en-ca/westmount-qc/stores/uniprix
           kind: aggregator
           format: json-api
@@ -39,6 +40,27 @@ flyers:
           format: images
           parse_friendliness: low
           fetchability: http
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-uniprix
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulairecanada.com
+          url: https://www.circulairecanada.com/p/circulaire-uniprix/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: flyers-on-line.com
+          url: https://www.flyers-on-line.com/uniprix/quebec
+          kind: aggregator
+          format: images
+          parse_friendliness: low
+          fetchability: http
+          languages: [en]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto
@@ -50,12 +72,13 @@ flyers:
       notes: "Flyer bridge JS pushes GA dataLayer events (flipp_flyer_view, flipp_item_click with itemId/name/priceText/sku/category/flyerId) - useful analytics-hook schema if we embed."
     - type: beauty
       sources:
-        - name: official site
+        - name: official:flipp
           url: https://www.uniprix.com/fr/circulaire
           kind: official
           format: json-api
           parse_friendliness: high
           fetchability: browser-needed
+          notes: 'Platform call 2026-10-12: see normalization report for evidence.'
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

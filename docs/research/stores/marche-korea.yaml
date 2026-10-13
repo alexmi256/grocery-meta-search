@@ -23,24 +23,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site (EN)
+        - name: official:woocommerce
           url: https://marchekorea.com/en/weekly-flyer/
           kind: official
           format: images            # 3 portrait PNG flyer pages via Jetpack CDN (i0.wp.com)
           parse_friendliness: low
           fetchability: http
-        - name: official site (FR)
-          url: https://marchekorea.com/fr/weekly-flyer/
-          kind: official
-          format: images
-          parse_friendliness: low
-          fetchability: http
-        - name: official site (KO)
-          url: https://marchekorea.com/weekly-flyer/
-          kind: official
-          format: images
-          parse_friendliness: low
-          fetchability: http
+          notes: "Source renamed 2026-10-12: 'official site (EN)'. Merged duplicate source (same canonical name); alternate URL: https://marchekorea.com/fr/weekly-flyer/. Merged note: Source renamed 2026-10-12: 'official site (FR)'. Merged duplicate source (same canonical name); alternate URL: https://marchekorea.com/weekly-flyer/. Merged note: Source renamed 2026-10-12: 'official site (KO)'."
       duration_days: 7             # page titled "Weekly Flyer"; homepage "금주의 스페셜 SPECIAL" / "SPÉCIAL DE LA SEMAINE"
       flip_weekday: ""             # unknown: flyer images are not text-readable; page lastmod 2026-10-06 (Tue)
       flip_timezone: America/Toronto

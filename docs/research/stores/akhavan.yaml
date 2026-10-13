@@ -33,12 +33,13 @@ flyers:
           format: unknown
           parse_friendliness: unknown
           fetchability: http
-        - name: Instagram @marcheakhavan (official site "Weekly Flyer" link target)
+        - name: official:instagram
           url: https://www.instagram.com/marcheakhavan
           kind: official
           format: images
           parse_friendliness: low
           fetchability: browser-needed  # Instagram is JS/login-gated
+          notes: "Source renamed 2026-10-12: 'Instagram @marcheakhavan (official site \"Weekly Flyer\" link target)'."
       duration_days: 7
       flip_weekday: Wednesday
       flip_timezone: America/Toronto

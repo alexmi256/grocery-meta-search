@@ -23,12 +23,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:custom
           url: https://bonanzalumiere.com/
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: http
+          notes: "official:custom (Weekly circulaire published as homepage content; platform unverified.)"
         - name: circulaires.club
           url: https://circulaires.club/magasin/bonanza-lalumiere/
           kind: aggregator
@@ -41,6 +42,13 @@ flyers:
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Wednesday
       flip_timezone: America/Toronto

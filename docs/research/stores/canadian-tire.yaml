@@ -21,18 +21,42 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:flipp
           url: https://www.canadiantire.ca/en.html
           kind: official
           format: html
           parse_friendliness: medium
           fetchability: browser-needed
+          notes: 'Platform call 2026-10-12: see normalization report for evidence.'
         - name: flipp
           url: https://flipp.com/en-ca/brampton-on/stores/canadian-tire
           kind: aggregator
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.club
+          url: https://circulaires.club/magasin/canadian-tire/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: flyerbox.ca
+          url: https://www.flyerbox.ca/fr/offres/montreal/canadian-tire/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr, en]
+        - name: supermarches.ca
+          url: https://www.supermarches.ca/
+          kind: aggregator
+          format: html
+          parse_friendliness: high
+          fetchability: http
+          languages: [fr]
+          notes: 'Portal URL; per-store structured item listings under the "Centre des aubaines" section (see flyer-aggregators.md).'
+
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

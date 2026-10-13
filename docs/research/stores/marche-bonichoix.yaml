@@ -22,12 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site (per-store Circulaire links)
+        - name: official:custom
           url: https://www.bonichoix.com/fr/store-locator/
           kind: official
           format: images
           parse_friendliness: medium
           fetchability: http
+          notes: "Source renamed 2026-10-12: 'official site (per-store Circulaire links)'. official:custom (Per-store Circulaire links; Metro-affiliated banner; platform unverified.)"
         - name: circulaires.club
           url: https://circulaires.club/circulaire/circulaire-marche-bonichoix-du-1-au-7-octobre-2026/
           kind: aggregator
@@ -40,6 +41,27 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
+        - name: circulaires.com
+          url: https://www.circulaires.com/alimentation/?region=Montreal
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaires.ca
+          url: https://www.circulaires.ca/?region=Monteregie
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: circulaire-en-ligne.ca
+          url: http://www.circulaire-en-ligne.ca/
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto

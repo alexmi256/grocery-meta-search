@@ -21,7 +21,7 @@ flyers:
   types:
     - type: specials
       sources:
-        - name: official site
+        - name: official:wix
           url: https://www.labaiadeiformaggi.com/speciaux
           kind: official
           format: images

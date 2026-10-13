@@ -23,12 +23,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: pdfflyers.com (stale)
+        - name: pdfflyers.com
           url: https://pdfflyers.com/store/marche-epicure
           kind: aggregator
           format: images
           parse_friendliness: low
           fetchability: http
+          notes: Marked stale in research (2026-10-12).
       duration_days: 7            # aggregator described it as a weekly flyer; unverified
       flip_weekday: ""
       flip_timezone: America/Toronto

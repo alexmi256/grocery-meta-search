@@ -23,13 +23,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:wordpress
           url: https://www.rachellebery.ca/circulaire/
           kind: official
           format: html
           parse_friendliness: low      # page fetch returned only newsletter signup; the digital flyer viewer is JS-embedded
           fetchability: browser-needed
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/stores/rachelle-bery
           kind: aggregator
           format: images
@@ -70,7 +70,7 @@ flyers:
       notes: "Main grocery flyer (~9 pages). Official 'circulaire numérique' viewer is JS-embedded — use Flipp (item-level data) or aggregator images."
     - type: health
       sources:
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/stores/rachelle-bery
           kind: aggregator
           format: images

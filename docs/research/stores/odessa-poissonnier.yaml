@@ -22,7 +22,7 @@ flyers:
   types:
     - type: biweekly
       sources:
-        - name: official site
+        - name: official:shopify
           url: https://odessapoissonnier.com/pages/circulaire
           kind: official
           format: pdf  # e.g. .../files/20_-_8_au_21_octobre_-_visuel_circulaire-planche.pdf (issue #20)

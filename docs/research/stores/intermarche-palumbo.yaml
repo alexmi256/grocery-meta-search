@@ -22,12 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site homepage offers
+        - name: official:custom
           url: https://www.marchepalumbo.com/
           kind: official
           format: html
           parse_friendliness: high
           fetchability: http
+          notes: "Source renamed 2026-10-12: 'official site homepage offers'. official:custom (Homepage \"Our Best Deals\" structured HTML; platform unverified.)"
         - name: circulaires.club
           url: https://circulaires.club/circulaire/circulaire-intermarche-palumbo-du-8-au-14-octobre-2026/
           kind: aggregator

@@ -22,13 +22,13 @@ flyers:
   types:
     - type: weekly
       sources:
-        - name: official site
+        - name: official:metro-azure
           url: https://www.metro.ca/circulaire
           kind: official
           format: html
           parse_friendliness: high     # SSR; per-store variant rendered server-side
           fetchability: http
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/pierrefonds-qc/stores/metro
           kind: aggregator
           format: images
@@ -52,12 +52,34 @@ flyers:
           format: images
           parse_friendliness: medium
           fetchability: http
-        - name: RFD Montreal flyers page
+        - name: rfd-flyers
           url: https://www.redflagdeals.com/in/montreal/flyers/
           kind: aggregator
           format: html
           parse_friendliness: medium
           fetchability: http
+        - name: flyerseek.com
+          url: https://flyerseek.com/metro-flyer/
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+        - name: circulaire-en-ligne.ca
+          url: https://www.circulaire-en-ligne.ca/circulaire-metro
+          kind: aggregator
+          format: images
+          parse_friendliness: medium
+          fetchability: http
+          languages: [fr]
+        - name: flyerdeals.ca
+          url: https://www.flyerdeals.ca/stores/metro/flyers-specials
+          kind: aggregator
+          format: html
+          parse_friendliness: medium
+          fetchability: http
+          languages: [en]
+          notes: "store-page text snapshot showed July 2026 editions; homepage lists current flyers"
       duration_days: 7
       flip_weekday: Thursday
       flip_timezone: America/Toronto
@@ -69,7 +91,7 @@ flyers:
       notes: "Next week's flyer previewable from Tuesday (per Super C sibling-site text, same platform). Print/PDF version exists (print.raddar.ca PDF mirrors fine print)."
     - type: weekly-insert
       sources:
-        - name: official site
+        - name: official:metro-azure
           url: https://www.metro.ca/circulaire
           kind: official
           format: html
@@ -86,7 +108,7 @@ flyers:
       notes: "'Mon épicier' / 'My grocer' insert — weekly deals booklet alongside main flyer (seen on flyerbox.ca: 'Metro circulaire - Mon épicier')."
     - type: loyalty-booklet
       sources:
-        - name: official site
+        - name: official:metro-azure
           url: https://www.metro.ca/circulaire
           kind: official
           format: html
@@ -103,7 +125,7 @@ flyers:
       notes: "'Cahier MOI' (4 pages) — moi-loyalty booklet; a 'Cahier mmmaximisez' (7 pages) promo booklet also observed same week."
     - type: kosher
       sources:
-        - name: official site
+        - name: official:metro-azure
           url: https://www.metro.ca/circulaire
           kind: official
           format: html
@@ -120,7 +142,7 @@ flyers:
       notes: "Kosher flyer runs on a ~4-week cycle (observed 2026-09-24 to 2026-10-21)."
     - type: seasonal
       sources:
-        - name: Flipp
+        - name: flipp
           url: https://flipp.com/en-ca/pierrefonds-qc/stores/metro
           kind: aggregator
           format: images
