@@ -270,7 +270,7 @@ def fetch_store_official(
             except Exception as exc:  # one bad page should not sink the edition
                 report.setdefault("page_errors", []).append(f"{page_url}: {exc}")
         first_lines = None
-        if pages and cfg.kind in ("image_page", "pdf_page", "circulaires", "flyerbox"):
+        if pages and cfg.kind in ("image_page", "pdf_page"):
             # Many official flyers print their real validity on page 1; it
             # beats every fallback (fetch week, URL month).
             first_image = pages[0][1]

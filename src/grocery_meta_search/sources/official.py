@@ -327,11 +327,17 @@ class OfficialClient:
         self.session = requests.Session()
         self.session.headers.update(_UA)
 
-    def _get(self, url: str, timeout: int = _TIMEOUT, retries: int = 0) -> requests.Response:
+    def _get(
+        self,
+        url: str,
+        timeout: int = _TIMEOUT,
+        retries: int = 0,
+        headers: dict[str, str] | None = None,
+    ) -> requests.Response:
         last_exc: requests.RequestException | None = None
         for _ in range(retries + 1):
             try:
-                resp = self.session.get(url, timeout=timeout)
+                resp = self.session.get(url, timeout=timeout, headers=headers)
                 resp.raise_for_status()
                 return resp
             except requests.RequestException as exc:
@@ -404,7 +410,7 @@ class OfficialClient:
         )
         if not pdfs:
             raise OfficialError(f"no PDF links at {cfg.page_url}")
-        pdf_url = pdfs[-1]  # dated filenames sort chronologically
+        pdf_url = pick_pdf_url(pdfs, today)
         # Mayrand names its PDF with the printed range ("Circulaire du 14
         # au 20 octobre 2026 ... .pdf") — that beats the URL-month guess.
         parsed = parse_fr_validity(unquote(pdf_url), today)
@@ -453,25 +459,24 @@ class OfficialClient:
         valid_from, valid_to, first_src = parsed
         base = urljoin(cfg.page_url, first_src)
         directory = base.rsplit("/", 1)[0]
+        candidates = [base] + [
+            f"{directory}/{name}"
+            for n in range(1, 13)
+            for name in (f"s{n}.jpg", f"b{n}.jpg", f"s{n:02d}.jpg", f"b{n:02d}.jpg")
+            if f"{directory}/{name}" != base
+        ]
         urls: list[str] = []
         seen_hashes: set[str] = set()
-        for n in range(1, 13):
-            for name in (f"s{n}.jpg", f"b{n}.jpg", f"s{n:02d}.jpg", f"b{n:02d}.jpg"):
-                url = f"{directory}/{name}"
-                if url == base:
-                    candidate = base
-                else:
-                    try:
-                        resp = self._get(url)
-                    except OfficialError:
-                        continue
-                    candidate = url
-                    digest = hashlib.sha1(resp.content).hexdigest()
-                    if digest in seen_hashes:
-                        continue
-                    seen_hashes.add(digest)
-                if candidate not in urls:
-                    urls.append(candidate)
+        for url in candidates:
+            try:
+                resp = self._get(url)
+            except OfficialError:
+                continue
+            digest = hashlib.sha1(resp.content).hexdigest()
+            if digest in seen_hashes:
+                continue  # same page under a second name (s1.jpg == b1.jpg)
+            seen_hashes.add(digest)
+            urls.append(url)
         if not urls:
             raise OfficialError(f"no viewer pages found for {cfg.page_url}")
         return OfficialEdition(
@@ -512,12 +517,7 @@ class OfficialClient:
                 f"&page={k}&current_url={quote(flyer_url, safe='')}"
                 f"&hasElevatedAccess=0"
             )
-            frag = self.session.get(
-                frag_url,
-                timeout=60,
-                headers={"X-Requested-With": "XMLHttpRequest"},
-            )
-            frag.raise_for_status()
+            frag = self._get(frag_url, timeout=60, headers={"X-Requested-With": "XMLHttpRequest"})
             img = flyerbox_fragment_image(frag.text)
             if img and img not in urls:
                 urls.append(img)
@@ -566,8 +566,23 @@ class OfficialClient:
         )
 
 
+def pick_pdf_url(urls: list[str], today: date) -> str:
+    """Choose the current PDF among a page's links. Dated French
+    filenames do not sort chronologically ("du 14 au..." < "du 7 au..."),
+    so prefer the link whose filename parses to the latest validity;
+    fall back to the lexicographically last URL."""
+    dated: list[tuple[date, str]] = []
+    for u in urls:
+        parsed = parse_fr_validity(unquote(u), today)
+        if parsed is not None:
+            dated.append((parsed[0], u))
+    if dated:
+        return max(dated)[1]
+    return sorted(urls)[-1]
+
+
 _FLYERS_DO_DATE = re.compile(r"Du\s+(\d{1,2})-(\d{1,2})-(\d{4})\s+au\s+(\d{1,2})-(\d{1,2})-(\d{4})")
-_FLYERS_DO_IMG = re.compile(r'src="((?:marche|magasin)-[\w-]+/\d+/[\w.]+\.jpg)"')
+_FLYERS_DO_IMG = re.compile(r'src="([\w-]+/\d+/[\w.]+\.jpg)"')
 
 
 def parse_flyers_do(page_html: str) -> tuple[date, date, str] | None:

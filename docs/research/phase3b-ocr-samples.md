@@ -202,3 +202,40 @@ Edge cases found:
   publishes no prices (product photos only). **Épicure**: flyer
   program still dormant (newsletter mention only). All three deferred
   with reasons, re-verified 2026-10-14.
+
+## Groups 5-6 review + vision audit (2026-10-14)
+
+Code review of 01c64d4 found and fixed four defects (follow-up commit):
+flyerbox fragment requests bypassed the shared error handling (a raw
+HTTPError would have crashed a batch run instead of failing one
+store); pdf_page picked the lexicographically last PDF, which is the
+OLDER edition for French dated filenames ("du 14..." < "du 7...") —
+now picks the latest parsed validity; the circulaires fetcher never
+hash-checked its first page, so a page served under two names would
+be ingested twice — all candidates are hash-deduped now; flyerbox and
+circulaires editions no longer pass through the page-1 OCR validity
+override (their discovery validity is exact; the override could only
+hurt). Added client-level tests with a stub session for both new
+kinds, a pick_pdf_url test, and a BKR parse fixture.
+
+Vision audit (DB items vs the actual page images):
+
+- **Marché C&T — duplicate pages found and fixed**: the generic
+  extractor matched both /flyers/ and /tiny/flyers/ copies of every
+  page, doubling the edition (118 items incl. near-duplicates).
+  Excluding tiny/ halves it to the real 4 pages (~59 items). Page 1
+  remains sparse (bold display digits invisible) as documented.
+- **Marché BKR**: page sample 3/3 exact (names + prices). Healthy.
+- **Marché Sultan p1**: 5 of 9 prices right, 2 glyph-mangled, Ideal
+  Flan took the struck 1,49 over the sale 1,29. The two 11,99 items
+  (aubergine, piment) are fully detected as lines but form no item:
+  the struck regular price directly above joins the price cluster
+  and corrupts its parse. No per-store knob addresses cluster
+  composition — Phase 4 material.
+- **Mayrand p1**: 3 of 9 items clean; unit-price/reg-price lines form
+  junk anchors and description blocks win some name seeds. A
+  price_min_h_frac 0.02 trial changed nothing (identical output), so
+  the config stands as the practical ceiling without cell-aware
+  segmentation.
+- **PA Nature p0**: 1 of 11 products recovered (chalk font). The
+  flyerbox pipeline is correct; detection is the limit.

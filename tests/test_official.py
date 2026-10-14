@@ -198,3 +198,104 @@ def test_flyerbox_meta_fixture() -> None:
     img = flyerbox_fragment_image(html_text)
     assert img is not None and "/144988/0.jpg" in img
     assert flyerbox_meta("<html></html>") is None
+
+
+def test_pick_pdf_url_prefers_latest_fr_validity() -> None:
+    from grocery_meta_search.sources.official import pick_pdf_url
+
+    urls = [
+        "https://mayrand.ca/hubfs/Circulaire%20du%207%20au%2013%20octobre%202026%20EN.pdf",
+        "https://mayrand.ca/hubfs/Circulaire%20du%2014%20au%2020%20octobre%202026%20EN.pdf",
+    ]
+    # Lexicographic order would pick "du 7..." (the older edition).
+    assert pick_pdf_url(urls, TODAY).endswith("20%20octobre%202026%20EN.pdf")
+    plain = ["https://x.ca/a.pdf", "https://x.ca/b.pdf"]
+    assert pick_pdf_url(plain, TODAY) == "https://x.ca/b.pdf"
+
+
+def test_parse_flyers_do_bkr_fixture() -> None:
+    from grocery_meta_search.sources.official import parse_flyers_do
+
+    parsed = parse_flyers_do(_fixture("official_flyers_do_bkr.html"))
+    assert parsed is not None
+    valid_from, valid_to, first_src = parsed
+    assert (valid_from, valid_to) == (date(2026, 10, 8), date(2026, 10, 14))
+    assert first_src == "marche-bkr/11/b04.jpg"
+
+
+class _StubResponse:
+    def __init__(self, text: str = "", content: bytes = b"", status: int = 200):
+        self.text = text
+        self.content = content or text.encode()
+        self.status_code = status
+
+    def raise_for_status(self) -> None:
+        if self.status_code >= 400:
+            import requests
+
+            raise requests.HTTPError(f"{self.status_code}")
+
+
+class _StubSession:
+    """Routes URLs by predicate to canned responses (404 otherwise)."""
+
+    def __init__(self, routes: list[tuple[str, _StubResponse]]):
+        self.routes = routes
+        self.headers: dict[str, str] = {}
+
+    def get(self, url: str, timeout: int = 0, headers: object = None) -> _StubResponse:
+        for needle, resp in self.routes:
+            if needle in url:
+                return resp
+        return _StubResponse(status=404)
+
+
+def _client_with(routes: list[tuple[str, _StubResponse]]):  # type: ignore[no-untyped-def]
+    from grocery_meta_search.sources.official import OfficialClient
+
+    client = OfficialClient()
+    client.session = _StubSession(routes)  # type: ignore[assignment]
+    return client
+
+
+def test_circulaires_client_dedupes_and_orders() -> None:
+    cfg = load_official_configs()["marche-sultan"]
+    viewer = _fixture("official_flyers_do.html")
+    routes: list[tuple[str, _StubResponse]] = [
+        ("flyers.do", _StubResponse(text=viewer)),
+        ("/11/s1.jpg", _StubResponse(content=b"page-A")),
+        ("/11/b1.jpg", _StubResponse(content=b"page-A")),  # same page, 2nd name
+        ("/11/s2.jpg", _StubResponse(content=b"page-B")),
+    ]
+    edition = _client_with(routes)._circulaires(cfg, TODAY)
+    assert (edition.valid_from, edition.valid_to) == (
+        date(2026, 10, 8),
+        date(2026, 10, 14),
+    )
+    assert edition.source_ref == "circ-11-2026-10-08"
+    assert len(edition.page_images) == 2
+    assert edition.page_images[0].endswith("/11/s1.jpg")
+    assert edition.page_images[1].endswith("/11/s2.jpg")
+
+
+def test_flyerbox_client_collects_fragment_pages() -> None:
+    cfg = load_official_configs()["pa-nature"]
+    listing = '<a href="/pa-supermarche/pa-nature-flyer-x-144988/">flyer</a>'
+    flyer = _fixture("official_flyerbox.html")
+    sig = "https://na.leafletscdn.com/thumbor/SIG=/0x0/filters:format(webp)/ca/data/75/144988"
+    routes: list[tuple[str, _StubResponse]] = [
+        ("page=2&", _StubResponse(text=f'<img src="{sig}/1.jpg?t=1">')),
+        ("page=3&", _StubResponse(text=f'<img src="{sig}/2.jpg?t=1">')),
+        ("page=4&", _StubResponse(text=f'<img src="{sig}/3.jpg?t=1">')),
+        ("offres/laval/pa-supermarche", _StubResponse(text=listing)),
+        ("pa-nature-flyer-x-144988/", _StubResponse(text=flyer)),
+    ]
+    edition = _client_with(routes)._flyerbox(cfg, TODAY)
+    assert (edition.valid_from, edition.valid_to) == (
+        date(2026, 10, 12),
+        date(2026, 10, 25),
+    )
+    assert edition.source_ref == "flyerbox-144988"
+    assert len(edition.page_images) == 4
+    assert "/144988/0.jpg" in edition.page_images[0]
+    assert "/144988/3.jpg" in edition.page_images[3]
