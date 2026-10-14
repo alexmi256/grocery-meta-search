@@ -189,18 +189,22 @@ def get_or_create_official_source(conn: sqlite3.Connection, cfg: OfficialConfig)
         "pdf_page": "pdf",
         "woo_specials": "json-api",
         "flyerify": "html",
+        "circulaires": "images",
+        "flyerbox": "images",
     }[cfg.kind]
+    source_kind = "aggregator" if cfg.source_name.startswith("aggregator:") else "official"
     conn.execute(
         """
         INSERT INTO flyer_sources
             (store_slug, flyer_type, name, url, kind, format, fetchability, languages)
-        VALUES (?, ?, ?, ?, 'official', ?, 'http', ?)
+        VALUES (?, ?, ?, ?, ?, ?, 'http', ?)
         """,
         (
             cfg.slug,
             cfg.flyer_type,
             cfg.source_name,
             cfg.page_url,
+            source_kind,
             fmt,
             json.dumps(cfg.languages, ensure_ascii=False),
         ),
@@ -266,7 +270,7 @@ def fetch_store_official(
             except Exception as exc:  # one bad page should not sink the edition
                 report.setdefault("page_errors", []).append(f"{page_url}: {exc}")
         first_lines = None
-        if pages and cfg.kind in ("image_page", "pdf_page"):
+        if pages and cfg.kind in ("image_page", "pdf_page", "circulaires", "flyerbox"):
             # Many official flyers print their real validity on page 1; it
             # beats every fallback (fetch week, URL month).
             first_image = pages[0][1]

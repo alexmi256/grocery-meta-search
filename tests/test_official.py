@@ -152,9 +152,49 @@ def test_official_configs_load() -> None:
         "baia-dei-formaggi",
         "h-marche",
         "marche-andes",
+        "marche-bkr",
+        "marche-c-t",
         "marche-korea",
+        "marche-sultan",
+        "mayrand",
         "milano-fruiterie",
+        "pa-nature",
         "wholesale-club",
     }
     assert configs["wholesale-club"].kind == "flyerify"
     assert configs["marche-andes"].kind == "woo_specials"
+    assert configs["marche-sultan"].kind == "circulaires"
+    assert configs["pa-nature"].kind == "flyerbox"
+
+
+def _fixture(name: str) -> str:
+    return (FIXTURES / name).read_text(encoding="utf-8")
+
+
+def test_parse_flyers_do_fixture() -> None:
+    from grocery_meta_search.sources.official import parse_flyers_do
+
+    parsed = parse_flyers_do(_fixture("official_flyers_do.html"))
+    assert parsed is not None
+    valid_from, valid_to, first_src = parsed
+    assert (valid_from, valid_to) == (date(2026, 10, 8), date(2026, 10, 14))
+    assert first_src == "marche-sultan/11/s1.jpg"
+    assert parse_flyers_do("<html>no flyer here</html>") is None
+
+
+def test_flyerbox_meta_fixture() -> None:
+    from grocery_meta_search.sources.official import (
+        flyerbox_fragment_image,
+        flyerbox_meta,
+    )
+
+    html_text = _fixture("official_flyerbox.html")
+    meta = flyerbox_meta(html_text)
+    assert meta is not None
+    brochure_id, max_pages, valid_from, valid_to = meta
+    assert brochure_id == 144988
+    assert max_pages == 4
+    assert (valid_from, valid_to) == (date(2026, 10, 12), date(2026, 10, 25))
+    img = flyerbox_fragment_image(html_text)
+    assert img is not None and "/144988/0.jpg" in img
+    assert flyerbox_meta("<html></html>") is None

@@ -155,3 +155,50 @@ Edge cases found:
 - **Stale flyer not imported** (Baia dei Formaggi): the specials page
   still shows an Italian Father's Day edition valid June 17 - July 1,
   2026. Config kept; nothing imported with fabricated dates.
+
+## Groups 5-6 — gap-fill aggregators + one-offs (2026-10-14)
+
+New kinds in `sources/official.py`: `circulaires` (legacy flyers.do
+viewer), `flyerbox` (Leaflets platform AJAX fragments). Mayrand's PDF
+filename carries its FR validity ("Circulaire du 14 au 20 octobre 2026")
+— parsed before the URL-month fallback.
+
+Edge cases found:
+
+- **flyers.do only answers over plain HTTP**: HTTPS to circulaires.com
+  dies through this network's proxy (connection reset after TLS;
+  ProxyError in requests). The merchant pages on circulaires.ca link
+  the viewer at the .com host; fetch it as http://. Viewer page prints
+  validity ("Du 8-10-2026 au 14-10-2026") and page images live under
+  /b/{sname}/{edition}/ with sloppy hand-uploaded names (Sultan s1..s6,
+  BKR b1,b2,b3,b04,b5,b06) — the fetcher probes s/b × padded/unpadded
+  1..12 and dedupes by content hash.
+- **BKR name-height trap**: its pages are small landscape images
+  (1404×792); name lines run 27-32px = 0.04 of page height, above the
+  default name_max_h_frac (0.02), so every name was rejected and only
+  2 items formed. Per-store name_max_h_frac 0.045 fixed it (14 items,
+  page samples 3/3 exact).
+- **Display digits invisible to the detector, again** (Marché C&T):
+  the bold red dollar digits of "2²⁹"-style prices are not detected at
+  any scale (0.6×/1×/1.4×); cents are. Page 1 yields ~5 items, but the
+  denser tag-style pages 2-4 yield the rest (118 total) with some
+  per-kg/per-lb conversion noise and a few 0.0 items.
+- **Chalkboard prices** (PA Nature via flyerbox): distressed chalk
+  lettering defeats price detection almost entirely — 3 items from a
+  4-page flyer with ~40 products. The flyerbox pipeline itself
+  (listing → flyer page → signed fragment URLs → validity from page
+  metadata "valid Oct 12, 2026 - Oct 25, 2026") works end to end.
+- **Mayrand rebate bars**: red "$ Rebate" amounts sit directly above
+  the real price block and compete as anchors/names; description lines
+  ("Reg. price : ...") win name seeds over product titles. Stoplist +
+  name_max_h_frac 0.035 gets the main titles; output stays noisy.
+- **Première Moisson has no live flyer**: its circulaire is a Flipp
+  Enterprise embedded storefront (ID 5999), but the embed block is
+  absent from the live page (blank after branch selection, verified
+  in-browser 2026-10-14) and flipp.com reports no flyers for the
+  retailer. Deferred until a publication exists.
+- **Voisin**: official site 403 bot wall + zero Flipp flyers — no
+  sanctioned source. **SA et Fils**: "Spéciaux de la semaine" carousel
+  publishes no prices (product photos only). **Épicure**: flyer
+  program still dormant (newsletter mention only). All three deferred
+  with reasons, re-verified 2026-10-14.

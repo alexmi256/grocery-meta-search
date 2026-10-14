@@ -26,6 +26,7 @@ from dataclasses import dataclass, field
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote, unquote, urljoin
 
 import requests
 
@@ -347,6 +348,10 @@ class OfficialClient:
             return [self._pdf_page(cfg, today)]
         if cfg.kind == "flyerify":
             return [self._flyerify(cfg, today)]
+        if cfg.kind == "circulaires":
+            return [self._circulaires(cfg, today)]
+        if cfg.kind == "flyerbox":
+            return [self._flyerbox(cfg, today)]
         if cfg.kind == "woo_specials":
             return [self._woo_specials(cfg, today)]
         raise OfficialError(f"unknown kind {cfg.kind!r}")
@@ -400,7 +405,10 @@ class OfficialClient:
         if not pdfs:
             raise OfficialError(f"no PDF links at {cfg.page_url}")
         pdf_url = pdfs[-1]  # dated filenames sort chronologically
-        bounds = url_month(pdf_url) or self._validity(cfg, today)
+        # Mayrand names its PDF with the printed range ("Circulaire du 14
+        # au 20 octobre 2026 ... .pdf") — that beats the URL-month guess.
+        parsed = parse_fr_validity(unquote(pdf_url), today)
+        bounds = parsed or url_month(pdf_url) or self._validity(cfg, today)
         return OfficialEdition(
             valid_from=bounds[0],
             valid_to=bounds[1],
@@ -428,6 +436,98 @@ class OfficialClient:
             valid_to=valid_to,
             flyer_type=cfg.flyer_type,
             source_ref=slug,
+            languages=cfg.languages,
+            page_images=urls,
+        )
+
+    def _circulaires(self, cfg: OfficialConfig, today: date) -> OfficialEdition:
+        """circulaires.com legacy viewer (flyers.do, plain HTTP only — the
+        HTTPS endpoint drops connections). The landing page prints the
+        validity range and the first page image; the remaining pages sit
+        in the same directory with sloppy hand-uploaded names, so probe
+        the plausible patterns and dedupe by content hash."""
+        page_html = self._get(cfg.page_url).text
+        parsed = parse_flyers_do(page_html)
+        if parsed is None:
+            raise OfficialError(f"flyers.do page not recognized at {cfg.page_url}")
+        valid_from, valid_to, first_src = parsed
+        base = urljoin(cfg.page_url, first_src)
+        directory = base.rsplit("/", 1)[0]
+        urls: list[str] = []
+        seen_hashes: set[str] = set()
+        for n in range(1, 13):
+            for name in (f"s{n}.jpg", f"b{n}.jpg", f"s{n:02d}.jpg", f"b{n:02d}.jpg"):
+                url = f"{directory}/{name}"
+                if url == base:
+                    candidate = base
+                else:
+                    try:
+                        resp = self._get(url)
+                    except OfficialError:
+                        continue
+                    candidate = url
+                    digest = hashlib.sha1(resp.content).hexdigest()
+                    if digest in seen_hashes:
+                        continue
+                    seen_hashes.add(digest)
+                if candidate not in urls:
+                    urls.append(candidate)
+        if not urls:
+            raise OfficialError(f"no viewer pages found for {cfg.page_url}")
+        return OfficialEdition(
+            valid_from=valid_from,
+            valid_to=valid_to,
+            flyer_type=cfg.flyer_type,
+            source_ref=f"circ-{directory.rsplit('/', 1)[-1]}-{valid_from.isoformat()}",
+            languages=cfg.languages,
+            page_images=urls,
+        )
+
+    def _flyerbox(self, cfg: OfficialConfig, today: date) -> OfficialEdition:
+        """flyerbox.ca (Leaflets platform): the store listing links the
+        current flyer; the flyer page carries maxPages + printed validity;
+        each page's signed CDN image URL is served by an AJAX fragment
+        endpoint (page=k returns image k-1; page 0 is in the flyer HTML)."""
+        listing_html = self._get(cfg.page_url).text
+        pattern = str(cfg.image.get("flyer_link_pattern", "flyer"))
+        hrefs = re.findall(r'href="([^"]+)"', listing_html)
+        flyer_path = next((h for h in hrefs if pattern in h), None)
+        if flyer_path is None:
+            raise OfficialError(f"no flyer link matching {pattern!r} at {cfg.page_url}")
+        flyer_url = urljoin(cfg.page_url, flyer_path)
+        flyer_html = self._get(flyer_url).text
+        meta = flyerbox_meta(flyer_html)
+        if meta is None:
+            raise OfficialError(f"flyer page metadata not found at {flyer_url}")
+        brochure_id, max_pages, valid_from, valid_to = meta
+        urls: list[str] = []
+        first = flyerbox_fragment_image(flyer_html)
+        if first:
+            urls.append(first)
+        origin = re.match(r"https?://[^/]+", flyer_url)
+        base = origin.group(0) if origin else "https://www.flyerbox.ca"
+        for k in range(2, max_pages + 1):
+            frag_url = (
+                f"{base}/brochure/brochure-page/?brochureId={brochure_id}"
+                f"&page={k}&current_url={quote(flyer_url, safe='')}"
+                f"&hasElevatedAccess=0"
+            )
+            frag = self.session.get(
+                frag_url,
+                timeout=60,
+                headers={"X-Requested-With": "XMLHttpRequest"},
+            )
+            frag.raise_for_status()
+            img = flyerbox_fragment_image(frag.text)
+            if img and img not in urls:
+                urls.append(img)
+        if not urls:
+            raise OfficialError(f"no flyerbox page images at {flyer_url}")
+        return OfficialEdition(
+            valid_from=valid_from,
+            valid_to=valid_to,
+            flyer_type=cfg.flyer_type,
+            source_ref=f"flyerbox-{brochure_id}",
             languages=cfg.languages,
             page_images=urls,
         )
@@ -464,6 +564,71 @@ class OfficialClient:
             languages=cfg.languages,
             items=items,
         )
+
+
+_FLYERS_DO_DATE = re.compile(r"Du\s+(\d{1,2})-(\d{1,2})-(\d{4})\s+au\s+(\d{1,2})-(\d{1,2})-(\d{4})")
+_FLYERS_DO_IMG = re.compile(r'src="((?:marche|magasin)-[\w-]+/\d+/[\w.]+\.jpg)"')
+
+
+def parse_flyers_do(page_html: str) -> tuple[date, date, str] | None:
+    """Parse a circulaires.com flyers.do viewer page: the printed range
+    ("Du 8-10-2026 au 14-10-2026") and the first page image path."""
+    m = _FLYERS_DO_DATE.search(page_html)
+    img = _FLYERS_DO_IMG.search(page_html)
+    if not m or not img:
+        return None
+    valid_from = date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+    valid_to = date(int(m.group(6)), int(m.group(5)), int(m.group(4)))
+    return valid_from, valid_to, img.group(1)
+
+
+_FLYERBOX_ID = re.compile(r"pageBrochureId\s*=\s*(\d+)")
+_FLYERBOX_PAGES = re.compile(r"maxPages\s*=\s*(\d+)")
+_FLYERBOX_VALID = re.compile(r"valid (\w{3,9}) (\d{1,2}), (\d{4}) - (\w{3,9}) (\d{1,2}), (\d{4})")
+_FLYERBOX_IMG = re.compile(
+    r"https://na\.leafletscdn\.com/thumbor/[^\"']+?/ca/data/\d+/\d+/\d+\.jpg(?:\?t=\d+)?"
+)
+_EN_MONTHS = {
+    "jan": 1,
+    "feb": 2,
+    "mar": 3,
+    "apr": 4,
+    "may": 5,
+    "jun": 6,
+    "jul": 7,
+    "aug": 8,
+    "sep": 9,
+    "oct": 10,
+    "nov": 11,
+    "dec": 12,
+}
+
+
+def flyerbox_meta(page_html: str) -> tuple[int, int, date, date] | None:
+    """Extract (brochure id, page count, valid_from, valid_to) from a
+    flyerbox flyer page ("valid Oct 12, 2026 - Oct 25, 2026")."""
+    bid = _FLYERBOX_ID.search(page_html)
+    pages = _FLYERBOX_PAGES.search(page_html)
+    valid = _FLYERBOX_VALID.search(page_html)
+    if not bid or not pages or not valid:
+        return None
+    mon1 = _EN_MONTHS.get(valid.group(1)[:3].lower())
+    mon2 = _EN_MONTHS.get(valid.group(4)[:3].lower())
+    if not mon1 or not mon2:
+        return None
+    return (
+        int(bid.group(1)),
+        int(pages.group(1)),
+        date(int(valid.group(3)), mon1, int(valid.group(2))),
+        date(int(valid.group(6)), mon2, int(valid.group(5))),
+    )
+
+
+def flyerbox_fragment_image(fragment_html: str) -> str | None:
+    """The signed leafletscdn page-image URL inside a flyerbox page or
+    brochure-page fragment."""
+    m = _FLYERBOX_IMG.search(fragment_html)
+    return m.group(0) if m else None
 
 
 def render_pdf_pages(pdf_bytes: bytes, dpi: int = 200) -> list[Any]:
