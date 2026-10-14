@@ -20,12 +20,20 @@ from pathlib import Path
 from typing import Any
 
 from ..db import connect, init_schema
-from ..ocr.engine import detect_lines, upscale_for_ocr
+from ..ocr.engine import detect_lines, detect_lines_banded, upscale_for_ocr
 from ..ocr.segment import OcrStoreConfig, segment_page
 from ..sources.base import FlyerEdition, FlyerItem
 from ..sources.circulaires_club import CirculairesClubClient, CirculairesClubError
 from ..sources.flipp import BrandConfig, FlyerKitClient, FlyerKitError
 from ..sources.flipp_search import FlippSearchClient, FlippSearchError, SearchConfig
+from ..sources.official import (
+    OfficialClient,
+    OfficialConfig,
+    OfficialError,
+    load_official_configs,
+    parse_fr_validity,
+    render_pdf_pages,
+)
 
 _CC_CONFIG_PATH = Path(__file__).parent.parent / "sources" / "circulaires_club_config.json"
 _cc_client: CirculairesClubClient | None = None
@@ -80,15 +88,45 @@ def _shared_cc_client() -> CirculairesClubClient:
     return _cc_client
 
 
-def fetch_store_cc(
-    conn: sqlite3.Connection, src: sqlite3.Row, store_slug: str, cfg_data: dict[str, Any]
-) -> dict[str, Any]:
-    """Fetch a store's flyers from circulaires.club and OCR the pages."""
+def _download_image(page_url: str, min_width: int = 1600) -> Any:
+    """Download one flyer page image, upscaled for OCR."""
     import io
 
     import requests
     from PIL import Image
 
+    resp = requests.get(
+        page_url,
+        timeout=60,
+        headers={"User-Agent": "Mozilla/5.0 (compatible; grocery-meta-search/0.1)"},
+    )
+    resp.raise_for_status()
+    opened = Image.open(io.BytesIO(resp.content))
+    opened.load()
+    return upscale_for_ocr(opened.convert("RGB"), min_width=min_width)
+
+
+def _ocr_page(
+    image: Any,
+    ocr_cfg: OcrStoreConfig,
+    page_url: str,
+    page_number: int,
+    valid_from: str,
+    valid_to: str,
+) -> list[FlyerItem]:
+    lines = detect_lines_banded(image) if image.height > 2800 else detect_lines(image)
+    items: list[FlyerItem] = []
+    for item in segment_page(image, lines, ocr_cfg, page_url=page_url, page_number=page_number):
+        item.valid_from = valid_from
+        item.valid_to = valid_to
+        items.append(item)
+    return items
+
+
+def fetch_store_cc(
+    conn: sqlite3.Connection, src: sqlite3.Row, store_slug: str, cfg_data: dict[str, Any]
+) -> dict[str, Any]:
+    """Fetch a store's flyers from circulaires.club and OCR the pages."""
     report: dict[str, Any] = {"store": store_slug, "editions": 0, "items": 0}
     client = _shared_cc_client()
     ocr_cfg = _cc_ocr_config(store_slug)
@@ -102,21 +140,20 @@ def fetch_store_cc(
         items: list[FlyerItem] = []
         for page_number, page_url in enumerate(cc_edition.page_images, start=1):
             try:
-                resp = requests.get(page_url, timeout=60)
-                resp.raise_for_status()
-                opened = Image.open(io.BytesIO(resp.content))
-                opened.load()
-                image = upscale_for_ocr(opened.convert("RGB"))
+                image = _download_image(page_url)
             except Exception as exc:  # one bad page should not sink the edition
                 report.setdefault("page_errors", []).append(f"{page_url}: {exc}")
                 continue
-            lines = detect_lines(image)
-            for item in segment_page(
-                image, lines, ocr_cfg, page_url=page_url, page_number=page_number
-            ):
-                item.valid_from = cc_edition.valid_from.isoformat()
-                item.valid_to = cc_edition.valid_to.isoformat()
-                items.append(item)
+            items.extend(
+                _ocr_page(
+                    image,
+                    ocr_cfg,
+                    page_url,
+                    page_number,
+                    cc_edition.valid_from.isoformat(),
+                    cc_edition.valid_to.isoformat(),
+                )
+            )
         editions.append(
             FlyerEdition(
                 valid_from=cc_edition.valid_from.isoformat(),
@@ -125,6 +162,139 @@ def fetch_store_cc(
                 source_ref=cc_edition.edition_ref,
                 languages=["fr"],
                 raw={"cc_slug": cc_edition.cc_slug, "page_url": cc_edition.page_url},
+                items=items,
+            )
+        )
+    return store_editions(conn, src, store_slug, editions, report)
+
+
+def get_official_source(
+    conn: sqlite3.Connection, store_slug: str, source_name: str
+) -> sqlite3.Row | None:
+    row = conn.execute(
+        "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = ? LIMIT 1",
+        (store_slug, source_name),
+    ).fetchone()
+    assert row is None or isinstance(row, sqlite3.Row)
+    return row
+
+
+def get_or_create_official_source(conn: sqlite3.Connection, cfg: OfficialConfig) -> sqlite3.Row:
+    """Group-4 stores were never seeded into flyer_sources; create the row."""
+    row = get_official_source(conn, cfg.slug, cfg.source_name)
+    if row is not None:
+        return row
+    fmt = {
+        "image_page": "images",
+        "pdf_page": "pdf",
+        "woo_specials": "json-api",
+        "flyerify": "html",
+    }[cfg.kind]
+    conn.execute(
+        """
+        INSERT INTO flyer_sources
+            (store_slug, flyer_type, name, url, kind, format, fetchability, languages)
+        VALUES (?, ?, ?, ?, 'official', ?, 'http', ?)
+        """,
+        (
+            cfg.slug,
+            cfg.flyer_type,
+            cfg.source_name,
+            cfg.page_url,
+            fmt,
+            json.dumps(cfg.languages, ensure_ascii=False),
+        ),
+    )
+    conn.commit()
+    created = get_official_source(conn, cfg.slug, cfg.source_name)
+    assert created is not None
+    return created
+
+
+_official_configs: dict[str, OfficialConfig] | None = None
+
+
+def _get_official_config(store_slug: str) -> OfficialConfig | None:
+    global _official_configs
+    if _official_configs is None:
+        _official_configs = load_official_configs()
+    return _official_configs.get(store_slug)
+
+
+def _official_ocr_config(cfg: OfficialConfig) -> OcrStoreConfig:
+    valid = set(OcrStoreConfig.__dataclass_fields__)
+    return OcrStoreConfig(**{k: v for k, v in cfg.ocr.items() if k in valid})
+
+
+def fetch_store_official(
+    conn: sqlite3.Connection, store_slug: str, cfg: OfficialConfig
+) -> dict[str, Any]:
+    """Fetch a store's flyer from its official platform (group 4)."""
+    from datetime import date as date_cls
+
+    import requests
+
+    report: dict[str, Any] = {"store": store_slug, "editions": 0, "items": 0}
+    src = get_or_create_official_source(conn, cfg)
+    try:
+        official_editions = OfficialClient().fetch_editions(cfg)
+    except OfficialError as exc:
+        report["error"] = str(exc)
+        return report
+    ocr_cfg = _official_ocr_config(cfg)
+    editions: list[FlyerEdition] = []
+    for off in official_editions:
+        items: list[FlyerItem] = list(off.items)
+        valid_from, valid_to = off.valid_from.isoformat(), off.valid_to.isoformat()
+        pages: list[tuple[str, Any]] = []
+        if off.pdf_url is not None:
+            try:
+                resp = requests.get(
+                    off.pdf_url,
+                    timeout=120,
+                    headers={"User-Agent": "Mozilla/5.0 (compatible; grocery-meta-search/0.1)"},
+                )
+                resp.raise_for_status()
+                for n, image in enumerate(render_pdf_pages(resp.content), start=1):
+                    pages.append((f"{off.pdf_url}#page={n}", upscale_for_ocr(image)))
+            except Exception as exc:
+                report.setdefault("page_errors", []).append(f"{off.pdf_url}: {exc}")
+        for page_url in off.page_images:
+            try:
+                min_width = int(cfg.image.get("upscale_min_width", 2000))
+                pages.append((page_url, _download_image(page_url, min_width=min_width)))
+            except Exception as exc:  # one bad page should not sink the edition
+                report.setdefault("page_errors", []).append(f"{page_url}: {exc}")
+        first_lines = None
+        if pages and cfg.kind in ("image_page", "pdf_page"):
+            # Many official flyers print their real validity on page 1; it
+            # beats every fallback (fetch week, URL month).
+            first_image = pages[0][1]
+            first_lines = (
+                detect_lines_banded(first_image)
+                if first_image.height > 2800
+                else detect_lines(first_image)
+            )
+            rng = parse_fr_validity(" ".join(ln.text for ln in first_lines), date_cls.today())
+            if rng is not None:
+                valid_from, valid_to = rng[0].isoformat(), rng[1].isoformat()
+        for page_number, (page_ref, image) in enumerate(pages, start=1):
+            if page_number == 1 and first_lines is not None:
+                for item in segment_page(
+                    image, first_lines, ocr_cfg, page_url=page_ref, page_number=1
+                ):
+                    item.valid_from, item.valid_to = valid_from, valid_to
+                    items.append(item)
+            else:
+                items.extend(_ocr_page(image, ocr_cfg, page_ref, page_number, valid_from, valid_to))
+        editions.append(
+            FlyerEdition(
+                valid_from=valid_from,
+                valid_to=valid_to,
+                flyer_type=off.flyer_type,
+                source_ref=off.source_ref,
+                languages=off.languages,
+                raw={"kind": cfg.kind, "page_url": cfg.page_url},
                 items=items,
             )
         )
@@ -190,6 +360,9 @@ def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
     cc_src = get_cc_source(conn, store_slug)
     if cc_src is not None:
         return fetch_store_cc(conn, cc_src, store_slug, json.loads(cc_src["api_config"]))
+    official_cfg = _get_official_config(store_slug)
+    if official_cfg is not None:
+        return fetch_store_official(conn, store_slug, official_cfg)
     src = get_flipp_source(conn, store_slug)
     if src is None or not src["api_config"]:
         return {

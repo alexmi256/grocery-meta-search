@@ -59,7 +59,7 @@ _DIGITS_RE = re.compile(r"^[\d/.,$¢\s]+$")
 # Stripped before the digitish check so the amount itself can anchor;
 # size-only lines ("4,43 l", "227 g") do not match and are still rejected.
 _PRICE_UNIT_RE = re.compile(
-    r"\s*(?:/\s*(?:lb|1b|kg|un|ch|ea|l)\b|s\s*/\s*ch\.?|(?<=\d)\s*(?:ch|lb|kg)\.?)\s*\*?\s*$",
+    r"\s*(?:/\s*(?:lb|1b|kg|un|ch|ea|l|sac|100\s*g(?:r)?)\b|s\s*/\s*ch\.?|(?<=\d)\s*(?:ch|lb|kg)\.?)\s*\*?\s*$",
     re.IGNORECASE,
 )
 _PRICE_TRAIL_RE = re.compile(r"\s*[*$¢]\s*$")
@@ -69,7 +69,7 @@ _PRICE_S_TRAIL_RE = re.compile(r"(?<=\d)\s*[sS]\s*$")  # $ misread as S: "4,40S"
 
 def _price_core(text: str) -> str:
     """Amount part of a price line, with unit suffix and $ stripped."""
-    core = _PRICE_LEAD_RE.sub("", text.strip())
+    core = _PRICE_LEAD_RE.sub("", text.strip().replace("／", "/"))
     core = _PRICE_UNIT_RE.sub("", core)
     core = _PRICE_TRAIL_RE.sub("", core)
     core = _PRICE_S_TRAIL_RE.sub("", core)
@@ -93,9 +93,13 @@ class OcrStoreConfig:
     # boxes otherwise bridge neighbouring product columns)
     match_max_dist_frac: float = 0.24  # of page width
     match_dx_weight: float = 1.0  # >1: prefer names in the price's column
+    seed_overlap_bonus: float = 0.0  # px bonus when a name candidate's
+    # x-extent overlaps the price anchor's (grid flyers: the name sits
+    # directly above its price, the neighbour's name may be nearer)
     min_line_conf: float = 0.7
     tesseract_psm: int = 6
     bare_int_is_cents: bool = False  # T&T renders "68¢" with no dollar part
+    merged_run_is_cents: bool = False  # "79¢" merged into one run "799" (3 Saisons)
     bare_int_anchor: bool = True  # False: a bare whole number is never a price (Odessa badges)
     ignore_below_frac: float = 1.0  # ignore name lines below this page fraction (legal footers)
     stoplist: tuple[str, ...] = ()
@@ -178,7 +182,7 @@ def _split_dual_prices(texts: list[str]) -> list[tuple[float, str]] | None:
 
 
 def _parse_fragment_value(
-    texts: list[str], raw_joined: str = ""
+    texts: list[str], raw_joined: str = "", merged_run_is_cents: bool = False
 ) -> tuple[float, str, tuple[int, float] | None] | None:
     """Parse clustered price fragments into (value, price_text, multibuy)."""
     joined = "".join(texts)
@@ -197,6 +201,10 @@ def _parse_fragment_value(
         if re.fullmatch(r"\d+\.\d{2}", t):
             return float(t), t, None
         if re.fullmatch(r"\d{3,4}", t):  # merged dollars+cents: "1599", "744"
+            if merged_run_is_cents and len(t) == 3 and t.endswith("9"):
+                # A cents display ("79¢") whose ¢ glyph merged into the
+                # run as a trailing 9: the value is the first two digits.
+                return int(t[:2]) / 100, f"0.{t[:2]}", None
             return int(t[:-2]) + int(t[-2:]) / 100, f"{t[:-2]}.{t[-2:]}", None
         if re.fullmatch(r"\d{1,2}", t):  # whole dollars, or cents (see cfg)
             return float(t), t, None
@@ -283,7 +291,11 @@ def find_price_anchors(
             for value, price_text in dual:
                 parsed_clusters.append((cluster, value, price_text, None))
             continue
-        parsed = _parse_fragment_value(cleaned, raw_joined="".join(c.text for c in cluster))
+        parsed = _parse_fragment_value(
+            cleaned,
+            raw_joined="".join(c.text for c in cluster),
+            merged_run_is_cents=cfg.merged_run_is_cents,
+        )
         if parsed is not None:
             parsed_clusters.append((cluster, *parsed))
             continue
@@ -435,9 +447,14 @@ def _grow_name_lines(
         return []
 
     def seed_score(line: OcrLine) -> float:
-        return _match_dist(anchor.box, _line_box(line), cfg.match_dx_weight) - 35 * min(
+        score = _match_dist(anchor.box, _line_box(line), cfg.match_dx_weight) - 35 * min(
             stack.get(id(line), 0), 3
         )
+        if cfg.seed_overlap_bonus > 0:
+            overlap = min(line.right, anchor.box[2]) - max(line.x, anchor.box[0])
+            if overlap > 0:
+                score -= cfg.seed_overlap_bonus
+        return score
 
     seed = min(available, key=seed_score)
     if _match_dist(anchor.box, _line_box(seed), cfg.match_dx_weight) > max_dist:

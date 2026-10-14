@@ -116,3 +116,42 @@ Pipeline result: 10/10. Edge cases:
 - "$" read as "S" ("1 149,99 S") — amount regex tolerates a missing $.
 - Membership banner lines above the first row must not leak into names
   (stoplist: "pas encore membre", "inscrivez-vous").
+
+## Group 4 — official platforms (2026-10-14)
+
+New source kinds in `sources/official.py`: `image_page` (Wix and generic
+extractors), `pdf_page` (pymupdf render → OCR), `woo_specials`
+(WooCommerce Store API, structured), `flyerify` (offer discovery → page
+images). Page-1 OCR validity (FR range parser) overrides fallbacks.
+
+Edge cases found:
+
+- **Spaceless validity headers**: RapidOCR drops spaces in caps text, so
+  Milano's header is one token run "CIRCULAIREVALIDEDU08AU21OCTOBRE
+  2026". `parse_fr_validity` retries with all spaces squashed.
+- **Cents glyph merged into the digit run** (3 Saisons): "79¢" detects
+  as a single tall line "799" → parsed as 7.99 without help. Per-store
+  `merged_run_is_cents` rule: a 3-digit run ending in 9 is dollars-less
+  cents (first two digits). Cross-checked against the printed $/kg line
+  (0.79/lb ≈ 1.74/kg ✓).
+- **Very tall pages defeat the detector** (Wholesale Club ~6100px,
+  H Mart 5470px): RapidOCR downsamples internally, only ~60 lines
+  survive. `detect_lines_banded` slices the page into 2000px bands with
+  overlap, detects per band, merges + dedupes.
+- **Cloudflare bot cookie hangs follow-up requests** (Marché Korea Woo
+  API): first request in a session ~1s, second request carrying the
+  `__cf_bm` cookie times out at 120s. Fix: clear cookies before every
+  page request.
+- **Superscript prices lose the dollar digit** (Aliments Merci PDF):
+  "7⁴⁹$" sometimes clusters as "49" alone → stored as 49.0 instead of
+  7.49. Names are right; ~half of page 1 prices affected. Phase 4
+  quarantine candidate.
+- **Vendor flap inserts have no prices** (Wholesale Club pp. 2-3):
+  points-promo inserts ("OBTENEZ 15 000 pts") correctly yield ~0 items.
+- **Price-less new-arrival posters** (Marché Korea weekly flyer page):
+  the posters carry no prices at all; the store's priced content is its
+  WooCommerce sale catalog (162 products) — onboarded via `woo_specials`
+  instead.
+- **Stale flyer not imported** (Baia dei Formaggi): the specials page
+  still shows an Italian Father's Day edition valid June 17 - July 1,
+  2026. Config kept; nothing imported with fabricated dates.

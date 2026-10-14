@@ -79,6 +79,33 @@ def detect_lines(image: Image.Image) -> list[OcrLine]:
     return lines
 
 
+def detect_lines_banded(
+    image: Image.Image, band_h: int = 2000, overlap: int = 200
+) -> list[OcrLine]:
+    """Detect lines on a very tall page by horizontal bands.
+
+    RapidOCR downsamples large inputs internally, which makes small
+    text on 4000px+ pages undetectable. Bands are detected separately
+    and merged back into page coordinates; lines found in an overlap
+    zone are deduplicated on (text, position).
+    """
+    if image.height <= band_h + overlap:
+        return detect_lines(image)
+    merged: list[OcrLine] = []
+    seen: set[tuple[str, int, int]] = set()
+    y = 0
+    while y < image.height:
+        band = image.crop((0, y, image.width, min(image.height, y + band_h)))
+        for ln in detect_lines(band):
+            key = (ln.text, round(ln.x / 8), round((ln.y + y) / 8))
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(OcrLine(x=ln.x, y=ln.y + y, w=ln.w, h=ln.h, text=ln.text, conf=ln.conf))
+        y += band_h - overlap
+    return merged
+
+
 def find_tesseract() -> tuple[str, dict[str, str]] | None:
     """Locate a tesseract binary. Returns (path, extra_env) or None.
 
