@@ -170,6 +170,21 @@ def main() -> None:
 
 
 
+def find_package_sizes(text: str | None) -> list[str]:
+    """All printed-size matches in a text, whitespace-normalized.
+
+    Used by the page-harvest stage (pipeline/harvest.py), which applies
+    its own ambiguity policy over the full match set of an item's cell
+    instead of the single-name selection in extract_package_size.
+    """
+    if not text:
+        return []
+    return [
+        re.sub(r"\s+", " ", m.group("full")).strip(" ,.-")
+        for m in _SIZE_RE.finditer(text)
+    ]
+
+
 def extract_package_size(*names: str | None) -> str | None:
     """Return the printed package size found in a name, or None.
 

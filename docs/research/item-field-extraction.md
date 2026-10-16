@@ -121,3 +121,15 @@ grocery_meta_search.pipeline.fields --db data/grocery.db`.
 Totals: 15,096 items; brand on 7,841 (52%); package_size on
 2,161 (14%) after the 2026-10-16 reprocessing (32 from structured
 payloads, 2,129 extracted from names).
+
+## Update 2026-10-16 (evening): page-harvest stage
+
+A third determination path now exists for `package_size` and
+`price_unit`: OCR of the item's flyer cell (pipeline/harvest.py,
+per-store config in sources/harvest_config.json, design + store
+matrix + validation in docs/research/page-harvest.md). It covers the
+49 stores whose flyers print these fields only in the page image.
+Backfill on current flyers: +2,402 sizes, +655 units; current-flyer
+coverage is now size 54.6%, unit 12.0%. Harvested values carry
+provenance in the item's raw JSON ("harvest" key). The per-store
+counts in the table above predate the harvest.

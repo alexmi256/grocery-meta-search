@@ -369,7 +369,31 @@ def store_editions(
 
 
 def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
-    """Fetch active flyers for one store. Returns a small report dict."""
+    """Fetch active flyers for one store. Returns a small report dict.
+
+    After the source fetch, stores enabled in harvest_config.json get
+    the page-harvest stage (pipeline/harvest.py): sizes/units that
+    exist only in the flyer image are OCR'd from each item's cell and
+    filled in. A harvest failure never fails the fetch.
+    """
+    report = _fetch_store_sources(conn, store_slug)
+    if not report.get("error"):
+        from .harvest import harvest_store, load_harvest_configs
+
+        if store_slug in load_harvest_configs():
+            try:
+                stats = harvest_store(conn, store_slug)
+                if stats["filled_size"] or stats["filled_unit"]:
+                    report["harvested"] = (
+                        f"+{stats['filled_size']} size, "
+                        f"+{stats['filled_unit']} unit (page harvest)"
+                    )
+            except Exception as exc:  # noqa: BLE001 — report, never fail the fetch
+                report["harvest_error"] = str(exc)
+    return report
+
+
+def _fetch_store_sources(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
     cc_src = get_cc_source(conn, store_slug)
     if cc_src is not None:
         return fetch_store_cc(conn, cc_src, store_slug, json.loads(cc_src["api_config"]))
@@ -571,6 +595,8 @@ def main() -> None:
         )
         if report.get("excluded"):
             disc += f", {report['excluded']} excluded (furniture/merch/garble)"
+        if report.get("harvested"):
+            disc += f", {report['harvested']}"
         print(
             f"{report['store']}: {report['editions']} editions, {report['items']} items{disc}{err}"
         )
