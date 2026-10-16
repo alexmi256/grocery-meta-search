@@ -1,158 +1,121 @@
 # Marché Sheng Tai — full product report
 
-Store slug: `marche-sheng-tai`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `marche-sheng-tai`. Generated from `data/grocery.db`. A sampled subset of 12 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 73 — valid 2026-10-09 → 2026-10-15 (6 classified items, 9 unclassified)
-
-Source ref: `circulaire-marche-sheng-tai-du-9-au-15-octobre-2026` · fetched 2026-10-13T18:10:40.037Z
-
-### Item 10268
-
-![item 10268](images/item-10268.jpg)
-
-- **Name (French):** CRABE COUPÉ CONGELÉ
-- **Category (English):** Frozen Food > Frozen Meat and Seafood
-- **Category (French):** Produits surgelés > Viande et fruits de mer surgelés
-- **How classified:** frozen-remap (`shellfish`)
-- **Price:** 17.98
-- **Printed Price:** “17.98”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 823, top 701, right 983, bottom 820, page 1
-- **Full page:** [pages/flyer73-page-c13b21ffc0.jpg (flyer page 1)](pages/flyer73-page-c13b21ffc0.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/01.webp
-- **Details:** confidence: 0.74 · item_key: `e2be549f6f5afde3`
-- **Raw:** `{"block_text": "CRABE COUPÉ\nCONGELÉ\neinen PR USE\nDm 6.99\n7 \\sang", "ocr_lines": ["CRABECOUPE", "CONGELE", "REG:6.99"]}`
-
-### Item 10292
-
-![item 10292](images/item-10292.jpg)
-
-- **Name (French):** "AUBERGINE ee 7 SAUTE
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 6.98
-- **Printed Price:** “6.98”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 667, top 919, right 925, bottom 989, page 3
-- **Full page:** [pages/flyer73-page-b645c9650a.jpg (flyer page 3)](pages/flyer73-page-b645c9650a.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/03.webp
-- **Details:** confidence: 0.99 · item_key: `f8fd7794aab65adf`
-- **Raw:** `{"block_text": "\"AUBERGINE ee\n\n7 SAUTE | |\naz\n\n H8Y3C7 | TEL: 51 4-683-2888", "ocr_lines": ["AUBERGINE", "SZECHUAN", "SAUTE", "REG.:5.99", "TEL:514-683-2888"]}`
-
-### Item 10295
-
-![item 10295](images/item-10295.jpg)
-
-- **Name (French):** MULET ENTIER
-- **Category (English):** Fish & Seafood > Fish
-- **Category (French):** Poissons et fruits de mer > Poisson
-- **How classified:** rule (`fish`)
-- **Price:** 2.08
-- **Printed Price:** “2.08”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 535, top 651, right 730, bottom 729, page 3
-- **Full page:** [pages/flyer73-page-b645c9650a.jpg (flyer page 3)](pages/flyer73-page-b645c9650a.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/03.webp
-- **Details:** confidence: 0.69 · item_key: `0d82b6887027ec15`
-- **Raw:** `{"block_text": "MULET\nENTIER", "ocr_lines": ["MULET", "ENTIER"]}`
-
-### Item 10308
-
-![item 10308](images/item-10308.jpg)
-
-- **Name (French):** SERIES DE SHUMAI DE RIZ RAS RÉG.: 8.99
-- **Category (English):** Pantry > Rice
-- **Category (French):** Produits du garde-manger > Riz
-- **How classified:** rule (`rice`)
-- **Price:** 68.00
-- **Printed Price:** “68”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 209, top 680, right 338, bottom 801, page 4
-- **Full page:** [pages/flyer73-page-b2ea05d00b.jpg (flyer page 4)](pages/flyer73-page-b2ea05d00b.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/04.webp
-- **Details:** confidence: 0.82 · item_key: `55d27a092eeb2254`
-- **Raw:** `{"block_text": "SERIES DE\nSHUMAI DE RIZ\nRAS\n\nRÉG.: 8.99\n\nnn e", "ocr_lines": ["SERIESDE", "SHUMAIDERIZ", "REG:8.99"]}`
-
-### Item 10311
-
-![item 10311](images/item-10311.jpg)
-
-- **Name (French):** CHÂTAIGNE ÉPLUCHÉE REC
-- **Category (English):** Fruits & Vegetables > Dried Fruits & Nuts
-- **Category (French):** Fruits et légumes > Fruits séchés et noix
-- **How classified:** rule (`dried-fruits-nuts`)
-- **Price:** 3.98
-- **Printed Price:** “3.98”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 206, top 438, right 338, bottom 555, page 4
-- **Full page:** [pages/flyer73-page-b2ea05d00b.jpg (flyer page 4)](pages/flyer73-page-b2ea05d00b.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/04.webp
-- **Details:** confidence: 0.75 · item_key: `75ee21a4ae247272`
-- **Raw:** `{"block_text": "CHÂTAIGNE\nÉPLUCHÉE\nREC\n\nREG.: 4.99\n\n400 G", "ocr_lines": ["CHATAIGNE", "EPLUCHEE", "REG.:4.99"]}`
-
-### Item 10314
-
-![item 10314](images/item-10314.jpg)
-
-- **Name (French):** PALOURDES CUITES CONGELEES
-- **Category (English):** Frozen Food > Frozen Meat and Seafood
-- **Category (French):** Produits surgelés > Viande et fruits de mer surgelés
-- **How classified:** frozen-remap (`shellfish`)
-- **Price:** 5.59
-- **Printed Price:** “5.59”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 543, top 601, right 670, bottom 716, page 4
-- **Full page:** [pages/flyer73-page-b2ea05d00b.jpg (flyer page 4)](pages/flyer73-page-b2ea05d00b.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/04.webp
-- **Details:** confidence: 0.84 · item_key: `454b441c5902ee01`
-- **Raw:** `{"block_text": "PALOURDES\n\nCUITES CONGELEES\nbrin As]\n\nREG: 3:99\n\nms # ann G", "ocr_lines": ["PALOURDES", "CUITES CONGELEES", "REG:3.99"]}`
-
-## Flyer 140 — valid 2026-10-16 → 2026-10-22 (4 classified items, 1 unclassified)
+## Flyer 140 — valid 2026-10-16 → 2026-10-22 (10 classified items, 2 unclassified)
 
 Source ref: `circulaire-marche-sheng-tai-du-16-au-22-octobre-2026` · fetched 2026-10-16T12:38:03.495Z
 
-### Item 13932
+### Item 13937
 
-![item 13932](images/item-13932.jpg)
+![item 13937](images/item-13937.jpg)
 
-- **Name (French):** TARTELETTES DE STYLE PORTUGUAIS D | SEE
-- **Category (English):** Bakery > Cakes
-- **Category (French):** Boulangerie > Gâteaux
-- **How classified:** rule (`cakes`)
+- **Name (French):** CREVETTES QUEUE CRUES DÉCORTIQUÉE
+- **Category (English):** Fish & Seafood > Shrimp
+- **Category (French):** Poissons et fruits de mer > Crevette
+- **How classified:** rule (`shrimp`)
 - **Price:** 5.98
 - **Printed Price:** “5.98”
 - **Unit:** —
 - **Item validity:** 2026-10-16 → 2026-10-22
-- **bbox:** left 495, top 381, right 664, bottom 501, page 2
-- **Full page:** [pages/flyer140-page-67204f9566.jpg (flyer page 2)](pages/flyer140-page-67204f9566.jpg)
+- **bbox:** left 563, top 515, right 663, bottom 616, page 2
+- **Full page:** [pages/flyer140-page2-67204f9566.jpg (flyer page 2)](pages/flyer140-page2-67204f9566.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/02.webp
-- **Details:** confidence: 0.89 · item_key: `d45c011fc50336d2`
-- **Raw:** `{"block_text": "TARTELETTES DE\nSTYLE PORTUGUAIS\nD | SEE\n456\nPORTUGUESE STYLE\nCUSTARD TARTS\nTARTELETT |\nSTYLE PORT = (0 (1)", "ocr_lines": ["TARTELETTESDE", "STYLEPORTUGUAIS", "FERMA", "PORTUGUESESTYLE", "CUSTARD TARTS", "TARTELETTE", "STYLEPORTU"]}`
+- **Details:** confidence: 0.93 · item_key: `ffc88533f96106af`
+- **Raw:** `{"block_text": "CREVETTES\nQUEUE CRUES\nDÉCORTIQUÉE", "ocr_lines": ["CREVETTES", "QUEUECRUES", "DECORTIQUEE"]}`
 
-### Item 13939
+### Item 13938
 
-![item 13939](images/item-13939.jpg)
+![item 13938](images/item-13938.jpg)
 
-- **Name (French):** MELON D'HIVERS
-- **Category (English):** Fruits & Vegetables > Fresh Fruits
-- **Category (French):** Fruits et légumes > Fruits frais
-- **How classified:** rule (`fruits`)
-- **Price:** 0.68
-- **Printed Price:** “0.68”
+- **Name (French):** IMITATION DE CHAIR DE CRABE
+- **Category (English):** Fish & Seafood > Shellfish
+- **Category (French):** Poissons et fruits de mer > Crustacés
+- **How classified:** rule (`shellfish`)
+- **Price:** 2.50
+- **Printed Price:** “2/5.00”
 - **Unit:** —
 - **Item validity:** 2026-10-16 → 2026-10-22
-- **bbox:** left 565, top 141, right 664, bottom 251, page 2
-- **Full page:** [pages/flyer140-page-67204f9566.jpg (flyer page 2)](pages/flyer140-page-67204f9566.jpg)
+- **bbox:** left 182, top 440, right 325, bottom 523, page 2
+- **Full page:** [pages/flyer140-page2-67204f9566.jpg (flyer page 2)](pages/flyer140-page2-67204f9566.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/02.webp
-- **Details:** confidence: 0.73 · item_key: `f2c595c7b35d6408`
-- **Raw:** `{"block_text": "MELON\nD'HIVERS", "ocr_lines": ["MELON", "D'HIVERS"]}`
+- **Details:** confidence: 0.99 · item_key: `1f294d6be209a62c`
+- **Conditions:** `{"multibuy": {"count": 2, "total": 5.0}}`
+- **Raw:** `{"block_text": "IMITATION DE\nCHAIR DE CRABE", "ocr_lines": ["IMITATIONDE", "CHAIRDECRABE"]}`
+
+### Item 13941
+
+![item 13941](images/item-13941.jpg)
+
+- **Name (French):** SÉRIESIDE BONBONS) AUÏCAFE:
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
+- **Price:** 1.40
+- **Printed Price:** “2/2.80”
+- **Unit:** —
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 188, top 725, right 324, bottom 834, page 2
+- **Full page:** [pages/flyer140-page2-67204f9566.jpg (flyer page 2)](pages/flyer140-page2-67204f9566.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/02.webp
+- **Details:** confidence: 0.99 · item_key: `6dabc1f5259aed62`
+- **Conditions:** `{"multibuy": {"count": 2, "total": 2.8}}`
+- **Raw:** `{"block_text": "SÉRIESIDE\nBONBONS)\nAUÏCAFE:\n\nMO At ES Gas UNII", "ocr_lines": ["SERIESDE", "BONBONS", "AUCAFE"]}`
+
+### Item 13943
+
+![item 13943](images/item-13943.jpg)
+
+- **Name (French):** SERIES DE GYOZA
+- **Category (English):** International Foods > East Asian Foods
+- **Category (French):** Aliments internationaux > Aliments de l'Asie de l'Est
+- **How classified:** rule (`east-asian`)
+- **Price:** 5.28
+- **Printed Price:** “5.28”
+- **Unit:** —
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 881, top 318, right 986, bottom 392, page 2
+- **Full page:** [pages/flyer140-page2-67204f9566.jpg (flyer page 2)](pages/flyer140-page2-67204f9566.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/02.webp
+- **Details:** confidence: 0.99 · item_key: `10324224a48be496`
+- **Raw:** `{"block_text": "SERIES DE GYOZA", "ocr_lines": ["SERIESDEGYOZA"]}`
+
+### Item 13944
+
+![item 13944](images/item-13944.jpg)
+
+- **Name (French):** VERMICELLES SAUTESAVEC BOEUF REG:5.99 WWW.MARCHESHENGTAI.CA
+- **Category (English):** Meat > Beef
+- **Category (French):** Viande > Bœuf
+- **How classified:** rule (`beef`)
+- **Price:** 4.98
+- **Printed Price:** “4.98”
+- **Unit:** —
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 101, top 919, right 371, bottom 988, page 3
+- **Full page:** [pages/flyer140-page3-44b4d9b99d.jpg (flyer page 3)](pages/flyer140-page3-44b4d9b99d.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/03.webp
+- **Details:** confidence: 0.99 · item_key: `89cc645353d186b5`
+- **Conditions:** `{"alt_prices": ["3.98"]}`
+- **Raw:** `{"block_text": "V1 BOEUF 458\nEs eH\nWWW.MARCHESHENGTAI.CA", "ocr_lines": ["VERMICELLES", "SAUTESAVEC", "BOEUF", "REG:5.99", "WWW.MARCHESHENGTAI.CA"]}`
+
+### Item 13946
+
+![item 13946](images/item-13946.jpg)
+
+- **Name (French):** PANE ONGANES À FRAIS EN BOÎTE
+- **Category (English):** Pantry > Canned & Pickled
+- **Category (French):** Produits du garde-manger > Produits en conserve et marinés
+- **How classified:** rule (`specific-canned`)
+- **Price:** 1.58
+- **Printed Price:** “1.58”
+- **Unit:** —
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 861, top 215, right 988, bottom 317, page 3
+- **Full page:** [pages/flyer140-page3-44b4d9b99d.jpg (flyer page 3)](pages/flyer140-page3-44b4d9b99d.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/03.webp
+- **Details:** confidence: 0.99 · item_key: `a97c6325172f2ddb`
+- **Raw:** `{"block_text": "ee 2KGS\nPANE ONGANES\nÀ FRAIS EN BOÎTE\n> a) At NE", "ocr_lines": ["2KGS", "LONGANES", "FRAIS EN BOITE"]}`
 
 ### Item 13948
 
@@ -167,10 +130,28 @@ Source ref: `circulaire-marche-sheng-tai-du-16-au-22-octobre-2026` · fetched 20
 - **Unit:** —
 - **Item validity:** 2026-10-16 → 2026-10-22
 - **bbox:** left 769, top 649, right 997, bottom 725, page 3
-- **Full page:** [pages/flyer140-page-44b4d9b99d.jpg (flyer page 3)](pages/flyer140-page-44b4d9b99d.jpg)
+- **Full page:** [pages/flyer140-page3-44b4d9b99d.jpg (flyer page 3)](pages/flyer140-page3-44b4d9b99d.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/03.webp
 - **Details:** confidence: 0.85 · item_key: `80a2fae5641c6e3f`
 - **Raw:** `{"block_text": "FILETS DE\nTILAPIA FRAIS", "ocr_lines": ["FILETSDE", "TILAPIAFRAIS"]}`
+
+### Item 13950
+
+![item 13950](images/item-13950.jpg)
+
+- **Name (French):** DARNES DE SAUMON
+- **Category (English):** Fish & Seafood > Fish
+- **Category (French):** Poissons et fruits de mer > Poisson
+- **How classified:** rule (`fish`)
+- **Price:** 7.98
+- **Printed Price:** “7.98”
+- **Unit:** —
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 514, top 651, right 729, bottom 723, page 3
+- **Full page:** [pages/flyer140-page3-44b4d9b99d.jpg (flyer page 3)](pages/flyer140-page3-44b4d9b99d.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/03.webp
+- **Details:** confidence: 0.90 · item_key: `a13f3849b5e344a6`
+- **Raw:** `{"block_text": "DARNES\nDE SAUMON", "ocr_lines": ["DARNES", "DESAUMON"]}`
 
 ### Item 13952
 
@@ -185,197 +166,53 @@ Source ref: `circulaire-marche-sheng-tai-du-16-au-22-octobre-2026` · fetched 20
 - **Unit:** —
 - **Item validity:** 2026-10-16 → 2026-10-22
 - **bbox:** left 476, top 218, right 649, bottom 306, page 3
-- **Full page:** [pages/flyer140-page-44b4d9b99d.jpg (flyer page 3)](pages/flyer140-page-44b4d9b99d.jpg)
+- **Full page:** [pages/flyer140-page3-44b4d9b99d.jpg (flyer page 3)](pages/flyer140-page3-44b4d9b99d.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/03.webp
 - **Details:** confidence: 0.99 · item_key: `5016cd44c7dfac6f`
 - **Conditions:** `{"multibuy": {"count": 2, "total": 2.98}}`
 - **Raw:** `{"block_text": "> VIEILLE\nNOIX DE COCO", "ocr_lines": ["VIEILLE", "NOIX DECOCO"]}`
 
+### Item 13954
+
+![item 13954](images/item-13954.jpg)
+
+- **Name (French):** CHATAIGNE _ROTIE ET EPLUCHEE ROR
+- **Category (English):** Fruits & Vegetables > Dried Fruits & Nuts
+- **Category (French):** Fruits et légumes > Fruits séchés et noix
+- **How classified:** rule (`dried-fruits-nuts`)
+- **Price:** 2.68
+- **Printed Price:** “2.68”
+- **Unit:** —
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 867, top 160, right 999, bottom 278, page 4
+- **Full page:** [pages/flyer140-page4-e363a6aba7.jpg (flyer page 4)](pages/flyer140-page4-e363a6aba7.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/04.webp
+- **Details:** confidence: 0.75 · item_key: `e871ecbcff8ac8ef`
+- **Raw:** `{"block_text": "CHATAIGNE\n_ROTIE ET\nEPLUCHEE\n\nROR\nREG.: 3.49 / 1006 X 2", "ocr_lines": ["CHATAIGNE", "ROTIEET", "EPLUCHEE", "REG:3.49/100GX2"]}`
+
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
 
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
+— from flyer 140 (valid 2026-10-16 → 2026-10-22)
 
-### Item 10266
+### Item 13927
 
-![item 10266](images/item-10266.jpg)
+![item 13927](images/item-13927.jpg)
 
-- **Name (French):** SERIES © D'AUBEPINES CONFITES VKHBEAP AI
+- **Name (French):** BOULE DE SÉSAME EN PATE DE
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Price:** 3.98
-- **Printed Price:** “3.98”
+- **Price:** 3.48
+- **Printed Price:** “3.48”
 - **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 218, top 702, right 343, bottom 829, page 1
-- **Full page:** [pages/flyer73-page-c13b21ffc0.jpg (flyer page 1)](pages/flyer73-page-c13b21ffc0.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/01.webp
-- **Details:** confidence: 0.69 · item_key: `867577e9c98895b7`
-- **Raw:** `{"block_text": "| SERIES ©\nD'AUBEPINES\nCONFITES\nVKHBEAP AI\nLk hes: 199", "ocr_lines": ["SERIES", "D'AUBEPINES", "CONFITES", "REG:1.99"]}`
-
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
-
-### Item 10274
-
-![item 10274](images/item-10274.jpg)
-
-- **Name (French):** WWW.MARCHESHENGTAI.CA
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 1.28
-- **Printed Price:** “1.28”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 92, top 889, right 361, bottom 988, page 1
-- **Full page:** [pages/flyer73-page-c13b21ffc0.jpg (flyer page 1)](pages/flyer73-page-c13b21ffc0.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/01.webp
-- **Details:** confidence: 0.84 · item_key: `41bf4f36cd765bf7`
-- **Raw:** `{"block_text": "WWW.MARCHESHENGTAI.CA", "ocr_lines": ["WWW.MARCHESHENGTAI.CA"]}`
-
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
-
-### Item 10275
-
-![item 10275](images/item-10275.jpg)
-
-- **Name (French):** 4850 SOURCES BLVD, DOLLARD-DES ORMEAUX, QUEBEC H8Y 3C7
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 3.08
-- **Printed Price:** “3.08”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 395, top 888, right 700, bottom 993, page 1
-- **Full page:** [pages/flyer73-page-c13b21ffc0.jpg (flyer page 1)](pages/flyer73-page-c13b21ffc0.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/01.webp
-- **Details:** confidence: 0.67 · item_key: `705ffedb09ed5010`
-- **Raw:** `{"block_text": "4850 SOURCES BLVD, DOLLARD-DES ORMEAUX, QUEBEC H8Y 3C7", "ocr_lines": ["4850SOURCESBLVD,DOLLARD-DESORMEAUX,QUEBECH8Y3C7"]}`
-
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
-
-### Item 10281
-
-![item 10281](images/item-10281.jpg)
-
-- **Name (French):** AUGUESIGRILUÉES POURISUSHI[COREEN
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 1.00
-- **Printed Price:** “2/2.00”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 190, top 780, right 323, bottom 863, page 2
-- **Full page:** [pages/flyer73-page-45c4daa3f2.jpg (flyer page 2)](pages/flyer73-page-45c4daa3f2.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/02.webp
-- **Details:** confidence: 0.92 · item_key: `948b3273ff2d7b40`
-- **Conditions:** `{"multibuy": {"count": 2, "total": 2.0}}`
-- **Raw:** `{"block_text": "AUGUESIGRILUÉES\nPOURISUSHI[COREEN", "ocr_lines": ["ALGUESGRILLEES", "POUR SUSHI COREEN"]}`
-
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
-
-### Item 10287
-
-![item 10287](images/item-10287.jpg)
-
-- **Name (French):** KEPFRCZEN-GARDEROONGFLE
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 7.98
-- **Printed Price:** “7.98”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 562, top 557, right 826, bottom 612, page 2
-- **Full page:** [pages/flyer73-page-45c4daa3f2.jpg (flyer page 2)](pages/flyer73-page-45c4daa3f2.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/02.webp
-- **Details:** confidence: 0.99 · item_key: `86511f7735aa0ebb`
-- **Raw:** `{"block_text": "Sr fs\nKEEP FROZEN: GARDER CONGEYE\nNet we | Poids nat. ÎLE", "ocr_lines": ["KEPFRCZEN-GARDEROONGFLE"]}`
-
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
-
-### Item 10294
-
-![item 10294](images/item-10294.jpg)
-
-- **Name (French):** ) j BQULETTES 100:
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 3.98
-- **Printed Price:** “3.98”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 101, top 919, right 371, bottom 988, page 3
-- **Full page:** [pages/flyer73-page-b645c9650a.jpg (flyer page 3)](pages/flyer73-page-b645c9650a.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/03.webp
-- **Details:** confidence: 0.99 · item_key: `5fb13ab074dc9014`
-- **Conditions:** `{"alt_prices": ["10/3.98"]}`
-- **Raw:** `{"block_text": ") j BQULETTES 100:\n\nBt ‘998\nRÉG.: 10/4.99 /CH\n\nWWW.MARCHESHENGTAI.CA", "ocr_lines": ["BOULETTES", "DEPOULET", "REG.10/4.99", "WWW.MARCHESHENGTAI.CA"]}`
-
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
-
-### Item 10297
-
-![item 10297](images/item-10297.jpg)
-
-- **Name (French):** /BTE
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 8.66
-- **Printed Price:** “8.66”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 863, top 345, right 989, bottom 402, page 3
-- **Full page:** [pages/flyer73-page-b645c9650a.jpg (flyer page 3)](pages/flyer73-page-b645c9650a.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/03.webp
-- **Details:** confidence: 0.98 · item_key: `991a97a81c411977`
-- **Raw:** `{"block_text": "“/BTE", "ocr_lines": ["/BTE"]}`
-
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
-
-### Item 10298
-
-![item 10298](images/item-10298.jpg)
-
-- **Name (French):** CACAHUETES FRAICHES
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 1.68
-- **Printed Price:** “1.68”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 184, top 214, right 317, bottom 305, page 3
-- **Full page:** [pages/flyer73-page-b645c9650a.jpg (flyer page 3)](pages/flyer73-page-b645c9650a.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/03.webp
-- **Details:** confidence: 0.99 · item_key: `c69a64e6e800448b`
-- **Raw:** `{"block_text": "CACAHUETES\nFRAICHES", "ocr_lines": ["CACAHUETES", "FRAICHES"]}`
-
-— from flyer 73 (valid 2026-10-09 → 2026-10-15)
-
-### Item 10318
-
-![item 10318](images/item-10318.jpg)
-
-- **Name (French):** PETIT TONNA BRNSS RÉG.: 4.99
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 3.58
-- **Printed Price:** “3.58”
-- **Unit:** —
-- **Item validity:** 2026-10-09 → 2026-10-15
-- **bbox:** left 872, top 681, right 999, bottom 798, page 4
-- **Full page:** [pages/flyer73-page-b2ea05d00b.jpg (flyer page 4)](pages/flyer73-page-b2ea05d00b.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-9-au-15-octobre-2026/04.webp
-- **Details:** confidence: 0.97 · item_key: `0c09fa3f8b87a1a9`
-- **Raw:** `{"block_text": "PETIT TONNA\nBRNSS\nRÉG.: 4.99\n\n680 €", "ocr_lines": ["PETITTONNA", "REG:4.99"]}`
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 109, top 703, right 340, bottom 829, page 1
+- **Full page:** [pages/flyer140-page1-999c5a9af6.jpg (flyer page 1)](pages/flyer140-page1-999c5a9af6.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/01.webp
+- **Details:** confidence: 0.77 · item_key: `c30b75d595445ae8`
+- **Raw:** `{"block_text": "BOULE DE SÉSAME\n\nEN PATE DE\n\nsuerrene sean rares MARICOTS SUCREE\n} sui ASTESESANE SSS DIR\nBoule de sesame en pate de haricats sucree Unes: ee\n\n= +t FPE ds D ENS", "ocr_lines": ["BOULEDESESAME", "ENPATEDE", "HARICOTS SUCREE", "SWEETENEDBEAN PASTESESAME BA", "REG:2.99"]}`
 
 — from flyer 140 (valid 2026-10-16 → 2026-10-22)
 
@@ -392,7 +229,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-16 → 2026-10-22
 - **bbox:** left 543, top 701, right 665, bottom 811, page 1
-- **Full page:** [pages/flyer140-page-999c5a9af6.jpg (flyer page 1)](pages/flyer140-page-999c5a9af6.jpg)
+- **Full page:** [pages/flyer140-page1-999c5a9af6.jpg (flyer page 1)](pages/flyer140-page1-999c5a9af6.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-marche-sheng-tai-du-16-au-22-octobre-2026/01.webp
 - **Details:** confidence: 0.99 · item_key: `82d1dec2b8f4d2ca`
 - **Raw:** `{"block_text": "PÂTE:DE BLE\nAVECISAUCE\n| Dm ÉRICÉE", "ocr_lines": ["PATEDEBLE", "AVECSAUCE", "EPICEE"]}`

@@ -1,172 +1,151 @@
 # Canadian Tire — full product report
 
-Store slug: `canadian-tire`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `canadian-tire`. Generated from `data/grocery.db`. A sampled subset of 11 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 11 — valid 2026-10-08 → 2026-10-14 (8 classified items, 10 unclassified)
+## Flyer 110 — valid 2026-10-15 → 2026-10-21 (10 classified items, 1 unclassified)
 
-Source ref: `8171575` · fetched 2026-10-13T03:14:27.310Z
+Source ref: `8180834` · fetched 2026-10-16T12:04:57.498Z
 
-### Item 2667
+### Item 11673
 
-![item 2667](images/item-2667.jpg)
+![item 11673](images/item-11673.jpg)
 
-- **Name (French):** Certains crics et chandelles MotoMaster et Certified
+- **Name (French):** Certains robinets d'évier et de lavabo, ens. pommes de douche et douchette et accessoires Moen
+- **Brand:** Moen
 - **Category (English):** Household > Home Goods
 - **Category (French):** Maison > Articles pour la maison
 - **How classified:** rule (`household-goods`)
-- **Price:** 49.99
-- **Printed Price:** “49.99”
+- **Price:** 16.99
+- **Printed Price:** “16.99”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436182293/1790921843/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `4c432f0c3cb5ca14`
-- **Conditions:** `{"discount": 29}`
-- **Raw:** `{"id": 1045182876, "flyer_id": 8171575, "name": "Certains crics et chandelles MotoMaster et Certified", "display_type": 1, "brand": null, "left": 12191.8, "bottom": -823.34, "right": 12610.6, "top": -792.97, "cutout_image_url": "http://f.wishabi.net/page_items/436182293/1790921843/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 29, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436884756/1791518222/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `f236905aea52311b`
+- **Conditions:** `{"discount": 26}`
+- **Raw:** `{"id": 1046703617, "flyer_id": 8180834, "name": "Certains robinets d'évier et de lavabo, ens. pommes de douche et douchette et accessoires Moen", "display_type": 1, "brand": "Moen", "left": 9998.0, "bottom": -1936.31, "right": 10427.0, "top": -1910.31, "cutout_image_url": "http://f.wishabi.net/page_items/436884756/1791518222/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 26, "available_to": "2026-10-21T2`
 
-### Item 2695
+### Item 11675
 
-![item 2695](images/item-2695.jpg)
+![item 11675](images/item-11675.jpg)
 
-- **Name (French):** Ens. de pinces 8 po
+- **Name (French):** Jeu de 30 lumières étoilées orange à DEL NOMA, 10 pi. NOMA
+- **Brand:** NOMA
+- **Category (English):** Fruits & Vegetables > Fresh Fruits
+- **Category (French):** Fruits et légumes > Fruits frais
+- **How classified:** rule (`fruits`)
+- **Price:** 19.99
+- **Printed Price:** “19.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436898269/1791518194/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `c91f1f71429dabef`
+- **Raw:** `{"id": 1046694744, "flyer_id": 8180834, "name": "Jeu de 30 lumières étoilées orange à DEL NOMA, 10 pi. NOMA", "display_type": 1, "brand": "NOMA", "left": 2946.5, "bottom": -2353.89, "right": 3163.5, "top": -2191.89, "cutout_image_url": "http://f.wishabi.net/page_items/436898269/1791518194/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, `
+
+### Item 11681
+
+![item 11681](images/item-11681.jpg)
+
+- **Name (French):** Capsules Vertuo, 8 ou 10/paq. Certaines saveurs
+- **Brand:** Nespresso
+- **Category (English):** Drinks > Coffee
+- **Category (French):** Boissons > Cafés
+- **How classified:** rule (`coffee`)
+- **Price:** 12.99
+- **Printed Price:** “12.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436756516/1791518210/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `8d5ae7a85c85659c`
+- **Raw:** `{"id": 1046706494, "flyer_id": 8180834, "name": "Capsules Vertuo, 8 ou 10/paq. Certaines saveurs", "display_type": 1, "brand": "Nespresso", "left": 25245.7, "bottom": -1862.29, "right": 25687.91, "top": -1420.08, "cutout_image_url": "http://f.wishabi.net/page_items/436756516/1791518210/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "pr`
+
+### Item 11685
+
+![item 11685](images/item-11685.jpg)
+
+- **Name (French):** Whirlpool Adoucisseur d'eau à 30 000 granules
+- **Brand:** Whirlpool
+- **Category (English):** Drinks > Water
+- **Category (French):** Boissons > Eau
+- **How classified:** rule (`water`)
+- **Price:** 649.99
+- **Printed Price:** “649.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436754521/1791518193/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `f69e9be98e00dff2`
+- **Conditions:** `{"discount": 13}`
+- **Raw:** `{"id": 1046702573, "flyer_id": 8180834, "name": "Whirlpool Adoucisseur d'eau à 30 000 granules", "display_type": 1, "brand": "Whirlpool", "left": 10223.91, "bottom": -2382.25, "right": 10449.43, "top": -2197.44, "cutout_image_url": "http://f.wishabi.net/page_items/436754521/1791518193/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 13, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price`
+
+### Item 11702
+
+![item 11702](images/item-11702.jpg)
+
+- **Name (French):** Mastercraft 8-Outlet Magnetic Power Bar
 - **Brand:** Mastercraft
 - **Category (English):** Household > Home Goods
 - **Category (French):** Maison > Articles pour la maison
 - **How classified:** rule (`household-goods`)
-- **Price:** 14.99
-- **Printed Price:** “14.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436178943/1790921796/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `6efea0dc91045c6f`
-- **Conditions:** `{"discount": 50}`
-- **Raw:** `{"id": 1045178729, "flyer_id": 8171575, "name": "Ens. de pinces 8 po", "display_type": 1, "brand": "Mastercraft", "left": 7084.86, "bottom": -2154.97, "right": 7312.5, "top": -1972.57, "cutout_image_url": "http://f.wishabi.net/page_items/436178943/1790921796/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 50, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "14.99", "print_id": nul`
-
-### Item 2731
-
-![item 2731](images/item-2731.jpg)
-
-- **Name (French):** Bac de rangement transparent empilable TYPE A
-- **Brand:** TYPE A
-- **Category (English):** Household > Home Goods
-- **Category (French):** Maison > Articles pour la maison
-- **How classified:** rule (`household-goods`)
-- **Price:** 10.99
-- **Printed Price:** “10.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436176828/1790921790/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d1a3af3f8f057836`
-- **Conditions:** `{"discount": 42}`
-- **Raw:** `{"id": 1045177370, "flyer_id": 8171575, "name": "Bac de rangement transparent empilable TYPE A", "display_type": 1, "brand": "TYPE A", "left": 5133.82, "bottom": -571.04, "right": 5359.77, "top": -341.57, "cutout_image_url": "http://f.wishabi.net/page_items/436176828/1790921790/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 42, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "10.`
-
-### Item 2817
-
-![item 2817](images/item-2817.jpg)
-
-- **Name (French):** Gaufrier Neverstick, mélangeur à main ou robot culinaire PrecisionPro.
-- **Category (English):** Household > Home Goods
-- **Category (French):** Maison > Articles pour la maison
-- **How classified:** rule (`household-goods`)
-- **Price:** 79.99
-- **Printed Price:** “79.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436175357/1790921803/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `1fb4099994a9db9c`
-- **Conditions:** `{"discount": 20}`
-- **Raw:** `{"id": 1045176264, "flyer_id": 8171575, "name": "Gaufrier Neverstick, mélangeur à main ou robot culinaire PrecisionPro.", "display_type": 1, "brand": null, "left": 2960.72, "bottom": -1739.77, "right": 3408.7, "top": -1702.71, "cutout_image_url": "http://f.wishabi.net/page_items/436175357/1790921803/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-14T23:59:59-04:00", "video_url`
-
-### Item 2882
-
-![item 2882](images/item-2882.jpg)
-
-- **Name (French):** Patins de hockey Vapor X250
-- **Brand:** Bauer
-- **Category (English):** Household > Home Goods
-- **Category (French):** Maison > Articles pour la maison
-- **How classified:** rule (`household-goods`)
-- **Price:** 62.99
-- **Printed Price:** “62.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436181205/1790921826/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `461d59490f293c43`
-- **Conditions:** `{"discount": 10}`
-- **Raw:** `{"id": 1045180526, "flyer_id": 8171575, "name": "Patins de hockey Vapor X250", "display_type": 1, "brand": "Bauer", "left": 9483.14, "bottom": -1928.77, "right": 9715.05, "top": -1742.08, "cutout_image_url": "http://f.wishabi.net/page_items/436181205/1790921826/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 10, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "62.99", "print_id": `
-
-### Item 2972
-
-![item 2972](images/item-2972.jpg)
-
-- **Name (French):** Bâton de hockey Mystery Mini 2026 ou bâton de gardien de but, sac de bâton ou balles 3/paq
-- **Brand:** Bauer
-- **Category (English):** Household > Home Goods
-- **Category (French):** Maison > Articles pour la maison
-- **How classified:** rule (`household-goods`)
-- **Price:** 11.99
-- **Printed Price:** “11.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436181185/1790921812/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `976bd9e9d6433468`
-- **Raw:** `{"id": 1045180316, "flyer_id": 8171575, "name": "Bâton de hockey Mystery Mini 2026 ou bâton de gardien de but, sac de bâton ou balles 3/paq", "display_type": 1, "brand": "Bauer", "left": 9263.81, "bottom": -2196.66, "right": 9491.11, "top": -1965.96, "cutout_image_url": "http://f.wishabi.net/page_items/436181185/1790921812/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T2`
-
-### Item 3042
-
-![item 3042](images/item-3042.jpg)
-
-- **Name (French):** Piles alcalines MAX.
-- **Brand:** Energizer
-- **Category (English):** Household > Home Goods
-- **Category (French):** Maison > Articles pour la maison
-- **How classified:** rule (`household-goods`)
-- **Price:** 14.97
-- **Printed Price:** “14.97”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436174163/1790921771/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `3fe0a3d62677a895`
-- **Conditions:** `{"discount": 27}`
-- **Raw:** `{"id": 1045174776, "flyer_id": 8171575, "name": "Piles alcalines MAX.", "display_type": 1, "brand": "Energizer", "left": 28.89, "bottom": -2435.6, "right": 258.3, "top": -2204.54, "cutout_image_url": "http://f.wishabi.net/page_items/436174163/1790921771/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 27, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "14.97", "print_id": null, "s`
-
-### Item 3344
-
-![item 3344](images/item-3344.jpg)
-
-- **Name (French):** Champion GX270Cold - Laveuse haute pression à essence à eau froide, sur roues, 3000 lb/po², 19 cm3, 2,5 gal/min
-- **Brand:** CHAMPION®
-- **Category (English):** Household > Home Goods
-- **Category (French):** Maison > Articles pour la maison
-- **How classified:** rule (`household-goods`)
-- **Size:** 3000 lb
-- **Price:** 449.99
-- **Printed Price:** “449.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436182500/1790921826/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `70a038b54d8290d5`
-- **Conditions:** `{"discount": 25}`
-- **Raw:** `{"id": 1045181797, "flyer_id": 8171575, "name": "Champion GX270Cold - Laveuse haute pression à essence à eau froide, sur roues, 3000 lb/po², 19 cm3, 2,5 gal/min", "display_type": 1, "brand": "CHAMPION®", "left": 11214.4, "bottom": -2179.62, "right": 11451.9, "top": -1970.07, "cutout_image_url": "http://f.wishabi.net/page_items/436182500/1790921826/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 25, "avail`
-
-## Flyer 110 — valid 2026-10-15 → 2026-10-21 (2 classified items, 0 unclassified)
-
-Source ref: `8180834` · fetched 2026-10-16T12:04:57.498Z
-
-### Item 11676
-
-![item 11676](images/item-11676.jpg)
-
-- **Name (French):** Mini générateur de brouillard à base d'eau.
-- **Category (English):** Household > Home Goods
-- **Category (French):** Maison > Articles pour la maison
-- **How classified:** rule (`household-goods`)
-- **Price:** 59.99
-- **Printed Price:** “59.99”
+- **Price:** 29.49
+- **Printed Price:** “29.49”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436750076/1791518169/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `89a028f0f413e426`
-- **Raw:** `{"id": 1046694007, "flyer_id": 8180834, "name": "Mini générateur de brouillard à base d'eau.", "display_type": 1, "brand": null, "left": 2710.77, "bottom": -2424.86, "right": 2939.82, "top": -2198.18, "cutout_image_url": "http://f.wishabi.net/page_items/436750076/1791518169/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "59.99`
+- **Image source URL:** http://f.wishabi.net/page_items/436751759/1791518191/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `70e04b91f83fb04f`
+- **Conditions:** `{"discount": 16}`
+- **Raw:** `{"id": 1046697689, "flyer_id": 8180834, "name": "Mastercraft 8-Outlet Magnetic Power Bar", "display_type": 1, "brand": "Mastercraft", "left": 6323.74, "bottom": -1226.08, "right": 6551.73, "top": -1054.69, "cutout_image_url": "http://f.wishabi.net/page_items/436751759/1791518191/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 16, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "29`
+
+### Item 11703
+
+![item 11703](images/item-11703.jpg)
+
+- **Name (French):** Scie à onglets mixte, 10 po, 15 A Mastercraft
+- **Brand:** Mastercraft
+- **Category (English):** Household > Home Goods
+- **Category (French):** Maison > Articles pour la maison
+- **How classified:** rule (`household-goods`)
+- **Price:** 169.99
+- **Printed Price:** “169.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436755373/1791518215/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `ed8d59012272c4d0`
+- **Conditions:** `{"discount": 43}`
+- **Raw:** `{"id": 1046705088, "flyer_id": 8180834, "name": "Scie à onglets mixte, 10 po, 15 A Mastercraft", "display_type": 1, "brand": "Mastercraft", "left": 11489.86, "bottom": -559.05, "right": 11770.12, "top": -374.51, "cutout_image_url": "http://f.wishabi.net/page_items/436755373/1791518215/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 43, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price`
+
+### Item 11708
+
+![item 11708](images/item-11708.jpg)
+
+- **Name (French):** Certaines dosettes K-Cup® de café Tim Hortons, 48 un
+- **Brand:** Tim Horton's
+- **Category (English):** Drinks > Coffee
+- **Category (French):** Boissons > Cafés
+- **How classified:** rule (`coffee`)
+- **Price:** 42.99
+- **Printed Price:** “42.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436756517/1791518211/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `b7a766c0bb7b5ed8`
+- **Raw:** `{"id": 1046706500, "flyer_id": 8180834, "name": "Certaines dosettes K-Cup® de café Tim Hortons, 48 un", "display_type": 1, "brand": "Tim Horton's", "left": 24804.57, "bottom": -1861.09, "right": 25243.01, "top": -1420.21, "cutout_image_url": "http://f.wishabi.net/page_items/436756517/1791518211/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": `
+
+### Item 11712
+
+![item 11712](images/item-11712.jpg)
+
+- **Name (French):** Scie à onglets coulissante à biseau double, 12 po DEWALT
+- **Brand:** DEWALT
+- **Category (English):** Household > Home Goods
+- **Category (French):** Maison > Articles pour la maison
+- **How classified:** rule (`household-goods`)
+- **Price:** 699.99
+- **Printed Price:** “699.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436757251/1791518223/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `36f633562fbc226e`
+- **Conditions:** `{"discount": 21}`
+- **Raw:** `{"id": 1046706860, "flyer_id": 8180834, "name": "Scie à onglets coulissante à biseau double, 12 po DEWALT", "display_type": 1, "brand": "DEWALT", "left": 35831.76, "bottom": -2213.95, "right": 36271.8, "top": -1862.22, "cutout_image_url": "http://f.wishabi.net/page_items/436757251/1791518223/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 21, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null,`
 
 ### Item 11714
 
@@ -186,198 +165,42 @@ Source ref: `8180834` · fetched 2026-10-16T12:04:57.498Z
 - **Conditions:** `{"discount": 25}`
 - **Raw:** `{"id": 1046693720, "flyer_id": 8180834, "name": "Huile moteur diesel synthétique de haute tenue SHELL ROTELLA", "display_type": 1, "brand": "SHELL ROTELLA", "left": 2416.53, "bottom": -1282.4, "right": 2649.9, "top": -1054.81, "cutout_image_url": "http://f.wishabi.net/page_items/436749206/1791518172/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-21T23:59:59-04:00", "video_url`
 
+### Item 11735
+
+![item 11735](images/item-11735.jpg)
+
+- **Name (French):** Certains cafés moulus, dosettes K-Cup ou capsules
+- **Category (English):** Drinks > Coffee
+- **Category (French):** Boissons > Cafés
+- **How classified:** rule (`coffee`)
+- **Price:** 5.29
+- **Printed Price:** “5.29”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436753692/1791518206/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `d3917110823077bb`
+- **Conditions:** `{"discount": 43}`
+- **Raw:** `{"id": 1046701523, "flyer_id": 8180834, "name": "Certains cafés moulus, dosettes K-Cup ou capsules", "display_type": 1, "brand": null, "left": 8564.05, "bottom": -2429.9, "right": 8789.83, "top": -2369.48, "cutout_image_url": "http://f.wishabi.net/page_items/436753692/1791518206/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 43, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.`
+
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
 
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
+— from flyer 110 (valid 2026-10-15 → 2026-10-21)
 
-### Item 2668
+### Item 11730
 
-![item 2668](images/item-2668.jpg)
+![item 11730](images/item-11730.jpg)
 
-- **Name (French):** Momie sortant du sol, 3 pi.
+- **Name (French):** RABAIS $10 sur une vidange d'huile synthétique
+- **Brand:** Castrol
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 149.99
-- **Printed Price:** “149.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436181751/1790921841/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d9b8e8a0deda3199`
-- **Conditions:** `{"discount": 25}`
-- **Raw:** `{"id": 1045181594, "flyer_id": 8171575, "name": "Momie sortant du sol, 3 pi.", "display_type": 1, "brand": null, "left": 9770.42, "bottom": -1579.13, "right": 10005.8, "top": -1456.95, "cutout_image_url": "http://f.wishabi.net/page_items/436181751/1790921841/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "149.99", "print_id": nu`
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2741
-
-![item 2741](images/item-2741.jpg)
-
-- **Name (French):** Gagnez de l'Argent CTMD*. Obtenez des offres de prime. Inscrivez-vous pour échanger.
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
+- **How classified:** junk
 - **Price:** —
 - **Printed Price:** “None”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436306821/1790921809/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `4ff9e5cfc7779274`
-- **Raw:** `{"id": 1045177264, "flyer_id": 8171575, "name": "Gagnez de l'Argent CTMD*. Obtenez des offres de prime. Inscrivez-vous pour échanger.", "display_type": 5, "brand": null, "left": 3902.0, "bottom": -2477.18, "right": 4842.0, "top": -2434.18, "cutout_image_url": "http://f.wishabi.net/page_items/436306821/1790921809/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:`
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2743
-
-![item 2743](images/item-2743.jpg)
-
-- **Name (French):** PLUS DE FACILES ET MOINS DE TEMPS
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436307431/1790921861/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `3928ac42e905f285`
-- **Raw:** `{"id": 1045182452, "flyer_id": 8171575, "name": "PLUS DE FACILES ET MOINS DE TEMPS", "display_type": 5, "brand": null, "left": 10759.0, "bottom": -2479.31, "right": 11695.0, "top": -2432.31, "cutout_image_url": "http://f.wishabi.net/page_items/436307431/1790921861/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": `
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2753
-
-![item 2753](images/item-2753.jpg)
-
-- **Name (French):** Certains armes à air comprimé.
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 27.99
-- **Printed Price:** “27.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436181216/1790921832/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `4c9d43f412b843d5`
-- **Conditions:** `{"discount": 30}`
-- **Raw:** `{"id": 1045180641, "flyer_id": 8171575, "name": "Certains armes à air comprimé.", "display_type": 1, "brand": null, "left": 9036.06, "bottom": -1052.22, "right": 9260.4, "top": -996.9, "cutout_image_url": "http://f.wishabi.net/page_items/436181216/1790921832/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 30, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "27.99", "print_id": nul`
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2776
-
-![item 2776](images/item-2776.jpg)
-
-- **Name (French):** SIMONIZ
-- **Brand:** SIMONIZ
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 174.99
-- **Printed Price:** “174.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436182513/1790921834/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `fc9dda44f310549c`
-- **Conditions:** `{"discount": 42}`
-- **Raw:** `{"id": 1045181915, "flyer_id": 8171575, "name": "SIMONIZ", "display_type": 1, "brand": "SIMONIZ", "left": 11214.9, "bottom": -2363.14, "right": 11453.1, "top": -2178.22, "cutout_image_url": "http://f.wishabi.net/page_items/436182513/1790921834/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 42, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "174.99", "print_id": null, "short_name`
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2802
-
-![item 2802](images/item-2802.jpg)
-
-- **Name (French):** Radiator personnel, 600 W, noir.
-- **Brand:** NOMA
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 21.99
-- **Printed Price:** “21.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436178426/1790921811/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `037e53157d95f25c`
-- **Conditions:** `{"discount": 12}`
-- **Raw:** `{"id": 1045178241, "flyer_id": 8171575, "name": "Radiator personnel, 600 W, noir.", "display_type": 1, "brand": "NOMA", "left": 6658.94, "bottom": -556.29, "right": 6794.75, "top": -302.05, "cutout_image_url": "http://f.wishabi.net/page_items/436178426/1790921811/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 12, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "21.99", "print_id"`
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2826
-
-![item 2826](images/item-2826.jpg)
-
-- **Name (French):** Certains sacs de recyclage FRANK
-- **Brand:** FRANK
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 7.19
-- **Printed Price:** “7.19”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436305153/1790921814/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `e2f74153c06e5ec9`
-- **Conditions:** `{"discount": 15}`
-- **Raw:** `{"id": 1045177866, "flyer_id": 8171575, "name": "Certains sacs de recyclage FRANK", "display_type": 1, "brand": "FRANK", "left": 5364.5, "bottom": -1278.25, "right": 5498.5, "top": -1202.25, "cutout_image_url": "http://f.wishabi.net/page_items/436305153/1790921814/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 15, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "7.19", "print_id"`
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2892
-
-![item 2892](images/item-2892.jpg)
-
-- **Name (French):** Haltère réglable SelectTech 52 BowFlex
-- **Brand:** Bowflex
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 249.99
-- **Printed Price:** “249.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436181714/1790921819/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `4b713c1a616c638b`
-- **Conditions:** `{"discount": 17}`
-- **Raw:** `{"id": 1045181137, "flyer_id": 8171575, "name": "Haltère réglable SelectTech 52 BowFlex", "display_type": 1, "brand": "Bowflex", "left": 10010.4, "bottom": -1052.33, "right": 10237.2, "top": -825.27, "cutout_image_url": "http://f.wishabi.net/page_items/436181714/1790921819/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "249.99",`
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 3182
-
-![item 3182](images/item-3182.jpg)
-
-- **Name (French):** PC Reg. 779.99
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 679.99
-- **Printed Price:** “679.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436180541/1790921807/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `ae6e448b6d758eb5`
-- **Raw:** `{"id": 1045179510, "flyer_id": 8171575, "name": "PC Reg. 779.99", "display_type": 1, "brand": null, "left": 7844.5, "bottom": -1604.81, "right": 7993.86, "top": -1390.51, "cutout_image_url": "http://f.wishabi.net/page_items/436180541/1790921807/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "679.99", "print_id": null, "short_n`
-
-— from flyer 11 (valid 2026-10-08 → 2026-10-14)
-
-### Item 3311
-
-![item 3311](images/item-3311.jpg)
-
-- **Name (French):** Foyer électrique, 44 po.
-- **Brand:** For Living
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 279.99
-- **Printed Price:** “279.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436177484/1790921780/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `348f41f117362936`
-- **Conditions:** `{"discount": 30}`
-- **Raw:** `{"id": 1045176613, "flyer_id": 8171575, "name": "Foyer électrique, 44 po.", "display_type": 1, "brand": "For Living", "left": 4386.52, "bottom": -823.51, "right": 4843.6, "top": -593.28, "cutout_image_url": "http://f.wishabi.net/page_items/436177484/1790921780/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 30, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "279.99", "print_id": `
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436886520/1791518218/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `ceac1f37831aa06e`
+- **Raw:** `{"id": 1046705199, "flyer_id": 8180834, "name": "RABAIS $10 sur une vidange d'huile synthétique", "display_type": 5, "brand": "Castrol", "left": 11483.9, "bottom": -1744.27, "right": 11941.17, "top": -1282.35, "cutout_image_url": "http://f.wishabi.net/page_items/436886520/1791518218/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price`

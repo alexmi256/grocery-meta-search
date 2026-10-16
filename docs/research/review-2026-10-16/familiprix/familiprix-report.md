@@ -1,224 +1,193 @@
 # Familiprix — full product report
 
-Store slug: `familiprix`. Generated from `data/grocery.db`. A sampled subset of 11 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `familiprix`. Generated from `data/grocery.db`. A sampled subset of 10 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 12 — valid 2026-10-08 → 2026-10-10 (3 classified items, 1 unclassified)
+## Flyer 115 — valid 2026-10-15 → 2026-10-21 (5 classified items, 0 unclassified)
 
-Source ref: `8174339` · fetched 2026-10-13T03:14:29.668Z
+Source ref: `8184296` · fetched 2026-10-16T12:09:36.244Z
 
-### Item 3437
+### Item 11805
 
-![item 3437](images/item-3437.jpg)
+![item 11805](images/item-11805.jpg)
 
-- **Name (French):** Scotties Original papiers-mouchoirs 2 épaisseurs Boîte 9x100un
-- **Brand:** Scotties
-- **Category (English):** Household > Paper & Storage
-- **Category (French):** Maison > Papier et rangement
-- **How classified:** rule (`household-paper`)
-- **Price:** 5.99
-- **Printed Price:** “5.99”
+- **Name (French):** LOOP MISSION, Thé glacé pétillant
+- **Brand:** Loop Mission
+- **Category (English):** Drinks > Tea & Hot Drinks
+- **Category (French):** Boissons > Thés et boissons chaudes
+- **How classified:** rule (`tea-hot-drinks`)
+- **Price:** 5.00
+- **Printed Price:** “5.0”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-10
-- **Image source URL:** http://f.wishabi.net/page_items/435803967/1790661138/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `66f4ff6304d45fb9`
-- **Raw:** `{"id": 1045320403, "flyer_id": 8174339, "name": "Scotties Original papiers-mouchoirs 2 épaisseurs Boîte 9x100un", "display_type": 1, "brand": "Scotties", "left": 44.71, "bottom": -948.14, "right": 575.47, "top": -659.41, "cutout_image_url": "http://f.wishabi.net/page_items/435803967/1790661138/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-10T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": n`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436536548/1791268092/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `614005581e679d1e`
+- **Raw:** `{"id": 1046889399, "flyer_id": 8184296, "name": "LOOP MISSION, Thé glacé pétillant", "display_type": 1, "brand": "Loop Mission", "left": 6120.4, "bottom": -1209.53, "right": 6314.51, "top": -923.02, "cutout_image_url": "http://f.wishabi.net/page_items/436536548/1791268092/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.0", "`
 
-### Item 3552
+### Item 11834
 
-![item 3552](images/item-3552.jpg)
+![item 11834](images/item-11834.jpg)
 
-- **Name (French):** TREMA, Boisson au café aromatisé
-- **Brand:** TREMA
-- **Category (English):** Drinks > Coffee
-- **Category (French):** Boissons > Cafés
-- **How classified:** rule (`coffee`)
-- **Price:** 12.99
-- **Printed Price:** “12.99”
+- **Name (French):** ORIGINAL Guimauves avec enrobage chocolate 250 g
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
+- **Size:** 250 g
+- **Price:** 11.49
+- **Printed Price:** “11.49”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435805006/1790661155/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `72cb93d441378c3e`
-- **Conditions:** `{"discount": 7}`
-- **Raw:** `{"id": 1045324201, "flyer_id": 8174339, "name": "TREMA, Boisson au café aromatisé", "display_type": 1, "brand": "TREMA", "left": 13822.2, "bottom": -2090.85, "right": 14018.7, "top": -1800.44, "cutout_image_url": "http://f.wishabi.net/page_items/435805006/1790661155/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 7, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "12.99", "print_i`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436536109/1791268090/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `1bec99b0b39367d3`
+- **Conditions:** `{"discount": 28}`
+- **Raw:** `{"id": 1046889278, "flyer_id": 8184296, "name": "ORIGINAL Guimauves avec enrobage chocolate 250 g", "display_type": 1, "brand": null, "left": 4924.9, "bottom": -2510.11, "right": 5154.91, "top": -2135.82, "cutout_image_url": "http://f.wishabi.net/page_items/436536109/1791268090/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 28, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "11.`
 
-### Item 3644
+### Item 11841
 
-![item 3644](images/item-3644.jpg)
+![item 11841](images/item-11841.jpg)
 
-- **Name (French):** REGAL, Suçons, 400 g
+- **Name (French):** CHRISTIE, Oreo, Mini biscuits-sandwichs au chocolat, 20 x 25 g
+- **Brand:** Christie
+- **Category (English):** Snacks, Chips & Candy > Crackers & Cookies
+- **Category (French):** Grignotines, croustilles et friandises > Craquelins et biscuits
+- **How classified:** rule (`crackers-cookies`)
+- **Size:** 20 x 25 g
+- **Price:** 11.99
+- **Printed Price:** “11.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436536124/1791268099/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `807b58b8a57a155b`
+- **Conditions:** `{"discount": 14}`
+- **Raw:** `{"id": 1046889325, "flyer_id": 8184296, "name": "CHRISTIE, Oreo, Mini biscuits-sandwichs au chocolat, 20 x 25 g", "display_type": 1, "brand": "Christie", "left": 5026.93, "bottom": -1214.36, "right": 5344.79, "top": -1051.64, "cutout_image_url": "http://f.wishabi.net/page_items/436536124/1791268099/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 14, "available_to": "2026-10-21T23:59:59-04:00", "video_url"`
+
+### Item 11852
+
+![item 11852](images/item-11852.jpg)
+
+- **Name (French):** CADBURY, Friandise, 90 régals-éclair
+- **Brand:** Cadbury
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
+- **Price:** 21.99
+- **Printed Price:** “21.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436536121/1791268097/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `b58ccf6ec5f48f63`
+- **Conditions:** `{"discount": 8}`
+- **Raw:** `{"id": 1046889316, "flyer_id": 8184296, "name": "CADBURY, Friandise, 90 régals-éclair", "display_type": 1, "brand": "Cadbury", "left": 5839.49, "bottom": -858.6, "right": 6048.71, "top": -478.17, "cutout_image_url": "http://f.wishabi.net/page_items/436536121/1791268097/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 8, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "21.99", "prin`
+
+### Item 11857
+
+![item 11857](images/item-11857.jpg)
+
+- **Name (French):** NESTLÉ Kit Kat, 40 mini barre
+- **Brand:** Nestlé®
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
+- **Price:** 13.99
+- **Printed Price:** “13.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436561470/1791268099/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `6a8f59cad451a013`
+- **Conditions:** `{"discount": 13}`
+- **Raw:** `{"id": 1046889336, "flyer_id": 8184296, "name": "NESTLÉ Kit Kat, 40 mini barre", "display_type": 1, "brand": "Nestlé®", "left": 5404.5, "bottom": -538.98, "right": 5585.5, "top": -383.98, "cutout_image_url": "http://f.wishabi.net/page_items/436561470/1791268099/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 13, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "13.99", "print_id": `
+
+## Flyer 116 — valid 2026-10-15 → 2026-10-21 (5 classified items, 0 unclassified)
+
+Source ref: `8184318` · fetched 2026-10-16T12:09:36.296Z
+
+### Item 11861
+
+![item 11861](images/item-11861.jpg)
+
+- **Name (French):** LAURA SECORD, Sucette en chocolat au lait, 25 g
+- **Brand:** Laura Secord
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`specific-chocolat-au-lait`)
+- **Size:** 25 g
+- **Price:** 2.29
+- **Printed Price:** “2.29”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436536211/1791268092/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `813014121656ff16`
+- **Conditions:** `{"discount": 15}`
+- **Raw:** `{"id": 1046892737, "flyer_id": 8184318, "name": "LAURA SECORD, Sucette en chocolat au lait, 25 g", "display_type": 1, "brand": "Laura Secord", "left": 5162.44, "bottom": -2424.38, "right": 5242.01, "top": -2142.15, "cutout_image_url": "http://f.wishabi.net/page_items/436536211/1791268092/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 15, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "pr`
+
+### Item 11889
+
+![item 11889](images/item-11889.jpg)
+
+- **Name (French):** Similac 360 Total Care préparation pour nourrissons à base de lait enrichie de fer Étape 1 - 16x235ml
+- **Brand:** Similac
+- **Category (English):** Baby > Baby Food
+- **Category (French):** Bébé > Aliments pour bébé
+- **How classified:** rule (`baby-food`)
+- **Size:** 16x235ml
+- **Price:** 79.99
+- **Printed Price:** “79.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436536037/1791268090/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `afa68471e0a75660`
+- **Conditions:** `{"discount": 9}`
+- **Raw:** `{"id": 1046892298, "flyer_id": 8184318, "name": "Similac 360 Total Care préparation pour nourrissons à base de lait enrichie de fer Étape 1 - 16x235ml", "display_type": 1, "brand": "Similac", "left": 4625.92, "bottom": -1847.81, "right": 4840.47, "top": -1589.42, "cutout_image_url": "http://f.wishabi.net/page_items/436536037/1791268090/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 9, "available_to": "20`
+
+### Item 11897
+
+![item 11897](images/item-11897.jpg)
+
+- **Name (French):** KINDER Figurine en chocolat au lait avec une couche crémeuse au lait à l'intérieur
+- **Brand:** Kinder
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`specific-chocolate-eggs`)
+- **Price:** 5.49
+- **Printed Price:** “5.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436536107/1791268089/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `d20ba1c6f8c815dd`
+- **Conditions:** `{"discount": 15}`
+- **Raw:** `{"id": 1046892701, "flyer_id": 8184318, "name": "KINDER Figurine en chocolat au lait avec une couche crémeuse au lait à l'intérieur", "display_type": 1, "brand": "Kinder", "left": 5723.45, "bottom": -2137.1, "right": 6039.9, "top": -1884.86, "cutout_image_url": "http://f.wishabi.net/page_items/436536107/1791268089/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 15, "available_to": "2026-10-21T23:59:59-04:`
+
+### Item 11911
+
+![item 11911](images/item-11911.jpg)
+
+- **Name (French):** LOOP MISSION, Thé glacé pétillant, 355 ml
+- **Brand:** Loop Mission
+- **Category (English):** Drinks > Tea & Hot Drinks
+- **Category (French):** Boissons > Thés et boissons chaudes
+- **How classified:** rule (`tea-hot-drinks`)
+- **Size:** 355 ml
+- **Price:** 5.00
+- **Printed Price:** “5.0”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436536450/1791268093/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `bf5256b4dd89ba56`
+- **Raw:** `{"id": 1046893330, "flyer_id": 8184318, "name": "LOOP MISSION, Thé glacé pétillant, 355 ml", "display_type": 1, "brand": "Loop Mission", "left": 8312.36, "bottom": -918.02, "right": 8503.25, "top": -633.05, "cutout_image_url": "http://f.wishabi.net/page_items/436536450/1791268093/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": `
+
+### Item 11912
+
+![item 11912](images/item-11912.jpg)
+
+- **Name (French):** REGAL, Popeye, Bâtonnets de bonbon, 24 unités
 - **Brand:** REGAL
 - **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
 - **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
 - **How classified:** rule (`candy-chocolate`)
-- **Size:** 400 g
-- **Price:** 3.99
-- **Printed Price:** “3.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435804854/1790661157/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `039ee9f981092bd5`
-- **Conditions:** `{"discount": 20}`
-- **Raw:** `{"id": 1045323885, "flyer_id": 8174339, "name": "REGAL, Suçons, 400 g", "display_type": 1, "brand": "REGAL", "left": 12536.5, "bottom": -2187.21, "right": 12795.0, "top": -1945.42, "cutout_image_url": "http://f.wishabi.net/page_items/435804854/1790661157/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "3.99", "print_id": null, "s`
-
-## Flyer 14 — valid 2026-10-08 → 2026-10-14 (1 classified items, 0 unclassified)
-
-Source ref: `8175862` · fetched 2026-10-13T03:14:29.696Z
-
-### Item 3859
-
-![item 3859](images/item-3859.jpg)
-
-- **Name (French):** Biomedic multivitamines en gelée pour adultes 150un
-- **Brand:** Biomedic
-- **Category (English):** Health & Beauty > Vitamins & Supplements
-- **Category (French):** Santé et beauté > Vitamines et suppléments
-- **How classified:** rule (`vitamins`)
-- **Price:** 13.99
-- **Printed Price:** “13.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435803998/1790661136/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `a0b11c0c226644ee`
-- **Raw:** `{"id": 1045574396, "flyer_id": 8175862, "name": "Biomedic multivitamines en gelée pour adultes 150un", "display_type": 1, "brand": "Biomedic", "left": 962.05, "bottom": -1904.33, "right": 1185.8, "top": -1464.21, "cutout_image_url": "http://f.wishabi.net/page_items/435803998/1790661136/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "pr`
-
-## Flyer 15 — valid 2026-10-08 → 2026-10-10 (4 classified items, 0 unclassified)
-
-Source ref: `8174317` · fetched 2026-10-13T03:14:29.698Z
-
-### Item 3920
-
-![item 3920](images/item-3920.jpg)
-
-- **Name (French):** Stylé Parapluies sélectionnés
-- **Brand:** STYLE
-- **Category (English):** Household > Home Goods
-- **Category (French):** Maison > Articles pour la maison
-- **How classified:** rule (`household-goods`)
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435872211/1790661169/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `ca80b4bbd14bf32d`
-- **Conditions:** `{"discount": 25}`
-- **Raw:** `{"id": 1045324511, "flyer_id": 8174317, "name": "Stylé Parapluies sélectionnés", "display_type": 1, "brand": "STYLE", "left": 12410.2, "bottom": -872.79, "right": 12583.9, "top": -703.74, "cutout_image_url": "http://f.wishabi.net/page_items/435872211/1790661169/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null,`
-
-### Item 4062
-
-![item 4062](images/item-4062.jpg)
-
-- **Name (French):** Claritin Allergies 24h Comprimés sans somnolence 50un
-- **Brand:** Claritin
-- **Category (English):** Health & Beauty > Pharmacy
-- **Category (French):** Santé et beauté > Pharmacie
-- **How classified:** rule (`pharmacy`)
-- **Price:** 31.99
-- **Printed Price:** “31.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435804223/1790661147/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `13e842a00a280d09`
-- **Raw:** `{"id": 1045321818, "flyer_id": 8174317, "name": "Claritin Allergies 24h Comprimés sans somnolence 50un", "display_type": 1, "brand": "Claritin", "left": 4267.14, "bottom": -1193.48, "right": 4458.66, "top": -908.74, "cutout_image_url": "http://f.wishabi.net/page_items/435804223/1790661147/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, `
-
-### Item 4071
-
-![item 4071](images/item-4071.jpg)
-
-- **Name (French):** CASCADES
-- **Brand:** Cascades
-- **Category (English):** Health & Beauty > Personal Care
-- **Category (French):** Santé et beauté > Soins personnels
-- **How classified:** store-prior
-- **Price:** 5.88
-- **Printed Price:** “5.88”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435870806/1790661148/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `fb01659bc523f022`
-- **Conditions:** `{"discount": 44}`
-- **Raw:** `{"id": 1045320470, "flyer_id": 8174317, "name": "CASCADES", "display_type": 1, "brand": "Cascades", "left": 773.89, "bottom": -880.32, "right": 981.71, "top": -751.6, "cutout_image_url": "http://f.wishabi.net/page_items/435870806/1790661148/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 44, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "5.88", "print_id": null, "short_name": nu`
-
-### Item 4153
-
-![item 4153](images/item-4153.jpg)
-
-- **Name (French):** Lax-A Day laxatif en poudre 1020g
-- **Brand:** Lax-A-Day
-- **Category (English):** Health & Beauty > Pharmacy
-- **Category (French):** Santé et beauté > Pharmacie
-- **How classified:** rule (`pharmacy`)
-- **Size:** 1020g
-- **Price:** 35.00
-- **Printed Price:** “35.0”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435804254/1790661162/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `df440ae57bc9d889`
-- **Raw:** `{"id": 1045322328, "flyer_id": 8174317, "name": "Lax-A Day laxatif en poudre 1020g", "display_type": 1, "brand": "Lax-A-Day", "left": 3946.28, "bottom": -2027.19, "right": 4077.88, "top": -1775.19, "cutout_image_url": "http://f.wishabi.net/page_items/435804254/1790661162/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "35.0", "`
-
-## Flyer 115 — valid 2026-10-15 → 2026-10-21 (1 classified items, 0 unclassified)
-
-Source ref: `8184296` · fetched 2026-10-16T12:09:36.244Z
-
-### Item 11807
-
-![item 11807](images/item-11807.jpg)
-
-- **Name (French):** Maynards Régals-Éclair friandises assorties format collation 90un
-- **Brand:** Maynards
-- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
-- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
-- **How classified:** rule (`candy-chocolate`)
-- **Price:** 18.99
-- **Printed Price:** “18.99”
+- **Price:** 2.99
+- **Printed Price:** “2.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436535932/1791268099/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `40213928bd41e112`
-- **Conditions:** `{"discount": 17}`
-- **Raw:** `{"id": 1046888898, "flyer_id": 8184296, "name": "Maynards Régals-Éclair friandises assorties format collation 90un", "display_type": 1, "brand": "Maynards", "left": 2224.17, "bottom": -1943.1, "right": 2407.26, "top": -1645.79, "cutout_image_url": "http://f.wishabi.net/page_items/436535932/1791268099/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-21T23:59:59-04:00", "video_ur`
-
-## Flyer 116 — valid 2026-10-15 → 2026-10-21 (1 classified items, 0 unclassified)
-
-Source ref: `8184318` · fetched 2026-10-16T12:09:36.296Z
-
-### Item 11903
-
-![item 11903](images/item-11903.jpg)
-
-- **Name (French):** Robitussin extra fort sirop mucus et flegme saveur de cerise 100ml
-- **Brand:** Robitussin
-- **Category (English):** Health & Beauty > Pharmacy
-- **Category (French):** Santé et beauté > Pharmacie
-- **How classified:** rule (`pharmacy`)
-- **Size:** 100ml
-- **Price:** 8.79
-- **Printed Price:** “8.79”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436535982/1791268099/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d1b4b0bdaad34107`
-- **Raw:** `{"id": 1046892053, "flyer_id": 8184318, "name": "Robitussin extra fort sirop mucus et flegme saveur de cerise 100ml", "display_type": 1, "brand": "Robitussin", "left": 2661.8, "bottom": -1190.23, "right": 2854.96, "top": -907.37, "cutout_image_url": "http://f.wishabi.net/page_items/436535982/1791268099/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "vide`
-
-## Unclassified items — kept for review
-
-The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
-
-— from flyer 12 (valid 2026-10-08 → 2026-10-10)
-
-### Item 3661
-
-![item 3661](images/item-3661.jpg)
-
-- **Name (French):** SUR PRESQUE TOUT
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435858457/1790661167/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `41452b5cb23ed067`
-- **Conditions:** `{"discount": 30}`
-- **Raw:** `{"id": 1045324342, "flyer_id": 8174339, "name": "SUR PRESQUE TOUT", "display_type": 1, "brand": null, "left": 14316.1, "bottom": -1711.12, "right": 14400.1, "top": -1633.19, "cutout_image_url": "http://f.wishabi.net/page_items/435858457/1790661167/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 30, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name":`
+- **Image source URL:** http://f.wishabi.net/page_items/436536120/1791268097/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `aad674fd10a31def`
+- **Conditions:** `{"discount": 29}`
+- **Raw:** `{"id": 1046892804, "flyer_id": 8184318, "name": "REGAL, Popeye, Bâtonnets de bonbon, 24 unités", "display_type": 1, "brand": "REGAL", "left": 5694.13, "bottom": -2485.22, "right": 5850.15, "top": -2155.63, "cutout_image_url": "http://f.wishabi.net/page_items/436536120/1791268097/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 29, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "2.`

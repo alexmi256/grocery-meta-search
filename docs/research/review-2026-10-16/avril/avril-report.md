@@ -1,369 +1,192 @@
 # Avril Supermarché Santé — full product report
 
-Store slug: `avril`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `avril`. Generated from `data/grocery.db`. A sampled subset of 11 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 10 — valid 2026-10-08 → 2026-10-14 (8 classified items, 9 unclassified)
-
-Source ref: `8169141` · fetched 2026-10-13T03:14:25.904Z
-
-### Item 2524
-
-![item 2524](images/item-2524.jpg)
-
-- **Name (French):** Oatly boisson d'avoine
-- **Brand:** Oatly
-- **Category (English):** Dairy & Eggs > Non-Dairy Milk Alternatives
-- **Category (French):** Produits laitiers et œufs > Laits non laitiers
-- **How classified:** rule (`non-dairy-milk`)
-- **Price:** 4.79
-- **Printed Price:** “4.79”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976760/1790751810/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `58607ebcd391ae9b`
-- **Conditions:** `{"discount": 17}`
-- **Raw:** `{"id": 1044747569, "flyer_id": 8169141, "name": "Oatly boisson d'avoine", "display_type": 1, "brand": "Oatly", "left": 12135.2, "bottom": -1189.55, "right": 12484.2, "top": -648.65, "cutout_image_url": "http://f.wishabi.net/page_items/435976760/1790751810/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "4.79", "print_id": null, "`
-
-### Item 2556
-
-![item 2556](images/item-2556.jpg)
-
-- **Name (French):** noix de Grenoble bios
-- **Brand:** PRANA
-- **Category (English):** Fruits & Vegetables > Dried Fruits & Nuts
-- **Category (French):** Fruits et légumes > Fruits séchés et noix
-- **How classified:** rule (`dried-fruits-nuts`)
-- **Price:** 11.99
-- **Printed Price:** “11.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976785/1790751811/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `399078d042fe9dd2`
-- **Conditions:** `{"discount": 8}`
-- **Raw:** `{"id": 1044747610, "flyer_id": 8169141, "name": "noix de Grenoble bios", "display_type": 1, "brand": "PRANA", "left": 14350.7, "bottom": -757.62, "right": 14696.0, "top": -227.76, "cutout_image_url": "http://f.wishabi.net/page_items/435976785/1790751811/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 8, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "11.99", "print_id": null, "sh`
-
-### Item 2559
-
-![item 2559](images/item-2559.jpg)
-
-- **Name (French):** kombucha bio réfrigérée
-- **Brand:** RISE Kombucha
-- **Category (English):** Drinks > Non-alcoholic drinks
-- **Category (French):** Boissons > Boissons non alcoolisées
-- **How classified:** rule (`non-alcoholic`)
-- **Price:** 7.99
-- **Printed Price:** “7.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976743/1790751809/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `940824726d5d1f67`
-- **Conditions:** `{"discount": 14}`
-- **Raw:** `{"id": 1044747589, "flyer_id": 8169141, "name": "kombucha bio réfrigérée", "display_type": 1, "brand": "RISE Kombucha", "left": 13657.7, "bottom": -1678.13, "right": 13995.9, "top": -1150.57, "cutout_image_url": "http://f.wishabi.net/page_items/435976743/1790751809/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 14, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "7.99", "print_id`
-
-### Item 2575
-
-![item 2575](images/item-2575.jpg)
-
-- **Name (French):** chou-fleur bio
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 2.99
-- **Printed Price:** “2.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436616196/1791315759/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d1657810eadca8ef`
-- **Conditions:** `{"discount": 50}`
-- **Raw:** `{"id": 1046051248, "flyer_id": 8169141, "name": "chou-fleur bio", "display_type": 1, "brand": null, "left": 6552.78, "bottom": -1203.84, "right": 7112.44, "top": -592.22, "cutout_image_url": "http://f.wishabi.net/page_items/436616196/1791315759/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 50, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "2.99", "print_id": null, "short_name"`
-
-### Item 2583
-
-![item 2583](images/item-2583.jpg)
-
-- **Name (French):** Cœurs de palmier entiers bios
-- **Brand:** AVRIL SÉLECTIONNÉ
-- **Category (English):** Pantry > Canned & Pickled
-- **Category (French):** Produits du garde-manger > Produits en conserve et marinés
-- **How classified:** rule (`canned-pickled`)
-- **Price:** 4.99
-- **Printed Price:** “4.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436624647/1791309736/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `7f0a335975231585`
-- **Conditions:** `{"discount": 17}`
-- **Raw:** `{"id": 1046061630, "flyer_id": 8169141, "name": "Cœurs de palmier entiers bios", "display_type": 1, "brand": "AVRIL SÉLECTIONNÉ", "left": 9509.64, "bottom": -578.02, "right": 9874.95, "top": -227.97, "cutout_image_url": "http://f.wishabi.net/page_items/436624647/1791309736/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "4.99", "`
-
-### Item 2601
-
-![item 2601](images/item-2601.jpg)
-
-- **Name (French):** Thés de la Pagode thé Lyn Don à la goyave
-- **Brand:** THÉS DE LA PAGODE
-- **Category (English):** Fruits & Vegetables > Fresh Fruits
-- **Category (French):** Fruits et légumes > Fruits frais
-- **How classified:** rule (`fruits`)
-- **Price:** 25.99
-- **Printed Price:** “25.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976763/1790751812/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `1e9074ef501290f7`
-- **Conditions:** `{"discount": 16}`
-- **Raw:** `{"id": 1044747574, "flyer_id": 8169141, "name": "Thés de la Pagode thé Lyn Don à la goyave", "display_type": 1, "brand": "THÉS DE LA PAGODE", "left": 12133.1, "bottom": -638.76, "right": 12469.1, "top": -216.58, "cutout_image_url": "http://f.wishabi.net/page_items/435976763/1790751812/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 16, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price`
-
-### Item 2606
-
-![item 2606](images/item-2606.jpg)
-
-- **Name (French):** betteraves rouges cuites bios
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 2.99
-- **Printed Price:** “2.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436616199/1791315761/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `a165da036342a613`
-- **Conditions:** `{"discount": 25}`
-- **Raw:** `{"id": 1046051251, "flyer_id": 8169141, "name": "betteraves rouges cuites bios", "display_type": 1, "brand": null, "left": 6550.51, "bottom": -1587.72, "right": 7142.53, "top": -1210.69, "cutout_image_url": "http://f.wishabi.net/page_items/436616199/1791315761/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "2.99", "print_id": nu`
-
-### Item 2621
-
-![item 2621](images/item-2621.jpg)
-
-- **Name (French):** farine tout usage sans gluten bio
-- **Brand:** CUISINE L'ANGÉLIQUE
-- **Category (English):** Pantry > Baking Essentials
-- **Category (French):** Produits du garde-manger > Essentiels de cuisson
-- **How classified:** rule (`baking`)
-- **Price:** 11.99
-- **Printed Price:** “11.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436616901/1791311027/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `67a9b99335ad7f92`
-- **Conditions:** `{"discount": 10}`
-- **Raw:** `{"id": 1046051267, "flyer_id": 8169141, "name": "farine tout usage sans gluten bio", "display_type": 1, "brand": "CUISINE L'ANGÉLIQUE", "left": 8016.04, "bottom": -1734.46, "right": 8463.69, "top": -1300.17, "cutout_image_url": "http://f.wishabi.net/page_items/436616901/1791311027/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 10, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "`
-
-## Flyer 108 — valid 2026-10-15 → 2026-10-21 (2 classified items, 1 unclassified)
+## Flyer 108 — valid 2026-10-15 → 2026-10-21 (10 classified items, 1 unclassified)
 
 Source ref: `8179159` · fetched 2026-10-16T12:04:31.562Z
 
-### Item 11604
+### Item 11601
 
-![item 11604](images/item-11604.jpg)
+![item 11601](images/item-11601.jpg)
 
-- **Name (French):** Tiramisu congelé
-- **Brand:** Avril Cuisiné
-- **Category (English):** Frozen Food > Frozen Bakery & Breakfast
-- **Category (French):** Produits surgelés > Boulangerie et déjeuner surgelés
-- **How classified:** frozen-remap (`cakes`)
-- **Price:** 15.99
-- **Printed Price:** “15.99”
+- **Name (French):** Tarte aux pommes
+- **Category (English):** Bakery > Cakes
+- **Category (French):** Boulangerie > Gâteaux
+- **How classified:** rule (`cakes`)
+- **Price:** 13.99
+- **Printed Price:** “13.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436650393/1791359768/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `a548c462c3807ad4`
+- **Image source URL:** http://f.wishabi.net/page_items/436730426/1791359775/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `0f14bec4e9b22d63`
+- **Conditions:** `{"discount": 13}`
+- **Raw:** `{"id": 1046296881, "flyer_id": 8179159, "name": "Tarte aux pommes", "display_type": 1, "brand": null, "left": 7003.28, "bottom": -2497.91, "right": 8091.92, "top": -2203.27, "cutout_image_url": "http://f.wishabi.net/page_items/436730426/1791359775/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 13, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "13.99", "print_id": null, "short_n`
+
+### Item 11605
+
+![item 11605](images/item-11605.jpg)
+
+- **Name (French):** Avril Kombucha D'or bio
+- **Brand:** Avril
+- **Category (English):** Drinks > Non-alcoholic drinks
+- **Category (French):** Boissons > Boissons non alcoolisées
+- **How classified:** rule (`non-alcoholic`)
+- **Price:** 2.99
+- **Printed Price:** “2.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436650401/1791359773/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `657a3f3725b39de1`
+- **Conditions:** `{"discount": 17}`
+- **Raw:** `{"id": 1046296875, "flyer_id": 8179159, "name": "Avril Kombucha D'or bio", "display_type": 1, "brand": "Avril", "left": 7455.78, "bottom": -1609.79, "right": 7754.48, "top": -1183.87, "cutout_image_url": "http://f.wishabi.net/page_items/436650401/1791359773/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "2.99", "print_id": null,`
+
+### Item 11608
+
+![item 11608](images/item-11608.jpg)
+
+- **Name (French):** yogourt de vaches nourries à l'herbe
+- **Brand:** Tree Island
+- **Category (English):** Dairy & Eggs > Yogurt
+- **Category (French):** Produits laitiers et œufs > Yogourt
+- **How classified:** rule (`yogurt`)
+- **Price:** 4.99
+- **Printed Price:** “4.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436650430/1791359769/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `9f8bc0d1066cdbfa`
+- **Conditions:** `{"discount": 17}`
+- **Raw:** `{"id": 1046296919, "flyer_id": 8179159, "name": "yogourt de vaches nourries à l'herbe", "display_type": 1, "brand": "Tree Island", "left": 10346.7, "bottom": -1567.64, "right": 10719.8, "top": -1184.82, "cutout_image_url": "http://f.wishabi.net/page_items/436650430/1791359769/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "4.99"`
+
+### Item 11613
+
+![item 11613](images/item-11613.jpg)
+
+- **Name (French):** thé ou tisane
+- **Brand:** Lake & oak
+- **Category (English):** Drinks > Tea & Hot Drinks
+- **Category (French):** Boissons > Thés et boissons chaudes
+- **How classified:** rule (`tea-hot-drinks`)
+- **Price:** 14.99
+- **Printed Price:** “14.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436650436/1791359773/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `819821a92d0c3b6c`
+- **Conditions:** `{"discount": 15}`
+- **Raw:** `{"id": 1046296931, "flyer_id": 8179159, "name": "thé ou tisane", "display_type": 1, "brand": "Lake & oak", "left": 11063.3, "bottom": -600.34, "right": 11431.0, "top": -290.23, "cutout_image_url": "http://f.wishabi.net/page_items/436650436/1791359773/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 15, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "14.99", "print_id": null, "shor`
+
+### Item 11624
+
+![item 11624](images/item-11624.jpg)
+
+- **Name (French):** Flow eau de source alcaline
+- **Brand:** Flow
+- **Category (English):** Drinks > Water
+- **Category (French):** Boissons > Eau
+- **How classified:** rule (`water`)
+- **Price:** 2.49
+- **Printed Price:** “2.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436650444/1791359770/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `3a557c80ebdc4ff2`
+- **Conditions:** `{"discount": 24}`
+- **Raw:** `{"id": 1046296972, "flyer_id": 8179159, "name": "Flow eau de source alcaline", "display_type": 1, "brand": "Flow", "left": 12954.4, "bottom": -1740.4, "right": 13282.8, "top": -1221.56, "cutout_image_url": "http://f.wishabi.net/page_items/436650444/1791359770/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 24, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "2.49", "print_id": nul`
+
+### Item 11628
+
+![item 11628](images/item-11628.jpg)
+
+- **Name (French):** Framboises ou mûres bios
+- **Brand:** California
+- **Category (English):** Fruits & Vegetables > Fresh Fruits
+- **Category (French):** Fruits et légumes > Fruits frais
+- **How classified:** rule (`fruits`)
+- **Price:** 2.99
+- **Printed Price:** “2.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/437172345/1791922853/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `80e7bd905bc3aff8`
+- **Conditions:** `{"discount": 50}`
+- **Raw:** `{"id": 1047346236, "flyer_id": 8179159, "name": "Framboises ou mûres bios", "display_type": 1, "brand": "California", "left": 4761.24, "bottom": -1151.53, "right": 5234.72, "top": -689.84, "cutout_image_url": "http://f.wishabi.net/page_items/437172345/1791922853/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 50, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "2.99", "print_id": `
+
+### Item 11635
+
+![item 11635](images/item-11635.jpg)
+
+- **Name (French):** Rheintal bœuf haché extramaigre bio frais
+- **Brand:** RHEINTAL
+- **Category (English):** Meat > Beef
+- **Category (French):** Viande > Bœuf
+- **How classified:** rule (`beef`)
+- **Price:** 16.99
+- **Printed Price:** “16.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436650381/1791359771/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `9685fa73d8659cc7`
+- **Conditions:** `{"discount": 11}`
+- **Raw:** `{"id": 1046296851, "flyer_id": 8179159, "name": "Rheintal bœuf haché extramaigre bio frais", "display_type": 1, "brand": "RHEINTAL", "left": 6532.34, "bottom": -1474.17, "right": 6980.94, "top": -1256.4, "cutout_image_url": "http://f.wishabi.net/page_items/436650381/1791359771/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 11, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "16.9`
+
+### Item 11640
+
+![item 11640](images/item-11640.jpg)
+
+- **Name (French):** Avril Sucre de canne bio
+- **Brand:** AVRIL SÉLECTIONNÉ
+- **Category (English):** Pantry > Baking Essentials
+- **Category (French):** Produits du garde-manger > Essentiels de cuisson
+- **How classified:** rule (`baking`)
+- **Price:** 3.99
+- **Printed Price:** “3.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436650396/1791359770/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `004dd347a7e19fe1`
 - **Conditions:** `{"discount": 20}`
-- **Raw:** `{"id": 1046296862, "flyer_id": 8179159, "name": "Tiramisu congelé", "display_type": 1, "brand": "Avril Cuisiné", "left": 6994.24, "bottom": -1619.29, "right": 7427.18, "top": -1270.17, "cutout_image_url": "http://f.wishabi.net/page_items/436650393/1791359768/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "15.99", "print_id": nul`
+- **Raw:** `{"id": 1046296866, "flyer_id": 8179159, "name": "Avril Sucre de canne bio", "display_type": 1, "brand": "AVRIL SÉLECTIONNÉ", "left": 6992.22, "bottom": -1258.88, "right": 7367.16, "top": -701.45, "cutout_image_url": "http://f.wishabi.net/page_items/436650396/1791359770/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "3.99", "prin`
 
-### Item 11612
+### Item 11644
 
-![item 11612](images/item-11612.jpg)
+![item 11644](images/item-11644.jpg)
 
-- **Name (French):** café aux champignons adaptogènes
-- **Brand:** MUSHUP CAFÉ
-- **Category (English):** Drinks > Coffee
-- **Category (French):** Boissons > Cafés
-- **How classified:** rule (`coffee`)
-- **Price:** —
-- **Printed Price:** “None”
+- **Name (French):** Nature's Path Gruau Bio
+- **Brand:** Nature's Path
+- **Category (English):** Pantry > Cereal & Breakfast
+- **Category (French):** Produits du garde-manger > Céréales et petits-déjeuners
+- **How classified:** rule (`cereal-breakfast`)
+- **Price:** 5.29
+- **Printed Price:** “5.29”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436650391/1791359770/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `adccae8f9ddd6f2e`
-- **Raw:** `{"id": 1046296891, "flyer_id": 8179159, "name": "café aux champignons adaptogènes", "display_type": 1, "brand": "MUSHUP CAFÉ", "left": 8656.86, "bottom": -2036.13, "right": 9173.08, "top": -1573.38, "cutout_image_url": "http://f.wishabi.net/page_items/436650391/1791359770/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "pri`
+- **Image source URL:** http://f.wishabi.net/page_items/436650431/1791359769/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `b4e57a719bce8463`
+- **Raw:** `{"id": 1046296922, "flyer_id": 8179159, "name": "Nature's Path Gruau Bio", "display_type": 1, "brand": "Nature's Path", "left": 10341.4, "bottom": -1173.12, "right": 10622.6, "top": -702.83, "cutout_image_url": "http://f.wishabi.net/page_items/436650431/1791359769/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.29", "print_i`
+
+### Item 11646
+
+![item 11646](images/item-11646.jpg)
+
+- **Name (French):** Siggi's skyr
+- **Brand:** Siggi's
+- **Category (English):** Dairy & Eggs > Yogurt
+- **Category (French):** Produits laitiers et œufs > Yogourt
+- **How classified:** rule (`yogurt`)
+- **Price:** 6.49
+- **Printed Price:** “6.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436650438/1791359774/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `767c446ffb7023fd`
+- **Conditions:** `{"discount": 22}`
+- **Raw:** `{"id": 1046296934, "flyer_id": 8179159, "name": "Siggi's skyr", "display_type": 1, "brand": "Siggi's", "left": 10722.1, "bottom": -1653.9, "right": 11115.9, "top": -1219.9, "cutout_image_url": "http://f.wishabi.net/page_items/436650438/1791359774/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 22, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "6.49", "print_id": null, "short_nam`
 
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2514
-
-![item 2514](images/item-2514.jpg)
-
-- **Name (French):** Vos alliés de voyage
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436037170/1790751811/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `cc0985ec632632d6`
-- **Raw:** `{"id": 1044747542, "flyer_id": 8169141, "name": "Vos alliés de voyage", "display_type": 5, "brand": null, "left": 9887.16, "bottom": -2559.36, "right": 10992.8, "top": -2198.56, "cutout_image_url": "http://f.wishabi.net/page_items/436037170/1790751811/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_`
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2516
-
-![item 2516](images/item-2516.jpg)
-
-- **Name (French):** Quantum Health la marque
-- **Brand:** Quantum Health
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436037169/1790751810/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `2db70e66e43ef1f2`
-- **Raw:** `{"id": 1044747540, "flyer_id": 8169141, "name": "Quantum Health la marque", "display_type": 1, "brand": "Quantum Health", "left": 10240.5, "bottom": -2060.56, "right": 10376.5, "top": -1761.56, "cutout_image_url": "http://f.wishabi.net/page_items/436037169/1790751810/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id`
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2532
-
-![item 2532](images/item-2532.jpg)
-
-- **Name (French):** La marque Wild Grace
-- **Brand:** Wild Grace
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976793/1790751808/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `4a1d2d634afe562b`
-- **Conditions:** `{"discount": 20}`
-- **Raw:** `{"id": 1044747632, "flyer_id": 8169141, "name": "La marque Wild Grace", "display_type": 1, "brand": "Wild Grace", "left": 16732.0, "bottom": -2170.77, "right": 17630.3, "top": -1559.13, "cutout_image_url": "http://f.wishabi.net/page_items/435976793/1790751808/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "`
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2534
-
-![item 2534](images/item-2534.jpg)
-
-- **Name (French):** maintenant chez avril wildcraft
-- **Brand:** Wildcraft
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436035073/1790751809/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `4a805099f9cc31c4`
-- **Raw:** `{"id": 1044747628, "flyer_id": 8169141, "name": "maintenant chez avril wildcraft", "display_type": 5, "brand": "Wildcraft", "left": 15462.5, "bottom": -2540.38, "right": 16571.5, "top": -2201.38, "cutout_image_url": "http://f.wishabi.net/page_items/436035073/1790751809/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_`
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2548
-
-![item 2548](images/item-2548.jpg)
-
-- **Name (French):** shots réfrigérés
-- **Brand:** loop
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 8.99
-- **Printed Price:** “8.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976764/1790751813/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `0593d70ccf0119ce`
-- **Conditions:** `{"discount": 18}`
-- **Raw:** `{"id": 1044747575, "flyer_id": 8169141, "name": "shots réfrigérés", "display_type": 1, "brand": "loop", "left": 12495.1, "bottom": -2163.87, "right": 12848.2, "top": -1781.23, "cutout_image_url": "http://f.wishabi.net/page_items/435976764/1790751813/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 18, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "8.99", "print_id": null, "short_`
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2591
-
-![item 2591](images/item-2591.jpg)
-
-- **Name (French):** la marque Oaskin Beauty
-- **Brand:** OASKIN BEAUTY
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976791/1790751806/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `24b99c4dc2627d9e`
-- **Conditions:** `{"discount": 25}`
-- **Raw:** `{"id": 1044747629, "flyer_id": 8169141, "name": "la marque Oaskin Beauty", "display_type": 1, "brand": "OASKIN BEAUTY", "left": 16581.9, "bottom": -832.37, "right": 17067.0, "top": -280.58, "cutout_image_url": "http://f.wishabi.net/page_items/435976791/1790751806/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": nul`
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2594
-
-![item 2594](images/item-2594.jpg)
-
-- **Name (French):** Tombez pour notre tarte aux pommes
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** 13.99
-- **Printed Price:** “13.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436624664/1791309740/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `6ef40d197bcc1396`
-- **Raw:** `{"id": 1046061636, "flyer_id": 8169141, "name": "Tombez pour notre tarte aux pommes", "display_type": 5, "brand": null, "left": 8772.16, "bottom": -2550.05, "right": 9877.85, "top": -2203.21, "cutout_image_url": "http://f.wishabi.net/page_items/436624664/1791309740/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "13.99", "print`
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2597
-
-![item 2597](images/item-2597.jpg)
-
-- **Name (French):** Léo Désilets passiflore
-- **Brand:** LÉO DÉSILETS
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 13.99
-- **Printed Price:** “13.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976771/1790751810/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `ca15135e3921c78a`
-- **Conditions:** `{"discount": 18}`
-- **Raw:** `{"id": 1044747549, "flyer_id": 8169141, "name": "Léo Désilets passiflore", "display_type": 1, "brand": "LÉO DÉSILETS", "left": 11011.5, "bottom": -651.3, "right": 11377.4, "top": -226.42, "cutout_image_url": "http://f.wishabi.net/page_items/435976771/1790751810/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 18, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "13.99", "print_id": `
-
-— from flyer 10 (valid 2026-10-08 → 2026-10-14)
-
-### Item 2598
-
-![item 2598](images/item-2598.jpg)
-
-- **Name (French):** Sur la gamme Super Leaves
-- **Brand:** Attitude
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435976707/1790751809/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `ac1835a066ae37ce`
-- **Conditions:** `{"discount": 20}`
-- **Raw:** `{"id": 1044747456, "flyer_id": 8169141, "name": "Sur la gamme Super Leaves", "display_type": 1, "brand": "Attitude", "left": 2363.64, "bottom": -2536.08, "right": 3441.59, "top": -1911.98, "cutout_image_url": "http://f.wishabi.net/page_items/435976707/1790751809/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null`
 
 — from flyer 108 (valid 2026-10-15 → 2026-10-21)
 

@@ -1,93 +1,70 @@
 # IGA — full product report
 
-Store slug: `iga`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `iga`. Generated from `data/grocery.db`. A sampled subset of 14 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 2 — valid 2026-10-08 → 2026-10-14 (4 classified items, 9 unclassified)
-
-Source ref: `8176847` · fetched 2026-10-13T03:14:18.404Z
-
-### Item 505
-
-![item 505](images/item-505.jpg)
-
-- **Name (French):** CRÈME À CAFÉ À BASE DE PLANTES SILK
-- **Brand:** Silk
-- **Category (English):** Dairy & Eggs > Milk & Cream
-- **Category (French):** Produits laitiers et œufs > Lait et crème
-- **How classified:** rule (`specific-creamer`)
-- **Price:** 5.99
-- **Printed Price:** “5.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_items/436336519/1790932046/extra_large.jpg
-- **Details:** SKU: 00000_000000003663208016 · confidence: 1.00 · item_key: `4267f69368d64a98`
-- **Conditions:** `{"description": "890 mL\nRég. 7,79$ à 8,49$"}`
-- **Raw:** `{"id": 1045722440, "name": "CRÈME À CAFÉ À BASE DE PLANTES SILK", "sale_story": null, "sku": "00000_000000003663208016", "description": "890 mL\nRég. 7,79$ à 8,49$", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436336519/1790932046/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_`
-
-### Item 547
-
-![item 547](images/item-547.jpg)
-
-- **Name (French):** TAMPONS TAMPAX PEARL
-- **Brand:** Tampax
-- **Category (English):** Health & Beauty > Personal Care
-- **Category (French):** Santé et beauté > Soins personnels
-- **How classified:** rule (`beauty`)
-- **Price:** 6.49
-- **Printed Price:** “6.49”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24244979/3aa90950-be1b-11f1-84e0-beb1c385ff76/x_large
-- **Details:** SKU: 00000_000000007301047905 · confidence: 1.00 · item_key: `7163e3d8cab390d9`
-- **Conditions:** `{"sale_story": "200 Scéne+ PTS à l'achat de 2", "description": "18\n8,29$ à 8,79$"}`
-- **Raw:** `{"id": 1045723224, "name": "TAMPONS TAMPAX PEARL", "sale_story": "200 Scéne+ PTS à l'achat de 2", "sku": "00000_000000007301047905", "description": "18\n8,29$ à 8,79$", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24244979/3aa90950-be1b-11f1-84e0-beb1c385ff76/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_fi`
-
-### Item 667
-
-![item 667](images/item-667.jpg)
-
-- **Name (French):** GRATIN, PÂTÉ AU POULET OU TOURTIÈRE SURGELÉS PLAISIRS GASTRONOMIQUES
-- **Brand:** Plaisirs Gastronomiques
-- **Category (English):** Frozen Food > Frozen Meals, Entrees & Sides
-- **Category (French):** Produits surgelés > Repas, plats principaux et accompagnements
-- **How classified:** frozen-remap (`specific-pot-pie`)
-- **Price:** 9.99
-- **Printed Price:** “9.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24244974/25689c72-be1b-11f1-8b28-8ad3174fa92b/x_large
-- **Details:** SKU: 00000_000000062379801296 · confidence: 1.00 · item_key: `5be39f6eec9b8684`
-- **Conditions:** `{"description": "715 ou 850 g"}`
-- **Raw:** `{"id": 1045721213, "name": "GRATIN, PÂTÉ AU POULET OU TOURTIÈRE SURGELÉS PLAISIRS GASTRONOMIQUES", "sale_story": null, "sku": "00000_000000062379801296", "description": "715 ou 850 g", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24244974/25689c72-be1b-11f1-8b28-8ad3174fa92b/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": nul`
-
-### Item 683
-
-![item 683](images/item-683.jpg)
-
-- **Name (French):** BARRES GLACÉES SO DELICIOUS
-- **Brand:** So Delicious
-- **Category (English):** Frozen Food > Ice Cream & Frozen Desserts
-- **Category (French):** Produits surgelés > Crèmes glacées et desserts glacés
-- **How classified:** rule (`ice-cream`)
-- **Price:** 6.99
-- **Printed Price:** “6.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24244979/34b2adbc-be1b-11f1-84e0-beb1c385ff76/x_large
-- **Details:** SKU: 00000_000000074447327613 · confidence: 1.00 · item_key: `509bebc73b49220f`
-- **Conditions:** `{"description": "4 x 68 mL"}`
-- **Raw:** `{"id": 1045723044, "name": "BARRES GLACÉES SO DELICIOUS", "sale_story": null, "sku": "00000_000000074447327613", "description": "4 x 68 mL", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24244979/34b2adbc-be1b-11f1-84e0-beb1c385ff76/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_fie`
-
-## Flyer 121 — valid 2026-10-15 → 2026-10-21 (6 classified items, 1 unclassified)
+## Flyer 121 — valid 2026-10-15 → 2026-10-21 (10 classified items, 4 unclassified)
 
 Source ref: `8180961` · fetched 2026-10-16T12:18:20.023Z
 
-### Item 11988
+### Item 12047
 
-![item 11988](images/item-11988.jpg)
+![item 12047](images/item-12047.jpg)
 
-- **Name (French):** BIÈRE OU BIÈRE SANS ALCOOL GUINNESS DRAUGHT
-- **Brand:** GUINNESS DRAUGHT
+- **Name (French):** YOGOURT À BASE DE PLANTES MAISON RIVIERA LAIT DE COCO
+- **Brand:** MAISON RIVIERA
+- **Category (English):** Dairy & Eggs > Yogurt
+- **Category (French):** Produits laitiers et œufs > Yogourt
+- **How classified:** rule (`yogurt`)
+- **Price:** 5.79
+- **Printed Price:** “5.79”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268535/5192d0a8-c274-11f1-96ba-aad9f7bf7024/x_large
+- **Details:** SKU: 00000_000000006491208722 · confidence: 1.00 · item_key: `013c54b8e00d3b4e`
+- **Conditions:** `{"description": "650 g\nRég. 7,49$ à 7,99$"}`
+- **Raw:** `{"id": 1046444592, "name": "YOGOURT À BASE DE PLANTES MAISON RIVIERA LAIT DE COCO", "sale_story": null, "sku": "00000_000000006491208722", "description": "650 g\nRég. 7,49$ à 7,99$", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268535/5192d0a8-c274-11f1-96ba-aad9f7bf7024/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null,`
+
+### Item 12064
+
+![item 12064](images/item-12064.jpg)
+
+- **Name (French):** FILETS DE DORÉ JAUNE DU CANADA RECOMMANDÉ PAR VOTRE POISSONNIER
+- **Brand:** RECOMMANDÉ PAR VOTRE POISSONNIER
+- **Category (English):** Fish & Seafood > Fish
+- **Category (French):** Poissons et fruits de mer > Poisson
+- **How classified:** rule (`fish`)
+- **Price:** 49.58
+- **Printed Price:** “49.58”
+- **Unit:** kg
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268540/5f37dee2-c274-11f1-bb28-56ea36667e5c/x_large
+- **Details:** SKU: 00000_000000024939400000 · confidence: 1.00 · item_key: `f4f065cb86a9ccf9`
+- **Conditions:** `{"sale_story": "300 Scène+ PTS à l'chat d'un produit sélectionné"}`
+- **Raw:** `{"id": 1046441725, "name": "FILETS DE DORÉ JAUNE DU CANADA RECOMMANDÉ PAR VOTRE POISSONNIER", "sale_story": "300 Scène+ PTS à l'chat d'un produit sélectionné", "sku": "00000_000000024939400000", "description": null, "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268540/5f37dee2-c274-11f1-bb28-56ea36667e5c/x_large", "custom_id_field_1": null, "custom_id_field_2":`
+
+### Item 12084
+
+![item 12084](images/item-12084.jpg)
+
+- **Name (French):** TREMPETTE CHAUDE SURGELÉE RICARDO
+- **Brand:** Ricardo
+- **Category (English):** Frozen Food > Frozen Appetizers & Snacks
+- **Category (French):** Produits surgelés > Entrées et collations surgelés
+- **How classified:** frozen-remap (`dips-spreads-deli`)
+- **Price:** 13.99
+- **Printed Price:** “13.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268540/5bf08db0-c274-11f1-bb28-56ea36667e5c/x_large
+- **Details:** SKU: 00000_000000083395100216 · confidence: 1.00 · item_key: `9b4e3263db523daf`
+- **Conditions:** `{"sale_story": "200 Scène+ PTS", "description": "500 g"}`
+- **Raw:** `{"id": 1046441564, "name": "TREMPETTE CHAUDE SURGELÉE RICARDO", "sale_story": "200 Scène+ PTS", "sku": "00000_000000083395100216", "description": "500 g", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268540/5bf08db0-c274-11f1-bb28-56ea36667e5c/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, `
+
+### Item 12140
+
+![item 12140](images/item-12140.jpg)
+
+- **Name (French):** BIÈRE OU BIÈRE SANS ALCOOL
 - **Category (English):** Beer & Wine > Beer
 - **Category (French):** Bières et vins > Bières
 - **How classified:** rule (`beer`)
@@ -95,277 +72,120 @@ Source ref: `8180961` · fetched 2026-10-16T12:18:20.023Z
 - **Printed Price:** “27.98”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268545/513d7964-c274-11f1-9ee5-9acc78cb8fd5/x_large
-- **Details:** SKU: 00000_000000083820123609 · confidence: 1.00 · item_key: `e96f6c78880cd13e`
-- **Conditions:** `{"disclaimer_text": "Canettes ou bouteiles\nconsignées", "description": "(4 x 440 mL)"}`
-- **Raw:** `{"id": 1046443598, "name": "BIÈRE OU BIÈRE SANS ALCOOL GUINNESS DRAUGHT", "sale_story": null, "sku": "00000_000000083820123609", "description": "(4 x 440 mL)", "disclaimer_text": "Canettes ou bouteiles\nconsignées", "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268545/513d7964-c274-11f1-9ee5-9acc78cb8fd5/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3`
+- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268545/5b6d4b58-c274-11f1-9ee5-9acc78cb8fd5/x_large
+- **Details:** SKU: 00000_000000675325723318 · confidence: 1.00 · item_key: `032a5ed005392a05`
+- **Conditions:** `{"description": "CARLSBERG, 1664 (4 x 473 mL),\nHARP (4 x 500 mL), SAPPORO\n(4 x 473, 4 x 500 ou 6 x 355 mL),\nGUINNESS DRAUGHT (4 x 440 mL)"}`
+- **Raw:** `{"id": 1046443852, "name": "BIÈRE OU BIÈRE SANS ALCOOL", "sale_story": null, "sku": "00000_000000675325723318", "description": "CARLSBERG, 1664 (4 x 473 mL),\nHARP (4 x 500 mL), SAPPORO\n(4 x 473, 4 x 500 ou 6 x 355 mL),\nGUINNESS DRAUGHT (4 x 440 mL)", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268545/5b6d4b58-c274-11f1-9ee5-9acc78cb8fd5/x_large", "custom_i`
 
-### Item 12036
+### Item 12148
 
-![item 12036](images/item-12036.jpg)
+![item 12148](images/item-12148.jpg)
 
-- **Name (English):** BIERE OU BIERE SANS ALCOOL CARLSBERG, 1664 (4 x 473 mL), HARP (4 x 500 mL), SAPPORO (4 x 473, 4 x 500 ou 6 x 355 mL,
-- **Name (French):** BIÈRE 1664
-- **Brand:** 1664
-- **Category (English):** Beer & Wine > Beer
-- **Category (French):** Bières et vins > Bières
-- **How classified:** rule (`beer`)
-- **Size:** 6 x 355 mL
-- **Price:** 19.99
-- **Printed Price:** “19.99”
+- **Name (French):** CHOCOLAT POUR LA CUISSON COMPLIMENTS
+- **Brand:** Compliments
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
+- **Price:** 5.99
+- **Printed Price:** “5.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268545/5a47ec4c-c274-11f1-9ee5-9acc78cb8fd5/x_large
-- **Details:** SKU: 00000_000000067532542314 · confidence: 1.00 · item_key: `5912cf43f6f54739`
-- **Conditions:** `{"description": "(12 x 355 mL)\nCanettes consignées\nRég. 26,49$ à 28,49$"}`
-- **Raw:** `{"id": 1046443777, "name": "BIÈRE 1664", "sale_story": null, "sku": "00000_000000067532542314", "description": "(12 x 355 mL)\nCanettes consignées\nRég. 26,49$ à 28,49$", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268545/5a47ec4c-c274-11f1-9ee5-9acc78cb8fd5/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_`
+- **Image source URL:** https://f.wishabi.net/page_items/436766357/1791427526/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `ada534e558e47e8b`
+- **Conditions:** `{"description": "170 ou 225 g\nSélection variée\n\nRég. 6,99$ à 7,49$"}`
+- **Raw:** `{"id": 1046443945, "name": "CHOCOLAT POUR LA CUISSON COMPLIMENTS", "sale_story": null, "sku": null, "description": "170 ou 225 g\nSélection variée\n\nRég. 6,99$ à 7,49$", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436766357/1791427526/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custo`
 
-### Item 12066
+### Item 12205
 
-![item 12066](images/item-12066.jpg)
+![item 12205](images/item-12205.jpg)
 
-- **Name (French):** BIÈRE CORONA EXTRA
-- **Brand:** Corona
-- **Category (English):** Beer & Wine > Beer
-- **Category (French):** Bières et vins > Bières
-- **How classified:** rule (`beer`)
-- **Price:** 23.99
-- **Printed Price:** “23.99”
+- **Name (French):** ŒUFS BLANCS COMPLIMENTS POULES EN LIBERTÉ
+- **Brand:** Compliments
+- **Category (English):** Dairy & Eggs > Egg & Egg Substitutes
+- **Category (French):** Produits laitiers et œufs > Œufs et succédanés d'œufs
+- **How classified:** rule (`eggs`)
+- **Price:** 4.99
+- **Printed Price:** “4.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268545/753ee5c8-c274-11f1-9ee5-9acc78cb8fd5/x_large
-- **Details:** SKU: 00000_000000006206738242 · confidence: 1.00 · item_key: `b41db041237a85da`
-- **Conditions:** `{"disclaimer_text": "Canettes ou bouteilles consignées", "description": "12 x 330 mL\nRég. 27,99$ à 29,49$"}`
-- **Raw:** `{"id": 1046443638, "name": "BIÈRE CORONA EXTRA", "sale_story": null, "sku": "00000_000000006206738242", "description": "12 x 330 mL\nRég. 27,99$ à 29,49$", "disclaimer_text": "Canettes ou bouteilles consignées", "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268545/753ee5c8-c274-11f1-9ee5-9acc78cb8fd5/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": n`
+- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268544/5528c498-c274-11f1-8248-8a02ca7e33cb/x_large
+- **Details:** SKU: 00000_000000005574256199 · confidence: 1.00 · item_key: `b32b6c5584e26c2b`
+- **Conditions:** `{"sale_story": "50 Scène+ PTS", "description": "Calibre gros\n12"}`
+- **Raw:** `{"id": 1046443015, "name": "ŒUFS BLANCS COMPLIMENTS POULES EN LIBERTÉ", "sale_story": "50 Scène+ PTS", "sku": "00000_000000005574256199", "description": "Calibre gros\n12", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268544/5528c498-c274-11f1-8248-8a02ca7e33cb/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_i`
 
-### Item 12171
+### Item 12230
 
-![item 12171](images/item-12171.jpg)
+![item 12230](images/item-12230.jpg)
 
-- **Name (French):** CREVETTES SAUVAGES CRUES D'ARGENTINE SURGELÉES Faciles à décortiquer MARINA DEL REY
-- **Brand:** MARINA DEL REY
-- **Category (English):** Frozen Food > Frozen Meat and Seafood
-- **Category (French):** Produits surgelés > Viande et fruits de mer surgelés
-- **How classified:** frozen-remap (`shrimp`)
-- **Price:** 12.99
-- **Printed Price:** “12.99”
+- **Name (French):** LASAGNE AUX FRUITS DE MER SURGELÉE RICARDO
+- **Brand:** Ricardo
+- **Category (English):** Frozen Food > Frozen Meals, Entrees & Sides
+- **Category (French):** Produits surgelés > Repas, plats principaux et accompagnements
+- **How classified:** frozen-remap (`pasta-sauce`)
+- **Price:** 21.99
+- **Printed Price:** “21.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268530/59896c68-c274-11f1-be97-3e102d04e6b0/x_large
-- **Details:** SKU: 00000_000000087242500166 · confidence: 1.00 · item_key: `e84e4daf07815cf7`
-- **Conditions:** `{"sale_story": "RABAIS DE 10$", "description": "Grosseur 20-30 Size\n680 g"}`
-- **Raw:** `{"id": 1046440440, "name": "CREVETTES SAUVAGES CRUES D'ARGENTINE SURGELÉES Faciles à décortiquer MARINA DEL REY", "sale_story": "RABAIS DE 10$", "sku": "00000_000000087242500166", "description": "Grosseur 20-30 Size\n680 g", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268530/59896c68-c274-11f1-be97-3e102d04e6b0/x_large", "custom_id_field_1": null, "custom_id_`
+- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268541/5b251bee-c274-11f1-a07c-0ef9fcbcc086/x_large
+- **Details:** SKU: 00000_000000083395100223 · confidence: 1.00 · item_key: `00d05a09c4af9f59`
+- **Conditions:** `{"sale_story": "200 Scène+ PTS", "description": "1 kg"}`
+- **Raw:** `{"id": 1046441939, "name": "LASAGNE AUX FRUITS DE MER SURGELÉE RICARDO", "sale_story": "200 Scène+ PTS", "sku": "00000_000000083395100223", "description": "1 kg", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268541/5b251bee-c274-11f1-a07c-0ef9fcbcc086/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4"`
 
-### Item 12264
+### Item 12247
 
-![item 12264](images/item-12264.jpg)
+![item 12247](images/item-12247.jpg)
 
-- **Name (French):** SODA SOLLY'S
-- **Category (English):** Drinks > Soft Drinks
-- **Category (French):** Boissons > Boissons gazeuses
-- **How classified:** rule (`soft-drinks`)
-- **Price:** 2.49
-- **Printed Price:** “2.49”
+- **Name (French):** Ragoût de bœuf, de chorizo et de haricots noirs à la brésilienne
+- **Category (English):** Meat > Beef
+- **Category (French):** Viande > Bœuf
+- **How classified:** rule (`beef`)
+- **Price:** —
+- **Printed Price:** “None”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268545/834f265a-c274-11f1-9ee5-9acc78cb8fd5/x_large
-- **Details:** SKU: 00000_000000069124526002 · confidence: 1.00 · item_key: `602dcbc72afeaa17`
-- **Conditions:** `{"description": "355 mL\nCanette consignée\nSélection variée\nRég. 2,79$ à 2,99$"}`
-- **Raw:** `{"id": 1046443363, "name": "SODA SOLLY'S", "sale_story": null, "sku": "00000_000000069124526002", "description": "355 mL\nCanette consignée\nSélection variée\nRég. 2,79$ à 2,99$", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268545/834f265a-c274-11f1-9ee5-9acc78cb8fd5/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "c`
+- **Image source URL:** https://f.wishabi.net/page_items/436797739/1791427533/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `17842b0e7201e7e3`
+- **Conditions:** `{"sale_story": "Voir la recette"}`
+- **Raw:** `{"id": 1046441539, "name": "Ragoût de bœuf, de chorizo et de haricots noirs à la brésilienne", "sale_story": "Voir la recette", "sku": null, "description": null, "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436797739/1791427533/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_fiel`
 
-### Item 12268
+### Item 12300
 
-![item 12268](images/item-12268.jpg)
+![item 12300](images/item-12300.jpg)
 
-- **Name (French):** QUINOA BLANC BIOLOGIQUE PRANA
-- **Brand:** PRANA
-- **Category (English):** Pantry > Dried Beans, Vegetables & Grains
-- **Category (French):** Produits du garde-manger > Haricots secs, légumes et grains
-- **How classified:** rule (`beans-grains`)
-- **Price:** 12.99
-- **Printed Price:** “12.99”
+- **Name (French):** SHORTENING CRISCO
+- **Brand:** Crisco
+- **Category (English):** Pantry > Baking Essentials
+- **Category (French):** Produits du garde-manger > Essentiels de cuisson
+- **How classified:** rule (`baking`)
+- **Price:** 3.99
+- **Printed Price:** “3.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** https://f.wishabi.net/page_items/436766180/1791427517/extra_large.jpg
-- **Details:** SKU: 00000_000000087769300032 · confidence: 1.00 · item_key: `207c5aef46f633d6`
-- **Conditions:** `{"sale_story": "100 Scène+ PTS", "description": "1 kg\nRég. 15,49$ à 16,29$"}`
-- **Raw:** `{"id": 1046444448, "name": "QUINOA BLANC BIOLOGIQUE PRANA", "sale_story": "100 Scène+ PTS", "sku": "00000_000000087769300032", "description": "1 kg\nRég. 15,49$ à 16,29$", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436766180/1791427517/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "cust`
+- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268544/6fa012cc-c274-11f1-8248-8a02ca7e33cb/x_large
+- **Details:** SKU: 00000_000000019600538285 · confidence: 1.00 · item_key: `4926617813cb0aed`
+- **Conditions:** `{"description": "454 g"}`
+- **Raw:** `{"id": 1046443164, "name": "SHORTENING CRISCO", "sale_story": null, "sku": "00000_000000019600538285", "description": "454 g", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268544/6fa012cc-c274-11f1-8248-8a02ca7e33cb/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_field_5": null, "`
+
+### Item 12302
+
+![item 12302](images/item-12302.jpg)
+
+- **Name (French):** POITRINES DE POULET FRAIS
+- **Category (English):** Meat > Chicken & Turkey
+- **Category (French):** Viande > Poulet et dinde
+- **How classified:** rule (`chicken-turkey`)
+- **Price:** 8.49
+- **Printed Price:** “8.49”
+- **Unit:** lb
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** https://f.wishabi.net/page_pdf_images/24268539/56e38606-c274-11f1-9423-c2002e73ede8/x_large
+- **Details:** SKU: 00000_000000023084600000 · confidence: 1.00 · item_key: `a267e94ddf1ebaa4`
+- **Conditions:** `{"description": "FORMAT FAMILIAL\nESCALOPE OU LANIÈRES\n\nRég. 19,99$/kg à 27,49$/kg"}`
+- **Raw:** `{"id": 1046441473, "name": "POITRINES DE POULET FRAIS", "sale_story": null, "sku": "00000_000000023084600000", "description": "FORMAT FAMILIAL\nESCALOPE OU LANIÈRES\n\nRég. 19,99$/kg à 27,49$/kg", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24268539/56e38606-c274-11f1-9423-c2002e73ede8/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_f`
 
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 388
-
-![item 388](images/item-388.jpg)
-
-- **Name (French):** Shell
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_items/436333402/1790932034/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `49427ec0aee57993`
-- **Conditions:** `{"description": "See conditions apply. Limités à la quantité disponible\nEn savoir plus"}`
-- **Raw:** `{"id": 1045720970, "name": "Shell", "sale_story": null, "sku": null, "description": "See conditions apply. Limités à la quantité disponible\nEn savoir plus", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436333402/1790932034/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_field_5"`
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 410
-
-![item 410](images/item-410.jpg)
-
-- **Name (French):** service magasin fruits et legumes
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_items/436335346/1790932037/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `f068d0229bf78037`
-- **Conditions:** `{"description": "Arrivages frais tous les jours pour s'étonner.\nVos yeux serviront."}`
-- **Raw:** `{"id": 1045706584, "name": "service magasin fruits et legumes", "sale_story": null, "sku": null, "description": "Arrivages frais tous les jours pour s'étonner.\nVos yeux serviront.", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436335346/1790932037/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": `
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 421
-
-![item 421](images/item-421.jpg)
-
-- **Name (French):** Avos Frigos
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_items/436336045/1790932028/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `c422415847c63a31`
-- **Raw:** `{"id": 1045706539, "name": "Avos Frigos", "sale_story": null, "sku": null, "description": null, "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436336045/1790932028/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_field_5": null, "custom_id_field_6": null, "valid_from": "2026-10-08",`
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 479
-
-![item 479](images/item-479.jpg)
-
-- **Name (French):** Trouvez l'huître qui vous ressemble
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_items/436336312/1790932033/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `dcac97c841fb16ad`
-- **Conditions:** `{"description": "Vous ne savez pas laquelle choisir ? Nos poissonniers sont là pour vous conseiller. Selon vos préférences, ils peuvent vous guider parmi les différentes huîtres offertes et vous aider à trouver celles qui correspondent le mieux à votre profil de goût : plus minérales, sucrées, salées, délicates ou charnues. De quoi découvrir de nouvelles variétés et trouver vos favorites !"}`
-- **Raw:** `{"id": 1045721801, "name": "Trouvez l'huître qui vous ressemble", "sale_story": null, "sku": null, "description": "Vous ne savez pas laquelle choisir ? Nos poissonniers sont là pour vous conseiller. Selon vos préférences, ils peuvent vous guider parmi les différentes huîtres offertes et vous aider à trouver celles qui correspondent le mieux à votre profil de goût : plus minérales, sucrées, salées, délicates ou charnues. De quoi découvrir de nouvelles variétés et trouver vos favorites !", "discla`
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 531
-
-![item 531](images/item-531.jpg)
-
-- **Name (French):** traiteur IGA
-- **Brand:** LE TRAITEUR BY IGU
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24244974/303ef862-be1b-11f1-8b28-8ad3174fa92b/x_large
-- **Details:** confidence: 1.00 · item_key: `444b8507b405a18d`
-- **Conditions:** `{"description": "Des solutions repas en toute simplicité\nQue ce soit pour un repas en famille, une réception entre amis ou pour souligner l'esprit de l'Action de grâces, découvrez nos menus sageusement conçus par nos experts qui s'adapteront à toutes vos occasions."}`
-- **Raw:** `{"id": 1045721435, "name": "traiteur IGA", "sale_story": null, "sku": null, "description": "Des solutions repas en toute simplicité\nQue ce soit pour un repas en famille, une réception entre amis ou pour souligner l'esprit de l'Action de grâces, découvrez nos menus sageusement conçus par nos experts qui s'adapteront à toutes vos occasions.", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wis`
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 579
-
-![item 579](images/item-579.jpg)
-
-- **Name (French):** activer vos offres
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_items/436335360/1790932044/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `792d571866bcce62`
-- **Conditions:** `{"sale_story": "Activez vos offres", "description": "Obtenez jusqu'à 5 points par élement aux/offres sur l'appli IGA !"}`
-- **Raw:** `{"id": 1045720849, "name": "activer vos offres", "sale_story": "Activez vos offres", "sku": null, "description": "Obtenez jusqu'à 5 points par élement aux/offres sur l'appli IGA !", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436335360/1790932044/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": n`
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 582
-
-![item 582](images/item-582.jpg)
-
-- **Name (French):** SALADE C'EST PRÊT!
-- **Brand:** C'EST PRÊT!
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 2.99
-- **Printed Price:** “2.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_pdf_images/24244975/1fc8fb5e-be1b-11f1-a82d-c24c0e6864af/x_large
-- **Details:** SKU: 00000_000000005881400950 · confidence: 1.00 · item_key: `fdf25d4ce5d98166`
-- **Conditions:** `{"description": "454 g\nSélection variée"}`
-- **Raw:** `{"id": 1045721705, "name": "SALADE C'EST PRÊT!", "sale_story": null, "sku": "00000_000000005881400950", "description": "454 g\nSélection variée", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_pdf_images/24244975/1fc8fb5e-be1b-11f1-a82d-c24c0e6864af/x_large", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_i`
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 663
-
-![item 663](images/item-663.jpg)
-
-- **Name (French):** Boucherie
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_items/436335338/1790932039/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `865fcf898ada76ff`
-- **Conditions:** `{"description": "Coupé à votre goûter, fari, mariné\nVous êtes servis"}`
-- **Raw:** `{"id": 1045721141, "name": "Boucherie", "sale_story": null, "sku": null, "description": "Coupé à votre goûter, fari, mariné\nVous êtes servis", "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436335338/1790932039/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_field_5": null, "custo`
-
-— from flyer 2 (valid 2026-10-08 → 2026-10-14)
-
-### Item 739
-
-![item 739](images/item-739.jpg)
-
-- **Name (French):** On bouffe les prix !
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** https://f.wishabi.net/page_items/436336005/1790932049/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `a35c094c27a4dab1`
-- **Conditions:** `{"sale_story": "On bouffe les prix!"}`
-- **Raw:** `{"id": 1045720524, "name": "On bouffe les prix !", "sale_story": "On bouffe les prix!", "sku": null, "description": null, "disclaimer_text": null, "valid_from_timestamp": "2026-10-08T00:00:00-04:00", "valid_to_timestamp": "2026-10-14T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436336005/1790932049/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_field_5": null, "custom_id_field_6": null, "`
 
 — from flyer 121 (valid 2026-10-15 → 2026-10-21)
 
@@ -379,9 +199,66 @@ The classifier could not assign these items a category. They are kept in the dat
 - **How classified:** none
 - **Price:** 6.77
 - **Printed Price:** “6.77”
-- **Unit:** —
+- **Unit:** lb
 - **Item validity:** 2026-10-15 → 2026-10-21
 - **Image source URL:** https://f.wishabi.net/page_items/436766144/1791427523/extra_large.jpg
 - **Details:** SKU: 00000_000000021115100000 · confidence: 1.00 · item_key: `f42c32286343dcc5`
 - **Conditions:** `{"description": "Provenant de bœuf Canada AA\nou USDA Select\nRég. 32,19$/kg"}`
 - **Raw:** `{"id": 1046440488, "name": "RÔTI DE BAS DE PALETTE DÉSOSSÉ", "sale_story": null, "sku": "00000_000000021115100000", "description": "Provenant de bœuf Canada AA\nou USDA Select\nRég. 32,19$/kg", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436766144/1791427523/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id`
+
+— from flyer 121 (valid 2026-10-15 → 2026-10-21)
+
+### Item 12244
+
+![item 12244](images/item-12244.jpg)
+
+- **Name (French):** service magasin fromagerie charcuterie
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** junk
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** https://f.wishabi.net/page_items/436821493/1791427536/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `04e543de4c9784e3`
+- **Conditions:** `{"description": "Demandez des recommandations à votre charcutier/fromager.\nVous êtes servis"}`
+- **Raw:** `{"id": 1046442269, "name": "service magasin fromagerie charcuterie", "sale_story": null, "sku": null, "description": "Demandez des recommandations à votre charcutier/fromager.\nVous êtes servis", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436821493/1791427536/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_`
+
+— from flyer 121 (valid 2026-10-15 → 2026-10-21)
+
+### Item 12245
+
+![item 12245](images/item-12245.jpg)
+
+- **Name (French):** service magasin pret-a-manger
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** junk
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** https://f.wishabi.net/page_items/436796263/1791427530/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `0fb17c61076e25d4`
+- **Conditions:** `{"description": "Se régaler, sans la facture du resto\nVous avez servie"}`
+- **Raw:** `{"id": 1046442017, "name": "service magasin pret-a-manger", "sale_story": null, "sku": null, "description": "Se régaler, sans la facture du resto\nVous avez servie", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436796263/1791427530/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "custom_id_`
+
+— from flyer 121 (valid 2026-10-15 → 2026-10-21)
+
+### Item 12254
+
+![item 12254](images/item-12254.jpg)
+
+- **Name (French):** service magasin fruits et legumes
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** junk
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** https://f.wishabi.net/page_items/436820631/1791427531/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `f068d0229bf78037`
+- **Conditions:** `{"description": "Arrivages frais tous les jours à savourer\nVos sens servir."}`
+- **Raw:** `{"id": 1046441178, "name": "service magasin fruits et legumes", "sale_story": null, "sku": null, "description": "Arrivages frais tous les jours à savourer\nVos sens servir.", "disclaimer_text": null, "valid_from_timestamp": "2026-10-15T00:00:00-04:00", "valid_to_timestamp": "2026-10-21T23:59:59-04:00", "image_url": "https://f.wishabi.net/page_items/436820631/1791427531/extra_large.jpg", "custom_id_field_1": null, "custom_id_field_2": null, "custom_id_field_3": null, "custom_id_field_4": null, "c`

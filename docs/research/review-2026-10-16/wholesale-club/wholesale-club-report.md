@@ -1,381 +1,222 @@
 # Wholesale Club — full product report
 
-Store slug: `wholesale-club`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `wholesale-club`. Generated from `data/grocery.db`. A sampled subset of 13 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 100 — valid 2026-10-08 → 2026-10-14 (5 classified items, 9 unclassified)
-
-Source ref: `wholesale-club-qc-flyer-october-8-to-14` · fetched 2026-10-14T04:23:03.971Z
-
-### Item 11180
-
-![item 11180](images/item-11180.jpg)
-
-- **Name (French):** BOISSONS ÉNERGÉTIQUES MONSTER ENERGY, FULL THROTTLE, NOS OU REIGN CERTAINES VARIETES
-- **Category (English):** Drinks > Sports & Energy
-- **Category (French):** Boissons > Boissons énergisantes et pour sportifs
-- **How classified:** rule (`sports-energy`)
-- **Price:** 23.99
-- **Printed Price:** “23.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 526, top 471, right 924, bottom 566, page 5
-- **Full page:** [pages/flyer100-page-11e92c38d6.jpg (flyer page 5)](pages/flyer100-page-11e92c38d6.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-5-max.jpg
-- **Details:** confidence: 0.99 · item_key: `9689803a38c8db28`
-- **Raw:** `{"block_text": "BOISSONS ÉNERGÉTIQUES\nMONSTER ENERGY, FULL THROTTLE,\nNOS OU REIGN\n\nCERTAINES VARIETES\n\n12 X 355 - 473 ML, CONSIGNE\nENERGY DRINKS", "ocr_lines": ["MONSTER", "ENERGY", "ULTRABLLE HAWAIIAN", "BLEU HAWAIEN", "BOISSONSENERGETIQUES", "MONSTERENERGY,FULLTHROTTLE", "NOSOU REIGN", "CERTAINESVARIETES", "12X355-473ML,CONSIGNE", "ENERGYDRINKS"]}`
-
-### Item 11195
-
-![item 11195](images/item-11195.jpg)
-
-- **Name (French):** BARRES AU CHOCOLAT GRAND FORMAT _ CERTAINES VARIÉTÉS, 24 UN. CHOCOLATE KING SIZE BARS A'7 in
-- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
-- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
-- **How classified:** rule (`candy-chocolate`)
-- **Price:** 47.99
-- **Printed Price:** “47.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 68, top 686, right 264, bottom 760, page 9
-- **Full page:** [pages/flyer100-page-8180a3c26d.jpg (flyer page 9)](pages/flyer100-page-8180a3c26d.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-9-max.jpg
-- **Details:** confidence: 0.98 · item_key: `44b0dea23c4b7cd9`
-- **Raw:** `{"block_text": "BARRES AU CHOCOLAT\nGRAND FORMAT _\nCERTAINES VARIÉTÉS, 24 UN.\nCHOCOLATE\n\nKING SIZE BARS A'7 in", "ocr_lines": ["BARRESAU CHOCOLAT", "GRAND FORMAT", "CERTAINESVARIETES,24UN.", "CHOCOLATE", "KING SIZE BARS"]}`
-
-### Item 11196
-
-![item 11196](images/item-11196.jpg)
-
-- **Name (French):** CHOCOLAT MARS | CERTAINES VARIÉTÉS
-- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
-- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
-- **How classified:** rule (`candy-chocolate`)
-- **Price:** 3.19
-- **Printed Price:** “3.19”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 513, top 878, right 710, bottom 953, page 9
-- **Full page:** [pages/flyer100-page-8180a3c26d.jpg (flyer page 9)](pages/flyer100-page-8180a3c26d.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-9-max.jpg
-- **Details:** confidence: 0.98 · item_key: `2a1d29f3679aea47`
-- **Raw:** `{"block_text": "CHOCOLAT\n\nMARS |\nCERTAINES VARIÉTÉS\n95-109 G\n\nPEG CHOCOLATES f", "ocr_lines": ["CHOCOLAT", "MARS", "CERTAINESVARIETES", "PEG CHOCOLATES"]}`
-
-### Item 11226
-
-![item 11226](images/item-11226.jpg)
-
-- **Name (French):** POIVRONS MIXTES NATURELLEMENT IMPARFAITS™ SANS NOM®
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 5.99
-- **Printed Price:** “5.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 375, top 469, right 638, bottom 527, page 12
-- **Full page:** [pages/flyer100-page-7b5b93b555.jpg (flyer page 12)](pages/flyer100-page-7b5b93b555.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-12-max.jpg
-- **Details:** confidence: 0.88 · item_key: `e1d8fdd6fe9b89db`
-- **Raw:** `{"block_text": "POIVRONS MIXTES\nNATURELLEMENT IMPARFAITS™\nSANS NOM®\n\nPRODUIT DU MEXIQUE\n\nSAC DE 2,5 LB\n\nSWEET PEPPERS |", "ocr_lines": ["POIVRONS MIXTES", "NATURELLEMENT IMPARFAITS", "SANS NOM", "PRODUITDUMEXIQUE", "SACDE2.5LB", "SWEETPEPPERS"]}`
-
-### Item 11255
-
-![item 11255](images/item-11255.jpg)
-
-- **Name (French):** RIZ BASMATI PUR TILDA
-- **Category (English):** Pantry > Rice
-- **Category (French):** Produits du garde-manger > Riz
-- **How classified:** rule (`rice`)
-- **Price:** 51.99
-- **Printed Price:** “51.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 395, top 563, right 607, bottom 613, page 15
-- **Full page:** [pages/flyer100-page-0b3d76b342.jpg (flyer page 15)](pages/flyer100-page-0b3d76b342.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-15-max.jpg
-- **Details:** confidence: 0.98 · item_key: `f94115b201085ffb`
-- **Raw:** `{"block_text": "RIZ\n\nBASMATI PUR\nTILDA\n\n4,54 KG\nBASMATI RICE", "ocr_lines": ["RIZ", "RIZ", "BASMATI PUR", "TILDA", "TILDA", "BASMATIRICE"]}`
-
-## Flyer 157 — valid 2026-10-15 → 2026-10-21 (5 classified items, 1 unclassified)
+## Flyer 157 — valid 2026-10-15 → 2026-10-21 (10 classified items, 3 unclassified)
 
 Source ref: `wholesale-club-qc-flyer-october-15-to-21` · fetched 2026-10-16T12:59:23.830Z
 
-### Item 15097
+### Item 15092
 
-![item 15097](images/item-15097.jpg)
+![item 15092](images/item-15092.jpg)
 
-- **Name (French):** BOISSONS ÉNERGÉTIQUES MONSTER ENERGY, FULL THROTTLE, NOS OU REIGN CERTAINES VARIETES
-- **Category (English):** Drinks > Sports & Energy
-- **Category (French):** Boissons > Boissons énergisantes et pour sportifs
-- **How classified:** rule (`sports-energy`)
+- **Name (French):** BARRES DE CHOCOLAT INDIVIDUELLES NESTLÉ CERTAINES VARIÉTÉS, 24 UN,
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
 - **Price:** 23.99
 - **Printed Price:** “23.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **bbox:** left 526, top 471, right 924, bottom 566, page 5
-- **Full page:** [pages/flyer157-page-3cd5ada473.jpg (flyer page 5)](pages/flyer157-page-3cd5ada473.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-5-max.jpg
-- **Details:** confidence: 0.99 · item_key: `9689803a38c8db28`
-- **Raw:** `{"block_text": "BOISSONS ÉNERGÉTIQUES\nMONSTER ENERGY, FULL THROTTLE,\nNOS OU REIGN\n\nCERTAINES VARIETES\n\n12 X 355 - 473 ML, CONSIGNE\nENERGY DRINKS", "ocr_lines": ["MONSTER", "ENERGY", "ULTRABLLE HAWAIIAN", "BLEU HAWAIEN", "BOISSONSENERGETIQUES", "MONSTERENERGY,FULLTHROTTLE", "NOSOU REIGN", "CERTAINESVARIETES", "12X355-473ML,CONSIGNE", "ENERGYDRINKS"]}`
+- **bbox:** left 138, top 630, right 878, bottom 672, page 2
+- **Full page:** [pages/flyer157-page2-989d8dc41a.jpg (flyer page 2)](pages/flyer157-page2-989d8dc41a.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-2-max.jpg
+- **Details:** confidence: 0.90 · item_key: `8376dc6f431b82a0`
+- **Raw:** `{"block_text": "BARRES DE CHOCOLAT INDIVIDUELLES\nNESTLÉ\nCERTAINES VARIÉTÉS, 24 UN,", "ocr_lines": ["BARRESDECHOCOLAT INDIVIDUELLES", "CERTAINESVARIETES.24 UN."]}`
 
-### Item 15098
+### Item 15094
 
-![item 15098](images/item-15098.jpg)
+![item 15094](images/item-15094.jpg)
 
-- **Name (French):** CHOCOLATS OU FRIANDISES ASSORTIS HERSHEY'S OU REESE'S CERTAINES VARIETES
+- **Name (French):** BOISSONS GAZEUSES PEPSI CERTAINES VARIÉTÉS
+- **Category (English):** Drinks > Soft Drinks
+- **Category (French):** Boissons > Boissons gazeuses
+- **How classified:** rule (`soft-drinks`)
+- **Price:** 29.99
+- **Printed Price:** “29.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **bbox:** left 352, top 670, right 654, bottom 713, page 4
+- **Full page:** [pages/flyer157-page4-47ab4a8b63.jpg (flyer page 4)](pages/flyer157-page4-47ab4a8b63.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-4-max.jpg
+- **Details:** confidence: 0.99 · item_key: `02ed2da5d8251050`
+- **Raw:** `{"block_text": "BOISSONS GAZEUSES\nPEPSI\n\nCERTAINES VARIÉTÉS\n2 L, CONSIGNE\n\nSOFT DRINKS", "ocr_lines": ["BOISSONS GAZEUSES", "PEPSI", "CERTAINESVARIETES", "2L,CONSIGNE", "SOFT DRINKS"]}`
+
+### Item 15105
+
+![item 15105](images/item-15105.jpg)
+
+- **Name (French):** BARRES DE CHOCOLAT FORMAT COLLATION
 - **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
 - **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
 - **How classified:** rule (`candy-chocolate`)
-- **Price:** 1.00
-- **Printed Price:** “1.00”
+- **Price:** 2.49
+- **Printed Price:** “2.49”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **bbox:** left 614, top 595, right 925, bottom 761, page 5
-- **Full page:** [pages/flyer157-page-3cd5ada473.jpg (flyer page 5)](pages/flyer157-page-3cd5ada473.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-5-max.jpg
-- **Details:** confidence: 0.99 · item_key: `b51b2606a89e21eb`
-- **Conditions:** `{"alt_prices": ["1.00"]}`
-- **Raw:** `{"block_text": "CHOCOLATS OU\nFRIANDISES ASSORTIS\nHERSHEY'S OU REESE'S\nCERTAINES VARIETES\n909/962 G\n\nASSORTED CHOCOLATES\n21668235 EA/21736093 EA", "ocr_lines": ["CHOCOLATS OU", "FRIANDISES ASSORTIS", "HERSHEY'SOU REESE'S", "CERTAINESVARIETES", "ASSORTED CHOCOLATES", "21668235_EA/21736093 EA"]}`
+- **bbox:** left 662, top 768, right 933, bottom 860, page 7
+- **Full page:** [pages/flyer157-page7-b95fb1847d.jpg (flyer page 7)](pages/flyer157-page7-b95fb1847d.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-7-max.jpg
+- **Details:** confidence: 0.99 · item_key: `37bf84b20b126c62`
+- **Raw:** `{"block_text": "Pei et ete GS GG\nmn ST\nJ sn = = =\nBARRES DE CHOCOLAT\nFORMAT COLLATION\nNESTLE ma\nCERTAINES VARIETES, 8 UN.\nSNACK SIZE CHOCOLATES", "ocr_lines": ["SNACKSIZE", "FORMATCOLLATION", "BARRESDECHOCOLAT", "FORMATCOLLATION", "NESTLE", "CERTAINESVARIETES,8UN.", "SNACKSIZECHOCOLATES"]}`
 
-### Item 15110
+### Item 15115
 
-![item 15110](images/item-15110.jpg)
+![item 15115](images/item-15115.jpg)
 
-- **Name (French):** CHOUX DE BRUXELLES SANS NOM® NATURELLEMENT IMPARFAITS™ PRODUIT DES PAYS-BAS OU DES E.-U
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 6.49
-- **Printed Price:** “6.49”
+- **Name (French):** LANIÈRES DE POULET SANS NOM° CERTAINES VARIÉTÉS, FORMAT CLUB SURGELES, 1,81 KG BREADED CHICKEN NUGGETS, BURGERS OR STRIPS
+- **Category (English):** Frozen Food > Frozen Meat and Seafood
+- **Category (French):** Produits surgelés > Viande et fruits de mer surgelés
+- **How classified:** frozen-remap (`chicken-turkey`)
+- **Size:** 1,81 KG
+- **Price:** 10.00
+- **Printed Price:** “2/20.00”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **bbox:** left 80, top 461, right 346, bottom 527, page 10
-- **Full page:** [pages/flyer157-page-e17f328438.jpg (flyer page 10)](pages/flyer157-page-e17f328438.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-10-max.jpg
-- **Details:** confidence: 0.95 · item_key: `e876208057567975`
-- **Raw:** `{"block_text": "CHOUX DE BRUXELLES\n\nSANS NOM®\n\nNATURELLEMENT IMPARFAITS™\nPRODUIT DES\n\nPAYS-BAS OU DES E.-U.\n\n680 G\n\nBRUSSEL SPROUTS", "ocr_lines": ["CHOUXDEBRUXELLES", "SANS NOM", "NATURELLEMENTIMPARFAITS", "PRODUIT DES", "PAYS-BASOU DES E.-U.", "BRUSSEL SPROUTS"]}`
+- **bbox:** left 78, top 442, right 487, bottom 495, page 11
+- **Full page:** [pages/flyer157-page11-3ce9554acb.jpg (flyer page 11)](pages/flyer157-page11-3ce9554acb.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-11-max.jpg
+- **Details:** confidence: 0.99 · item_key: `79ec8967439e7a24`
+- **Conditions:** `{"multibuy": {"count": 2, "total": 20.0}}`
+- **Raw:** `{"block_text": "LANIÈRES DE POULET\n\nSANS NOM°\n\nCERTAINES VARIÉTÉS, FORMAT CLUB\n\nSURGELES, 1,81 KG\n\nBREADED CHICKEN NUGGETS, BURGERS OR STRIPS\n\n21178763 EA/21178783 EA MOINS DE 2, 10,99 CH", "ocr_lines": ["CROQUETTES,BURGERS OR", "LANIERES DEPOULET", "CERTAINESVARIETES,FORMATCLUB", "SURGELES,1.81KG", "BREADED CHICKEN NUGGETS,BURGERS OR STRIPS", "MOINSDE2,10,99CH", "21178763EA21178783 EA"]}`
 
-### Item 15123
+### Item 15119
 
-![item 15123](images/item-15123.jpg)
+![item 15119](images/item-15119.jpg)
 
-- **Name (French):** HARICOTS, LENTILLES OU FÈVES TAMAM CERTAINES VARIÉTÉS, 540 ML BEANS, LENTILS OR FABA BEANS
-- **Category (English):** Pantry > Dried Beans, Vegetables & Grains
-- **Category (French):** Produits du garde-manger > Haricots secs, légumes et grains
-- **How classified:** rule (`beans-grains`)
-- **Size:** 540 ML
-- **Price:** 1.69
-- **Printed Price:** “1.69”
+- **Name (French):** BEURRE D'ARACHIDE 750 G/1 KG OU TARTINADE DE NOISETTE 725 G KRAFT CERTAINES VARIETES PEANUT BUTTER
+- **Category (English):** Pantry > Honey, Syrups & Spreads
+- **Category (French):** Produits du garde-manger > Miel, sirops et tartinades
+- **How classified:** rule (`specific-nut-butters`)
+- **Size:** 725 G
+- **Price:** 5.99
+- **Printed Price:** “5.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **bbox:** left 664, top 879, right 928, bottom 931, page 13
-- **Full page:** [pages/flyer157-page-77b7c43418.jpg (flyer page 13)](pages/flyer157-page-77b7c43418.jpg)
+- **bbox:** left 78, top 287, right 341, bottom 336, page 12
+- **Full page:** [pages/flyer157-page12-78375276bc.jpg (flyer page 12)](pages/flyer157-page12-78375276bc.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-12-max.jpg
+- **Details:** confidence: 0.93 · item_key: `742d85a3e9d4095e`
+- **Raw:** `{"block_text": "BEURRE D'ARACHIDE 750 G/1 KG\nOU TARTINADE DE NOISETTE 725 G\nKRAFT\n\nCERTAINES VARIETES\n\nPEANUT BUTTER", "ocr_lines": ["BEURRED'ARACHIDE750G/1KG", "OU TARTINADEDENOISETTE725G", "KRAFT", "CERTAINESVARIETES", "PEANUT BUTTER"]}`
+
+### Item 15120
+
+![item 15120](images/item-15120.jpg)
+
+- **Name (French):** TRANCHES DE CORNICHONS À L'ANETH POUR HAMBURGER SUNSPUN™
+- **Category (English):** Pantry > Canned & Pickled
+- **Category (French):** Produits du garde-manger > Produits en conserve et marinés
+- **How classified:** rule (`canned-pickled`)
+- **Price:** 39.99
+- **Printed Price:** “39.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **bbox:** left 664, top 286, right 925, bottom 334, page 12
+- **Full page:** [pages/flyer157-page12-78375276bc.jpg (flyer page 12)](pages/flyer157-page12-78375276bc.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-12-max.jpg
+- **Details:** confidence: 0.92 · item_key: `7f99d23d499f9c77`
+- **Raw:** `{"block_text": "TRANCHES DE CORNICHONS\nÀ L'ANETH POUR HAMBURGER\nSUNSPUN™\n\n20L\n\nDILL HAMBURGER SLICES", "ocr_lines": ["TRANCHESDECORNICHONS", "AL'ANETHPOURHAMBURGER", "SUNSPUN", "DILLHAMBURGERSLICES"]}`
+
+### Item 15126
+
+![item 15126](images/item-15126.jpg)
+
+- **Name (French):** HUILE D'OLIVE VIVIIL ES 9 LINE EvVTOAINICOCE CA ITA VIERGI TARAARA
+- **Category (English):** Pantry > Oils & Vinegar
+- **Category (French):** Produits du garde-manger > Huile et vinaigre
+- **How classified:** rule (`oils-vinegar`)
+- **Price:** 18.49
+- **Printed Price:** “18.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **bbox:** left 250, top 880, right 522, bottom 929, page 13
+- **Full page:** [pages/flyer157-page13-77b7c43418.jpg (flyer page 13)](pages/flyer157-page13-77b7c43418.jpg)
 - **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-13-max.jpg
-- **Details:** confidence: 0.99 · item_key: `9a03db0c5d910a5d`
-- **Raw:** `{"block_text": "HARICOTS, LENTILLES OU FÈVES\nTAMAM\n\nCERTAINES VARIÉTÉS, 540 ML\nBEANS, LENTILS OR\n\nFABA BEANS\n\n21214477 EA/21214483 EA", "ocr_lines": ["HARICOTS,LENTILLESOUFEVES", "TAMAM", "CERTAINESVARIETES.540 ML", "BEANS,LENTILS OR", "FABA BEANS", "21214477_EA21214483EA"]}`
+- **Details:** confidence: 0.98 · item_key: `75ab28f04a7e4bb9`
+- **Raw:** `{"block_text": "ae mg,\nHUILE D'OLIVE\n\nVIVIIL ES 9 LINE\nEvVTOAINICOCE\n\nCA ITA VIERGI\n\nTARAARA\n\nLAIVLATY\n\nCYTOA MODO AI hc Ai\nEXTRA VIRGIN OLIVE OIL", "ocr_lines": ["HUILED'OLIVE", "EXTRA VIERGE", "TAMAM", "EXTRA VIRGIN OLIVEOIL"]}`
 
-### Item 15130
+### Item 15138
 
-![item 15130](images/item-15130.jpg)
+![item 15138](images/item-15138.jpg)
 
-- **Name (French):** FÈVES GERMÉES
-- **Category (English):** Pantry > Dried Beans, Vegetables & Grains
-- **Category (French):** Produits du garde-manger > Haricots secs, légumes et grains
-- **How classified:** rule (`beans-grains`)
-- **Price:** 4.99
-- **Printed Price:** “4.99”
+- **Name (French):** SANS NOM® CERTAINES VARIÉTÉS SURGELEES, 1,66/1,74 KG PIZZA
+- **Category (English):** Frozen Food > Frozen Pizza
+- **Category (French):** Produits surgelés > Pizzas surgelées
+- **How classified:** frozen-remap (`pizza-prepared`)
+- **Size:** 1,74 KG
+- **Price:** 13.49
+- **Printed Price:** “13.49”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **bbox:** left 268, top 413, right 501, bottom 457, page 13
-- **Full page:** [pages/flyer157-page-77b7c43418.jpg (flyer page 13)](pages/flyer157-page-77b7c43418.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-13-max.jpg
-- **Details:** confidence: 0.91 · item_key: `dd56544e46beef84`
-- **Raw:** `{"block_text": "FÈVES GERMÉES\nPRODUIT DU QUÉBEC\n370 G\n\nBEAN SPROUTS", "ocr_lines": ["FEVES GERMEES", "PRODUIT DU QUEBEC", "BEAN SPROUTS"]}`
+- **bbox:** left 400, top 455, right 674, bottom 504, page 14
+- **Full page:** [pages/flyer157-page14-3c36e46662.jpg (flyer page 14)](pages/flyer157-page14-3c36e46662.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-14-max.jpg
+- **Details:** confidence: 0.98 · item_key: `ec9e62f69f37ea48`
+- **Raw:** `{"block_text": "noue | EME\nSANS NOM®\n\nCERTAINES VARIÉTÉS\nSURGELEES, 1,66/1,74 KG\nPIZZA", "ocr_lines": ["PIZZA", "SANS NOM", "CERTAINESVARIETES", "SURGELEES,1,66/1.74KG", "PIZZA"]}`
+
+### Item 15139
+
+![item 15139](images/item-15139.jpg)
+
+- **Name (French):** WRIGLEY'S OU EXCEL MINTS CERTAINES VARIÉTÉS
+- **Category (English):** Fruits & Vegetables > Herbs
+- **Category (French):** Fruits et légumes > Fines herbes
+- **How classified:** rule (`herbs-fresh`)
+- **Price:** 27.99
+- **Printed Price:** “27.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **bbox:** left 378, top 655, right 612, bottom 701, page 15
+- **Full page:** [pages/flyer157-page15-dc56f6e922.jpg (flyer page 15)](pages/flyer157-page15-dc56f6e922.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-15-max.jpg
+- **Details:** confidence: 0.88 · item_key: `b57d6e48c91805ba`
+- **Conditions:** `{"alt_prices": ["154.49"]}`
+- **Raw:** `{"block_text": "WRIGLEY'S OU\nEXCEL MINTS\nCERTAINES VARIÉTÉS\n8X34G\n\nWRIGLEY'S OR\nEXCEL MINTS", "ocr_lines": ["WRIGLEY'S OU", "EXCEL MINTS", "CERTAINESVARIETES", "WRIGLEY'S OR", "EXCEL MINTS"]}`
+
+### Item 15145
+
+![item 15145](images/item-15145.jpg)
+
+- **Name (French):** BOISSONS GAZEUSES PEPSI 1 LOU GATORADE 828 ML CERTAINES VARIÉTÉS, CONSIGNE SOFT OR SPORTS DRINK
+- **Category (English):** Drinks > Soft Drinks
+- **Category (French):** Boissons > Boissons gazeuses
+- **How classified:** rule (`soft-drinks`)
+- **Size:** 828 ML
+- **Price:** 8.00
+- **Printed Price:** “2/16.00”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **bbox:** left 374, top 687, right 732, bottom 721, page 16
+- **Full page:** [pages/flyer157-page16-671c2b2bd7.jpg (flyer page 16)](pages/flyer157-page16-671c2b2bd7.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-16-max.jpg
+- **Details:** confidence: 0.97 · item_key: `806f0164ed037994`
+- **Conditions:** `{"multibuy": {"count": 2, "total": 16.0}}`
+- **Raw:** `{"block_text": "BOISSONS GAZEUSES PEPSI 1 LOU\nGATORADE 828 ML\n\nCERTAINES VARIÉTÉS, CONSIGNE\nSOFT OR SPORTS DRINK", "ocr_lines": ["BOISSONS GAZEUSES PEPSI 1LOU", "GATORADE828ML", "CERTAINESVARIETES,CONSIGNE", "SOFT OR SPORTS DRINK"]}`
 
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
 
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
+— from flyer 157 (valid 2026-10-15 → 2026-10-21)
 
-### Item 11185
+### Item 15104
 
-![item 11185](images/item-11185.jpg)
+![item 15104](images/item-15104.jpg)
 
-- **Name (French):** CONTENANT RECTANGULAIRE POUR PLATS À EMPORTER
+- **Name (French):** FULLSIZE ORSON BARS BARRES FORMAT
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Price:** 16.99
-- **Printed Price:** “16.99”
+- **Price:** 98.80
+- **Printed Price:** “98.80”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 734, top 872, right 925, bottom 929, page 8
-- **Full page:** [pages/flyer100-page-e46a569e08.jpg (flyer page 8)](pages/flyer100-page-e46a569e08.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-8-max.jpg
-- **Details:** confidence: 0.99 · item_key: `f8c757288f2b33e2`
-- **Raw:** `{"block_text": "CONTENANT RECTANGULAIRE\nPOUR PLATS À EMPORTER\n\n50 UN.\n\nRECTANGULAR\n\nTAKE OUT\n\nCONTAINERS .", "ocr_lines": ["CONTENANT RECTANGULAIRE", "POUR PLATSA EMPORTER", "RECTANGULAR", "TAKEOUT", "CONTAINERS"]}`
-
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
-
-### Item 11190
-
-![item 11190](images/item-11190.jpg)
-
-- **Name (French):** SAINDOUX OU GRAISSE VÉGÉTALE TOUT USAGE SANS NOM®
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 22.99
-- **Printed Price:** “22.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 540, top 484, right 806, bottom 533, page 8
-- **Full page:** [pages/flyer100-page-e46a569e08.jpg (flyer page 8)](pages/flyer100-page-e46a569e08.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-8-max.jpg
-- **Details:** confidence: 0.99 · item_key: `db3c736086d596d9`
-- **Raw:** `{"block_text": "SAINDOUX OU GRAISSE\nVÉGÉTALE TOUT USAGE\nSANS NOM®\n\n454 G\n\nLARD OR SHORTENING", "ocr_lines": ["SAINDOUX OU GRAISSE", "VEGETALETOUTUSAGE", "SANS NOM", "LARD OR SHORTENING"]}`
-
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
-
-### Item 11194
-
-![item 11194](images/item-11194.jpg)
-
-- **Name (French):** PRÉPARÉ AU
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 3.99
-- **Printed Price:** “3.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 848, top 371, right 923, bottom 533, page 8
-- **Full page:** [pages/flyer100-page-e46a569e08.jpg (flyer page 8)](pages/flyer100-page-e46a569e08.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-8-max.jpg
-- **Details:** confidence: 0.89 · item_key: `5bc417d5f7e71b28`
-- **Raw:** `{"block_text": "Roa, À AS LTÉE\n PRÉPARÉ AU", "ocr_lines": ["PREPAREAU", "CANADA"]}`
-
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
-
-### Item 11222
-
-![item 11222](images/item-11222.jpg)
-
-- **Name (French):** PRODUIT DU CANADA,
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** 41.99
-- **Printed Price:** “41.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 426, top 184, right 589, bottom 207, page 11
-- **Full page:** [pages/flyer100-page-eeae798c27.jpg (flyer page 11)](pages/flyer100-page-eeae798c27.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-11-max.jpg
-- **Details:** confidence: 0.97 · item_key: `556a342d87d3b47a`
-- **Raw:** `{"block_text": "PRODUIT DU\nCANADA,", "ocr_lines": ["PRODUITDU", "CANADA"]}`
-
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
-
-### Item 11235
-
-![item 11235](images/item-11235.jpg)
-
-- **Name (French):** SMOKIES™
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 29.99
-- **Printed Price:** “29.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 251, top 285, right 498, bottom 335, page 13
-- **Full page:** [pages/flyer100-page-ed2468eb8f.jpg (flyer page 13)](pages/flyer100-page-ed2468eb8f.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-13-max.jpg
-- **Details:** confidence: 0.97 · item_key: `5b94b0d83f31220d`
-- **Raw:** `{"block_text": "SMOKIES™\n\nPC* |\nCERTAINES VARIÉTÉS\n1 KG\n\nSMOKIES”", "ocr_lines": ["SMOKIES\"", "CERTAINESVARIETES", "SMOKIES\""]}`
-
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
-
-### Item 11249
-
-![item 11249](images/item-11249.jpg)
-
-- **Name (French):** COLLATION SE SAVOUREUSE KURKURE a CERTAINES VARIETES
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 41.99
-- **Printed Price:** “41.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 664, top 714, right 906, bottom 772, page 15
-- **Full page:** [pages/flyer100-page-0b3d76b342.jpg (flyer page 15)](pages/flyer100-page-0b3d76b342.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-15-max.jpg
-- **Details:** confidence: 0.98 · item_key: `fda762576727cefd`
-- **Raw:** `{"block_text": "COLLATION SE\nSAVOUREUSE\nKURKURE a\nCERTAINES VARIETES\n30 X 115G\nFLAVOURED SNACK", "ocr_lines": ["COLLATION", "SAVOUREUSE", "KURKURE", "CERTAINESVARIETES", "FLAVOURED SNACK"]}`
-
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
-
-### Item 11258
-
-![item 11258](images/item-11258.jpg)
-
-- **Name (French):** HALAL
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** 249.99
-- **Printed Price:** “249.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 818, top 181, right 924, bottom 296, page 15
-- **Full page:** [pages/flyer100-page-0b3d76b342.jpg (flyer page 15)](pages/flyer100-page-0b3d76b342.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-15-max.jpg
-- **Details:** confidence: 0.95 · item_key: `c30278fc670ef1ef`
-- **Raw:** `{"block_text": "=. 0\nHALAL\n3 ae", "ocr_lines": ["HALAL"]}`
-
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
-
-### Item 11266
-
-![item 11266](images/item-11266.jpg)
-
-- **Name (French):** AU CANADA
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** 39.99
-- **Printed Price:** “39.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 834, top 554, right 928, bottom 730, page 16
-- **Full page:** [pages/flyer100-page-6819fe20a4.jpg (flyer page 16)](pages/flyer100-page-6819fe20a4.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-16-max.jpg
-- **Details:** confidence: 0.97 · item_key: `4c36321be0323ac2`
-- **Raw:** `{"block_text": "‘ JCA iADA,", "ocr_lines": ["AU CANADA"]}`
-
-— from flyer 100 (valid 2026-10-08 → 2026-10-14)
-
-### Item 11282
-
-![item 11282](images/item-11282.jpg)
-
-- **Name (French):** RÉPARÉ AU CANADA
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 1.47
-- **Printed Price:** “15/22.00”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **bbox:** left 794, top 686, right 920, bottom 773, page 18
-- **Full page:** [pages/flyer100-page-206c7f0cde.jpg (flyer page 18)](pages/flyer100-page-206c7f0cde.jpg)
-- **Image source URL:** https://flyerify.com/images/offers/827102/wholesale-club-qc-flyer-october-8-to-14-18-max.jpg
-- **Details:** confidence: 0.97 · item_key: `80803a2487e0c15b`
-- **Conditions:** `{"multibuy": {"count": 15, "total": 22.0}, "alt_prices": ["12.99"]}`
-- **Raw:** `{"block_text": "RÉPARÉ AU\nCANADA", "ocr_lines": ["PREPAREAU", "CANADA"]}`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **bbox:** left 755, top 478, right 819, bottom 655, page 7
+- **Full page:** [pages/flyer157-page7-b95fb1847d.jpg (flyer page 7)](pages/flyer157-page7-b95fb1847d.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-7-max.jpg
+- **Details:** confidence: 0.62 · item_key: `1ecabb209277ec3c`
+- **Conditions:** `{"alt_prices": ["16.99"]}`
+- **Raw:** `{"block_text": "Fr = | “faa\nae OAS\nTT: 1:\n\n/ afk ES\nEMA\n\nA af\n\nLe 1\n\nl pee\n\nrer | 4", "ocr_lines": ["FULLSIZE", "ORSON", "BARS", "BARRES", "FORMAT", "ORDINAIRE"]}`
 
 — from flyer 157 (valid 2026-10-15 → 2026-10-21)
 
@@ -392,7 +233,27 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
 - **bbox:** left 818, top 181, right 924, bottom 296, page 13
-- **Full page:** [pages/flyer157-page-77b7c43418.jpg (flyer page 13)](pages/flyer157-page-77b7c43418.jpg)
+- **Full page:** [pages/flyer157-page13-77b7c43418.jpg (flyer page 13)](pages/flyer157-page13-77b7c43418.jpg)
 - **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-13-max.jpg
 - **Details:** confidence: 0.95 · item_key: `c30278fc670ef1ef`
 - **Raw:** `{"block_text": "=. 0\nHALAL\n3 ae", "ocr_lines": ["HALAL"]}`
+
+— from flyer 157 (valid 2026-10-15 → 2026-10-21)
+
+### Item 15143
+
+![item 15143](images/item-15143.jpg)
+
+- **Name (French):** BAR
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Price:** 17.99
+- **Printed Price:** “17.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **bbox:** left 602, top 856, right 926, bottom 929, page 15
+- **Full page:** [pages/flyer157-page15-dc56f6e922.jpg (flyer page 15)](pages/flyer157-page15-dc56f6e922.jpg)
+- **Image source URL:** https://flyerify.com/images/offers/835163/wholesale-club-qc-flyer-october-15-to-21-15-max.jpg
+- **Details:** confidence: 0.98 · item_key: `c96e211bd5ba0ac7`
+- **Raw:** `{"block_text": "| BAR |", "ocr_lines": ["BAR"]}`

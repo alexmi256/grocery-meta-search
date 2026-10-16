@@ -19,7 +19,7 @@ Source ref: `flyerbox-144988` · fetched 2026-10-14T17:38:34.560Z
 - **Unit:** —
 - **Item validity:** 2026-10-12 → 2026-10-25
 - **bbox:** left 602, top 715, right 831, bottom 754, page 2
-- **Full page:** [pages/flyer104-page-98d124f75a.jpg (flyer page 2)](pages/flyer104-page-98d124f75a.jpg)
+- **Full page:** [pages/flyer104-page2-98d124f75a.jpg (flyer page 2)](pages/flyer104-page2-98d124f75a.jpg)
 - **Image source URL:** https://na.leafletscdn.com/thumbor/ExkqokucTTYoZ_zztN1GcD1SB0s=/0x0/filters:format(webp):quality(65)/ca/data/75/144988/1.jpg?t=1791806187
 - **Details:** confidence: 0.85 · item_key: `a97e8a73e16407c1`
 - **Raw:** `{"block_text": "yet Wius OASIS\nJUS OASIS\nJuice\n\n=A 960ml", "ocr_lines": ["JUSOASIS", "POMME"]}`
@@ -43,7 +43,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-12 → 2026-10-25
 - **bbox:** left 506, top 857, right 769, bottom 926, page 1
-- **Full page:** [pages/flyer104-page-d11d9d2e6c.jpg (flyer page 1)](pages/flyer104-page-d11d9d2e6c.jpg)
+- **Full page:** [pages/flyer104-page1-d11d9d2e6c.jpg (flyer page 1)](pages/flyer104-page1-d11d9d2e6c.jpg)
 - **Image source URL:** https://na.leafletscdn.com/thumbor/9BFOacsUdrpOwb446EwRL7jt7pQ=/0x0/filters:format(webp):quality(65)/ca/data/75/144988/0.jpg?t=1791806187
 - **Details:** confidence: 0.83 · item_key: `4f007b0c1b7e3019`
 - **Raw:** `{"block_text": "M CE j ROE CHEZ nous à\nÀ er\n\nke CHAMPIGNONS a\nBLANCS/BIOLOGIQUES | PT", "ocr_lines": ["DE CHEZ NOUS", "CHAMPIGNONS", "BLANCSBIOLOGIQUES"]}`
@@ -63,7 +63,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-12 → 2026-10-25
 - **bbox:** left 420, top 643, right 542, bottom 692, page 4
-- **Full page:** [pages/flyer104-page-c9082f54f1.jpg (flyer page 4)](pages/flyer104-page-c9082f54f1.jpg)
+- **Full page:** [pages/flyer104-page4-c9082f54f1.jpg (flyer page 4)](pages/flyer104-page4-c9082f54f1.jpg)
 - **Image source URL:** https://na.leafletscdn.com/thumbor/p2yHj3XKMaiaZmkUpkVF-Tj_lII=/0x0/filters:format(webp):quality(65)/ca/data/75/144988/3.jpg?t=1791806187
 - **Details:** confidence: 0.99 · item_key: `6f323baa7cdab59b`
 - **Raw:** `{"block_text": ">\nHORE\nPROTEIN\nADPASUGAR |\nNO ino «", "ocr_lines": ["HORE", "PROTEIN", "SUGAR", "ADDED"]}`

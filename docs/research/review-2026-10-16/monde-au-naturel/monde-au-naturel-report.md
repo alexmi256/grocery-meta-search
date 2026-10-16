@@ -19,7 +19,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 466, top 181, right 613, bottom 238, page 2
-- **Full page:** [pages/flyer78-page-d5b2ac17cb.jpg (flyer page 2)](pages/flyer78-page-d5b2ac17cb.jpg)
+- **Full page:** [pages/flyer78-page2-d5b2ac17cb.jpg (flyer page 2)](pages/flyer78-page2-d5b2ac17cb.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/02.webp
 - **Details:** confidence: 0.99 · item_key: `5849dd1c6d0e5867`
 - **Raw:** `{"block_text": "|\nRAL\n{ (\nvr.\n. = : D 1", "ocr_lines": ["SPECIAL", "MADE", "GOOD", "HSRNINGS"]}`
@@ -37,7 +37,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 812, top 190, right 959, bottom 229, page 2
-- **Full page:** [pages/flyer78-page-d5b2ac17cb.jpg (flyer page 2)](pages/flyer78-page-d5b2ac17cb.jpg)
+- **Full page:** [pages/flyer78-page2-d5b2ac17cb.jpg (flyer page 2)](pages/flyer78-page2-d5b2ac17cb.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/02.webp
 - **Details:** confidence: 0.99 · item_key: `32a91914c3b0b555`
 - **Raw:** `{"block_text": null, "ocr_lines": ["MADE", "GOOD"]}`
@@ -55,7 +55,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 902, top 316, right 959, bottom 354, page 3
-- **Full page:** [pages/flyer78-page-c4ef92962a.jpg (flyer page 3)](pages/flyer78-page-c4ef92962a.jpg)
+- **Full page:** [pages/flyer78-page3-c4ef92962a.jpg (flyer page 3)](pages/flyer78-page3-c4ef92962a.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/03.webp
 - **Details:** confidence: 0.99 · item_key: `08dcc59fc62d3e2d`
 - **Raw:** `{"block_text": "LEA\nSPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -73,7 +73,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 556, top 509, right 616, bottom 551, page 3
-- **Full page:** [pages/flyer78-page-c4ef92962a.jpg (flyer page 3)](pages/flyer78-page-c4ef92962a.jpg)
+- **Full page:** [pages/flyer78-page3-c4ef92962a.jpg (flyer page 3)](pages/flyer78-page3-c4ef92962a.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/03.webp
 - **Details:** confidence: 0.99 · item_key: `8046199ae9e612bd`
 - **Raw:** `{"block_text": "d SPECIAL\n- |! aa «(Ct", "ocr_lines": ["SPECIAL"]}`
@@ -91,7 +91,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 396, top 713, right 464, bottom 763, page 4
-- **Full page:** [pages/flyer78-page-c7086e9bb1.jpg (flyer page 4)](pages/flyer78-page-c7086e9bb1.jpg)
+- **Full page:** [pages/flyer78-page4-c7086e9bb1.jpg (flyer page 4)](pages/flyer78-page4-c7086e9bb1.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/04.webp
 - **Details:** confidence: 0.99 · item_key: `4231d8e833e02fde`
 - **Raw:** `{"block_text": "i SPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -109,7 +109,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 233, top 247, right 301, bottom 297, page 5
-- **Full page:** [pages/flyer78-page-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page-fb50eb9076.jpg)
+- **Full page:** [pages/flyer78-page5-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page5-fb50eb9076.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/05.webp
 - **Details:** confidence: 0.99 · item_key: `4231d8e833e02fde`
 - **Raw:** `{"block_text": "à\nI SPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -127,7 +127,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 888, top 479, right 951, bottom 526, page 5
-- **Full page:** [pages/flyer78-page-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page-fb50eb9076.jpg)
+- **Full page:** [pages/flyer78-page5-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page5-fb50eb9076.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/05.webp
 - **Details:** confidence: 0.99 · item_key: `9ef3b214f4196628`
 - **Raw:** `{"block_text": "HSE }\nSPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -145,7 +145,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 776, top 261, right 951, bottom 317, page 6
-- **Full page:** [pages/flyer78-page-430a5ec16d.jpg (flyer page 6)](pages/flyer78-page-430a5ec16d.jpg)
+- **Full page:** [pages/flyer78-page6-430a5ec16d.jpg (flyer page 6)](pages/flyer78-page6-430a5ec16d.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/06.webp
 - **Details:** confidence: 0.99 · item_key: `525dd1354820b912`
 - **Raw:** `{"block_text": "“KETO PUDDING\n POUDING CETO", "ocr_lines": ["KETO PUDDING", "POUDING CETO"]}`
@@ -163,7 +163,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 234, top 250, right 301, bottom 298, page 7
-- **Full page:** [pages/flyer78-page-15f7f7e8ee.jpg (flyer page 7)](pages/flyer78-page-15f7f7e8ee.jpg)
+- **Full page:** [pages/flyer78-page7-15f7f7e8ee.jpg (flyer page 7)](pages/flyer78-page7-15f7f7e8ee.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/07.webp
 - **Details:** confidence: 0.99 · item_key: `758ae3713257db7f`
 - **Raw:** `{"block_text": "é SPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -181,7 +181,7 @@ Source ref: `circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 901, top 180, right 959, bottom 222, page 8
-- **Full page:** [pages/flyer78-page-c25320ce1f.jpg (flyer page 8)](pages/flyer78-page-c25320ce1f.jpg)
+- **Full page:** [pages/flyer78-page8-c25320ce1f.jpg (flyer page 8)](pages/flyer78-page8-c25320ce1f.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/08.webp
 - **Details:** confidence: 0.99 · item_key: `77002a1051720b78`
 - **Raw:** `{"block_text": "À à\nSPÉCIAL\n7 | RSS", "ocr_lines": ["SPECIAL"]}`
@@ -205,7 +205,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 215, top 315, right 270, bottom 355, page 3
-- **Full page:** [pages/flyer78-page-c4ef92962a.jpg (flyer page 3)](pages/flyer78-page-c4ef92962a.jpg)
+- **Full page:** [pages/flyer78-page3-c4ef92962a.jpg (flyer page 3)](pages/flyer78-page3-c4ef92962a.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/03.webp
 - **Details:** confidence: 0.99 · item_key: `2123fd8e56c125f6`
 - **Raw:** `{"block_text": "À p\\\nSPÉCIAL\n\"7 | T_T |", "ocr_lines": ["SPECIAL"]}`
@@ -225,7 +225,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 215, top 704, right 270, bottom 743, page 3
-- **Full page:** [pages/flyer78-page-c4ef92962a.jpg (flyer page 3)](pages/flyer78-page-c4ef92962a.jpg)
+- **Full page:** [pages/flyer78-page3-c4ef92962a.jpg (flyer page 3)](pages/flyer78-page3-c4ef92962a.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/03.webp
 - **Details:** confidence: 0.99 · item_key: `855c3efd395fef41`
 - **Raw:** `{"block_text": "fi '\nSPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -245,7 +245,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 561, top 247, right 626, bottom 296, page 5
-- **Full page:** [pages/flyer78-page-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page-fb50eb9076.jpg)
+- **Full page:** [pages/flyer78-page5-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page5-fb50eb9076.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/05.webp
 - **Details:** confidence: 0.99 · item_key: `855c3efd395fef41`
 - **Raw:** `{"block_text": "à\n| SPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -265,7 +265,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 235, top 480, right 301, bottom 527, page 5
-- **Full page:** [pages/flyer78-page-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page-fb50eb9076.jpg)
+- **Full page:** [pages/flyer78-page5-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page5-fb50eb9076.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/05.webp
 - **Details:** confidence: 0.99 · item_key: `2123fd8e56c125f6`
 - **Raw:** `{"block_text": "| SPÉCIAL", "ocr_lines": ["SPECIAL"]}`
@@ -285,7 +285,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 562, top 479, right 624, bottom 526, page 5
-- **Full page:** [pages/flyer78-page-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page-fb50eb9076.jpg)
+- **Full page:** [pages/flyer78-page5-fb50eb9076.jpg (flyer page 5)](pages/flyer78-page5-fb50eb9076.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/05.webp
 - **Details:** confidence: 0.99 · item_key: `855c3efd395fef41`
 - **Raw:** `{"block_text": "Fy à\nSPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -305,7 +305,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 884, top 712, right 951, bottom 760, page 6
-- **Full page:** [pages/flyer78-page-430a5ec16d.jpg (flyer page 6)](pages/flyer78-page-430a5ec16d.jpg)
+- **Full page:** [pages/flyer78-page6-430a5ec16d.jpg (flyer page 6)](pages/flyer78-page6-430a5ec16d.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/06.webp
 - **Details:** confidence: 0.99 · item_key: `2123fd8e56c125f6`
 - **Raw:** `{"block_text": "SPÉCIAL", "ocr_lines": ["SPECIAL"]}`
@@ -325,7 +325,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 901, top 375, right 959, bottom 415, page 8
-- **Full page:** [pages/flyer78-page-c25320ce1f.jpg (flyer page 8)](pages/flyer78-page-c25320ce1f.jpg)
+- **Full page:** [pages/flyer78-page8-c25320ce1f.jpg (flyer page 8)](pages/flyer78-page8-c25320ce1f.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/08.webp
 - **Details:** confidence: 0.99 · item_key: `855c3efd395fef41`
 - **Raw:** `{"block_text": "/ 4 |\nSPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -345,7 +345,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 558, top 375, right 615, bottom 415, page 9
-- **Full page:** [pages/flyer78-page-e467eb7247.jpg (flyer page 9)](pages/flyer78-page-e467eb7247.jpg)
+- **Full page:** [pages/flyer78-page9-e467eb7247.jpg (flyer page 9)](pages/flyer78-page9-e467eb7247.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/09.webp
 - **Details:** confidence: 0.99 · item_key: `855c3efd395fef41`
 - **Raw:** `{"block_text": "i x À\nSPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -365,7 +365,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 557, top 569, right 615, bottom 610, page 9
-- **Full page:** [pages/flyer78-page-e467eb7247.jpg (flyer page 9)](pages/flyer78-page-e467eb7247.jpg)
+- **Full page:** [pages/flyer78-page9-e467eb7247.jpg (flyer page 9)](pages/flyer78-page9-e467eb7247.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/09.webp
 - **Details:** confidence: 0.99 · item_key: `855c3efd395fef41`
 - **Raw:** `{"block_text": "RSA à\nSPECIAL", "ocr_lines": ["SPECIAL"]}`
@@ -385,7 +385,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-01 → 2026-10-31
 - **bbox:** left 560, top 763, right 614, bottom 801, page 9
-- **Full page:** [pages/flyer78-page-e467eb7247.jpg (flyer page 9)](pages/flyer78-page-e467eb7247.jpg)
+- **Full page:** [pages/flyer78-page9-e467eb7247.jpg (flyer page 9)](pages/flyer78-page9-e467eb7247.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-le-monde-au-naturel-alimentation-du-1-au-31-octobre-2026/09.webp
 - **Details:** confidence: 0.99 · item_key: `2123fd8e56c125f6`
 - **Raw:** `{"block_text": "i à\nSPÉCIAL\n> M |", "ocr_lines": ["SPECIAL"]}`

@@ -2,29 +2,13 @@
 
 Store slug: `metro-plus`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 54 — valid 2026-10-08 → 2026-10-14 (2 classified items, 0 unclassified)
+## Flyer 53 — valid 2026-10-08 → 2026-10-21 (1 classified items, 1 unclassified)
 
-Source ref: `8171683` · fetched 2026-10-13T04:28:44.752Z
+Source ref: `8171685` · fetched 2026-10-13T04:28:44.752Z
 
-### Item 9231
+### Item 9188
 
-![item 9231](images/item-9231.jpg)
-
-- **Name (French):** FILETS DE SOLE SELECTION | SELECTION SOLE FILLETS
-- **Category (English):** Fish & Seafood > Fish
-- **Category (French):** Poissons et fruits de mer > Poisson
-- **How classified:** rule (`fish`)
-- **Price:** 14.00
-- **Printed Price:** “14.0”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436193279/1791209728/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `121d7736d1c92f04`
-- **Raw:** `{"id": 1044925004, "flyer_id": 8171683, "name": "FILETS DE SOLE SELECTION | SELECTION SOLE FILLETS", "display_type": 1, "brand": "", "left": 8648.37, "bottom": -967.22, "right": 9159.92, "top": -487.21, "cutout_image_url": "http://f.wishabi.net/page_items/436193279/1791209728/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "14.`
-
-### Item 9242
-
-![item 9242](images/item-9242.jpg)
+![item 9188](images/item-9188.jpg)
 
 - **Name (French):** GATORADE
 - **Category (English):** Drinks > Sports & Energy
@@ -33,136 +17,136 @@ Source ref: `8171683` · fetched 2026-10-13T04:28:44.752Z
 - **Price:** —
 - **Printed Price:** “None”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-28
-- **Image source URL:** http://f.wishabi.net/page_items/436193295/1791209352/extra_large.jpg
+- **Item validity:** 2026-10-08 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436193338/1790831663/extra_large.jpg
 - **Details:** confidence: 1.00 · item_key: `2ab468801d0d5d65`
-- **Raw:** `{"id": 1044925026, "flyer_id": 8171683, "name": "GATORADE", "display_type": 1, "brand": "", "left": 15440.89, "bottom": -2421.34, "right": 16085.09, "top": -2058.99, "cutout_image_url": "http://f.wishabi.net/page_items/436193295/1791209352/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-28T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": null,`
+- **Raw:** `{"id": 1044925046, "flyer_id": 8171685, "name": "GATORADE", "display_type": 1, "brand": "", "left": 4795.66, "bottom": -1855.47, "right": 5792.56, "top": -1286.28, "cutout_image_url": "http://f.wishabi.net/page_items/436193338/1790831663/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": null, "`
 
-## Flyer 55 — valid 2026-10-08 → 2026-10-14 (4 classified items, 7 unclassified)
-
-Source ref: `8171653` · fetched 2026-10-13T04:28:44.759Z
-
-### Item 9423
-
-![item 9423](images/item-9423.jpg)
-
-- **Name (French):** PLANCHE DE FROMAGES | CHEESE BOARD
-- **Category (English):** Dairy & Eggs > Cheese
-- **Category (French):** Produits laitiers et œufs > Fromage
-- **How classified:** rule (`cheese`)
-- **Price:** 11.49
-- **Printed Price:** “11.49”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436191120/1791211380/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `11746219ccc8daeb`
-- **Raw:** `{"id": 1044922933, "flyer_id": 8171653, "name": "PLANCHE DE FROMAGES | CHEESE BOARD", "display_type": 1, "brand": "", "left": 16153.87, "bottom": -2126.86, "right": 16695.38, "top": -1708.61, "cutout_image_url": "http://f.wishabi.net/page_items/436191120/1791211380/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "11.49", "print`
-
-### Item 9486
-
-![item 9486](images/item-9486.jpg)
-
-- **Name (French):** POIREAUX | LEEKS
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 6.99
-- **Printed Price:** “6.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436191309/1791211334/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d9a4c2152a9c5745`
-- **Conditions:** `{"discount": 13}`
-- **Raw:** `{"id": 1044922031, "flyer_id": 8171653, "name": "POIREAUX | LEEKS", "display_type": 1, "brand": "", "left": 5768.6, "bottom": -2176.77, "right": 6334.79, "top": -1881.06, "cutout_image_url": "http://f.wishabi.net/page_items/436191309/1791211334/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 13, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "6.99", "print_id": null, "short_name"`
-
-### Item 9554
-
-![item 9554](images/item-9554.jpg)
-
-- **Name (French):** SALADE SELECTION | SELECTION SALAD
-- **Category (English):** Prepared Meals > Salads & Soups
-- **Category (French):** Repas préparés > Salades et soupes
-- **How classified:** rule (`salads-soups`)
-- **Price:** 6.00
-- **Printed Price:** “6.0”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436191295/1791211275/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `2330b3666146dcfb`
-- **Raw:** `{"id": 1044921841, "flyer_id": 8171653, "name": "SALADE SELECTION | SELECTION SALAD", "display_type": 1, "brand": "", "left": 3740.62, "bottom": -1082.46, "right": 4021.98, "top": -604.25, "cutout_image_url": "http://f.wishabi.net/page_items/436191295/1791211275/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "6.0", "print_id":`
-
-### Item 9591
-
-![item 9591](images/item-9591.jpg)
-
-- **Name (French):** SECTION DE CRABE DES NEIGES
-- **Category (English):** Fish & Seafood > Shellfish
-- **Category (French):** Poissons et fruits de mer > Crustacés
-- **How classified:** rule (`shellfish`)
-- **Price:** 4.49
-- **Printed Price:** “4.49”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436191111/1790831107/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `88ed854a96667f2d`
-- **Raw:** `{"id": 1044922690, "flyer_id": 8171653, "name": "SECTION DE CRABE DES NEIGES", "display_type": 1, "brand": "", "left": 13547.97, "bottom": -2463.19, "right": 13799.53, "top": -2167.51, "cutout_image_url": "http://f.wishabi.net/page_items/436191111/1790831107/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "4.49", "print_id": nu`
-
-## Flyer 52 — valid 2026-10-15 → 2026-10-21 (2 classified items, 3 unclassified)
+## Flyer 52 — valid 2026-10-15 → 2026-10-21 (5 classified items, 9 unclassified)
 
 Source ref: `8181580` · fetched 2026-10-13T04:28:44.128Z
 
-### Item 8918
+### Item 8873
 
-![item 8918](images/item-8918.jpg)
+![item 8873](images/item-8873.jpg)
 
-- **Name (French):** MINI GOGO LA BELLE ET LA BOEUF | LA BELLE ET LA BOEUF FROZEN MINI GOGO
-- **Category (English):** Frozen Food > Frozen Meat and Seafood
-- **Category (French):** Produits surgelés > Viande et fruits de mer surgelés
-- **How classified:** frozen-remap (`beef`)
-- **Price:** 9.99
-- **Printed Price:** “9.99”
+- **Name (French):** RILLETTES DE SAUMON FUMÉ ATLANTIQUE ARTISANAL | ARTISANAL SMOKED ATLANTIC SALMON RILLETTES
+- **Category (English):** Deli > Deli Meat
+- **Category (French):** Charcuterie > Charcuterie
+- **How classified:** rule (`deli-meat`)
+- **Price:** 4.49
+- **Printed Price:** “4.49”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436825749/1791442096/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `55930adc1fab89e9`
-- **Conditions:** `{"discount": 13}`
-- **Raw:** `{"id": 1046481668, "flyer_id": 8181580, "name": "MINI GOGO LA BELLE ET LA BOEUF | LA BELLE ET LA BOEUF FROZEN MINI GOGO", "display_type": 1, "brand": "", "left": 13407.2, "bottom": -1581.52, "right": 13810.2, "top": -1303.39, "cutout_image_url": "http://f.wishabi.net/page_items/436825749/1791442096/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 13, "available_to": "2026-10-21T23:59:59-04:00", "video_url"`
+- **Image source URL:** http://f.wishabi.net/page_items/436825777/1791488296/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `6b0c85b9becc9085`
+- **Raw:** `{"id": 1046481838, "flyer_id": 8181580, "name": "RILLETTES DE SAUMON FUMÉ ATLANTIQUE ARTISANAL | ARTISANAL SMOKED ATLANTIC SALMON RILLETTES", "display_type": 1, "brand": "", "left": 14588.4, "bottom": -2462.29, "right": 14956.5, "top": -2187.43, "cutout_image_url": "http://f.wishabi.net/page_items/436825777/1791488296/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:`
 
-### Item 9081
+### Item 8954
 
-![item 9081](images/item-9081.jpg)
+![item 8954](images/item-8954.jpg)
 
-- **Name (French):** PORTIONS DE POULET PANÉES SELECTION | SELECTION FROZEN BREADED CHICKEN PORTIONS
-- **Category (English):** Frozen Food > Frozen Meat and Seafood
-- **Category (French):** Produits surgelés > Viande et fruits de mer surgelés
-- **How classified:** frozen-remap (`chicken-turkey`)
-- **Price:** 8.99
-- **Printed Price:** “8.99”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436825767/1791442105/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `2926d947d3bf302c`
-- **Raw:** `{"id": 1046481774, "flyer_id": 8181580, "name": "PORTIONS DE POULET PANÉES SELECTION | SELECTION FROZEN BREADED CHICKEN PORTIONS", "display_type": 1, "brand": "", "left": 12685.2, "bottom": -2468.53, "right": 12965.8, "top": -2183.88, "cutout_image_url": "http://f.wishabi.net/page_items/436825767/1791442105/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", `
-
-## Flyer 145 — valid 2026-10-15 → 2026-10-21 (2 classified items, 0 unclassified)
-
-Source ref: `8181588` · fetched 2026-10-16T12:44:48.281Z
-
-### Item 14307
-
-![item 14307](images/item-14307.jpg)
-
-- **Name (French):** SALADE | SALAD
-- **Category (English):** Prepared Meals > Salads & Soups
-- **Category (French):** Repas préparés > Salades et soupes
-- **How classified:** rule (`salads-soups`)
+- **Name (French):** PERSIL FRISÉ, ITALIEN, CORIANDRE, ANETH OU MENTHE | CURLY OR ITALIAN PARSLEY, CILANTRO, DILL OR MINT
+- **Category (English):** Fruits & Vegetables > Herbs
+- **Category (French):** Fruits et légumes > Fines herbes
+- **How classified:** rule (`herbs-fresh`)
 - **Price:** 1.99
 - **Printed Price:** “1.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436825615/1791489071/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `12c8b008b0d35ad3`
-- **Raw:** `{"id": 1046483074, "flyer_id": 8181588, "name": "SALADE | SALAD", "display_type": 1, "brand": null, "left": 9443.46, "bottom": -1666.24, "right": 10605.2, "top": -1140.82, "cutout_image_url": "http://f.wishabi.net/page_items/436825615/1791489071/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "1.99", "print_id": null, "short_na`
+- **Image source URL:** http://f.wishabi.net/page_items/436825731/1791442103/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `bd3e6fa6d640275b`
+- **Raw:** `{"id": 1046481462, "flyer_id": 8181580, "name": "PERSIL FRISÉ, ITALIEN, CORIANDRE, ANETH OU MENTHE | CURLY OR ITALIAN PARSLEY, CILANTRO, DILL OR MINT", "display_type": 1, "brand": "", "left": 8074.67, "bottom": -352.95, "right": 8634.23, "top": -92.54, "cutout_image_url": "http://f.wishabi.net/page_items/436825731/1791442103/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21`
+
+### Item 9028
+
+![item 9028](images/item-9028.jpg)
+
+- **Name (French):** SACS À ORDURES GLAD | GLAD GARBAGE BAGS
+- **Category (English):** Household > Paper & Storage
+- **Category (French):** Maison > Papier et rangement
+- **How classified:** rule (`household-paper`)
+- **Price:** 13.99
+- **Printed Price:** “13.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436825928/1791442098/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `df449acc8ff6ceec`
+- **Conditions:** `{"discount": 13}`
+- **Raw:** `{"id": 1046482623, "flyer_id": 8181580, "name": "SACS À ORDURES GLAD | GLAD GARBAGE BAGS", "display_type": 1, "brand": "", "left": 24478.0, "bottom": -2262.87, "right": 24765.4, "top": -1929.17, "cutout_image_url": "http://f.wishabi.net/page_items/436825928/1791442098/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 13, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "13.99", "prin`
+
+### Item 9033
+
+![item 9033](images/item-9033.jpg)
+
+- **Name (French):** TRANCHES, HACHÉ, PIZZARONI OU LANIÈRES VÉGÉTALES GUSTA | GUSTA PLANT-BASED
+- **Category (English):** Deli > Deli Meat
+- **Category (French):** Charcuterie > Charcuterie
+- **How classified:** rule (`deli-meat`)
+- **Price:** 4.49
+- **Printed Price:** “4.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436826002/1791488257/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `1919d5d96fa52f6c`
+- **Raw:** `{"id": 1046481499, "flyer_id": 8181580, "name": "TRANCHES, HACHÉ, PIZZARONI OU LANIÈRES VÉGÉTALES GUSTA | GUSTA PLANT-BASED", "display_type": 1, "brand": "", "left": 9799.09, "bottom": -2472.25, "right": 10352.8, "top": -1898.83, "cutout_image_url": "http://f.wishabi.net/page_items/436826002/1791488257/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "vide`
+
+### Item 9151
+
+![item 9151](images/item-9151.jpg)
+
+- **Name (French):** BACON LAFLEUR | LAFLEUR BACON
+- **Category (English):** Meat > Bacon
+- **Category (French):** Viande > Bacon
+- **How classified:** rule (`bacon`)
+- **Price:** 9.99
+- **Printed Price:** “9.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436825756/1791442099/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `ac79acf940132b29`
+- **Conditions:** `{"discount": 17}`
+- **Raw:** `{"id": 1046481709, "flyer_id": 8181580, "name": "BACON LAFLEUR | LAFLEUR BACON", "display_type": 1, "brand": "", "left": 13243.8, "bottom": -2177.22, "right": 13534.6, "top": -1885.16, "cutout_image_url": "http://f.wishabi.net/page_items/436825756/1791442099/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "9.99", "print_id": null`
+
+## Flyer 144 — valid 2026-10-15 → 2026-10-21 (1 classified items, 0 unclassified)
+
+Source ref: `8181590` · fetched 2026-10-16T12:44:48.261Z
+
+### Item 14274
+
+![item 14274](images/item-14274.jpg)
+
+- **Name (French):** GATORADE
+- **Category (English):** Drinks > Sports & Energy
+- **Category (French):** Boissons > Boissons énergisantes et pour sportifs
+- **How classified:** rule (`sports-energy`)
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436825635/1791442716/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `2ab468801d0d5d65`
+- **Raw:** `{"id": 1046480695, "flyer_id": 8181590, "name": "GATORADE", "display_type": 1, "brand": "", "left": 4795.79, "bottom": -1855.39, "right": 5792.51, "top": -1286.4, "cutout_image_url": "http://f.wishabi.net/page_items/436825635/1791442716/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": null, "t`
+
+## Flyer 145 — valid 2026-10-15 → 2026-10-21 (3 classified items, 0 unclassified)
+
+Source ref: `8181588` · fetched 2026-10-16T12:44:48.281Z
+
+### Item 14309
+
+![item 14309](images/item-14309.jpg)
+
+- **Name (French):** PÂTÉ AUX TROIS VIANDES IRRÉSISTIBLE
+- **Category (English):** Deli > Deli Meat
+- **Category (French):** Charcuterie > Charcuterie
+- **How classified:** rule (`deli-meat`)
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-28
+- **Image source URL:** http://f.wishabi.net/page_items/436825625/1791489085/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `10988c3a8d068db0`
+- **Raw:** `{"id": 1046483085, "flyer_id": 8181588, "name": "PÂTÉ AUX TROIS VIANDES IRRÉSISTIBLE", "display_type": 1, "brand": "", "left": 14164.8, "bottom": -2044.65, "right": 14804.89, "top": -1694.52, "cutout_image_url": "http://f.wishabi.net/page_items/436825625/1791489085/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-28T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id":`
 
 ### Item 14311
 
@@ -180,157 +164,136 @@ Source ref: `8181588` · fetched 2026-10-16T12:44:48.281Z
 - **Details:** confidence: 1.00 · item_key: `d38b1770b7cf341d`
 - **Raw:** `{"id": 1046483076, "flyer_id": 8181588, "name": "FROMAGES SELECTION", "display_type": 1, "brand": "", "left": 12481.77, "bottom": -2417.76, "right": 13112.5, "top": -2051.81, "cutout_image_url": "http://f.wishabi.net/page_items/436825616/1791489077/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-28T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_nam`
 
+### Item 14314
+
+![item 14314](images/item-14314.jpg)
+
+- **Name (French):** CREVETTES POPCORN IRRÉSISTIBLE
+- **Category (English):** Snacks, Chips & Candy > Chips & Snacks
+- **Category (French):** Grignotines, croustilles et friandises > Croustilles et grignotines
+- **How classified:** rule (`specific-popcorn`)
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-28
+- **Image source URL:** http://f.wishabi.net/page_items/436825622/1791489083/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `a9099614ab3693b8`
+- **Raw:** `{"id": 1046483082, "flyer_id": 8181588, "name": "CREVETTES POPCORN IRRÉSISTIBLE", "display_type": 1, "brand": "", "left": 15443.1, "bottom": -2045.53, "right": 16092.75, "top": -1692.68, "cutout_image_url": "http://f.wishabi.net/page_items/436825622/1791489083/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-28T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null`
+
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
 
-— from flyer 55 (valid 2026-10-08 → 2026-10-14)
+— from flyer 53 (valid 2026-10-08 → 2026-10-21)
 
-### Item 9376
+### Item 9194
 
-![item 9376](images/item-9376.jpg)
+![item 9194](images/item-9194.jpg)
 
-- **Name (French):** BLACK DIAMOND
+- **Name (French):** CHINOIS METROGO!
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-08 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436193341/1790831666/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `0657468b9a40a3f8`
+- **Raw:** `{"id": 1044925049, "flyer_id": 8171685, "name": "CHINOIS METROGO!", "display_type": 1, "brand": null, "left": 5827.25, "bottom": -1850.57, "right": 6845.55, "top": -1286.57, "cutout_image_url": "http://f.wishabi.net/page_items/436193341/1790831666/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name`
+
+— from flyer 52 (valid 2026-10-15 → 2026-10-21)
+
+### Item 8890
+
+![item 8890](images/item-8890.jpg)
+
+- **Name (French):** BOISSON PÉTILLANTE FEVER‑TREE | FEVER-TREE SPARKLING DRINK
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
 - **Price:** 6.99
 - **Printed Price:** “6.99”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436189475/1790831097/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `629bd7a4752a5e86`
-- **Conditions:** `{"discount": 22}`
-- **Raw:** `{"id": 1044923547, "flyer_id": 8171653, "name": "BLACK DIAMOND", "display_type": 1, "brand": "", "left": 23630.98, "bottom": -1204.48, "right": 24176.88, "top": -903.01, "cutout_image_url": "http://f.wishabi.net/page_items/436189475/1790831097/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 22, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "6.99", "print_id": null, "short_name":`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436825915/1791442109/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `e0323a97206cf730`
+- **Conditions:** `{"discount": 30}`
+- **Raw:** `{"id": 1046482559, "flyer_id": 8181580, "name": "BOISSON PÉTILLANTE FEVER‑TREE | FEVER-TREE SPARKLING DRINK", "display_type": 1, "brand": "", "left": 23054.3, "bottom": -2543.19, "right": 23327.4, "top": -2253.83, "cutout_image_url": "http://f.wishabi.net/page_items/436825915/1791442109/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 30, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "pri`
 
-— from flyer 55 (valid 2026-10-08 → 2026-10-14)
+— from flyer 52 (valid 2026-10-15 → 2026-10-21)
 
-### Item 9379
+### Item 8894
 
-![item 9379](images/item-9379.jpg)
+![item 8894](images/item-8894.jpg)
 
-- **Name (French):** CANETTES DE 473 ML
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Size:** 473 ML
-- **Price:** 18.00
-- **Printed Price:** “18.0”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436189480/1790831101/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `a718594a260e3eb0`
-- **Raw:** `{"id": 1044923558, "flyer_id": 8171653, "name": "CANETTES DE 473 ML", "display_type": 1, "brand": "", "left": 23625.81, "bottom": -1675.25, "right": 24178.27, "top": -1288.85, "cutout_image_url": "http://f.wishabi.net/page_items/436189480/1790831101/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "18.0", "print_id": null, "shor`
-
-— from flyer 55 (valid 2026-10-08 → 2026-10-14)
-
-### Item 9403
-
-![item 9403](images/item-9403.jpg)
-
-- **Name (French):** FROMAGES FINS ET CHARCUTERIES
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** 18.00
-- **Printed Price:** “18.0”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436191301/1791211280/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `4b219428f0824410`
-- **Raw:** `{"id": 1044921879, "flyer_id": 8171653, "name": "FROMAGES FINS ET CHARCUTERIES", "display_type": 1, "brand": "", "left": 3472.37, "bottom": -2542.55, "right": 4588.25, "top": -1273.81, "cutout_image_url": "http://f.wishabi.net/page_items/436191301/1791211280/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "18.0", "print_id": nu`
-
-— from flyer 55 (valid 2026-10-08 → 2026-10-14)
-
-### Item 9437
-
-![item 9437](images/item-9437.jpg)
-
-- **Name (French):** LA FRAÎCHEUR D'ICI, C'EST ENCORE MEILLEUR
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436511941/1791211341/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `77500f93c259ed1f`
-- **Raw:** `{"id": 1045703163, "flyer_id": 8171653, "name": "LA FRAÎCHEUR D'ICI, C'EST ENCORE MEILLEUR", "display_type": 5, "brand": "", "left": 6443.27, "bottom": -143.42, "right": 6898.01, "top": -26.82, "cutout_image_url": "http://f.wishabi.net/page_items/436511941/1791211341/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id`
-
-— from flyer 55 (valid 2026-10-08 → 2026-10-14)
-
-### Item 9444
-
-![item 9444](images/item-9444.jpg)
-
-- **Name (French):** METRO.CA
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436512278/1791211957/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `c09cf1cdbb685f13`
-- **Raw:** `{"id": 1045703458, "flyer_id": 8171653, "name": "METRO.CA", "display_type": 5, "brand": "", "left": 9239.32, "bottom": -1265.1, "right": 10342.35, "top": -29.15, "cutout_image_url": "http://f.wishabi.net/page_items/436512278/1791211957/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": null, "te`
-
-— from flyer 55 (valid 2026-10-08 → 2026-10-14)
-
-### Item 9470
-
-![item 9470](images/item-9470.jpg)
-
-- **Name (French):** IRRÉSISTIBLE SELECTION HORS-D'ŒUVRE
+- **Name (French):** ACCOMPAGNEMENT SURGELÉ COOL & SIMPLE | COOL & SIMPLE FROZEN SIDE DISH
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
 - **Price:** 7.99
 - **Printed Price:** “7.99”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436191131/1790831092/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `2bdc6653f92004fe`
-- **Conditions:** `{"discount": 11}`
-- **Raw:** `{"id": 1044922414, "flyer_id": 8171653, "name": "IRRÉSISTIBLE SELECTION HORS-D'ŒUVRE", "display_type": 1, "brand": "", "left": 11810.33, "bottom": -2174.99, "right": 12100.35, "top": -1896.94, "cutout_image_url": "http://f.wishabi.net/page_items/436191131/1790831092/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 11, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "7.99", "print_i`
-
-— from flyer 55 (valid 2026-10-08 → 2026-10-14)
-
-### Item 9531
-
-![item 9531](images/item-9531.jpg)
-
-- **Name (French):** NETTOYANT À VITRES BON AMI
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 4.99
-- **Printed Price:** “4.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436189468/1790831106/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `9e7d8570f5f66ce0`
-- **Conditions:** `{"discount": 38}`
-- **Raw:** `{"id": 1044923531, "flyer_id": 8171653, "name": "NETTOYANT À VITRES BON AMI", "display_type": 1, "brand": "", "left": 21900.13, "bottom": -2547.24, "right": 22160.74, "top": -2253.35, "cutout_image_url": "http://f.wishabi.net/page_items/436189468/1790831106/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 38, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "4.99", "print_id": null,`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436825894/1791442096/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `5b694f45816aa887`
+- **Conditions:** `{"discount": 26}`
+- **Raw:** `{"id": 1046482462, "flyer_id": 8181580, "name": "ACCOMPAGNEMENT SURGELÉ COOL & SIMPLE | COOL & SIMPLE FROZEN SIDE DISH", "display_type": 1, "brand": "", "left": 23614.7, "bottom": -969.32, "right": 23899.3, "top": -644.72, "cutout_image_url": "http://f.wishabi.net/page_items/436825894/1791442096/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 26, "available_to": "2026-10-21T23:59:59-04:00", "video_url": n`
 
 — from flyer 52 (valid 2026-10-15 → 2026-10-21)
 
-### Item 8982
+### Item 9000
 
-![item 8982](images/item-8982.jpg)
+![item 9000](images/item-9000.jpg)
 
-- **Name (French):** BOUCHÉS EVIVE | EVIVE BITES
+- **Name (French):** EN TOUT TEMPS 1$ D'ACHAT = 1 POINT MOI
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** junk
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436875811/1791488172/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `53747cae79e0a85e`
+- **Raw:** `{"id": 1046601181, "flyer_id": 8181580, "name": "EN TOUT TEMPS 1$ D'ACHAT = 1 POINT MOI", "display_type": 5, "brand": "", "left": 9.33, "bottom": -2489.39, "right": 1142.67, "top": -2442.75, "cutout_image_url": "http://f.wishabi.net/page_items/436875811/1791488172/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": `
+
+— from flyer 52 (valid 2026-10-15 → 2026-10-21)
+
+### Item 9006
+
+![item 9006](images/item-9006.jpg)
+
+- **Name (French):** PÂTÉ ST‑HUBERT | ST-HUBERT PIE
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Price:** 12.00
-- **Printed Price:** “12.0”
+- **Price:** 10.99
+- **Printed Price:** “10.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436825904/1791442102/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `51094f8d5ffa31d9`
-- **Raw:** `{"id": 1046482512, "flyer_id": 8181580, "name": "BOUCHÉS EVIVE | EVIVE BITES", "display_type": 1, "brand": "", "left": 23051.7, "bottom": -638.86, "right": 23325.4, "top": -347.72, "cutout_image_url": "http://f.wishabi.net/page_items/436825904/1791442102/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "12.0", "print_id": null, `
+- **Image source URL:** http://f.wishabi.net/page_items/436825813/1791488336/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `cd00e3bcc1b8630e`
+- **Conditions:** `{"discount": 12}`
+- **Raw:** `{"id": 1046482046, "flyer_id": 8181580, "name": "PÂTÉ ST‑HUBERT | ST-HUBERT PIE", "display_type": 1, "brand": "", "left": 16994.8, "bottom": -975.74, "right": 17268.1, "top": -645.79, "cutout_image_url": "http://f.wishabi.net/page_items/436825813/1791488336/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 12, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "10.99", "print_id": null`
+
+— from flyer 52 (valid 2026-10-15 → 2026-10-21)
+
+### Item 9055
+
+![item 9055](images/item-9055.jpg)
+
+- **Name (French):** L'OKTOBERFEST S'INVITE À VOTRE TABLE
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** junk
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436875836/1791488380/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `0c7346e4a7f4352a`
+- **Raw:** `{"id": 1046604319, "flyer_id": 8181580, "name": "L'OKTOBERFEST S'INVITE À VOTRE TABLE", "display_type": 5, "brand": "", "left": 20757.0, "bottom": -180.73, "right": 21876.3, "top": -17.49, "cutout_image_url": "http://f.wishabi.net/page_items/436875836/1791488380/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": nu`
 
 — from flyer 52 (valid 2026-10-15 → 2026-10-21)
 
@@ -352,11 +315,30 @@ The classifier could not assign these items a category. They are kept in the dat
 
 — from flyer 52 (valid 2026-10-15 → 2026-10-21)
 
-### Item 9172
+### Item 9060
 
-![item 9172](images/item-9172.jpg)
+![item 9060](images/item-9060.jpg)
 
-- **Name (French):** METRO.CA
+- **Name (French):** CHAPELURE SELECTION | SELECTION BREADCRUMB
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Price:** 2.49
+- **Printed Price:** “2.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436825913/1791442108/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `9c8801a47cd1f30b`
+- **Conditions:** `{"discount": 17}`
+- **Raw:** `{"id": 1046482550, "flyer_id": 8181580, "name": "CHAPELURE SELECTION | SELECTION BREADCRUMB", "display_type": 1, "brand": "", "left": 23905.0, "bottom": -1918.69, "right": 24175.1, "top": -1621.66, "cutout_image_url": "http://f.wishabi.net/page_items/436825913/1791442108/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "2.49", "pr`
+
+— from flyer 52 (valid 2026-10-15 → 2026-10-21)
+
+### Item 9109
+
+![item 9109](images/item-9109.jpg)
+
+- **Name (French):** ÇA ROULE POUR MOI
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** junk
@@ -364,6 +346,24 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Printed Price:** “None”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436897593/1791506177/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `c09cf1cdbb685f13`
-- **Raw:** `{"id": 1046655345, "flyer_id": 8181580, "name": "METRO.CA", "display_type": 5, "brand": "", "left": 5792.65, "bottom": -2540.7, "right": 6886.35, "top": -1297.75, "cutout_image_url": "http://f.wishabi.net/page_items/436897593/1791506177/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": null, "t`
+- **Image source URL:** http://f.wishabi.net/page_items/436897594/1791506188/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `998c76e9ac91c06c`
+- **Raw:** `{"id": 1046655314, "flyer_id": 8181580, "name": "ÇA ROULE POUR MOI", "display_type": 5, "brand": "", "left": 10396.0, "bottom": -1253.44, "right": 11496.7, "top": -29.15, "cutout_image_url": "http://f.wishabi.net/page_items/436897594/1791506188/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": `
+
+— from flyer 52 (valid 2026-10-15 → 2026-10-21)
+
+### Item 9179
+
+![item 9179](images/item-9179.jpg)
+
+- **Name (French):** FORMAT ÉCONO
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** junk
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436875817/1791488228/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `473d17b441f9a081`
+- **Raw:** `{"id": 1046601191, "flyer_id": 8181580, "name": "FORMAT ÉCONO", "display_type": 5, "brand": "", "left": 6930.66, "bottom": -1990.35, "right": 8052.34, "top": -1929.72, "cutout_image_url": "http://f.wishabi.net/page_items/436875817/1791488228/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": nul`

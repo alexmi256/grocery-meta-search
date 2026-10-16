@@ -1,126 +1,53 @@
 # Brunet — full product report
 
-Store slug: `brunet`. Generated from `data/grocery.db`. A sampled subset of 14 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `brunet`. Generated from `data/grocery.db`. A sampled subset of 12 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 50 — valid 2026-10-08 → 2026-10-14 (6 classified items, 2 unclassified)
-
-Source ref: `8161866` · fetched 2026-10-13T04:28:31.389Z
-
-### Item 8579
-
-![item 8579](images/item-8579.jpg)
-
-- **Name (French):** NICORETTE Produits sélectionnés pour aider à cesser de fumer
-- **Brand:** Nicorette
-- **Category (English):** Health & Beauty > Pharmacy
-- **Category (French):** Santé et beauté > Pharmacie
-- **How classified:** rule (`pharmacy`)
-- **Price:** 59.99
-- **Printed Price:** “59.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435452420/1790327199/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `af1f16dcaea48e3e`
-- **Raw:** `{"id": 1043555264, "flyer_id": 8161866, "name": "NICORETTE Produits sélectionnés pour aider à cesser de fumer", "display_type": 1, "brand": "Nicorette", "left": 2586.95, "bottom": -305.54, "right": 2874.55, "top": -79.5, "cutout_image_url": "http://f.wishabi.net/page_items/435452420/1790327199/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": n`
-
-### Item 8613
-
-![item 8613](images/item-8613.jpg)
-
-- **Name (French):** PRO-JEUNESSE ULTIME+ TONIQUE
-- **Category (English):** Health & Beauty > Personal Care
-- **Category (French):** Santé et beauté > Soins personnels
-- **How classified:** store-prior
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435452480/1790327195/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `c101917a86254c30`
-- **Conditions:** `{"discount": 20}`
-- **Raw:** `{"id": 1043555347, "flyer_id": 8161866, "name": "PRO-JEUNESSE ULTIME+ TONIQUE", "display_type": 1, "brand": null, "left": 4623.48, "bottom": -1006.52, "right": 5176.7, "top": -566.53, "cutout_image_url": "http://f.wishabi.net/page_items/435452480/1790327195/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "sh`
-
-### Item 8651
-
-![item 8651](images/item-8651.jpg)
-
-- **Name (French):** IRRESISTIBLE Biscuits sélectionnés
-- **Brand:** Irresistible
-- **Category (English):** Snacks, Chips & Candy > Crackers & Cookies
-- **Category (French):** Grignotines, croustilles et friandises > Craquelins et biscuits
-- **How classified:** rule (`crackers-cookies`)
-- **Price:** 4.49
-- **Printed Price:** “4.49”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435452539/1790327195/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `0c8453a31e9c0d2d`
-- **Conditions:** `{"discount": 13}`
-- **Raw:** `{"id": 1043555432, "flyer_id": 8161866, "name": "IRRESISTIBLE Biscuits sélectionnés", "display_type": 1, "brand": "Irresistible", "left": 7474.49, "bottom": -304.76, "right": 7765.4, "top": -110.86, "cutout_image_url": "http://f.wishabi.net/page_items/435452539/1790327195/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 13, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "4.49", "p`
-
-### Item 8676
-
-![item 8676](images/item-8676.jpg)
-
-- **Name (French):** MONDOUX Bonbons sélectionnés
-- **Brand:** MONDOUX
-- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
-- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
-- **How classified:** rule (`candy-chocolate`)
-- **Price:** 6.49
-- **Printed Price:** “6.49”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435452522/1790327187/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `5d2d3dda019bc981`
-- **Conditions:** `{"discount": 19}`
-- **Raw:** `{"id": 1043555409, "flyer_id": 8161866, "name": "MONDOUX Bonbons sélectionnés", "display_type": 1, "brand": "MONDOUX", "left": 6925.77, "bottom": -315.81, "right": 7193.14, "top": -79.96, "cutout_image_url": "http://f.wishabi.net/page_items/435452522/1790327187/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 19, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "6.49", "print_id": n`
-
-### Item 8696
-
-![item 8696](images/item-8696.jpg)
-
-- **Name (French):** TYLENOL Acétaminophène sélectionné
-- **Brand:** Tylenol
-- **Category (English):** Health & Beauty > Pharmacy
-- **Category (French):** Santé et beauté > Pharmacie
-- **How classified:** rule (`pharmacy`)
-- **Price:** 18.99
-- **Printed Price:** “18.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435452391/1790327184/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `554683ae5a11b1fc`
-- **Raw:** `{"id": 1043555221, "flyer_id": 8161866, "name": "TYLENOL Acétaminophène sélectionné", "display_type": 1, "brand": "Tylenol", "left": 2585.11, "bottom": -804.84, "right": 2874.7, "top": -556.21, "cutout_image_url": "http://f.wishabi.net/page_items/435452391/1790327184/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "18.99", "pri`
-
-### Item 8722
-
-![item 8722](images/item-8722.jpg)
-
-- **Name (French):** REVLON Produits sélectionnés
-- **Brand:** Revlon
-- **Category (English):** Health & Beauty > Personal Care
-- **Category (French):** Santé et beauté > Soins personnels
-- **How classified:** store-prior
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435452574/1790327203/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `75cadfbcaff6e8c0`
-- **Conditions:** `{"discount": 25}`
-- **Raw:** `{"id": 1043555482, "flyer_id": 8161866, "name": "REVLON Produits sélectionnés", "display_type": 1, "brand": "Revlon", "left": 1999.14, "bottom": -2301.9, "right": 2291.39, "top": -1881.04, "cutout_image_url": "http://f.wishabi.net/page_items/435452574/1790327203/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null`
-
-## Flyer 51 — valid 2026-10-08 → 2026-10-21 (1 classified items, 0 unclassified)
+## Flyer 51 — valid 2026-10-08 → 2026-10-21 (3 classified items, 0 unclassified)
 
 Source ref: `8161661` · fetched 2026-10-13T04:28:31.397Z
 
-### Item 8787
+### Item 8776
 
-![item 8787](images/item-8787.jpg)
+![item 8776](images/item-8776.jpg)
 
-- **Name (French):** ADVIL Ibuprofène sélectionné
-- **Brand:** Advil
+- **Name (French):** BOOST PECHONNELLE NUTRITION
+- **Brand:** Boost
+- **Category (English):** Health & Beauty > Personal Care
+- **Category (French):** Santé et beauté > Soins personnels
+- **How classified:** store-prior
+- **Price:** 9.99
+- **Printed Price:** “9.99”
+- **Unit:** —
+- **Item validity:** 2026-10-08 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/435433196/1790295848/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `6f1bb2084c8951e4`
+- **Conditions:** `{"discount": 38}`
+- **Raw:** `{"id": 1043398935, "flyer_id": 8161661, "name": "BOOST PECHONNELLE NUTRITION", "display_type": 1, "brand": "Boost", "left": 565.89, "bottom": -1949.78, "right": 1154.22, "top": -698.8, "cutout_image_url": "http://f.wishabi.net/page_items/435433196/1790295848/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 38, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "9.99", "print_id": null`
+
+### Item 8806
+
+![item 8806](images/item-8806.jpg)
+
+- **Name (French):** JAMIESON Selected natural products
+- **Brand:** Jamieson
+- **Category (English):** Health & Beauty > Vitamins & Supplements
+- **Category (French):** Santé et beauté > Vitamines et suppléments
+- **How classified:** rule (`vitamins`)
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-08 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/435433242/1790295849/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `77dcee45a1cbbcf6`
+- **Conditions:** `{"discount": 30}`
+- **Raw:** `{"id": 1043399042, "flyer_id": 8161661, "name": "JAMIESON Selected natural products", "display_type": 1, "brand": "Jamieson", "left": 7481.73, "bottom": -1369.68, "right": 8068.23, "top": -916.71, "cutout_image_url": "http://f.wishabi.net/page_items/435433242/1790295849/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 30, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_i`
+
+### Item 8831
+
+![item 8831](images/item-8831.jpg)
+
+- **Name (French):** BAND-AID Pansements sélectionnés
+- **Brand:** Band-Aid
 - **Category (English):** Health & Beauty > Pharmacy
 - **Category (French):** Santé et beauté > Pharmacie
 - **How classified:** rule (`pharmacy`)
@@ -128,107 +55,138 @@ Source ref: `8161661` · fetched 2026-10-13T04:28:31.397Z
 - **Printed Price:** “5.49”
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/435433218/1790295845/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `21789ece732b314a`
-- **Raw:** `{"id": 1043398944, "flyer_id": 8161661, "name": "ADVIL Ibuprofène sélectionné", "display_type": 1, "brand": "Advil", "left": 3443.04, "bottom": -1541.58, "right": 4013.66, "top": -1094.51, "cutout_image_url": "http://f.wishabi.net/page_items/435433218/1790295845/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.49", "print_id"`
+- **Image source URL:** http://f.wishabi.net/page_items/435433249/1790295853/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `e803eda69e81ce3f`
+- **Raw:** `{"id": 1043399049, "flyer_id": 8161661, "name": "BAND-AID Pansements sélectionnés", "display_type": 1, "brand": "Band-Aid", "left": 8060.28, "bottom": -912.33, "right": 8642.93, "top": -498.68, "cutout_image_url": "http://f.wishabi.net/page_items/435433249/1790295853/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.49", "prin`
 
-## Flyer 49 — valid 2026-10-15 → 2026-10-21 (3 classified items, 2 unclassified)
+## Flyer 49 — valid 2026-10-15 → 2026-10-21 (7 classified items, 2 unclassified)
 
 Source ref: `8172968` · fetched 2026-10-13T04:28:31.375Z
 
-### Item 8368
+### Item 8358
 
-![item 8368](images/item-8368.jpg)
+![item 8358](images/item-8358.jpg)
 
-- **Name (French):** FEBREZE Produits sélectionnés
-- **Brand:** Febreze
+- **Name (French):** GILLETTE
+- **Brand:** Gillette
+- **Category (English):** Health & Beauty > Personal Care
+- **Category (French):** Santé et beauté > Soins personnels
+- **How classified:** store-prior
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436305964/1790938336/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `e8b688b1409caea3`
+- **Conditions:** `{"discount": 20}`
+- **Raw:** `{"id": 1045243618, "flyer_id": 8172968, "name": "GILLETTE", "display_type": 1, "brand": "Gillette", "left": 7485.62, "bottom": -1284.5, "right": 8049.18, "top": -1025.2, "cutout_image_url": "http://f.wishabi.net/page_items/436305964/1790938336/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": nul`
+
+### Item 8414
+
+![item 8414](images/item-8414.jpg)
+
+- **Name (French):** AIR WICK Purificateurs d'air sélectionnés
+- **Brand:** Air Wick
 - **Category (English):** Household > Cleaning & Laundry
 - **Category (French):** Maison > Entretien et lessive
 - **How classified:** rule (`household-cleaning`)
+- **Price:** 9.99
+- **Printed Price:** “9.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436305988/1790938331/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `a6ef5a15471c5687`
+- **Raw:** `{"id": 1045243684, "flyer_id": 8172968, "name": "AIR WICK Purificateurs d'air sélectionnés", "display_type": 1, "brand": "Air Wick", "left": 9501.19, "bottom": -1790.85, "right": 9783.16, "top": -1540.66, "cutout_image_url": "http://f.wishabi.net/page_items/436305988/1790938331/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "9`
+
+### Item 8462
+
+![item 8462](images/item-8462.jpg)
+
+- **Name (French):** TAMPAX, ALWAYS Produits d'hygiène féminine sélectionnés
+- **Brand:** Tampax
+- **Category (English):** Health & Beauty > Personal Care
+- **Category (French):** Santé et beauté > Soins personnels
+- **How classified:** store-prior
+- **Price:** 10.99
+- **Printed Price:** “10.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436305760/1790938326/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `d605b9179202be7c`
+- **Conditions:** `{"discount": 37}`
+- **Raw:** `{"id": 1045243172, "flyer_id": 8172968, "name": "TAMPAX, ALWAYS Produits d'hygiène féminine sélectionnés", "display_type": 1, "brand": "Tampax", "left": 286.8, "bottom": -1577.29, "right": 575.14, "top": -1280.52, "cutout_image_url": "http://f.wishabi.net/page_items/436305760/1790938326/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 37, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "pri`
+
+### Item 8499
+
+![item 8499](images/item-8499.jpg)
+
+- **Name (French):** IRISH SPRING, SOFTSOAP Produits sélectionnés
+- **Brand:** IRISH SPRING | SOFTSOAP
+- **Category (English):** Health & Beauty > Personal Care
+- **Category (French):** Santé et beauté > Soins personnels
+- **How classified:** rule (`beauty`)
 - **Price:** 6.49
 - **Printed Price:** “6.49”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436305995/1790938336/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `65f6186b308ec761`
-- **Raw:** `{"id": 1045243691, "flyer_id": 8172968, "name": "FEBREZE Produits sélectionnés", "display_type": 1, "brand": "Febreze", "left": 10076.6, "bottom": -1800.57, "right": 10354.7, "top": -1541.98, "cutout_image_url": "http://f.wishabi.net/page_items/436305995/1790938336/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "6.49", "print_`
+- **Image source URL:** http://f.wishabi.net/page_items/436306013/1790938327/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `73c50952c1f97bb0`
+- **Raw:** `{"id": 1045243712, "flyer_id": 8172968, "name": "IRISH SPRING, SOFTSOAP Produits sélectionnés", "display_type": 1, "brand": "IRISH SPRING | SOFTSOAP", "left": 1436.51, "bottom": -1790.47, "right": 1726.08, "top": -1533.47, "cutout_image_url": "http://f.wishabi.net/page_items/436306013/1790938327/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url":`
 
-### Item 8399
+### Item 8511
 
-![item 8399](images/item-8399.jpg)
+![item 8511](images/item-8511.jpg)
 
-- **Name (French):** MUCINEX Produits sélectionnés pour aider au soulagement des symptômes de la grippe et du rhume
-- **Brand:** Mucinex
-- **Category (English):** Health & Beauty > Pharmacy
-- **Category (French):** Santé et beauté > Pharmacie
-- **How classified:** rule (`pharmacy`)
-- **Price:** 13.99
-- **Printed Price:** “13.99”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436305881/1790938328/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `e412f7f69cc978a8`
-- **Raw:** `{"id": 1045243435, "flyer_id": 8172968, "name": "MUCINEX Produits sélectionnés pour aider au soulagement des symptômes de la grippe et du rhume", "display_type": 1, "brand": "Mucinex", "left": 5181.43, "bottom": -798.99, "right": 5467.08, "top": -555.26, "cutout_image_url": "http://f.wishabi.net/page_items/436305881/1790938328/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-`
-
-### Item 8482
-
-![item 8482](images/item-8482.jpg)
-
-- **Name (French):** GARNIER OLIA Produits sélectionnés
-- **Brand:** Garnier
+- **Name (French):** Personnelle Pour aider la digestion des produits laitiers
+- **Brand:** Personnelle
 - **Category (English):** Health & Beauty > Personal Care
 - **Category (French):** Santé et beauté > Soins personnels
-- **How classified:** rule (`beauty`)
-- **Price:** 13.99
-- **Printed Price:** “13.99”
+- **How classified:** store-prior
+- **Price:** 18.99
+- **Printed Price:** “18.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436305862/1790938331/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `401c8868b8c00c09`
-- **Conditions:** `{"discount": 22}`
-- **Raw:** `{"id": 1045243545, "flyer_id": 8172968, "name": "GARNIER OLIA Produits sélectionnés", "display_type": 1, "brand": "Garnier", "left": 6041.19, "bottom": -2305.8, "right": 6336.23, "top": -2071.89, "cutout_image_url": "http://f.wishabi.net/page_items/436305862/1790938331/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 22, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "13.99", "pri`
+- **Image source URL:** http://f.wishabi.net/page_items/436305880/1790938328/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `1218c73b0b08680a`
+- **Raw:** `{"id": 1045243432, "flyer_id": 8172968, "name": "Personnelle Pour aider la digestion des produits laitiers", "display_type": 1, "brand": "Personnelle", "left": 4619.74, "bottom": -2545.84, "right": 4894.11, "top": -2302.7, "cutout_image_url": "http://f.wishabi.net/page_items/436305880/1790938328/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url":`
+
+### Item 8521
+
+![item 8521](images/item-8521.jpg)
+
+- **Name (French):** HYDRALYTE Electrolyte sélectionné
+- **Brand:** Hydralyte
+- **Category (English):** Health & Beauty > Personal Care
+- **Category (French):** Santé et beauté > Soins personnels
+- **How classified:** store-prior
+- **Price:** 10.99
+- **Printed Price:** “10.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436305895/1790938337/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `ba2dc5e7d77952fb`
+- **Raw:** `{"id": 1045243472, "flyer_id": 8172968, "name": "HYDRALYTE Electrolyte sélectionné", "display_type": 1, "brand": "Hydralyte", "left": 5177.28, "bottom": -1283.38, "right": 5463.55, "top": -1061.12, "cutout_image_url": "http://f.wishabi.net/page_items/436305895/1790938337/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "10.99", `
+
+### Item 8535
+
+![item 8535](images/item-8535.jpg)
+
+- **Name (French):** TEAOLOGY Produits sélectionnés
+- **Brand:** TEAOLOGY
+- **Category (English):** Health & Beauty > Personal Care
+- **Category (French):** Santé et beauté > Soins personnels
+- **How classified:** store-prior
+- **Price:** 24.00
+- **Printed Price:** “24.0”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436305815/1790938336/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `c0ffe44c55d1c7e2`
+- **Raw:** `{"id": 1045243383, "flyer_id": 8172968, "name": "TEAOLOGY Produits sélectionnés", "display_type": 1, "brand": "TEAOLOGY", "left": 4031.28, "bottom": -2310.63, "right": 4322.47, "top": -2052.51, "cutout_image_url": "http://f.wishabi.net/page_items/436305815/1790938336/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "24.0", "prin`
 
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
-
-— from flyer 50 (valid 2026-10-08 → 2026-10-14)
-
-### Item 8597
-
-![item 8597](images/item-8597.jpg)
-
-- **Name (French):** MOI
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436537869/1791230730/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `050a6571ebfc5906`
-- **Raw:** `{"id": 1045779365, "flyer_id": 8161866, "name": "MOI", "display_type": 5, "brand": null, "left": 8064.0, "bottom": -2560.0, "right": 10067.6, "top": -11.09, "cutout_image_url": "http://f.wishabi.net/page_items/436537869/1791230730/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": null, "text_ar`
-
-— from flyer 50 (valid 2026-10-08 → 2026-10-14)
-
-### Item 8718
-
-![item 8718](images/item-8718.jpg)
-
-- **Name (French):** sur une carte-cadeau DavidsTea
-- **Brand:** DAVIDSTEA
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** 25.00
-- **Printed Price:** “25.0”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/435600141/1790327199/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `02e74b3f0304ea1c`
-- **Conditions:** `{"discount": 17}`
-- **Raw:** `{"id": 1043555442, "flyer_id": 8161866, "name": "sur une carte-cadeau DavidsTea", "display_type": 1, "brand": "DAVIDSTEA", "left": 7493.83, "bottom": -2551.0, "right": 8041.85, "top": -2294.48, "cutout_image_url": "http://f.wishabi.net/page_items/435600141/1790327199/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "25.0", "print_`
 
 — from flyer 49 (valid 2026-10-15 → 2026-10-21)
 

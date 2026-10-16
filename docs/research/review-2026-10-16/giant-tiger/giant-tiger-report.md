@@ -1,153 +1,64 @@
 # Giant Tiger — full product report
 
-Store slug: `giant-tiger`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `giant-tiger`. Generated from `data/grocery.db`. A sampled subset of 10 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 16 — valid 2026-10-07 → 2026-10-13 (6 classified items, 10 unclassified)
-
-Source ref: `8172455` · fetched 2026-10-13T03:14:31.010Z
-
-### Item 4190
-
-![item 4190](images/item-4190.jpg)
-
-- **Name (French):** Céréales Cheerios General Mills
-- **Brand:** General Mills
-- **Category (English):** Pantry > Cereal & Breakfast
-- **Category (French):** Produits du garde-manger > Céréales et petits-déjeuners
-- **How classified:** rule (`cereal-breakfast`)
-- **Price:** 3.47
-- **Printed Price:** “3.47”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436264072/1791299941/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `5e50efdc0612d3ce`
-- **Conditions:** `{"discount": 30}`
-- **Raw:** `{"id": 1045188508, "flyer_id": 8172455, "name": "Céréales Cheerios General Mills", "display_type": 1, "brand": "General Mills", "left": 1123.2, "bottom": -2289.76, "right": 1644.07, "top": -1937.75, "cutout_image_url": "http://f.wishabi.net/page_items/436264072/1791299941/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 30, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "3.47", "p`
-
-### Item 4192
-
-![item 4192](images/item-4192.jpg)
-
-- **Name (French):** Croustilles ou grignotines Humpty Dumpty
-- **Brand:** HUMPTY DUMPTY
-- **Category (English):** Snacks, Chips & Candy > Chips & Snacks
-- **Category (French):** Grignotines, croustilles et friandises > Croustilles et grignotines
-- **How classified:** rule (`specific-snacks`)
-- **Price:** 2.88
-- **Printed Price:** “2.88”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436671014/1791318430/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `ff77da25d6d77f48`
-- **Conditions:** `{"discount": 27}`
-- **Raw:** `{"id": 1046080113, "flyer_id": 8172455, "name": "Croustilles ou grignotines Humpty Dumpty", "display_type": 1, "brand": "HUMPTY DUMPTY", "left": 222.0, "bottom": -2206.53, "right": 354.0, "top": -1963.54, "cutout_image_url": "http://f.wishabi.net/page_items/436671014/1791318430/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 27, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "2.8`
-
-### Item 4199
-
-![item 4199](images/item-4199.jpg)
-
-- **Name (French):** Céleri
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 1.44
-- **Printed Price:** “1.44”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436264075/1791299942/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `af213bf806906538`
-- **Raw:** `{"id": 1045188524, "flyer_id": 8172455, "name": "Céleri", "display_type": 1, "brand": null, "left": 1124.71, "bottom": -350.27, "right": 1645.37, "top": -185.96, "cutout_image_url": "http://f.wishabi.net/page_items/436264075/1791299942/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "1.44", "print_id": null, "short_name": null,`
-
-### Item 4202
-
-![item 4202](images/item-4202.jpg)
-
-- **Name (French):** Pommes McIntosh ou Cortland en sac, 3 lb
-- **Category (English):** Fruits & Vegetables > Fresh Fruits
-- **Category (French):** Fruits et légumes > Fruits frais
-- **How classified:** rule (`fruits`)
-- **Size:** 3 lb
-- **Price:** 3.97
-- **Printed Price:** “3.97”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436590679/1791299944/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d5c82f9fc4cdb71a`
-- **Raw:** `{"id": 1045945437, "flyer_id": 8172455, "name": "Pommes McIntosh ou Cortland en sac, 3 lb", "display_type": 1, "brand": null, "left": 1862.42, "bottom": -456.92, "right": 2161.46, "top": -196.62, "cutout_image_url": "http://f.wishabi.net/page_items/436590679/1791299944/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "3.97", "pr`
-
-### Item 4213
-
-![item 4213](images/item-4213.jpg)
-
-- **Name (French):** Tarte au sucre à la crème St-Donat
-- **Brand:** St-Donat
-- **Category (English):** Bakery > Cakes
-- **Category (French):** Boulangerie > Gâteaux
-- **How classified:** rule (`cakes`)
-- **Price:** 5.00
-- **Printed Price:** “5.0”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436671001/1791318423/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `7a5747ad497ba4fd`
-- **Conditions:** `{"discount": 33}`
-- **Raw:** `{"id": 1046080099, "flyer_id": 8172455, "name": "Tarte au sucre à la crème St-Donat", "display_type": 1, "brand": "St-Donat", "left": 35.46, "bottom": -1942.69, "right": 548.41, "top": -1604.55, "cutout_image_url": "http://f.wishabi.net/page_items/436671001/1791318423/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 33, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "5.0", "print_`
-
-### Item 4214
-
-![item 4214](images/item-4214.jpg)
-
-- **Name (French):** Bacon Smoke House Gold Label
-- **Brand:** Smoke House
-- **Category (English):** Meat > Bacon
-- **Category (French):** Viande > Bacon
-- **How classified:** rule (`bacon`)
-- **Price:** 3.47
-- **Printed Price:** “3.47”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436670992/1791318419/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `16a6d7a51476d862`
-- **Conditions:** `{"discount": 56}`
-- **Raw:** `{"id": 1046080092, "flyer_id": 8172455, "name": "Bacon Smoke House Gold Label", "display_type": 1, "brand": "Smoke House", "left": 36.94, "bottom": -1523.09, "right": 553.76, "top": -1059.13, "cutout_image_url": "http://f.wishabi.net/page_items/436670992/1791318419/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 56, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "3.47", "print_id`
-
-## Flyer 119 — valid 2026-10-14 → 2026-10-20 (4 classified items, 0 unclassified)
+## Flyer 119 — valid 2026-10-14 → 2026-10-20 (10 classified items, 0 unclassified)
 
 Source ref: `8182233` · fetched 2026-10-16T12:11:17.505Z
 
-### Item 11951
+### Item 11947
 
-![item 11951](images/item-11951.jpg)
+![item 11947](images/item-11947.jpg)
 
-- **Name (French):** tomates
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 2.50
-- **Printed Price:** “2.5”
+- **Name (French):** Beurre d'arachide Jif
+- **Brand:** Jif
+- **Category (English):** Pantry > Honey, Syrups & Spreads
+- **Category (French):** Produits du garde-manger > Miel, sirops et tartinades
+- **How classified:** rule (`specific-nut-butters`)
+- **Price:** 4.97
+- **Printed Price:** “4.97”
 - **Unit:** —
 - **Item validity:** 2026-10-14 → 2026-10-20
-- **Image source URL:** http://f.wishabi.net/page_items/436897969/1791521206/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `0ab5bb21906be16f`
-- **Raw:** `{"id": 1046709292, "flyer_id": 8182233, "name": "tomates", "display_type": 1, "brand": null, "left": 766.5, "bottom": -1493.32, "right": 1059.5, "top": -1382.32, "cutout_image_url": "http://f.wishabi.net/page_items/436897969/1791521206/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "2.5", "print_id": null, "short_name": null, `
+- **Image source URL:** http://f.wishabi.net/page_items/436855095/1791521202/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `59771bd560fc370e`
+- **Conditions:** `{"discount": 17}`
+- **Raw:** `{"id": 1046709287, "flyer_id": 8182233, "name": "Beurre d'arachide Jif", "display_type": 1, "brand": "Jif", "left": 377.39, "bottom": -2205.46, "right": 721.79, "top": -1784.42, "cutout_image_url": "http://f.wishabi.net/page_items/436855095/1791521202/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 17, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "4.97", "print_id": null, "shor`
 
-### Item 11953
+### Item 11948
 
-![item 11953](images/item-11953.jpg)
+![item 11948](images/item-11948.jpg)
 
-- **Name (French):** Les Fermes Cavendish Rondelles d'oignon
-- **Brand:** Cavendish Farms
-- **Category (English):** Frozen Food > Frozen Appetizers & Snacks
-- **Category (French):** Produits surgelés > Entrées et collations surgelés
-- **How classified:** rule (`specific-frozen-fries-brands`)
-- **Price:** 7.97
-- **Printed Price:** “7.97”
+- **Name (French):** Friandises format collation Hershey's
+- **Brand:** Sour Patch
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
+- **Price:** 10.97
+- **Printed Price:** “10.97”
 - **Unit:** —
 - **Item validity:** 2026-10-14 → 2026-10-20
-- **Image source URL:** http://f.wishabi.net/page_items/436855188/1791521204/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `781f601c498617da`
-- **Conditions:** `{"discount": 20}`
-- **Raw:** `{"id": 1046709307, "flyer_id": 8182233, "name": "Les Fermes Cavendish Rondelles d'oignon", "display_type": 1, "brand": "Cavendish Farms", "left": 1980.31, "bottom": -1605.96, "right": 2177.58, "top": -1368.27, "cutout_image_url": "http://f.wishabi.net/page_items/436855188/1791521204/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price":`
+- **Image source URL:** http://f.wishabi.net/page_items/436855096/1791521203/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `ae95f071e8022d5e`
+- **Conditions:** `{"discount": 39}`
+- **Raw:** `{"id": 1046709288, "flyer_id": 8182233, "name": "Friandises format collation Hershey's", "display_type": 1, "brand": "Sour Patch", "left": 664.47, "bottom": -742.33, "right": 867.71, "top": -429.03, "cutout_image_url": "http://f.wishabi.net/page_items/436855096/1791521203/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 39, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "10.97", "`
+
+### Item 11952
+
+![item 11952](images/item-11952.jpg)
+
+- **Name (French):** Yogourt Activia
+- **Brand:** Activia
+- **Category (English):** Dairy & Eggs > Yogurt
+- **Category (French):** Produits laitiers et œufs > Yogourt
+- **How classified:** rule (`yogurt`)
+- **Price:** 5.96
+- **Printed Price:** “5.96”
+- **Unit:** —
+- **Item validity:** 2026-10-14 → 2026-10-20
+- **Image source URL:** http://f.wishabi.net/page_items/436855189/1791521205/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `b951a9b5ec23f841`
+- **Conditions:** `{"discount": 8}`
+- **Raw:** `{"id": 1046709308, "flyer_id": 8182233, "name": "Yogourt Activia", "display_type": 1, "brand": "Activia", "left": 1644.57, "bottom": -1272.14, "right": 2170.38, "top": -933.32, "cutout_image_url": "http://f.wishabi.net/page_items/436855189/1791521205/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 8, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "5.96", "print_id": null, "short_`
 
 ### Item 11954
 
@@ -167,218 +78,109 @@ Source ref: `8182233` · fetched 2026-10-16T12:11:17.505Z
 - **Conditions:** `{"discount": 38}`
 - **Raw:** `{"id": 1046709324, "flyer_id": 8182233, "name": "Dosettes de café Timothy's", "display_type": 1, "brand": "Timothy's", "left": 1644.26, "bottom": -2291.82, "right": 2176.88, "top": -1950.0, "cutout_image_url": "http://f.wishabi.net/page_items/436855192/1791521208/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 38, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "14.97", "print_id"`
 
-### Item 11968
+### Item 11958
 
-![item 11968](images/item-11968.jpg)
+![item 11958](images/item-11958.jpg)
 
-- **Name (French):** LECLERC CELEBRATION BISCUITS AU BEURRE
-- **Brand:** Leclerc
-- **Category (English):** Snacks, Chips & Candy > Crackers & Cookies
-- **Category (French):** Grignotines, croustilles et friandises > Craquelins et biscuits
-- **How classified:** rule (`crackers-cookies`)
-- **Price:** 2.88
-- **Printed Price:** “2.88”
+- **Name (French):** Pizza surgelée Mikes
+- **Brand:** Mikes
+- **Category (English):** Frozen Food > Frozen Pizza
+- **Category (French):** Produits surgelés > Pizzas surgelées
+- **How classified:** frozen-remap (`pizza-prepared`)
+- **Price:** 5.97
+- **Printed Price:** “5.97”
 - **Unit:** —
 - **Item validity:** 2026-10-14 → 2026-10-20
-- **Image source URL:** http://f.wishabi.net/page_items/436855191/1791521207/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `e2bfd1865715f4a6`
-- **Conditions:** `{"discount": 27}`
-- **Raw:** `{"id": 1046709315, "flyer_id": 8182233, "name": "LECLERC CELEBRATION BISCUITS AU BEURRE", "display_type": 1, "brand": "Leclerc", "left": 1907.04, "bottom": -1885.0, "right": 2173.03, "top": -1681.32, "cutout_image_url": "http://f.wishabi.net/page_items/436855191/1791521207/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 27, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "2.88", "`
+- **Image source URL:** http://f.wishabi.net/page_items/436855091/1791521198/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `423a0844097442b3`
+- **Conditions:** `{"discount": 47}`
+- **Raw:** `{"id": 1046709283, "flyer_id": 8182233, "name": "Pizza surgelée Mikes", "display_type": 1, "brand": "Mikes", "left": 30.02, "bottom": -2202.62, "right": 374.9, "top": -1783.26, "cutout_image_url": "http://f.wishabi.net/page_items/436855091/1791521198/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 47, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "5.97", "print_id": null, "short`
 
-## Unclassified items — kept for review
+### Item 11959
 
-The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
+![item 11959](images/item-11959.jpg)
 
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
-
-### Item 4193
-
-![item 4193](images/item-4193.jpg)
-
-- **Name (French):** Cranquelins Christie
-- **Brand:** Mr. Christie's
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 1.77
-- **Printed Price:** “1.77”
+- **Name (French):** Simply Orange
+- **Brand:** Simply Orange
+- **Category (English):** Drinks > Juice
+- **Category (French):** Boissons > Jus
+- **How classified:** rule (`juice`)
+- **Price:** 4.47
+- **Printed Price:** “4.47”
 - **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436671011/1791318428/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d11e0089cff33b3d`
-- **Conditions:** `{"discount": 36}`
-- **Raw:** `{"id": 1046080109, "flyer_id": 8172455, "name": "Cranquelins Christie", "display_type": 1, "brand": "Mr. Christie's", "left": 287.42, "bottom": -942.44, "right": 541.53, "top": -644.95, "cutout_image_url": "http://f.wishabi.net/page_items/436671011/1791318428/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 36, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "1.77", "print_id": "lo`
-
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
-
-### Item 4196
-
-![item 4196](images/item-4196.jpg)
-
-- **Name (French):** Pâté d'accompagnement Knorr
-- **Brand:** Knorr
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 1.74
-- **Printed Price:** “1.74”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436264065/1791299937/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `dd722197d1920af1`
-- **Conditions:** `{"discount": 12}`
-- **Raw:** `{"id": 1045188484, "flyer_id": 8172455, "name": "Pâté d'accompagnement Knorr", "display_type": 1, "brand": "Knorr", "left": 1121.26, "bottom": -1595.46, "right": 1647.11, "top": -1251.85, "cutout_image_url": "http://f.wishabi.net/page_items/436264065/1791299937/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 12, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "1.74", "print_id": n`
-
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
-
-### Item 4201
-
-![item 4201](images/item-4201.jpg)
-
-- **Name (French):** Salade Massibec
-- **Brand:** Massibec
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 2.97
-- **Printed Price:** “2.97”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436264070/1791299940/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `fb5c476e95b6d1ef`
+- **Item validity:** 2026-10-14 → 2026-10-20
+- **Image source URL:** http://f.wishabi.net/page_items/436855182/1791521199/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `63eab5491b3c7c89`
 - **Conditions:** `{"discount": 25}`
-- **Raw:** `{"id": 1045188499, "flyer_id": 8172455, "name": "Salade Massibec", "display_type": 1, "brand": "Massibec", "left": 1642.52, "bottom": -1592.26, "right": 2164.01, "top": -1252.27, "cutout_image_url": "http://f.wishabi.net/page_items/436264070/1791299940/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "2.97", "print_id": null, "sho`
+- **Raw:** `{"id": 1046709296, "flyer_id": 8182233, "name": "Simply Orange", "display_type": 1, "brand": "Simply Orange", "left": 1107.99, "bottom": -1268.84, "right": 1645.33, "top": -931.05, "cutout_image_url": "http://f.wishabi.net/page_items/436855182/1791521199/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "4.47", "print_id": null, "s`
 
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
+### Item 11965
 
-### Item 4204
+![item 11965](images/item-11965.jpg)
 
-![item 4204](images/item-4204.jpg)
-
-- **Name (French):** DÉCOUVREZ D'AUTRES AUBAINES EN MAGASIN ET EN LIGNE
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
+- **Name (French):** Frites surgelées ou accompagnements Les Fermes Cavendish
+- **Brand:** Les fermes Cavendish
+- **Category (English):** Frozen Food > Frozen Fruit & Vegetables
+- **Category (French):** Produits surgelés > Fruits et légumes surgelés
+- **How classified:** frozen-remap (`fries-sides`)
+- **Price:** 7.97
+- **Printed Price:** “7.97”
 - **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436335527/1791299943/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `f7422364a15944f5`
-- **Raw:** `{"id": 1045188532, "flyer_id": 8172455, "name": "DÉCOUVREZ D'AUTRES AUBAINES EN MAGASIN ET EN LIGNE", "display_type": 5, "brand": null, "left": 1134.06, "bottom": -2431.64, "right": 2171.76, "top": -2305.63, "cutout_image_url": "http://f.wishabi.net/page_items/436335527/1791299943/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price":`
+- **Item validity:** 2026-10-14 → 2026-10-20
+- **Image source URL:** http://f.wishabi.net/page_items/436908519/1791521210/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `75499a3dc9fc2a8e`
+- **Conditions:** `{"discount": 20}`
+- **Raw:** `{"id": 1046709348, "flyer_id": 8182233, "name": "Frites surgelées ou accompagnements Les Fermes Cavendish", "display_type": 1, "brand": "Les fermes Cavendish", "left": 1815.0, "bottom": -1500.12, "right": 1978.0, "top": -1295.12, "cutout_image_url": "http://f.wishabi.net/page_items/436908519/1791521210/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-20T23:59:59-04:00", "video_`
 
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
+### Item 11966
 
-### Item 4206
+![item 11966](images/item-11966.jpg)
 
-![item 4206](images/item-4206.jpg)
-
-- **Name (French):** NOUS ÉGALONS LES PRIX ANNONCÉS VOUS ÉCONOMISEZ ENCORE PLU$.*
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** —
-- **Printed Price:** “None”
+- **Name (French):** Filets de poisson en pâte surgelés High Liner
+- **Brand:** HIGH LINER®
+- **Category (English):** Frozen Food > Frozen Meat and Seafood
+- **Category (French):** Produits surgelés > Viande et fruits de mer surgelés
+- **How classified:** frozen-remap (`fish`)
+- **Price:** 5.47
+- **Printed Price:** “5.47”
 - **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436671007/1791318427/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `9e4466335a5444ed`
-- **Raw:** `{"id": 1046080106, "flyer_id": 8172455, "name": "NOUS ÉGALONS LES PRIX ANNONCÉS VOUS ÉCONOMISEZ ENCORE PLU$.*", "display_type": 5, "brand": null, "left": 30.21, "bottom": -1596.75, "right": 1060.59, "top": -1523.92, "cutout_image_url": "http://f.wishabi.net/page_items/436671007/1791318427/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, `
+- **Item validity:** 2026-10-14 → 2026-10-20
+- **Image source URL:** http://f.wishabi.net/page_items/436855093/1791521200/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `d508e18b31e8031f`
+- **Conditions:** `{"discount": 45}`
+- **Raw:** `{"id": 1046709285, "flyer_id": 8182233, "name": "Filets de poisson en pâte surgelés High Liner", "display_type": 1, "brand": "HIGH LINER®", "left": 29.96, "bottom": -1770.75, "right": 545.66, "top": -1361.22, "cutout_image_url": "http://f.wishabi.net/page_items/436855093/1791521200/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 45, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": `
 
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
+### Item 11967
 
-### Item 4207
+![item 11967](images/item-11967.jpg)
 
-![item 4207](images/item-4207.jpg)
-
-- **Name (French):** Garniture fouettée Cool Whip Kraft
-- **Brand:** Kraft
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 3.97
-- **Printed Price:** “3.97”
+- **Name (French):** Bologne ou pain de viande simili-poulet Gaspésien
+- **Brand:** Gaspésien
+- **Category (English):** Deli > Deli Meat
+- **Category (French):** Charcuterie > Charcuterie
+- **How classified:** rule (`deli-meat`)
+- **Price:** 3.47
+- **Printed Price:** “3.47”
 - **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436264064/1791299935/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `f90434ef643440ac`
-- **Conditions:** `{"discount": 26}`
-- **Raw:** `{"id": 1045188483, "flyer_id": 8172455, "name": "Garniture fouettée Cool Whip Kraft", "display_type": 1, "brand": "Kraft", "left": 1121.94, "bottom": -904.88, "right": 1646.19, "top": -557.76, "cutout_image_url": "http://f.wishabi.net/page_items/436264064/1791299935/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 26, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "3.97", "print_i`
+- **Item validity:** 2026-10-14 → 2026-10-20
+- **Image source URL:** http://f.wishabi.net/page_items/436855183/1791521200/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `4d027bb369bb9c81`
+- **Conditions:** `{"discount": 30}`
+- **Raw:** `{"id": 1046709298, "flyer_id": 8182233, "name": "Bologne ou pain de viande simili-poulet Gaspésien", "display_type": 1, "brand": "Gaspésien", "left": 1107.53, "bottom": -1605.75, "right": 1646.57, "top": -1269.25, "cutout_image_url": "http://f.wishabi.net/page_items/436855183/1791521200/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": 30, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "pri`
 
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
+### Item 11970
 
-### Item 4208
+![item 11970](images/item-11970.jpg)
 
-![item 4208](images/item-4208.jpg)
-
-- **Name (French):** Pâté St-Hubert
-- **Brand:** ST-HUBERT
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 6.97
-- **Printed Price:** “6.97”
+- **Name (French):** Pains à hot dog Giant Value
+- **Brand:** Giant Value
+- **Category (English):** Bakery > Buns & Rolls
+- **Category (French):** Boulangerie > Petits pains
+- **How classified:** rule (`specific-buns`)
+- **Price:** 2.57
+- **Printed Price:** “2.57”
 - **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436264071/1791299940/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `6f27fcc8f90ba163`
-- **Conditions:** `{"discount": 36}`
-- **Raw:** `{"id": 1045188503, "flyer_id": 8172455, "name": "Pâté St-Hubert", "display_type": 1, "brand": "ST-HUBERT", "left": 1643.72, "bottom": -904.81, "right": 2166.31, "top": -559.95, "cutout_image_url": "http://f.wishabi.net/page_items/436264071/1791299940/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 36, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "6.97", "print_id": null, "short`
-
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
-
-### Item 4211
-
-![item 4211](images/item-4211.jpg)
-
-- **Name (French):** Sauce Franco-American
-- **Brand:** Franco-American
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 0.77
-- **Printed Price:** “0.77”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436670998/1791318422/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `9d017b0b1177ebdb`
-- **Conditions:** `{"discount": 61}`
-- **Raw:** `{"id": 1046080098, "flyer_id": 8172455, "name": "Sauce Franco-American", "display_type": 1, "brand": "Franco-American", "left": 548.02, "bottom": -2287.3, "right": 1061.98, "top": -1946.87, "cutout_image_url": "http://f.wishabi.net/page_items/436670998/1791318422/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 61, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "0.77", "print_id":`
-
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
-
-### Item 4212
-
-![item 4212](images/item-4212.jpg)
-
-- **Name (French):** LES BAS PRIX
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436671009/1791318428/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `ce640961df0eedfa`
-- **Raw:** `{"id": 1046080108, "flyer_id": 8172455, "name": "LES BAS PRIX", "display_type": 5, "brand": null, "left": 33.31, "bottom": -2362.17, "right": 1072.98, "top": -2286.25, "cutout_image_url": "http://f.wishabi.net/page_items/436671009/1791318428/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "", "print_id": "logo1", "short_name": `
-
-— from flyer 16 (valid 2026-10-07 → 2026-10-13)
-
-### Item 4215
-
-![item 4215](images/item-4215.jpg)
-
-- **Name (French):** Cranquelins Christie
-- **Brand:** Mr. Christie's
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 1.77
-- **Printed Price:** “1.77”
-- **Unit:** —
-- **Item validity:** 2026-10-07 → 2026-10-13
-- **Image source URL:** http://f.wishabi.net/page_items/436670990/1791318418/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d11e0089cff33b3d`
-- **Conditions:** `{"discount": 36}`
-- **Raw:** `{"id": 1046080089, "flyer_id": 8172455, "name": "Cranquelins Christie", "display_type": 1, "brand": "Mr. Christie's", "left": 37.64, "bottom": -808.71, "right": 285.98, "top": -503.19, "cutout_image_url": "http://f.wishabi.net/page_items/436670990/1791318418/extra_large.jpg", "valid_from": "2026-10-07T00:00:00-04:00", "valid_to": "2026-10-13T23:59:59-04:00", "page_destination": null, "discount": 36, "available_to": "2026-10-13T23:59:59-04:00", "video_url": null, "price": "1.77", "print_id": "log`
+- **Item validity:** 2026-10-14 → 2026-10-20
+- **Image source URL:** http://f.wishabi.net/page_items/436855184/1791521200/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `5385bd693de2844f`
+- **Raw:** `{"id": 1046709301, "flyer_id": 8182233, "name": "Pains à hot dog Giant Value", "display_type": 1, "brand": "Giant Value", "left": 1473.12, "bottom": -928.39, "right": 1645.52, "top": -576.37, "cutout_image_url": "http://f.wishabi.net/page_items/436855184/1791521200/extra_large.jpg", "valid_from": "2026-10-14T00:00:00-04:00", "valid_to": "2026-10-20T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-20T23:59:59-04:00", "video_url": null, "price": "2.57", "print_`

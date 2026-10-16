@@ -2,134 +2,163 @@
 
 Store slug: `super-c`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 37 — valid 2026-10-08 → 2026-10-14 (5 classified items, 7 unclassified)
+## Flyer 36 — valid 2026-10-08 → 2026-10-21 (0 classified items, 3 unclassified)
 
-Source ref: `8170618` · fetched 2026-10-13T04:28:21.905Z
+Source ref: `8171546` · fetched 2026-10-13T04:28:21.904Z
 
-### Item 6903
-
-![item 6903](images/item-6903.jpg)
-
-- **Name (French):** tomates italiennes | italian tomatoes
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 1.99
-- **Printed Price:** “1.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072752/1790803397/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `db10cb8437187930`
-- **Conditions:** `{"discount": 29}`
-- **Raw:** `{"id": 1044820789, "flyer_id": 8170618, "name": "tomates italiennes | italian tomatoes", "display_type": 1, "brand": null, "left": 12088.38, "bottom": -634.17, "right": 12646.79, "top": -277.49, "cutout_image_url": "http://f.wishabi.net/page_items/436072752/1790803397/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 29, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "1.99", "print`
-
-### Item 7027
-
-![item 7027](images/item-7027.jpg)
-
-- **Name (French):** pilons de poulet frais | fresh chicken drumsticks
-- **Category (English):** Meat > Chicken & Turkey
-- **Category (French):** Viande > Poulet et dinde
-- **How classified:** rule (`chicken-turkey`)
-- **Price:** 3.79
-- **Printed Price:** “3.79”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072645/1790803391/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `fbca682ab882c661`
-- **Raw:** `{"id": 1044820269, "flyer_id": 8170618, "name": "pilons de poulet frais | fresh chicken drumsticks", "display_type": 1, "brand": null, "left": 6927.42, "bottom": -724.53, "right": 7474.82, "top": -186.46, "cutout_image_url": "http://f.wishabi.net/page_items/436072645/1790803391/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "3`
-
-### Item 7029
-
-![item 7029](images/item-7029.jpg)
-
-- **Name (French):** côtelettes de porc frais désossées | fresh boneless pork loin chops
-- **Category (English):** Meat > Pork & Ham
-- **Category (French):** Viande > Porc et jambon
-- **How classified:** rule (`pork-ham`)
-- **Price:** 4.99
-- **Printed Price:** “4.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072646/1790803392/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `e08f52f3a491eaaa`
-- **Conditions:** `{"discount": 23}`
-- **Raw:** `{"id": 1044820276, "flyer_id": 8170618, "name": "côtelettes de porc frais désossées | fresh boneless pork loin chops", "display_type": 1, "brand": null, "left": 7474.5, "bottom": -1281.99, "right": 8047.67, "top": -738.41, "cutout_image_url": "http://f.wishabi.net/page_items/436072646/1790803392/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 23, "available_to": "2026-10-14T23:59:59-04:00", "video_url": n`
-
-### Item 7062
-
-![item 7062](images/item-7062.jpg)
-
-- **Name (French):** bière Heineken | beer
-- **Category (English):** Beer & Wine > Beer
-- **Category (French):** Bières et vins > Bières
-- **How classified:** rule (`beer`)
-- **Price:** 27.99
-- **Printed Price:** “27.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072552/1790803390/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `e6bd4400e5ce0b8b`
-- **Raw:** `{"id": 1044820866, "flyer_id": 8170618, "name": "bière Heineken | beer", "display_type": 1, "brand": null, "left": 13053.74, "bottom": -1918.81, "right": 13440.55, "top": -1602.92, "cutout_image_url": "http://f.wishabi.net/page_items/436072552/1790803390/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "27.99", "print_id": null,`
-
-### Item 7078
-
-![item 7078](images/item-7078.jpg)
-
-- **Name (French):** fruits Irrésistible | Irrésistible frozen fruits
-- **Category (English):** Frozen Food > Frozen Fruit & Vegetables
-- **Category (French):** Produits surgelés > Fruits et légumes surgelés
-- **How classified:** frozen-remap (`fruits`)
-- **Price:** 5.99
-- **Printed Price:** “5.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072724/1790864140/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `98d6afc3d8872db0`
-- **Raw:** `{"id": 1044821056, "flyer_id": 8170618, "name": "fruits Irrésistible | Irrésistible frozen fruits", "display_type": 1, "brand": null, "left": 16142.29, "bottom": -1621.54, "right": 16415.78, "top": -1286.31, "cutout_image_url": "http://f.wishabi.net/page_items/436072724/1790864140/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price":`
-
-## Flyer 35 — valid 2026-10-15 → 2026-10-21 (5 classified items, 3 unclassified)
+## Flyer 35 — valid 2026-10-15 → 2026-10-21 (10 classified items, 7 unclassified)
 
 Source ref: `8182254` · fetched 2026-10-13T04:28:21.888Z
 
-### Item 6653
+### Item 6643
 
-![item 6653](images/item-6653.jpg)
+![item 6643](images/item-6643.jpg)
 
-- **Name (French):** porc haché extra-maigre | extra lean ground pork
-- **Category (English):** Meat > Pork & Ham
-- **Category (French):** Viande > Porc et jambon
-- **How classified:** rule (`pork-ham`)
-- **Price:** 2.99
-- **Printed Price:** “2.99”
+- **Name (French):** JUS PÉTILLANT TRADITION | TRADITION SPARKLING JUICE
+- **Category (English):** Drinks > Juice
+- **Category (French):** Boissons > Jus
+- **How classified:** rule (`juice`)
+- **Price:** 5.99
+- **Printed Price:** “5.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436856694/1791480277/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `c9eb20f1ad43b546`
-- **Raw:** `{"id": 1046581866, "flyer_id": 8182254, "name": "porc haché extra-maigre | extra lean ground pork", "display_type": 1, "brand": null, "left": 389.73, "bottom": -1283.11, "right": 742.66, "top": -986.82, "cutout_image_url": "http://f.wishabi.net/page_items/436856694/1791480277/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "2.9`
+- **Image source URL:** http://f.wishabi.net/page_items/436856953/1791480275/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `897102102469a585`
+- **Raw:** `{"id": 1046582631, "flyer_id": 8182254, "name": "JUS PÉTILLANT TRADITION | TRADITION SPARKLING JUICE", "display_type": 1, "brand": null, "left": 4648.04, "bottom": -2488.06, "right": 4913.77, "top": -2189.56, "cutout_image_url": "http://f.wishabi.net/page_items/436856953/1791480275/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price"`
 
-### Item 6680
+### Item 6658
 
-![item 6680](images/item-6680.jpg)
+![item 6658](images/item-6658.jpg)
 
-- **Name (French):** POMMES DE TERRE McCAIN | McCAIN POTATOES
+- **Name (French):** jus de tomate Heinz | Heinz tomato juice
+- **Category (English):** Drinks > Juice
+- **Category (French):** Boissons > Jus
+- **How classified:** rule (`juice`)
+- **Price:** 1.49
+- **Printed Price:** “1.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856723/1791480284/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `45e8d313efdc62a6`
+- **Raw:** `{"id": 1046582141, "flyer_id": 8182254, "name": "jus de tomate Heinz | Heinz tomato juice", "display_type": 1, "brand": null, "left": 1926.85, "bottom": -1918.55, "right": 2276.46, "top": -1590.48, "cutout_image_url": "http://f.wishabi.net/page_items/436856723/1791480284/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "1.49", "`
+
+### Item 6696
+
+![item 6696](images/item-6696.jpg)
+
+- **Name (French):** CHOU-FLEUR, CHOU- FLEUR ORANGE, MAUVE OU ROMANESCO | CAULIFLOWER
 - **Category (English):** Fruits & Vegetables > Fresh Vegetables
 - **Category (French):** Fruits et légumes > Légumes frais
 - **How classified:** rule (`vegetables`)
-- **Price:** 2.99
-- **Printed Price:** “2.99”
+- **Price:** 3.99
+- **Printed Price:** “3.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436856716/1791480279/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `8ee20f5e85762efa`
-- **Conditions:** `{"discount": 40}`
-- **Raw:** `{"id": 1046582050, "flyer_id": 8182254, "name": "POMMES DE TERRE McCAIN | McCAIN POTATOES", "display_type": 1, "brand": null, "left": 1532.46, "bottom": -637.94, "right": 1904.48, "top": -337.68, "cutout_image_url": "http://f.wishabi.net/page_items/436856716/1791480279/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 40, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "2.99", "prin`
+- **Image source URL:** http://f.wishabi.net/page_items/436856729/1791480272/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `f7fdd90ac496f876`
+- **Raw:** `{"id": 1046582257, "flyer_id": 8182254, "name": "CHOU-FLEUR, CHOU- FLEUR ORANGE, MAUVE OU ROMANESCO | CAULIFLOWER", "display_type": 1, "brand": null, "left": 4032.6, "bottom": -1924.89, "right": 4321.86, "top": -1622.07, "cutout_image_url": "http://f.wishabi.net/page_items/436856729/1791480272/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": n`
 
-### Item 6758
+### Item 6708
 
-![item 6758](images/item-6758.jpg)
+![item 6708](images/item-6708.jpg)
 
-- **Name (French):** DATTES ENTIÈRES DÉNOYAUTÉES COMPASS | COMPASS WHOLE PITTED DATES
+- **Name (French):** COQUILLES OLD EL PASO | OLD EL PASO SHELLS
+- **Category (English):** Pantry > Pasta & Pasta Sauce
+- **Category (French):** Produits du garde-manger > Pâtes et sauces
+- **How classified:** rule (`pasta-sauce`)
+- **Price:** 1.99
+- **Printed Price:** “1.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856714/1791480278/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `a0695d19d5e6ac3d`
+- **Raw:** `{"id": 1046582033, "flyer_id": 8182254, "name": "COQUILLES OLD EL PASO | OLD EL PASO SHELLS", "display_type": 1, "brand": null, "left": 1918.07, "bottom": -1582.56, "right": 2275.81, "top": -1278.42, "cutout_image_url": "http://f.wishabi.net/page_items/436856714/1791480278/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "1.99",`
+
+### Item 6736
+
+![item 6736](images/item-6736.jpg)
+
+- **Name (French):** KETCHUP AUX TOMATES HEINZ | HEINZ TOMATO KETCHUP
+- **Category (English):** Pantry > Condiments
+- **Category (French):** Produits du garde-manger > Condiments et garnitures
+- **How classified:** rule (`specific-condiments`)
+- **Price:** 6.97
+- **Printed Price:** “6.97”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856798/1791480281/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `78fd6e028535ceed`
+- **Raw:** `{"id": 1046583857, "flyer_id": 8182254, "name": "KETCHUP AUX TOMATES HEINZ | HEINZ TOMATO KETCHUP", "display_type": 1, "brand": null, "left": 10932.0, "bottom": -1284.31, "right": 11500.0, "top": -773.5, "cutout_image_url": "http://f.wishabi.net/page_items/436856798/1791480281/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "6.`
+
+### Item 6764
+
+![item 6764](images/item-6764.jpg)
+
+- **Name (French):** CÉRÉALES GENERAL MILLS | GENERAL MILLS CEREAL
+- **Category (English):** Pantry > Cereal & Breakfast
+- **Category (French):** Produits du garde-manger > Céréales et petits-déjeuners
+- **How classified:** rule (`cereal-breakfast`)
+- **Price:** 3.33
+- **Printed Price:** “3.33”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856795/1791480278/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `517a57e8d228cd23`
+- **Raw:** `{"id": 1046583808, "flyer_id": 8182254, "name": "CÉRÉALES GENERAL MILLS | GENERAL MILLS CEREAL", "display_type": 1, "brand": null, "left": 10936.4, "bottom": -774.48, "right": 11502.5, "top": -223.55, "cutout_image_url": "http://f.wishabi.net/page_items/436856795/1791480278/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "3.33"`
+
+### Item 6822
+
+![item 6822](images/item-6822.jpg)
+
+- **Name (French):** LAIT AU CHOCOLAT QUÉBON, SEALTEST | QUÉBON, SEALTEST CHOCOLATE MILK
+- **Category (English):** Dairy & Eggs > Milk & Cream
+- **Category (French):** Produits laitiers et œufs > Lait et crème
+- **How classified:** rule (`milk-cream`)
+- **Price:** 1.97
+- **Printed Price:** “1.97”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856823/1791480288/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `adf409924f3cd923`
+- **Raw:** `{"id": 1046584179, "flyer_id": 8182254, "name": "LAIT AU CHOCOLAT QUÉBON, SEALTEST | QUÉBON, SEALTEST CHOCOLATE MILK", "display_type": 1, "brand": null, "left": 11538.1, "bottom": -773.79, "right": 12089.4, "top": -233.4, "cutout_image_url": "http://f.wishabi.net/page_items/436856823/1791480288/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": `
+
+### Item 6824
+
+![item 6824](images/item-6824.jpg)
+
+- **Name (French):** BOISSON ÉNERGISANTE MONSTER | MONSTER ENERGY DRINK
+- **Category (English):** Drinks > Sports & Energy
+- **Category (French):** Boissons > Boissons énergisantes et pour sportifs
+- **How classified:** rule (`sports-energy`)
+- **Price:** 9.79
+- **Printed Price:** “9.79”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856902/1791548846/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `eecbda760d25814c`
+- **Raw:** `{"id": 1046584513, "flyer_id": 8182254, "name": "BOISSON ÉNERGISANTE MONSTER | MONSTER ENERGY DRINK", "display_type": 1, "brand": null, "left": 18728.9, "bottom": -975.06, "right": 19012.9, "top": -639.42, "cutout_image_url": "http://f.wishabi.net/page_items/436856902/1791548846/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "`
+
+### Item 6841
+
+![item 6841](images/item-6841.jpg)
+
+- **Name (French):** COLORANT À CAFÉ SILK | SILK COFFEE WHITENER
+- **Category (English):** Dairy & Eggs > Milk & Cream
+- **Category (French):** Produits laitiers et œufs > Lait et crème
+- **How classified:** rule (`specific-creamer`)
+- **Price:** 5.99
+- **Printed Price:** “5.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856852/1791480281/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `bf63a9032825719a`
+- **Raw:** `{"id": 1046584344, "flyer_id": 8182254, "name": "COLORANT À CAFÉ SILK | SILK COFFEE WHITENER", "display_type": 1, "brand": null, "left": 13837.7, "bottom": -646.24, "right": 14115.6, "top": -136.82, "cutout_image_url": "http://f.wishabi.net/page_items/436856852/1791480281/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.99", `
+
+### Item 6849
+
+![item 6849](images/item-6849.jpg)
+
+- **Name (French):** PRUNEAUX DÉNOYAUTÉS IRRÉSISTIBLE | IRRÉSISTIBLE PITTED PRUNES
 - **Category (English):** Fruits & Vegetables > Dried Fruits & Nuts
 - **Category (French):** Fruits et légumes > Fruits séchés et noix
 - **How classified:** rule (`dried-fruits-nuts`)
@@ -137,184 +166,147 @@ Source ref: `8182254` · fetched 2026-10-13T04:28:21.888Z
 - **Printed Price:** “9.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436856827/1791480275/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `7850aa960c326634`
-- **Raw:** `{"id": 1046584596, "flyer_id": 8182254, "name": "DATTES ENTIÈRES DÉNOYAUTÉES COMPASS | COMPASS WHOLE PITTED DATES", "display_type": 1, "brand": null, "left": 21584.8, "bottom": -1616.38, "right": 21863.8, "top": -1285.44, "cutout_image_url": "http://f.wishabi.net/page_items/436856827/1791480275/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": `
-
-### Item 6782
-
-![item 6782](images/item-6782.jpg)
-
-- **Name (French):** RAISINS SULTANA IRRÉSISTIBLE | IRRÉSISTIBLE SULTANA RAISINS
-- **Category (English):** Fruits & Vegetables > Fresh Fruits
-- **Category (French):** Fruits et légumes > Fruits frais
-- **How classified:** rule (`fruits`)
-- **Price:** 9.99
-- **Printed Price:** “9.99”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436856836/1791480282/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `42c36c543a8844aa`
-- **Conditions:** `{"discount": 9}`
-- **Raw:** `{"id": 1046584633, "flyer_id": 8182254, "name": "RAISINS SULTANA IRRÉSISTIBLE | IRRÉSISTIBLE SULTANA RAISINS", "display_type": 1, "brand": null, "left": 21585.8, "bottom": -1284.25, "right": 21864.8, "top": -976.72, "cutout_image_url": "http://f.wishabi.net/page_items/436856836/1791480282/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 9, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "pr`
-
-### Item 6843
-
-![item 6843](images/item-6843.jpg)
-
-- **Name (French):** PLAT D'ACCOMPAGNEMENT SIDEKICKS KNORR | KNORR SIDEKICKS SIDE DISH
-- **Category (English):** Pantry > Easy Meals & Sides
-- **Category (French):** Produits du garde-manger > Mets faciles et accompagnements
-- **How classified:** rule (`easy-meals`)
-- **Price:** 1.99
-- **Printed Price:** “1.99”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436856859/1791480276/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `548bd88b8530362f`
-- **Raw:** `{"id": 1046584401, "flyer_id": 8182254, "name": "PLAT D'ACCOMPAGNEMENT SIDEKICKS KNORR | KNORR SIDEKICKS SIDE DISH", "display_type": 1, "brand": null, "left": 14985.6, "bottom": -2541.86, "right": 15351.2, "top": -1929.38, "cutout_image_url": "http://f.wishabi.net/page_items/436856859/1791480276/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url":`
+- **Image source URL:** http://f.wishabi.net/page_items/436856831/1791480278/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `7443078c46c41abd`
+- **Raw:** `{"id": 1046584614, "flyer_id": 8182254, "name": "PRUNEAUX DÉNOYAUTÉS IRRÉSISTIBLE | IRRÉSISTIBLE PITTED PRUNES", "display_type": 1, "brand": null, "left": 21310.0, "bottom": -1917.74, "right": 21585.4, "top": -1619.73, "cutout_image_url": "http://f.wishabi.net/page_items/436856831/1791480278/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": nul`
 
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
 
-— from flyer 37 (valid 2026-10-08 → 2026-10-14)
+— from flyer 36 (valid 2026-10-08 → 2026-10-21)
 
-### Item 6925
+### Item 6881
 
-![item 6925](images/item-6925.jpg)
+![item 6881](images/item-6881.jpg)
 
-- **Name (French):** Soutenons nos communautés
+- **Name (French):** ca roule du matin à l'après-midi plus de points avec mes coupons
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
 - **Price:** —
 - **Printed Price:** “None”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436245493/1790864647/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `c60be5fdc6e348a5`
-- **Raw:** `{"id": 1045024104, "flyer_id": 8170618, "name": "Soutenons nos communautés", "display_type": 5, "brand": null, "left": 18463.49, "bottom": -1237.2, "right": 19556.22, "top": -33.34, "cutout_image_url": "http://f.wishabi.net/page_items/436245493/1790864647/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "sh`
+- **Item validity:** 2026-10-08 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436508674/1791208304/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `93055a4bba58482e`
+- **Raw:** `{"id": 1045696603, "flyer_id": 8171546, "name": "ca roule du matin à l'après-midi plus de points avec mes coupons", "display_type": 5, "brand": null, "left": 5763.7, "bottom": -2520.32, "right": 6876.87, "top": -31.41, "cutout_image_url": "http://f.wishabi.net/page_items/436508674/1791208304/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": nul`
 
-— from flyer 37 (valid 2026-10-08 → 2026-10-14)
+— from flyer 36 (valid 2026-10-08 → 2026-10-21)
 
-### Item 6971
+### Item 6883
 
-![item 6971](images/item-6971.jpg)
+![item 6883](images/item-6883.jpg)
 
-- **Name (French):** Haloumi Le Bédouin
-- **Brand:** LE BÉDOUIN
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 12.99
-- **Printed Price:** “12.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072576/1790803386/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `60000c164677d3b9`
-- **Raw:** `{"id": 1044821171, "flyer_id": 8170618, "name": "Haloumi Le Bédouin", "display_type": 1, "brand": "LE BÉDOUIN", "left": 17299.88, "bottom": -965.35, "right": 17858.09, "top": -653.51, "cutout_image_url": "http://f.wishabi.net/page_items/436072576/1790803386/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "12.99", "print_id": nu`
-
-— from flyer 37 (valid 2026-10-08 → 2026-10-14)
-
-### Item 6979
-
-![item 6979](images/item-6979.jpg)
-
-- **Name (French):** pâté Plaisirs  Gastronomiques | Plaisirs Gastronomiques pie
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 6.99
-- **Printed Price:** “6.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072473/1790863950/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `68d93c355c9d0958`
-- **Conditions:** `{"discount": 26}`
-- **Raw:** `{"id": 1044819774, "flyer_id": 8170618, "name": "pâté Plaisirs Gastronomiques | Plaisirs Gastronomiques pie", "display_type": 1, "brand": null, "left": 1529.22, "bottom": -636.65, "right": 1906.85, "top": -322.34, "cutout_image_url": "http://f.wishabi.net/page_items/436072473/1790863950/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 26, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "pri`
-
-— from flyer 37 (valid 2026-10-08 → 2026-10-14)
-
-### Item 7006
-
-![item 7006](images/item-7006.jpg)
-
-- **Name (French):** #1 meilleur rapport qualité-prix
+- **Name (French):** avec moi, c'est payant sur tous les points
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
 - **Price:** —
 - **Printed Price:** “None”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436245424/1790863977/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `6b402e0fd6a1a8f6`
-- **Raw:** `{"id": 1045023633, "flyer_id": 8170618, "name": "#1 meilleur rapport qualité-prix", "display_type": 5, "brand": null, "left": 2324.37, "bottom": -2537.36, "right": 3446.74, "top": -1281.65, "cutout_image_url": "http://f.wishabi.net/page_items/436245424/1790863977/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "", "print_id": n`
+- **Item validity:** 2026-10-08 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436509297/1791208403/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `887a080f7a8057a1`
+- **Raw:** `{"id": 1045696605, "flyer_id": 8171546, "name": "avec moi, c'est payant sur tous les points", "display_type": 5, "brand": null, "left": 6912.0, "bottom": -2553.6, "right": 9206.75, "top": -5.52, "cutout_image_url": "http://f.wishabi.net/page_items/436509297/1791208403/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_i`
 
-— from flyer 37 (valid 2026-10-08 → 2026-10-14)
+— from flyer 36 (valid 2026-10-08 → 2026-10-21)
 
-### Item 7018
+### Item 6885
 
-![item 7018](images/item-7018.jpg)
+![item 6885](images/item-6885.jpg)
 
-- **Name (French):** charcuterie et fromage supplémentaire
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** junk
-- **Price:** 18.00
-- **Printed Price:** “18.0”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072635/1790803384/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `8e8103e3459c35f7`
-- **Raw:** `{"id": 1044820207, "flyer_id": 8170618, "name": "charcuterie et fromage supplémentaire", "display_type": 1, "brand": null, "left": 6927.54, "bottom": -2539.89, "right": 8050.13, "top": -1929.17, "cutout_image_url": "http://f.wishabi.net/page_items/436072635/1790803384/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "18.0", "pri`
-
-— from flyer 37 (valid 2026-10-08 → 2026-10-14)
-
-### Item 7113
-
-![item 7113](images/item-7113.jpg)
-
-- **Name (French):** Suisse Irrésistible
-- **Brand:** Irresistible
+- **Name (French):** j'obtiens jusqu'à 2000 points moi
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Price:** 13.29
-- **Printed Price:** “13.29”
+- **Price:** —
+- **Printed Price:** “None”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072586/1790803392/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `ab890ad02f717e4c`
-- **Raw:** `{"id": 1044821233, "flyer_id": 8170618, "name": "Suisse Irrésistible", "display_type": 1, "brand": "Irresistible", "left": 17300.14, "bottom": -1282.64, "right": 17858.2, "top": -966.53, "cutout_image_url": "http://f.wishabi.net/page_items/436072586/1790803392/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "13.29", "print_id":`
+- **Item validity:** 2026-10-08 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436508669/1791208187/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `8146071ad19bded6`
+- **Raw:** `{"id": 1045696601, "flyer_id": 8171546, "name": "j'obtiens jusqu'à 2000 points moi", "display_type": 5, "brand": null, "left": 2335.44, "bottom": -1281.41, "right": 3448.6, "top": -42.5, "cutout_image_url": "http://f.wishabi.net/page_items/436508669/1791208187/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null`
 
-— from flyer 37 (valid 2026-10-08 → 2026-10-14)
+— from flyer 35 (valid 2026-10-15 → 2026-10-21)
 
-### Item 7120
+### Item 6636
 
-![item 7120](images/item-7120.jpg)
+![item 6636](images/item-6636.jpg)
 
-- **Name (French):** quenelles Siwin | Siwin potstickers
+- **Name (French):** SAUCES & MARINADES DG | DG SAUCES & MARINADES
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
 - **Price:** 5.99
 - **Printed Price:** “5.99”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436072657/1790803390/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `9b5d1a4df3b9bfeb`
-- **Conditions:** `{"discount": 20}`
-- **Raw:** `{"id": 1044820353, "flyer_id": 8170618, "name": "quenelles Siwin | Siwin potstickers", "display_type": 1, "brand": null, "left": 8079.49, "bottom": -1919.54, "right": 8354.28, "top": -1617.72, "cutout_image_url": "http://f.wishabi.net/page_items/436072657/1790803390/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "5.99", "print_i`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856819/1791480284/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `4155745e54e473b4`
+- **Raw:** `{"id": 1046584135, "flyer_id": 8182254, "name": "SAUCES & MARINADES DG | DG SAUCES & MARINADES", "display_type": 1, "brand": null, "left": 12384.3, "bottom": -2540.93, "right": 12659.5, "top": -2226.33, "cutout_image_url": "http://f.wishabi.net/page_items/436856819/1791480284/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.9`
 
 — from flyer 35 (valid 2026-10-15 → 2026-10-21)
 
-### Item 6650
+### Item 6738
 
-![item 6650](images/item-6650.jpg)
+![item 6738](images/item-6738.jpg)
 
-- **Name (French):** Chez Super C il y a pleine de façons d'économiser nos recrues
+- **Name (French):** BOISSON RÉFRIGÉRÉE IRRÉSISTIBLE | IRRÉSISTIBLE REFRIGERATED DRINK
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Price:** 3.49
+- **Printed Price:** “3.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856814/1791480280/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `c1abd1036608b3b7`
+- **Raw:** `{"id": 1046584078, "flyer_id": 8182254, "name": "BOISSON RÉFRIGÉRÉE IRRÉSISTIBLE | IRRÉSISTIBLE REFRIGERATED DRINK", "display_type": 1, "brand": null, "left": 11534.5, "bottom": -2224.58, "right": 11808.1, "top": -1924.92, "cutout_image_url": "http://f.wishabi.net/page_items/436856814/1791480280/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url":`
+
+— from flyer 35 (valid 2026-10-15 → 2026-10-21)
+
+### Item 6761
+
+![item 6761](images/item-6761.jpg)
+
+- **Name (French):** BOISSON BARISTA EARTH'S OWN | EARTH'S OWN BARISTA DRINK
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Price:** 4.99
+- **Printed Price:** “4.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856778/1791480280/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `1e00dde0f8b86232`
+- **Raw:** `{"id": 1046583489, "flyer_id": 8182254, "name": "BOISSON BARISTA EARTH'S OWN | EARTH'S OWN BARISTA DRINK", "display_type": 1, "brand": null, "left": 10076.8, "bottom": -2220.61, "right": 10352.4, "top": -1916.99, "cutout_image_url": "http://f.wishabi.net/page_items/436856778/1791480280/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "pr`
+
+— from flyer 35 (valid 2026-10-15 → 2026-10-21)
+
+### Item 6790
+
+![item 6790](images/item-6790.jpg)
+
+- **Name (French):** MOI
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** junk
+- **Price:** —
+- **Printed Price:** “None”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436856727/1791480271/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `50316d1215a5afa7`
+- **Raw:** `{"id": 1046584451, "flyer_id": 8182254, "name": "MOI", "display_type": 5, "brand": null, "left": 16132.1, "bottom": -2549.0, "right": 18430.7, "top": -17.75, "cutout_image_url": "http://f.wishabi.net/page_items/436856727/1791480271/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_name": null, "text_a`
+
+— from flyer 35 (valid 2026-10-15 → 2026-10-21)
+
+### Item 6819
+
+![item 6819](images/item-6819.jpg)
+
+- **Name (French):** Super C toujours frais
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
@@ -322,9 +314,9 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Printed Price:** “None”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436856950/1791480273/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `a309a15dd3b8dbdf`
-- **Raw:** `{"id": 1046582209, "flyer_id": 8182254, "name": "Chez Super C il y a pleine de façons d'économiser nos recrues", "display_type": 1, "brand": null, "left": 2330.25, "bottom": -2512.16, "right": 3428.67, "top": -31.7, "cutout_image_url": "http://f.wishabi.net/page_items/436856950/1791480273/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, `
+- **Image source URL:** http://f.wishabi.net/page_items/436930660/1791548614/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `f289bf2931eabcfc`
+- **Raw:** `{"id": 1046791530, "flyer_id": 8182254, "name": "Super C toujours frais", "display_type": 5, "brand": null, "left": 5769.25, "bottom": -2553.6, "right": 8062.15, "top": -1.82, "cutout_image_url": "http://f.wishabi.net/page_items/436930660/1791548614/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": null, "short_na`
 
 — from flyer 35 (valid 2026-10-15 → 2026-10-21)
 

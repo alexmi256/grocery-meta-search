@@ -19,7 +19,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 64, top 228, right 246, bottom 369, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.85 · item_key: `a97b47d5732481be`
 - **Conditions:** `{"alt_prices": ["69.90"]}`
@@ -38,7 +38,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 515, top 225, right 708, bottom 369, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.86 · item_key: `784c06c6cb844465`
 - **Conditions:** `{"alt_prices": ["55.90"]}`
@@ -57,7 +57,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 679, top 428, right 837, bottom 539, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.99 · item_key: `d7c1315dc1a91282`
 - **Conditions:** `{"alt_prices": ["1.99"]}`
@@ -76,7 +76,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 288, top 225, right 459, bottom 360, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.90 · item_key: `8a768c7c5916119f`
 - **Conditions:** `{"alt_prices": ["25.90"]}`
@@ -95,7 +95,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 740, top 577, right 934, bottom 718, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.88 · item_key: `30ca2609dd2c4502`
 - **Raw:** `{"block_text": "DAL MOLISE\nBOULES MOZZA RELLA", "ocr_lines": ["DALMOLISE", "BOULESMOZZARELLA"]}`
@@ -113,7 +113,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 63, top 575, right 258, bottom 719, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.87 · item_key: `425fb021b75f028b`
 - **Raw:** `{"block_text": "TOMATES ENTIÈRE PELÉES\nLA SAN MARZANO", "ocr_lines": ["TOMATESENTIEREPELEES", "LASANMARZANO"]}`
@@ -131,7 +131,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 743, top 751, right 936, bottom 891, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.90 · item_key: `5e77f8e9c49e4864`
 - **Raw:** `{"block_text": "RÔTI DE PALETTE\nBOEUF ~ coms,", "ocr_lines": ["ROTIDEPALETTE", "BOEUF"]}`
@@ -149,7 +149,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 288, top 751, right 482, bottom 901, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.94 · item_key: `c216104557c62b13`
 - **Conditions:** `{"alt_prices": ["16.90"]}`
@@ -168,7 +168,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 512, top 750, right 703, bottom 895, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.97 · item_key: `6b437708f216aac4`
 - **Raw:** `{"block_text": "RIB STEAK PRIME\nBOEUF", "ocr_lines": ["RIBSTEAKPRIME", "BOEUF"]}`
@@ -186,7 +186,7 @@ Source ref: `img-a7ec779ec0a23df8` · fetched 2026-10-14T03:56:03.125Z
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 739, top 293, right 934, bottom 414, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.89 · item_key: `e935d638b4fe36b6`
 - **Raw:** `{"block_text": "st\nPOIREAUX", "ocr_lines": ["POIREAUX"]}`
@@ -210,7 +210,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 364, top 646, right 487, bottom 717, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.93 · item_key: `fa5c0788dbe47c9d`
 - **Raw:** `{"block_text": null, "ocr_lines": ["HUILEO'OLIVE", "EXTRAVIERGE", "EXTRAVIRGIN", "OLIVEOIL"]}`
@@ -230,7 +230,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 590, top 660, right 710, bottom 716, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.93 · item_key: `559a8790ed8df2da`
 - **Raw:** `{"block_text": "MURÇAS", "ocr_lines": ["MURCAS"]}`
@@ -250,7 +250,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 92, top 807, right 236, bottom 897, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.95 · item_key: `cecbb106c7f79f1b`
 - **Raw:** `{"block_text": null, "ocr_lines": ["FOURCHEESERISOTTO", "TRUFFLERISOTTO"]}`
@@ -270,7 +270,7 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit:** —
 - **Item validity:** 2026-10-08 → 2026-10-21
 - **bbox:** left 66, top 401, right 264, bottom 532, page 1
-- **Full page:** [pages/flyer97-page-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page-5aa76795d9.jpg)
+- **Full page:** [pages/flyer97-page1-5aa76795d9.jpg (flyer page 1)](pages/flyer97-page1-5aa76795d9.jpg)
 - **Image source URL:** https://milanofruiterie.ca/wp-content/uploads/2026/10/20260068-NewFlyer_Milano-Fruiterie-final.ai-15.jpg
 - **Details:** confidence: 0.82 · item_key: `eab8cfcc2b6c4594`
 - **Conditions:** `{"alt_prices": ["49.90"]}`

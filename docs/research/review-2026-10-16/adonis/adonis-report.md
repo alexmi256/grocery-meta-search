@@ -2,150 +2,43 @@
 
 Store slug: `adonis`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-## Flyer 38 — valid 2026-10-08 → 2026-10-14 (4 classified items, 3 unclassified)
-
-Source ref: `8173045` · fetched 2026-10-13T04:28:22.869Z
-
-### Item 7182
-
-![item 7182](images/item-7182.jpg)
-
-- **Name (French):** FROMAGE ALEXIS DE PORTNEUF, MONSIEUR GUSTAV, ENTREMONT, MADAME LOÏK OU CHEDDAR CATHEDRAL CITY | CHEESE
-- **Brand:** ALEXIS DE PORTNEUF | MONSIEUR GUSTAV | CATHEDRAL CITY
-- **Category (English):** Dairy & Eggs > Cheese
-- **Category (French):** Produits laitiers et œufs > Fromage
-- **How classified:** rule (`cheese`)
-- **Price:** 15.00
-- **Printed Price:** “15.0”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436316544/1791013140/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `32d1c3b2aeda5c97`
-- **Conditions:** `{"discount": 40}`
-- **Raw:** `{"id": 1045441190, "flyer_id": 8173045, "name": "FROMAGE ALEXIS DE PORTNEUF, MONSIEUR GUSTAV, ENTREMONT, MADAME LOÏK OU CHEDDAR CATHEDRAL CITY | CHEESE", "display_type": 1, "brand": "ALEXIS DE PORTNEUF | MONSIEUR GUSTAV | CATHEDRAL CITY", "left": 1521.94, "bottom": -360.01, "right": 2274.09, "top": -39.19, "cutout_image_url": "http://f.wishabi.net/page_items/436316544/1791013140/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destinatio`
-
-### Item 7229
-
-![item 7229](images/item-7229.jpg)
-
-- **Name (French):** HARD SQUASH | COURGES DURES
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** 1.49
-- **Printed Price:** “1.49”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436316582/1791013135/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `90c32a5625105720`
-- **Conditions:** `{"discount": 40}`
-- **Raw:** `{"id": 1045441324, "flyer_id": 8173045, "name": "HARD SQUASH | COURGES DURES", "display_type": 1, "brand": null, "left": 2878.01, "bottom": -1277.41, "right": 3167.63, "top": -986.62, "cutout_image_url": "http://f.wishabi.net/page_items/436316582/1791013135/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 40, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "1.49", "print_id": null,`
-
-### Item 7287
-
-![item 7287](images/item-7287.jpg)
-
-- **Name (French):** TÊTE DE FILET MIGNON DE BŒUF | BEEF TENDERLOIN, VACUUM PACK
-- **Category (English):** Meat > Beef
-- **Category (French):** Viande > Bœuf
-- **How classified:** rule (`beef`)
-- **Price:** 16.99
-- **Printed Price:** “16.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436526893/1791221475/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `3094f1e2c49dc3a1`
-- **Raw:** `{"id": 1045754870, "flyer_id": 8173045, "name": "TÊTE DE FILET MIGNON DE BŒUF | BEEF TENDERLOIN, VACUUM PACK", "display_type": 1, "brand": null, "left": 354.75, "bottom": -513.12, "right": 733.57, "top": -255.87, "cutout_image_url": "http://f.wishabi.net/page_items/436526893/1791221475/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "pr`
-
-### Item 7300
-
-![item 7300](images/item-7300.jpg)
-
-- **Name (French):** POMPANO DÉCONGELÉ | THAWED POMPANO
-- **Category (English):** Fish & Seafood > Fish
-- **Category (French):** Poissons et fruits de mer > Poisson
-- **How classified:** rule (`fish`)
-- **Price:** 5.99
-- **Printed Price:** “5.99”
-- **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436526909/1791221474/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `d3280ee043319ec4`
-- **Conditions:** `{"discount": 14}`
-- **Raw:** `{"id": 1045754969, "flyer_id": 8173045, "name": "POMPANO DÉCONGELÉ | THAWED POMPANO", "display_type": 1, "brand": null, "left": 5178.49, "bottom": -517.68, "right": 5466.58, "top": -140.27, "cutout_image_url": "http://f.wishabi.net/page_items/436526909/1791221474/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 14, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "5.99", "print_id":`
-
-## Flyer 39 — valid 2026-10-15 → 2026-10-21 (6 classified items, 7 unclassified)
+## Flyer 39 — valid 2026-10-15 → 2026-10-21 (10 classified items, 10 unclassified)
 
 Source ref: `8182773` · fetched 2026-10-13T04:28:22.888Z
 
-### Item 7321
+### Item 7339
 
-![item 7321](images/item-7321.jpg)
+![item 7339](images/item-7339.jpg)
 
-- **Name (French):** VINAIGRETTE ADONIS | ADONIS DRESSING
-- **Brand:** ADONIS
-- **Category (English):** Pantry > Condiments
-- **Category (French):** Produits du garde-manger > Condiments et garnitures
-- **How classified:** rule (`condiments`)
-- **Price:** 5.99
-- **Printed Price:** “5.99”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436891286/1791519992/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `5bae2d6fc9ac71fb`
-- **Conditions:** `{"discount": 14}`
-- **Raw:** `{"id": 1046708465, "flyer_id": 8182773, "name": "VINAIGRETTE ADONIS | ADONIS DRESSING", "display_type": 1, "brand": "ADONIS", "left": 7197.18, "bottom": -1284.88, "right": 7481.79, "top": -1031.64, "cutout_image_url": "http://f.wishabi.net/page_items/436891286/1791519992/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 14, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.99", "pr`
-
-### Item 7325
-
-![item 7325](images/item-7325.jpg)
-
-- **Name (French):** FROMAGE DE CHÈVRE ALEXIS DE PORTNEUF | ALEXIS DE PORTNEUF GOAT CHEESE
-- **Brand:** Alexis de Portneuf
-- **Category (English):** Dairy & Eggs > Cheese
-- **Category (French):** Produits laitiers et œufs > Fromage
-- **How classified:** rule (`cheese`)
-- **Price:** 3.99
-- **Printed Price:** “3.99”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436891269/1791519999/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `4a3ce0981deeef69`
-- **Conditions:** `{"discount": 33}`
-- **Raw:** `{"id": 1046708360, "flyer_id": 8182773, "name": "FROMAGE DE CHÈVRE ALEXIS DE PORTNEUF | ALEXIS DE PORTNEUF GOAT CHEESE", "display_type": 1, "brand": "Alexis de Portneuf", "left": 6615.54, "bottom": -1281.15, "right": 6897.57, "top": -1028.81, "cutout_image_url": "http://f.wishabi.net/page_items/436891269/1791519999/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 33, "available_to": "2026-10-21T23:59:59-04`
-
-### Item 7350
-
-![item 7350](images/item-7350.jpg)
-
-- **Name (French):** veal de grain haché maigre
-- **Category (English):** Meat > Lamb & Veal
-- **Category (French):** Viande > Agneau et veau
-- **How classified:** rule (`lamb-veal`)
-- **Price:** 5.44
-- **Printed Price:** “5.44”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436891120/1791519994/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `7616aff8d56cba62`
-- **Conditions:** `{"discount": 36}`
-- **Raw:** `{"id": 1046708015, "flyer_id": 8182773, "name": "veal de grain haché maigre", "display_type": 1, "brand": null, "left": 345.56, "bottom": -1002.09, "right": 747.23, "top": -757.5, "cutout_image_url": "http://f.wishabi.net/page_items/436891120/1791519994/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 36, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.44", "print_id": null, "sh`
-
-### Item 7358
-
-![item 7358](images/item-7358.jpg)
-
-- **Name (French):** olives vertes ou noires Cedar |Cedar green or black olives
+- **Name (French):** COULIS DE TOMATE BELGUSTO | BELGUSTO TOMATO PASSATA
+- **Brand:** Belgusto
 - **Category (English):** Pantry > Canned & Pickled
 - **Category (French):** Produits du garde-manger > Produits en conserve et marinés
 - **How classified:** rule (`canned-pickled`)
-- **Price:** 4.00
-- **Printed Price:** “4.0”
+- **Price:** 1.99
+- **Printed Price:** “1.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436891131/1791519986/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `9c8d9fadb7c3c3fc`
-- **Raw:** `{"id": 1046708026, "flyer_id": 8182773, "name": "olives vertes ou noires Cedar |Cedar green or black olives", "display_type": 1, "brand": null, "left": 1154.78, "bottom": -2546.03, "right": 1724.81, "top": -2334.45, "cutout_image_url": "http://f.wishabi.net/page_items/436891131/1791519986/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, `
+- **Image source URL:** http://f.wishabi.net/page_items/436891107/1791519986/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `bfa34dcb3b4fc66c`
+- **Conditions:** `{"discount": 33}`
+- **Raw:** `{"id": 1046708002, "flyer_id": 8182773, "name": "COULIS DE TOMATE BELGUSTO | BELGUSTO TOMATO PASSATA", "display_type": 1, "brand": "Belgusto", "left": 355.79, "bottom": -2186.89, "right": 600.01, "top": -1890.86, "cutout_image_url": "http://f.wishabi.net/page_items/436891107/1791519986/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 33, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "pric`
+
+### Item 7363
+
+![item 7363](images/item-7363.jpg)
+
+- **Name (French):** DATTES MEDJOOL | MEDJOOL DATES
+- **Category (English):** Fruits & Vegetables > Dried Fruits & Nuts
+- **Category (French):** Fruits et légumes > Fruits séchés et noix
+- **How classified:** rule (`dried-fruits-nuts`)
+- **Price:** 8.99
+- **Printed Price:** “8.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891176/1791519988/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `73aaefd0683ae468`
+- **Raw:** `{"id": 1046708046, "flyer_id": 8182773, "name": "DATTES MEDJOOL | MEDJOOL DATES", "display_type": 1, "brand": null, "left": 2880.29, "bottom": -2051.12, "right": 3164.7, "top": -1795.76, "cutout_image_url": "http://f.wishabi.net/page_items/436891176/1791519988/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "8.99", "print_id": `
 
 ### Item 7391
 
@@ -163,85 +56,186 @@ Source ref: `8182773` · fetched 2026-10-13T04:28:22.888Z
 - **Details:** confidence: 1.00 · item_key: `747893a1f97f11de`
 - **Raw:** `{"id": 1046708619, "flyer_id": 8182773, "name": "kaak au lait", "display_type": 1, "brand": null, "left": 8838.74, "bottom": -1227.65, "right": 9508.56, "top": -595.82, "cutout_image_url": "http://f.wishabi.net/page_items/436891313/1791519986/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.99", "print_id": null, "short_name"`
 
-### Item 7493
+### Item 7397
 
-![item 7493](images/item-7493.jpg)
+![item 7397](images/item-7397.jpg)
 
-- **Name (French):** biscuits Élégance | Élégance cookies
-- **Brand:** ELEGANCE
-- **Category (English):** Snacks, Chips & Candy > Crackers & Cookies
-- **Category (French):** Grignotines, croustilles et friandises > Craquelins et biscuits
-- **How classified:** rule (`crackers-cookies`)
-- **Price:** 2.99
-- **Printed Price:** “2.99”
+- **Name (French):** pâté trois viandes Irrésistible | Irresistible homestyle three-meat pie
+- **Brand:** Irresistible
+- **Category (English):** Deli > Deli Meat
+- **Category (French):** Charcuterie > Charcuterie
+- **How classified:** rule (`deli-meat`)
+- **Price:** 7.99
+- **Printed Price:** “7.99”
 - **Unit:** —
 - **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436891291/1791519996/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `6e9bc5f8f915a47d`
-- **Conditions:** `{"discount": 50}`
-- **Raw:** `{"id": 1046708494, "flyer_id": 8182773, "name": "biscuits Élégance | Élégance cookies", "display_type": 1, "brand": "ELEGANCE", "left": 7767.39, "bottom": -769.94, "right": 8050.42, "top": -512.48, "cutout_image_url": "http://f.wishabi.net/page_items/436891291/1791519996/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 50, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "2.99", "pr`
+- **Image source URL:** http://f.wishabi.net/page_items/436891207/1791519987/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `6d06946d255aa3ce`
+- **Conditions:** `{"discount": 20}`
+- **Raw:** `{"id": 1046708077, "flyer_id": 8182773, "name": "pâté trois viandes Irrésistible | Irresistible homestyle three-meat pie", "display_type": 1, "brand": "Irresistible", "left": 3736.36, "bottom": -2552.01, "right": 4021.46, "top": -2183.54, "cutout_image_url": "http://f.wishabi.net/page_items/436891207/1791519987/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 20, "available_to": "2026-10-21T23:59:59-04:00"`
+
+### Item 7407
+
+![item 7407](images/item-7407.jpg)
+
+- **Name (French):** BIÈRE SAPPORO OU GROLSCH | SAPPORO OR GROLSCH BEER
+- **Category (English):** Beer & Wine > Beer
+- **Category (French):** Bières et vins > Bières
+- **How classified:** rule (`beer`)
+- **Price:** 19.99
+- **Printed Price:** “19.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891293/1791519997/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `161aaa1597a5c88a`
+- **Conditions:** `{"discount": 29}`
+- **Raw:** `{"id": 1046708507, "flyer_id": 8182773, "name": "BIÈRE SAPPORO OU GROLSCH | SAPPORO OR GROLSCH BEER", "display_type": 1, "brand": null, "left": 6919.92, "bottom": -2050.26, "right": 7197.4, "top": -1795.37, "cutout_image_url": "http://f.wishabi.net/page_items/436891293/1791519997/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 29, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "1`
+
+### Item 7409
+
+![item 7409](images/item-7409.jpg)
+
+- **Name (French):** CHOU VERT PLAT | FLAT GREEN CABBAGE
+- **Category (English):** Fruits & Vegetables > Fresh Vegetables
+- **Category (French):** Fruits et légumes > Légumes frais
+- **How classified:** rule (`vegetables`)
+- **Price:** 1.49
+- **Printed Price:** “1.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891195/1791520001/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `4a5469a111bf9383`
+- **Conditions:** `{"discount": 25}`
+- **Raw:** `{"id": 1046708065, "flyer_id": 8182773, "name": "CHOU VERT PLAT | FLAT GREEN CABBAGE", "display_type": 1, "brand": null, "left": 2322.22, "bottom": -685.42, "right": 2591.42, "top": -391.83, "cutout_image_url": "http://f.wishabi.net/page_items/436891195/1791520001/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "1.49", "print_id"`
+
+### Item 7426
+
+![item 7426](images/item-7426.jpg)
+
+- **Name (French):** labneh Phoenicia
+- **Brand:** PHOENICIA
+- **Category (English):** International Foods > Middle Eastern Foods
+- **Category (French):** Aliments internationaux > Aliments du Moyen-Orient
+- **How classified:** rule (`middle-eastern`)
+- **Price:** 0.88
+- **Printed Price:** “0.88”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891126/1791519998/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `65288f407a6ef789`
+- **Raw:** `{"id": 1046708021, "flyer_id": 8182773, "name": "labneh Phoenicia", "display_type": 1, "brand": "PHOENICIA", "left": 736.5, "bottom": -472.44, "right": 1138.8, "top": -198.8, "cutout_image_url": "http://f.wishabi.net/page_items/436891126/1791519998/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "0.88", "print_id": null, "short`
+
+### Item 7442
+
+![item 7442](images/item-7442.jpg)
+
+- **Name (French):** courges dures | hard squash
+- **Category (English):** Fruits & Vegetables > Fresh Vegetables
+- **Category (French):** Fruits et légumes > Légumes frais
+- **How classified:** rule (`vegetables`)
+- **Price:** 1.49
+- **Printed Price:** “1.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891201/1791520005/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `502674352afbeb1f`
+- **Conditions:** `{"discount": 40}`
+- **Raw:** `{"id": 1046708071, "flyer_id": 8182773, "name": "courges dures | hard squash", "display_type": 1, "brand": null, "left": 3161.55, "bottom": -984.24, "right": 3434.41, "top": -685.71, "cutout_image_url": "http://f.wishabi.net/page_items/436891201/1791520005/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 40, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "1.49", "print_id": null, `
+
+### Item 7494
+
+![item 7494](images/item-7494.jpg)
+
+- **Name (French):** BARAZIK
+- **Category (English):** International Foods > Middle Eastern Foods
+- **Category (French):** Aliments internationaux > Aliments du Moyen-Orient
+- **How classified:** rule (`middle-eastern`)
+- **Price:** 9.49
+- **Printed Price:** “9.49”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891311/1791519984/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `ab1ce9d827675f47`
+- **Raw:** `{"id": 1046708608, "flyer_id": 8182773, "name": "BARAZIK", "display_type": 1, "brand": null, "left": 8096.04, "bottom": -1230.8, "right": 8827.7, "top": -595.56, "cutout_image_url": "http://f.wishabi.net/page_items/436891311/1791519984/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "9.49", "print_id": null, "short_name": null,`
+
+### Item 7504
+
+![item 7504](images/item-7504.jpg)
+
+- **Name (French):** kiwis
+- **Category (English):** Fruits & Vegetables > Fresh Fruits
+- **Category (French):** Fruits et légumes > Fruits frais
+- **How classified:** rule (`fruits`)
+- **Price:** 5.99
+- **Printed Price:** “5.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891171/1791519984/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `07acb7ae64b41eb4`
+- **Conditions:** `{"discount": 25}`
+- **Raw:** `{"id": 1046708041, "flyer_id": 8182773, "name": "kiwis", "display_type": 1, "brand": null, "left": 2589.81, "bottom": -2553.42, "right": 2879.74, "top": -2308.22, "cutout_image_url": "http://f.wishabi.net/page_items/436891171/1791519984/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "5.99", "print_id": null, "short_name": null, `
 
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
 
-— from flyer 38 (valid 2026-10-08 → 2026-10-14)
+— from flyer 39 (valid 2026-10-15 → 2026-10-21)
 
-### Item 7161
+### Item 7315
 
-![item 7161](images/item-7161.jpg)
+![item 7315](images/item-7315.jpg)
 
-- **Name (French):** SAUCE CEDAR | CEDAR SAUCE
-- **Brand:** Cedar
+- **Name (French):** PÂTE FILO SURGELÉE ELZYMI | ELZYMI FROZEN PHYLLO DOUGH
+- **Brand:** ELZYMI
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Price:** 3.49
-- **Printed Price:** “3.49”
+- **Price:** 5.99
+- **Printed Price:** “5.99”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436316682/1791013135/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `483b109e83404733`
-- **Conditions:** `{"discount": 22}`
-- **Raw:** `{"id": 1045442114, "flyer_id": 8173045, "name": "SAUCE CEDAR | CEDAR SAUCE", "display_type": 1, "brand": "Cedar", "left": 7485.58, "bottom": -508.61, "right": 7767.95, "top": -129.66, "cutout_image_url": "http://f.wishabi.net/page_items/436316682/1791013135/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 22, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "3.49", "print_id": null,`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891304/1791520005/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `8ff0ffe825a962e7`
+- **Conditions:** `{"discount": 25}`
+- **Raw:** `{"id": 1046708572, "flyer_id": 8182773, "name": "PÂTE FILO SURGELÉE ELZYMI | ELZYMI FROZEN PHYLLO DOUGH", "display_type": 1, "brand": "ELZYMI", "left": 7771.4, "bottom": -1794.02, "right": 8050.38, "top": -1294.35, "cutout_image_url": "http://f.wishabi.net/page_items/436891304/1791520005/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 25, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "pr`
 
-— from flyer 38 (valid 2026-10-08 → 2026-10-14)
+— from flyer 39 (valid 2026-10-15 → 2026-10-21)
 
-### Item 7266
+### Item 7334
 
-![item 7266](images/item-7266.jpg)
+![item 7334](images/item-7334.jpg)
 
-- **Name (French):** PETIT FOUR ASSORTIS | ASSORTED PETIT FOUR
+- **Name (French):** PISTACHE
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Price:** 14.49
-- **Printed Price:** “14.49”
+- **Price:** 4.99
+- **Printed Price:** “4.99”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436316615/1791013126/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `2f25a986abb23d43`
-- **Raw:** `{"id": 1045441850, "flyer_id": 8173045, "name": "PETIT FOUR ASSORTIS | ASSORTED PETIT FOUR", "display_type": 1, "brand": null, "left": 6337.11, "bottom": -2050.92, "right": 6619.76, "top": -1794.6, "cutout_image_url": "http://f.wishabi.net/page_items/436316615/1791013126/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-14T23:59:59-04:00", "video_url": null, "price": "14.49", `
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436909340/1791519989/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `dca5c174d9ff3ed5`
+- **Raw:** `{"id": 1046708643, "flyer_id": 8182773, "name": "PISTACHE", "display_type": 1, "brand": null, "left": 8688.34, "bottom": -1681.67, "right": 9105.34, "top": -1397.46, "cutout_image_url": "http://f.wishabi.net/page_items/436909340/1791519989/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "4.99", "print_id": null, "short_name": n`
 
-— from flyer 38 (valid 2026-10-08 → 2026-10-14)
+— from flyer 39 (valid 2026-10-15 → 2026-10-21)
 
-### Item 7272
+### Item 7352
 
-![item 7272](images/item-7272.jpg)
+![item 7352](images/item-7352.jpg)
 
-- **Name (French):** CASSOULET OU FOIE GRAS MAISON FAYARD | MAISON FAYARD CASSOULET OR FOIE GRAS
-- **Brand:** Maison Fayard
+- **Name (French):** TZATZKI! STYLE GREC DELPHI
+- **Brand:** DELPHI
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Price:** 14.99
-- **Printed Price:** “14.99”
+- **Price:** 13.90
+- **Printed Price:** “13.9”
 - **Unit:** —
-- **Item validity:** 2026-10-08 → 2026-10-14
-- **Image source URL:** http://f.wishabi.net/page_items/436316633/1791013137/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `a1d4d1092991e3d5`
-- **Conditions:** `{"discount": 35}`
-- **Raw:** `{"id": 1045441991, "flyer_id": 8173045, "name": "CASSOULET OU FOIE GRAS MAISON FAYARD | MAISON FAYARD CASSOULET OR FOIE GRAS", "display_type": 1, "brand": "Maison Fayard", "left": 6615.9, "bottom": -1027.44, "right": 6905.52, "top": -774.29, "cutout_image_url": "http://f.wishabi.net/page_items/436316633/1791013137/extra_large.jpg", "valid_from": "2026-10-08T00:00:00-04:00", "valid_to": "2026-10-14T23:59:59-04:00", "page_destination": null, "discount": 35, "available_to": "2026-10-14T23:59:59-04:`
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891140/1791519993/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `2b5cae5ac7b623ef`
+- **Conditions:** `{"discount": 18}`
+- **Raw:** `{"id": 1046708035, "flyer_id": 8182773, "name": "TZATZKI! STYLE GREC DELPHI", "display_type": 1, "brand": "DELPHI", "left": 2017.77, "bottom": -454.04, "right": 2292.22, "top": -125.59, "cutout_image_url": "http://f.wishabi.net/page_items/436891140/1791519993/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 18, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "13.9", "print_id": nul`
 
 — from flyer 39 (valid 2026-10-15 → 2026-10-21)
 
@@ -262,6 +256,25 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Details:** confidence: 1.00 · item_key: `3b33216384cd92b1`
 - **Conditions:** `{"discount": 18}`
 - **Raw:** `{"id": 1046708502, "flyer_id": 8182773, "name": "amuse-gueule Prana | Prana snack", "display_type": 1, "brand": "PRANA", "left": 7479.94, "bottom": -767.98, "right": 7767.04, "top": -510.54, "cutout_image_url": "http://f.wishabi.net/page_items/436891292/1791519997/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 18, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "6.99", "print_id"`
+
+— from flyer 39 (valid 2026-10-15 → 2026-10-21)
+
+### Item 7455
+
+![item 7455](images/item-7455.jpg)
+
+- **Name (French):** TASSERGALE
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Price:** 3.99
+- **Printed Price:** “3.99”
+- **Unit:** —
+- **Item validity:** 2026-10-15 → 2026-10-21
+- **Image source URL:** http://f.wishabi.net/page_items/436891240/1791519995/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `a0abba2c2a06254b`
+- **Conditions:** `{"discount": 33}`
+- **Raw:** `{"id": 1046708173, "flyer_id": 8182773, "name": "TASSERGALE", "display_type": 1, "brand": null, "left": 4892.99, "bottom": -515.2, "right": 5178.86, "top": -139.33, "cutout_image_url": "http://f.wishabi.net/page_items/436891240/1791519995/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 33, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "3.99", "print_id": null, "short_name": null`
 
 — from flyer 39 (valid 2026-10-15 → 2026-10-21)
 
@@ -320,24 +333,6 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Details:** confidence: 1.00 · item_key: `30dc389e81073d62`
 - **Conditions:** `{"discount": 15}`
 - **Raw:** `{"id": 1046708671, "flyer_id": 8182773, "name": "Canadian Tire gift cards", "display_type": 1, "brand": "Canadian Tire", "left": 10370.1, "bottom": -2510.92, "right": 11524.7, "top": -23.81, "cutout_image_url": "http://f.wishabi.net/page_items/436891310/1791519984/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": 15, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "", "print_id": nu`
-
-— from flyer 39 (valid 2026-10-15 → 2026-10-21)
-
-### Item 7498
-
-![item 7498](images/item-7498.jpg)
-
-- **Name (French):** KORBAN
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Price:** 4.49
-- **Printed Price:** “4.49”
-- **Unit:** —
-- **Item validity:** 2026-10-15 → 2026-10-21
-- **Image source URL:** http://f.wishabi.net/page_items/436891312/1791519985/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `e7cd42738d06e140`
-- **Raw:** `{"id": 1046708614, "flyer_id": 8182773, "name": "KORBAN", "display_type": 1, "brand": null, "left": 9514.99, "bottom": -1222.97, "right": 10328.0, "top": -573.48, "cutout_image_url": "http://f.wishabi.net/page_items/436891312/1791519985/extra_large.jpg", "valid_from": "2026-10-15T00:00:00-04:00", "valid_to": "2026-10-21T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-21T23:59:59-04:00", "video_url": null, "price": "4.49", "print_id": null, "short_name": null`
 
 — from flyer 39 (valid 2026-10-15 → 2026-10-21)
 

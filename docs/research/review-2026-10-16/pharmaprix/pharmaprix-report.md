@@ -78,107 +78,108 @@ Source ref: `8178714` · fetched 2026-10-13T03:14:40.869Z
 
 Source ref: `8186471` · fetched 2026-10-16T12:49:14.800Z
 
-### Item 14389
+### Item 14393
 
-![item 14389](images/item-14389.jpg)
+![item 14393](images/item-14393.jpg)
 
-- **Name (French):** PC SPLENDIDO Huile d'olive extra vierge extraite à froid
-- **Category (English):** Pantry > Oils & Vinegar
-- **Category (French):** Produits du garde-manger > Huile et vinaigre
-- **How classified:** rule (`oils-vinegar`)
-- **Price:** 9.99
-- **Printed Price:** “9.99”
+- **Name (French):** PC Morceaux de poitrine de poulet surgelés entièrement cuits (800 g) ou/or ailes de poulet (907 g)
+- **Category (English):** Frozen Food > Frozen Meat and Seafood
+- **Category (French):** Produits surgelés > Viande et fruits de mer surgelés
+- **How classified:** frozen-remap (`chicken-turkey`)
+- **Size:** 907 g
+- **Price:** 17.49
+- **Printed Price:** “17.49”
 - **Unit:** —
 - **Item validity:** 2026-10-17 → 2026-10-22
-- **Image source URL:** http://f.wishabi.net/page_items/437024216/1791598958/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `133e8b179727b998`
-- **Raw:** `{"id": 1047253234, "flyer_id": 8186471, "name": "PC SPLENDIDO Huile d'olive extra vierge extraite à froid", "display_type": 1, "brand": null, "left": 5749.54, "bottom": -1195.49, "right": 5973.61, "top": -949.51, "cutout_image_url": "http://f.wishabi.net/page_items/437024216/1791598958/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-22T23:59:59-04:00", "video_url": null, "pr`
+- **Image source URL:** http://f.wishabi.net/page_items/437023457/1791598957/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `0c88fd4538017277`
+- **Raw:** `{"id": 1047254061, "flyer_id": 8186471, "name": "PC Morceaux de poitrine de poulet surgelés entièrement cuits (800 g) ou/or ailes de poulet (907 g)", "display_type": 1, "brand": null, "left": 6096.13, "bottom": -1448.94, "right": 6317.58, "top": -1196.71, "cutout_image_url": "http://f.wishabi.net/page_items/437023457/1791598957/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10`
 
-### Item 14402
+### Item 14406
 
-![item 14402](images/item-14402.jpg)
+![item 14406](images/item-14406.jpg)
 
-- **Name (French):** PEPPERIDGE FARM Biscuits ou GOLDFISH craquelins cuits au four
-- **Category (English):** Snacks, Chips & Candy > Crackers & Cookies
-- **Category (French):** Grignotines, croustilles et friandises > Craquelins et biscuits
-- **How classified:** rule (`crackers-cookies`)
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-17 → 2026-10-22
-- **Image source URL:** http://f.wishabi.net/page_items/437025172/1791598974/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `ae1db125baa1f758`
-- **Raw:** `{"id": 1047256611, "flyer_id": 8186471, "name": "PEPPERIDGE FARM Biscuits ou GOLDFISH craquelins cuits au four", "display_type": 1, "brand": null, "left": 9409.88, "bottom": -2162.74, "right": 9567.46, "top": -1940.55, "cutout_image_url": "http://f.wishabi.net/page_items/437025172/1791598974/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-22T23:59:59-04:00", "video_url": nul`
-
-### Item 14456
-
-![item 14456](images/item-14456.jpg)
-
-- **Name (French):** PUMPKIN MASTERS Ensemble de découpe de citrouille t
-- **Brand:** Pumpkin Masters
-- **Category (English):** Fruits & Vegetables > Fresh Vegetables
-- **Category (French):** Fruits et légumes > Légumes frais
-- **How classified:** rule (`vegetables`)
-- **Price:** —
-- **Printed Price:** “None”
-- **Unit:** —
-- **Item validity:** 2026-10-17 → 2026-10-23
-- **Image source URL:** http://f.wishabi.net/page_items/437024592/1791598974/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `335ac04b27a46e87`
-- **Conditions:** `{"discount": 15}`
-- **Raw:** `{"id": 1047255569, "flyer_id": 8186471, "name": "PUMPKIN MASTERS Ensemble de découpe de citrouille t", "display_type": 1, "brand": "Pumpkin Masters", "left": 7798.49, "bottom": -484.77, "right": 8175.32, "top": -128.49, "cutout_image_url": "http://f.wishabi.net/page_items/437024592/1791598974/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-23T23:59:59-04:00", "page_destination": null, "discount": 15, "available_to": "2026-10-22T23:59:59-04:00", "video_url": null`
-
-### Item 14458
-
-![item 14458](images/item-14458.jpg)
-
-- **Name (French):** POWERADE Boisson désaltérante (6 x 591 mL) ou FUZE thé glacé (12 x 355 mL)
+- **Name (French):** ROCKSTAR Boisson énergisante (473 mL), POWERADE (710 mL) ou GATORADE (591 mL - 710 mL) boisson désaltérante
 - **Category (English):** Drinks > Sports & Energy
 - **Category (French):** Boissons > Boissons énergisantes et pour sportifs
 - **How classified:** rule (`sports-energy`)
-- **Size:** 12 x 355 mL
-- **Price:** 7.79
-- **Printed Price:** “7.79”
-- **Unit:** —
-- **Item validity:** 2026-10-17 → 2026-10-22
-- **Image source URL:** http://f.wishabi.net/page_items/437025143/1791598955/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `7c199a0c741da87e`
-- **Raw:** `{"id": 1047255761, "flyer_id": 8186471, "name": "POWERADE Boisson désaltérante (6 x 591 mL) ou FUZE thé glacé (12 x 355 mL)", "display_type": 1, "brand": null, "left": 9568.69, "bottom": -681.48, "right": 9834.27, "top": -393.5, "cutout_image_url": "http://f.wishabi.net/page_items/437025143/1791598955/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-22T23:59:59-04:00", "video`
-
-### Item 14470
-
-![item 14470](images/item-14470.jpg)
-
-- **Name (French):** CHEEZ-IT Collations de craquelins cuits au four
-- **Brand:** Cheez-It
-- **Category (English):** Snacks, Chips & Candy > Crackers & Cookies
-- **Category (French):** Grignotines, croustilles et friandises > Craquelins et biscuits
-- **How classified:** rule (`crackers-cookies`)
+- **Size:** 710 mL
 - **Price:** 6.00
 - **Printed Price:** “6.0”
 - **Unit:** —
 - **Item validity:** 2026-10-17 → 2026-10-22
-- **Image source URL:** http://f.wishabi.net/page_items/437026019/1791598977/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `952af445f6a9a3ad`
-- **Raw:** `{"id": 1047263284, "flyer_id": 8186471, "name": "CHEEZ-IT Collations de craquelins cuits au four", "display_type": 1, "brand": "Cheez-It", "left": 24523.3, "bottom": -947.18, "right": 24745.4, "top": -698.44, "cutout_image_url": "http://f.wishabi.net/page_items/437026019/1791598977/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-22T23:59:59-04:00", "video_url": null, "price"`
+- **Image source URL:** http://f.wishabi.net/page_items/437025667/1791598989/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `1c982b2f07dedaf4`
+- **Raw:** `{"id": 1047262173, "flyer_id": 8186471, "name": "ROCKSTAR Boisson énergisante (473 mL), POWERADE (710 mL) ou GATORADE (591 mL - 710 mL) boisson désaltérante", "display_type": 1, "brand": null, "left": 21570.8, "bottom": -1806.98, "right": 21916.0, "top": -1511.73, "cutout_image_url": "http://f.wishabi.net/page_items/437025667/1791598989/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, "available_to":`
 
-### Item 14493
+### Item 14460
 
-![item 14493](images/item-14493.jpg)
+![item 14460](images/item-14460.jpg)
 
-- **Name (French):** PHILOSOPHY Le coffret-découverte de 2 pièces contient : Vanilla Hug et/ou Coconut Rush Brume pour le corps (30 mL)
-- **Brand:** Philosophy
-- **Category (English):** Fruits & Vegetables > Fresh Fruits
-- **Category (French):** Fruits et légumes > Fruits frais
-- **How classified:** rule (`fruits`)
-- **Size:** 30 mL
-- **Price:** 23.00
-- **Printed Price:** “23.0”
+- **Name (French):** BODYARMOR Boisson hydratante (473 mL) ou REIGN STORM boisson énergisante (355 mL)
+- **Brand:** BODYARMOR
+- **Category (English):** Drinks > Sports & Energy
+- **Category (French):** Boissons > Boissons énergisantes et pour sportifs
+- **How classified:** rule (`sports-energy`)
+- **Size:** 355 mL
+- **Price:** 3.29
+- **Printed Price:** “3.29”
 - **Unit:** —
 - **Item validity:** 2026-10-17 → 2026-10-22
-- **Image source URL:** http://f.wishabi.net/page_items/437024962/1791598965/extra_large.jpg
-- **Details:** confidence: 1.00 · item_key: `b3d19bd0a17ffcaf`
-- **Raw:** `{"id": 1047259315, "flyer_id": 8186471, "name": "PHILOSOPHY Le coffret-découverte de 2 pièces contient : Vanilla Hug et/ou Coconut Rush Brume pour le corps (30 mL)", "display_type": 1, "brand": "Philosophy", "left": 15774.0, "bottom": -1450.91, "right": 15991.9, "top": -1201.21, "cutout_image_url": "http://f.wishabi.net/page_items/437024962/1791598965/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, `
+- **Image source URL:** http://f.wishabi.net/page_items/437025146/1791598957/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `8653bd5ae3ba2d11`
+- **Raw:** `{"id": 1047255845, "flyer_id": 8186471, "name": "BODYARMOR Boisson hydratante (473 mL) ou REIGN STORM boisson énergisante (355 mL)", "display_type": 1, "brand": "BODYARMOR", "left": 9565.33, "bottom": -389.0, "right": 9833.11, "top": -103.94, "cutout_image_url": "http://f.wishabi.net/page_items/437025146/1791598957/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-22T23:59:59-`
+
+### Item 14462
+
+![item 14462](images/item-14462.jpg)
+
+- **Name (French):** MAYNARDS  Friandises
+- **Brand:** Maynards
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
+- **Price:** 5.00
+- **Printed Price:** “5.0”
+- **Unit:** —
+- **Item validity:** 2026-10-17 → 2026-10-22
+- **Image source URL:** http://f.wishabi.net/page_items/437025164/1791598969/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `659e00e4a338dd47`
+- **Raw:** `{"id": 1047256380, "flyer_id": 8186471, "name": "MAYNARDS Friandises", "display_type": 1, "brand": "Maynards", "left": 9931.38, "bottom": -1861.4, "right": 10114.9, "top": -1577.75, "cutout_image_url": "http://f.wishabi.net/page_items/437025164/1791598969/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "discount": null, "available_to": "2026-10-22T23:59:59-04:00", "video_url": null, "price": "5.0", "print_id": null, `
+
+### Item 14474
+
+![item 14474](images/item-14474.jpg)
+
+- **Name (French):** BRAGG Vinaigre de cidre de pomme biologique Organic Apple Cider Vinegar (946 mL), PC huile de pépins de raisin (750 mL) ou BECEL huile (1 L)
+- **Category (English):** Pantry > Oils & Vinegar
+- **Category (French):** Produits du garde-manger > Huile et vinaigre
+- **How classified:** rule (`specific-wine-vinegar`)
+- **Size:** 1 L
+- **Price:** 8.99
+- **Printed Price:** “8.99”
+- **Unit:** —
+- **Item validity:** 2026-10-17 → 2026-10-22
+- **Image source URL:** http://f.wishabi.net/page_items/437026029/1791598983/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `8df7634ec3db2c26`
+- **Raw:** `{"id": 1047263456, "flyer_id": 8186471, "name": "BRAGG Vinaigre de cidre de pomme biologique Organic Apple Cider Vinegar (946 mL), PC huile de pépins de raisin (750 mL) ou BECEL huile (1 L)", "display_type": 1, "brand": null, "left": 24089.0, "bottom": -697.35, "right": 24305.8, "top": -452.41, "cutout_image_url": "http://f.wishabi.net/page_items/437026029/1791598983/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null, "d`
+
+### Item 14497
+
+![item 14497](images/item-14497.jpg)
+
+- **Name (French):** FAITES VOTRE COMBINAISON PANDA Réglisse tendre originale (170 g), LIFE SAVERS (150 g - 180 g) ou WERTHER'S ORIGINAL (60 g - 150 g) friandises
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** rule (`candy-chocolate`)
+- **Size:** 150 g
+- **Price:** 6.00
+- **Printed Price:** “6.0”
+- **Unit:** —
+- **Item validity:** 2026-10-17 → 2026-10-22
+- **Image source URL:** http://f.wishabi.net/page_items/437025650/1791598978/extra_large.jpg
+- **Details:** confidence: 1.00 · item_key: `dd543132b5ca3e58`
+- **Raw:** `{"id": 1047261731, "flyer_id": 8186471, "name": "FAITES VOTRE COMBINAISON PANDA Réglisse tendre originale (170 g), LIFE SAVERS (150 g - 180 g) ou WERTHER'S ORIGINAL (60 g - 150 g) friandises", "display_type": 1, "brand": null, "left": 21212.6, "bottom": -2431.32, "right": 21430.9, "top": -2125.13, "cutout_image_url": "http://f.wishabi.net/page_items/437025650/1791598978/extra_large.jpg", "valid_from": "2026-10-17T00:00:00-04:00", "valid_to": "2026-10-22T23:59:59-04:00", "page_destination": null,`
 
 ## Unclassified items — kept for review
 
