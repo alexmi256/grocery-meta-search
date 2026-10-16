@@ -101,3 +101,12 @@ CREATE TABLE IF NOT EXISTS price_observations (
     created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 CREATE INDEX IF NOT EXISTS idx_obs_key ON price_observations(item_key, valid_from);
+
+CREATE TABLE IF NOT EXISTS item_classifications (
+    item_id INTEGER PRIMARY KEY REFERENCES flyer_items(id),
+    department TEXT NOT NULL,
+    subcategory TEXT NOT NULL,
+    method TEXT NOT NULL,            -- rule | frozen-remap | store-prior | none
+    rule_id TEXT NOT NULL,
+    classified_at TEXT NOT NULL
+);

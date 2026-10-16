@@ -218,3 +218,32 @@ def category_label_fr(department_en: str, subcategory_en: str) -> str:
     if dept is None:
         return category_label(department_en, subcategory_en)
     return f"{dept[0]} > {dept[1].get(subcategory_en, subcategory_en)}"
+
+
+# Departments whose items belong in a grocery meta-search. Baby Food
+# counts (it is food); Baby Care, Pet, Household and Health & Beauty
+# do not. The fetch pipeline keeps only grocery items.
+GROCERY_DEPARTMENTS = frozenset(
+    {
+        "Fruits & Vegetables",
+        "Dairy & Eggs",
+        "Pantry",
+        "International Foods",
+        "Meat",
+        "Fish & Seafood",
+        "Snacks, Chips & Candy",
+        "Drinks",
+        "Frozen Food",
+        "Deli",
+        "Bakery",
+        "Prepared Meals",
+        "Beer & Wine",
+    }
+)
+
+
+def is_grocery(department: str, subcategory: str) -> bool:
+    """True when an item with this classification is a grocery item."""
+    if department in GROCERY_DEPARTMENTS:
+        return True
+    return department == "Baby" and subcategory == "Baby Food"

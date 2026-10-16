@@ -16,9 +16,12 @@ import hashlib
 import json
 import re
 import sqlite3
+from datetime import UTC
 from pathlib import Path
 from typing import Any
 
+from ..classify.rules import classify_item
+from ..classify.taxonomy import category_label, is_grocery
 from ..db import connect, init_schema
 from ..ocr.engine import detect_lines, detect_lines_banded, upscale_for_ocr
 from ..ocr.segment import OcrStoreConfig, segment_page
@@ -352,7 +355,9 @@ def store_editions(
         flyer_id, is_new = upsert_edition(conn, store_slug, int(src["id"]), edition)
         report["editions"] += 1
         if is_new:
-            report["items"] += insert_items(conn, flyer_id, store_slug, edition.items)
+            stats: dict[str, Any] = {}
+            report["items"] += insert_items(conn, flyer_id, store_slug, edition.items, stats)
+            report["discarded"] = report.get("discarded", 0) + stats.get("discarded", 0)
         else:
             report["skipped"] = report.get("skipped", 0) + len(edition.items)
     conn.commit()
@@ -438,18 +443,40 @@ def upsert_edition(
 
 
 def insert_items(
-    conn: sqlite3.Connection, flyer_id: int, store_slug: str, items: list[FlyerItem]
+    conn: sqlite3.Connection,
+    flyer_id: int,
+    store_slug: str,
+    items: list[FlyerItem],
+    stats: dict[str, Any] | None = None,
 ) -> int:
+    """Insert one edition's items, classifying each on the way in.
+
+    Only grocery items are kept (see classify.taxonomy.is_grocery);
+    non-grocery and unclassifiable items are discarded and counted in
+    stats["discarded"] when a stats dict is supplied. Kept items get
+    their category label plus a classification provenance row.
+    """
+    from datetime import datetime
+
+    now = datetime.now(UTC).isoformat(timespec="seconds")
     count = 0
     for item in items:
+        dept, sub, method, rule_id = classify_item(
+            item.name_fr, item.name_en, item.brand, store_slug
+        )
+        if not is_grocery(dept, sub):
+            if stats is not None:
+                stats["discarded"] = stats.get("discarded", 0) + 1
+            continue
         key = item_key(store_slug, item)
-        conn.execute(
+        cur = conn.execute(
             """
             INSERT INTO flyer_items
                 (flyer_id, store_slug, item_key, name_fr, name_en, price_text,
                  price_value, price_unit, valid_from, valid_to, languages,
-                 image_url, bbox, sku, brand, conditions, loyalty_gated, raw, confidence)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 image_url, bbox, sku, brand, conditions, loyalty_gated, raw,
+                 confidence, category)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 flyer_id,
@@ -471,7 +498,12 @@ def insert_items(
                 1 if item.loyalty_gated else 0,
                 json.dumps(item.raw, ensure_ascii=False),
                 item.confidence,
+                category_label(dept, sub),
             ),
+        )
+        conn.execute(
+            "INSERT INTO item_classifications VALUES (?,?,?,?,?,?)",
+            (cur.lastrowid, dept, sub, method, rule_id, now),
         )
         if item.price_value is not None:
             conn.execute(
@@ -510,7 +542,12 @@ def main() -> None:
     slugs = [s.strip() for s in args.slugs.split(",") if s.strip()]
     for report in run(args.db, slugs):
         err = f" ERROR: {report['error']}" if report.get("error") else ""
-        print(f"{report['store']}: {report['editions']} editions, {report['items']} items{err}")
+        disc = (
+            f", {report['discarded']} discarded as non-grocery" if report.get("discarded") else ""
+        )
+        print(
+            f"{report['store']}: {report['editions']} editions, {report['items']} items{disc}{err}"
+        )
 
 
 if __name__ == "__main__":

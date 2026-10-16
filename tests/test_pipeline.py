@@ -37,13 +37,24 @@ def test_insert_items_and_observations() -> None:
         FlyerItem(name_fr="Pommes", price_text="2.50", price_value=2.5, sku="1"),
         FlyerItem(name_fr="Recette du chef", price_text=None, price_value=None),
     ]
-    assert insert_items(conn, 1, "maxi", items) == 2
+    # "Recette du chef" classifies as nothing grocery: it is
+    # discarded at ingest (Phase 4 pipeline filter).
+    stats: dict = {}
+    assert insert_items(conn, 1, "maxi", items, stats) == 1
+    assert stats["discarded"] == 1
     rows = conn.execute(
         "SELECT name_fr, price_value, category, item_key FROM flyer_items ORDER BY id"
     ).fetchall()
+    assert len(rows) == 1
     assert rows[0][0] == "Pommes" and rows[0][1] == 2.5
-    assert rows[0][2] == "Unclassified"  # Phase 4 will classify
-    assert rows[0][3] and rows[1][3] and rows[0][3] != rows[1][3]
+    assert rows[0][2] == "Fruits & Vegetables > Fresh Fruits"
+    prov = [
+        tuple(r)
+        for r in conn.execute(
+            "SELECT department, subcategory, method FROM item_classifications"
+        ).fetchall()
+    ]
+    assert prov == [("Fruits & Vegetables", "Fresh Fruits", "rule")]
     obs = conn.execute("SELECT COUNT(*) FROM price_observations").fetchone()[0]
     assert obs == 1  # only the priced item gets an observation
     conn.close()
