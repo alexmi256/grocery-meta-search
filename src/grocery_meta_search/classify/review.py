@@ -59,15 +59,27 @@ def _fetch_page(url: str, cache_dir: Path) -> Path | None:
 
 
 def _crop(page_path: Path, bbox: dict[str, float], out_path: Path) -> bool:
+    """Crop an item's region from a flyer page image.
+
+    OCR bboxes are stored normalized to a 1000x1000 scale (see
+    ocr/segment.py), NOT in pixels — denormalize against the actual
+    page size first. Treating them as pixels shifts every crop
+    toward the top-left (the bug behind the 'wrong image' reports
+    of 2026-10-15).
+    """
     try:
         with Image.open(page_path) as im:
             w, h = im.size
-            bw = bbox["right"] - bbox["left"]
-            bh = bbox["bottom"] - bbox["top"]
-            x0 = max(0, int(bbox["left"] - bw * 0.12))
-            x1 = min(w, int(bbox["right"] + bw * 0.12))
-            y0 = max(0, int(bbox["top"] - bh * 0.35))
-            y1 = min(h, int(bbox["bottom"] + bh * 0.15))
+            left = bbox["left"] / 1000 * w
+            right = bbox["right"] / 1000 * w
+            top = bbox["top"] / 1000 * h
+            bottom = bbox["bottom"] / 1000 * h
+            bw = right - left
+            bh = bottom - top
+            x0 = max(0, int(left - bw * 0.12))
+            x1 = min(w, int(right + bw * 0.12))
+            y0 = max(0, int(top - bh * 0.35))
+            y1 = min(h, int(bottom + bh * 0.15))
             if x1 - x0 < 10 or y1 - y0 < 10:
                 return False
             crop = im.convert("RGB").crop((x0, y0, x1, y1))
@@ -78,6 +90,9 @@ def _crop(page_path: Path, bbox: dict[str, float], out_path: Path) -> bool:
 
 
 def _sane_bbox(raw: str | None) -> dict[str, float] | None:
+    """Parse an OCR bbox: coordinates normalized to 0-1000 per axis
+    (ocr/segment.py). Flipp-native bboxes live in a different space
+    and are rejected here (they are never cropped)."""
     if not raw:
         return None
     try:
@@ -87,7 +102,7 @@ def _sane_bbox(raw: str | None) -> dict[str, float] | None:
             b["page"] = float(data["page"])
     except Exception:
         return None
-    if 0 <= b["left"] < b["right"] <= 6000 and 0 <= b["top"] < b["bottom"] <= 9000:
+    if 0 <= b["left"] < b["right"] <= 1000 and 0 <= b["top"] < b["bottom"] <= 1000:
         return b
     return None
 

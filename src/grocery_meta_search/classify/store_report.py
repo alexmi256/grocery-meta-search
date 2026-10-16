@@ -1,0 +1,199 @@
+"""Single-store product report with locally downloaded images.
+
+Renders every item of one store (all editions in the DB) with its
+full stored details and a local picture: the bbox crop from the
+flyer page for OCR items, the product image for API items. Full
+page images are saved alongside so crops can be judged in context.
+
+Usage:
+    python -m grocery_meta_search.classify.store_report --db data/grocery.db \
+        --slug akhavan --out-dir docs/research/akhavan-report
+"""
+
+from __future__ import annotations
+
+import argparse
+import sqlite3
+import urllib.request
+from pathlib import Path
+
+from PIL import Image
+
+from grocery_meta_search.classify.review import PAGE_HOSTS, _crop, _sane_bbox
+from grocery_meta_search.classify.taxonomy import category_label_fr
+
+UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) grocery-report"}
+
+
+def _download(url: str, dest: Path) -> bool:
+    if dest.exists():
+        return True
+    try:
+        req = urllib.request.Request(url, headers=UA)
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            dest.write_bytes(resp.read())
+        return True
+    except Exception:
+        return False
+
+
+def _to_jpg(src: Path, dest: Path) -> bool:
+    if dest.exists():
+        return True
+    try:
+        with Image.open(src) as im:
+            im.convert("RGB").save(dest, "JPEG", quality=88)
+        return True
+    except Exception:
+        return False
+
+
+def generate(db_path: str, slug: str, out_dir: Path) -> dict[str, int]:
+    from urllib.parse import urlparse
+
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    store = conn.execute("SELECT * FROM stores WHERE slug=?", (slug,)).fetchone()
+    if store is None:
+        raise SystemExit(f"unknown store {slug}")
+    images_dir = out_dir / "images"
+    pages_dir = out_dir / "pages"
+    raw_dir = out_dir / "_downloads"
+    for d in (images_dir, pages_dir, raw_dir):
+        d.mkdir(parents=True, exist_ok=True)
+
+    flyers = conn.execute(
+        "SELECT * FROM flyers WHERE store_slug=? ORDER BY valid_from", (slug,)
+    ).fetchall()
+    lines: list[str] = [
+        f"# {store['name']} — full product report",
+        "",
+        f"Store slug: `{slug}`. Generated from `data/grocery.db`. "
+        "Every item stored for this store, with all stored details and "
+        "a locally downloaded picture (bbox crop from the flyer page; "
+        "full pages under `pages/`).",
+        "",
+    ]
+    stats = {"items": 0, "crops": 0, "direct": 0, "missing": 0, "pages": 0}
+    for flyer in flyers:
+        items = conn.execute(
+            """
+            SELECT i.*, x.department, x.subcategory, x.method, x.rule_id
+            FROM flyer_items i
+            LEFT JOIN item_classifications x ON x.item_id = i.id
+            WHERE i.flyer_id = ? ORDER BY i.id
+            """,
+            (flyer["id"],),
+        ).fetchall()
+        lines.append(
+            f"## Flyer {flyer['id']} — valid {flyer['valid_from']} → "
+            f"{flyer['valid_to']} ({len(items)} items)"
+        )
+        lines.append("")
+        lines.append(f"Source ref: `{flyer['source_ref']}` · fetched {flyer['created_at']}")
+        lines.append("")
+        for row in items:
+            stats["items"] += 1
+            title = row["name_fr"] or row["name_en"] or "(no name)"
+            lines.append(f"### Item {row['id']} — {title}")
+            lines.append("")
+            bbox = _sane_bbox(row["bbox"])
+            host = urlparse(row["image_url"] or "").netloc
+            pictured = False
+            page_ref = ""
+            if row["image_url"] and host in PAGE_HOSTS:
+                raw = raw_dir / f"page-src-{row['id']}"
+                import hashlib
+
+                url_key = hashlib.sha256(row["image_url"].encode()).hexdigest()[:10]
+                page_jpg = pages_dir / f"flyer{flyer['id']}-page-{url_key}.jpg"
+                if _download(row["image_url"], raw) and _to_jpg(raw, page_jpg):
+                    page_no = int(bbox["page"]) if bbox and bbox.get("page") else "?"
+                    page_ref = f"pages/{page_jpg.name} (flyer page {page_no})"
+                    if bbox is not None:
+                        crop = images_dir / f"item-{row['id']}.jpg"
+                        if _crop(page_jpg, bbox, crop):
+                            lines.append(f"![item {row['id']}](images/item-{row['id']}.jpg)")
+                            stats["crops"] += 1
+                            pictured = True
+            if not pictured and row["image_url"]:
+                ext = Path(urlparse(row["image_url"]).path).suffix or ".jpg"
+                raw = raw_dir / f"product-{row['id']}{ext}"
+                dest = images_dir / f"item-{row['id']}{ext}"
+                if _download(row["image_url"], raw):
+                    try:
+                        dest.write_bytes(raw.read_bytes())
+                        lines.append(f"![item {row['id']}](images/{dest.name})")
+                        stats["direct"] += 1
+                        pictured = True
+                    except Exception:
+                        pass
+            if not pictured:
+                lines.append("*(no picture could be downloaded)*")
+                stats["missing"] += 1
+            lines.append("")
+            dept = row["department"] or "Unclassified"
+            sub = row["subcategory"] or "Unclassified"
+            if dept == "Unclassified":
+                cat = "**Unclassified**"
+            else:
+                cat = f"{dept} > {sub} (FR: {category_label_fr(dept, sub)})"
+            lines.append(f"- **Category:** {cat}")
+            method = row["method"] or "none"
+            rule = f" (`{row['rule_id']}`)" if row["rule_id"] else ""
+            lines.append(f"- **How classified:** {method}{rule}")
+            if row["name_en"] and row["name_en"] != row["name_fr"]:
+                lines.append(f"- **Name (EN):** {row['name_en']}")
+            price = f"{row['price_value']:.2f} $" if row["price_value"] is not None else "—"
+            lines.append(
+                f"- **Price:** {price} · as printed: “{row['price_text']}”"
+                f" · unit: {row['price_unit'] or '—'}"
+            )
+            lines.append(
+                f"- **Item validity:** {row['valid_from'] or '?'} → {row['valid_to'] or '?'}"
+            )
+            if bbox is not None:
+                lines.append(
+                    f"- **bbox:** left {bbox['left']:.0f}, top {bbox['top']:.0f}, "
+                    f"right {bbox['right']:.0f}, bottom {bbox['bottom']:.0f}"
+                    + (f", page {int(bbox['page'])}" if bbox.get("page") else "")
+                )
+            if page_ref:
+                lines.append(f"- **Full page:** [{page_ref}]({page_ref.split(' ')[0]})")
+            if row["image_url"]:
+                lines.append(f"- **Image source URL:** {row['image_url']}")
+            details = []
+            if row["brand"]:
+                details.append(f"brand: {row['brand']}")
+            if row["sku"]:
+                details.append(f"SKU: {row['sku']}")
+            if row["loyalty_gated"]:
+                details.append("loyalty-gated price")
+            if row["confidence"] is not None:
+                details.append(f"confidence: {row['confidence']:.2f}")
+            details.append(f"item_key: `{row['item_key']}`")
+            lines.append(f"- **Details:** {' · '.join(details)}")
+            if row["conditions"] and row["conditions"] != "{}":
+                lines.append(f"- **Conditions:** `{row['conditions']}`")
+            if row["raw"]:
+                raw_txt = " ".join(str(row["raw"]).split())[:500]
+                lines.append(f"- **Raw:** `{raw_txt}`")
+            lines.append("")
+    stats["pages"] = len(list(pages_dir.glob("*.jpg")))
+    (out_dir / f"{slug}-report.md").write_text("\n".join(lines), encoding="utf-8")
+    conn.close()
+    return stats
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--db", required=True)
+    parser.add_argument("--slug", required=True)
+    parser.add_argument("--out-dir", required=True)
+    args = parser.parse_args()
+    stats = generate(args.db, args.slug, Path(args.out_dir))
+    print(f"{args.slug}: {stats}")
+
+
+if __name__ == "__main__":
+    main()
