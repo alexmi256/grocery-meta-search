@@ -71,7 +71,7 @@ class OfficialError(Exception):
 @dataclass
 class OfficialConfig:
     slug: str
-    kind: str  # image_page | pdf_page | woo_specials | flyerify
+    kind: str  # image_page | pdf_page | pdf_text | woo_specials | flyerify | circulaires | flyerbox
     source_name: str  # flyer_sources.name, e.g. "official:wix"
     page_url: str
     flyer_type: str = "weekly"
@@ -360,6 +360,8 @@ class OfficialClient:
             return [self._flyerbox(cfg, today)]
         if cfg.kind == "woo_specials":
             return [self._woo_specials(cfg, today)]
+        if cfg.kind == "pdf_text":
+            return [self._pdf_text(cfg, today)]
         raise OfficialError(f"unknown kind {cfg.kind!r}")
 
     def _validity(self, cfg: OfficialConfig, today: date) -> tuple[date, date]:
@@ -422,6 +424,63 @@ class OfficialClient:
             source_ref=pdf_url,
             languages=cfg.languages,
             pdf_url=pdf_url,
+        )
+
+    def _pdf_text(self, cfg: OfficialConfig, today: date) -> OfficialEdition:
+        """Flyer PDF with a real text layer: parse items straight
+        from the text (sources/pdf_text.py) instead of OCRing a
+        render. Config (cfg.image): pdf_pattern / image_pattern
+        regexes (first capture group = URL) locating the PDF and the
+        page preview image on cfg.page_url, price_min_size."""
+        from .pdf_text import dedupe_spans, extract_pdf, parse_pdf_flyer
+
+        page_html = self._get(cfg.page_url).text
+        pdf_m = re.search(
+            cfg.image.get("pdf_pattern", r'href="([^"]+\.pdf)"'),
+            page_html,
+            re.IGNORECASE,
+        )
+        if not pdf_m:
+            raise OfficialError(f"no PDF link found on {cfg.page_url}")
+        pdf_url = urljoin(cfg.page_url, html_lib.unescape(pdf_m.group(1)))
+        img_m = re.search(
+            cfg.image.get("image_pattern", r'src="([^"]*flyer-preview[^"]*)"'),
+            page_html,
+            re.IGNORECASE,
+        )
+        image_url = urljoin(cfg.page_url, html_lib.unescape(img_m.group(1))) if img_m else pdf_url
+        pdf_bytes = self._get(pdf_url).content
+        spans, _, _, _ = extract_pdf(pdf_bytes)
+        # Validity is parsed from the DEDUPED span text: these PDFs
+        # duplicate every text run, which scrambles get_text()
+        # ("mercredi 14 14 octobre") and defeats the date parser.
+        # Collapse any immediately-repeated word runs that survive
+        # span dedupe ("au mardi 20 au mardi 20").
+        words = " ".join(s.text for s in dedupe_spans(spans)).split()
+        for width in range(1, 7):
+            i = 0
+            while i + 2 * width <= len(words):
+                if words[i : i + width] == words[i + width : i + 2 * width]:
+                    del words[i + width : i + 2 * width]
+                else:
+                    i += 1
+        rng = parse_fr_validity(" ".join(words), today) or self._validity(cfg, today)
+        items = parse_pdf_flyer(
+            pdf_bytes,
+            valid_from=rng[0],
+            valid_to=rng[1],
+            image_url=image_url,
+            price_min_size=float(cfg.image.get("price_min_size", 17.0)),
+        )
+        if not items:
+            raise OfficialError(f"no items parsed from {pdf_url}")
+        return OfficialEdition(
+            valid_from=rng[0],
+            valid_to=rng[1],
+            flyer_type=cfg.flyer_type,
+            source_ref=pdf_url,
+            languages=cfg.languages,
+            items=items,
         )
 
     def _flyerify(self, cfg: OfficialConfig, today: date) -> OfficialEdition:
@@ -680,8 +739,13 @@ _FR_RANGE_NO_YEAR = re.compile(
 def parse_fr_validity(text: str, today: date) -> tuple[date, date] | None:
     """Parse a French date range printed on a flyer ("VALIDE DU 08 AU 21
     OCTOBRE 2026", "du 30 septembre au 5 octobre 2026"). OCR often drops
-    the spaces in caps text, so ranges are also tried fully squashed."""
+    the spaces in caps text, so ranges are also tried fully squashed.
+    Weekday names are stripped first: banners often print them
+    ("du mercredi 14 octobre au mardi 20 octobre 2026")."""
     flat = _strip_accents(text).lower()
+    flat = re.sub(
+        r"\b(lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\b", " ", flat
+    )
     squashed = flat.replace(" ", "")
     m = _FR_RANGE_TWO_MONTHS.search(flat) or _FR_RANGE_TWO_MONTHS.search(squashed)
     if m:

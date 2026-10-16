@@ -209,15 +209,12 @@ def generate(
             title = row["name_fr"] or row["name_en"] or "(no name)"
             lines.append(f"### {n}. {title}")
             lines.append("")
-            # Picture.
-            host = ""
-            if row["image_url"]:
-                from urllib.parse import urlparse
-
-                host = urlparse(row["image_url"]).netloc
+            # Picture: a sane (0-1000 normalized) bbox means the
+            # image_url is a flyer page to crop; otherwise the item
+            # carries a direct product image.
             bbox = _sane_bbox(row["bbox"])
             pictured = False
-            if row["image_url"] and host in PAGE_HOSTS and bbox is not None:
+            if row["image_url"] and bbox is not None:
                 page = _fetch_page(row["image_url"], page_cache)
                 out_img = assets_dir / f"item-{item_id}.jpg"
                 if page is not None and _crop(page, bbox, out_img):

@@ -21,11 +21,18 @@ flyers:
   types:
     - type: weekly
       sources:
+        - name: official:akhavan
+          url: https://akhavanfood.com/weekly-flyer/
+          kind: official
+          format: pdf
+          parse_friendliness: high   # selectable text layer; parsed by sources/pdf_text.py (kind pdf_text) since 2026-10-16
+          fetchability: http
+          notes: "PRIMARY since 2026-10-16: official PDF flyer (uploads/…/*.pdf) with a real text layer — 36 products in a 6x6 grid, exact names/prices, no OCR. Replaced circulaires.club (page images + OCR merged multi-product cells: 19 items, most of them several products glued together). Preview JPG on the same page serves as the crop source."
         - name: circulaires.club
           url: https://circulaires.club/circulaire/circulaire-akhavan-du-7-au-13-octobre-2026/
           kind: aggregator
           format: images
-          parse_friendliness: medium   # single page image; needs OCR
+          parse_friendliness: medium   # single page image; needs OCR — RETIRED 2026-10-16, kept for reference
           fetchability: http
         - name: circulaire-en-ligne.ca
           url: https://www.circulaire-en-ligne.ca/akhavan

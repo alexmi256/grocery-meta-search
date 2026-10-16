@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Any
 
 from ..classify.rules import classify_item
-from ..classify.taxonomy import category_label, is_grocery
+from ..classify.taxonomy import UNCLASSIFIED, category_label, is_grocery
 from ..db import connect, init_schema
 from ..ocr.engine import detect_lines, detect_lines_banded, upscale_for_ocr
 from ..ocr.segment import OcrStoreConfig, segment_page
@@ -190,6 +190,7 @@ def get_or_create_official_source(conn: sqlite3.Connection, cfg: OfficialConfig)
     fmt = {
         "image_page": "images",
         "pdf_page": "pdf",
+        "pdf_text": "pdf",
         "woo_specials": "json-api",
         "flyerify": "html",
         "circulaires": "images",
@@ -451,10 +452,13 @@ def insert_items(
 ) -> int:
     """Insert one edition's items, classifying each on the way in.
 
-    Only grocery items are kept (see classify.taxonomy.is_grocery);
-    non-grocery and unclassifiable items are discarded and counted in
-    stats["discarded"] when a stats dict is supplied. Kept items get
-    their category label plus a classification provenance row.
+    Grocery items are kept with their category label plus a
+    classification provenance row. Items classified as non-grocery
+    (Pet, Household, Health & Beauty, Baby Care) are discarded and
+    counted in stats["discarded"] when a stats dict is supplied.
+    Unclassified items are KEPT (category 'Unclassified') for human
+    review — an inconclusive classification is not evidence that an
+    item is not grocery (2026-10-16 decision).
     """
     from datetime import datetime
 
@@ -464,10 +468,11 @@ def insert_items(
         dept, sub, method, rule_id = classify_item(
             item.name_fr, item.name_en, item.brand, store_slug
         )
-        if not is_grocery(dept, sub):
+        if dept != UNCLASSIFIED and not is_grocery(dept, sub):
             if stats is not None:
                 stats["discarded"] = stats.get("discarded", 0) + 1
             continue
+        label = UNCLASSIFIED if dept == UNCLASSIFIED else category_label(dept, sub)
         key = item_key(store_slug, item)
         cur = conn.execute(
             """
@@ -498,7 +503,7 @@ def insert_items(
                 1 if item.loyalty_gated else 0,
                 json.dumps(item.raw, ensure_ascii=False),
                 item.confidence,
-                category_label(dept, sub),
+                label,
             ),
         )
         conn.execute(

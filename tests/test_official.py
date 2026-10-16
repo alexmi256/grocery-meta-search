@@ -148,6 +148,7 @@ def test_official_configs_load() -> None:
     configs = load_official_configs()
     assert set(configs) == {
         "3-saisons-fruits-legumes",
+        "akhavan",
         "aliments-merci",
         "baia-dei-formaggi",
         "h-marche",
