@@ -135,3 +135,72 @@ def test_specialty_vocabulary() -> None:
     assert cat("KALAMI TEA") == ("Drinks", "Tea & Hot Drinks")
     assert cat("CORÉGONE DE LAC") == ("Fish & Seafood", "Fish")
     assert cat("CANADIAN LAKE WHITEFISH") == ("Fish & Seafood", "Fish")
+
+
+def test_audit_regressions() -> None:
+    # Pâtes (pasta) must not land in Deli Meat via the pâté token.
+    assert cat("PÂTES ALIMENTAIRES 900G") == ("Pantry", "Pasta & Pasta Sauce")
+    # Plain noodles are pasta; instant forms stay Easy Meals.
+    assert cat("NOUILLES AUX ŒUFS") == ("Pantry", "Pasta & Pasta Sauce")
+    assert cat("NOUILLES INSTANTANÉES SAVEUR POULET") == (
+        "Pantry",
+        "Easy Meals & Sides",
+    )
+    # Snack bars are not sea bass.
+    assert cat("BARRE PROTÉINÉE AUX ARACHIDES") == ("Pantry", "Cereal & Breakfast")
+    assert cat("PROTEIN BAR CHOCOLATE") == ("Pantry", "Cereal & Breakfast")
+    # Rice noodles belong with pasta, not East Asian.
+    assert cat("VERMICELLES DE RIZ 400G") == ("Pantry", "Pasta & Pasta Sauce")
+    # Rôti (roast) is not roti (flatbread).
+    assert cat("RÔTI DE PALETTE DÉSOSSÉ") == ("Meat", "Beef")
+    # Coffee creamer is not coffee.
+    assert cat("REHAUSSEUR DE CAFÉ INTERNATIONAL DELIGHT") == (
+        "Dairy & Eggs",
+        "Milk & Cream",
+    )
+    # Kraft Dinner is an easy meal, not pasta sauce or cheese.
+    assert cat("MACARONI ET FROMAGE KRAFT DINNER") == (
+        "Pantry",
+        "Easy Meals & Sides",
+    )
+
+
+def test_audit_classify_item() -> None:
+    # Supplements split from OTC pharmacy.
+    assert classify_item("MÉLATONINE 10MG 90 COMPRIMÉS", None, None, "maxi")[:2] == (
+        "Health & Beauty",
+        "Vitamins & Supplements",
+    )
+    assert classify_item("PROBIOTIQUES 30 MILLIARDS", None, None, "maxi")[:2] == (
+        "Health & Beauty",
+        "Vitamins & Supplements",
+    )
+    assert classify_item("BENYLIN SIROP CONTRE LA TOUX", None, None, "maxi")[:2] == (
+        "Health & Beauty",
+        "Pharmacy",
+    )
+    # Banner/junk lines never classify, even under a store prior.
+    dept, sub, method, _ = classify_item(": SPECIAL", None, None, "monde-au-naturel")
+    assert (dept, method) == ("Unclassified", "junk")
+    dept, sub, method, _ = classify_item("BANNER ROLLBACK", None, None, "walmart")
+    assert (dept, method) == ("Unclassified", "junk")
+    # Thawed (décongelé) fish is fresh, not frozen.
+    assert classify_item("POMPANO DÉCONGELÉ", None, None, "maxi")[:2] == (
+        "Fish & Seafood",
+        "Fish",
+    )
+    # Frozen prepared pizza remaps to Frozen Pizza.
+    assert classify_item("PIZZA SURGELÉE TOUTE GARNIE", None, None, "maxi")[:2] == (
+        "Frozen Food",
+        "Frozen Pizza",
+    )
+    # Frozen fries remap to Frozen Fruit & Vegetables.
+    assert classify_item("FRITES SURGELÉES 2KG", None, None, "maxi")[:2] == (
+        "Frozen Food",
+        "Frozen Fruit & Vegetables",
+    )
+    # Cat litter is Pet Supplies, not Pet Food.
+    assert classify_item("LITIÈRE AGGLOMÉRANTE 14KG", None, None, "maxi")[:2] == (
+        "Pet",
+        "Pet Supplies",
+    )

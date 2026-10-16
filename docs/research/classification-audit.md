@@ -132,3 +132,37 @@ that belongs to per-store detection work, not classification.
 
 Ground truth is frozen at `work/ground-truth/` (corpus + verdicts +
 score) so every future rule change gets a regression number.
+
+## Addendum — implementation results (2026-10-16, approved same day)
+
+All 10 steps implemented (commits 8888d7e..final), plus two engine
+changes: a junk gate (banner/header/UI lines return Unclassified
+before rules or store priors apply) and position-bucket match
+ranking (matches within the first two tokens win, then rule order —
+the first-named product wins a bundle). Frozen markers are now
+token-based, so "décongelé" (thawed) no longer remaps to Frozen.
+
+| Metric | Before | After |
+|---|---|---|
+| Items correct (ground truth) | 66.3% | **81.5%** |
+| Signatures correct | 63.3% | **79.0%** |
+| DB Unclassified | 2,067 (13.7%) | 1,430 (9.5%) |
+| DB classified coverage | 86.3% | 90.5% |
+
+Below the ~88–92% estimate: the residual is dominated by one-item
+tails (general merchandise and OTC brand names, ~185 + ~50 items),
+genuinely ambiguous names (instant vs dry "nouilles", sliced vs
+whole ham — indistinguishable from the name alone), and OCR garble.
+Further gains need per-store detection work, not more rules.
+
+The Vitamins & Supplements category went from 68/68 wrong (banner
+fragments) to 177 real items. 296 DB items are now flagged `junk`.
+
+Language split (FR/EN), tested as suggested: no measurable effect.
+Only 245 of 15,096 items carry genuinely different French and
+English names (most sources store the same display name in both
+fields; Akhavan is the exception), and the three split variants
+scored identically (80.7%) to the combined classifier on the ground
+truth. The cross-language traps that did exist (EN "potato chips"
+outvoting FR "croustilles") were fixed by specific phrases and the
+position-bucket ranking instead. Not implemented.
