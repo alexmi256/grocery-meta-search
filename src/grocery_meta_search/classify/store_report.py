@@ -38,10 +38,13 @@ def _download(url: str, dest: Path) -> bool:
         return False
 
 
-def _raw_size(raw: str | None) -> str | None:
-    """The item's package size, when the source stored one (the
-    pdf_text parser keeps it in the raw payload — there is no
-    dedicated size column yet)."""
+def _raw_size(row: sqlite3.Row) -> str | None:
+    """The item's package size: the flyer_items.package_size
+    column, falling back to the legacy raw-payload value for items
+    stored before the column existed."""
+    if row["package_size"]:
+        return str(row["package_size"])
+    raw = row["raw"]
     if not raw:
         return None
     try:
@@ -153,7 +156,7 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False) 
         method = row["method"] or "none"
         rule = f" (`{row['rule_id']}`)" if row["rule_id"] else ""
         lines.append(f"- **How classified:** {method}{rule}")
-        size = _raw_size(row["raw"])
+        size = _raw_size(row)
         if size:
             lines.append(f"- **Size:** {size}")
         price = f"{row['price_value']:.2f}" if row["price_value"] is not None else "—"

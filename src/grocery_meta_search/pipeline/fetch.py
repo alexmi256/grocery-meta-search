@@ -37,6 +37,7 @@ from ..sources.official import (
     parse_fr_validity,
     render_pdf_pages,
 )
+from .fields import extract_package_size
 
 _CC_CONFIG_PATH = Path(__file__).parent.parent / "sources" / "circulaires_club_config.json"
 _cc_client: CirculairesClubClient | None = None
@@ -479,9 +480,9 @@ def insert_items(
             INSERT INTO flyer_items
                 (flyer_id, store_slug, item_key, name_fr, name_en, price_text,
                  price_value, price_unit, valid_from, valid_to, languages,
-                 image_url, bbox, sku, brand, conditions, loyalty_gated, raw,
+                 image_url, bbox, sku, brand, package_size, conditions, loyalty_gated, raw,
                  confidence, category)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 flyer_id,
@@ -499,6 +500,8 @@ def insert_items(
                 json.dumps(item.bbox, ensure_ascii=False) if item.bbox else None,
                 item.sku,
                 item.brand,
+                item.package_size
+                or extract_package_size(item.name_fr, item.name_en),
                 json.dumps(item.conditions, ensure_ascii=False),
                 1 if item.loyalty_gated else 0,
                 json.dumps(item.raw, ensure_ascii=False),

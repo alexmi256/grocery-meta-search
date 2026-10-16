@@ -469,13 +469,12 @@ def parse_pdf_flyer(
             "price_parts": [p.text for p in price.spans],
             "cell_pt": [round(v, 1) for v in cell],
         }
-        if split_ok and ct.size:
-            raw["size"] = ct.size
         items.append(
             FlyerItem(
                 name_fr=ct.name_fr if split_ok else assemble_name(spans, cell, price_min_size),
                 name_en=ct.name_en if split_ok else None,
                 brand=ct.brand if split_ok else None,
+                package_size=ct.size if split_ok else None,
                 price_text=price.text,
                 price_value=price.value,
                 price_unit=price_unit(spans, price),

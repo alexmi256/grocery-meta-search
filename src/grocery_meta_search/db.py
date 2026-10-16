@@ -17,6 +17,22 @@ def connect(db_path: str | Path) -> sqlite3.Connection:
 
 
 def init_schema(conn: sqlite3.Connection) -> None:
-    """Create all tables (idempotent)."""
+    """Create all tables (idempotent) and apply additive migrations."""
     conn.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
+    _migrate(conn)
     conn.commit()
+
+
+# Additive column migrations for databases created before the column
+# existed: (table, column, DDL type). CREATE TABLE in schema.sql
+# already carries them for fresh databases.
+_MIGRATIONS = [
+    ("flyer_items", "package_size", "TEXT"),
+]
+
+
+def _migrate(conn: sqlite3.Connection) -> None:
+    for table, column, ddl in _MIGRATIONS:
+        cols = {row[1] for row in conn.execute(f"PRAGMA table_info({table})")}
+        if cols and column not in cols:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")

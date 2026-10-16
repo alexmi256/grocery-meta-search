@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS flyer_items (
     bbox TEXT,                       -- JSON {left, top, right, bottom, page}
     sku TEXT,
     brand TEXT,
+    package_size TEXT,               -- as printed: "454 g", "2 lb", "24x60 g", "3 PCS"
     section TEXT,                    -- flyer department, signal for Phase 4
     conditions TEXT,                 -- JSON: sub-periods, limits, loyalty gating
     loyalty_gated INTEGER NOT NULL DEFAULT 0,

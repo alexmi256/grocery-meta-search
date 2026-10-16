@@ -19,6 +19,7 @@ class FlyerItem:
     bbox: dict[str, Any] | None = None
     sku: str | None = None
     brand: str | None = None
+    package_size: str | None = None
     section: str | None = None
     conditions: dict[str, Any] = field(default_factory=dict)
     loyalty_gated: bool = False
