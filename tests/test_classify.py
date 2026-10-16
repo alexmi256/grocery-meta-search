@@ -83,3 +83,55 @@ def test_unclassified() -> None:
 def test_store_prior() -> None:
     dept, sub, method, _ = classify_item("PRODUIT MYSTÈRE 123", None, None, "odessa-poissonnier")
     assert (dept, sub, method) == ("Fish & Seafood", "Fish", "store-prior")
+
+
+def test_processed_forms_beat_fresh_produce() -> None:
+    # 2026-10-16 (user review of the Akhavan report): processed
+    # forms must not classify as fresh produce, and lamb beats the
+    # generic ribs association with pork.
+    assert cat("CONCENTRÉ DE TOMATE") == ("Pantry", "Canned & Pickled")
+    assert cat("TOMATO PASTE") == ("Pantry", "Canned & Pickled")
+    assert cat("CONFITURE D'ABRICOT") == ("Pantry", "Honey, Syrups & Spreads")
+    assert cat("CARROT JAM") == ("Pantry", "Honey, Syrups & Spreads")
+    assert cat("CORNICHON À L'AIL PELÉ") == ("Pantry", "Canned & Pickled")
+    assert cat("CRUSHED PICKLE") == ("Pantry", "Canned & Pickled")
+    assert cat("VINAIGRE DE DATTES") == ("Pantry", "Oils & Vinegar")
+    assert cat("CÔTES LEVÉES D'AGNEAU") == ("Meat", "Lamb & Veal")
+    assert cat("LAMB RIBS") == ("Meat", "Lamb & Veal")
+
+
+def test_dried_remap_and_dried_tokens() -> None:
+    assert classify_item("PRUNES DÉNOYAUTÉES", "PITTED PRUNES", None, "x")[:2] == (
+        "Fruits & Vegetables",
+        "Dried Fruits & Nuts",
+    )
+    assert classify_item("LIMETTES SÉCHÉES", "DRIED WHITE LIME", None, "x")[:2] == (
+        "Fruits & Vegetables",
+        "Dried Fruits & Nuts",
+    )
+    assert classify_item("PRUNE HAJ HASSANI", None, None, "x")[:2] == (
+        "Fruits & Vegetables",
+        "Dried Fruits & Nuts",
+    )
+    # Fresh produce without a dried marker stays fresh.
+    assert classify_item("POMMES FRAÎCHES", None, None, "x")[:2] == (
+        "Fruits & Vegetables",
+        "Fresh Fruits",
+    )
+
+
+def test_specialty_vocabulary() -> None:
+    assert cat("FALAFEL") == ("International Foods", "Middle Eastern Foods")
+    assert cat("KASHK") == ("International Foods", "Middle Eastern Foods")
+    assert cat("MAHLAB EN POUDRE") == ("Pantry", "Spices & Seasonings")
+    assert cat("CITRONNELLE") == ("Fruits & Vegetables", "Fresh Vegetables")
+    assert cat("LEMONGRASS") == ("Fruits & Vegetables", "Fresh Vegetables")
+    assert cat("BLÉ JAUNE (Durum)") == ("Pantry", "Dried Beans, Vegetables & Grains")
+    assert cat("YELLOW SHELLED WHEAT") == (
+        "Pantry",
+        "Dried Beans, Vegetables & Grains",
+    )
+    assert cat("THÉ KALAMI") == ("Drinks", "Tea & Hot Drinks")
+    assert cat("KALAMI TEA") == ("Drinks", "Tea & Hot Drinks")
+    assert cat("CORÉGONE DE LAC") == ("Fish & Seafood", "Fish")
+    assert cat("CANADIAN LAKE WHITEFISH") == ("Fish & Seafood", "Fish")

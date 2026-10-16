@@ -35,6 +35,8 @@ class Span:
     y0: float
     x1: float
     y1: float
+    font: str = ""
+    color: int = 0
 
     @property
     def cx(self) -> float:
@@ -43,6 +45,17 @@ class Span:
     @property
     def cy(self) -> float:
         return (self.y0 + self.y1) / 2
+
+    @property
+    def is_red(self) -> bool:
+        r = (self.color >> 16) & 0xFF
+        g = (self.color >> 8) & 0xFF
+        b = self.color & 0xFF
+        return r >= 150 and r - g >= 60 and r - b >= 60
+
+    @property
+    def is_white(self) -> bool:
+        return self.color == 0xFFFFFF
 
 
 @dataclass
@@ -74,26 +87,44 @@ def extract_pdf(pdf_bytes: bytes) -> tuple[list[Span], float, float, str]:
         for line in block.get("lines", []):
             for span in line["spans"]:
                 x0, y0, x1, y1 = span["bbox"]
-                spans.append(Span(span["text"], float(span["size"]), x0, y0, x1, y1))
+                spans.append(
+                    Span(
+                        span["text"],
+                        float(span["size"]),
+                        x0,
+                        y0,
+                        x1,
+                        y1,
+                        font=str(span.get("font", "")),
+                        color=int(span.get("color", 0)),
+                    )
+                )
     return spans, float(page.rect.width), float(page.rect.height), page.get_text()
 
 
 def dedupe_spans(spans: list[Span]) -> list[Span]:
     """Drop duplicate spans — some flyer PDFs render every text run
-    twice (a shadow layer with near-identical geometry, off by a
-    fraction of a point)."""
+    twice (a white shadow layer plus the real colored run, off by a
+    fraction of a point). When both copies exist the non-white one
+    wins: its color carries meaning (red = brand)."""
     out: list[Span] = []
     for s in spans:
-        dup = any(
-            s.text == k.text
-            and abs(s.x0 - k.x0) <= 2
-            and abs(s.y0 - k.y0) <= 2
-            and abs(s.x1 - k.x1) <= 2
-            and abs(s.y1 - k.y1) <= 2
-            for k in out
+        twin = next(
+            (
+                k
+                for k in out
+                if s.text == k.text
+                and abs(s.x0 - k.x0) <= 2
+                and abs(s.y0 - k.y0) <= 2
+                and abs(s.x1 - k.x1) <= 2
+                and abs(s.y1 - k.y1) <= 2
+            ),
+            None,
         )
-        if not dup:
+        if twin is None:
             out.append(s)
+        elif twin.is_white and not s.is_white:
+            out[out.index(twin)] = s
     return out
 
 
@@ -344,6 +375,77 @@ def price_unit(spans: list[Span], price: Price) -> str:
     return "each"
 
 
+_SIZE_RE = re.compile(
+    r"(\d\s*(g|kg|ml|l|lb|lbs|pcs|cm)\b)|(\d\s*x\s*\d+)|sachets?|sac\s+\d",
+    re.IGNORECASE,
+)
+
+
+@dataclass
+class CellText:
+    name_fr: str
+    name_en: str | None
+    brand: str | None
+    size: str | None
+
+
+def split_cell_text(
+    spans: list[Span],
+    cell: tuple[float, float, float, float],
+    price: Price,
+    min_size: float,
+) -> CellText:
+    """Split a cell's text into FR name / EN name / brand / size
+    using the flyer's typographic conventions (Akhavan template):
+    FR name in large bold black, brand in red beside/below it, EN
+    name in smaller bold black, size in small regular type. Text
+    at or below the price (unit labels, per-kg equivalents, HALAL
+    tags) is not name text. Falls back to empty fields when the
+    conventions are absent — the caller then uses assemble_name.
+    """
+    x0, y0, x1, y1 = cell
+    price_top = min(s.y0 for s in price.spans)
+    inside = [
+        s
+        for s in spans
+        if s.size < min_size
+        and x0 - 2 <= s.cx <= x1 + 2
+        and y0 - 2 <= s.cy <= y1 + 2
+        and s.y0 <= price_top + 6
+        and s.text.strip()
+        and s.text.strip() not in _UNIT_TOKENS
+        and "$" not in s.text
+    ]
+    brand_spans = sorted((s for s in inside if s.is_red), key=lambda s: (round(s.y0 / 3), s.x0))
+    brand = " ".join(s.text.strip() for s in brand_spans) or None
+    lines: dict[int, list[Span]] = {}
+    for s in inside:
+        if not s.is_red:
+            lines.setdefault(round(s.y0 / 3), []).append(s)
+    fr_lines: list[str] = []
+    en_lines: list[str] = []
+    size_parts: list[str] = []
+    for key in sorted(lines):
+        words = sorted(lines[key], key=lambda s: s.x0)
+        text = " ".join(w.text.strip() for w in words if w.text.strip())
+        text = re.sub(r"\s+", " ", text).strip()
+        if not text:
+            continue
+        top = max(w.size for w in words)
+        if top <= 8.5 and _SIZE_RE.search(text):
+            size_parts.append(text)
+        elif top >= 10.0:
+            fr_lines.append(text)
+        else:
+            en_lines.append(text)
+    return CellText(
+        name_fr=" ".join(fr_lines),
+        name_en=" ".join(en_lines) or None,
+        brand=brand,
+        size=" ".join(size_parts) or None,
+    )
+
+
 def parse_pdf_flyer(
     pdf_bytes: bytes,
     *,
@@ -360,9 +462,20 @@ def parse_pdf_flyer(
     items: list[FlyerItem] = []
     for price, cell in paired:
         x0, y0, x1, y1 = cell
+        ct = split_cell_text(spans, cell, price, price_min_size)
+        split_ok = bool(ct.name_fr)
+        raw: dict[str, Any] = {
+            "parser": "pdf_text",
+            "price_parts": [p.text for p in price.spans],
+            "cell_pt": [round(v, 1) for v in cell],
+        }
+        if split_ok and ct.size:
+            raw["size"] = ct.size
         items.append(
             FlyerItem(
-                name_fr=assemble_name(spans, cell, price_min_size),
+                name_fr=ct.name_fr if split_ok else assemble_name(spans, cell, price_min_size),
+                name_en=ct.name_en if split_ok else None,
+                brand=ct.brand if split_ok else None,
                 price_text=price.text,
                 price_value=price.value,
                 price_unit=price_unit(spans, price),
@@ -377,11 +490,7 @@ def parse_pdf_flyer(
                     "bottom": round(y1 / page_h * 1000),
                     "page": 1,
                 },
-                raw={
-                    "parser": "pdf_text",
-                    "price_parts": [p.text for p in price.spans],
-                    "cell_pt": [round(v, 1) for v in cell],
-                },
+                raw=raw,
                 confidence=1.0,
             )
         )

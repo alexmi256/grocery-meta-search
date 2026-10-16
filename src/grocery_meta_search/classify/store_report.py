@@ -13,6 +13,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import json
 import sqlite3
 import urllib.request
 from pathlib import Path
@@ -35,6 +36,21 @@ def _download(url: str, dest: Path) -> bool:
         return True
     except Exception:
         return False
+
+
+def _raw_size(raw: str | None) -> str | None:
+    """The item's package size, when the source stored one (the
+    pdf_text parser keeps it in the raw payload — there is no
+    dedicated size column yet)."""
+    if not raw:
+        return None
+    try:
+        data = json.loads(raw)
+    except Exception:
+        return None
+    if isinstance(data, dict) and data.get("size"):
+        return str(data["size"])
+    return None
 
 
 def _to_jpg(src: Path, dest: Path) -> bool:
@@ -80,8 +96,7 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False) 
 
     def emit(row: sqlite3.Row, flyer: sqlite3.Row) -> None:
         stats["items"] += 1
-        title = row["name_fr"] or row["name_en"] or "(no name)"
-        lines.append(f"### Item {row['id']} — {title}")
+        lines.append(f"### Item {row['id']}")
         lines.append("")
         bbox = _sane_bbox(row["bbox"])
         pictured = False
@@ -123,21 +138,28 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False) 
         lines.append("")
         dept = row["department"] or "Unclassified"
         sub = row["subcategory"] or "Unclassified"
+        if row["name_en"] and row["name_en"] != row["name_fr"]:
+            lines.append(f"- **Name (English):** {row['name_en']}")
+        if row["name_fr"]:
+            lines.append(f"- **Name (French):** {row['name_fr']}")
+        if row["brand"]:
+            lines.append(f"- **Brand:** {row['brand']}")
         if dept == "Unclassified":
-            cat = "**Unclassified**"
+            lines.append("- **Category (English):** Unclassified")
+            lines.append("- **Category (French):** Non classé")
         else:
-            cat = f"{dept} > {sub} (FR: {category_label_fr(dept, sub)})"
-        lines.append(f"- **Category:** {cat}")
+            lines.append(f"- **Category (English):** {dept} > {sub}")
+            lines.append(f"- **Category (French):** {category_label_fr(dept, sub)}")
         method = row["method"] or "none"
         rule = f" (`{row['rule_id']}`)" if row["rule_id"] else ""
         lines.append(f"- **How classified:** {method}{rule}")
-        if row["name_en"] and row["name_en"] != row["name_fr"]:
-            lines.append(f"- **Name (EN):** {row['name_en']}")
-        price = f"{row['price_value']:.2f} $" if row["price_value"] is not None else "—"
-        lines.append(
-            f"- **Price:** {price} · as printed: “{row['price_text']}”"
-            f" · unit: {row['price_unit'] or '—'}"
-        )
+        size = _raw_size(row["raw"])
+        if size:
+            lines.append(f"- **Size:** {size}")
+        price = f"{row['price_value']:.2f}" if row["price_value"] is not None else "—"
+        lines.append(f"- **Price:** {price}")
+        lines.append(f"- **Printed Price:** “{row['price_text']}”")
+        lines.append(f"- **Unit:** {row['price_unit'] or '—'}")
         lines.append(f"- **Item validity:** {row['valid_from'] or '?'} → {row['valid_to'] or '?'}")
         if bbox is not None:
             lines.append(
@@ -150,8 +172,6 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False) 
         if row["image_url"]:
             lines.append(f"- **Image source URL:** {row['image_url']}")
         details = []
-        if row["brand"]:
-            details.append(f"brand: {row['brand']}")
         if row["sku"]:
             details.append(f"SKU: {row['sku']}")
         if row["loyalty_gated"]:

@@ -68,3 +68,22 @@ def test_price_unit_lb_near_price() -> None:
     spans = [_span("lb.", 9, 110, 128)]
     assert price_unit(spans, price) == "lb"
     assert price_unit([], price) == "each"
+
+
+def test_split_cell_text() -> None:
+    from grocery_meta_search.sources.pdf_text import Price, split_cell_text
+
+    black, red = 0x231F20, 0xD2232A
+    price = Price(4.49, "4 49", [_span("4", 40, 160, 90), _span("49", 23, 184, 93)])
+    spans = [
+        Span("PRUNES DÉNOYAUTÉES", 11.5, 10, 10, 110, 22, color=black),
+        Span("AKHAVAN", 11.5, 10, 24, 60, 36, color=red),
+        Span("PITTED PRUNES", 9.0, 10, 38, 90, 48, color=black),
+        Span("454 g", 7.0, 10, 50, 40, 58, color=black),
+        Span("ch.", 8.0, 150, 108, 162, 116, color=black),  # below price: ignored
+    ]
+    ct = split_cell_text(spans, (0, 0, 200, 140), price, 17.0)
+    assert ct.name_fr == "PRUNES DÉNOYAUTÉES"
+    assert ct.name_en == "PITTED PRUNES"
+    assert ct.brand == "AKHAVAN"
+    assert ct.size == "454 g"
