@@ -724,6 +724,7 @@ RULES: list[Rule] = [
         "Health & Beauty",
         "Pharmacy",
         (
+            "bronchophan",
             "chloraseptic",
             "vaporisateurs",
             "vaporisateur",
@@ -1637,6 +1638,11 @@ RULES: list[Rule] = [
         (
             "coregone",
             "whitefish",
+            "pickerel",
+            "dore tel quel",
+            "concombre de mer",
+            "concombre demer",
+            "sea cucumber",
             "thon",
             "tuna",
             "poisson",
@@ -1793,6 +1799,7 @@ RULES: list[Rule] = [
             "roast beef",
             "roti de boeuf",
             "roti de palette",
+            "bas de palette",
             "roti francais",
             "roti de cotes",
             "roti de culotte",
@@ -2272,6 +2279,14 @@ RULES: list[Rule] = [
         (
             "citronnelle",
             "lemongrass",
+            "spaghetti squash",
+            "acorn squash",
+            "butternut squash",
+            "courge spaghetti",
+            "pois mange tout",
+            "mange tout",
+            "snow peas",
+            "snap peas",
             "epinards",
             "spinach",
             "buttercup",
@@ -2526,6 +2541,8 @@ RULES: list[Rule] = [
             "cheese",
             "cheddar",
             "mozzarella",
+            "mozza rella",
+            "dal molise",
             "parmesan",
             "brie",
             "camembert",
@@ -2752,6 +2769,7 @@ RULES: list[Rule] = [
         (
             "pain",
             "bread",
+            "kaak",
             "baguette",
             "miche",
             "pain de mie",
@@ -2821,6 +2839,9 @@ RULES: list[Rule] = [
             "cadbury",
             "barre de chocolat",
             "chocolate bar",
+            "barbe a papa",
+            "cotton candy",
+            "mini barres",
             "bonbon",
             "candy",
             "candies",
@@ -3801,8 +3822,7 @@ def classify_name(name: str) -> tuple[str, str, str] | None:
 _JUNK_EXACT = {
     "special", "message important", "moi", "plus taxes", "pret a manger",
     "fromages fins et charcuteries", "fromagerie et charcuterie",
-    "charcuterie et fromage supplementaire", "beurres de graines tahini",
-    "d beurres de graines tahini", "trousses de repas",
+    "charcuterie et fromage supplementaire", "trousses de repas",
     "decouvrez notre offre de fromages", "produits pour animaux de compagnie",
     "iles de la madeleine magdalen islands", "quebec quebec", "suisse",
     "style louisiane", "sauces incluses", "prixpour1", "prixpour2", "plus",
@@ -3893,4 +3913,14 @@ def classify_item(
     dried_hit = _DRIED_REMAP.get((dept, sub))
     if dried_hit is not None and _DRIED_MARKERS & set(norm.split()):
         return dried_hit[0], dried_hit[1], "dried-remap", rid
+    # Guard remaps (2026-10-16 visual review): a flavour/process token
+    # outranked the actual product token on position.
+    if (dept, sub) == ("Pantry", "Baking Essentials") and "mange tout" in norm:
+        # "POIS SUCRÉ OU MANGE-TOUT": 'sucre' fired Baking; snow peas.
+        return "Fruits & Vegetables", "Fresh Vegetables", "guard-remap", rid
+    if (dept, sub) == ("Pantry", "Honey, Syrups & Spreads") and (
+        "chips" in norm.split() or "croustilles" in norm.split()
+    ):
+        # "Honey Butter Chips": 'honey' fired Spreads; the product is chips.
+        return "Snacks, Chips & Candy", "Chips & Snacks", "guard-remap", rid
     return dept, sub, "rule", rid

@@ -158,6 +158,11 @@ def test_odessa_page2() -> None:
     goberge = next(it for it in items if "GOBERGE" in (it.name_fr or ""))
     assert _prices_with_alts(tilapia) == {10.99, 24.23}  # $/lb + $/kg
     assert _prices_with_alts(goberge) == {19.82, 0.99}  # 0.99: "8" misread as "0"
+    # The $/lb figure is the advertised price; the $/kg figure is a small
+    # reference. The kg anchor claims the name first (it sits with the
+    # text), but the fold must promote the $/lb price to main.
+    assert tilapia.price_value == 10.99 and tilapia.price_unit == "lb"
+    assert goberge.price_value == 19.82  # unrelated pair: no promotion
 
 
 def test_palumbo_page1() -> None:
@@ -229,6 +234,27 @@ def test_parse_fragment_value_dollar_multibuy() -> None:
     assert value == 2.50 and multibuy == (2, 5.00)
 
 
+def test_anchor_unit_capture() -> None:
+    """Units printed with a price must reach PriceAnchor.unit: trailing
+    on the price line ("0,99 $/lb") or as a standalone line under it
+    ("CH/EA" under euro-marche prices)."""
+    cfg = OcrStoreConfig()
+    lines = [
+        OcrLine(x=100, y=300, w=160, h=40, text="0,99 $/lb", conf=0.9),
+        OcrLine(x=500, y=300, w=60, h=40, text="3", conf=0.9),
+        OcrLine(x=565, y=300, w=50, h=40, text="99", conf=0.9),
+        OcrLine(x=500, y=345, w=110, h=18, text="CH/EA", conf=0.9),
+        OcrLine(x=800, y=300, w=60, h=40, text="12", conf=0.9),
+        OcrLine(x=865, y=300, w=50, h=40, text="99", conf=0.9),
+        OcrLine(x=925, y=308, w=60, h=24, text="/LB", conf=0.9),
+    ]
+    anchors = find_price_anchors(lines, 1000, 1000, cfg)
+    by_value = {a.value: a for a in anchors}
+    assert by_value[0.99].unit == "lb"  # trailing on the price line
+    assert by_value[3.99].unit == "each"  # standalone line below the price
+    assert by_value[12.99].unit == "lb"  # standalone line right of the price
+
+
 def test_stoplist_coerced_to_tuple() -> None:
     cfg = OcrStoreConfig(stoplist=["a", "b"])  # type: ignore[arg-type]
     assert cfg.stoplist == ("a", "b")
@@ -251,6 +277,9 @@ def test_lamoisson_unit_prices() -> None:
     lines, w, h = _load_fixture("cc_lamoisson_p2_lines.json")
     anchors = find_price_anchors(lines, w, h, OcrStoreConfig())
     assert sorted(a.value for a in anchors) == [1.95, 1.95, 2.95, 3.45, 4.95]
+    units = {a.value: a.unit for a in anchors}
+    assert units[2.95] == "kg"  # "2,95 $ / KG" badge (bananes)
+    assert units[1.95] == "each"  # "$ / UN" badges (coriandre, persil)
     image = Image.new("RGB", (w, h))
     items = segment_page(image, lines, OcrStoreConfig(), page_url="fixture://", page_number=1)
     by_price = {it.price_value: it.name_fr or "" for it in items}

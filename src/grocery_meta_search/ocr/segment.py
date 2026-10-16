@@ -117,6 +117,92 @@ class PriceAnchor:
     box: tuple[float, float, float, float]
     conf: float
     multibuy: tuple[int, float] | None = None  # (count, total price)
+    unit: str | None = None  # "lb" | "kg" | "each" | "100g" | "box"
+
+
+# Unit printed with a price: trailing on the price line itself
+# ("2,95 $/KG", "3,99 ch.", "499s/ch") or as a standalone line beside /
+# below the price ("CH/EA" under euro-marche prices, "/LB" right of
+# kim-phat badges, "le 100 g" under adonis tags). The amount parser
+# strips these suffixes to anchor; capture the unit before it is lost.
+_UNIT_IN_TEXT_RE = re.compile(
+    r"/\s*(100\s*g(?:r)?|lb|1b|kg|ch|ea|un|bte)\b"
+    r"|\bs\s*/\s*(ch|lb)\b"
+    r"|(?<=[\d.,])\s*(ch|ea)\.?\s*$",
+    re.IGNORECASE,
+)
+_UNIT_LINE_RE = re.compile(
+    r"^\s*(?:/\s*(100\s*g(?:r)?|lb|kg|ch|ea|un|bte|bo[iî]te)\.?"
+    r"|le\s+100\s*g|ch\s*/\s*ea\.?|ch\.?|ea\.?|l['’]unit[ée])\s*$",
+    re.IGNORECASE,
+)
+
+
+def _canon_unit(token: str) -> str:
+    t = re.sub(r"[\s.]", "", token.lower())
+    if t in ("lb", "1b"):
+        return "lb"
+    if t == "kg":
+        return "kg"
+    if t in ("100g", "100gr"):
+        return "100g"
+    if t in ("bte", "boite", "boîte"):
+        return "box"
+    return "each"  # ch, ea, un, l'unité
+
+
+def _unit_in_text(text: str) -> str | None:
+    m = _UNIT_IN_TEXT_RE.search(text)
+    if m:
+        token = next(g for g in m.groups() if g)
+        return _canon_unit(token)
+    m = _UNIT_LINE_RE.match(text)
+    if m and m.group(1):
+        return _canon_unit(m.group(1))
+    if m:
+        if "100" in text:
+            return "100g"  # "le 100 g" standalone line
+        return "each"  # "ch." / "ea." / "l'unité" standalone line
+    return None
+
+
+def _nearby_unit(lines: list[OcrLine], box: tuple[float, float, float, float],
+                 page_w: int, page_h: int) -> str | None:
+    """Unit from a standalone unit line printed right of or below a price."""
+    best: tuple[float, str] | None = None
+    for ln in lines:
+        unit = _unit_in_text(ln.text)
+        if unit is None or not _UNIT_LINE_RE.match(ln.text.strip()):
+            continue
+        y_overlap = min(ln.bottom, box[3]) - max(ln.y, box[1])
+        x_overlap = min(ln.right, box[2]) - max(ln.x, box[0])
+        dist: float | None = None
+        # Right of the price: the unit line may overlap the price box's
+        # right edge (the box spans dollars+cents fragments; "/lb" prints
+        # immediately after the cents — euro-marche, kim-phat).
+        if y_overlap >= 0.4 * ln.h and -0.4 * ln.w <= ln.x - box[2] <= 0.06 * page_w:
+            dist = max(0.0, ln.x - box[2])
+        elif (
+            # Tucked at the price's bottom-right corner, right-aligned
+            # with the cents (euro-marche "CH/EA" under the cents).
+            abs(ln.right - box[2]) <= 0.04 * page_w
+            and ln.x >= box[0] - 0.02 * page_w
+            and (
+                y_overlap >= 0.2 * ln.h
+                or -0.35 * ln.h
+                <= ln.y - box[3]
+                <= 0.85 * (box[3] - box[1]) + 0.004 * page_h
+            )
+        ):
+            dist = 500.0 + abs(ln.right - box[2])
+        elif (
+            x_overlap >= 0.3 * ln.w
+            and 0 <= ln.y - box[3] <= 0.8 * (box[3] - box[1]) + 0.004 * page_h
+        ):
+            dist = 1000.0 + (ln.y - box[3])  # below the price (weaker)
+        if dist is not None and (best is None or dist < best[0]):
+            best = (dist, unit)
+    return best[1] if best else None
 
 
 def _squash(text: str) -> str:
@@ -345,6 +431,15 @@ def find_price_anchors(
             max(c.right for c in cluster),
             max(c.bottom for c in cluster),
         )
+        unit: str | None = None
+        for c in cluster:
+            unit = _unit_in_text(c.text)
+            if unit:
+                break
+        if unit is None:
+            unit = _nearby_unit(lines, box, page_w, page_h)
+        if unit is None and multibuy is not None:
+            unit = "each"  # "2/500" prices are per-item deals
         anchors.append(
             PriceAnchor(
                 value=value,
@@ -352,6 +447,7 @@ def find_price_anchors(
                 box=box,
                 conf=min(c.conf for c in cluster),
                 multibuy=multibuy,
+                unit=unit,
             )
         )
     return anchors
@@ -607,6 +703,39 @@ def segment_page(
             return [ln for ln in cands if ln.y >= anchor.box[3] - 0.01 * page_h]
         return cands
 
+    def fold_alt(item: FlyerItem, anchor: PriceAnchor) -> None:
+        """Fold a second price for an item into alt_prices.
+
+        Dual $/lb + $/kg printing (Odessa): the $/kg reference often
+        anchors first because it sits with the name, but the $/lb
+        figure is the advertised price — when the pair is kg/lb-related
+        (ratio ~2.2046) and the incoming price is the smaller ($/lb)
+        one, promote it to main and demote the $/kg figure to alt.
+        """
+        alts = item.conditions.setdefault("alt_prices", [])
+        if not isinstance(alts, list):
+            return
+        box = _item_anchor_box.get(id(item))
+        if (
+            item.price_value
+            and anchor.value < item.price_value
+            and 2.15 <= item.price_value / anchor.value <= 2.26
+            and (
+                item.price_unit == "kg"
+                or (
+                    box is not None
+                    and (anchor.box[3] - anchor.box[1]) > (box[3] - box[1])
+                )
+            )
+        ):
+            if item.price_text:
+                alts.append(item.price_text)
+            item.price_value = anchor.value
+            item.price_text = anchor.price_text
+            item.price_unit = anchor.unit or "lb"
+        else:
+            alts.append(anchor.price_text)
+
     def anchor_priority(anchor: PriceAnchor) -> float:
         pool = positioned(anchor)
         if not pool:
@@ -625,9 +754,7 @@ def segment_page(
             None,
         )
         if twin is not None:
-            alts = twin.conditions.setdefault("alt_prices", [])
-            if isinstance(alts, list):
-                alts.append(anchor.price_text)
+            fold_alt(twin, anchor)
             continue
         grown = _grow_name_lines(anchor, positioned(anchor), claimed, stack, page_w, page_h, cfg)
         if not grown:
@@ -641,9 +768,7 @@ def segment_page(
             for line in near:
                 owner = line_owner.get(id(line))
                 if owner is not None:
-                    alts = owner.conditions.setdefault("alt_prices", [])
-                    if isinstance(alts, list):
-                        alts.append(anchor.price_text)
+                    fold_alt(owner, anchor)
                     break
             continue
         for line in grown:
@@ -677,10 +802,18 @@ def segment_page(
             alts = dup_of.conditions.setdefault("alt_prices", [])
             if isinstance(alts, list):
                 if anchor.value < (dup_of.price_value or float("inf")):
+                    old_value = dup_of.price_value
                     if dup_of.price_text:
                         alts.append(dup_of.price_text)
                     dup_of.price_value = anchor.value
                     dup_of.price_text = anchor.price_text
+                    if (
+                        old_value
+                        and 2.15 <= old_value / anchor.value <= 2.26
+                        and dup_of.price_unit == "kg"
+                    ):
+                        # kg/lb dual pair: the smaller figure is $/lb.
+                        dup_of.price_unit = anchor.unit or "lb"
                 else:
                     alts.append(anchor.price_text)
             for line in grown:
@@ -701,6 +834,7 @@ def segment_page(
             name_fr=name,
             price_text=anchor.price_text,
             price_value=anchor.value,
+            price_unit=anchor.unit,
             image_url=page_url,
             bbox={
                 "left": round(region[0] / page_w * 1000),
