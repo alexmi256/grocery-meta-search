@@ -126,3 +126,12 @@ foreign-language names, and OCR merges that neither re-OCR nor image
 embeddings resolve — the realistic options for it remain (a) tier-3
 AI vision at real per-item cost, or (b) accepting it as the standing
 human-review subset.
+
+## Addendum (2026-10-16, later)
+
+Per Alex's decision, the tier 1 and tier 2 prototypes were removed
+(code, image caches, OCR cache, and the 352 MB CLIP model deleted).
+The fallback chain is now **exclusion → tier-3 stub** only
+(`work/tiers/tiers.py` + `exclusion.py`); the tier-3 subset is
+unchanged at 1,215 items / 979 signatures. Review documents resume
+as the mechanism for inspecting results and guiding corrections.
