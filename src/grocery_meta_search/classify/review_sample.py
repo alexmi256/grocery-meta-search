@@ -1,0 +1,102 @@
+"""Sampled multi-store review pack.
+
+For every store with items in the DB, sample N random classified and
+N random unclassified items (seeded, reproducible) and render each
+store with the standard store_report format into its own subfolder.
+An index README.md summarizes the pack. Zip the output folder for
+offline review.
+
+Usage:
+    python -m grocery_meta_search.classify.review_sample \
+        --db data/grocery.db --out-dir docs/research/review-2026-10-16 \
+        --per-class 10 --seed 20261016
+"""
+
+from __future__ import annotations
+
+import argparse
+import random
+import sqlite3
+from pathlib import Path
+
+from grocery_meta_search.classify.store_report import generate
+
+
+def sample_store_ids(conn: sqlite3.Connection, slug: str,
+                     per_class: int, seed: int) -> tuple[set[int], int, int]:
+    rows = conn.execute(
+        """
+        SELECT i.id, x.department
+        FROM flyer_items i
+        LEFT JOIN item_classifications x ON x.item_id = i.id
+        WHERE i.store_slug = ?
+        """,
+        (slug,),
+    ).fetchall()
+    classified = sorted(r[0] for r in rows if (r[1] or "Unclassified") != "Unclassified")
+    unclassified = sorted(r[0] for r in rows if (r[1] or "Unclassified") == "Unclassified")
+    rng = random.Random(f"{seed}:{slug}")
+    picked = set(rng.sample(classified, min(per_class, len(classified))))
+    picked |= set(rng.sample(unclassified, min(per_class, len(unclassified))))
+    return picked, len(classified), len(unclassified)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--db", required=True)
+    parser.add_argument("--out-dir", required=True)
+    parser.add_argument("--per-class", type=int, default=10)
+    parser.add_argument("--seed", type=int, default=20261016)
+    args = parser.parse_args()
+
+    out_dir = Path(args.out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(args.db)
+    stores = conn.execute(
+        """
+        SELECT s.slug, s.name FROM stores s
+        WHERE EXISTS (SELECT 1 FROM flyer_items i WHERE i.store_slug = s.slug)
+        ORDER BY s.slug
+        """
+    ).fetchall()
+
+    index: list[str] = [
+        "# Classification review pack",
+        "",
+        f"Per store: up to {args.per_class} random classified + "
+        f"{args.per_class} random unclassified items (seed {args.seed}), "
+        "rendered in the standard store report format with local images.",
+        "",
+        "| Store | In DB (class. / unclass.) | Sampled (class. / unclass.) | Report |",
+        "|---|---|---|---|",
+    ]
+    totals = {"items": 0, "crops": 0, "direct": 0, "missing": 0}
+    sampled_c = sampled_u = 0
+    for slug, name in stores:
+        picked, n_class, n_unc = sample_store_ids(conn, slug, args.per_class, args.seed)
+        stats = generate(args.db, slug, out_dir / slug, only_ids=picked)
+        for k in totals:
+            totals[k] += stats[k]
+        sc = min(args.per_class, n_class)
+        su = min(args.per_class, n_unc)
+        sampled_c += sc
+        sampled_u += su
+        index.append(
+            f"| {name} (`{slug}`) | {n_class} / {n_unc} | {sc} / {su} | "
+            f"[{slug}-report.md]({slug}/{slug}-report.md) |"
+        )
+        print(f"{slug}: sampled {sc}+{su} of {n_class}+{n_unc} -> {stats}")
+    index += [
+        "",
+        f"**Totals:** {len(stores)} stores, {sampled_c} classified + "
+        f"{sampled_u} unclassified items sampled; pictures: "
+        f"{totals['crops']} crops, {totals['direct']} direct images, "
+        f"{totals['missing']} missing.",
+    ]
+    (out_dir / "README.md").write_text("\n".join(index) + "\n", encoding="utf-8")
+    conn.close()
+    print(f"index written: {out_dir / 'README.md'}")
+
+
+if __name__ == "__main__":
+    main()
