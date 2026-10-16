@@ -1745,7 +1745,9 @@ RULES: list[Rule] = [
             "boeuf hache",
             "rosbif",
             "roast beef",
+            "roti de boeuf",
             "cotes de boeuf",
+            "cotes levees de boeuf",
             "faux filet",
             "entrecote",
             "bavette",
@@ -1771,6 +1773,9 @@ RULES: list[Rule] = [
             "mouton",
             "mutton",
             "chevreau",
+            "cotes levees d agneau",
+            "cotes levees de veau",
+            "roti de veau",
         ),
     ),
     (
@@ -1780,6 +1785,7 @@ RULES: list[Rule] = [
         (
             "porc",
             "pork",
+            "roti de porc",
             "jambon",
             "ham",
             "cotelette",
@@ -3688,11 +3694,14 @@ _INDEX = _compile()
 
 def classify_name(name: str) -> tuple[str, str, str] | None:
     """Classify one product name. Returns (department, subcategory,
-    rule_id) or None."""
+    rule_id) or None. Matches are ranked first by position bucket
+    (two tokens wide: the product a bundle names first wins over one
+    named later), then by rule order (specific rules before generic),
+    then by phrase length."""
     tokens = normalize(name).split()
     if not tokens:
         return None
-    best: tuple[int, str, str, str] | None = None
+    best: tuple[tuple[int, int, int], str, str, str] | None = None
     for i, token in enumerate(tokens):
         # The index is keyed by singular phrase tokens; a plural name
         # token must also try its singular forms.
@@ -3705,12 +3714,13 @@ def classify_name(name: str) -> tuple[str, str, str] | None:
             keys.add(token[:-1])
         candidates = [e for k in keys for e in _INDEX.get(k, ())]
         for order, rid, dept, sub, phrase_tokens in candidates:
-            if best is not None and order >= best[0]:
+            rank = (i // 2, order, -len(phrase_tokens))
+            if best is not None and rank >= best[0]:
                 continue
             if len(tokens) - i < len(phrase_tokens):
                 continue
             if _phrase_matches_at(tokens, i, phrase_tokens):
-                best = (order, dept, sub, rid)
+                best = (rank, dept, sub, rid)
     if best is None:
         return None
     return best[1], best[2], best[3]
