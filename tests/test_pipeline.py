@@ -63,3 +63,24 @@ def test_insert_items_and_observations() -> None:
     obs = conn.execute("SELECT COUNT(*) FROM price_observations").fetchone()[0]
     assert obs == 1  # only the priced kept item gets an observation
     conn.close()
+
+
+def test_insert_items_exclusion_layer() -> None:
+    conn = _conn()
+    items = [
+        # Unclassified furniture: excluded at ingest, with the reason.
+        FlyerItem(name_fr="Banner - Rollback", price_text=None, price_value=None),
+        FlyerItem(name_fr="Plus taxes", price_text=None, price_value=None),
+        # Unclassified but plausibly grocery: kept for review.
+        FlyerItem(name_fr="Recette du chef", price_text=None, price_value=None),
+    ]
+    stats: dict = {}
+    assert insert_items(conn, 1, "maxi", items, stats) == 1
+    assert stats["excluded"] == 2
+    assert stats["excluded_reasons"] == {
+        "furniture:banner": 1,
+        "boilerplate": 1,
+    }
+    rows = conn.execute("SELECT name_fr FROM flyer_items").fetchall()
+    assert [r[0] for r in rows] == ["Recette du chef"]
+    conn.close()

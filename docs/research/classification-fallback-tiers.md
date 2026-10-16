@@ -135,3 +135,28 @@ The fallback chain is now **exclusion → tier-3 stub** only
 (`work/tiers/tiers.py` + `exclusion.py`); the tier-3 subset is
 unchanged at 1,215 items / 979 signatures. Review documents resume
 as the mechanism for inspecting results and guiding corrections.
+
+## Update 2026-10-16 (evening): exclusion layer WIRED into ingest
+
+Approved by Alex 2026-10-16. The prototype now lives at
+`src/grocery_meta_search/classify/exclusion.py` (behaviour verified
+identical to the prototype: 0 verdict differences on the GT pool and the
+DB pool). `insert_items` runs it on Unclassified items only; excluded
+items are not inserted and are counted in the fetch report
+("excluded (furniture/merch/garble)") with per-reason stats.
+
+Re-validation on the frozen ground truth: the layer fires on 201
+item-weighted non-grocery/junk sigs. 7 apparent false fires on grocery
+verdicts were inspected one by one — all 7 are ground-truth labelling
+noise, not exclusion errors: 4 Flipp campaign banners ("banner activia
+genesis 2026 launch", …) labelled by the promoted brand; "plus taxes"
+and "plus" fragments labelled with a neighbouring product's category
+(Frozen Meals); the bare "HALAL" signage fragment labelled Halal Foods
+(no product in the name). In the production DB all 36 banner-led items
+are Walmart section banners with no price.
+
+Applied to the stored pool the same day (backup
+`data/grocery.db.bak-20261016f`, audit list
+`work/tiers/exclusion-applied-2026-10-16.json`): **213 items removed**
+(furniture 109, merch 45, boilerplate 42, garble 14, supplement-form 2,
+empty 1). DB Unclassified: 1,420 → 1,207 of 14,883 items.

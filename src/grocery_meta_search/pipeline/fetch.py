@@ -20,6 +20,7 @@ from datetime import UTC
 from pathlib import Path
 from typing import Any
 
+from ..classify.exclusion import exclusion_reason
 from ..classify.rules import classify_item
 from ..classify.taxonomy import UNCLASSIFIED, category_label, is_grocery
 from ..db import connect, init_schema
@@ -360,6 +361,7 @@ def store_editions(
             stats: dict[str, Any] = {}
             report["items"] += insert_items(conn, flyer_id, store_slug, edition.items, stats)
             report["discarded"] = report.get("discarded", 0) + stats.get("discarded", 0)
+            report["excluded"] = report.get("excluded", 0) + stats.get("excluded", 0)
         else:
             report["skipped"] = report.get("skipped", 0) + len(edition.items)
     conn.commit()
@@ -459,7 +461,13 @@ def insert_items(
     counted in stats["discarded"] when a stats dict is supplied.
     Unclassified items are KEPT (category 'Unclassified') for human
     review — an inconclusive classification is not evidence that an
-    item is not grocery (2026-10-16 decision).
+    item is not grocery (2026-10-16 decision) — UNLESS the exclusion
+    layer (classify/exclusion.py) confidently identifies them as
+    merchandise, flyer furniture or garble; those are discarded and
+    counted in stats["excluded"] with per-reason counts in
+    stats["excluded_reasons"] (wired 2026-10-16 on Alex's approval;
+    validated at 0 false fires on grocery ground truth, the 7 apparent
+    fires all being ground-truth labelling noise).
     """
     from datetime import datetime
 
@@ -473,6 +481,14 @@ def insert_items(
             if stats is not None:
                 stats["discarded"] = stats.get("discarded", 0) + 1
             continue
+        if dept == UNCLASSIFIED:
+            reason = exclusion_reason(item.name_fr, item.name_en, item.brand)
+            if reason is not None:
+                if stats is not None:
+                    stats["excluded"] = stats.get("excluded", 0) + 1
+                    reasons = stats.setdefault("excluded_reasons", {})
+                    reasons[reason] = reasons.get(reason, 0) + 1
+                continue
         label = UNCLASSIFIED if dept == UNCLASSIFIED else category_label(dept, sub)
         key = item_key(store_slug, item)
         cur = conn.execute(
@@ -553,6 +569,8 @@ def main() -> None:
         disc = (
             f", {report['discarded']} discarded as non-grocery" if report.get("discarded") else ""
         )
+        if report.get("excluded"):
+            disc += f", {report['excluded']} excluded (furniture/merch/garble)"
         print(
             f"{report['store']}: {report['editions']} editions, {report['items']} items{disc}{err}"
         )
