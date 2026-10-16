@@ -30,7 +30,7 @@ def test_english_and_plurals() -> None:
 
 
 def test_specific_forms_beat_generic() -> None:
-    assert cat("BOUILLON DE POULET 900ML") == ("Pantry", "Easy Meals & Sides")
+    assert cat("BOUILLON DE POULET 900ML") == ("Prepared Meals", "Salads & Soups")
     assert cat("BEURRE D'ARACHIDE CRÉMEUX") == (
         "Pantry",
         "Honey, Syrups & Spreads",

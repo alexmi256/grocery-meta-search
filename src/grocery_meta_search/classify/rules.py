@@ -3765,7 +3765,7 @@ _JUNK_TOKENS = {
     "ch", "ea", "format", "econo", "moi", "scene", "timbres", "triangle",
     "pts", "message", "important", "circulaire", "numerique", "exclusivite",
     "magasin", "magasins", "ligne", "aujourd", "hui", "obtiens", "j",
-    "achat", "achats", "carte", "cadeau", "concours", "gagnez", "points",
+    "achat", "achats", "carte", "cadeau", "concours", "gagnez",
     "offert", "offerte", "gratuite", "gratuit", "seulement", "des",
     "maintenant", "profitez", "profite", "decouvrez", "trouvez",
 }
@@ -3776,14 +3776,12 @@ def _is_junk(norm: str) -> bool:
         return True
     if norm.startswith(("banner ", "service magasin ")):
         return True
-    if "carte cadeau" in norm or "vidange" in norm:
-        return True
-    return False
+    return bool("carte cadeau" in norm or "vidange" in norm)
 
 
 def _is_junk_for_prior(norm: str) -> bool:
     tokens = norm.split()
-    if len(tokens) > 4:
+    if not tokens or len(tokens) > 4:
         return False
     return all(t in _JUNK_TOKENS or t.isdigit() for t in tokens)
 
