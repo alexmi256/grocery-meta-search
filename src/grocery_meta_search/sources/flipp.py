@@ -141,6 +141,10 @@ def item_from_product(
     name = (product.get("name") or "").strip() or None
     price_text = product.get("price_text") or None
     price_value, price_unit = parse_price_text(price_text or "")
+    if price_unit is None:
+        # Flipp carries the unit in post_price_text ("/lb 4,39$/kg"),
+        # not in the bare price_text — parse it for the unit only.
+        _, price_unit = parse_price_text(product.get("post_price_text") or "")
     valid_from = _to_date(product.get("valid_from"))
     valid_to = _to_date(product.get("valid_to"))
     gated = _is_loyalty_gated(product)

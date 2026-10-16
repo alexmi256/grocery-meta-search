@@ -23,15 +23,19 @@ from grocery_meta_search.classify.store_report import generate
 
 
 def sample_store_ids(conn: sqlite3.Connection, slug: str,
-                     per_class: int, seed: int) -> tuple[set[int], int, int]:
+                     per_class: int, seed: int, today: str) -> tuple[set[int], int, int]:
+    """Sample item ids from the store's CURRENT flyers only
+    (flyer valid_to >= today). Expired editions never enter a
+    review pack."""
     rows = conn.execute(
         """
         SELECT i.id, x.department
         FROM flyer_items i
+        JOIN flyers f ON f.id = i.flyer_id
         LEFT JOIN item_classifications x ON x.item_id = i.id
-        WHERE i.store_slug = ?
+        WHERE i.store_slug = ? AND f.valid_to >= ?
         """,
-        (slug,),
+        (slug, today),
     ).fetchall()
     classified = sorted(r[0] for r in rows if (r[1] or "Unclassified") != "Unclassified")
     unclassified = sorted(r[0] for r in rows if (r[1] or "Unclassified") == "Unclassified")
@@ -47,7 +51,13 @@ def main() -> None:
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--per-class", type=int, default=10)
     parser.add_argument("--seed", type=int, default=20261016)
+    parser.add_argument("--today", default=None,
+                        help="YYYY-MM-DD; only flyers valid on/after this "
+                             "date are sampled (default: today)")
     args = parser.parse_args()
+    from datetime import date
+
+    today = args.today or date.today().isoformat()
 
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -65,15 +75,26 @@ def main() -> None:
         "",
         f"Per store: up to {args.per_class} random classified + "
         f"{args.per_class} random unclassified items (seed {args.seed}), "
-        "rendered in the standard store report format with local images.",
+        "rendered in the standard store report format with local images. "
+        f"Only current flyers (valid through {today} or later) are sampled; "
+        "expired editions are excluded.",
         "",
         "| Store | In DB (class. / unclass.) | Sampled (class. / unclass.) | Report |",
         "|---|---|---|---|",
     ]
     totals = {"items": 0, "crops": 0, "direct": 0, "missing": 0}
     sampled_c = sampled_u = 0
+    skipped: list[str] = []
     for slug, name in stores:
-        picked, n_class, n_unc = sample_store_ids(conn, slug, args.per_class, args.seed)
+        picked, n_class, n_unc = sample_store_ids(conn, slug, args.per_class,
+                                                  args.seed, today)
+        if not picked:
+            skipped.append(f"{name} (`{slug}`)")
+            index.append(
+                f"| {name} (`{slug}`) | — | — | *no current flyer — skipped* |"
+            )
+            print(f"{slug}: no current flyer, skipped")
+            continue
         stats = generate(args.db, slug, out_dir / slug, only_ids=picked)
         for k in totals:
             totals[k] += stats[k]
@@ -88,11 +109,17 @@ def main() -> None:
         print(f"{slug}: sampled {sc}+{su} of {n_class}+{n_unc} -> {stats}")
     index += [
         "",
-        f"**Totals:** {len(stores)} stores, {sampled_c} classified + "
-        f"{sampled_u} unclassified items sampled; pictures: "
+        f"**Totals:** {len(stores) - len(skipped)} stores sampled, "
+        f"{sampled_c} classified + {sampled_u} unclassified items; pictures: "
         f"{totals['crops']} crops, {totals['direct']} direct images, "
         f"{totals['missing']} missing.",
     ]
+    if skipped:
+        index += [
+            "",
+            "Stores with items in the DB but **no current flyer** "
+            f"(skipped): {', '.join(skipped)}.",
+        ]
     (out_dir / "README.md").write_text("\n".join(index) + "\n", encoding="utf-8")
     conn.close()
     print(f"index written: {out_dir / 'README.md'}")

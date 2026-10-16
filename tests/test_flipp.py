@@ -64,6 +64,17 @@ def test_item_from_product_empty_price() -> None:
     assert item.name_fr  # still a real item (recipe/brand ad)
 
 
+def test_item_from_product_unit_in_post_price_text() -> None:
+    # Flipp carries by-weight units in post_price_text ("/lb 4,39$/kg"),
+    # not in the bare price_text; the unit must still be captured.
+    product = dict(_load("flipp_products_fr.json")[0])
+    product["price_text"] = "1.99"
+    product["post_price_text"] = "/lb 4,39$/kg"
+    item = item_from_product(product, "fr")
+    assert item.price_value == 1.99
+    assert item.price_unit == "lb"
+
+
 def test_merge_locales_by_sku() -> None:
     fr = [item_from_product(p, "fr") for p in _load("flipp_products_fr.json")]
     en = [item_from_product(p, "en") for p in _load("flipp_products_en.json")]

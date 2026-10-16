@@ -36,23 +36,44 @@ _SIZE_RE = re.compile(
 def reprocess(db_path: str, dry_run: bool = False) -> dict[str, dict[str, int]]:
     """Fill flyer_items.package_size for existing items: first
     from a structured raw payload (pdf_text items), then by
-    extracting the printed size from the item's names. Idempotent;
-    returns per-store counters."""
+    extracting the printed size from the item's names. Also fills
+    flyer_items.price_unit from the raw Flipp post_price_text
+    ("/lb 4,39$/kg") for items whose unit was never parsed.
+    Idempotent; returns per-store counters."""
     import json
 
     from ..db import connect, init_schema
+    from ..prices import parse_price_text
 
     conn = connect(db_path)
     init_schema(conn)
     stats: dict[str, dict[str, int]] = {}
     rows = conn.execute(
-        "SELECT id, store_slug, name_fr, name_en, raw, package_size FROM flyer_items"
+        "SELECT id, store_slug, name_fr, name_en, raw, package_size, price_unit"
+        " FROM flyer_items"
     ).fetchall()
     for row in rows:
         st = stats.setdefault(
-            row["store_slug"], {"total": 0, "set": 0, "from_raw": 0, "from_name": 0}
+            row["store_slug"],
+            {"total": 0, "set": 0, "from_raw": 0, "from_name": 0, "unit_set": 0},
         )
         st["total"] += 1
+        if row["price_unit"]:
+            st["unit_set"] += 1
+        elif row["raw"]:
+            try:
+                data = json.loads(row["raw"])
+            except Exception:
+                data = None
+            if isinstance(data, dict) and data.get("post_price_text"):
+                _, unit = parse_price_text(str(data["post_price_text"]))
+                if unit:
+                    st["unit_set"] += 1
+                    if not dry_run:
+                        conn.execute(
+                            "UPDATE flyer_items SET price_unit=? WHERE id=?",
+                            (unit, row["id"]),
+                        )
         if row["package_size"]:
             st["set"] += 1
             continue
