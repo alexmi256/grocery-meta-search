@@ -259,11 +259,25 @@ def _client_with(routes: list[tuple[str, _StubResponse]]):  # type: ignore[no-un
     return client
 
 
+def test_resolve_flyers_do_url_filters_by_sname() -> None:
+    from grocery_meta_search.sources.official import resolve_flyers_do_url
+
+    html = _fixture("official_circulaires_directory.html")
+    url = resolve_flyers_do_url(html, "marche-sultan")
+    assert url is not None and "sname=marche-sultan" in url and "str=4480308" in url
+    bkr = resolve_flyers_do_url(html, "marche-bkr")
+    assert bkr is not None and "sname=marche-bkr" in bkr and "&amp;" not in bkr
+    assert resolve_flyers_do_url(html, "marche-inconnu") is None
+    assert resolve_flyers_do_url("<html>no links</html>", "marche-sultan") is None
+
+
 def test_circulaires_client_dedupes_and_orders() -> None:
     cfg = load_official_configs()["marche-sultan"]
     viewer = _fixture("official_flyers_do.html")
+    directory = _fixture("official_circulaires_directory.html")
     routes: list[tuple[str, _StubResponse]] = [
         ("flyers.do", _StubResponse(text=viewer)),
+        ("circulaires.com/marche-sultan", _StubResponse(text=directory)),
         ("/11/s1.jpg", _StubResponse(content=b"page-A")),
         ("/11/b1.jpg", _StubResponse(content=b"page-A")),  # same page, 2nd name
         ("/11/s2.jpg", _StubResponse(content=b"page-B")),

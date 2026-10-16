@@ -507,16 +507,31 @@ class OfficialClient:
 
     def _circulaires(self, cfg: OfficialConfig, today: date) -> OfficialEdition:
         """circulaires.com legacy viewer (flyers.do, plain HTTP only — the
-        HTTPS endpoint drops connections). The landing page prints the
-        validity range and the first page image; the remaining pages sit
-        in the same directory with sloppy hand-uploaded names, so probe
-        the plausible patterns and dedupe by content hash."""
-        page_html = self._get(cfg.page_url).text
+        HTTPS endpoint drops connections). cfg.page_url is the merchant
+        DIRECTORY page: the viewer's str token rotates (4479876 died in
+        the Oct 2026 redesign; the directory then linked 4480308), so the
+        viewer URL is resolved from the directory at every fetch instead
+        of being hardcoded. The viewer prints the validity range and the
+        first page image; the remaining pages sit in the same directory
+        with sloppy hand-uploaded names, so probe the plausible patterns
+        and dedupe by content hash."""
+        if "flyers.do" in cfg.page_url:
+            viewer_url = cfg.page_url
+        else:
+            directory_html = self._get(cfg.page_url).text
+            resolved = resolve_flyers_do_url(directory_html, cfg.slug)
+            if resolved is None:
+                raise OfficialError(
+                    f"no flyers.do link for {cfg.slug} at {cfg.page_url}"
+                )
+            viewer_url = resolved
+        viewer_url = viewer_url.replace("https://", "http://", 1)
+        page_html = self._get(viewer_url).text
         parsed = parse_flyers_do(page_html)
         if parsed is None:
-            raise OfficialError(f"flyers.do page not recognized at {cfg.page_url}")
+            raise OfficialError(f"flyers.do page not recognized at {viewer_url}")
         valid_from, valid_to, first_src = parsed
-        base = urljoin(cfg.page_url, first_src)
+        base = urljoin(viewer_url, first_src)
         directory = base.rsplit("/", 1)[0]
         candidates = [base] + [
             f"{directory}/{name}"
@@ -642,6 +657,21 @@ def pick_pdf_url(urls: list[str], today: date) -> str:
 
 _FLYERS_DO_DATE = re.compile(r"Du\s+(\d{1,2})-(\d{1,2})-(\d{4})\s+au\s+(\d{1,2})-(\d{1,2})-(\d{4})")
 _FLYERS_DO_IMG = re.compile(r'src="([\w-]+/\d+/[\w.]+\.jpg)"')
+
+
+_FLYERS_DO_HREF = re.compile(r'href="([^"]*flyers\.do\?[^"]*)"')
+
+
+def resolve_flyers_do_url(directory_html: str, sname: str) -> str | None:
+    """Find the current flyers.do viewer URL for a store on its
+    circulaires.com merchant directory page. The str token in the URL
+    rotates when the site changes, which is why it is resolved at fetch
+    time rather than stored in the store config."""
+    for m in _FLYERS_DO_HREF.finditer(directory_html):
+        url = m.group(1).replace("&amp;", "&")
+        if f"sname={sname}" in url:
+            return url
+    return None
 
 
 def parse_flyers_do(page_html: str) -> tuple[date, date, str] | None:
