@@ -1130,6 +1130,8 @@ RULES: list[Rule] = [
             "boisson electrolytique",
             "prime hydration",
             "boisson energetique",
+            "hydration multiplier",
+            "liquid i v",
         ),
     ),
     (
@@ -1587,6 +1589,9 @@ RULES: list[Rule] = [
             "beurre de cajou",
             "beurre de noix",
             "tartinade de noisettes",
+            "speculoos",
+            "cookie butter",
+            "beurre de biscuit",
         ),
     ),
     (
@@ -3004,6 +3009,7 @@ RULES: list[Rule] = [
             "craquelins",
             "crackers",
             "biscuits",
+            "biscoff",
             "cookies",
             "galettes de riz",
             "galettes au sésame",
@@ -4133,6 +4139,23 @@ def classify_item(
         # misting cauldron / crystal ball is not wine. Each trigger
         # phrase has no grocery meaning.
         return "Household", "Home Goods", "guard-remap", rid
+    if (dept, sub) == ("Fruits & Vegetables", "Fresh Fruits") and (
+        "shots" in norm
+    ):
+        # Bottled wellness/juice shots are drinks, not fruit (costco
+        # review, 2026-10-17; GT verdict for the signature). Substring
+        # on purpose: the OCR name glues it ("SHOTSWEBIEN-ETRE").
+        return "Drinks", "Juice", "guard-remap", rid
+    if (dept, sub) == ("Snacks, Chips & Candy", "Candy & Chocolate") and (
+        "shake" in tokens
+        and any(
+            w in norm
+            for w in ("tout-en-un", "tout en un", "all-in-one", "all in one")
+        )
+    ):
+        # An all-in-one nutritional shake is a pharmacy/supplement
+        # product; "fudge" drags it into candy (GT verdict).
+        return "Health & Beauty", "Pharmacy", "guard-remap", rid
     if (dept, sub) == ("Drinks", "Water") and "desinfection" in norm:
         # A UV water-disinfection system is an appliance, not bottled
         # water (GT nonfood verdict). Scoped to Drinks > Water: the
