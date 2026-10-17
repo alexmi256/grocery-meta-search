@@ -4120,6 +4120,7 @@ def classify_item(
         or "tuyau" in norm
         or "epandeuse" in norm
         or "epandeur" in norm
+        or "obd" in norm
     ):
         # General-merchandise traps (canadian-tire review, 2026-10-17;
         # GT token-trap/nonfood verdicts): a log splitter is not a
