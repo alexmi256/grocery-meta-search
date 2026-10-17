@@ -138,6 +138,11 @@ def exclusion_reason(
         return "furniture:banner"
     if norm in _FURNITURE_EXACT:
         return "furniture:exact"
+    # Legal-footer phrases: a name carrying the flyer's terms-and-stock
+    # boilerplate is the footer itself, never a product (Bonanza review,
+    # 2026-10-17: the whole footer formed an item with a stolen price).
+    if "epuisement des stocks" in norm or "while supplies last" in norm:
+        return "furniture:footer"
 
     # E1b — supplement dosage forms (protect coffee capsules).
     token_set = set(tokens)

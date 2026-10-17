@@ -43,3 +43,20 @@ def test_grocery_names_never_excluded() -> None:
     assert exclusion_reason("Piments shishito frais", None, None) is None
     assert exclusion_reason("Mahlab moulu", None, None) is None
     assert exclusion_reason("Chou vert frisé", None, None) is None
+
+
+def test_footer_boilerplate_excluded() -> None:
+    # Bonanza review (2026-10-17): the flyer's legal footer formed an item.
+    assert (
+        exclusion_reason(
+            "LES PRODUITS SONT EN VENTE JUSQU'À EPUISEMENT DES STOCKS. "
+            "PAS DE VENTE AUX MARCHANDS.",
+            None,
+            None,
+        )
+        == "furniture:footer"
+    )
+    assert (
+        exclusion_reason("Valid while supplies last", None, None)
+        == "furniture:footer"
+    )
