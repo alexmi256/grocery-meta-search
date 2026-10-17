@@ -390,6 +390,21 @@ def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
                     )
             except Exception as exc:  # noqa: BLE001 — report, never fail the fetch
                 report["harvest_error"] = str(exc)
+    if not report.get("error"):
+        # Thin-edition guard (pipeline/guard.py): a fetch can succeed
+        # while silently storing a fraction of the edition (the
+        # 2026-10-17 partial-capture incident). The guard compares the
+        # stored cycle totals against the store's own recent cycles
+        # and flags collapses. Advisory only — never fails the fetch.
+        from .guard import evaluate_store, record_warnings, warning_text
+
+        try:
+            warnings = evaluate_store(conn, store_slug)
+            if warnings:
+                record_warnings(conn, warnings)
+                report["thin_warning"] = "; ".join(warning_text(w) for w in warnings)
+        except Exception as exc:  # noqa: BLE001 — report, never fail the fetch
+            report["thin_warning_error"] = str(exc)
     return report
 
 
@@ -603,8 +618,10 @@ def main() -> None:
             disc += f", {report['excluded']} excluded (furniture/merch/garble)"
         if report.get("harvested"):
             disc += f", {report['harvested']}"
+        warn = f" WARNING: {report['thin_warning']}" if report.get("thin_warning") else ""
         print(
-            f"{report['store']}: {report['editions']} editions, {report['items']} items{disc}{err}"
+            f"{report['store']}: {report['editions']} editions, "
+            f"{report['items']} items{disc}{err}{warn}"
         )
 
 
