@@ -20,6 +20,7 @@ import requests
 
 from ..prices import parse_price_text
 from .base import FlyerEdition, FlyerItem
+from .names import split_bilingual_name
 
 BASE_URL = "https://dam.flippenterprise.net/flyerkit"
 TIMEOUT = 30
@@ -139,6 +140,9 @@ def item_from_product(
     product: dict[str, Any], locale: str, default_program: str | None = None
 ) -> FlyerItem:
     name = (product.get("name") or "").strip() or None
+    name_fr, name_en = split_bilingual_name(name)
+    if name_en is None and name_fr is not None and not locale.startswith("fr"):
+        name_fr, name_en = None, name_fr
     price_text = product.get("price_text") or None
     price_value, price_unit = parse_price_text(price_text or "")
     if price_unit is None:
@@ -154,8 +158,8 @@ def item_from_product(
         if program:
             conditions["loyalty_program"] = program
     return FlyerItem(
-        name_fr=name if locale.startswith("fr") else None,
-        name_en=name if locale.startswith("en") else None,
+        name_fr=name_fr,
+        name_en=name_en,
         price_text=price_text,
         price_value=price_value,
         price_unit=price_unit,

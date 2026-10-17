@@ -41,7 +41,9 @@ def test_edition_from_publication() -> None:
 def test_item_from_product_fr() -> None:
     product = _load("flipp_products_fr.json")[0]
     item = item_from_product(product, "fr")
-    assert item.name_fr == "CROUSTILLES PRINGLES | POTATO CHIPS"
+    # Wishabi names are combined 'FR | EN'; they split at ingestion.
+    assert item.name_fr == "CROUSTILLES PRINGLES"
+    assert item.name_en == "POTATO CHIPS"
     assert item.name_en is None
     assert item.price_text == "2.50"
     assert item.price_value == 2.5

@@ -22,6 +22,7 @@ import requests
 from ..prices import parse_price_text
 from .base import FlyerEdition, FlyerItem
 from .flipp import _to_date
+from .names import split_bilingual_name
 
 BASE_URL = "https://cdn-gateflipp.flippback.com/bf/flipp"
 TIMEOUT = 30
@@ -46,6 +47,10 @@ def _bbox_of(item: dict[str, Any]) -> dict[str, Any] | None:
 
 def item_from_search_item(item: dict[str, Any], locale: str) -> FlyerItem:
     name = (item.get("name") or "").strip() or None
+    name_fr, name_en = split_bilingual_name(name)
+    if name_en is None and name_fr is not None and not locale.startswith("fr"):
+        # Single-language name from an English-locale fetch.
+        name_fr, name_en = None, name_fr
     price_text = item.get("price")
     if price_text is not None:
         price_text = str(price_text).strip() or None
@@ -54,8 +59,8 @@ def item_from_search_item(item: dict[str, Any], locale: str) -> FlyerItem:
     if item.get("discount"):
         conditions["discount"] = item["discount"]
     return FlyerItem(
-        name_fr=name if locale.startswith("fr") else None,
-        name_en=name if locale.startswith("en") else None,
+        name_fr=name_fr,
+        name_en=name_en,
         price_text=price_text,
         price_value=price_value,
         price_unit=price_unit,
