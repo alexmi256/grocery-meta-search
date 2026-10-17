@@ -4107,11 +4107,17 @@ def classify_item(
         or "plaque a biscuits" in norm
         or "brumisateur" in norm
         or "boule de cristal" in norm
-        or "k-mini" in norm
+        or "k mini" in norm
         or "distributeur a eau" in norm
         or "distributeurs a eau" in norm
         or "engrenages" in norm
         or "stabilisateur d huile" in norm
+        or "machines nespresso" in norm
+        or "lego" in norm
+        or "extracteur a jus" in norm
+        or "extracteur de jus" in norm
+        or "eaux usees" in norm
+        or "tuyau" in norm
     ):
         # General-merchandise traps (canadian-tire review, 2026-10-17;
         # GT token-trap/nonfood verdicts): a log splitter is not a
