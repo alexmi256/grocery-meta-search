@@ -138,6 +138,13 @@ def harvest_from_lines(
                 # The candidate itself stitches a unit price into a
                 # fake size ("0,50/100 g" read as one package size).
                 continue
+            lead = re.match(r"\d+(?:[.,]\d+)?", value)
+            if lead and float(lead.group(0).replace(",", ".")) == 0:
+                # A zero quantity is an OCR misread of the real size
+                # printed beside it (the same "600 g" read again as
+                # "000g" on the bag) — never a package size, and as a
+                # rival candidate it poisons the unambiguous pick.
+                continue
             if _norm_size(value) in denoms:
                 continue
             if not _descending_range(value) and _harvest_size_ok(value):

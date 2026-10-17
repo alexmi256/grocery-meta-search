@@ -133,3 +133,10 @@ def test_range_with_count_rival_and_contained_stamp() -> None:
     # Two disjoint weights stay ambiguous.
     lines = ["325g,choix varie", "12g"]
     assert harvest_from_lines(lines, True, False) == {}
+
+
+def test_zero_quantity_candidate_is_ocr_garble() -> None:
+    # Avril review (2026-10-17): the bag's "600 g" is read twice, once
+    # as "000g"; the zero candidate must not make the pick ambiguous.
+    lines = ["BLEUETS", "000g", "600g", "reg.16.99"]
+    assert harvest_from_lines(lines, True, False) == {"size": "600g"}
