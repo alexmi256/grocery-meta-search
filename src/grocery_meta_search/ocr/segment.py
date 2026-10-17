@@ -19,7 +19,7 @@ from dataclasses import dataclass
 from PIL import Image
 
 from ..sources.base import FlyerItem
-from .engine import OcrLine, ocr_crop_text
+from .engine import OcrLine, detect_lines, ocr_crop_text
 
 # Lines that are never product names, in any store.
 DEFAULT_STOPLIST = (
@@ -80,7 +80,7 @@ def _price_core(text: str) -> str:
 class OcrStoreConfig:
     """Per-store OCR tuning. Fractions are relative to page height."""
 
-    price_strategy: str = "anchor"  # "anchor" | "prix_line" | "name_cells"
+    price_strategy: str = "anchor"  # "anchor" | "prix_line" | "name_cells" | "chalkboard"
     name_case: str = "caps"  # "caps" | "any"
     name_position: str = "any"  # "any" | "above" | "above_left" | "below"
     price_min_h_frac: float = 0.02
@@ -709,7 +709,24 @@ def segment_page(
         return _segment_prix_line(image, lines, cfg, page_url, page_number)
     if cfg.price_strategy == "name_cells":
         return _segment_name_cells(image, lines, cfg, page_url, page_number)
+    if cfg.price_strategy == "chalkboard":
+        return _segment_chalkboard(image, lines, cfg, page_url, page_number)
     anchors = find_price_anchors(lines, page_w, page_h, cfg)
+    return _items_from_anchors(image, lines, cfg, anchors, page_url, page_number)
+
+
+def _items_from_anchors(
+    image: Image.Image,
+    lines: list[OcrLine],
+    cfg: OcrStoreConfig,
+    anchors: list[PriceAnchor],
+    page_url: str,
+    page_number: int,
+) -> list[FlyerItem]:
+    """Pair price anchors with name blocks (the 'anchor' strategy
+    body, shared with the chalkboard strategy whose anchors come
+    from detected price boards instead of OCR lines)."""
+    page_w, page_h = image.size
     cands = _dedupe_candidates(name_candidates(lines, page_h, cfg))
     stack = _stack_counts(cands, page_w, page_h, cfg)
 
@@ -976,6 +993,674 @@ def _segment_name_cells(
                 languages=["fr"],
                 raw={"strategy": "name_cells", "band_text": text},
                 confidence=0.85,
+            )
+        )
+    return items
+
+
+def _detect_board_boxes(
+    image: Image.Image, vmax: int
+) -> list[tuple[int, int, int, int]]:
+    """Dark chalkboard interiors on a PA Nature page.
+
+    The boards are near-black rectangles (wood frame excluded); a
+    stricter threshold (vmax=60) isolates the board core from photo
+    shadows, a looser one (110) gives a slightly larger box — pooled
+    OCR reads differ per box, so both are used downstream.
+    """
+    import cv2
+    import numpy as np
+
+    page_w, page_h = image.size
+    bgr = cv2.cvtColor(np.array(image.convert("RGB")), cv2.COLOR_RGB2BGR)
+    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv, np.array([0, 0, 0]), np.array([180, 110, vmax]))
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((9, 15), np.uint8))
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
+
+    def dark_frac(box: tuple[int, int, int, int]) -> float:
+        x, y, w, h = box
+        interior = gray[y : y + h, x : x + w]
+        return float((interior <= 110).mean()) if interior.size else 0.0
+
+    def mask_fill(box: tuple[int, int, int, int]) -> float:
+        x, y, w, h = box
+        region = mask[y : y + h, x : x + w]
+        return float((region > 0).mean()) if region.size else 0.0
+
+    cands: list[tuple[float, tuple[int, int, int, int]]] = []
+    for contour in contours:
+        x, y, w, h = cv2.boundingRect(contour)
+        if 0.17 * page_w < w < 0.36 * page_w and 0.03 * page_h < h < 0.07 * page_h and w / h < 5.5:
+            # Two neighbouring boards can fuse into one wide blob
+            # (their dark surrounds touch under a light product).
+            # Split at the palest vertical valley in the middle span.
+            profile = np.asarray((gray[y : y + h, x : x + w] <= 110).mean(axis=0), dtype=float)
+            mid = profile[w // 4 : 3 * w // 4]
+            if len(mid) and float(np.min(mid)) < 0.35:
+                cut = w // 4 + int(np.argmin(mid))
+                for half in ((x, y, cut, h), (x + cut, y, w - cut, h)):
+                    hw = half[2]
+                    if not (0.07 * page_w < hw < 0.17 * page_w and 1.3 < hw / h < 3.0):
+                        continue
+                    if mask_fill(half) < 0.40 or dark_frac(half) < 0.5:
+                        continue
+                    cands.append((mask_fill(half), half))
+                continue
+        if not (0.07 * page_w < w < 0.17 * page_w and 0.03 * page_h < h < 0.07 * page_h):
+            continue
+        if not (1.3 < w / h < 3.0):
+            continue
+        fill = cv2.contourArea(contour) / (w * h)
+        if fill < 0.40:
+            continue
+        # A board's interior is solidly dark; a dense block of printed
+        # name text (bold caps) also contours like a board but its box
+        # is mostly pale page with dark strokes.
+        if dark_frac((x, y, w, h)) < 0.5:
+            continue
+        cands.append((fill, (x, y, w, h)))
+    boxes: list[tuple[int, int, int, int]] = []
+    for _fill, box in sorted(cands, reverse=True):
+        x, y, w, h = box
+        overlap = False
+        for bx, by, bw, bh in boxes:
+            ix = max(0, min(x + w, bx + bw) - max(x, bx))
+            iy = max(0, min(y + h, by + bh) - max(y, by))
+            if ix * iy > 0.4 * min(w * h, bw * bh):
+                overlap = True
+                break
+        if not overlap:
+            boxes.append(box)
+    return boxes
+
+
+def _board_tokens(
+    image: Image.Image, box: tuple[int, int, int, int], tag: str
+) -> list[tuple[str, float, str]]:
+    """OCR one chalkboard crop several ways; pool the tokens.
+
+    The chalk digits are outline glyphs filled with hatching: plain
+    OCR loses them. Fusing the hatch strokes with a morphological
+    close (two kernel sizes) and reading with RapidOCR, plus one
+    Tesseract read, gives partially-overlapping evidence; the parser
+    votes across all of it. Returns (text, centre-x fraction, box tag)
+    triples; the tag lets the parser trust the tightest box most.
+    """
+    import cv2
+    import numpy as np
+
+    x, y, w, h = box
+    crop = image.crop((x, y, x + w, y + h))
+    big = crop.resize((w * 4, h * 4), Image.Resampling.LANCZOS)
+    tokens: list[tuple[str, float, str]] = []
+    inverted = Image.fromarray(255 - np.array(big)).convert("RGB")
+    for ln in detect_lines(inverted):
+        tokens.append((ln.text, ln.cx / big.width, tag))
+    gray = cv2.cvtColor(np.array(big), cv2.COLOR_RGB2GRAY)
+    _, bw = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    for kernel in (9, 13, 17, 21):
+        fused = cv2.morphologyEx(bw, cv2.MORPH_CLOSE, np.ones((kernel, kernel), np.uint8))
+        fused_img = Image.fromarray(255 - fused).convert("RGB")
+        for ln in detect_lines(fused_img):
+            tokens.append((ln.text, ln.cx / big.width, tag))
+        if kernel == 17:
+            text = ocr_crop_text(fused_img, (0, 0, fused_img.width, fused_img.height), psm=6)
+            if text:
+                tokens.append((text.replace("\n", " "), -1.0, tag))
+    return tokens
+
+
+def _parse_board_tokens(
+    tokens: list[tuple[str, float, str]], box: tuple[int, int, int, int]
+) -> PriceAnchor | None:
+    """Vote the pooled board tokens into one price anchor.
+
+    Multibuy boards print 'n/m$'; price boards print big dollar
+    digits left, superscript cents right, '/lb' under the cents.
+    Evidence weights: 4-digit merged runs count double (they carry
+    dollars+cents together); Tesseract tokens (cx = -1) count half.
+    A price needs a dollars figure and a cents figure; a lone cents
+    read is not enough (a wrong price is worse than a missed board).
+    """
+    from collections import Counter
+
+    def weight(cx: float) -> int:
+        return 1 if cx < 0 else 2  # Tesseract reads count half
+
+    unit: str | None = None
+    for text, _cx, _tag in tokens:
+        low = text.lower()
+        if "kg" in low:
+            unit = "kg"
+        elif "100g" in low.replace(" ", "") or "/100" in low:
+            unit = "100g"
+        elif re.search(r"/\s*[1l]?b|^[1l]b$|^b$", low.strip()):
+            unit = "lb"
+
+    has_dollar = any("$" in text for text, _cx, _tag in tokens)
+    pair_votes: Counter[tuple[int, float]] = Counter()
+    count_votes: Counter[int] = Counter()
+    total_votes: Counter[float] = Counter()
+    lone_digits: list[tuple[int, float, int, str]] = []  # (digit, cx, weight, box tag)
+    pair2: list[tuple[int, float, int]] = []  # slash-lost pairs (count, total, weight)
+    for text, cx, tag in tokens:
+        wgt = weight(cx)
+        if re.search(r"/\s*100", text):
+            continue  # '/100g' unit print is not a multibuy pair
+        m = re.search(r"(\d{1,2})\s*/\s*(\d{1,2}(?:[.,]\d{2})?)", text)
+        if m:
+            total_f = float(m.group(2).replace(",", "."))
+            pair_votes[(int(m.group(1)), total_f)] += wgt + (1 if "$" in text else 0)
+            continue
+        m = re.search(r"(\d{1,2})\s*/\s*$", text.strip())
+        if m:
+            count_votes[int(m.group(1))] += wgt
+            continue
+        digits = re.sub(r"\D", "", text)
+        # A multibuy total read as a lone digit counts only from the
+        # tighter boxes (the loosest crop imports neighbouring print)
+        # and only in the board's right half, where the total prints.
+        if len(digits) == 1 and tag in ("b1", "b2") and 0.35 < cx < 0.85:
+            lone_digits.append((int(digits), cx, wgt, tag))
+        elif len(digits) == 2 and "/" not in text and 0.2 < cx < 0.8:
+            pair2.append((int(digits[0]), float(digits[1]), wgt))
+    if pair_votes or count_votes or has_dollar:
+        for count2, total2, wgt2 in pair2:
+            pair_votes[(count2, total2)] += wgt2
+    if pair_votes or (count_votes and has_dollar):
+        if pair_votes:
+            # The chalk '3' splits its votes across misreads (0/2/8/9),
+            # so the winning total is the weighted median of all total
+            # evidence (full pairs + lone total digits), not the
+            # argmax; the count takes the mode.
+            count = Counter(
+                {c: sum(v for (cc, _t), v in pair_votes.items() if cc == c) for c, _t in pair_votes}
+            ).most_common(1)[0][0]
+            pool: Counter[float] = Counter()
+            for (cc, tt), v in pair_votes.items():
+                if cc == count:
+                    pool[tt] += v
+            # Lone total digits: the tight box counts at full weight;
+            # the looser box counts only when it corroborates a digit
+            # the tight box also read (it imports stray strokes).
+            b1_seen = {d for d, _cx, _w, tg in lone_digits if tg == "b1"}
+            for digit, _cx, wgt, tg in lone_digits:
+                if tg == "b1" or digit in b1_seen:
+                    pool[float(digit)] += wgt
+            total_weights = sorted(pool.items())
+            half = sum(w for _t, w in total_weights) / 2
+            acc = 0.0
+            total = total_weights[-1][0]
+            for t, w in total_weights:
+                acc += w
+                if acc >= half:
+                    total = t
+                    break
+            count_votes[count] += 2
+            total_votes[total] += 2
+        if count_votes and not total_votes:
+            count = count_votes.most_common(1)[0][0]
+            b1_seen = {d for d, _cx, _w, tg in lone_digits if tg == "b1"}
+            for digit, cx, wgt, tg in lone_digits:
+                if cx > 0.35 and (tg == "b1" or digit in b1_seen):
+                    total_votes[float(digit)] += wgt
+            if not total_votes or total_votes.most_common(1)[0][1] < 2:
+                return None
+            total = total_votes.most_common(1)[0][0]
+        elif count_votes:
+            count = count_votes.most_common(1)[0][0]
+            total = total_votes.most_common(1)[0][0]
+        else:
+            return None
+        if count < 2 or total <= 0:
+            return None
+        return PriceAnchor(
+            value=round(total / count, 2),
+            price_text=f"{count}/{total:g}$",
+            box=(float(box[0]), float(box[1]), float(box[0] + box[2]), float(box[1] + box[3])),
+            conf=0.8,
+            multibuy=(count, float(total)),
+            unit=unit,
+        )
+
+    dollar_votes: Counter[int] = Counter()
+    primary_votes: Counter[int] = Counter()
+    cents_votes: Counter[int] = Counter()
+    separate_cents: Counter[int] = Counter()
+    for text, cx, _tag in tokens:
+        digits = re.sub(r"\D", "", text)
+        if len(digits) == 2 and cx >= 0.5 and "/" not in text and "$" not in text:
+            separate_cents[int(digits)] += weight(cx)
+        elif len(digits) == 2 and cx < 0 and _tag == "b1":
+            # A Tesseract full-crop read ('99%') is real cents evidence.
+            separate_cents[int(digits)] += 1
+    cents_mode = separate_cents.most_common(1)[0][0] if sum(separate_cents.values()) >= 4 else None
+    run_all: Counter[tuple[int, int]] = Counter()
+    run_primary: Counter[tuple[int, int]] = Counter()
+    runs3: list[tuple[str, int]] = []
+    for text, cx, _tag in tokens:
+        wgt = weight(cx)
+        digits = re.sub(r"\D", "", text)
+        if "/" in text or "$" in text or not digits:
+            continue
+        if len(digits) == 4:
+            dollar_votes[int(digits[:2])] += 2 * wgt
+            primary_votes[int(digits[:2])] += 2 * wgt
+            cents_votes[int(digits[2:])] += 2 * wgt
+            run_all[(int(digits[:2]), int(digits[2:]))] += 2 * wgt
+            run_primary[(int(digits[:2]), int(digits[2:]))] += 2 * wgt
+        elif len(digits) == 3:
+            runs3.append((digits, wgt))
+        elif len(digits) == 2 and cx >= 0.5:
+            cents_votes[int(digits)] += wgt
+        elif len(digits) <= 2 and 0 <= cx < 0.5:
+            # A 2-digit token equal to the cents mode, sitting centre
+            # ('D99'), is the cents with a garbage prefix glyph, not
+            # a dollars figure.
+            if len(digits) == 2 and cents_mode is not None and int(digits) == cents_mode:
+                continue
+            dollar_votes[int(digits)] += wgt
+            primary_votes[int(digits)] += wgt
+        elif len(digits) == 1 and 0.4 <= cx < 0.65:
+            # A lone dollar digit whose OCR line spanned the whole
+            # board (the cents read as their own line elsewhere):
+            # weak dollars evidence, half the usual weight.
+            dollar_votes[int(digits)] += 1
+            primary_votes[int(digits)] += 1
+    # A 3-digit run is ambiguous: '149' can be $1.49 or $14.9x with
+    # the two cents glyphs fused into one blob ('99' reads as a
+    # single '9', '2', '0'...). Vote it both ways; the second reading
+    # uses the separately-read cents as the cents figure.
+    for digits, wgt in runs3:
+        dollar_votes[int(digits[0])] += wgt
+        primary_votes[int(digits[0])] += wgt
+        cents_votes[int(digits[1:])] += wgt
+        run_all[(int(digits[0]), int(digits[1:]))] += wgt
+        run_primary[(int(digits[0]), int(digits[1:]))] += wgt
+        if cents_mode is not None:
+            dollar_votes[int(digits[:2])] += wgt
+            cents_votes[cents_mode] += wgt
+            run_all[(int(digits[:2]), cents_mode)] += wgt
+    # A token that read the WHOLE price in one run ('1199', '899')
+    # is the strongest evidence on the board: when full runs carry
+    # enough weight, they decide the price outright and the fragment
+    # votes (a split '11' read as five lone '1's) cannot swamp them.
+    if run_all:
+        (run_dollars, run_cents), run_weight = sorted(
+            run_all.items(),
+            key=lambda kv: (kv[1], run_primary.get(kv[0], 0)),
+            reverse=True,
+        )[0]
+        if run_weight >= 4:
+            # Same fused-cents trap as the fragment path: a '3999'
+            # run can be '3.99' with the cents fused on twice.
+            if (
+                run_dollars >= 20
+                and run_cents >= 90
+                and run_dollars % 10 == run_cents // 10
+                and dollar_votes.get(run_dollars // 10, 0) >= 2
+            ):
+                run_dollars //= 10
+            return PriceAnchor(
+                value=run_dollars + run_cents / 100,
+                price_text=f"{run_dollars}.{run_cents:02d}",
+                box=(float(box[0]), float(box[1]), float(box[0] + box[2]), float(box[1] + box[3])),
+                conf=0.85,
+                unit=unit,
+            )
+    if not cents_votes:
+        return None
+    # Cents-only boards ('99¢/lb') print the ¢ glyph; a dollars board
+    # whose dollar digit was lost does not, and must stay unparsed
+    # rather than collapse to the cents figure. The two cents glyphs
+    # themselves read as lone '9' tokens, so junk dollars votes made
+    # only of the cents digit (or 0) do not disqualify the board.
+    junk_dollars_only = cents_mode is not None and all(
+        d in (0, cents_mode // 10) for d in dollar_votes
+    )
+    if not dollar_votes or junk_dollars_only:
+        if cents_mode is not None and any("¢" in t or "%" in t for t, _c, _g in tokens):
+            return PriceAnchor(
+                value=cents_mode / 100,
+                price_text=f"{cents_mode}¢",
+                box=(float(box[0]), float(box[1]), float(box[0] + box[2]), float(box[1] + box[3])),
+                conf=0.8,
+                unit=unit,
+            )
+        return None
+    cents_ranked = sorted(
+        cents_votes.items(), key=lambda kv: (kv[1], separate_cents.get(kv[0], 0)), reverse=True
+    )
+    cents = cents_ranked[0][0]
+    dollars = sorted(
+        dollar_votes.items(), key=lambda kv: (kv[1], primary_votes.get(kv[0], 0)), reverse=True
+    )[0][0]
+    # Pages with small superscript cents fuse the dollar digit with
+    # the first cents glyph: '3.99' reads as dollars=39. When the
+    # winning figure's second digit is the cents mode's first digit
+    # and its first digit has real support of its own, the fused
+    # reading is the true one.
+    if dollars >= 20 and cents_mode is not None and dollars % 10 == cents_mode // 10:
+        first = dollars // 10
+        if dollar_votes.get(first, 0) * 2 >= dollar_votes[dollars]:
+            dollars = first
+    if cents_votes[cents] < 4 and not separate_cents:
+        return None
+    return PriceAnchor(
+        value=dollars + cents / 100,
+        price_text=f"{dollars}.{cents:02d}",
+        box=(float(box[0]), float(box[1]), float(box[0] + box[2]), float(box[1] + box[3])),
+        conf=0.8,
+        unit=unit,
+    )
+
+
+def _min_cost_assignment(costs: list[list[float]]) -> list[tuple[int, int]]:
+    """Min-cost bipartite assignment (Hungarian algorithm, O(n^3)).
+
+    Rectangular input is padded to square with dummy nodes at cost
+    ``_ASSIGN_DUMMY``; pairs landing on a dummy are dropped.
+    """
+    n = len(costs)
+    m = len(costs[0]) if n else 0
+    if n == 0 or m == 0:
+        return []
+    size = max(n, m)
+    a = [[_ASSIGN_DUMMY] * (size + 1) for _ in range(size + 1)]
+    for i in range(n):
+        for j in range(m):
+            a[i + 1][j + 1] = costs[i][j]
+    u = [0.0] * (size + 1)
+    v = [0.0] * (size + 1)
+    p = [0] * (size + 1)
+    way = [0] * (size + 1)
+    for i in range(1, size + 1):
+        p[0] = i
+        j0 = 0
+        minv = [float("inf")] * (size + 1)
+        used = [False] * (size + 1)
+        while True:
+            used[j0] = True
+            i0 = p[j0]
+            delta = float("inf")
+            j1 = 0
+            for j in range(1, size + 1):
+                if used[j]:
+                    continue
+                cur = a[i0][j] - u[i0] - v[j]
+                if cur < minv[j]:
+                    minv[j] = cur
+                    way[j] = j0
+                if minv[j] < delta:
+                    delta = minv[j]
+                    j1 = j
+            for j in range(size + 1):
+                if used[j]:
+                    u[p[j]] += delta
+                    v[j] -= delta
+                else:
+                    minv[j] -= delta
+            j0 = j1
+            if p[j0] == 0:
+                break
+        while j0:
+            j1 = way[j0]
+            p[j0] = p[j1]
+            j0 = j1
+    return [(p[j] - 1, j - 1) for j in range(1, size + 1) if 0 < p[j] <= n and j <= m]
+
+
+_ASSIGN_DUMMY = 700.0
+_ASSIGN_BIG = 1e7
+
+
+def _levenshtein(a: str, b: str) -> int:
+    """Edit distance, early-exit above 2 (only small distances matter)."""
+    if abs(len(a) - len(b)) > 2:
+        return 3
+    row = list(range(len(b) + 1))
+    for i, ca in enumerate(a, start=1):
+        new = [i]
+        best = i
+        for j, cb in enumerate(b, start=1):
+            v = min(row[j] + 1, new[j - 1] + 1, row[j - 1] + (ca != cb))
+            new.append(v)
+            best = min(best, v)
+        if best > 2:
+            return 3
+        row = new
+    return row[-1]
+
+
+def _name_blocks(
+    image: Image.Image, lines: list[OcrLine], cfg: OcrStoreConfig
+) -> list[tuple[tuple[float, float, float, float], list[OcrLine]]]:
+    """Cluster name-candidate lines into blocks (stacked lines that
+    x-overlap, or lines sharing a text row). A block must sit on the
+    page's white background — name blocks do; packaging print and
+    wooden signs do not — which keeps product-label text out."""
+    import cv2
+    import numpy as np
+
+    page_w, page_h = image.size
+    hsv_full = cv2.cvtColor(np.array(image.convert("RGB")), cv2.COLOR_RGB2HSV)
+
+    def line_is_pale(ln: OcrLine) -> bool:
+        x0, y0 = max(0, int(ln.x) - 2), max(0, int(ln.y) - 2)
+        x1, y1 = min(page_w, int(ln.right) + 2), min(page_h, int(ln.bottom) + 2)
+        region = hsv_full[y0:y1, x0:x1]
+        if region.size == 0:
+            return False
+        pale = ((region[:, :, 2] >= 175) & (region[:, :, 1] <= 75)).mean()
+        return bool(pale >= 0.45)
+
+    cands = [
+        ln for ln in _dedupe_candidates(name_candidates(lines, page_h, cfg)) if line_is_pale(ln)
+    ]
+    parent = list(range(len(cands)))
+
+    def find(i: int) -> int:
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    max_gap = cfg.block_y_gap_frac * page_h
+    for i, a in enumerate(cands):
+        for j, b in enumerate(cands):
+            if j <= i:
+                continue
+            y_gap = max(b.y - a.bottom, a.y - b.bottom)
+            x_overlap = min(a.right, b.right) - max(a.x, b.x)
+            y_overlap = min(a.bottom, b.bottom) - max(a.y, b.y)
+            x_gap = max(b.x - a.right, a.x - b.right)
+            stacked = y_gap <= max_gap and x_overlap > 0.1 * min(a.w, b.w)
+            same_row = y_overlap > 0.5 * min(a.h, b.h) and x_gap <= 0.015 * page_w
+            if stacked or same_row:
+                ri, rj = find(i), find(j)
+                if ri != rj:
+                    parent[ri] = rj
+    groups: dict[int, list[OcrLine]] = {}
+    for i, line in enumerate(cands):
+        groups.setdefault(find(i), []).append(line)
+
+    hsv = cv2.cvtColor(np.array(image.convert("RGB")), cv2.COLOR_RGB2HSV)
+    blocks: list[tuple[tuple[float, float, float, float], list[OcrLine]]] = []
+    for members in groups.values():
+        alpha = sum(1 for ln in members for c in ln.text if c.isalpha())
+        longest = max((len(re.sub(r"[^A-Za-zÀ-ÿ]", "", ln.text)) for ln in members), default=0)
+        if alpha < 10 or longest < 8:
+            continue  # sign fragments and stray label words, not names
+        if len(members) == 1:
+            # A lone line that (fuzzily) just says "biologique" is one
+            # of the wooden signs hung on the photos, not a name.
+            squashed = re.sub(r"[^a-z]", "", members[0].text.lower())
+            if _levenshtein(squashed, "biologique") <= 2 or _levenshtein(
+                squashed, "biologiques"
+            ) <= 2:
+                continue
+        members.sort(key=lambda z: (z.y, z.x))
+        box = (
+            min(ln.x for ln in members),
+            min(ln.y for ln in members),
+            max(ln.right for ln in members),
+            max(ln.bottom for ln in members),
+        )
+        if box[2] - box[0] < 0.07 * page_w:
+            continue  # bottle-label fragments, narrower than any name
+        x0, y0, x1, y1 = (int(box[0]), int(box[1]), int(box[2]), int(box[3]))
+        region = hsv[y0:y1, x0:x1]
+        if region.size == 0:
+            continue
+        # PA's page is cream linen, not white: pale + desaturated.
+        near_white = ((region[:, :, 2] >= 175) & (region[:, :, 1] <= 75)).mean()
+        if near_white < 0.45:
+            continue
+        blocks.append((box, members))
+    return blocks
+
+
+def _segment_chalkboard(
+    image: Image.Image,
+    lines: list[OcrLine],
+    cfg: OcrStoreConfig,
+    page_url: str,
+    page_number: int,
+) -> list[FlyerItem]:
+    """PA Nature: prices live on printed chalkboards (hatched chalk
+    digits) that page-level OCR cannot read. Detect the boards by
+    colour, OCR each board crop with fused-stroke variants, and vote
+    the reads into price anchors. Pairing anchors to name blocks is
+    a global min-cost assignment: greedy nearest-neighbour claiming
+    swaps names here (the almonds name sits closer to the beef
+    board than to its own), but the global optimum does not."""
+    # The board voting is tuned at the source's native width
+    # (flyerbox serves 1550px); the fetch pipeline upscales pages to
+    # 2000px, which changes the OCR token pool enough to flip votes.
+    # Pin the working scale so production matches the tuning.
+    if image.size[0] > 1700:
+        factor = 1550 / image.size[0]
+        image = image.resize(
+            (1550, round(image.size[1] * factor)), Image.Resampling.LANCZOS
+        )
+        lines = [
+            OcrLine(
+                x=ln.x * factor,
+                y=ln.y * factor,
+                w=ln.w * factor,
+                h=ln.h * factor,
+                text=ln.text,
+                conf=ln.conf,
+            )
+            for ln in lines
+        ]
+    page_w, page_h = image.size
+    cores = _detect_board_boxes(image, vmax=60)
+    loose = _detect_board_boxes(image, vmax=110)
+    anchors: list[PriceAnchor] = []
+    for core in cores:
+        x, y, w, h = core
+        ew, eh = int(w * 1.10), int(h * 1.24)
+        box1 = (x - (ew - w) // 2, y - (eh - h) // 2, ew, eh)
+        tokens = _board_tokens(image, box1, "b1")
+        partner = next(
+            (
+                lb
+                for lb in loose
+                if abs(lb[0] - x) < 0.03 * page_w
+                and abs(lb[1] - y) < 0.03 * page_h
+                and lb[2] < 1.6 * w
+                and lb[3] < 1.6 * h
+            ),
+            core,
+        )
+        pw, ph = int(partner[2] * 1.30), int(partner[3] * 1.42)
+        box2 = (
+            partner[0] - (pw - partner[2]) // 2,
+            partner[1] - (ph - partner[3]) // 2,
+            pw,
+            ph,
+        )
+        if box2 != box1:
+            tokens += _board_tokens(image, box2, "b2")
+        qw, qh = int(partner[2] * 1.15), int(partner[3] * 1.15)
+        box3 = (
+            partner[0] - (qw - partner[2]) // 2,
+            partner[1] - (qh - partner[3]) // 2,
+            qw,
+            qh,
+        )
+        if box3 != box1 and box3 != box2:
+            tokens += _board_tokens(image, box3, "b3")
+        anchor = _parse_board_tokens(tokens, box1)
+        if anchor is not None:
+            anchors.append(anchor)
+    blocks = _name_blocks(image, lines, cfg)
+    if not anchors or not blocks:
+        return []
+    cap = 0.45 * page_w
+
+    def pair_cost(anchor: PriceAnchor, block_box: tuple[float, float, float, float]) -> float:
+        dist = _match_dist(anchor.box, block_box, cfg.match_dx_weight)
+        anchor_cy = (anchor.box[1] + anchor.box[3]) / 2
+        block_cy = (block_box[1] + block_box[3]) / 2
+        # PA layout: the name prints in the upper part of the product
+        # cell, the board in the lower part — a block centred below
+        # its board is the NEXT row's name, never this product's.
+        if dist > cap or block_cy > anchor_cy + 0.02 * page_h:
+            return _ASSIGN_BIG
+        if abs(block_cy - anchor_cy) > 0.21 * page_h:
+            return _ASSIGN_BIG
+        return dist
+
+    costs = [[pair_cost(anchor, block_box) for block_box, _m in blocks] for anchor in anchors]
+    items: list[FlyerItem] = []
+    for ai, bi in _min_cost_assignment(costs):
+        if costs[ai][bi] >= _ASSIGN_BIG:
+            continue
+        anchor = anchors[ai]
+        block_box, members = blocks[bi]
+        block_text = ocr_crop_text(
+            image,
+            (int(block_box[0]), int(block_box[1]), int(block_box[2]), int(block_box[3])),
+            psm=cfg.tesseract_psm,
+        )
+        if cfg.name_case == "any":
+            name = _name_from_lines_any(members)
+        else:
+            name = _name_from_text(block_text, members)
+        if not name:
+            continue
+        region = (
+            min(anchor.box[0], block_box[0]),
+            min(anchor.box[1], block_box[1]),
+            max(anchor.box[2], block_box[2]),
+            max(anchor.box[3], block_box[3]),
+        )
+        conditions: dict[str, object] = {}
+        if anchor.multibuy:
+            count, total = anchor.multibuy
+            conditions["multibuy"] = {"count": count, "total": total}
+        items.append(
+            FlyerItem(
+                name_fr=name,
+                price_text=anchor.price_text,
+                price_value=anchor.value,
+                price_unit=anchor.unit,
+                image_url=page_url,
+                bbox={
+                    "left": round(region[0] / page_w * 1000),
+                    "top": round(region[1] / page_h * 1000),
+                    "right": round(region[2] / page_w * 1000),
+                    "bottom": round(region[3] / page_h * 1000),
+                    "page": page_number,
+                },
+                conditions=conditions,
+                languages=["fr"],
+                raw={"strategy": "chalkboard", "block_text": block_text},
+                confidence=round(min(anchor.conf, 0.99), 2),
             )
         )
     return items
