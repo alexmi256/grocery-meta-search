@@ -60,3 +60,9 @@ def test_footer_boilerplate_excluded() -> None:
         exclusion_reason("Valid while supplies last", None, None)
         == "furniture:footer"
     )
+
+
+def test_payment_mark_furniture() -> None:
+    # Fu Tai review (2026-10-17): the footer VISA logo formed an item.
+    assert exclusion_reason("VISA", None, None) == "furniture:exact"
+    assert exclusion_reason("Mastercard", None, None) == "furniture:exact"

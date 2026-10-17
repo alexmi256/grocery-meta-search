@@ -91,7 +91,10 @@ _VOCAB: frozenset[str] = frozenset(rules._INDEX.keys())
 _FURNITURE_EXACT: frozenset[str] = frozenset(
     {"halal", "familial", "pts", "big", "sale", "special", "non nettoye",
      "non netoye", "liquide", "au canada", "toujours frais", "triangle rewards",
-     "preparéau", "prepareau", "abriqué", "abrique", "wm clark"}
+     "preparéau", "prepareau", "abriqué", "abrique", "wm clark",
+     # payment marks from flyer footers (Fu Tai review, 2026-10-17: a
+     # "VISA" item formed from the footer logo with a stolen price)
+     "visa", "mastercard", "interac"}
 )
 
 # Substrings searched inside long spaceless (OCR-merged) tokens.
