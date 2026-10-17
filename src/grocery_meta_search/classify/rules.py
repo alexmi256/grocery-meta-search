@@ -1414,6 +1414,8 @@ RULES: list[Rule] = [
             "barre proteinee",
             "barres proteinees",
             "protein bar",
+            "protein barre",
+            "barre protein",
             "barre granola",
             "barres granola",
             "granola bar",
@@ -4212,10 +4214,12 @@ def classify_item(
         )
         or "mini barres" in norm
         or "mini bars" in norm
-    ):
+    ) and "protein" not in norm and "proteine" not in norm:
         # The bare "barres"/"bars" phrases (round-2) also catch
         # "BARRES DE CHOCOLAT" and candy assortments; those are candy,
-        # not breakfast bars. No GT cereal-bar name carries these words.
+        # not breakfast bars. A bar that NAMES protein is a protein
+        # bar even in chocolate flavour (familiprix review, 2026-10-17;
+        # the Pure Protein signature's verdict is Cereal & Breakfast).
         return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
     if rid == "specific-protein-bars" and any(
         w in norm for w in ("creme glacee", "ice cream", "drumstick", "haagen")
