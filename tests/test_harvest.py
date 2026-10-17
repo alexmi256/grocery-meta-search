@@ -98,3 +98,26 @@ def test_harvest_per_unit_denominator() -> None:
     )
     assert got.get("unit") == "100g"
     assert "size" not in got
+
+
+def test_harvest_dual_rate_prefers_headline_100g() -> None:
+    # Adonis brie cell (item 7475): headline "3,49 le 100 g", small
+    # print carries the $/lb equivalent with its own price. The rate
+    # denominator must not become the package size, and the unit is
+    # the headline's 100g, not the equivalent's lb.
+    lines = [
+        "EntreMont", "BRIE", "FRANCE", "DOUBLECREME",
+        "fromage brie double", "30%DERABAIS", "creme EntreMont",
+        "3", "49", "EntreMont double cream brie", "cheese",
+        "15,83/lb", "le100g", "reg.4,99le100g-22,64/b",
+    ]
+    assert harvest_from_lines(lines, True, True) == {"unit": "100g"}
+
+
+def test_harvest_slash_misread_kg() -> None:
+    # Adonis tzatziki cell (item 7352): OCR reads "/KG" as "IKG".
+    lines = [
+        "ALACHATDE 8006OUPIUS", "1390", "TZATZIKI STYLe", "IKG",
+        "GREC DELPHI", "REG.1690", "DELPHITZATZIKI", "6REEKSTYLE",
+    ]
+    assert harvest_from_lines(lines, True, True) == {"unit": "kg"}

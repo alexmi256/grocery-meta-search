@@ -128,12 +128,14 @@ class PriceAnchor:
 _UNIT_IN_TEXT_RE = re.compile(
     r"/\s*(100\s*g(?:r)?|lb|1b|kg|ch|ea|un|bte)\b"
     r"|\bs\s*/\s*(ch|lb)\b"
-    r"|(?<=[\d.,])\s*(ch|ea)\.?\s*$",
+    r"|(?<=[\d.,])\s*(ch|ea)\.?\s*$"
+    r"|le\s*(100\s*g(?:r)?)\b",
     re.IGNORECASE,
 )
 _UNIT_LINE_RE = re.compile(
     r"^\s*(?:/\s*(100\s*g(?:r)?|lb|kg|ch|ea|un|bte|bo[iî]te)\.?"
-    r"|le\s+100\s*g|ch\s*/\s*ea\.?|ch\.?|ea\.?|l['’]unit[ée])\s*$",
+    r"|i\s*(kg|lb)"
+    r"|le\s*100\s*g|ch\s*/\s*ea\.?|ch\.?|ea\.?|l['’]unit[ée])\s*$",
     re.IGNORECASE,
 )
 
@@ -157,9 +159,12 @@ def _unit_in_text(text: str) -> str | None:
         token = next(g for g in m.groups() if g)
         return _canon_unit(token)
     m = _UNIT_LINE_RE.match(text)
-    if m and m.group(1):
-        return _canon_unit(m.group(1))
     if m:
+        token = next((g for g in m.groups() if g), None)
+        if token:
+            # Slash forms ("/lb") and the OCR slash-misread "IKG"/"ILB"
+            # (a whole line that is just the misread unit).
+            return _canon_unit(token)
         if "100" in text:
             return "100g"  # "le 100 g" standalone line
         return "each"  # "ch." / "ea." / "l'unité" standalone line

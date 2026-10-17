@@ -93,6 +93,12 @@ _PER_UNIT_RE = re.compile(
     r"\d+(?:[.,]\d+)?\s*/\s*(\d+(?:[.,]\d+)?)\s*(g|kg|mg|ml|cl|l|oz|lb|gr)\b",
     re.IGNORECASE,
 )
+# The French rate form "le 100 g" (under the headline price) is a
+# denominator too, glued by OCR as often as not ("le100g").
+_LE_UNIT_RE = re.compile(
+    r"le\s*(\d+(?:[.,]\d+)?)\s*(g|kg|mg|ml|cl|l|oz|lb|gr)\b",
+    re.IGNORECASE,
+)
 
 
 def _per_unit_denominators(line: str) -> set[str]:
@@ -102,10 +108,20 @@ def _per_unit_denominators(line: str) -> set[str]:
     never the package size, and for a pack item it is not the price
     unit either (round-2 review, giant-tiger: a 12-pack's unit stored
     as 100g, a jam's size blocked by the reference's ambiguity)."""
-    return {
+    denoms = {
         _norm_size(f"{m.group(1)}{m.group(2)}")
         for m in _PER_UNIT_RE.finditer(line)
     }
+    denoms |= {
+        _norm_size(f"{m.group(1)}{m.group(2)}")
+        for m in _LE_UNIT_RE.finditer(line)
+    }
+    return denoms
+
+
+# A price of its own on the line (an equivalent-rate line like
+# "15,83/lb" carries one; the headline rate line "le100g" does not).
+_PRICE_TOKEN_RE = re.compile(r"\d+[.,]\d{2}\b|\d+\s*(?:¢|cents\b)|\$\s*\d+")
 
 
 def harvest_from_lines(
@@ -152,10 +168,20 @@ def harvest_from_lines(
         # with no size anywhere it is the offer's own basis (weighed
         # goods priced "2,99/100 g") and stays a valid unit.
         pick_any = extract_package_size(joined)
-        size_evidence = bool(found) or (
-            pick_any is not None and not _PER_UNIT_RE.search(pick_any)
+        denoms_all = (
+            set().union(*(_per_unit_denominators(line) for line in lines))
+            if lines
+            else set()
         )
-        units = set()
+        # A "size" pick that is itself a rate denominator ("le 100 g")
+        # is not package evidence — the cell is a weighed-good offer.
+        size_evidence = bool(found) or (
+            pick_any is not None
+            and not _PER_UNIT_RE.search(pick_any)
+            and _norm_size(pick_any) not in denoms_all
+        )
+        units: set[str] = set()
+        unmarked: set[str] = set()
         for line in lines:
             u = _unit_in_text(line)
             if u is None:
@@ -163,7 +189,16 @@ def harvest_from_lines(
             if size_evidence and _norm_size(u) in _per_unit_denominators(line):
                 continue
             units.add(u)
-        if len(units) == 1:
+            if not _PRICE_TOKEN_RE.search(line):
+                unmarked.add(u)
+        # Dual-rate cells (Adonis brie: headline "3,49 le 100 g" plus
+        # the small-print equivalent "15,83/lb"): the headline rate
+        # rides a line with no price of its own, while equivalent
+        # rates carry theirs. Prefer the unmarked unit when it is
+        # unambiguous; otherwise fall back to a single distinct unit.
+        if len(unmarked) == 1:
+            out["unit"] = next(iter(unmarked))
+        elif len(units) == 1:
             out["unit"] = next(iter(units))
     return out
 

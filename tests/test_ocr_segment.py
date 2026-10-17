@@ -299,3 +299,14 @@ def test_lamoisson_unit_prices() -> None:
     names_195 = {it.name_fr or "" for it in items if it.price_value == 1.95}
     assert any("CORIANDRE" in n for n in names_195)
     assert any("PERSIL" in n for n in names_195)
+
+
+def test_unit_in_text_glued_forms() -> None:
+    from grocery_meta_search.ocr.segment import _unit_in_text
+
+    assert _unit_in_text("le100g") == "100g"
+    assert _unit_in_text("le 100 g") == "100g"
+    assert _unit_in_text("reg.4,99le100g-22,64/b") == "100g"
+    assert _unit_in_text("IKG") == "kg"
+    assert _unit_in_text("ILB") == "lb"
+    assert _unit_in_text("15,83/lb") == "lb"
