@@ -50,6 +50,29 @@ def _download(url: str, dest: Path) -> bool:
             dest.write_bytes(resp.read())
         return True
     except Exception:
+        pass
+    # wishabi's CDN strangles Python http.client transfers (reads die
+    # mid-body, ~64 KB in) while curl completes them reliably — fall
+    # back to curl before giving up on the image (IGA review, 2026-10-17).
+    try:
+        import subprocess
+
+        subprocess.run(
+            [
+                "curl",
+                "-sL",
+                "--fail",
+                "-A",
+                UA["User-Agent"],
+                "-o",
+                str(dest),
+                url,
+            ],
+            timeout=60,
+            check=True,
+        )
+        return dest.exists() and dest.stat().st_size > 0
+    except Exception:
         return False
 
 
