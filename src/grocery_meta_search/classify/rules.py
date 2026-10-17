@@ -4118,6 +4118,8 @@ def classify_item(
         or "extracteur de jus" in norm
         or "eaux usees" in norm
         or "tuyau" in norm
+        or "epandeuse" in norm
+        or "epandeur" in norm
     ):
         # General-merchandise traps (canadian-tire review, 2026-10-17;
         # GT token-trap/nonfood verdicts): a log splitter is not a
@@ -4125,6 +4127,12 @@ def classify_item(
         # frother is not milk, a cookie sheet is not cookies, and a
         # misting cauldron / crystal ball is not wine. Each trigger
         # phrase has no grocery meaning.
+        return "Household", "Home Goods", "guard-remap", rid
+    if (dept, sub) == ("Drinks", "Water") and "desinfection" in norm:
+        # A UV water-disinfection system is an appliance, not bottled
+        # water (GT nonfood verdict). Scoped to Drinks > Water: the
+        # same word in a lens-solution name is Health & Beauty and
+        # already correct there.
         return "Household", "Home Goods", "guard-remap", rid
     if dept == "Fruits & Vegetables" and (
         "lumiere" in norm or "lumieres" in norm or "noma" in norm
