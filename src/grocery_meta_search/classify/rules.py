@@ -4231,4 +4231,35 @@ def classify_item(
         # The ground-meat grade phrases ("hache maigre") are shared:
         # "VEAU HACHÉ MAIGRE" is veal, not beef.
         return "Meat", "Lamb & Veal", "guard-remap", rid
+    if (dept, sub) == ("Fruits & Vegetables", "Fresh Vegetables") and (
+        "citrouille" in norm or "pumpkin" in norm
+    ) and any(
+        w in norm
+        for w in (
+            "chocolat", "chocolate", "guimauve", "marshmallow",
+            "sucon", "lollipop", "freddo",
+        )
+    ):
+        # Chocolate / marshmallow pumpkins are Halloween candy, not
+        # produce: the bare 'citrouille' token fires Fresh Vegetables
+        # and outranks the candy tokens (jean-coutu review,
+        # 2026-10-17; GT token-trap verdicts adjudicate every such
+        # signature to Candy & Chocolate). 'freddo' is the chocolatier
+        # brand whose bare "FREDDO Citrouilles" names a chocolate
+        # product. 'caramel' is deliberately NOT a marker: pumpkin-
+        # spice coffee ("café caramel ou citrouille épicée") uses it.
+        return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
+    if (dept, sub) == ("Fruits & Vegetables", "Fresh Vegetables") and (
+        "citrouille" in norm or "pumpkin" in norm
+    ) and any(
+        w in norm
+        for w in (
+            "lanterne", "lantern", "gonflable", "inflatable",
+            "decoupe", "carving",
+        )
+    ):
+        # Pumpkin lanterns, inflatables and carving kits are seasonal
+        # merchandise, not produce (GT token-trap verdicts adjudicate
+        # them Household > Home Goods).
+        return "Household", "Home Goods", "guard-remap", rid
     return dept, sub, "rule", rid

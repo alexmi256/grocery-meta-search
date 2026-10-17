@@ -425,3 +425,45 @@ def test_round2_barres_collateral() -> None:
         "pharmaprix",
     )
     assert (dept, method) == ("Unclassified", "junk")
+
+
+def test_pumpkin_candy_and_decorations_are_not_produce() -> None:
+    """Chocolate/marshmallow pumpkins are Halloween candy and pumpkin
+    lanterns/inflatables/carving kits are merchandise; only a bare
+    pumpkin is produce (jean-coutu review, 2026-10-17; GT token-trap
+    verdicts). Guards are scoped to Fresh Vegetables so pumpkin-spice
+    coffee and pumpkin pie keep their existing shelves."""
+    c = classify_item
+    for name, brand, store in (
+        ("FREDDO, Citrouilles, Chocolat au lait avec centre de caramel, 390 g",
+         "FREDDO", "familiprix"),
+        ("FREDDO Citrouilles en chocolat au caramel", "FREDDO", "jean-coutu"),
+        ("CITROUILLES CHOCOLATÉES SELECTION", None, "metro"),
+        ("BRANDS UNLIMITED, Citrouilles en guimauve, 50 unités", "BRANDS UNLIMITED", "familiprix"),
+        ("CARNABY SWEET Suçon en chocolat belge en forme de fantôme ou citrouille",
+         None, "pharmaprix"),
+        ("CONFISERIES REGAL Citrouilles en chocolat", None, "uniprix"),
+        ("FREDDO Citrouilles", "FREDDO", "familiprix"),
+    ):
+        dept, sub, _, _ = c(name, None, brand, store)
+        assert (dept, sub) == ("Snacks, Chips & Candy", "Candy & Chocolate"), name
+    # The short forms hit Fresh Vegetables first and need the guard.
+    for name, brand, store in (
+        ("FREDDO Citrouilles en chocolat au caramel", "FREDDO", "jean-coutu"),
+        ("CITROUILLES CHOCOLATÉES SELECTION", None, "metro"),
+        ("FREDDO Citrouilles", "FREDDO", "familiprix"),
+    ):
+        _, _, method, _ = c(name, None, brand, store)
+        assert method == "guard-remap", name
+    for name, store in (
+        ("Citrouille lanterne gonflable", "canadian-tire"),
+        ("Citrouilles lanternes empilées gonflables, 8 pi", "canadian-tire"),
+        ("PUMPKIN MASTERS Ensemble de découpe de citrouille", "pharmaprix"),
+    ):
+        dept, sub, _, _ = c(name, None, None, store)
+        assert (dept, sub) == ("Household", "Home Goods"), name
+    # Not swept up: real pumpkins, pumpkin pie, pumpkin-spice coffee.
+    assert c("Grosse citrouille", None, None, "walmart")[:2] == (
+        "Fruits & Vegetables", "Fresh Vegetables")
+    assert c("Capsules K-Cup de café Starbucks caramel ou citrouille épicée",
+             None, "Starbucks", "walmart")[:2] == ("Drinks", "Coffee")

@@ -1,0 +1,479 @@
+# T&T Supermarché — full product report
+
+Store slug: `t-t`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+
+
+## Review Analysis — Pass 2 (2026-10-17, verification after Pass 1 fixes)
+
+- Packet regenerated: all seven corrections display (16.99, 6.97, 4.97, 9.97, 11.99, 4.97, 7.98) and the points phantom does not reappear. Details in `t-t-report-pass1.md`. Store review complete.
+
+## Flyer 169 — valid 2026-10-16 → 2026-10-22 (10 classified items, 10 unclassified)
+
+Source ref: `circulaire-supermarche-tt-du-16-au-22-octobre-2026` · fetched 2026-10-17T06:29:17.896Z
+
+### Item 15829
+
+![item 15829](images/item-15829.jpg)
+
+- **Name (English):** None
+- **Name (French):** T&Tnoixde cajou//noix melange
+- **Brand:** None
+- **Category (English):** Fruits & Vegetables > Dried Fruits & Nuts
+- **Category (French):** Fruits et légumes > Fruits séchés et noix
+- **How classified:** rule (`dried-fruits-nuts`)
+- **Size:** 700g/800g
+- **Price:** 13.97
+- **Printed Price:** “13.97”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 790, top 892, right 922, bottom 940, page 1
+- **Full page:** [pages/flyer169-page1-f01465bd04.jpg (flyer page 1)](pages/flyer169-page1-f01465bd04.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/01.webp
+- **Details:** confidence: 0.99 · item_key: `bbd4eae45231da3e`
+- **Raw:** `{"block_text": "we «\nT&Tinoix de\ncajou//ñoix\nmélange ® :\n+ 6 hCUg", "ocr_lines": ["T&Tnoixde", "cajou//noix", "melange"], "harvest": {"size": "700g/800g", "via": "crop"}}`
+
+### Item 15835
+
+![item 15835](images/item-15835.jpg)
+
+- **Name (English):** None
+- **Name (French):** Pomelode miel/Pomelo Rouge
+- **Brand:** None
+- **Category (English):** Pantry > Honey, Syrups & Spreads
+- **Category (French):** Produits du garde-manger > Miel, sirops et tartinades
+- **How classified:** rule (`honey-spreads`)
+- **Size:** None
+- **Price:** 2.49
+- **Printed Price:** “2.49”
+- **Unit quantity:** 1.0
+- **Unit measurement:** kilogram
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 214, top 116, right 360, bottom 161, page 2
+- **Full page:** [pages/flyer169-page2-f0171445e8.jpg (flyer page 2)](pages/flyer169-page2-f0171445e8.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/02.webp
+- **Details:** confidence: 0.99 · item_key: `dd86dbf8b5094811`
+- **Raw:** `{"block_text": "= Pomelo comm\nmiel/ Pomelo\n)49 Rouge\nAmma AAT\nM ib54rg La Chine ou", "ocr_lines": ["Pomelode", "miel/Pomelo", "Rouge", "o5.49/kg", "La Chine"], "harvest": {"unit": "kg", "via": "crop"}}`
+
+### Item 15851
+
+![item 15851](images/item-15851.jpg)
+
+- **Name (English):** None
+- **Name (French):** Luckin Seleclionne espresso
+- **Brand:** None
+- **Category (English):** Drinks > Coffee
+- **Category (French):** Boissons > Cafés
+- **How classified:** rule (`coffee`)
+- **Size:** 1kg
+- **Price:** 16.99
+- **Printed Price:** “16.99”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 295, top 830, right 438, bottom 922, page 2
+- **Full page:** [pages/flyer169-page2-f0171445e8.jpg (flyer page 2)](pages/flyer169-page2-f0171445e8.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/02.webp
+- **Details:** confidence: 0.77 · item_key: `090e747c93cce739`
+- **Raw:** `{"block_text": "Sélectionné Luckin pas\n\nWE espresso #.\n\n} concentré de\n\n1 wm café lauices |\n| | (à La noix à.\n\nà oh de coCo/::\n\nai }. espresso) =\n\nwe Pee eet OTS", "ocr_lines": ["Luckin", "Seleclionne", "espresso", "concentrede", "cafeliquide", "(a lanoix（", "decoco/", "espresso)"], "harvest": {"size": "1kg", "via": "crop"}}`
+
+### Item 15869
+
+![item 15869](images/item-15869.jpg)
+
+- **Name (English):** None
+- **Name (French):** T&T-tartelette auxceufsala portugaise
+- **Brand:** None
+- **Category (English):** Bakery > Cakes
+- **Category (French):** Boulangerie > Gâteaux
+- **How classified:** rule (`cakes`)
+- **Size:** None
+- **Price:** 5.97
+- **Printed Price:** “5.97”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 640, top 240, right 788, bottom 285, page 3
+- **Full page:** [pages/flyer169-page3-47331c9aa9.jpg (flyer page 3)](pages/flyer169-page3-47331c9aa9.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/03.webp
+- **Details:** confidence: 0.99 · item_key: `dbe013805e35e78b`
+- **Raw:** `{"block_text": "| TaTtartelettes\naux œufs à la\n7 portugaise |\nRAIN |\nIch 50gx6", "ocr_lines": ["T&T-tartelette", "auxceufsala", "portugaise", "lch"], "harvest": {"unit": "each", "via": "crop"}}`
+
+### Item 15902
+
+![item 15902](images/item-15902.jpg)
+
+- **Name (English):** None
+- **Name (French):** MAGMAG prunes sechees"
+- **Brand:** None
+- **Category (English):** Fruits & Vegetables > Dried Fruits & Nuts
+- **Category (French):** Fruits et légumes > Fruits séchés et noix
+- **How classified:** dried-remap (`fruits`)
+- **Size:** None
+- **Price:** 6.97
+- **Printed Price:** “6.97”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 649, top 544, right 896, bottom 601, page 4
+- **Full page:** [pages/flyer169-page4-2a64ff6c6b.jpg (flyer page 4)](pages/flyer169-page4-2a64ff6c6b.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/04.webp
+- **Details:** confidence: 0.96 · item_key: `7d7354bffa5500b7`
+- **Conditions:** `{"alt_prices": ["3.50"]}`
+- **Raw:** `{"block_text": "MAMA CIE\nprunes >\nséchées 48\nRAMAGMAG °°\nre se €", "ocr_lines": ["MAGMAG", "prunes", "sechees\"", "泰国MAGMAG"]}`
+
+### Item 15911
+
+![item 15911](images/item-15911.jpg)
+
+- **Name (English):** None
+- **Name (French):** Chou-fleur frais Canada/
+- **Brand:** None
+- **Category (English):** Fruits & Vegetables > Fresh Vegetables
+- **Category (French):** Fruits et légumes > Légumes frais
+- **How classified:** rule (`vegetables`)
+- **Size:** 1.8kg/2kg
+- **Price:** 4.97
+- **Printed Price:** “4.97”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 130, top 273, right 272, bottom 459, page 4
+- **Full page:** [pages/flyer169-page4-2a64ff6c6b.jpg (flyer page 4)](pages/flyer169-page4-2a64ff6c6b.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/04.webp
+- **Details:** confidence: 0.93 · item_key: `5abdb14458da0db3`
+- **Raw:** `{"block_text": "Leu er\nChou:fleur.\nfrais hé, Ÿ\n\n, BRIE FT\nCanada/\nMexique :", "ocr_lines": ["Chou-fleur", "frais", "Canada/", "Mexique"], "harvest": {"size": "1.8kg/2kg", "unit": "each", "via": "crop"}}`
+
+### Item 15930
+
+![item 15930](images/item-15930.jpg)
+
+- **Name (English):** None
+- **Name (French):** Mochi madeleine aux chataignes
+- **Brand:** None
+- **Category (English):** International Foods > East Asian Foods
+- **Category (French):** Aliments internationaux > Aliments de l'Asie de l'Est
+- **How classified:** rule (`east-asian`)
+- **Size:** None
+- **Price:** 7.29
+- **Printed Price:** “7.29”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 756, top 903, right 931, bottom 937, page 6
+- **Full page:** [pages/flyer169-page6-1d27e84a73.jpg (flyer page 6)](pages/flyer169-page6-1d27e84a73.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/06.webp
+- **Details:** confidence: 0.99 · item_key: `b8fbc802e80381ce`
+- **Raw:** `{"block_text": "Mochi madeleine\naux châtaignes", "ocr_lines": ["Mochi madeleine", "aux chataignes"]}`
+
+### Item 15940
+
+![item 15940](images/item-15940.jpg)
+
+- **Name (English):** None
+- **Name (French):** coffee cafe glacelait vietnamien
+- **Brand:** None
+- **Category (English):** Drinks > Coffee
+- **Category (French):** Boissons > Cafés
+- **How classified:** rule (`coffee`)
+- **Size:** None
+- **Price:** 4.59
+- **Printed Price:** “4.59”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 165, top 674, right 361, bottom 736, page 7
+- **Full page:** [pages/flyer169-page7-ae7c8400ba.jpg (flyer page 7)](pages/flyer169-page7-ae7c8400ba.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/07.webp
+- **Details:** confidence: 0.99 · item_key: `769c535317942fa5`
+- **Raw:** `{"block_text": "2 com\ncoffee café}\nglacé lait\n\nÀ >,\nvietnamien!\n235mIx6", "ocr_lines": ["coffee cafe", "glacelait", "vietnamien", "235mlx6"]}`
+
+### Item 15942
+
+![item 15942](images/item-15942.jpg)
+
+- **Name (English):** None
+- **Name (French):** T&Tcreme denoix/lait decoco
+- **Brand:** None
+- **Category (English):** Dairy & Eggs > Milk & Cream
+- **Category (French):** Produits laitiers et œufs > Lait et crème
+- **How classified:** rule (`milk-cream`)
+- **Size:** 398ml
+- **Price:** 1.50
+- **Printed Price:** “3/4.50”
+- **Unit quantity:** 3.0
+- **Unit measurement:** multiple
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 45, top 333, right 265, bottom 405, page 7
+- **Full page:** [pages/flyer169-page7-ae7c8400ba.jpg (flyer page 7)](pages/flyer169-page7-ae7c8400ba.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/07.webp
+- **Details:** confidence: 0.98 · item_key: `5cacfc20b622d581`
+- **Conditions:** `{"multibuy": {"count": 3, "total": 4.5}}`
+- **Raw:** `{"block_text": "\\ 2 &\nT&T crème _\nSS rr\nde noix/ lait\nde coco\naAa0...1 fain", "ocr_lines": ["T&Tcreme", "denoix/lait", "decoco"], "harvest": {"size": "398ml", "via": "crop"}}`
+
+### Item 15947
+
+![item 15947](images/item-15947.jpg)
+
+- **Name (English):** None
+- **Name (French):** Huy Fong saucechili sriracha
+- **Brand:** None
+- **Category (English):** Pantry > Condiments
+- **Category (French):** Produits du garde-manger > Condiments et garnitures
+- **How classified:** rule (`condiments`)
+- **Size:** 714ml
+- **Price:** 4.97
+- **Printed Price:** “4.97”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 746, top 362, right 916, bottom 408, page 7
+- **Full page:** [pages/flyer169-page7-ae7c8400ba.jpg (flyer page 7)](pages/flyer169-page7-ae7c8400ba.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/07.webp
+- **Details:** confidence: 0.95 · item_key: `c60f437b33e4af5b`
+- **Conditions:** `{"alt_prices": ["1.97"]}`
+- **Raw:** `{"block_text": "Huy Fong\nsauce chili\nsriracha", "ocr_lines": ["Huy Fong", "saucechili", "sriracha"], "harvest": {"size": "714ml", "via": "crop"}}`
+
+## Unclassified items — kept for review
+
+The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15833
+
+![item 15833](images/item-15833.jpg)
+
+- **Name (English):** None
+- **Name (French):** Jch
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 9.97
+- **Printed Price:** “9.97”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 853, top 376, right 914, bottom 412, page 1
+- **Full page:** [pages/flyer169-page1-f01465bd04.jpg (flyer page 1)](pages/flyer169-page1-f01465bd04.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/01.webp
+- **Details:** confidence: 0.72 · item_key: `e07e4e9d2b092f90`
+- **Raw:** `{"block_text": "Eh", "ocr_lines": ["Jch"]}`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15840
+
+![item 15840](images/item-15840.jpg)
+
+- **Name (English):** None
+- **Name (French):** SPRINGLAME LAND SHOULOER CPAULEDASO
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** 26.43kg
+- **Price:** 11.99
+- **Printed Price:** “11.99”
+- **Unit quantity:** 1.0
+- **Unit measurement:** kilogram
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 194, top 545, right 531, bottom 649, page 2
+- **Full page:** [pages/flyer169-page2-f0171445e8.jpg (flyer page 2)](pages/flyer169-page2-f0171445e8.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/02.webp
+- **Details:** confidence: 0.99 · item_key: `a0a1bf1fb39f9dc9`
+- **Raw:** `{"block_text": "9 à 2 L 2 \\ \"a ‘a\nCE X mm Srainc LAME FT È 4) Z\nVE .… RER ree!\nYi, Epaulo cae ES CLR AE\nd'agneau ésa es queues. |\nud (congelee™ = =e Se we LAMS de bosuf, &\n99 sans OS) ESS =i § 99 fraiche\nsanta (frais)\n12029 COM, MRM) 26439 eRe GEM)\n=< = 7 ws Yo ltlnt coal’ ol AFA, = ET pe\nPRIX POUR LES MEMBRES", "ocr_lines": ["SPRINGLAME", "LAND SHOULOER", "CPAULEDASO", "Epaule", "anano", "dagneauesa", "SPRING LANA", "debceuf", "(congelee.", "fraiche", "sansos)", "(frais)", "b22.02/k`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15844
+
+![item 15844](images/item-15844.jpg)
+
+- **Name (English):** None
+- **Name (French):** BERETTA Bavettede snbuegneog
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 16.99
+- **Printed Price:** “16.99”
+- **Unit quantity:** 1.0
+- **Unit measurement:** kilogram
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 717, top 572, right 914, bottom 619, page 2
+- **Full page:** [pages/flyer169-page2-f0171445e8.jpg (flyer page 2)](pages/flyer169-page2-f0171445e8.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/02.webp
+- **Details:** confidence: 0.99 · item_key: `f38c51fe13aa0b78`
+- **Raw:** `{"block_text": "MERS\n6-8 boeufangus\n200 (frais)\n\nan 77\n\n» hates ERP\n Ab3746%9 HITS A RABY)", "ocr_lines": ["BERETTA", "Bavettede", "snbuegneog", "(frais)", "/b37.46/kg"], "harvest": {"unit": "kg", "via": "crop"}}`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15854
+
+![item 15854](images/item-15854.jpg)
+
+- **Name (English):** None
+- **Name (French):** T&Tnouilles boissonau Seleclionne
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 4.97
+- **Printed Price:** “4.97”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 177, top 779, right 452, bottom 851, page 2
+- **Full page:** [pages/flyer169-page2-f0171445e8.jpg (flyer page 2)](pages/flyer169-page2-f0171445e8.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/02.webp
+- **Details:** confidence: 0.93 · item_key: `72f197386283b5fc`
+- **Raw:** `{"block_text": "DS = Sia y=\nSélectionné T&T nouilles Sélectionné boisson au, ne.\nem SÉChÉCSQUS gr yujajcoréen/*=\nShandonoy oe au yuja'et fruits,\nde style CEE de la'passioni#\nve = Shanxifl g - z x RON:\nCCD MR Fo D pra aR S\n7 39 Bits meee So Bes Tips\n1.8kg/ 2kg > 1kg >\n=", "ocr_lines": ["T&Tnouilles", "boissonau", "Seleclionne", "Selectionne", "yuja coreen/", "secheesdu", "Shandong", "auyujaetfruit", "de style", "dela passion", "Shanxi", "1.8kg/2kg"], "harvest": {"unit": "each", "via": "c`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15858
+
+![item 15858](images/item-15858.jpg)
+
+- **Name (English):** None
+- **Name (French):** Epinard chinois b3.70/kg Canada/Mexique
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 1.68
+- **Printed Price:** “1.68”
+- **Unit quantity:** 1.0
+- **Unit measurement:** kilogram
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 543, top 246, right 689, bottom 276, page 2
+- **Full page:** [pages/flyer169-page2-f0171445e8.jpg (flyer page 2)](pages/flyer169-page2-f0171445e8.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/02.webp
+- **Details:** confidence: 0.99 · item_key: `ecf25afbe5bae493`
+- **Raw:** `{"block_text": "4 ===\n| Epinard chinois\n| 68 RER\n\n1b3704kg Canada/ Mexique", "ocr_lines": ["Epinard chinois", "b3.70/kg", "Canada/Mexique"], "harvest": {"unit": "kg", "via": "crop"}}`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15880
+
+![item 15880](images/item-15880.jpg)
+
+- **Name (English):** None
+- **Name (French):** T&Triza grainmoyen dequalite
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** 15lb
+- **Price:** 12.97
+- **Printed Price:** “12.97”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 114, top 331, right 242, bottom 400, page 3
+- **Full page:** [pages/flyer169-page3-47331c9aa9.jpg (flyer page 3)](pages/flyer169-page3-47331c9aa9.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/03.webp
+- **Details:** confidence: 0.99 · item_key: `9d23cd9d9c1ab5ed`
+- **Raw:** `{"block_text": "TaTriza a.\ngrain moyen”\nde qualité ag -\nsupericure ns\ndes E-U!\n\nRES UN", "ocr_lines": ["T&Triza", "grainmoyen", "dequalite", "superieure", "desE.-U."], "harvest": {"size": "15lb", "via": "crop"}}`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15914
+
+![item 15914](images/item-15914.jpg)
+
+- **Name (English):** None
+- **Name (French):** Cyprines (surgelees)
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 7.98
+- **Printed Price:** “7.98”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 353, top 282, right 599, bottom 316, page 4
+- **Full page:** [pages/flyer169-page4-2a64ff6c6b.jpg (flyer page 4)](pages/flyer169-page4-2a64ff6c6b.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/04.webp
+- **Details:** confidence: 0.97 · item_key: `a9bda8772a7a6d2e`
+- **Raw:** `{"block_text": "Cyprines =\n| (surgelées) °", "ocr_lines": ["Cyprines", "(surgelees)"]}`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15922
+
+![item 15922](images/item-15922.jpg)
+
+- **Name (English):** None
+- **Name (French):** Valeur傅
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 6.99
+- **Printed Price:** “6.99”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 639, top 907, right 739, bottom 938, page 5
+- **Full page:** [pages/flyer169-page5-33cfeb1a71.jpg (flyer page 5)](pages/flyer169-page5-33cfeb1a71.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/05.webp
+- **Details:** confidence: 0.99 · item_key: `3f1c13b0e7a65562`
+- **Raw:** `{"block_text": "Valeur za {", "ocr_lines": ["Valeur傅"]}`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15927
+
+![item 15927](images/item-15927.jpg)
+
+- **Name (English):** None
+- **Name (French):** Painthelaitthai fromagesalecroustillante/ PainTiramisucroutecroustillante
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** 90g
+- **Price:** 3.99
+- **Printed Price:** “3.99”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 670, top 496, right 930, bottom 549, page 6
+- **Full page:** [pages/flyer169-page6-1d27e84a73.jpg (flyer page 6)](pages/flyer169-page6-1d27e84a73.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/06.webp
+- **Details:** confidence: 0.99 · item_key: `21f57ef5908de447`
+- **Raw:** `{"block_text": "Pain thé lait thaï\nfromage salé croustillante /\nPain Tiramisu croûte croustillante", "ocr_lines": ["Painthelaitthai", "fromagesalecroustillante/", "PainTiramisucroutecroustillante"], "harvest": {"size": "90g", "via": "crop"}}`
+
+— from flyer 169 (valid 2026-10-16 → 2026-10-22)
+
+### Item 15934
+
+![item 15934](images/item-15934.jpg)
+
+- **Name (English):** None
+- **Name (French):** Painmarbretheau laitthai
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 5.29
+- **Printed Price:** “5.29”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-10-16 → 2026-10-22
+- **bbox:** left 391, top 522, right 605, bottom 543, page 6
+- **Full page:** [pages/flyer169-page6-1d27e84a73.jpg (flyer page 6)](pages/flyer169-page6-1d27e84a73.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-supermarche-tt-du-16-au-22-octobre-2026/06.webp
+- **Details:** confidence: 0.99 · item_key: `d34925fc29403e15`
+- **Raw:** `{"block_text": "Pain marbre the au lait thaï", "ocr_lines": ["Painmarbretheau laitthai"]}`
