@@ -4099,6 +4099,28 @@ def classify_item(
     ):
         # A yogurt named yogurt is yogurt, plant-based or not (Silk).
         return "Dairy & Eggs", "Yogurt", "guard-remap", rid
+    if (
+        "fendeuse" in norm
+        or "adoucisseur" in norm
+        or "mousseur a lait" in norm
+        or "mousseurs a lait" in norm
+        or "plaque a biscuits" in norm
+        or "brumisateur" in norm
+        or "boule de cristal" in norm
+    ):
+        # General-merchandise traps (canadian-tire review, 2026-10-17;
+        # GT token-trap/nonfood verdicts): a log splitter is not a
+        # bûche cake, a water softener is not bottled water, a milk
+        # frother is not milk, a cookie sheet is not cookies, and a
+        # misting cauldron / crystal ball is not wine. Each trigger
+        # phrase has no grocery meaning.
+        return "Household", "Home Goods", "guard-remap", rid
+    if dept == "Fruits & Vegetables" and (
+        "lumiere" in norm or "lumieres" in norm or "noma" in norm
+    ):
+        # String lights named by colour ("lumières étoilées orange")
+        # are not fruit (GT token-trap verdict).
+        return "Household", "Home Goods", "guard-remap", rid
     if (dept, sub) == ("Pantry", "Honey, Syrups & Spreads") and (
         "vaseline" in norm or "petroleum" in norm or "petrole" in norm
     ):
