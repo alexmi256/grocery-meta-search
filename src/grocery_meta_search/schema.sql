@@ -69,7 +69,9 @@ CREATE TABLE IF NOT EXISTS flyer_items (
     name_en TEXT,
     price_text TEXT,                 -- raw as shown in the flyer
     price_value REAL,                -- parsed unit price
-    price_unit TEXT,                 -- each | lb | kg | g
+    price_unit TEXT,                 -- legacy unit string: each | lb | kg | 100g | box
+    unit_quantity REAL NOT NULL DEFAULT 1,        -- units the price covers (100 for per-100g, 3 for 3/15$)
+    unit_measurement TEXT NOT NULL DEFAULT 'each', -- each | gram | ounce | kilogram | pound | liter | milliliter | pack | multiple
     valid_from TEXT,                 -- ISO date (item-level when available)
     valid_to TEXT,
     languages TEXT,                  -- JSON array

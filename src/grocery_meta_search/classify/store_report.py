@@ -185,12 +185,12 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
         lines.append("")
         dept = row["department"] or "Unclassified"
         sub = row["subcategory"] or "Unclassified"
-        if row["name_en"] and row["name_en"] != row["name_fr"]:
-            lines.append(f"- **Name (English):** {row['name_en']}")
-        if row["name_fr"]:
-            lines.append(f"- **Name (French):** {row['name_fr']}")
-        if row["brand"]:
-            lines.append(f"- **Brand:** {row['brand']}")
+        # Every field renders on every item; a missing value shows as
+        # None so gaps are visible instead of silently absent (Alex,
+        # 2026-10-17).
+        lines.append(f"- **Name (English):** {row['name_en'] or 'None'}")
+        lines.append(f"- **Name (French):** {row['name_fr'] or 'None'}")
+        lines.append(f"- **Brand:** {row['brand'] or 'None'}")
         if dept == "Unclassified":
             lines.append("- **Category (English):** Unclassified")
             lines.append("- **Category (French):** Non classé")
@@ -201,12 +201,13 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
         rule = f" (`{row['rule_id']}`)" if row["rule_id"] else ""
         lines.append(f"- **How classified:** {method}{rule}")
         size = _raw_size(row)
-        if size:
-            lines.append(f"- **Size:** {size}")
-        price = f"{row['price_value']:.2f}" if row["price_value"] is not None else "—"
+        lines.append(f"- **Size:** {size or 'None'}")
+        price = f"{row['price_value']:.2f}" if row["price_value"] is not None else "None"
         lines.append(f"- **Price:** {price}")
-        lines.append(f"- **Printed Price:** “{row['price_text']}”")
-        lines.append(f"- **Unit:** {row['price_unit'] or '—'}")
+        printed = f"“{row['price_text']}”" if row["price_text"] else "None"
+        lines.append(f"- **Printed Price:** {printed}")
+        lines.append(f"- **Unit quantity:** {row['unit_quantity']}")
+        lines.append(f"- **Unit measurement:** {row['unit_measurement']}")
         lines.append(f"- **Item validity:** {row['valid_from'] or '?'} → {row['valid_to'] or '?'}")
         if bbox is not None:
             lines.append(

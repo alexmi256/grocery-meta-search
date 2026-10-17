@@ -28,6 +28,8 @@ def init_schema(conn: sqlite3.Connection) -> None:
 # already carries them for fresh databases.
 _MIGRATIONS = [
     ("flyer_items", "package_size", "TEXT"),
+    ("flyer_items", "unit_quantity", "REAL NOT NULL DEFAULT 1"),
+    ("flyer_items", "unit_measurement", "TEXT NOT NULL DEFAULT 'each'"),
 ]
 
 

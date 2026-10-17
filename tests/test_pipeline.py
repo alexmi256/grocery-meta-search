@@ -68,7 +68,8 @@ def test_insert_items_and_observations() -> None:
 def test_insert_items_exclusion_layer() -> None:
     conn = _conn()
     items = [
-        # Unclassified furniture: excluded at ingest, with the reason.
+        # Junk-gate items (banner text, boilerplate): discarded as
+        # junk — the gate runs before the exclusion layer (2026-10-17).
         FlyerItem(name_fr="Banner - Rollback", price_text=None, price_value=None),
         FlyerItem(name_fr="Plus taxes", price_text=None, price_value=None),
         # Unclassified but plausibly grocery: kept for review.
@@ -76,11 +77,29 @@ def test_insert_items_exclusion_layer() -> None:
     ]
     stats: dict = {}
     assert insert_items(conn, 1, "maxi", items, stats) == 1
-    assert stats["excluded"] == 2
-    assert stats["excluded_reasons"] == {
-        "furniture:banner": 1,
-        "boilerplate": 1,
-    }
+    assert stats["junk"] == 2
+    assert "excluded" not in stats
     rows = conn.execute("SELECT name_fr FROM flyer_items").fetchall()
     assert [r[0] for r in rows] == ["Recette du chef"]
+    conn.close()
+
+
+def test_insert_items_unit_pair() -> None:
+    conn = _conn()
+    items = [
+        FlyerItem(name_fr="Fromage brie", price_text="3.49", price_value=3.49,
+                  price_unit="100g"),
+        FlyerItem(name_fr="Pommes", price_text="2/5$", price_value=2.5,
+                  conditions={"multibuy": {"count": 2, "total": 5.0}}),
+        FlyerItem(name_fr="Lait", price_text="4.99", price_value=4.99),
+    ]
+    assert insert_items(conn, 1, "maxi", items) == 3
+    rows = conn.execute(
+        "SELECT name_fr, unit_quantity, unit_measurement FROM flyer_items ORDER BY id"
+    ).fetchall()
+    assert [tuple(r) for r in rows] == [
+        ("Fromage brie", 100.0, "gram"),
+        ("Pommes", 2.0, "multiple"),
+        ("Lait", 1.0, "each"),
+    ]
     conn.close()

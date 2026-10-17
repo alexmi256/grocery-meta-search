@@ -26,6 +26,71 @@ _UNIT_ALIASES = {
 }
 
 
+# Unit split (2026-10-17, Alex): a price always carries a quantity and
+# a measurement, so prices can be normalized per weight/volume and
+# compared across stores. Defaults: quantity 1, measurement 'each'.
+# Multibuy offers ("3/15$") use measurement 'multiple' with the count
+# as quantity; per-100g pricing is (100, 'gram').
+MEASUREMENTS = (
+    "each",
+    "gram",
+    "ounce",
+    "kilogram",
+    "pound",
+    "liter",
+    "milliliter",
+    "pack",
+    "multiple",
+)
+
+_UNIT_PAIRS: dict[str, tuple[float, str]] = {
+    "each": (1.0, "each"),
+    "lb": (1.0, "pound"),
+    "kg": (1.0, "kilogram"),
+    "g": (1.0, "gram"),
+    "100g": (100.0, "gram"),
+    "box": (1.0, "pack"),
+    "l": (1.0, "liter"),
+    "ml": (1.0, "milliliter"),
+    "oz": (1.0, "ounce"),
+}
+
+
+def multibuy_count(conditions: object) -> int | None:
+    """The multibuy count from a conditions dict or its JSON text."""
+    import json
+
+    data: object = conditions
+    if isinstance(data, str):
+        try:
+            data = json.loads(data)
+        except ValueError:
+            return None
+    if isinstance(data, dict):
+        multi = data.get("multibuy")
+        if isinstance(multi, dict):
+            count = multi.get("count")
+            if isinstance(count, int) and count > 0:
+                return count
+    return None
+
+
+def split_unit(unit: str | None, multibuy: int | None = None) -> tuple[float, str]:
+    """Split a legacy price_unit into (unit_quantity, unit_measurement).
+
+    A multibuy count above 1 wins over the unit: the price covers
+    that many items. Unknown or missing units fall back to the
+    default (1, 'each').
+    """
+    if multibuy is not None and multibuy > 1:
+        return float(multibuy), "multiple"
+    if unit:
+        pair = _UNIT_PAIRS.get(unit.strip().lower())
+        if pair is not None:
+            return pair
+    return 1.0, "each"
+
+
 def _to_float(num: str) -> float | None:
     num = num.replace(" ", "").replace("\u00a0", "")
     if "," in num and "." not in num:

@@ -44,6 +44,7 @@ from PIL import Image
 from ..classify.review import PAGE_HOSTS, _fetch_page, _sane_bbox
 from ..ocr.engine import detect_lines, upscale_for_ocr
 from ..ocr.segment import _unit_in_text
+from ..prices import multibuy_count, split_unit
 from .fields import extract_package_size, find_package_sizes
 
 _CONFIG_PATH = Path(__file__).parent.parent / "sources" / "harvest_config.json"
@@ -260,19 +261,32 @@ def _refresh_row(
     params: list[object] = []
     for field, col in (("size", "package_size"), ("unit", "price_unit")):
         cur = row["package_size"] if field == "size" else row["price_unit"]
+        unit_touched = False
         if field in prev_fields:
             if field in got:
                 if cur != got[field]:
                     stats[f"changed_{field}"] += 1
                     sets.append(f"{col} = ?")
                     params.append(got[field])
+                    unit_touched = field == "unit"
             else:
                 stats[f"cleared_{field}"] += 1
                 sets.append(f"{col} = NULL")
+                unit_touched = field == "unit"
         elif field in got and cur is None:
             stats[f"filled_{field}"] += 1
             sets.append(f"{col} = ?")
             params.append(got[field])
+            unit_touched = field == "unit"
+        if unit_touched:
+            # Keep the split unit pair in sync with price_unit.
+            quantity, measurement = split_unit(
+                got.get("unit"), multibuy_count(row["conditions"])
+            )
+            sets.append("unit_quantity = ?")
+            params.append(quantity)
+            sets.append("unit_measurement = ?")
+            params.append(measurement)
     if dry_run:
         return
     new_raw = dict(raw)
@@ -329,7 +343,7 @@ def harvest_store(
     rows = conn.execute(
         f"""
         SELECT fi.id, fi.image_url, fi.bbox, fi.raw,
-               fi.package_size, fi.price_unit
+               fi.package_size, fi.price_unit, fi.conditions
         FROM flyer_items fi JOIN flyers f ON f.id = fi.flyer_id
         WHERE fi.store_slug = ? AND f.valid_to >= ?
           AND ({" OR ".join(conds)})
@@ -425,13 +439,21 @@ def harvest_store(
             continue
         raw = json.loads(row["raw"]) if row["raw"] else {}
         raw["harvest"] = {**got, "via": kind}
-        sets, params = ["raw = ?"], [json.dumps(raw, ensure_ascii=False)]
+        sets: list[str] = ["raw = ?"]
+        params: list[object] = [json.dumps(raw, ensure_ascii=False)]
         if "size" in got:
             sets.append("package_size = ?")
             params.append(got["size"])
         if "unit" in got:
             sets.append("price_unit = ?")
             params.append(got["unit"])
+            quantity, measurement = split_unit(
+                got["unit"], multibuy_count(row["conditions"])
+            )
+            sets.append("unit_quantity = ?")
+            params.append(quantity)
+            sets.append("unit_measurement = ?")
+            params.append(measurement)
         params.append(row["id"])
         conn.execute(
             f"UPDATE flyer_items SET {', '.join(sets)} WHERE id = ?", params

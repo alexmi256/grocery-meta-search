@@ -26,6 +26,7 @@ from ..classify.taxonomy import UNCLASSIFIED, category_label, is_grocery
 from ..db import connect, init_schema
 from ..ocr.engine import detect_lines, detect_lines_banded, upscale_for_ocr
 from ..ocr.segment import OcrStoreConfig, segment_page
+from ..prices import multibuy_count, split_unit
 from ..sources.base import FlyerEdition, FlyerItem
 from ..sources.circulaires_club import CirculairesClubClient, CirculairesClubError
 from ..sources.flipp import BrandConfig, FlyerKitClient, FlyerKitError
@@ -362,6 +363,7 @@ def store_editions(
             report["items"] += insert_items(conn, flyer_id, store_slug, edition.items, stats)
             report["discarded"] = report.get("discarded", 0) + stats.get("discarded", 0)
             report["excluded"] = report.get("excluded", 0) + stats.get("excluded", 0)
+            report["junk"] = report.get("junk", 0) + stats.get("junk", 0)
         else:
             report["skipped"] = report.get("skipped", 0) + len(edition.items)
     conn.commit()
@@ -526,6 +528,15 @@ def insert_items(
             if stats is not None:
                 stats["discarded"] = stats.get("discarded", 0) + 1
             continue
+        if method == "junk":
+            # The classifier's junk gate positively identified this as
+            # flyer furniture / banner text / merchandise noise (gift
+            # cards, contest banners, "code barres" fragments). Junk is
+            # a determination, not an inconclusive result: never kept
+            # (Alex, 2026-10-17).
+            if stats is not None:
+                stats["junk"] = stats.get("junk", 0) + 1
+            continue
         if dept == UNCLASSIFIED:
             reason = exclusion_reason(item.name_fr, item.name_en, item.brand)
             if reason is not None:
@@ -536,14 +547,18 @@ def insert_items(
                 continue
         label = UNCLASSIFIED if dept == UNCLASSIFIED else category_label(dept, sub)
         key = item_key(store_slug, item)
+        unit_quantity, unit_measurement = split_unit(
+            item.price_unit, multibuy_count(item.conditions)
+        )
         cur = conn.execute(
             """
             INSERT INTO flyer_items
                 (flyer_id, store_slug, item_key, name_fr, name_en, price_text,
-                 price_value, price_unit, valid_from, valid_to, languages,
+                 price_value, price_unit, unit_quantity, unit_measurement,
+                 valid_from, valid_to, languages,
                  image_url, bbox, sku, brand, package_size, conditions, loyalty_gated, raw,
                  confidence, category)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 flyer_id,
@@ -554,6 +569,8 @@ def insert_items(
                 item.price_text,
                 item.price_value,
                 item.price_unit,
+                unit_quantity,
+                unit_measurement,
                 item.valid_from,
                 item.valid_to,
                 json.dumps(item.languages, ensure_ascii=False),
@@ -616,6 +633,8 @@ def main() -> None:
         )
         if report.get("excluded"):
             disc += f", {report['excluded']} excluded (furniture/merch/garble)"
+        if report.get("junk"):
+            disc += f", {report['junk']} junk (classifier gate)"
         if report.get("harvested"):
             disc += f", {report['harvested']}"
         warn = f" WARNING: {report['thin_warning']}" if report.get("thin_warning") else ""

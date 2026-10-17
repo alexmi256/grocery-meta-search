@@ -45,3 +45,29 @@ def test_empty() -> None:
 
 def test_no_number() -> None:
     assert parse_price_text("voir en magasin") == (None, None)
+
+
+def test_split_unit() -> None:
+    from grocery_meta_search.prices import split_unit
+
+    assert split_unit(None) == (1.0, "each")
+    assert split_unit("each") == (1.0, "each")
+    assert split_unit("lb") == (1.0, "pound")
+    assert split_unit("kg") == (1.0, "kilogram")
+    assert split_unit("100g") == (100.0, "gram")
+    assert split_unit("box") == (1.0, "pack")
+    assert split_unit("bogus") == (1.0, "each")
+    # Multibuy wins over the unit: the price covers that many items.
+    assert split_unit("each", 3) == (3.0, "multiple")
+    assert split_unit("lb", 2) == (2.0, "multiple")
+    assert split_unit("lb", 1) == (1.0, "pound")
+
+
+def test_multibuy_count() -> None:
+    from grocery_meta_search.prices import multibuy_count
+
+    assert multibuy_count({"multibuy": {"count": 2, "total": 5.0}}) == 2
+    assert multibuy_count('{"multibuy": {"count": 3, "total": 5.97}}') == 3
+    assert multibuy_count({}) is None
+    assert multibuy_count(None) is None
+    assert multibuy_count("not json") is None
