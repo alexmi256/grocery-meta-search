@@ -60,6 +60,7 @@ def test_split_unit() -> None:
     # Multibuy wins over the unit: the price covers that many items.
     assert split_unit("each", 3) == (3.0, "multiple")
     assert split_unit("lb", 2) == (2.0, "multiple")
+    assert split_unit("lb", 15998) == (1.0, "pound")  # OCR-garbled count
     assert split_unit("lb", 1) == (1.0, "pound")
 
 

@@ -80,9 +80,11 @@ def split_unit(unit: str | None, multibuy: int | None = None) -> tuple[float, st
 
     A multibuy count above 1 wins over the unit: the price covers
     that many items. Unknown or missing units fall back to the
-    default (1, 'each').
+    default (1, 'each'). Counts above 100 are OCR garble stitched
+    from price digits (stored conditions carry e.g. 15998), never a
+    real offer, and are ignored.
     """
-    if multibuy is not None and multibuy > 1:
+    if multibuy is not None and 1 < multibuy <= 100:
         return float(multibuy), "multiple"
     if unit:
         pair = _UNIT_PAIRS.get(unit.strip().lower())
