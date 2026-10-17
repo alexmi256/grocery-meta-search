@@ -310,3 +310,16 @@ def test_unit_in_text_glued_forms() -> None:
     assert _unit_in_text("IKG") == "kg"
     assert _unit_in_text("ILB") == "lb"
     assert _unit_in_text("15,83/lb") == "lb"
+
+
+def test_percent_cents_glyph_needs_cluster_context() -> None:
+    from grocery_meta_search.ocr.segment import _parse_fragment_value
+
+    # OCR reads "87¢" as "87%" (3-saisons): with a unit-slash sibling
+    # in the cluster it is a cents price; standalone it is a badge.
+    assert _parse_fragment_value(["87%"], raw_joined="87%1,92 $/kg") == (
+        0.87,
+        "0.87",
+        None,
+    )
+    assert _parse_fragment_value(["25%"], raw_joined="25%") is None

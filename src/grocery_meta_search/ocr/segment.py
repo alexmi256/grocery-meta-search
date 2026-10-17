@@ -53,7 +53,7 @@ _SIZE_ONLY_RE = re.compile(
 )
 _CJK_RE = re.compile(r"[\u3400-\u9fff\uf900-\ufaff]")
 _AMOUNT_RE = re.compile(r"(\d[\d\s]*),(\d{2})\s*\$?")
-_DIGITS_RE = re.compile(r"^[\d/.,$¢\s]+$")
+_DIGITS_RE = re.compile(r"^[\d/.,$¢%\s]+$")
 # Trailing unit on a price line: "2,95 $/KG", "0,99 $/lb", "3,99 ch.",
 # "499s/ch" (Odessa renders $ as s), "1,40 $/1b" (OCR misread of /lb).
 # Stripped before the digitish check so the amount itself can anchor;
@@ -299,6 +299,15 @@ def _parse_fragment_value(
         return total / count, f"{count}/{total:.2f}", (count, total)
     if len(texts) == 1:
         t = texts[0].replace(",", ".").rstrip("/-")
+        m_pct = re.fullmatch(r"(\d{1,3})%", t)
+        if m_pct and ("/" in raw_joined or "¢" in raw_joined):
+            # OCR reads the cents glyph as '%' on some display fonts
+            # ("87¢" -> "87%", 3-saisons apples at 87¢/lb beside the
+            # "1,92 $/kg" equivalent). The cluster-context gate (a unit
+            # slash or ¢ in the cluster's raw text) keeps standalone
+            # discount badges ("25%") from anchoring.
+            cents = int(m_pct.group(1))
+            return cents / 100, f"0.{cents:02d}", None
         if re.fullmatch(r"\d+\.\d{2}", t):
             return float(t), t, None
         if re.fullmatch(r"\d{3,4}", t):  # merged dollars+cents: "1599", "744"
@@ -404,7 +413,10 @@ def find_price_anchors(
         # junk or a garbled sibling fragment onto a good price ("2423 8",
         # "099 8/1" clustered with "1982"). Recover a token per fragment.
         for member in cluster:
-            token = _parse_fragment_token(_price_core(member.text.strip()), raw=member.text)
+            token = _parse_fragment_token(
+                _price_core(member.text.strip()),
+                raw="".join(c.text for c in cluster),
+            )
             if token is not None:
                 parsed_clusters.append(([member], *token))
     # Tall lines that never became fragments can still carry a price as a
