@@ -235,6 +235,8 @@ RULES: list[Rule] = [
             "vadrouille",
             "mop",
             "détergent",
+            "eaux de linge",
+            "eau de linge",
         ),
     ),
     (
@@ -279,6 +281,8 @@ RULES: list[Rule] = [
             "flushable wipes",
             "pellicule",
             "sacs a collation",
+            "boites cafe",
+            "boites cafe express",
         ),
     ),
     (
@@ -520,6 +524,15 @@ RULES: list[Rule] = [
             "hair clipper",
             "rasoir electrique",
             "electric shaver",
+            "citrouille lanterne",
+            "citrouilles lanternes",
+            "citrouille gonflable",
+            "citrouille decorative",
+            "planche a huitres",
+            "ensemble d ouverture",
+            "ouverture a huitres",
+            "oyster board",
+            "shucking kit",
         ),
     ),
     (
@@ -885,6 +898,10 @@ RULES: list[Rule] = [
             "verrues",
             "wart remover",
             "gel glace",
+            "lentilles corneennes",
+            "lentilles de contact",
+            "contact lens",
+            "contact lenses",
         ),
     ),
     # ── Ice cream before Dairy ───────────────────────────────────────
@@ -1090,6 +1107,8 @@ RULES: list[Rule] = [
             "camomille",
             "chamomile tea",
             "chai",
+            "demlik",
+            "cayi",
         ),
     ),
     (
@@ -1107,6 +1126,7 @@ RULES: list[Rule] = [
             "sports drink",
             "boisson electrolytique",
             "prime hydration",
+            "boisson energetique",
         ),
     ),
     (
@@ -1134,6 +1154,8 @@ RULES: list[Rule] = [
             "ginger ale",
             "cola",
             "tonic",
+            "boisson petillante",
+            "sparkling drink",
         ),
     ),
     (
@@ -1189,6 +1211,8 @@ RULES: list[Rule] = [
             "simply orange",
             "cider juice",
             "jus de cidre",
+            "boisson fruite",
+            "fruite",
         ),
     ),
     (
@@ -1227,6 +1251,10 @@ RULES: list[Rule] = [
             "lean cuisine",
             "stouffer",
             "swanson",
+            "frozen meal",
+            "frozen breakfast",
+            "diner surgele",
+            "dejeuner surgele",
         ),
     ),
     # ── Specific product forms that must beat generic groups ────
@@ -1234,7 +1262,14 @@ RULES: list[Rule] = [
         "specific-popcorn",
         "Snacks, Chips & Candy",
         "Chips & Snacks",
-        ("popcorn", "mais souffle", "mais a eclater", "popping corn"),
+        (
+            "popcorn",
+            "mais souffle",
+            "mais a eclater",
+            "popping corn",
+            "boomchickapop",
+            "mais a eclate",
+        ),
     ),
     (
         "specific-cheesecake",
@@ -1264,7 +1299,7 @@ RULES: list[Rule] = [
         "specific-pot-pie",
         "Prepared Meals",
         "Quiches & Pies",
-        ("pate au poulet", "chicken pot pie", "pate au boeuf", "pate a la dinde"),
+        ("pate au poulet", "chicken pot pie", "pate au boeuf", "pate a la dinde", "pot pie"),
     ),
     (
         "specific-prepared-chicken",
@@ -1355,6 +1390,18 @@ RULES: list[Rule] = [
         ),
     ),
     (
+        "specific-yogurt-bars",
+        "Dairy & Eggs",
+        "Yogurt",
+        ("barres de yogourt", "barre de yogourt", "yogurt bars", "yogurt bar"),
+    ),
+    (
+        "specific-cheese-bars",
+        "Dairy & Eggs",
+        "Cheese",
+        ("barres de fromage", "barre de fromage", "cheese bars"),
+    ),
+    (
         "specific-protein-bars",
         "Pantry",
         "Cereal & Breakfast",
@@ -1377,6 +1424,8 @@ RULES: list[Rule] = [
             "barres energetiques",
             "energy bar",
             "barre de proteines",
+            "barres",
+            "bars",
         ),
     ),
     (
@@ -1419,6 +1468,12 @@ RULES: list[Rule] = [
         ("pain a hot dog", "pain a hamburger", "hot dog buns", "hamburger buns"),
     ),
     (
+        "specific-veggie-bread",
+        "Bakery",
+        "Bread",
+        ("carrot bread", "pain aux carottes", "zucchini bread", "pain aux courgettes"),
+    ),
+    (
         "specific-fruit-traps",
         "Fruits & Vegetables",
         "Fresh Fruits",
@@ -1440,13 +1495,20 @@ RULES: list[Rule] = [
         "specific-fresh-pasta",
         "Prepared Meals",
         "Fresh Pasta & Sauce",
-        ("pates fraiches", "fresh pasta", "ravioli frais", "tortellini frais"),
+        (
+            "pates fraiches",
+            "fresh pasta",
+            "ravioli frais",
+            "tortellini frais",
+            "ravioli",
+            "tortellini",
+        ),
     ),
     (
         "specific-chocolat-au-lait",
         "Snacks, Chips & Candy",
         "Candy & Chocolate",
-        ("chocolat au lait", "milk chocolate"),
+        ("chocolat au lait", "milk chocolate", "citrouilles chocolat", "citrouille chocolat"),
     ),
     (
         "specific-rice-snacks",
@@ -1479,7 +1541,21 @@ RULES: list[Rule] = [
         "specific-canned",
         "Pantry",
         "Canned & Pickled",
-        ("en conserve", "en boite", "en canne", "canned", "preserved", "en conserve de"),
+        (
+            "en conserve",
+            "en boite",
+            "en canne",
+            "canned",
+            "preserved",
+            "en conserve de",
+            "tomates entiere",
+            "entiere pelee",
+            "whole peeled",
+            "pate de tomate",
+            "tomato paste",
+            "passata",
+            "san marzano",
+        ),
     ),
     (
         "specific-doughs",
@@ -1721,6 +1797,8 @@ RULES: list[Rule] = [
             "hoki",
             "grenadier",
             "lotte de mer",
+            "grenouille",
+            "frog legs",
         ),
     ),
     # ── Meat ─────────────────────────────────────────────────────────
@@ -1757,6 +1835,8 @@ RULES: list[Rule] = [
             "boudin",
             "chipolata",
             "toulouse",
+            "corn dog",
+            "corn dogs",
         ),
     ),
     (
@@ -1818,6 +1898,10 @@ RULES: list[Rule] = [
             "cote de boeuf",
             "tomahawk",
             "filet mignon",
+            "bceuf",
+            "hache extra maigre",
+            "hache maigre",
+            "hache mi maigre",
         ),
     ),
     (
@@ -1971,6 +2055,7 @@ RULES: list[Rule] = [
             "pizzaroni",
             "simmenthal",
             "corned beef en tranches",
+            "terrine",
         ),
     ),
     (
@@ -2157,6 +2242,8 @@ RULES: list[Rule] = [
             "double concentre",
             "tursu",
             "tursusu",
+            "makdouce",
+            "makdous",
         ),
     ),
     (
@@ -2396,6 +2483,12 @@ RULES: list[Rule] = [
             "vegetable",
             "vegetables",
             "verdure",
+            "carrottes",
+            "carottes a jus",
+            "molokhia",
+            "meloukhia",
+            "sweetcorn",
+            "sweet corn",
         ),
     ),
     (
@@ -2524,6 +2617,8 @@ RULES: list[Rule] = [
             "boisson d amande",
             "lait vegetal",
             "plant based milk",
+            "barista",
+            "almond beverage",
         ),
     ),
     (
@@ -2577,6 +2672,7 @@ RULES: list[Rule] = [
             "boursin",
             "babybel",
             "la vache qui rit",
+            "parmigiano",
         ),
     ),
     (
@@ -2760,6 +2856,10 @@ RULES: list[Rule] = [
             "pâtisserie",
             "patisserie",
             "viennoiserie",
+            "chaussons",
+            "chausson",
+            "turnovers",
+            "turnover",
         ),
     ),
     (
@@ -2908,6 +3008,7 @@ RULES: list[Rule] = [
             "taralli",
             "gressins",
             "breadsticks",
+            "biscuit",
         ),
     ),
     (
@@ -3114,6 +3215,13 @@ RULES: list[Rule] = [
             "food coloring",
             "decorations a gateau",
             "sprinkles",
+            "chapelure",
+            "breadcrumb",
+            "breadcrumbs",
+            "bread crumbs",
+            "phyllo",
+            "filo",
+            "fillo",
         ),
     ),
     (
@@ -3171,6 +3279,7 @@ RULES: list[Rule] = [
             "steak sauce",
             "sauce aux canneberges",
             "cranberry sauce",
+            "redhot",
         ),
     ),
     (
@@ -3222,6 +3331,8 @@ RULES: list[Rule] = [
             "five spice",
             "epices a marinade",
             "pickling spice",
+            "poivre vert",
+            "green peppercorns",
         ),
     ),
     (
@@ -3350,6 +3461,7 @@ RULES: list[Rule] = [
             "crevettes a la noix de coco",
             "coconut shrimp",
             "batonnet de fromage",
+            "vol au vent",
         ),
     ),
     (
@@ -3467,6 +3579,7 @@ RULES: list[Rule] = [
             "sesame grillé",
             "mala",
             "riz souffle coreen",
+            "pate de soja",
         ),
     ),
     (
@@ -3523,6 +3636,7 @@ RULES: list[Rule] = [
             "parle",
             "poudre de cari",
             "epices indiennes",
+            "kfi",
         ),
     ),
     (
@@ -3704,6 +3818,9 @@ _FROZEN_BY_SUBCAT = {
     "Ice Cream & Frozen Desserts": "Ice Cream & Frozen Desserts",
     "Cheese": "Frozen Appetizers & Snacks",
     "Antipasto, Dips & Spreads": "Frozen Appetizers & Snacks",
+    # Frozen baking ingredients are frozen bakery, not frozen meals
+    # (round-2 review: frozen phyllo dough landed in Frozen Meals).
+    "Baking Essentials": "Frozen Bakery & Breakfast",
 }
 _FROZEN_BY_DEPT = {
     "Meat": "Frozen Meat and Seafood",
@@ -3848,6 +3965,7 @@ _JUNK_EXACT = {
     "carte cadeau", "gift card", "gift cards",
     "huiles a moteur de qualite a prix avantageux au quotidien",
     "quality motor oil great value every day",
+    "reduire le sucre defi accepte",
 }
 
 # Tokens that make up banner text. A short name made ONLY of these
@@ -3872,7 +3990,16 @@ def _is_junk(norm: str) -> bool:
         return True
     if norm.startswith(("banner ", "service magasin ")):
         return True
-    return bool("carte cadeau" in norm or "vidange" in norm)
+    # "code barres" = barcode: app/website instruction text, never a
+    # product (round-2: a Pharmaprix how-to line classified as a
+    # cereal bar via the bare "barres" phrase). "gift card" joins
+    # "carte cadeau": a gift-card promo line is never the product.
+    return bool(
+        "carte cadeau" in norm
+        or "gift card" in norm
+        or "vidange" in norm
+        or "code barres" in norm
+    )
 
 
 def _is_junk_for_prior(norm: str) -> bool:
@@ -3923,4 +4050,76 @@ def classify_item(
     ):
         # "Honey Butter Chips": 'honey' fired Spreads; the product is chips.
         return "Snacks, Chips & Candy", "Chips & Snacks", "guard-remap", rid
+    # Guard remaps (2026-10-16 round-2 visual review): in each case a
+    # flavour/format/context token outranked the actual product token.
+    tokens = norm.split()
+    if (dept, sub) == ("Drinks", "Coffee") and (
+        "the infuse" in norm or "steeped tea" in norm
+    ):
+        # K-Cup/Keurig format tokens fired Coffee on a steeped-tea pod.
+        return "Drinks", "Tea & Hot Drinks", "guard-remap", rid
+    if (dept, sub) == ("Prepared Meals", "Sandwiches") and (
+        "steak" in tokens or "bifteck" in norm
+    ):
+        # "SANDWICH STEAK" is a beef cut, not a prepared sandwich.
+        return "Meat", "Beef", "guard-remap", rid
+    if (dept, sub) == ("Fish & Seafood", "Shellfish") and "sauce" in norm and (
+        "huitre" in norm or "oyster" in norm
+    ):
+        # Oyster sauce is a condiment, not shellfish.
+        return "Pantry", "Condiments", "guard-remap", rid
+    if (dept, sub) == ("Meat", "Pork & Ham") and "cotes" in norm and "boeuf" in norm:
+        # "Côtes levées de bœuf" (incl. the glued "deboeuf"): beef ribs.
+        return "Meat", "Beef", "guard-remap", rid
+    if (dept, sub) == ("Pantry", "Dried Beans, Vegetables & Grains") and (
+        "cafe" in norm or "coffee" in norm
+    ):
+        # "Café en grains": the beans are coffee beans.
+        return "Drinks", "Coffee", "guard-remap", rid
+    if (dept, sub) == ("Pantry", "Condiments") and (
+        "marinated" in norm or "marine" in norm
+    ) and ("crab" in tokens or "crabe" in tokens):
+        # Soy-marinated crab is a seafood dish, not a sauce.
+        return "Fish & Seafood", "Shellfish", "guard-remap", rid
+    if dept == "Household" and "halloween" in norm and any(
+        w in norm for w in ("bars", "barres", "chocolat", "bonbon", "candy", "friandise")
+    ):
+        # Halloween candy bars are candy, not seasonal home goods.
+        return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
+    if (dept, sub) == ("Dairy & Eggs", "Non-Dairy Milk Alternatives") and (
+        "yogurt" in tokens or "yogourt" in tokens
+    ):
+        # A yogurt named yogurt is yogurt, plant-based or not (Silk).
+        return "Dairy & Eggs", "Yogurt", "guard-remap", rid
+    if (dept, sub) == ("Meat", "Kebabs & Marinated Meat") and "legumes" in tokens and not {
+        "boeuf", "poulet", "porc", "agneau", "veau", "dinde",
+        "beef", "chicken", "pork", "lamb", "turkey",
+    } & set(tokens):
+        # Marinated VEGETABLE skewers carry no meat.
+        return "Fruits & Vegetables", "Fresh Vegetables", "guard-remap", rid
+    if rid == "specific-protein-bars" and (
+        any(
+            w in norm
+            for w in (
+                "chocolat", "chocolate", "friandise",
+                "confiserie", "nougat", "hershey",
+            )
+        )
+        or "mini barres" in norm
+        or "mini bars" in norm
+    ):
+        # The bare "barres"/"bars" phrases (round-2) also catch
+        # "BARRES DE CHOCOLAT" and candy assortments; those are candy,
+        # not breakfast bars. No GT cereal-bar name carries these words.
+        return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
+    if rid == "specific-protein-bars" and any(
+        w in norm for w in ("creme glacee", "ice cream", "drumstick", "haagen")
+    ):
+        # Ice-cream bars ("barres de crème glacée", Drumstick) are
+        # frozen desserts, not breakfast bars.
+        return "Frozen Food", "Ice Cream & Frozen Desserts", "guard-remap", rid
+    if (dept, sub) == ("Meat", "Beef") and ("veau" in tokens or "agneau" in tokens):
+        # The ground-meat grade phrases ("hache maigre") are shared:
+        # "VEAU HACHÉ MAIGRE" is veal, not beef.
+        return "Meat", "Lamb & Veal", "guard-remap", rid
     return dept, sub, "rule", rid

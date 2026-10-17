@@ -60,7 +60,7 @@ def parse_price_text(text: str) -> tuple[float | None, str | None]:
         total = _to_float(m.group(2))
         if total is None or qty == 0:
             return None, unit
-        return round(total / qty, 4), unit or "each"
+        return round(total / qty, 2), unit or "each"
 
     m = _NUM_RE.search(s)
     if not m:

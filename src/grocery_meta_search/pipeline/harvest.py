@@ -50,6 +50,20 @@ _CONFIG_PATH = Path(__file__).parent.parent / "sources" / "harvest_config.json"
 _CACHE_DIR = Path("work/harvest-cache")
 _WV_HINT = re.compile(r"\b(?:g|kg|mg|l|ml|lb|oz|gr)\b", re.IGNORECASE)
 
+# Grocery flyers print no package above ~25 L (18.9 L water jugs are
+# the top end); the fields-level litre cap is looser because hardware
+# flyers print real bin capacities. Harvest candidates above this are
+# OCR stitches (round-2 review: celery stored as "66L").
+_HARVEST_LITRE_CAP = 25.0
+_LITRE_PAIR_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*l\b", re.IGNORECASE)
+
+
+def _harvest_size_ok(value: str) -> bool:
+    for qty in _LITRE_PAIR_RE.findall(value):
+        if float(qty.replace(",", ".")) > _HARVEST_LITRE_CAP:
+            return False
+    return True
+
 
 def load_harvest_configs() -> dict[str, dict[str, Any]]:
     data = json.loads(_CONFIG_PATH.read_text(encoding="utf-8"))
@@ -74,18 +88,44 @@ def _descending_range(value: str) -> bool:
     return float(m.group(1).replace(",", ".")) > float(m.group(2).replace(",", "."))
 
 
+_PER_UNIT_RE = re.compile(
+    r"\d+(?:[.,]\d+)?\s*/\s*(\d+(?:[.,]\d+)?)\s*(g|kg|mg|ml|cl|l|oz|lb|gr)\b",
+    re.IGNORECASE,
+)
+
+
+def _per_unit_denominators(line: str) -> set[str]:
+    """Normalized size strings used as per-unit price denominators on
+    this line ("0,79-1,06/100 ml" -> {"100ml"}). Flyers print unit-price
+    references in small print beside the real offer; a denominator is
+    never the package size, and for a pack item it is not the price
+    unit either (round-2 review, giant-tiger: a 12-pack's unit stored
+    as 100g, a jam's size blocked by the reference's ambiguity)."""
+    return {
+        _norm_size(f"{m.group(1)}{m.group(2)}")
+        for m in _PER_UNIT_RE.finditer(line)
+    }
+
+
 def harvest_from_lines(
     lines: list[str], want_size: bool, want_unit: bool
 ) -> dict[str, str]:
     """Extraction policy over one cell's OCR lines (pure, testable)."""
     out: dict[str, str] = {}
     joined = " | ".join(lines)
+    found: dict[str, str] = {}
+    for line in lines:
+        denoms = _per_unit_denominators(line)
+        for value in find_package_sizes(line):
+            if _PER_UNIT_RE.search(value):
+                # The candidate itself stitches a unit price into a
+                # fake size ("0,50/100 g" read as one package size).
+                continue
+            if _norm_size(value) in denoms:
+                continue
+            if not _descending_range(value) and _harvest_size_ok(value):
+                found.setdefault(_norm_size(value), value)
     if want_size:
-        found: dict[str, str] = {}
-        for line in lines:
-            for value in find_package_sizes(line):
-                if not _descending_range(value):
-                    found.setdefault(_norm_size(value), value)
         if len(found) == 1:
             out["size"] = next(iter(found.values()))
         elif len(found) > 1:
@@ -93,14 +133,35 @@ def harvest_from_lines(
             # it picks a weight/volume and every rival is count-only
             # (shrimp "60-70 UNITÉS" beside the pack's "907 g").
             pick = extract_package_size(joined)
-            if pick and _WV_HINT.search(pick):
+            denoms_all = set().union(
+                *(_per_unit_denominators(line) for line in lines)
+            )
+            if (
+                pick
+                and _WV_HINT.search(pick)
+                and not _PER_UNIT_RE.search(pick)
+                and _norm_size(pick) not in denoms_all
+            ):
                 rivals = [v for k, v in found.items() if k != _norm_size(pick)]
                 if rivals and all(not _WV_HINT.search(v) for v in rivals):
                     out["size"] = pick
     if want_unit:
-        units = {
-            u for line in lines if (u := _unit_in_text(line)) is not None
-        }
+        # A per-unit denominator is a price *reference* when the cell
+        # also carries a package size (the pack's price is the offer);
+        # with no size anywhere it is the offer's own basis (weighed
+        # goods priced "2,99/100 g") and stays a valid unit.
+        pick_any = extract_package_size(joined)
+        size_evidence = bool(found) or (
+            pick_any is not None and not _PER_UNIT_RE.search(pick_any)
+        )
+        units = set()
+        for line in lines:
+            u = _unit_in_text(line)
+            if u is None:
+                continue
+            if size_evidence and _norm_size(u) in _per_unit_denominators(line):
+                continue
+            units.add(u)
         if len(units) == 1:
             out["unit"] = next(iter(units))
     return out
@@ -177,6 +238,54 @@ def _ocr_lines(img: Image.Image) -> list[str]:
         return []
 
 
+def _refresh_row(
+    conn: sqlite3.Connection,
+    row: sqlite3.Row,
+    got: dict[str, str],
+    kind: str,
+    stats: dict[str, int],
+    dry_run: bool,
+) -> None:
+    """Reconcile one already-harvested item with a fresh extraction.
+
+    Only fields carrying harvest provenance are retracted or updated;
+    a field the extraction newly finds on an empty column still fills.
+    """
+    raw = json.loads(row["raw"]) if row["raw"] else {}
+    prev = raw.get("harvest") or {}
+    prev_fields = {f for f in ("size", "unit") if f in prev}
+    if not prev_fields and not got:
+        return
+    sets: list[str] = []
+    params: list[object] = []
+    for field, col in (("size", "package_size"), ("unit", "price_unit")):
+        cur = row["package_size"] if field == "size" else row["price_unit"]
+        if field in prev_fields:
+            if field in got:
+                if cur != got[field]:
+                    stats[f"changed_{field}"] += 1
+                    sets.append(f"{col} = ?")
+                    params.append(got[field])
+            else:
+                stats[f"cleared_{field}"] += 1
+                sets.append(f"{col} = NULL")
+        elif field in got and cur is None:
+            stats[f"filled_{field}"] += 1
+            sets.append(f"{col} = ?")
+            params.append(got[field])
+    if dry_run:
+        return
+    new_raw = dict(raw)
+    if got:
+        new_raw["harvest"] = {**got, "via": kind}
+    else:
+        new_raw.pop("harvest", None)
+    sets.insert(0, "raw = ?")
+    params.insert(0, json.dumps(new_raw, ensure_ascii=False))
+    params.append(row["id"])
+    conn.execute(f"UPDATE flyer_items SET {', '.join(sets)} WHERE id = ?", params)
+
+
 def harvest_store(
     conn: sqlite3.Connection,
     slug: str,
@@ -185,23 +294,36 @@ def harvest_store(
     dry_run: bool = False,
     limit: int | None = None,
     cache_dir: Path = _CACHE_DIR,
+    refresh_harvested: bool = False,
 ) -> dict[str, int]:
-    """Fill missing size/unit for one store's current-flyer items."""
+    """Fill missing size/unit for one store's current-flyer items.
+
+    With refresh_harvested, items already carrying harvest provenance
+    are re-extracted instead: a field the new extraction no longer
+    produces is cleared, one it changes is updated (round-2: the
+    per-unit-denominator fix must be able to retract a bad fill).
+    Fields without harvest provenance are never touched.
+    """
     cfg = load_harvest_configs().get(slug)
     stats = {
         "items": 0, "filled_size": 0, "filled_unit": 0,
         "ambiguous": 0, "no_plan": 0, "no_image": 0,
+        "cleared_size": 0, "cleared_unit": 0,
+        "changed_size": 0, "changed_unit": 0,
     }
     if cfg is None:
         return stats
     fields = cfg.get("fields", ["size", "unit"])
     want_size, want_unit = "size" in fields, "unit" in fields
     today = today or date.today()
-    conds = []
-    if want_size:
-        conds.append("fi.package_size IS NULL")
-    if want_unit:
-        conds.append("fi.price_unit IS NULL")
+    if refresh_harvested:
+        conds = ["fi.raw LIKE '%\"harvest\"%'"]
+    else:
+        conds = []
+        if want_size:
+            conds.append("fi.package_size IS NULL")
+        if want_unit:
+            conds.append("fi.price_unit IS NULL")
     if not conds:
         return stats
     rows = conn.execute(
@@ -272,8 +394,8 @@ def harvest_store(
             return ("no_image", {}, kind)
         got = harvest_from_lines(
             _ocr_lines(img),
-            want_size and row["package_size"] is None,
-            want_unit and row["price_unit"] is None,
+            want_size and (refresh_harvested or row["package_size"] is None),
+            want_unit and (refresh_harvested or row["price_unit"] is None),
         )
         return ("ok" if got else "ambiguous", got, kind)
 
@@ -288,6 +410,9 @@ def harvest_store(
             continue
         if status == "no_image":
             stats["no_image"] += 1
+            continue
+        if refresh_harvested:
+            _refresh_row(conn, row, got, kind, stats, dry_run)
             continue
         if not got:
             stats["ambiguous"] += 1
@@ -323,16 +448,33 @@ def main() -> None:
     parser.add_argument("--today", type=date.fromisoformat, default=None)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument(
+        "--refresh-harvested",
+        action="store_true",
+        help="re-extract items already carrying harvest provenance, "
+        "retracting or updating the fields it set",
+    )
     args = parser.parse_args()
     conn = sqlite3.connect(args.db)
     conn.row_factory = sqlite3.Row
     for slug in [s.strip() for s in args.slugs.split(",") if s.strip()]:
         stats = harvest_store(
-            conn, slug, today=args.today, dry_run=args.dry_run, limit=args.limit
+            conn,
+            slug,
+            today=args.today,
+            dry_run=args.dry_run,
+            limit=args.limit,
+            refresh_harvested=args.refresh_harvested,
         )
+        extra = ""
+        if args.refresh_harvested:
+            extra = (
+                f", -{stats['cleared_size']} size, -{stats['cleared_unit']} unit, "
+                f"~{stats['changed_size']} size, ~{stats['changed_unit']} unit"
+            )
         print(
             f"{slug}: {stats['items']} candidates, "
-            f"+{stats['filled_size']} size, +{stats['filled_unit']} unit, "
+            f"+{stats['filled_size']} size, +{stats['filled_unit']} unit{extra}, "
             f"{stats['ambiguous']} ambiguous/none, {stats['no_plan']} no-plan, "
             f"{stats['no_image']} no-image"
             + ("  [dry run]" if args.dry_run else "")

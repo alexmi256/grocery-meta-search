@@ -19,6 +19,13 @@ def test_multibuy_pour() -> None:
     assert parse_price_text("2 pour 4$") == (2.0, "each")
 
 
+def test_multibuy_each_price_rounded_to_cents() -> None:
+    # Round-2 review: 4-dp multibuy splits left float tails in the
+    # stored pool (1.3333...). Each-prices are money: 2 dp.
+    assert parse_price_text("3/4$") == (1.33, "each")
+    assert parse_price_text("2/1,99") == (0.99, "each")
+
+
 def test_per_lb() -> None:
     assert parse_price_text("3,49/lb") == (3.49, "lb")
 

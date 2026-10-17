@@ -498,6 +498,12 @@ def insert_items(
     now = datetime.now(UTC).isoformat(timespec="seconds")
     count = 0
     for item in items:
+        # Price values are money: producers can carry float tails from
+        # divisions (multibuy splits, kg/lb folds — round-2 review found
+        # 2.4699999999999998 in the stored pool). Round once, here at
+        # the DB boundary, so every source is covered.
+        if item.price_value is not None:
+            item.price_value = round(item.price_value, 2)
         dept, sub, method, rule_id = classify_item(
             item.name_fr, item.name_en, item.brand, store_slug
         )

@@ -45,6 +45,105 @@ _BUNDLE_SEP_RE = re.compile(r"\s(?:ou|or)\s|\||\+")
 # package count, but bare numbers are too ambiguous to trust alone;
 # only the unit-bearing forms above are extracted.
 
+# --- Candidate guards (2026-10-16 round-2 visual review) -----------
+# PC-banner OCR names append the retailer's SKU directly before the
+# unit ("FILET 20058163 KG", "20821339KG"): any all-digit token of 6+
+# digits inside a candidate is a SKU, not a package quantity.
+_SKU_MIN_DIGITS = 6
+# Protein callouts print "14G DE PROTÉINES PAR PORTION" / "10G
+# PROTEIN": a size figure glued to a protein word (either side, with
+# only de/of/par between) is a per-portion nutrition claim, not the
+# package size (IGA skewers "23g" skewers, La Moisson seitan "14g").
+_PROTEIN_AFTER_RE = re.compile(
+    r"^\s*(?:de\s+|of\s+|par\s+|per\s+)?prot(?:[ée]ines?|eins?)\b", re.IGNORECASE
+)
+_PROTEIN_BEFORE_RE = re.compile(
+    r"prot(?:[ée]ines?|eins?)\s*(?:de\s+|of\s+)?$", re.IGNORECASE
+)
+# Quantity plausibility caps per unit: no grocery package exceeds
+# these (harvest once stored juice sizes of "154 L"/"458l" stitched
+# from "1,54 L"). The litre cap stays high because hardware flyers
+# print real bin/cooler capacities up to ~110 L; the grocery-only
+# harvest stage applies a stricter litre bound of its own.
+_QTY_CAPS = {
+    "l": 120.0, "ml": 30000.0, "cl": 3000.0,
+    "kg": 100.0, "g": 40000.0, "gr": 40000.0,
+    "oz": 500.0, "lb": 250.0, "lbs": 250.0,
+    "cm": 300.0, "mm": 3000.0, "po": 120.0,
+}
+_PAIR_RE = re.compile(
+    r"(\d+(?:[.,]\d+)?)\s*(kg|ml|cl|oz|lbs?|gr|g|l|cm|mm|po)\b", re.IGNORECASE
+)
+
+
+def _protein_callout(text: str, start: int, end: int) -> bool:
+    """True when the match at [start, end) is glued to a protein word."""
+    if _PROTEIN_AFTER_RE.match(text[end : end + 30]):
+        return True
+    return bool(_PROTEIN_BEFORE_RE.search(text[max(0, start - 20) : start]))
+
+
+def _implausible(full: str) -> bool:
+    for qty, unit in _PAIR_RE.findall(full):
+        cap = _QTY_CAPS.get(unit.lower())
+        if cap is not None and float(qty.replace(",", ".")) > cap:
+            return True
+    return False
+
+
+def size_value_is_valid(value: str) -> bool:
+    """Value-level guards (SKU digits, quantity caps) on a stored size.
+
+    Protein context needs the surrounding text, so it is not checked
+    here — see _iter_valid_sizes.
+    """
+    if any(len(tok) >= _SKU_MIN_DIGITS for tok in re.findall(r"\d+", value)):
+        return False
+    return not _implausible(value)
+
+
+def _iter_valid_sizes(text: str) -> list[re.Match[str]]:
+    """_SIZE_RE matches that survive the round-2 guards."""
+    out = []
+    for m in _SIZE_RE.finditer(text):
+        full = m.group("full")
+        if not size_value_is_valid(full):
+            continue
+        # Protein callouts are weight claims; a count beside a protein
+        # product line ("GAUFRES PROTÉINES 8 UN.") is a real pack count.
+        if _WV_RE.search(full) and _protein_callout(text, m.start("full"), m.end("full")):
+            continue
+        out.append(m)
+    return out
+
+
+def _stored_size_rejected(
+    stored: str, *texts: str | None
+) -> bool:
+    """True when a stored size should be cleared under current policy:
+    it fails the value-level guards outright, or it appears among the
+    raw candidates of the item's own texts but the guarded iterator
+    rejects it there (e.g. a protein callout). Harvest-filled values
+    do not appear in the names, so they are left to the harvest
+    stage's own provenance."""
+    if not size_value_is_valid(stored):
+        return True
+    norm = re.sub(r"\s+", " ", stored).strip(" ,.-").lower()
+    for text in texts:
+        if not text:
+            continue
+        raw = {
+            re.sub(r"\s+", " ", m.group("full")).strip(" ,.-").lower()
+            for m in _SIZE_RE.finditer(text)
+        }
+        if norm in raw:
+            valid = {
+                re.sub(r"\s+", " ", m.group("full")).strip(" ,.-").lower()
+                for m in _iter_valid_sizes(text)
+            }
+            return norm not in valid
+    return False
+
 
 def reprocess(db_path: str, dry_run: bool = False) -> dict[str, dict[str, int]]:
     """Fill flyer_items.package_size for existing items: first
@@ -115,6 +214,40 @@ def reprocess(db_path: str, dry_run: bool = False) -> dict[str, dict[str, int]]:
                             "UPDATE flyer_items SET package_size=? WHERE id=?",
                             (new_size, row["id"]),
                         )
+                elif new_size is None and _stored_size_rejected(
+                    row["package_size"], row["name_fr"], row["name_en"],
+                    str(raw_data["block_text"])
+                    if raw_data and raw_data.get("block_text")
+                    else None,
+                ):
+                    # The stored value is a candidate the current
+                    # guards actively reject (SKU digits, protein
+                    # callout, implausible quantity) and no valid
+                    # alternative exists: clear it rather than keep
+                    # a value the policy now disowns. A harvest
+                    # provenance pointing at the cleared value goes
+                    # with it.
+                    st["corrected"] += 1
+                    if not dry_run:
+                        hv_raw = raw_data.get("harvest") if raw_data else None
+                        if (
+                            raw_data is not None
+                            and isinstance(hv_raw, dict)
+                            and hv_raw.get("size") == row["package_size"]
+                        ):
+                            hv = dict(hv_raw)
+                            del hv["size"]
+                            raw_data["harvest"] = hv
+                            conn.execute(
+                                "UPDATE flyer_items SET package_size=NULL, raw=?"
+                                " WHERE id=?",
+                                (json.dumps(raw_data, ensure_ascii=False), row["id"]),
+                            )
+                        else:
+                            conn.execute(
+                                "UPDATE flyer_items SET package_size=NULL WHERE id=?",
+                                (row["id"],),
+                            )
             continue
         size: str | None = None
         origin = ""
@@ -181,7 +314,7 @@ def find_package_sizes(text: str | None) -> list[str]:
         return []
     return [
         re.sub(r"\s+", " ", m.group("full")).strip(" ,.-")
-        for m in _SIZE_RE.finditer(text)
+        for m in _iter_valid_sizes(text)
     ]
 
 
@@ -199,7 +332,7 @@ def extract_package_size(*names: str | None) -> str | None:
     for name in names:
         if not name:
             continue
-        matches = list(_SIZE_RE.finditer(name))
+        matches = _iter_valid_sizes(name)
         if not matches:
             continue
         wv = [m for m in matches if _WV_RE.search(m.group("full"))]

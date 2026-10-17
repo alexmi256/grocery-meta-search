@@ -272,10 +272,20 @@ def _parse_fragment_value(
 ) -> tuple[float, str, tuple[int, float] | None] | None:
     """Parse clustered price fragments into (value, price_text, multibuy)."""
     joined = "".join(texts)
-    m = re.fullmatch(r"(\d+)/\$?(\d+)", joined)
-    if m:  # "2/500" -> 2 for 5.00; "2/$5" -> 2 for 5.00; "2/11" -> 2 for 11.00
+    m = re.fullmatch(r"(\d+)/\$?(\d+(?:[.,]\d{1,2})?)", joined)
+    if m and (len(texts) == 1 or ("." not in m.group(2) and "," not in m.group(2))):
+        # "2/500" -> 2 for 5.00; "2/$5" -> 2 for 5.00; "2/11" -> 2 for 11.00.
+        # A decimal total ("2/5,99$") is trusted only as a single OCR
+        # token: in a multi-fragment cluster the digits after the slash
+        # may be a NEIGHBOUR's complete price glued to a complete
+        # multibuy token (palumbo: "2/$5" + "6.99" -> "2/56.99").
         count, total_raw = int(m.group(1)), m.group(2)
-        if len(total_raw) >= 3:
+        if "," in total_raw or "." in total_raw:
+            # Quebec decimal comma: "2/5,99$" -> total 5.99 (round-2
+            # review: the digits-only form missed every comma total,
+            # and a neighbour's price won the cell instead).
+            total = float(total_raw.replace(",", "."))
+        elif len(total_raw) >= 3:
             total = int(total_raw[:-2]) + int(total_raw[-2:]) / 100
         elif "¢" in raw_joined:
             total = int(total_raw) / 100  # "2/99¢" -> 2 for 0.99

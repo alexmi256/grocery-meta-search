@@ -44,3 +44,41 @@ def test_bundle_first_product_wins() -> None:
     assert extract_package_size("ACTIVIA 650 g | MINUTE MAID 1,54 L") == "650 g"
     # Single product, decoy early match: trailing size still wins.
     assert extract_package_size("LAIT 2% M.G. 4 L") == "4 L"
+
+
+def test_sku_digits_rejected() -> None:
+    # Round-2 review: PC-banner OCR names glue the retailer SKU to
+    # the unit ("20058163 KG"); a 6+ digit token is never a quantity.
+    assert extract_package_size("FILET DE PORC 20058163 KG") is None
+    assert extract_package_size("SAUMON 20821339KG") is None
+    # A real size in the same name still wins over the SKU candidate.
+    assert extract_package_size("FROMAGE 20821339KG 340 g") == "340 g"
+
+
+def test_protein_callouts_rejected() -> None:
+    # Round-2 review: per-portion protein claims are not package
+    # sizes (IGA skewers "23g", La Moisson seitan "14g", Perfect Bar).
+    assert extract_package_size("BROCHETTES 23G DE PROTÉINES") is None
+    assert extract_package_size("SEITAN 14G DE PROTÉINES PAR PORTION") is None
+    assert extract_package_size("BARRE 10G PROTEIN") is None
+    assert extract_package_size("POUDRE PROTEIN 23G") is None
+    # Product-type mentions, not callouts: the size survives.
+    assert extract_package_size("BARRE PROTÉINÉE 55 G") == "55 G"
+    assert extract_package_size("PROTEIN BAR 55 G") == "55 G"
+    # A real size elsewhere in the name still wins.
+    assert extract_package_size("YOGOURT 750 G 23G DE PROTÉINES") == "750 G"
+
+
+def test_implausible_quantities_rejected() -> None:
+    # Round-2 review: "1,54 L" stitches stored as "154 L"/"458l".
+    assert extract_package_size("JUS 154 L") is None
+    assert extract_package_size("BOISSON 458l") is None
+    assert extract_package_size("EAU DE SOURCE 18.9 L") == "18.9 L"
+    assert extract_package_size("RIZ 20 KG") == "20 KG"
+    assert extract_package_size("FARINE 10 KG") == "10 KG"
+    # Hardware flyers print real bin capacities; they survive here
+    # (the grocery-only harvest stage caps litres more strictly).
+    assert extract_package_size("BAC DE RANGEMENT 63 L") == "63 L"
+    # Count beside a protein product line is a pack count, not a
+    # per-portion protein callout.
+    assert extract_package_size("GAUFRES PROTÉINES 8 UN.") == "8 UN"

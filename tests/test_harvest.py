@@ -54,8 +54,47 @@ def test_descending_range_garble_rejected() -> None:
     assert harvest_from_lines(lines, True, False) == {"size": "500 - 650 G"}
 
 
+def test_grocery_litre_cap() -> None:
+    # Round-2 review: OCR stitches stored celery as "66L"; grocery
+    # packages top out at the 18.9 L water-jug format.
+    assert "size" not in harvest_from_lines(["CELERIS", "66L"], True, False)
+    assert harvest_from_lines(["EAU", "18.9 L"], True, False) == {"size": "18.9 L"}
+
+
+def test_protein_callout_not_harvested() -> None:
+    # Round-2 review: protein badges filled as sizes (IGA skewers).
+    lines = ["BROCHETTES DE POULET", "23G DE PROTÉINES PAR PORTION"]
+    assert "size" not in harvest_from_lines(lines, True, False)
+
+
 def test_config_shape() -> None:
     configs = load_harvest_configs()
     assert "marches-tau" in configs and "super-c" in configs
     assert "akhavan" not in configs  # structured source, no harvest needed
     assert configs["bulk-barn"]["fields"] == ["unit"]
+
+
+def test_harvest_per_unit_denominator() -> None:
+    """Unit-price references in small print are not the package:
+    they must not block the real size through ambiguity, nor pose
+    as the price unit of a pack item (giant-tiger, round-2 review)."""
+    # Jam: real size range + a per-unit reference range.
+    got = harvest_from_lines(
+        ["Confiture Triple Fruits", "375-500 ml", "0,79-1,06/100 ml"],
+        want_size=True, want_unit=True,
+    )
+    assert got.get("size") == "375-500 ml"
+    # 12-pack: the '0,50/100 g' reference is not the pack's unit.
+    got = harvest_from_lines(
+        ["Barres 12 x 100 g", "5,96", "0,50/100 g"],
+        want_size=True, want_unit=True,
+    )
+    assert "unit" not in got
+    # Weighed goods: no package size anywhere, so the denominator
+    # IS the price basis and the unit survives.
+    got = harvest_from_lines(
+        ["Poitrine de dinde", "2,99/100 g"],
+        want_size=True, want_unit=True,
+    )
+    assert got.get("unit") == "100g"
+    assert "size" not in got

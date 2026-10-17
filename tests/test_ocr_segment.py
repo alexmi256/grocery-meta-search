@@ -234,6 +234,16 @@ def test_parse_fragment_value_dollar_multibuy() -> None:
     assert value == 2.50 and multibuy == (2, 5.00)
 
 
+def test_parse_fragment_value_comma_multibuy() -> None:
+    # Round-2 review (marche-bonanza): Quebec flyers print "2/5,99$";
+    # the digits-only multibuy form missed it and a neighbour's price
+    # won the cell.
+    value, text, multibuy = _parse_fragment_value(["2/5,99"])  # type: ignore[misc]
+    assert value == 2.995 and text == "2/5.99" and multibuy == (2, 5.99)
+    value, text, multibuy = _parse_fragment_value(["3/10"])  # type: ignore[misc]
+    assert abs(value - 10 / 3) < 1e-9 and multibuy == (3, 10.0)
+
+
 def test_anchor_unit_capture() -> None:
     """Units printed with a price must reach PriceAnchor.unit: trailing
     on the price line ("0,99 $/lb") or as a standalone line under it
