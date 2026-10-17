@@ -23,7 +23,13 @@ from PIL import Image
 from grocery_meta_search.classify.review import _crop, _sane_bbox
 from grocery_meta_search.classify.taxonomy import category_label_fr
 
-UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) grocery-report"}
+UA = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) grocery-report",
+    # wishabi's CDN cuts keep-alive responses mid-body (IncompleteRead);
+    # asking for a closed connection returns the full image (IGA review,
+    # 2026-10-17: 8 of 10 item images silently missing without this).
+    "Connection": "close",
+}
 
 
 # Per-store crop pads (x, up, down) for the review report. Dense

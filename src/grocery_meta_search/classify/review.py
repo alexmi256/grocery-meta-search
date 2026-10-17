@@ -40,7 +40,11 @@ PAGE_HOSTS = {
     "milanofruiterie.ca",
     "na.leafletscdn.com",
 }
-UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) grocery-review"}
+UA = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) grocery-review",
+    # See store_report.UA: wishabi's CDN truncates keep-alive responses.
+    "Connection": "close",
+}
 
 
 def _fetch_page(url: str, cache_dir: Path) -> Path | None:
