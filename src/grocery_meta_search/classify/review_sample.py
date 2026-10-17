@@ -54,6 +54,10 @@ def main() -> None:
     parser.add_argument("--today", default=None,
                         help="YYYY-MM-DD; only flyers valid on/after this "
                              "date are sampled (default: today)")
+    parser.add_argument("--slugs", default=None,
+                        help="comma-separated store slugs; render only "
+                             "these stores and skip the pack index (for "
+                             "per-store review passes)")
     args = parser.parse_args()
     from datetime import date
 
@@ -69,6 +73,9 @@ def main() -> None:
         ORDER BY s.slug
         """
     ).fetchall()
+    if args.slugs:
+        wanted = {s.strip() for s in args.slugs.split(",") if s.strip()}
+        stores = [row for row in stores if row[0] in wanted]
 
     index: list[str] = [
         "# Classification review pack",
@@ -120,6 +127,10 @@ def main() -> None:
             "Stores with items in the DB but **no current flyer** "
             f"(skipped): {', '.join(skipped)}.",
         ]
+    if args.slugs:
+        conn.close()
+        print("per-store run (--slugs): index skipped")
+        return
     (out_dir / "README.md").write_text("\n".join(index) + "\n", encoding="utf-8")
     conn.close()
     print(f"index written: {out_dir / 'README.md'}")
