@@ -25,8 +25,9 @@ _WORD_RE = re.compile(r"[a-zàâäéèêëîïôöûüç']+")
 
 
 def _french_score(text: str) -> int:
-    words = _WORD_RE.findall(text.lower())
-    score = 3 * len(_ACCENT_RE.findall(text))
+    lowered = text.lower()
+    words = _WORD_RE.findall(lowered)
+    score = 3 * len(_ACCENT_RE.findall(lowered))
     score += 2 * sum(1 for w in words if w in _FR_WORDS)
     score -= 2 * sum(1 for w in words if w in _EN_WORDS)
     return score

@@ -44,7 +44,6 @@ def test_item_from_product_fr() -> None:
     # Wishabi names are combined 'FR | EN'; they split at ingestion.
     assert item.name_fr == "CROUSTILLES PRINGLES"
     assert item.name_en == "POTATO CHIPS"
-    assert item.name_en is None
     assert item.price_text == "2.50"
     assert item.price_value == 2.5
     assert item.sku == "21003832_EA"
