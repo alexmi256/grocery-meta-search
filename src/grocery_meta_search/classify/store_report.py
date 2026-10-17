@@ -31,6 +31,7 @@ UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) grocery-report"}
 # cell's price (euro-marche, Alex's 2026-10-17 review).
 _CROP_PAD_OVERRIDES: dict[str, tuple[float, float, float]] = {
     "euro-marche": (0.12, 0.10, 0.15),
+    "3-saisons-fruits-legumes": (0.12, 0.10, 0.15),
 }
 
 
