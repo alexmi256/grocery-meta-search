@@ -678,6 +678,9 @@ RULES: list[Rule] = [
         (
             "probiotique",
             "probiotiques",
+            "millepertuis",
+            "flux o bile",
+            "multi une par jour",
             "melatonine",
             "collagene",
             "collagen",
@@ -2903,6 +2906,7 @@ RULES: list[Rule] = [
         "Chips & Snacks",
         (
             "rold gold",
+            "collation saveurs assorties",
             "barres energetiques",
             "barre energetique",
             "larabar",
