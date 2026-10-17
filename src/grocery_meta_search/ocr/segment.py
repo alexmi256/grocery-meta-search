@@ -15,6 +15,7 @@ from __future__ import annotations
 import re
 import unicodedata
 from dataclasses import dataclass
+from typing import Any
 
 from PIL import Image
 
@@ -711,6 +712,8 @@ def segment_page(
         return _segment_name_cells(image, lines, cfg, page_url, page_number)
     if cfg.price_strategy == "chalkboard":
         return _segment_chalkboard(image, lines, cfg, page_url, page_number)
+    if cfg.price_strategy == "red_grid":
+        return _segment_red_grid(image, lines, cfg, page_url, page_number)
     anchors = find_price_anchors(lines, page_w, page_h, cfg)
     return _items_from_anchors(image, lines, cfg, anchors, page_url, page_number)
 
@@ -1664,6 +1667,494 @@ def _segment_chalkboard(
             )
         )
     return items
+
+
+def _tess_mask_text(mask_img: Image.Image, psm: int) -> str:
+    """Tesseract on a pre-binarized crop (black ink on white)."""
+    import io
+    import os
+    import subprocess
+
+    from .engine import find_tesseract
+
+    found = find_tesseract()
+    if found is None:
+        return ""
+    binary, extra_env = found
+    buf = io.BytesIO()
+    mask_img.save(buf, format="PNG")
+    env = dict(os.environ)
+    env.update(extra_env)
+    try:
+        proc = subprocess.run(
+            [binary, "stdin", "stdout", "--psm", str(psm),
+             "-c", "tessedit_char_whitelist=0123456789/$%."],
+            input=buf.getvalue(), capture_output=True, env=env, timeout=30,
+        )
+    except (subprocess.SubprocessError, OSError):
+        return ""
+    return proc.stdout.decode("utf-8", errors="replace").strip()
+
+
+def _red_clusters(image: Image.Image) -> list[list[tuple[int, int, int, int]]]:
+    """Group red glyph blobs into price clusters (Frutta Si layout).
+
+    Prices print as big red digits (dollars full height, cents
+    superscript right) on a yellow page. Red connected components of
+    glyph size, clustered by baseline overlap + horizontal gap, give
+    one cluster per printed price — immune to the black per-kg
+    reference print and name text that poisoned line-based anchors.
+    """
+    import cv2
+    import numpy as np
+
+    arr = np.array(image.convert("RGB"))
+    page_h, page_w = arr.shape[:2]
+    hsv = cv2.cvtColor(arr, cv2.COLOR_RGB2HSV)
+    mask = (
+        ((hsv[..., 0] <= 12) | (hsv[..., 0] >= 168))
+        & (hsv[..., 1] >= 100)
+        & (hsv[..., 2] >= 70)
+    ).astype(np.uint8)
+    n, _lab, stats, _cent = cv2.connectedComponentsWithStats(mask * 255, connectivity=8)
+    blobs: list[tuple[int, int, int, int]] = []
+    for i in range(1, n):
+        x, y, w, h, area = (int(v) for v in stats[i])
+        fill = area / (w * h) if w * h else 0.0
+        # Glyph ink fills 25-92% of its box; photo regions and label
+        # bars are near-solid and drop out here.
+        if (
+            6 <= h <= 0.035 * page_h
+            and 3 <= w <= 0.06 * page_w
+            and area >= 25
+            and 0.25 <= fill <= 0.92
+        ):
+            blobs.append((x, y, w, h))
+    blobs.sort(key=lambda b: (b[1], b[0]))
+    parent = list(range(len(blobs)))
+
+    def find(i: int) -> int:
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    for i in range(len(blobs)):
+        for j in range(i + 1, len(blobs)):
+            a, b = blobs[i], blobs[j]
+            vov = min(a[1] + a[3], b[1] + b[3]) - max(a[1], b[1])
+            gap = max(b[0] - (a[0] + a[2]), a[0] - (b[0] + b[2]))
+            if vov > 0.35 * min(a[3], b[3]) and gap < 0.031 * page_w:
+                parent[find(i)] = find(j)
+    groups: dict[int, list[tuple[int, int, int, int]]] = {}
+    for i, b in enumerate(blobs):
+        groups.setdefault(find(i), []).append(b)
+    out: list[list[tuple[int, int, int, int]]] = []
+    for g in groups.values():
+        y0 = min(b[1] for b in g)
+        y1 = max(b[1] + b[3] for b in g)
+        if len(g) >= 2 and (y1 - y0) >= 0.011 * page_h:
+            out.append(sorted(g, key=lambda b: b[0]))
+    out.sort(key=lambda g: (min(b[1] for b in g), min(b[0] for b in g)))
+    return out
+
+
+def _mask_crop(mask: Any, blobs: list[tuple[int, int, int, int]], pad: int = 3) -> Image.Image:
+    import numpy as np
+
+    x0 = max(0, min(b[0] for b in blobs) - pad)
+    y0 = max(0, min(b[1] for b in blobs) - pad)
+    x1 = max(b[0] + b[2] for b in blobs) + pad
+    y1 = max(b[1] + b[3] for b in blobs) + pad
+    ink = mask[y0:y1, x0:x1]
+    img = Image.fromarray(((1 - ink) * 255).astype(np.uint8))
+    return img.resize((img.width * 6, img.height * 6), Image.Resampling.LANCZOS)
+
+
+def _split_wide_blob(
+    mask: Any, blob: tuple[int, int, int, int]
+) -> list[tuple[int, int, int, int]]:
+    """Split a fused two-digit blob at its palest vertical valley."""
+    import numpy as np
+
+    x, y, w, h = blob
+    ink = mask[y : y + h, x : x + w]
+    col = ink.sum(axis=0)
+    lo, hi = w // 4, (3 * w) // 4
+    if hi <= lo:
+        return [blob]
+    cut = lo + int(np.argmin(col[lo:hi]))
+    if col[cut] > 0.35 * h:
+        return [blob]
+    return [(x, y, cut, h), (x + cut, y, w - cut, h)]
+
+
+def _read_digit_group(
+    mask: Any, blobs: list[tuple[int, int, int, int]], page_w: int
+) -> dict[str, int]:
+    """Voted digit-string candidates for one glyph group.
+
+    Sources: whole-group Tesseract crops (psm 7/8), a per-blob
+    concatenation, and — for an over-wide blob, two fused digits —
+    a valley-split interpretation alongside the unsplit one. Reads
+    of any length 1-2 are kept with their vote weights; the caller
+    assembles dollars/cents pairs from the cross product, so an
+    ambiguous group length does not kill a good read.
+    """
+    votes: dict[str, int] = {}
+
+    def add(s: str, wgt: int) -> None:
+        if 1 <= len(s) <= 2:
+            votes[s] = votes.get(s, 0) + wgt
+
+    group_img = _mask_crop(mask, blobs)
+    for psm in (7, 8):
+        add(re.sub(r"\D", "", _tess_mask_text(group_img, psm)), 2)
+
+    def per_blob(pieces: list[tuple[int, int, int, int]]) -> str:
+        out = []
+        for p in pieces:
+            d = re.sub(r"\D", "", _tess_mask_text(_mask_crop(mask, [p]), 10))
+            if not d:
+                d = re.sub(r"\D", "", _tess_mask_text(_mask_crop(mask, [p]), 8))
+            out.append(d[:1] if d else "")
+        return "".join(out) if all(len(d) == 1 for d in out) else ""
+
+    add(per_blob(blobs), 2)
+    wide = [b for b in blobs if b[2] >= 0.04 * page_w]
+    if wide:
+        pieces: list[tuple[int, int, int, int]] = []
+        for b in blobs:
+            pieces.extend(_split_wide_blob(mask, b) if b in wide else [b])
+        if len(pieces) > len(blobs):
+            add(per_blob(pieces), 1)
+    return votes
+
+
+def _pick_digits(votes: dict[str, int]) -> str | None:
+    """Most-voted candidate; None on a tie (wrong price is worse)."""
+    if not votes:
+        return None
+    best = max(votes.values())
+    winners = [c for c, n in votes.items() if n == best]
+    return winners[0] if len(winners) == 1 else None
+
+
+_PER_KG_RE = re.compile(r"(\d{1,3})[.,](\d{2,3})\s*/\s*kg", re.IGNORECASE)
+_MULTIBUY_RE = re.compile(r"(\d{1,2})\s*/\s*(\d{1,2}(?:[.,]\d{2})?)")
+
+
+def _segment_red_grid(
+    image: Image.Image,
+    lines: list[OcrLine],
+    cfg: OcrStoreConfig,
+    page_url: str,
+    page_number: int,
+) -> list[FlyerItem]:
+    """Frutta Si: red price clusters as anchors, names from lines.
+
+    The dense grid defeated line-based anchors (per-kg reference
+    print formed rival anchors and names paired one slot off). Red
+    glyph clusters are unambiguous; the printed per-kg reference
+    under each /lb price validates the read (price x 2.2046).
+    """
+    import cv2
+    import numpy as np
+
+    page_w, page_h = image.size
+    arr = np.array(image.convert("RGB"))
+    hsv = cv2.cvtColor(arr, cv2.COLOR_RGB2HSV)
+    mask = (
+        ((hsv[..., 0] <= 12) | (hsv[..., 0] >= 168))
+        & (hsv[..., 1] >= 100)
+        & (hsv[..., 2] >= 70)
+    ).astype(np.uint8)
+
+    def kg_ref(box: tuple[float, float, float, float]) -> float | None:
+        for ln in lines:
+            # The reference prints under the price, but OCR may merge
+            # it into the price's own line; any line overlapping the
+            # price band vertically counts.
+            spans = ln.bottom > box[1] and ln.y <= box[3] + 0.02 * page_h
+            if spans and ln.x < box[2] and ln.right > box[0]:
+                m = _PER_KG_RE.search(ln.text)
+                if m:
+                    return float(f"{m.group(1)}.{m.group(2)}")
+        return None
+
+    def unit_for(box: tuple[float, float, float, float]) -> str | None:
+        found: set[str] = set()
+        for ln in lines:
+            if ln.y >= box[3] + 0.014 * page_h or ln.bottom <= box[1] - 0.004 * page_h:
+                continue
+            if ln.x > box[2] + 0.07 * page_w or ln.right < box[0] - 4:
+                continue
+            # 'lb' misread by OCR as 'Ib' / '1b' (the price font's l).
+            if re.search(r"(?<![a-zA-Z])[iIl1]b(?![a-zA-Z])", ln.text):
+                found.add("lb")
+                continue
+            if _PER_KG_RE.search(ln.text):
+                if re.search(r"\blb\b", ln.text, re.IGNORECASE):
+                    found.add("lb")
+                continue
+            unit = _unit_in_text(ln.text)
+            if unit and unit != "kg":
+                found.add(unit)
+        if "lb" in found:
+            return "lb"
+        if "100g" in found:
+            return "100g"
+        return None
+
+    def line_fragments(
+        box: tuple[float, float, float, float],
+    ) -> tuple[dict[str, int], dict[str, int], dict[tuple[str, str], int]]:
+        """Digit votes from the page OCR lines overlapping a cluster.
+
+        RapidOCR reads the big price glyphs well at page level; its
+        lines carry the dollars, the cents, or a fused run ('1099').
+        Position maps a short run to its side; a fused run votes as
+        a (dollars, cents) pair. Per-kg reference lines are excluded
+        (they belong to kg_ref, and their digits would poison votes).
+        """
+        d_votes: dict[str, int] = {}
+        c_votes: dict[str, int] = {}
+        pair_votes: dict[tuple[str, str], int] = {}
+        mid = box[0] + 0.45 * (box[2] - box[0])
+        for ln in lines:
+            # The line's centre must sit in the glyph band: packaging
+            # print just above the price ('156ml' on a can) otherwise
+            # leaks digit runs into the cents votes.
+            if not (box[1] - 0.002 * page_h <= ln.cy <= box[3] + 0.006 * page_h):
+                continue
+            if ln.x > box[2] + 0.02 * page_w or ln.right < box[0] - 0.012 * page_w:
+                continue
+            text = _PER_KG_RE.sub(" ", ln.text)
+            if "/" in text:
+                continue
+            for run in re.findall(r"\d+", text):
+                if len(run) >= 3:
+                    for k in (1, 2):
+                        if len(run) - k == 2:
+                            d, c = run[:k], run[k:]
+                            d_votes[d] = d_votes.get(d, 0) + 1
+                            c_votes[c] = c_votes.get(c, 0) + 1
+                            pair_votes[(d, c)] = pair_votes.get((d, c), 0) + 1
+                elif ln.cx < mid:
+                    d_votes[run] = d_votes.get(run, 0) + 1
+                else:
+                    c_votes[run] = c_votes.get(run, 0) + 1
+        return d_votes, c_votes, pair_votes
+
+    anchors: list[PriceAnchor] = []
+    multibuy_clusters: list[tuple[tuple[int, int, int, int], int, float]] = []
+    cluster_list = _red_clusters(image)
+    cluster_boxes = [
+        (min(b[0] for b in g), min(b[1] for b in g)) for g in cluster_list
+    ]
+    for blobs in cluster_list:
+        x0 = min(b[0] for b in blobs)
+        y0 = min(b[1] for b in blobs)
+        x1 = max(b[0] + b[2] for b in blobs)
+        y1 = max(b[1] + b[3] for b in blobs)
+        box = (float(x0), float(y0), float(x1), float(y1))
+        whole = _tess_mask_text(_mask_crop(mask, blobs), 6) + " " + _tess_mask_text(
+            _mask_crop(mask, blobs), 11
+        )
+        mb = _MULTIBUY_RE.search(whole)
+        max_h = max(b[3] for b in blobs)
+        base = max(b[1] + b[3] for b in blobs)
+        tall_top = min(b[1] for b in blobs if b[3] >= 0.78 * max_h)
+        tall = [b for b in blobs if b[3] >= 0.78 * max_h and base - (b[1] + b[3]) <= 4]
+        # Cents glyphs sit superscript: top near the dollars' top,
+        # bottom well above the baseline. Other short blobs (photo
+        # labels bleeding into the cluster) fail one of the two tests.
+        short = [
+            b
+            for b in blobs
+            if b not in tall
+            and b[1] <= tall_top + 0.55 * max_h
+            and b[1] + b[3] <= base - 0.12 * max_h
+        ]
+        short.sort(key=lambda b: b[0])
+        if len(short) > 2:
+            short = sorted(short, key=lambda b: b[1])[:2]
+            short.sort(key=lambda b: b[0])
+        if not tall:
+            continue
+        d_votes = _read_digit_group(mask, tall, page_w)
+        c_votes = _read_digit_group(mask, short, page_w) if short else {}
+        ld, lc, lp = line_fragments(box)
+        for k, v in ld.items():
+            d_votes[k] = d_votes.get(k, 0) + v
+        for k, v in lc.items():
+            c_votes[k] = c_votes.get(k, 0) + v
+        # RapidOCR on the cropped cluster (the price glyphs at 3x):
+        # a third read source, position-mapped like the page lines.
+        crop = image.crop(
+            (max(0, x0 - 4), max(0, y0 - 4), min(page_w, x1 + 4), min(page_h, y1 + 4))
+        ).resize(((x1 - x0 + 8) * 3, (y1 - y0 + 8) * 3), Image.Resampling.LANCZOS)
+        crop_mid = crop.width * (0.45 * (x1 - x0) + 4) / (x1 - x0 + 8)
+        crop_lb = False
+        for ln in detect_lines(crop):
+            if re.search(r"(?<![a-zA-Z])[iIl1]b(?![a-zA-Z])", ln.text):
+                crop_lb = True
+            text = _PER_KG_RE.sub(" ", ln.text)
+            if "/" in text:
+                continue
+            for run in re.findall(r"\d+", text):
+                if len(run) >= 3:
+                    for split_at in (1, 2):
+                        if len(run) - split_at == 2:
+                            d, c = run[:split_at], run[split_at:]
+                            d_votes[d] = d_votes.get(d, 0) + 1
+                            c_votes[c] = c_votes.get(c, 0) + 1
+                            lp[(d, c)] = lp.get((d, c), 0) + 1
+                elif ln.cx < crop_mid:
+                    d_votes[run] = d_votes.get(run, 0) + 2
+                else:
+                    c_votes[run] = c_votes.get(run, 0) + 2
+        # Narrow-blob prior: in this price font only '1' is a thin
+        # vertical bar (~12px vs 22-27px for other digits), and OCR
+        # engines systematically drop it as a rule line. A tall group
+        # of nothing but narrow bars can only read as ones.
+        if tall and all(b[2] <= 0.017 * page_w for b in tall):
+            ones = "1" * len(tall)
+            d_votes[ones] = d_votes.get(ones, 0) + 3
+        ref = kg_ref(box)
+        value: float | None = None
+        pairs = {
+            (d, c): d_votes[d] + c_votes[c] + 2 * lp.get((d, c), 0)
+            for d in d_votes
+            for c in c_votes
+            if len(c) == 2 and 1 <= len(d) <= 2 and int(d) <= 30
+        }
+        if pairs:
+            if ref is not None:
+                matching = [
+                    p for p in pairs if abs((int(p[0]) + int(p[1]) / 100) * 2.2046 - ref) <= 0.06
+                ]
+                if len(matching) == 1:
+                    d_win, c_win = matching[0]
+                    value = int(d_win) + int(c_win) / 100
+                elif len(matching) > 1:
+                    d_win, c_win = max(matching, key=lambda p: pairs[p])
+                    value = int(d_win) + int(c_win) / 100
+                else:
+                    # No voted pair fits the reference (the cents
+                    # glyphs flip 9->6 in every engine on some
+                    # prices): trust the reference when its dollars
+                    # agree with a voted dollars read.
+                    implied = round(ref / 2.2046 * 100)
+                    imp_pair = (str(implied // 100), f"{implied % 100:02d}")
+                    if imp_pair[0] in d_votes:
+                        value = implied / 100
+            if value is None:
+                best = max(pairs.values())
+                winners = [p for p, s in pairs.items() if s == best]
+                if len(winners) > 1:
+                    # Tie-break: a pair some engine read as one fused
+                    # run ('1099') beats independently-voted halves.
+                    top = max(lp.get(p, 0) for p in winners)
+                    winners = [p for p in winners if lp.get(p, 0) == top]
+                if len(winners) == 1 and best >= 3:
+                    d_win, c_win = winners[0]
+                    value = int(d_win) + int(c_win) / 100
+        elif (
+            (
+                (len(short) == 1 and short[0][2] <= 0.016 * page_w)
+                or (
+                    not short
+                    and any(b[2] <= 0.016 * page_w for b in blobs if b not in tall)
+                )
+            )
+            and not any(
+                len(s) == 2 and s != _pick_digits({k: v for k, v in d_votes.items() if len(k) == 2})
+                for s in c_votes
+            )
+        ):
+            # Cents-only price ('69¢'): the tall digits are the cents
+            # and the single narrow short blob is the ¢ glyph itself.
+            # A 'cents' vote equal to the dollars read is the same
+            # glyphs seen twice (a line spanning the whole price),
+            # not independent cents evidence.
+            cand = {s: v for s, v in d_votes.items() if len(s) == 2}
+            picked = _pick_digits(cand)
+            if ref is not None:
+                implied = round(ref / 2.2046 * 100)
+                implied_s = f"{implied:02d}"
+                if implied_s in cand:
+                    value = implied / 100
+                else:
+                    near = [
+                        s
+                        for s in cand
+                        if sum(a != b for a, b in zip(s, implied_s, strict=True)) == 1
+                    ]
+                    if len(near) == 1:
+                        value = implied / 100
+            elif picked is not None:
+                value = int(picked) / 100
+        if (
+            value is None
+            and ref is not None
+            and len(tall) == 1
+            and not any(int(k) <= 30 for k in d_votes)
+        ):
+            # Single unreadable dollar glyph (fused with the photo
+            # above it) but a clean per-kg reference whose implied
+            # cents are corroborated by a cents read: the reference
+            # determines the dollars (ref = $/lb x 2.2046). A second
+            # cluster in the same column just below means this blob
+            # is label noise above the real price — no rescue then.
+            implied = round(ref / 2.2046 * 100)
+            imp_cents = f"{implied % 100:02d}"
+            below = any(
+                abs(bx - x0) <= 0.05 * page_w and 0 < by - y0 <= 0.045 * page_h
+                for bx, by in cluster_boxes
+                if (bx, by) != (x0, y0)
+            )
+            if not below and any(k[:1] == imp_cents[:1] for k in c_votes):
+                value = implied / 100
+        if value is None:
+            if mb and int(mb.group(1)) >= 2:
+                multibuy_clusters.append(
+                    ((x0, y0, x1, y1), int(mb.group(1)), float(mb.group(2).replace(",", ".")))
+                )
+            continue
+        anchors.append(
+            PriceAnchor(
+                value=value,
+                price_text=f"{value:.2f}",
+                box=box,
+                conf=0.9,
+                unit=unit_for(box) or ("lb" if crop_lb else None),
+            )
+        )
+    # Attach multibuy clusters to the main price at their left.
+    for (mx0, my0, mx1, my1), count, total in multibuy_clusters:
+        host = None
+        for a in anchors:
+            if (
+                abs(a.box[1] - my0) <= 0.012 * page_h
+                and 0 < mx0 - a.box[2] <= 0.17 * page_w
+                and (host is None or a.box[2] > host.box[2])
+            ):
+                host = a
+        if host is not None and count >= 2 and total > 0:
+            host.multibuy = (count, total)
+        elif count >= 2 and total > 0:
+            anchors.append(
+                PriceAnchor(
+                    value=total / count,
+                    price_text=f"{count}/{total:g}$",
+                    box=(float(mx0), float(my0), float(mx1), float(my1)),
+                    conf=0.85,
+                    multibuy=(count, total),
+                )
+            )
+    anchors.sort(key=lambda a: (a.box[1], a.box[0]))
+    return _items_from_anchors(image, lines, cfg, anchors, page_url, page_number)
 
 
 def _segment_prix_line(
