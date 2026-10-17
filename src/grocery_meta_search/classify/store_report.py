@@ -171,7 +171,8 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
                 page_ref = f"pages/{page_jpg.name} (flyer page {page_no})"
                 if bbox is not None:
                     crop = images_dir / f"item-{row['id']}.jpg"
-                    if _crop(page_jpg, bbox, crop, pad=_CROP_PAD_OVERRIDES.get(slug, (0.12, 0.35, 0.15))):
+                    pad = _CROP_PAD_OVERRIDES.get(slug, (0.12, 0.35, 0.15))
+                    if _crop(page_jpg, bbox, crop, pad=pad):
                         lines.append(f"![item {row['id']}](images/item-{row['id']}.jpg)")
                         stats["crops"] += 1
                         pictured = True
