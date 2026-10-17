@@ -1659,6 +1659,8 @@ RULES: list[Rule] = [
             "poisson fume",
             "smoked salmon",
             "smoked fish",
+            "smoked steelhead",
+            "steelhead fume",
             "gravlax",
             "hareng fume",
             "maquereau fume",
@@ -4139,6 +4141,13 @@ def classify_item(
         # misting cauldron / crystal ball is not wine. Each trigger
         # phrase has no grocery meaning.
         return "Household", "Home Goods", "guard-remap", rid
+    if (dept, sub) == ("Pantry", "Pasta & Pasta Sauce") and (
+        "butternut" in norm or "poivree" in norm or "acorn" in norm
+    ):
+        # Butternut/acorn/spaghetti SQUASH is produce; when the name
+        # loses its leading "courges", the word "spaghetti" drags it
+        # into pasta (euro-marche review, 2026-10-17).
+        return "Fruits & Vegetables", "Fresh Vegetables", "guard-remap", rid
     if (dept, sub) == ("Fruits & Vegetables", "Fresh Fruits") and (
         "shots" in norm
     ):
