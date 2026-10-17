@@ -121,3 +121,15 @@ def test_harvest_slash_misread_kg() -> None:
         "GREC DELPHI", "REG.1690", "DELPHITZATZIKI", "6REEKSTYLE",
     ]
     assert harvest_from_lines(lines, True, True) == {"unit": "kg"}
+
+
+def test_range_with_count_rival_and_contained_stamp() -> None:
+    # Adonis review (2026-10-17): the offer's stated size is a range;
+    # the pack count and one variety's in-range stamp do not contradict it.
+    lines = ["grandes pizzas", "836-888g.4un.", "Adonis large pizzas"]
+    assert harvest_from_lines(lines, True, False) == {"size": "836-888g"}
+    lines = ["325-410g.choix varie", "pizza", "395g"]
+    assert harvest_from_lines(lines, True, False) == {"size": "325-410g"}
+    # Two disjoint weights stay ambiguous.
+    lines = ["325g,choix varie", "12g"]
+    assert harvest_from_lines(lines, True, False) == {}

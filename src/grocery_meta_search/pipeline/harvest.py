@@ -146,22 +146,51 @@ def harvest_from_lines(
         if len(found) == 1:
             out["size"] = next(iter(found.values()))
         elif len(found) > 1:
-            # Several distinct sizes: trust the fields policy only when
-            # it picks a weight/volume and every rival is count-only
-            # (shrimp "60-70 UNITÉS" beside the pack's "907 g").
-            pick = extract_package_size(joined)
-            denoms_all = set().union(
-                *(_per_unit_denominators(line) for line in lines)
-            )
-            if (
-                pick
-                and _WV_HINT.search(pick)
-                and not _PER_UNIT_RE.search(pick)
-                and _norm_size(pick) not in denoms_all
-            ):
-                rivals = [v for k, v in found.items() if k != _norm_size(pick)]
-                if rivals and all(not _WV_HINT.search(v) for v in rivals):
-                    out["size"] = pick
+            # A single range is the offer's stated size ("836-888 g,
+            # 4 un."): count rivals are the pack count, and a lone
+            # weight rival inside the range is one variety's stamp
+            # (frozen pizza "325-410 g" beside a 395 g box print) —
+            # both are consistent with the range, not contradictions.
+            ranges = [v for v in found.values() if _RANGE_RE.match(v)]
+            if len(ranges) == 1:
+                rng = ranges[0]
+                m = _RANGE_RE.match(rng)
+                assert m is not None
+                lo = float(m.group(1).replace(",", "."))
+                hi = float(m.group(2).replace(",", "."))
+                consistent = True
+                for v in found.values():
+                    if v == rng or not _WV_HINT.search(v):
+                        continue
+                    nums = re.findall(r"\d+(?:[.,]\d+)?", v)
+                    if not nums or not lo <= float(
+                        nums[0].replace(",", ".")
+                    ) <= hi:
+                        consistent = False
+                if consistent:
+                    out["size"] = rng
+            if "size" not in out:
+                # Several distinct sizes: trust the fields policy only
+                # when it picks a weight/volume and every rival is
+                # count-only (shrimp "60-70 UNITÉS" beside the pack's
+                # "907 g").
+                pick = extract_package_size(joined)
+                denoms_all = set().union(
+                    *(_per_unit_denominators(line) for line in lines)
+                )
+                if (
+                    pick
+                    and _WV_HINT.search(pick)
+                    and not _PER_UNIT_RE.search(pick)
+                    and _norm_size(pick) not in denoms_all
+                ):
+                    rivals = [
+                        v for k, v in found.items() if k != _norm_size(pick)
+                    ]
+                    if rivals and all(
+                        not _WV_HINT.search(v) for v in rivals
+                    ):
+                        out["size"] = pick
     if want_unit:
         # A per-unit denominator is a price *reference* when the cell
         # also carries a package size (the pack's price is the offer);
@@ -473,7 +502,14 @@ def harvest_store(
         if dry_run:
             continue
         raw = json.loads(row["raw"]) if row["raw"] else {}
-        raw["harvest"] = {**got, "via": kind}
+        # Merge provenance: a fill run must not erase the record of
+        # fields an earlier harvest set (a later --refresh-harvested
+        # run retracts by that record; overwriting it strands values
+        # like a rate denominator stored as a size — adonis 7476).
+        prior = raw.get("harvest") or {}
+        merged = {k: v for k, v in prior.items() if k != "via"}
+        merged.update(got)
+        raw["harvest"] = {**merged, "via": kind}
         sets: list[str] = ["raw = ?"]
         params: list[object] = [json.dumps(raw, ensure_ascii=False)]
         if "size" in got:
