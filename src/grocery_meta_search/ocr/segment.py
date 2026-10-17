@@ -311,9 +311,19 @@ def _parse_fragment_value(
         if re.fullmatch(r"\d+\.\d{2}", t):
             return float(t), t, None
         if re.fullmatch(r"\d{3,4}", t):  # merged dollars+cents: "1599", "744"
-            if merged_run_is_cents and len(t) == 3 and t.endswith("9"):
+            if (
+                merged_run_is_cents
+                and len(t) == 3
+                and t.endswith("9")
+                and ("¢" in raw_joined or "%" in raw_joined)
+            ):
                 # A cents display ("79¢") whose ¢ glyph merged into the
                 # run as a trailing 9: the value is the first two digits.
+                # Gated on the cluster still carrying the ¢/% glyph
+                # somewhere (valmont review, 2026-10-17): ungated, this
+                # branch corrupted every merged dollar price ending in
+                # 9 ("7.99" -> 0.79, "3.29" -> 0.32, "3.59" -> 0.35),
+                # which is far more common than a true cents merge.
                 return int(t[:2]) / 100, f"0.{t[:2]}", None
             return int(t[:-2]) + int(t[-2:]) / 100, f"{t[:-2]}.{t[-2:]}", None
         if re.fullmatch(r"\d{1,2}", t):  # whole dollars, or cents (see cfg)

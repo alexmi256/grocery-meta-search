@@ -323,3 +323,19 @@ def test_percent_cents_glyph_needs_cluster_context() -> None:
         None,
     )
     assert _parse_fragment_value(["25%"], raw_joined="25%") is None
+
+
+def test_merged_run_cents_needs_glyph_evidence() -> None:
+    # Valmont review (2026-10-17): a merged "799" is $7.99 unless the
+    # cluster still shows the cents glyph it supposedly came from.
+    assert _parse_fragment_value(["799"], "", True) == (7.99, "7.99", None)
+    assert _parse_fragment_value(["799"], "69¢ /lb", True) == (
+        0.79,
+        "0.79",
+        None,
+    )
+    assert _parse_fragment_value(["329"], "3 29 ch.", True) == (
+        3.29,
+        "3.29",
+        None,
+    )
