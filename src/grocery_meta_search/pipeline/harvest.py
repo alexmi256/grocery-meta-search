@@ -49,7 +49,9 @@ from .fields import extract_package_size, find_package_sizes
 
 _CONFIG_PATH = Path(__file__).parent.parent / "sources" / "harvest_config.json"
 _CACHE_DIR = Path("work/harvest-cache")
-_WV_HINT = re.compile(r"\b(?:g|kg|mg|l|ml|lb|oz|gr)\b", re.IGNORECASE)
+# A weight/volume hint inside a size candidate: the unit may be glued
+# to the digits ("400g"), where a \b before the unit letter never fires.
+_WV_HINT = re.compile(r"\d\s*(?:g|kg|mg|l|ml|lb|oz|gr)\b", re.IGNORECASE)
 
 # Grocery flyers print no package above ~25 L (18.9 L water jugs are
 # the top end); the fields-level litre cap is looser because hardware
@@ -153,6 +155,14 @@ def harvest_from_lines(
         if len(found) == 1:
             out["size"] = next(iter(found.values()))
         elif len(found) > 1:
+            # Exactly one weight/volume candidate with only count
+            # rivals ("400 g, 60 un." — a 400 g pack of 60 candies):
+            # the weight is the package size.
+            wv = [v for v in found.values() if _WV_HINT.search(v)]
+            if len(wv) == 1 and all(
+                v == wv[0] or not _WV_HINT.search(v) for v in found.values()
+            ):
+                out["size"] = wv[0]
             # A single range is the offer's stated size ("836-888 g,
             # 4 un."): count rivals are the pack count, and a lone
             # weight rival inside the range is one variety's stamp

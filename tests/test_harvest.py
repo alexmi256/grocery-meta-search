@@ -140,3 +140,10 @@ def test_zero_quantity_candidate_is_ocr_garble() -> None:
     # as "000g"; the zero candidate must not make the pick ambiguous.
     lines = ["BLEUETS", "000g", "600g", "reg.16.99"]
     assert harvest_from_lines(lines, True, False) == {"size": "600g"}
+
+
+def test_single_weight_with_count_rival() -> None:
+    # Brunet review (2026-10-17): "400 g, 60 un." — the weight is the
+    # package size, the count is a rival, wherever each appears.
+    assert harvest_from_lines(["400 g, 60 un."], True, False) == {"size": "400 g"}
+    assert harvest_from_lines(["60 un.", "400g"], True, False) == {"size": "400g"}

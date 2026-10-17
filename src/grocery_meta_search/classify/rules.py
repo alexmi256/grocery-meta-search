@@ -4099,6 +4099,25 @@ def classify_item(
     ):
         # A yogurt named yogurt is yogurt, plant-based or not (Silk).
         return "Dairy & Eggs", "Yogurt", "guard-remap", rid
+    if (dept, sub) == ("Pantry", "Honey, Syrups & Spreads") and (
+        "vaseline" in norm or "petroleum" in norm or "petrole" in norm
+    ):
+        # Petroleum jelly / Vaseline is skin care, not a spread: the
+        # word "jelly" (gelée) drags it into the pantry (brunet review,
+        # 2026-10-17; GT token-trap verdicts agree).
+        return "Health & Beauty", "Personal Care", "guard-remap", rid
+    if (dept, sub) == ("Pantry", "Honey, Syrups & Spreads") and (
+        "jelly belly" in norm
+    ):
+        # Jelly Belly is a candy brand, not a preserve (GT verdict).
+        return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
+    if (dept, sub) == ("Snacks, Chips & Candy", "Candy & Chocolate") and (
+        "nicotine" in tokens or "nicorette" in tokens or "nicoderm" in tokens
+    ):
+        # Nicotine gum is a pharmacy product, not candy: when "Gommes"
+        # leads the name, the candy phrase outranks the OTC rule's
+        # "nicotine" (brunet review, 2026-10-17; GT verdicts agree).
+        return "Health & Beauty", "Pharmacy", "guard-remap", rid
     if (dept, sub) == ("Meat", "Kebabs & Marinated Meat") and "legumes" in tokens and not {
         "boeuf", "poulet", "porc", "agneau", "veau", "dinde",
         "beef", "chicken", "pork", "lamb", "turkey",
