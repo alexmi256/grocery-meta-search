@@ -80,7 +80,7 @@ def _price_core(text: str) -> str:
 class OcrStoreConfig:
     """Per-store OCR tuning. Fractions are relative to page height."""
 
-    price_strategy: str = "anchor"  # "anchor" | "prix_line"
+    price_strategy: str = "anchor"  # "anchor" | "prix_line" | "name_cells"
     name_case: str = "caps"  # "caps" | "any"
     name_position: str = "any"  # "any" | "above" | "above_left" | "below"
     price_min_h_frac: float = 0.02
@@ -707,6 +707,8 @@ def segment_page(
     page_w, page_h = image.size
     if cfg.price_strategy == "prix_line":
         return _segment_prix_line(image, lines, cfg, page_url, page_number)
+    if cfg.price_strategy == "name_cells":
+        return _segment_name_cells(image, lines, cfg, page_url, page_number)
     anchors = find_price_anchors(lines, page_w, page_h, cfg)
     cands = _dedupe_candidates(name_candidates(lines, page_h, cfg))
     stack = _stack_counts(cands, page_w, page_h, cfg)
@@ -889,6 +891,93 @@ def segment_page(
         _item_anchor_box[id(item)] = anchor.box
         for line in grown:
             line_owner[id(line)] = item
+    return items
+
+
+def _segment_name_cells(
+    image: Image.Image,
+    lines: list[OcrLine],
+    cfg: OcrStoreConfig,
+    page_url: str,
+    page_number: int,
+) -> list[FlyerItem]:
+    """Monde au Naturel: the catalogue prints no dollar prices.
+
+    Each product sits in a green-framed cell: photo on top, the name in
+    white caps on a solid green band across the cell's bottom, and a
+    leaf badge (``SPÉCIAL n %``) at the top-right corner. Detect the
+    cells by their green colour, OCR the band for the name, read the
+    badge percent from the page's OCR lines, and emit price-less items
+    (Alex's call, 2026-10-17: list the products without prices).
+    """
+    import cv2
+    import numpy as np
+
+    page_w, page_h = image.size
+    bgr = cv2.cvtColor(np.array(image.convert("RGB")), cv2.COLOR_RGB2BGR)
+    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv, np.array([35, 80, 80]), np.array([90, 255, 255]))
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((15, 15), np.uint8))
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cells: list[tuple[int, int, int, int]] = []
+    for contour in contours:
+        x, y, w, h = cv2.boundingRect(contour)
+        # A product cell is about a quarter of the page wide; the cover
+        # art, the full-width footer and the photo frames fall outside.
+        if 0.18 * page_w < w < 0.38 * page_w and 0.10 * page_h < h < 0.30 * page_h:
+            cells.append((x, y, w, h))
+    cells.sort(key=lambda b: (round(b[1] / (0.08 * page_h)), b[0]))
+
+    def badge_percent(cell: tuple[int, int, int, int]) -> int | None:
+        x, y, w, _h = cell
+        for ln in lines:
+            # The leaf badge overlaps the cell's top-right corner; its
+            # digits line starts around 0.6 of the cell width in.
+            if not (x + 0.55 * w <= ln.x <= x + w + 0.08 * page_w):
+                continue
+            if not (y - 0.02 * page_h <= ln.y <= y + 0.10 * page_h):
+                continue
+            m = re.fullmatch(r"\s*(\d{1,2})\s*%?\s*", ln.text)
+            if m and 5 <= int(m.group(1)) <= 60:
+                return int(m.group(1))
+        return None
+
+    items: list[FlyerItem] = []
+    for cell in cells:
+        x, y, w, h = cell
+        band = (x + 6, y + int(0.62 * h), x + w - 6, y + h - 4)
+        text = ocr_crop_text(image, band, psm=cfg.tesseract_psm)
+        if not text:
+            continue
+        name_lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+        # A sliver of the photo's packaging text can ride the band's
+        # top edge ("RES" off a box flap): drop a short leading line.
+        if len(name_lines) > 1 and len(re.sub(r"[^A-Za-zÀ-ÿ]", "", name_lines[0])) <= 4:
+            name_lines = name_lines[1:]
+        name = re.sub(r"\s+", " ", " ".join(name_lines)).strip(" .|")
+        if len(name) < 8 or not any(c.isalpha() for c in name):
+            continue
+        conditions: dict[str, object] = {}
+        pct = badge_percent(cell)
+        if pct is not None:
+            conditions["discount_percent"] = pct
+        items.append(
+            FlyerItem(
+                name_fr=name,
+                image_url=page_url,
+                bbox={
+                    "left": round(x / page_w * 1000),
+                    "top": round(y / page_h * 1000),
+                    "right": round((x + w) / page_w * 1000),
+                    "bottom": round((y + h) / page_h * 1000),
+                    "page": page_number,
+                },
+                conditions=conditions,
+                languages=["fr"],
+                raw={"strategy": "name_cells", "band_text": text},
+                confidence=0.85,
+            )
+        )
     return items
 
 
