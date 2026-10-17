@@ -26,6 +26,14 @@ from grocery_meta_search.classify.taxonomy import category_label_fr
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) grocery-report"}
 
 
+# Per-store crop pads (x, up, down) for the review report. Dense
+# grids need a smaller up-pad or the crop imports the upstairs
+# cell's price (euro-marche, Alex's 2026-10-17 review).
+_CROP_PAD_OVERRIDES: dict[str, tuple[float, float, float]] = {
+    "euro-marche": (0.12, 0.10, 0.15),
+}
+
+
 def _download(url: str, dest: Path) -> bool:
     if dest.exists():
         return True
@@ -163,7 +171,7 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
                 page_ref = f"pages/{page_jpg.name} (flyer page {page_no})"
                 if bbox is not None:
                     crop = images_dir / f"item-{row['id']}.jpg"
-                    if _crop(page_jpg, bbox, crop):
+                    if _crop(page_jpg, bbox, crop, pad=_CROP_PAD_OVERRIDES.get(slug, (0.12, 0.35, 0.15))):
                         lines.append(f"![item {row['id']}](images/item-{row['id']}.jpg)")
                         stats["crops"] += 1
                         pictured = True

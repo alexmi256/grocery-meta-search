@@ -898,9 +898,29 @@ def _segment_prix_line(
         ln for ln in lines if _AMOUNT_RE.search(ln.text) and not ln.text.strip().startswith("-")
     ]
     all_amounts = [ln for ln in lines if _AMOUNT_RE.search(ln.text)]
+    # Column tops for the name band: a cell's name lines lie between
+    # the previous same-column 'Prix' label and this one. The old
+    # fixed 30%-of-page band reached 2-3 cells up on tall coupon
+    # pages and merged neighbouring products into one name.
+    labels_by_col: dict[int, list[OcrLine]] = {}
+    for lab in labels:
+        labels_by_col.setdefault(round(lab.x / (0.05 * page_w)), []).append(lab)
+    band_top_of: dict[int, float] = {}
+    for col_labels in labels_by_col.values():
+        prev_bottom: float | None = None
+        for lab in sorted(col_labels, key=lambda z: z.y):
+            band_top_of[id(lab)] = (
+                prev_bottom if prev_bottom is not None else lab.y - 0.30 * page_h
+            )
+            prev_bottom = lab.bottom
     derived = False
     for label in labels:
-        row = [a for a in amount_lines if abs(a.cy - label.cy) < 0.01 * page_h and a.x > label.x]
+        row = [
+            a
+            for a in amount_lines
+            if abs(a.cy - label.cy) < 0.01 * page_h
+            and label.x < a.x <= label.x + 0.27 * page_w
+        ]
         derived = False
         if row:
             amount = min(row, key=lambda a: abs(a.cy - label.cy))
@@ -936,11 +956,12 @@ def _segment_prix_line(
             amount = above[-1]
             derived = True
         band_x0, band_x1 = label.x - 0.02 * page_w, amount.right + 0.02 * page_w
+        band_top = band_top_of.get(id(label), label.y - 0.30 * page_h)
         cands = [
             ln
             for ln in lines
             if band_x0 <= ln.cx <= band_x1
-            and label.y - 0.30 * page_h <= ln.y < label.y
+            and band_top <= ln.y < label.y
             and len([c for c in ln.text if c.isalpha()]) >= 4
             and not _stop_match(ln.text, patterns)
             and not _AMOUNT_RE.search(ln.text)

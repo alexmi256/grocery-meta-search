@@ -58,7 +58,12 @@ def _fetch_page(url: str, cache_dir: Path) -> Path | None:
         return None
 
 
-def _crop(page_path: Path, bbox: dict[str, float], out_path: Path) -> bool:
+def _crop(
+    page_path: Path,
+    bbox: dict[str, float],
+    out_path: Path,
+    pad: tuple[float, float, float] = (0.12, 0.35, 0.15),
+) -> bool:
     """Crop an item's region from a flyer page image.
 
     OCR bboxes are stored normalized to a 1000x1000 scale (see
@@ -66,6 +71,11 @@ def _crop(page_path: Path, bbox: dict[str, float], out_path: Path) -> bool:
     page size first. Treating them as pixels shifts every crop
     toward the top-left (the bug behind the 'wrong image' reports
     of 2026-10-15).
+
+    pad is (x, up, down) as fractions of the box size. The default
+    35% up-pad reaches for the product photo above the text block,
+    but on dense grids (euro-marche) it imports the upstairs cell's
+    price instead — per-store overrides live in store_report.
     """
     try:
         with Image.open(page_path) as im:
@@ -76,10 +86,10 @@ def _crop(page_path: Path, bbox: dict[str, float], out_path: Path) -> bool:
             bottom = bbox["bottom"] / 1000 * h
             bw = right - left
             bh = bottom - top
-            x0 = max(0, int(left - bw * 0.12))
-            x1 = min(w, int(right + bw * 0.12))
-            y0 = max(0, int(top - bh * 0.35))
-            y1 = min(h, int(bottom + bh * 0.15))
+            x0 = max(0, int(left - bw * pad[0]))
+            x1 = min(w, int(right + bw * pad[0]))
+            y0 = max(0, int(top - bh * pad[1]))
+            y1 = min(h, int(bottom + bh * pad[2]))
             if x1 - x0 < 10 or y1 - y0 < 10:
                 return False
             crop = im.convert("RGB").crop((x0, y0, x1, y1))
