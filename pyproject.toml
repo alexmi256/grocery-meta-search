@@ -41,3 +41,11 @@ mypy_path = "src"
 testpaths = ["tests"]
 addopts = "-ra"
 pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["grocery_meta_search"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
