@@ -2353,6 +2353,8 @@ def _prix_line_title(
         (band_x0, max(0.0, channel.y - 4), band_x1, bottom),
         psm=6,
     )
+    if not text:
+        return ""
     kept: list[str] = []
     for raw in text.splitlines():
         line = raw.strip()
