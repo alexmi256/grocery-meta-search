@@ -42,7 +42,14 @@ _CACHE_DIR = Path("work/multibuy-cache")
 _BADGE_RE = re.compile(
     r"(\d{1,2})\s*(?:POUR|FOR)\s*(\d{1,3}(?:[., ]\d{2,3})?)\s*\$?"
 )
-_UNIT_RE = re.compile(r"(\d{1,2})[.,](\d{2})\s*/\s*(?:CH|EA)\b")
+# Slash form ('2/4$'), the Metro/Loblaws house style; the trailing
+# $ is required so size fractions ('1/2') never match.
+_BADGE_SLASH_RE = re.compile(r"(\d{1,2})\s*/\s*(\d{1,3}(?:[.,]\d{2})?)\s*\$")
+_UNIT_RE = re.compile(
+    r"(\d{1,2})[.,](\d{2})\s*(?:/\s*(?:CH|EA)\b|L'UNITÉ|L'UNITE|\bEACH\b)"
+)
+# Spaced-decimal unit ('2 99 l'unité', '3 67 l'un.'), Metro style.
+_UNIT_SPACED_RE = re.compile(r"(\d{1,2})\s(\d{2})\s*(?:L'UNITÉ|L'UNITE|L'UN\.?)")
 
 
 def load_multibuy_configs() -> dict[str, dict[str, Any]]:
@@ -68,11 +75,12 @@ def _parse_total(text: str) -> float | None:
 
 
 def _printed_unit(text: str) -> float | None:
-    """First 'X,XX/CH' that is not the 'REG.' regular-price line."""
-    for m in _UNIT_RE.finditer(text):
-        if "REG" in text[max(0, m.start() - 8) : m.start()]:
-            continue
-        return float(f"{m.group(1)}.{m.group(2)}")
+    """First per-unit print that is not the 'REG.' regular-price line."""
+    for regex in (_UNIT_RE, _UNIT_SPACED_RE):
+        for m in regex.finditer(text):
+            if "REG" in text[max(0, m.start() - 8) : m.start()]:
+                continue
+            return float(f"{m.group(1)}.{m.group(2)}")
     return None
 
 
@@ -89,7 +97,7 @@ def extract_multibuy(
     if payload_price is None:
         return None
     upper = text.upper()
-    m = _BADGE_RE.search(upper)
+    m = _BADGE_RE.search(upper) or _BADGE_SLASH_RE.search(upper)
     if m is None:
         return None
     count = int(m.group(1))
@@ -116,8 +124,16 @@ def _payload_price(raw: str | None) -> float | None:
 
 
 def _cell_text(image_path: Path) -> str:
+    # OCR text is cached next to the image: a store pass examines
+    # hundreds of items, most without offers, and repeat runs (fetch
+    # cycles, resumed backfills) must not re-OCR them.
+    text_path = image_path.with_suffix(".txt")
+    if text_path.exists():
+        return text_path.read_text(encoding="utf-8")
     image = Image.open(image_path).convert("RGB")
-    return " ".join(ln.text for ln in detect_lines(image))
+    text = " ".join(ln.text for ln in detect_lines(image))
+    text_path.write_text(text, encoding="utf-8")
+    return text
 
 
 def multibuy_store(

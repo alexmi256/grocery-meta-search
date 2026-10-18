@@ -58,3 +58,23 @@ def test_bundle_inequalities_reject_plain_prices() -> None:
 
 def test_no_payload_no_recovery() -> None:
     assert extract_multibuy(VERMICELLE, None) is None
+
+
+METRO_PATES = "pâtes Selection 500 g, choix varié Selection pasta 2/4$ ou 299 l'unité"
+
+
+def test_slash_badge_with_unite_unit() -> None:
+    # Metro house style: '2/4$' badge, unit printed as '2,99 l'unité'
+    # (OCR drops the decimal comma here: '299 l'unité' carries no
+    # decimal part, so the total/count fallback applies).
+    assert extract_multibuy(METRO_PATES, 4.0) == (2.0, 2, 4.0)
+
+
+def test_slash_badge_decimal_unite() -> None:
+    text = "pâtes Selection 500 g Selection pasta 2/4$ ou 2,99 l'unité"
+    assert extract_multibuy(text, 4.0) == (2.99, 2, 4.0)
+
+
+def test_slash_form_needs_dollar_sign() -> None:
+    # A size fraction is not a badge.
+    assert extract_multibuy("FILET 1/2 KG 3,50/CH", 3.5) is None
