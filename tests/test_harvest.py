@@ -69,8 +69,9 @@ def test_protein_callout_not_harvested() -> None:
 
 def test_config_shape() -> None:
     configs = load_harvest_configs()
-    assert "marches-tau" in configs and "super-c" in configs
+    assert "marches-tau" in configs and "iga" in configs
     assert "akhavan" not in configs  # structured source, no harvest needed
+    assert "super-c" not in configs  # Metro Digital source since 2026-10-18
     assert configs["bulk-barn"]["fields"] == ["unit"]
 
 
