@@ -61,7 +61,9 @@ store-specific strategies).
 ## Quick start
 
 ```bash
-python -m venv .venv && .venv/bin/pip install -e .[dev]  # or uv sync
+python -m venv .venv
+.venv/bin/pip install -r requirements-dev.txt  # runtime + dev tools
+# (runtime only: pip install -r requirements.txt; or `uv sync`)
 # Seed the store/source registry from the research files
 PYTHONPATH=src .venv/bin/python -m grocery_meta_search.seed \
   --db data/grocery.db \

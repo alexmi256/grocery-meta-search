@@ -1,0 +1,14 @@
+# Runtime dependencies for grocery-meta-search.
+# Mirrors [project] dependencies in pyproject.toml — keep the two in sync.
+requests>=2.32
+PyYAML>=6.0
+rapidocr-onnxruntime>=1.4
+pillow>=10.0
+pymupdf>=1.24
+numpy>=1.26
+# Notes:
+# - OpenCV (cv2) is imported by the OCR code; it arrives as a
+#   dependency of rapidocr-onnxruntime (opencv-python).
+# - Tesseract 5 is a system binary, not a pip package: the OCR
+#   pipeline needs it on PATH (or at the path configured in
+#   ocr/engine.py) for the stores that are not API-sourced.
