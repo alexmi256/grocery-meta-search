@@ -393,6 +393,22 @@ def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
             except Exception as exc:  # noqa: BLE001 — report, never fail the fetch
                 report["harvest_error"] = str(exc)
     if not report.get("error"):
+        # Multibuy recovery (pipeline/multibuy.py): for enabled
+        # stores, OCR each Flipp item's cell render to undo the
+        # payload's collapsed multibuy totals. Never fails the fetch.
+        from .multibuy import load_multibuy_configs, multibuy_store
+
+        if store_slug in load_multibuy_configs():
+            try:
+                mb_stats = multibuy_store(conn, store_slug)
+                if mb_stats["recovered"]:
+                    report["multibuy"] = (
+                        f"{mb_stats['recovered']} multibuy offers recovered"
+                        " (image recovery)"
+                    )
+            except Exception as exc:  # noqa: BLE001 — report, never fail the fetch
+                report["multibuy_error"] = str(exc)
+    if not report.get("error"):
         # Thin-edition guard (pipeline/guard.py): a fetch can succeed
         # while silently storing a fraction of the edition (the
         # 2026-10-17 partial-capture incident). The guard compares the

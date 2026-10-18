@@ -2,11 +2,6 @@
 
 Store slug: `kim-phat`. Generated from `data/grocery.db`. A sampled subset of 10 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
-
-## Review Analysis — Pass 2 (2026-10-17, verification after Pass 1 fixes)
-
-- Packet regenerated: all four corrected prices display (1.69, 2.99, 1.29, 1.99), each with its multibuy in the conditions. The store's standing caveat (multibuy-heavy flyer vs the payload's collapsed totals) is recorded in Pass 1 (`kim-phat-report-pass1.md`). Store review complete.
-
 ## Flyer 125 — valid 2026-10-15 → 2026-10-21 (10 classified items, 0 unclassified)
 
 Source ref: `8187928` · fetched 2026-10-16T12:18:40.560Z
