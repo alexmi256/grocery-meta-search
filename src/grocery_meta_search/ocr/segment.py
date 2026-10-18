@@ -109,6 +109,10 @@ class OcrStoreConfig:
     name_lines_verify: bool = False  # True: drop re-OCR block lines that
     # share no content with the detected lines (Palumbo: the WOW badge
     # intrudes into the block crop and garbles its last line)
+    pair_rate_anchors: bool = False  # True: merge same-line price pairs
+    # into the leftmost (headline) anchor, the rest become alt prices
+    # (Odessa: '10,99 $/lb  24,23 $/kg*' prints headline + rate on one
+    # line; unpaired, the rate anchors its own item and steals names)
     stoplist: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
@@ -125,6 +129,8 @@ class PriceAnchor:
     conf: float
     multibuy: tuple[int, float] | None = None  # (count, total price)
     unit: str | None = None  # "lb" | "kg" | "each" | "100g" | "box"
+    alt_texts: tuple[str, ...] = ()  # rate prints merged into this
+    # anchor by the headline/rate pair merge (Odessa)
 
 
 # Unit printed with a price: trailing on the price line itself
@@ -292,6 +298,12 @@ def _parse_fragment_value(
         # may be a NEIGHBOUR's complete price glued to a complete
         # multibuy token (palumbo: "2/$5" + "6.99" -> "2/56.99").
         count, total_raw = int(m.group(1)), m.group(2)
+        if count > 100:
+            # A neighbouring price line glued into the cluster
+            # ("8 99 8/6.00" -> count 8998): no flyer sells bundles of
+            # thousands; the parse is garble. Mirrors the >100 multibuy
+            # rejection in prices.split_unit.
+            return None
         if "," in total_raw or "." in total_raw:
             # Quebec decimal comma: "2/5,99$" -> total 5.99 (round-2
             # review: the digits-only form missed every comma total,
@@ -757,7 +769,58 @@ def segment_page(
     if cfg.price_strategy == "red_grid":
         return _segment_red_grid(image, lines, cfg, page_url, page_number)
     anchors = find_price_anchors(lines, page_w, page_h, cfg)
+    if cfg.pair_rate_anchors:
+        anchors = _merge_rate_pairs(anchors, page_w)
     return _items_from_anchors(image, lines, cfg, anchors, page_url, page_number)
+
+
+def _merge_rate_pairs(
+    anchors: list[PriceAnchor], page_w: int
+) -> list[PriceAnchor]:
+    """Merge same-line headline+rate anchor pairs (Odessa).
+
+    The catalogue prints the headline price and a smaller unit rate
+    on one line ('10,99 $/lb  24,23 $/kg*'). As separate anchors the
+    rate forms its own item and steals the name block. Anchors whose
+    boxes overlap vertically by at least half the smaller height and
+    sit within 0.30 page widths horizontally merge into the LEFTMOST
+    anchor (the headline prints first); the merged anchors' price
+    texts ride along as alt prices.
+    """
+    def paired(a: PriceAnchor, b: PriceAnchor) -> bool:
+        y_overlap = min(a.box[3], b.box[3]) - max(a.box[1], b.box[1])
+        smaller_h = min(a.box[3] - a.box[1], b.box[3] - b.box[1])
+        x_gap = max(a.box[0] - b.box[2], b.box[0] - a.box[2])
+        return (
+            smaller_h > 0
+            and y_overlap >= 0.5 * smaller_h
+            and x_gap <= 0.30 * page_w
+        )
+
+    groups: list[list[PriceAnchor]] = []
+    for anchor in anchors:
+        for group in groups:
+            if any(paired(anchor, member) for member in group):
+                group.append(anchor)
+                break
+        else:
+            groups.append([anchor])
+    merged: list[PriceAnchor] = []
+    for group in groups:
+        if len(group) == 1:
+            merged.append(group[0])
+            continue
+        host = min(group, key=lambda a: a.box[0])
+        host.alt_texts = (
+            *host.alt_texts,
+            *(
+                a.price_text
+                for a in sorted(group, key=lambda a: a.box[0])
+                if a is not host
+            ),
+        )
+        merged.append(host)
+    return merged
 
 
 def _line_green_ink(image: Image.Image, ln: OcrLine) -> float:
@@ -966,6 +1029,8 @@ def _items_from_anchors(
         if anchor.multibuy:
             count, total = anchor.multibuy
             conditions["multibuy"] = {"count": count, "total": total}
+        if anchor.alt_texts:
+            conditions["alt_prices"] = list(anchor.alt_texts)
         item = FlyerItem(
             name_fr=name,
             price_text=anchor.price_text,
