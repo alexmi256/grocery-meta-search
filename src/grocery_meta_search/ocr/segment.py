@@ -788,7 +788,7 @@ def _line_green_ink(image: Image.Image, ln: OcrLine) -> float:
         & (hsv[:, :, 1] >= 70)
         & (hsv[:, :, 2] >= 35)
     )
-    return float((green & ink).sum() / ink.sum())
+    return float((green & ink).sum() / max(int(ink.sum()), 1))
 
 
 def _items_from_anchors(
