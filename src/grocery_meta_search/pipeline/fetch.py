@@ -31,6 +31,12 @@ from ..sources.base import FlyerEdition, FlyerItem
 from ..sources.circulaires_club import CirculairesClubClient, CirculairesClubError
 from ..sources.flipp import BrandConfig, FlyerKitClient, FlyerKitError
 from ..sources.flipp_search import FlippSearchClient, FlippSearchError, SearchConfig
+from ..sources.metrodigital import (
+    MetroDigitalClient,
+    MetroDigitalConfig,
+    MetroDigitalError,
+    load_metrodigital_configs,
+)
 from ..sources.official import (
     OfficialClient,
     OfficialConfig,
@@ -426,10 +432,67 @@ def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
     return report
 
 
+_metrodigital_configs: dict[str, MetroDigitalConfig] | None = None
+
+
+def _get_metrodigital_config(store_slug: str) -> MetroDigitalConfig | None:
+    global _metrodigital_configs
+    if _metrodigital_configs is None:
+        _metrodigital_configs = load_metrodigital_configs()
+    return _metrodigital_configs.get(store_slug)
+
+
+def get_or_create_metrodigital_source(
+    conn: sqlite3.Connection, cfg: MetroDigitalConfig
+) -> sqlite3.Row:
+    row = conn.execute(
+        "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = 'metrodigital'"
+        " LIMIT 1",
+        (cfg.slug,),
+    ).fetchone()
+    assert row is None or isinstance(row, sqlite3.Row)
+    if row is not None:
+        return row
+    conn.execute(
+        """
+        INSERT INTO flyer_sources
+            (store_slug, flyer_type, name, url, kind, format, fetchability, languages)
+        VALUES (?, 'weekly', 'metrodigital', ?, 'official', 'json-api', 'http',
+                '["fr", "en"]')
+        """,
+        (cfg.slug, cfg.config_url),
+    )
+    conn.commit()
+    created = conn.execute(
+        "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = 'metrodigital'"
+        " LIMIT 1",
+        (cfg.slug,),
+    ).fetchone()
+    assert isinstance(created, sqlite3.Row)
+    return created
+
+
+def fetch_store_metrodigital(
+    conn: sqlite3.Connection, store_slug: str, cfg: MetroDigitalConfig
+) -> dict[str, Any]:
+    """Fetch a store's flyers from the Metro Digital platform API."""
+    report: dict[str, Any] = {"store": store_slug, "editions": 0, "items": 0}
+    src = get_or_create_metrodigital_source(conn, cfg)
+    try:
+        editions = MetroDigitalClient().fetch_store_editions(cfg)
+    except MetroDigitalError as exc:
+        report["error"] = str(exc)
+        return report
+    return store_editions(conn, src, store_slug, editions, report)
+
+
 def _fetch_store_sources(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
     cc_src = get_cc_source(conn, store_slug)
     if cc_src is not None:
         return fetch_store_cc(conn, cc_src, store_slug, json.loads(cc_src["api_config"]))
+    md_cfg = _get_metrodigital_config(store_slug)
+    if md_cfg is not None:
+        return fetch_store_metrodigital(conn, store_slug, md_cfg)
     official_cfg = _get_official_config(store_slug)
     if official_cfg is not None:
         return fetch_store_official(conn, store_slug, official_cfg)

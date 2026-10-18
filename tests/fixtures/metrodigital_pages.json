@@ -1,0 +1,372 @@
+[
+ {
+  "index": 0,
+  "blocks": [
+   {
+    "id": "b1",
+    "products": [
+     {
+      "actionType": "Product",
+      "sku": "38445001",
+      "productFr": "côtelettes de veau de grain nature ou marinées Halal",
+      "productEn": null,
+      "bodyEn": "grain-fed veal chops regular or marinated Halal",
+      "bodyFr": null,
+      "salePrice": "14.99",
+      "regularPrice": "17,99/lb - 39,66/kg",
+      "alternatePrice": "33.04/kg",
+      "promoUnitFr": "/lb",
+      "promoUnitEn": "/lb",
+      "savingsFr": "3$/LB",
+      "mainCategoryEn": "Meat and Deli",
+      "mainCategoryFr": "Viandes et charcuterie",
+      "subCategoryEn": null,
+      "productImage": "https://example.test/veal.png",
+      "halal": true,
+      "madeInQuebec": false,
+      "priceQuantity": null,
+      "productBrands": [],
+      "validFrom": "2026-10-15T04:00:00Z",
+      "validTo": "2026-10-21T04:00:00Z",
+      "clickRegions": [
+       {
+        "left": 1.35,
+        "top": 16.55,
+        "width": 97.24,
+        "height": 41.42,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 66.63,
+        "top": {
+         "source": "54.0",
+         "parsedValue": 54
+        },
+        "width": 33.37,
+        "height": {
+         "source": "46.0",
+         "parsedValue": 46
+        },
+        "url": "",
+        "mobileUrl": null
+       }
+      ]
+     },
+     {
+      "sku": "38944001",
+      "productFr": "labneh Phoenicia",
+      "productEn": null,
+      "bodyFr": null,
+      "bodyEn": "Phoenicia labneh",
+      "salePrice": "0.88",
+      "regularPrice": "1,59 le 100 g - 7,21/lb",
+      "alternatePrice": "3.99/lb",
+      "promoUnitFr": "le 100 g",
+      "promoUnitEn": "le 100 g",
+      "mainCategoryEn": "Dairy and Cheese",
+      "mainCategoryFr": "Fromage et produits laitiers",
+      "subCategoryEn": null,
+      "productImage": "https://promo-omni.net/cdn-cgi/image/fit=scale-down,width=400/https://metrocommonapi.blob.core.windows.net/84250q/productImages/38944001.eps.png?version=273dc550",
+      "validFrom": "2026-10-15T04:00:00Z",
+      "validTo": "2026-10-21T04:00:00Z",
+      "halal": false,
+      "actionType": "Product",
+      "clickRegions": [
+       {
+        "left": 0.17,
+        "top": 47.73,
+        "width": 76.75,
+        "height": 39.66,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 61.46,
+        "top": 49.43,
+        "width": 34.84,
+        "height": 20.95,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 61.46,
+        "top": 87.97,
+        "width": 3.88,
+        "height": 4.54,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 86.23,
+        "top": 87.97,
+        "width": 3.88,
+        "height": 4.54,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 58.58,
+        "top": 80.82,
+        "width": 35.79,
+        "height": 18.91,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 58.58,
+        "top": 80.82,
+        "width": 33.91,
+        "height": 18.91,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 90.16,
+        "top": 81.53,
+        "width": 3.88,
+        "height": 4.54,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 65.39,
+        "top": 81.53,
+        "width": 3.88,
+        "height": 4.54,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 86.16,
+        "top": 90.68,
+        "width": 8.21,
+        "height": 8.38,
+        "url": "",
+        "mobileUrl": null
+       }
+      ],
+      "productBrands": [
+       "PHOENICIA"
+      ],
+      "priceQuantity": null,
+      "savingsFr": null
+     }
+    ]
+   },
+   {
+    "id": "b2",
+    "actionType": "Inblock",
+    "url": "https://example.test/v.mp4"
+   }
+  ]
+ },
+ {
+  "index": 1,
+  "blocks": [
+   {
+    "id": "b3",
+    "products": [
+     {
+      "sku": "45162101",
+      "productFr": "pain tranché Pom ou St-Méthode",
+      "productEn": null,
+      "bodyFr": "500-675 g",
+      "bodyEn": "Pom or St-Méthode sliced bread",
+      "salePrice": null,
+      "regularPrice": "de 4,49 à 5,49",
+      "alternatePrice": null,
+      "promoUnitFr": null,
+      "promoUnitEn": null,
+      "mainCategoryEn": "Bread and Bakery Products",
+      "mainCategoryFr": "Boulangerie et pâtisserie",
+      "subCategoryEn": null,
+      "productImage": "https://promo-omni.net/cdn-cgi/image/fit=scale-down,width=400/https://metrocommonapi.blob.core.windows.net/84250q/productImages/45162101.psd.png?version=273dc550",
+      "validFrom": "2026-10-15T04:00:00Z",
+      "validTo": "2026-10-21T04:00:00Z",
+      "halal": false,
+      "actionType": "Product",
+      "clickRegions": [
+       {
+        "left": 34.24,
+        "top": 2.97,
+        "width": 30.85,
+        "height": 66.11,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 0,
+        "top": 11.6,
+        "width": 31.5,
+        "height": 45.47,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 0,
+        "top": 57.16,
+        "width": 60.95,
+        "height": 36.59,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 0.09,
+        "top": 57.16,
+        "width": 57.81,
+        "height": 36.59,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 18.7,
+        "top": 57.16,
+        "width": 42.25,
+        "height": 36.59,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 40.42,
+        "top": 78.76,
+        "width": 4.86,
+        "height": 7.96,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 39.39,
+        "top": 62.05,
+        "width": 15.98,
+        "height": 26.84,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 0,
+        "top": 58.41,
+        "width": 33.7,
+        "height": 10.09,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 6.47,
+        "top": 66.46,
+        "width": 22.55,
+        "height": 25.93,
+        "url": "",
+        "mobileUrl": null
+       }
+      ],
+      "productBrands": [
+       "LES GRAINS DE ST-MÉTHODE"
+      ],
+      "priceQuantity": null,
+      "savingsFr": "2$"
+     },
+     {
+      "sku": "38944001",
+      "productFr": "labneh Phoenicia",
+      "productEn": null,
+      "bodyFr": null,
+      "bodyEn": "Phoenicia labneh",
+      "salePrice": "0.88",
+      "regularPrice": "1,59 le 100 g - 7,21/lb",
+      "alternatePrice": "3.99/lb",
+      "promoUnitFr": "le 100 g",
+      "promoUnitEn": "le 100 g",
+      "mainCategoryEn": "Dairy and Cheese",
+      "mainCategoryFr": "Fromage et produits laitiers",
+      "subCategoryEn": null,
+      "productImage": "https://promo-omni.net/cdn-cgi/image/fit=scale-down,width=400/https://metrocommonapi.blob.core.windows.net/84250q/productImages/38944001.eps.png?version=273dc550",
+      "validFrom": "2026-10-15T04:00:00Z",
+      "validTo": "2026-10-21T04:00:00Z",
+      "halal": false,
+      "actionType": "Product",
+      "clickRegions": [
+       {
+        "left": 0.17,
+        "top": 47.73,
+        "width": 76.75,
+        "height": 39.66,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 61.46,
+        "top": 49.43,
+        "width": 34.84,
+        "height": 20.95,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 61.46,
+        "top": 87.97,
+        "width": 3.88,
+        "height": 4.54,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 86.23,
+        "top": 87.97,
+        "width": 3.88,
+        "height": 4.54,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 58.58,
+        "top": 80.82,
+        "width": 35.79,
+        "height": 18.91,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 58.58,
+        "top": 80.82,
+        "width": 33.91,
+        "height": 18.91,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 90.16,
+        "top": 81.53,
+        "width": 3.88,
+        "height": 4.54,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 65.39,
+        "top": 81.53,
+        "width": 3.88,
+        "height": 4.54,
+        "url": "",
+        "mobileUrl": null
+       },
+       {
+        "left": 86.16,
+        "top": 90.68,
+        "width": 8.21,
+        "height": 8.38,
+        "url": "",
+        "mobileUrl": null
+       }
+      ],
+      "productBrands": [
+       "PHOENICIA"
+      ],
+      "priceQuantity": null,
+      "savingsFr": null
+     }
+    ]
+   }
+  ]
+ }
+]
