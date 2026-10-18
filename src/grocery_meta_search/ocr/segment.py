@@ -2299,6 +2299,89 @@ def _segment_red_grid(
     return _items_from_anchors(image, lines, cfg, anchors, page_url, page_number)
 
 
+_TITLE_SIZE_RE = re.compile(
+    r"^[\d\s.,×x*/()\-]*(kg|g|mg|l|ml|cl|po|cm|oz|lb)$"
+    r"|^paquet de \d+$"
+    r"|^tailles?\b.*$",
+    re.IGNORECASE,
+)
+
+
+def _prix_line_title(
+    image: Image.Image,
+    lines: list[OcrLine],
+    band_x0: float,
+    band_x1: float,
+    band_top: float,
+    label: OcrLine,
+) -> str:
+    """The booklet's printed title for a prix_line cell (Costco).
+
+    Every cell prints a red channel line ('Entrepôt et en ligne' /
+    'En entrepôt seulement') directly above the clean title block,
+    then detail lines (size, 'N° d'article', 'Valide du...'). The
+    label-OCR stitch the strategy used before mixed packaging text
+    into the name ('CHOCOLAT CHAUD Simplementchocolatchaud...');
+    re-OCR-ing just the title block with Tesseract gives the spaced
+    printed title ('Simplement chocolat chaud Carnation de Nestlé').
+    Returns '' when no channel line anchors the block.
+    """
+    band = [
+        ln
+        for ln in lines
+        if band_x0 <= ln.cx <= band_x1 and band_top <= ln.y < label.y
+    ]
+    def is_channel(text: str) -> bool:
+        sq = _squash(text)
+        # 'Entrepôt et en ligne' / 'En entrepôt seulement' — the plain
+        # 'En entrepôt' price row must not qualify.
+        return "entrepot" in sq and ("enligne" in sq or "seulement" in sq)
+
+    channels = [ln for ln in band if is_channel(ln.text)]
+    if not channels:
+        return ""
+    channel = max(channels, key=lambda z: z.y)
+    bottom = label.y
+    for ln in band:
+        if ln.y <= channel.y:
+            continue
+        sq = _squash(ln.text)
+        if "ndarticle" in sq or sq.startswith("valide") or "economisez" in sq:
+            bottom = min(bottom, ln.y)
+    text = ocr_crop_text(
+        image,
+        (band_x0, max(0.0, channel.y - 4), band_x1, bottom),
+        psm=6,
+    )
+    kept: list[str] = []
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line or len([c for c in line if c.isalpha()]) < 4:
+            continue
+        sq = _squash(line)
+        if "entrepot" in sq or "ndarticle" in sq or "econom" in sq:
+            continue
+        if sq.startswith("valide") or sq.startswith("offert"):
+            continue
+        if _TITLE_SIZE_RE.match(line):
+            continue
+        kept.append(line)
+        if len(kept) >= 3:
+            break
+    name = re.sub(r"\s+", " ", " ".join(kept)).strip()
+    # Tesseract sometimes merges the first detail line into the
+    # title's last line ('... pour homme F N° d'article 2040480-4',
+    # 'Parja | paquet de 4'): cut the name at the detail markers and
+    # drop trailing junk tokens (single letters, stray glyphs).
+    name = re.split(
+        r"\s*\|\s*|\s+n°\s*d|\s+valide\b|\s+paquet de \d+", name, flags=re.IGNORECASE
+    )[0]
+    tokens = name.split()
+    while tokens and len([c for c in tokens[-1] if c.isalpha()]) < 2:
+        tokens.pop()
+    return " ".join(tokens).strip(" .|")
+
+
 def _segment_prix_line(
     image: Image.Image,
     lines: list[OcrLine],
@@ -2386,10 +2469,14 @@ def _segment_prix_line(
         if not cands:
             continue
         cands.sort(key=lambda z: z.y)
-        name_lines = [ln.text.strip() for ln in cands if len(ln.text.strip()) > 12]
-        if not name_lines:
-            name_lines = [max(cands, key=lambda z: len(z.text)).text.strip()]
-        name = re.sub(r"\s+", " ", " ".join(name_lines[:3])).strip()
+        name = _prix_line_title(image, lines, band_x0, band_x1, band_top, label)
+        if not name:
+            name_lines = [
+                ln.text.strip() for ln in cands if len(ln.text.strip()) > 12
+            ]
+            if not name_lines:
+                name_lines = [max(cands, key=lambda z: len(z.text)).text.strip()]
+            name = re.sub(r"\s+", " ", " ".join(name_lines[:3])).strip()
         if not name:
             continue
         region = (

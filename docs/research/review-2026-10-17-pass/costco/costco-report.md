@@ -1,23 +1,17 @@
 # Costco Wholesale — full product report
 
-Store slug: `costco`. Generated from `data/grocery.db`. A sampled subset of 19 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
+Store slug: `costco`. Generated from `data/grocery.db`. A sampled subset of 20 items stored for this store (random sample, see the review index), with all stored details and a locally downloaded picture (bbox crop from the flyer page; full pages under `pages/`).
 
+## Flyer 181 — valid 2026-09-28 → 2026-10-25 (10 classified items, 10 unclassified)
 
-## Review Analysis — Pass 2 (2026-10-17, verification after Pass 1 fixes)
+Source ref: `circulaire-costco-du-28-septembre-au-25-octobre-2026` · fetched 2026-10-18T01:50:25.961Z
 
-- Packet regenerated after the Pass 1 fixes. **The fixes held:** the sample redraws as 9 classified + 10 unclassified — the all-in-one shake is gone from the pool (purged as pharmacy), and the speculoos mousse, Liquid I.V. sachets and wellness shots now sit in their verdict categories (Spreads, Sports & Energy, Juice respectively).
-- Remaining known limits stand as recorded in Pass 1 (preserved in `costco-report-pass1.md`): label-stitched garbled names, the headless crackers item in Spices, and glued-name grocery items the token rules cannot reach. Store review complete.
+### Item 16622
 
-## Flyer 173 — valid 2026-09-28 → 2026-10-25 (9 classified items, 10 unclassified)
-
-Source ref: `circulaire-costco-du-28-septembre-au-25-octobre-2026` · fetched 2026-10-17T15:35:58.670Z
-
-### Item 16378
-
-![item 16378](images/item-16378.jpg)
+![item 16622](images/item-16622.jpg)
 
 - **Name (English):** None
-- **Name (French):** CHOCOLAT CHAUD SimplementchocolatchaudCarnationde
+- **Name (French):** Simplement chocolat chaud Carnation de Nestlé
 - **Brand:** None
 - **Category (English):** Drinks > Tea & Hot Drinks
 - **Category (French):** Boissons > Thés et boissons chaudes
@@ -29,39 +23,83 @@ Source ref: `circulaire-costco-du-28-septembre-au-25-octobre-2026` · fetched 20
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
 - **bbox:** left 759, top 365, right 991, bottom 637, page 3
-- **Full page:** [pages/flyer173-page3-5e2dbe9df5.jpg (flyer page 3)](pages/flyer173-page3-5e2dbe9df5.jpg)
+- **Full page:** [pages/flyer181-page3-5e2dbe9df5.jpg (flyer page 3)](pages/flyer181-page3-5e2dbe9df5.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/03.webp
-- **Details:** confidence: 0.85 · item_key: `837d5ce7438d4641`
+- **Details:** confidence: 0.85 · item_key: `ad307f7b9136093c`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
-### Item 16379
+### Item 16625
 
-![item 16379](images/item-16379.jpg)
+![item 16625](images/item-16625.jpg)
 
 - **Name (English):** None
-- **Name (French):** COOKIE BUTTER MOUSSE MOUSSEAUSPECULOOS 6x76g2.58o=NET454g11
+- **Name (French):** Cheddar marbré Kirkland Signature
 - **Brand:** None
-- **Category (English):** Pantry > Honey, Syrups & Spreads
-- **Category (French):** Produits du garde-manger > Miel, sirops et tartinades
-- **How classified:** rule (`specific-nut-butters`)
-- **Size:** 6×76g
-- **Price:** 10.99
-- **Printed Price:** “10,99 $”
+- **Category (English):** Dairy & Eggs > Cheese
+- **Category (French):** Produits laitiers et œufs > Fromage
+- **How classified:** rule (`cheese`)
+- **Size:** 1,15kg
+- **Price:** 11.99
+- **Printed Price:** “11,99 $”
 - **Unit quantity:** 1.0
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 260, top 713, right 491, bottom 957, page 3
-- **Full page:** [pages/flyer173-page3-5e2dbe9df5.jpg (flyer page 3)](pages/flyer173-page3-5e2dbe9df5.jpg)
+- **bbox:** left 510, top 732, right 741, bottom 971, page 3
+- **Full page:** [pages/flyer181-page3-5e2dbe9df5.jpg (flyer page 3)](pages/flyer181-page3-5e2dbe9df5.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/03.webp
-- **Details:** confidence: 0.85 · item_key: `92ca6c37db5164f6`
-- **Raw:** `{"strategy": "prix_line", "price_derived": false, "harvest": {"size": "6×76g", "via": "crop"}}`
+- **Details:** confidence: 0.85 · item_key: `50e5227d11833f3b`
+- **Raw:** `{"strategy": "prix_line", "price_derived": false, "harvest": {"size": "1,15kg", "via": "crop"}}`
 
-### Item 16385
+### Item 16627
 
-![item 16385](images/item-16385.jpg)
+![item 16627](images/item-16627.jpg)
 
 - **Name (English):** None
-- **Name (French):** Legumes-racinesgrillesalaflamme
+- **Name (French):** Ravioli façon soupe à l'oignon avec sauce F au boeuf Rana
+- **Brand:** None
+- **Category (English):** Prepared Meals > Fresh Pasta & Sauce
+- **Category (French):** Repas préparés > Pâtes fraîches et sauces
+- **How classified:** rule (`specific-fresh-pasta`)
+- **Size:** 992g
+- **Price:** 14.99
+- **Printed Price:** “14,99 $”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-09-28 → 2026-10-25
+- **bbox:** left 11, top 260, right 241, bottom 454, page 4
+- **Full page:** [pages/flyer181-page4-c5ec7dc04c.jpg (flyer page 4)](pages/flyer181-page4-c5ec7dc04c.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/04.webp
+- **Details:** confidence: 0.85 · item_key: `22b6ed933f1e6156`
+- **Raw:** `{"strategy": "prix_line", "price_derived": false, "harvest": {"size": "992g", "via": "crop"}}`
+
+### Item 16628
+
+![item 16628](images/item-16628.jpg)
+
+- **Name (English):** None
+- **Name (French):** Patés impériaux au porc Minh
+- **Brand:** None
+- **Category (English):** Frozen Food > Frozen Appetizers & Snacks
+- **Category (French):** Produits surgelés > Entrées et collations surgelés
+- **How classified:** rule (`specific-egg-rolls`)
+- **Size:** None
+- **Price:** 9.99
+- **Printed Price:** “9,99 $”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-09-28 → 2026-10-25
+- **bbox:** left 261, top 196, right 490, bottom 454, page 4
+- **Full page:** [pages/flyer181-page4-c5ec7dc04c.jpg (flyer page 4)](pages/flyer181-page4-c5ec7dc04c.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/04.webp
+- **Details:** confidence: 0.85 · item_key: `662e6ebfba9e17f0`
+- **Raw:** `{"strategy": "prix_line", "price_derived": false}`
+
+### Item 16629
+
+![item 16629](images/item-16629.jpg)
+
+- **Name (English):** None
+- **Name (French):** Légumes-racines grillés a la flamme I Puravida
 - **Brand:** None
 - **Category (English):** Fruits & Vegetables > Fresh Vegetables
 - **Category (French):** Fruits et légumes > Légumes frais
@@ -73,58 +111,36 @@ Source ref: `circulaire-costco-du-28-septembre-au-25-octobre-2026` · fetched 20
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
 - **bbox:** left 510, top 199, right 739, bottom 454, page 4
-- **Full page:** [pages/flyer173-page4-c5ec7dc04c.jpg (flyer page 4)](pages/flyer173-page4-c5ec7dc04c.jpg)
+- **Full page:** [pages/flyer181-page4-c5ec7dc04c.jpg (flyer page 4)](pages/flyer181-page4-c5ec7dc04c.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/04.webp
-- **Details:** confidence: 0.85 · item_key: `321aba2dcb22a818`
+- **Details:** confidence: 0.85 · item_key: `f9e6298efd52bfaf`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
-### Item 16389
+### Item 16632
 
-![item 16389](images/item-16389.jpg)
+![item 16632](images/item-16632.jpg)
 
 - **Name (English):** None
-- **Name (French):** Butter Chicken PREMUMCKINSAUCERIMESAUCEDECUSSO Poulet au beurre
+- **Name (French):** Bouillon de poulet sans sel ajouté Simply s de Campbell's 2 6 x 946 ml
 - **Brand:** None
-- **Category (English):** Prepared Meals > Entrees & Appetizers
-- **Category (French):** Repas préparés > Plats principaux et apéritifs
-- **How classified:** rule (`specific-prepared-chicken`)
-- **Size:** None
-- **Price:** 7.99
-- **Printed Price:** “7,99 $”
+- **Category (English):** Prepared Meals > Salads & Soups
+- **Category (French):** Repas préparés > Salades et soupes
+- **How classified:** rule (`specific-broth`)
+- **Size:** 6 x 946 ml
+- **Price:** 9.49
+- **Printed Price:** “9,49 $”
 - **Unit quantity:** 1.0
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 510, top 576, right 741, bottom 925, page 4
-- **Full page:** [pages/flyer173-page4-c5ec7dc04c.jpg (flyer page 4)](pages/flyer173-page4-c5ec7dc04c.jpg)
+- **bbox:** left 260, top 558, right 491, bottom 955, page 4
+- **Full page:** [pages/flyer181-page4-c5ec7dc04c.jpg (flyer page 4)](pages/flyer181-page4-c5ec7dc04c.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/04.webp
-- **Details:** confidence: 0.70 · item_key: `1e65c51fd58dd9d8`
-- **Raw:** `{"strategy": "prix_line", "price_derived": true}`
+- **Details:** confidence: 0.85 · item_key: `a1e43a9163173bdf`
+- **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
-### Item 16390
+### Item 16635
 
-![item 16390](images/item-16390.jpg)
-
-- **Name (English):** None
-- **Name (French):** Riendartifciel -FARINED'AMANDE Sel demer finement moulu
-- **Brand:** None
-- **Category (English):** Pantry > Spices & Seasonings
-- **Category (French):** Produits du garde-manger > Épices et assaisonnements
-- **How classified:** rule (`spices`)
-- **Size:** 482g
-- **Price:** 9.99
-- **Printed Price:** “9,99 $”
-- **Unit quantity:** 1.0
-- **Unit measurement:** each
-- **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 760, top 522, right 991, bottom 927, page 4
-- **Full page:** [pages/flyer173-page4-c5ec7dc04c.jpg (flyer page 4)](pages/flyer173-page4-c5ec7dc04c.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/04.webp
-- **Details:** confidence: 0.70 · item_key: `af0f8079fa7d745e`
-- **Raw:** `{"strategy": "prix_line", "price_derived": true, "harvest": {"size": "482g", "via": "crop"}}`
-
-### Item 16391
-
-![item 16391](images/item-16391.jpg)
+![item 16635](images/item-16635.jpg)
 
 - **Name (English):** None
 - **Name (French):** Croustilles nature Ruffles
@@ -139,17 +155,17 @@ Source ref: `circulaire-costco-du-28-septembre-au-25-octobre-2026` · fetched 20
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
 - **bbox:** left 260, top 24, right 492, bottom 290, page 5
-- **Full page:** [pages/flyer173-page5-67e78ddb10.jpg (flyer page 5)](pages/flyer173-page5-67e78ddb10.jpg)
+- **Full page:** [pages/flyer181-page5-67e78ddb10.jpg (flyer page 5)](pages/flyer181-page5-67e78ddb10.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/05.webp
 - **Details:** confidence: 0.85 · item_key: `b0743cf71ffc50df`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false, "harvest": {"size": "612g", "via": "crop"}}`
 
-### Item 16392
+### Item 16636
 
-![item 16392](images/item-16392.jpg)
+![item 16636](images/item-16636.jpg)
 
 - **Name (English):** None
-- **Name (French):** Gruaurapide Quaker
+- **Name (French):** Gruau rapide Quaker
 - **Brand:** None
 - **Category (English):** Pantry > Cereal & Breakfast
 - **Category (French):** Produits du garde-manger > Céréales et petits-déjeuners
@@ -161,39 +177,39 @@ Source ref: `circulaire-costco-du-28-septembre-au-25-octobre-2026` · fetched 20
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
 - **bbox:** left 9, top 66, right 242, bottom 299, page 5
-- **Full page:** [pages/flyer173-page5-67e78ddb10.jpg (flyer page 5)](pages/flyer173-page5-67e78ddb10.jpg)
+- **Full page:** [pages/flyer181-page5-67e78ddb10.jpg (flyer page 5)](pages/flyer181-page5-67e78ddb10.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/05.webp
-- **Details:** confidence: 0.85 · item_key: `f18959366ada8bc7`
+- **Details:** confidence: 0.85 · item_key: `7c132c8876a40267`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false, "harvest": {"size": "5,16 kg", "via": "crop"}}`
 
-### Item 16406
+### Item 16639
 
-![item 16406](images/item-16406.jpg)
+![item 16639](images/item-16639.jpg)
 
 - **Name (English):** None
-- **Name (French):** SHOTSWEBIEN-ETRE INGERE-CITRON-CAOTTE ANSIEPITOUEC30
+- **Name (French):** Assortiment de mini-barres Dairy Milk de / Cadbury
 - **Brand:** None
-- **Category (English):** Drinks > Juice
-- **Category (French):** Boissons > Jus
-- **How classified:** guard-remap (`fruits`)
+- **Category (English):** Snacks, Chips & Candy > Candy & Chocolate
+- **Category (French):** Grignotines, croustilles et friandises > Friandises et chocolats
+- **How classified:** guard-remap (`specific-protein-bars`)
 - **Size:** None
-- **Price:** 14.99
-- **Printed Price:** “14,99 $”
+- **Price:** 15.99
+- **Printed Price:** “15,99 $”
 - **Unit quantity:** 1.0
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 260, top 722, right 491, bottom 971, page 6
-- **Full page:** [pages/flyer173-page6-65e3cb24fa.jpg (flyer page 6)](pages/flyer173-page6-65e3cb24fa.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/06.webp
-- **Details:** confidence: 0.85 · item_key: `8fbfb9ec32ece69f`
+- **bbox:** left 10, top 366, right 242, bottom 631, page 5
+- **Full page:** [pages/flyer181-page5-67e78ddb10.jpg (flyer page 5)](pages/flyer181-page5-67e78ddb10.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/05.webp
+- **Details:** confidence: 0.85 · item_key: `095c1e48a41e99e1`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
-### Item 16412
+### Item 16646
 
-![item 16412](images/item-16412.jpg)
+![item 16646](images/item-16646.jpg)
 
 - **Name (English):** None
-- **Name (French):** HYDRATION MULTIPLIER' SUGAR-FREE/SANS SUCRE ElectrolytesHydrationMultiplierdeLiquid
+- **Name (French):** Electrolytes Hydration Multiplier de Liquid E Assortiment sans sucre
 - **Brand:** None
 - **Category (English):** Drinks > Sports & Energy
 - **Category (French):** Boissons > Boissons énergisantes et pour sportifs
@@ -205,71 +221,71 @@ Source ref: `circulaire-costco-du-28-septembre-au-25-octobre-2026` · fetched 20
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
 - **bbox:** left 260, top 393, right 491, bottom 640, page 7
-- **Full page:** [pages/flyer173-page7-a97a238b21.jpg (flyer page 7)](pages/flyer173-page7-a97a238b21.jpg)
+- **Full page:** [pages/flyer181-page7-a97a238b21.jpg (flyer page 7)](pages/flyer181-page7-a97a238b21.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/07.webp
-- **Details:** confidence: 0.85 · item_key: `10326a2944ea7d6a`
+- **Details:** confidence: 0.85 · item_key: `caff4c24e3723fd3`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
 ## Unclassified items — kept for review
 
 The classifier could not assign these items a category. They are kept in the database (not discarded) so a human can review them and improve the rules.
 
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
 
-### Item 16356
+### Item 16611
 
-![item 16356](images/item-16356.jpg)
+![item 16611](images/item-16611.jpg)
 
 - **Name (English):** None
-- **Name (French):** Televiseur4KMiniDELM72Hde85pode
+- **Name (French):** Barre de son HW-B630F de Samsung
 - **Brand:** None
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
 - **Size:** None
-- **Price:** 1094.99
-- **Printed Price:** “1094,99 $”
+- **Price:** 252.74
+- **Printed Price:** “252,74 $”
 - **Unit quantity:** 1.0
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 260, top 162, right 490, bottom 388, page 1
-- **Full page:** [pages/flyer173-page1-c72ac33fa6.jpg (flyer page 1)](pages/flyer173-page1-c72ac33fa6.jpg)
+- **bbox:** left 760, top 98, right 990, bottom 389, page 1
+- **Full page:** [pages/flyer181-page1-c72ac33fa6.jpg (flyer page 1)](pages/flyer181-page1-c72ac33fa6.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/01.webp
-- **Details:** confidence: 0.85 · item_key: `0705f2ed90acad05`
+- **Details:** confidence: 0.85 · item_key: `907bd4965a64ec95`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
 
-### Item 16363
+### Item 16613
 
-![item 16363](images/item-16363.jpg)
+![item 16613](images/item-16613.jpg)
 
 - **Name (English):** None
-- **Name (French):** PlancherflottantstratifieSuttonavec sous-couchepreassemblee fabrique au Canada
+- **Name (French):** Moniteur de jeu QHD de 32 po de Samsung
 - **Brand:** None
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Size:** None
-- **Price:** 24.99
-- **Printed Price:** “24,99 $”
+- **Size:** 32 po
+- **Price:** 208.49
+- **Printed Price:** “208,49 $”
 - **Unit quantity:** 1.0
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 760, top 862, right 990, bottom 974, page 1
-- **Full page:** [pages/flyer173-page1-c72ac33fa6.jpg (flyer page 1)](pages/flyer173-page1-c72ac33fa6.jpg)
+- **bbox:** left 10, top 747, right 241, bottom 974, page 1
+- **Full page:** [pages/flyer181-page1-c72ac33fa6.jpg (flyer page 1)](pages/flyer181-page1-c72ac33fa6.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/01.webp
-- **Details:** confidence: 0.85 · item_key: `04425509aaa72bfe`
+- **Details:** confidence: 0.85 · item_key: `a08f9b9ef5983085`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
 
-### Item 16364
+### Item 16615
 
-![item 16364](images/item-16364.jpg)
+![item 16615](images/item-16615.jpg)
 
 - **Name (English):** None
-- **Name (French):** Nettoyeurhumide Clean+Wash Hygiene
+- **Name (French):** Nettoyeur humide Clean + Wash Hygiene / de Dyson
 - **Brand:** None
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
@@ -281,175 +297,175 @@ The classifier could not assign these items a category. They are kept in the dat
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
 - **bbox:** left 10, top 170, right 241, bottom 307, page 2
-- **Full page:** [pages/flyer173-page2-b60e561441.jpg (flyer page 2)](pages/flyer173-page2-b60e561441.jpg)
+- **Full page:** [pages/flyer181-page2-b60e561441.jpg (flyer page 2)](pages/flyer181-page2-b60e561441.jpg)
 - **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/02.webp
-- **Details:** confidence: 0.85 · item_key: `238b351a92fbe101`
+- **Details:** confidence: 0.85 · item_key: `d8a302114d3fb895`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
 
-### Item 16380
+### Item 16616
 
-![item 16380](images/item-16380.jpg)
+![item 16616](images/item-16616.jpg)
 
 - **Name (English):** None
-- **Name (French):** BiscuitsBiscoffdeLotus
+- **Name (French):** Ensemblededetecteursdefumeeoude monoxyde de carbone sansrisquea raccordementfixeKidde
 - **Brand:** None
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
 - **Size:** None
-- **Price:** 8.99
-- **Printed Price:** “8,99 $”
-- **Unit quantity:** 1.0
-- **Unit measurement:** kilogram
-- **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 10, top 711, right 242, bottom 970, page 3
-- **Full page:** [pages/flyer173-page3-5e2dbe9df5.jpg (flyer page 3)](pages/flyer173-page3-5e2dbe9df5.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/03.webp
-- **Details:** confidence: 0.85 · item_key: `33d0bb637d31dcb6`
-- **Raw:** `{"strategy": "prix_line", "price_derived": false, "harvest": {"unit": "kg", "via": "crop"}}`
-
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
-
-### Item 16384
-
-![item 16384](images/item-16384.jpg)
-
-- **Name (English):** None
-- **Name (French):** Patesimperiaux auporcMinh Nd'article1210029
-- **Brand:** None
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Size:** None
-- **Price:** 9.99
-- **Printed Price:** “9,99 $”
+- **Price:** 99.99
+- **Printed Price:** “99,99 $”
 - **Unit quantity:** 1.0
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 261, top 196, right 490, bottom 454, page 4
-- **Full page:** [pages/flyer173-page4-c5ec7dc04c.jpg (flyer page 4)](pages/flyer173-page4-c5ec7dc04c.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/04.webp
-- **Details:** confidence: 0.85 · item_key: `789e1fc57232d123`
-- **Raw:** `{"strategy": "prix_line", "price_derived": false}`
+- **bbox:** left 759, top 76, right 991, bottom 290, page 2
+- **Full page:** [pages/flyer181-page2-b60e561441.jpg (flyer page 2)](pages/flyer181-page2-b60e561441.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/02.webp
+- **Details:** confidence: 0.70 · item_key: `c469fa7347ce70af`
+- **Raw:** `{"strategy": "prix_line", "price_derived": true}`
 
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
 
-### Item 16396
+### Item 16617
 
-![item 16396](images/item-16396.jpg)
+![item 16617](images/item-16617.jpg)
 
 - **Name (English):** None
-- **Name (French):** Alimentstaxable CRISPYICROUSTILLANTES 15x40gBARS/BARRESNET640g
+- **Name (French):** Siège de toilette a bidet intégré non F électrique Brondell
 - **Brand:** None
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Size:** 640g
+- **Size:** None
+- **Price:** 69.99
+- **Printed Price:** “69,99 $”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-09-28 → 2026-10-25
+- **bbox:** left 10, top 509, right 241, bottom 644, page 2
+- **Full page:** [pages/flyer181-page2-b60e561441.jpg (flyer page 2)](pages/flyer181-page2-b60e561441.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/02.webp
+- **Details:** confidence: 0.85 · item_key: `981d501bde7a6a26`
+- **Raw:** `{"strategy": "prix_line", "price_derived": false}`
+
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
+
+### Item 16619
+
+![item 16619](images/item-16619.jpg)
+
+- **Name (English):** None
+- **Name (French):** Ensemble de mitaines de cuisine T KitchenAid C 4 pieces Pp
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** 4 pieces
+- **Price:** 19.99
+- **Printed Price:** “19,99 $”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-09-28 → 2026-10-25
+- **bbox:** left 260, top 408, right 491, bottom 971, page 2
+- **Full page:** [pages/flyer181-page2-b60e561441.jpg (flyer page 2)](pages/flyer181-page2-b60e561441.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/02.webp
+- **Details:** confidence: 0.85 · item_key: `bcdc8a38d17c05e1`
+- **Raw:** `{"strategy": "prix_line", "price_derived": false}`
+
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
+
+### Item 16641
+
+![item 16641](images/item-16641.jpg)
+
+- **Name (English):** None
+- **Name (French):** Gélifiés de sureau sambucus pour le soutien immunitaire de Nature’s Way 120 gélifiés
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 19.99
+- **Printed Price:** “19,99 $”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-09-28 → 2026-10-25
+- **bbox:** left 760, top 415, right 991, bottom 637, page 6
+- **Full page:** [pages/flyer181-page6-65e3cb24fa.jpg (flyer page 6)](pages/flyer181-page6-65e3cb24fa.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/06.webp
+- **Details:** confidence: 0.85 · item_key: `85ca074824ded084`
+- **Raw:** `{"strategy": "prix_line", "price_derived": false}`
+
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
+
+### Item 16642
+
+![item 16642](images/item-16642.jpg)
+
+- **Name (English):** None
+- **Name (French):** Gélifiés quotidiens prébiotiques : RestoraFIBRE 1 2 paquets de 140 gélifiés fh
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
+- **Price:** 26.99
+- **Printed Price:** “26,99 $”
+- **Unit quantity:** 1.0
+- **Unit measurement:** each
+- **Item validity:** 2026-09-28 → 2026-10-25
+- **bbox:** left 9, top 735, right 242, bottom 970, page 6
+- **Full page:** [pages/flyer181-page6-65e3cb24fa.jpg (flyer page 6)](pages/flyer181-page6-65e3cb24fa.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/06.webp
+- **Details:** confidence: 0.85 · item_key: `0606845063c2487e`
+- **Raw:** `{"strategy": "prix_line", "price_derived": false}`
+
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
+
+### Item 16643
+
+![item 16643](images/item-16643.jpg)
+
+- **Name (English):** None
+- **Name (French):** Shot de bien-étre Vitashot
+- **Brand:** None
+- **Category (English):** Unclassified
+- **Category (French):** Non classé
+- **How classified:** none
+- **Size:** None
 - **Price:** 14.99
 - **Printed Price:** “14,99 $”
 - **Unit quantity:** 1.0
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 260, top 289, right 492, bottom 640, page 5
-- **Full page:** [pages/flyer173-page5-67e78ddb10.jpg (flyer page 5)](pages/flyer173-page5-67e78ddb10.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/05.webp
-- **Details:** confidence: 0.85 · item_key: `d328b4427852fc93`
+- **bbox:** left 260, top 722, right 491, bottom 971, page 6
+- **Full page:** [pages/flyer181-page6-65e3cb24fa.jpg (flyer page 6)](pages/flyer181-page6-65e3cb24fa.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/06.webp
+- **Details:** confidence: 0.85 · item_key: `b23464432baf1aa5`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
 
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
+— from flyer 181 (valid 2026-09-28 → 2026-10-25)
 
-### Item 16398
+### Item 16647
 
-![item 16398](images/item-16398.jpg)
+![item 16647](images/item-16647.jpg)
 
 - **Name (English):** None
-- **Name (French):** Detergentalessive liquide HEOriginal de
+- **Name (French):** Nettoyant 3-en-1 Nobel pour homme < 3x 946 ml
 - **Brand:** None
 - **Category (English):** Unclassified
 - **Category (French):** Non classé
 - **How classified:** none
-- **Size:** None
-- **Price:** 17.49
-- **Printed Price:** “17,49 $”
+- **Size:** 3x 946 ml
+- **Price:** 17.99
+- **Printed Price:** “17,99 $”
 - **Unit quantity:** 1.0
 - **Unit measurement:** each
 - **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 509, top 748, right 741, bottom 970, page 5
-- **Full page:** [pages/flyer173-page5-67e78ddb10.jpg (flyer page 5)](pages/flyer173-page5-67e78ddb10.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/05.webp
-- **Details:** confidence: 0.85 · item_key: `cef9434409968a48`
+- **bbox:** left 509, top 299, right 741, bottom 970, page 7
+- **Full page:** [pages/flyer181-page7-a97a238b21.jpg (flyer page 7)](pages/flyer181-page7-a97a238b21.jpg)
+- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/07.webp
+- **Details:** confidence: 0.85 · item_key: `474de3623dde2e1b`
 - **Raw:** `{"strategy": "prix_line", "price_derived": false}`
-
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
-
-### Item 16416
-
-![item 16416](images/item-16416.jpg)
-
-- **Name (English):** None
-- **Name (French):** RIFILLIRCHARGE REFILL|RECHARGE Savonliquidepourlesmainsalaloes
-- **Brand:** None
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Size:** 2×2,36L
-- **Price:** 11.49
-- **Printed Price:** “11,49 $”
-- **Unit quantity:** 1.0
-- **Unit measurement:** each
-- **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 10, top 82, right 241, bottom 310, page 8
-- **Full page:** [pages/flyer173-page8-62f0e335e3.jpg (flyer page 8)](pages/flyer173-page8-62f0e335e3.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/08.webp
-- **Details:** confidence: 0.85 · item_key: `07fbdeb6b961ab58`
-- **Raw:** `{"strategy": "prix_line", "price_derived": false, "harvest": {"size": "2×2,36L", "via": "crop"}}`
-
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
-
-### Item 16419
-
-![item 16419](images/item-16419.jpg)
-
-- **Name (English):** None
-- **Name (French):** 18CARRIDGE/CARTOUCHES1RAZOR/ASOIR RasoirFusion5ProGlidedeGillette avec18
-- **Brand:** None
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Size:** None
-- **Price:** 55.99
-- **Printed Price:** “55,99 $”
-- **Unit quantity:** 1.0
-- **Unit measurement:** each
-- **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 10, top 359, right 241, bottom 640, page 8
-- **Full page:** [pages/flyer173-page8-62f0e335e3.jpg (flyer page 8)](pages/flyer173-page8-62f0e335e3.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/08.webp
-- **Details:** confidence: 0.85 · item_key: `75816b357e613b25`
-- **Raw:** `{"strategy": "prix_line", "price_derived": false}`
-
-— from flyer 173 (valid 2026-09-28 → 2026-10-25)
-
-### Item 16423
-
-![item 16423](images/item-16423.jpg)
-
-- **Name (English):** None
-- **Name (French):** 10Bilion/milliards 14ENOESTRAINS/ Pournesanteintestinle
-- **Brand:** None
-- **Category (English):** Unclassified
-- **Category (French):** Non classé
-- **How classified:** none
-- **Size:** 150capsules
-- **Price:** 25.99
-- **Printed Price:** “25,99 $”
-- **Unit quantity:** 1.0
-- **Unit measurement:** each
-- **Item validity:** 2026-09-28 → 2026-10-25
-- **bbox:** left 10, top 705, right 241, bottom 969, page 8
-- **Full page:** [pages/flyer173-page8-62f0e335e3.jpg (flyer page 8)](pages/flyer173-page8-62f0e335e3.jpg)
-- **Image source URL:** https://circulaires.club/images/circulaire-costco-du-28-septembre-au-25-octobre-2026/08.webp
-- **Details:** confidence: 0.85 · item_key: `49499c015730c569`
-- **Raw:** `{"strategy": "prix_line", "price_derived": false, "harvest": {"size": "150capsules", "via": "crop"}}`
