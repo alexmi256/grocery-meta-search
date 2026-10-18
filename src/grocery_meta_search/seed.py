@@ -136,9 +136,7 @@ def seed(
             continue
         seed_store(conn, data)
         stats["stores"] += 1
-        stats["sources"] += seed_flyer_sources(
-            conn, slug, data, brand_configs, search_configs, cc_configs
-        )
+        stats["sources"] += seed_flyer_sources(conn, slug, data, brand_configs, search_configs, cc_configs)
     conn.commit()
     conn.close()
     return stats

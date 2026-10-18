@@ -184,8 +184,7 @@ def _unit_in_text(text: str) -> str | None:
     return None
 
 
-def _nearby_unit(lines: list[OcrLine], box: tuple[float, float, float, float],
-                 page_w: int, page_h: int) -> str | None:
+def _nearby_unit(lines: list[OcrLine], box: tuple[float, float, float, float], page_w: int, page_h: int) -> str | None:
     """Unit from a standalone unit line printed right of or below a price."""
     best: tuple[float, str] | None = None
     for ln in lines:
@@ -205,18 +204,10 @@ def _nearby_unit(lines: list[OcrLine], box: tuple[float, float, float, float],
             # with the cents (euro-marche "CH/EA" under the cents).
             abs(ln.right - box[2]) <= 0.04 * page_w
             and ln.x >= box[0] - 0.02 * page_w
-            and (
-                y_overlap >= 0.2 * ln.h
-                or -0.35 * ln.h
-                <= ln.y - box[3]
-                <= 0.85 * (box[3] - box[1]) + 0.004 * page_h
-            )
+            and (y_overlap >= 0.2 * ln.h or -0.35 * ln.h <= ln.y - box[3] <= 0.85 * (box[3] - box[1]) + 0.004 * page_h)
         ):
             dist = 500.0 + abs(ln.right - box[2])
-        elif (
-            x_overlap >= 0.3 * ln.w
-            and 0 <= ln.y - box[3] <= 0.8 * (box[3] - box[1]) + 0.004 * page_h
-        ):
+        elif x_overlap >= 0.3 * ln.w and 0 <= ln.y - box[3] <= 0.8 * (box[3] - box[1]) + 0.004 * page_h:
             dist = 1000.0 + (ln.y - box[3])  # below the price (weaker)
         if dist is not None and (best is None or dist < best[0]):
             best = (dist, unit)
@@ -330,12 +321,7 @@ def _parse_fragment_value(
         if re.fullmatch(r"\d+\.\d{2}", t):
             return float(t), t, None
         if re.fullmatch(r"\d{3,4}", t):  # merged dollars+cents: "1599", "744"
-            if (
-                merged_run_is_cents
-                and len(t) == 3
-                and t.endswith("9")
-                and ("¢" in raw_joined or "%" in raw_joined)
-            ):
+            if merged_run_is_cents and len(t) == 3 and t.endswith("9") and ("¢" in raw_joined or "%" in raw_joined):
                 # A cents display ("79¢") whose ¢ glyph merged into the
                 # run as a trailing 9: the value is the first two digits.
                 # Gated on the cluster still carrying the ¢/% glyph
@@ -375,9 +361,7 @@ def _scan_merged_run(text: str) -> tuple[float, str] | None:
     return _parse_one_price(m.group(1))
 
 
-def _parse_fragment_token(
-    core: str, raw: str = ""
-) -> tuple[float, str, tuple[int, float] | None] | None:
+def _parse_fragment_token(core: str, raw: str = "") -> tuple[float, str, tuple[int, float] | None] | None:
     """Recover a price from one fragment whose cluster did not parse whole.
 
     Either the fragment parses on its own (multibuy "2/$5", merged "2423")
@@ -395,15 +379,9 @@ def _parse_fragment_token(
     return None
 
 
-def find_price_anchors(
-    lines: list[OcrLine], page_w: int, page_h: int, cfg: OcrStoreConfig
-) -> list[PriceAnchor]:
+def find_price_anchors(lines: list[OcrLine], page_w: int, page_h: int, cfg: OcrStoreConfig) -> list[PriceAnchor]:
     min_h = cfg.price_min_h_frac * page_h
-    frags = [
-        ln
-        for ln in lines
-        if ln.h >= min_h and ln.conf >= 0.5 and _is_digitish(_price_core(ln.text))
-    ]
+    frags = [ln for ln in lines if ln.h >= min_h and ln.conf >= 0.5 and _is_digitish(_price_core(ln.text))]
     frags.sort(key=lambda z: (z.y, z.x))
     clusters: list[list[OcrLine]] = []
     for frag in frags:
@@ -535,9 +513,7 @@ def name_candidates(lines: list[OcrLine], page_h: int, cfg: OcrStoreConfig) -> l
     return cands
 
 
-def _edge_gaps(
-    a: tuple[float, float, float, float], b: tuple[float, float, float, float]
-) -> tuple[float, float]:
+def _edge_gaps(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> tuple[float, float]:
     dx = max(0.0, max(a[0], b[0]) - min(a[2], b[2]))
     dy = max(0.0, max(a[1], b[1]) - min(a[3], b[3]))
     return dx, dy
@@ -548,9 +524,7 @@ def _edge_dist(a: tuple[float, float, float, float], b: tuple[float, float, floa
     return float((dx * dx + dy * dy) ** 0.5)
 
 
-def _match_dist(
-    a: tuple[float, float, float, float], b: tuple[float, float, float, float], dx_weight: float
-) -> float:
+def _match_dist(a: tuple[float, float, float, float], b: tuple[float, float, float, float], dx_weight: float) -> float:
     """Edge distance with horizontal gaps weighted (column preference)."""
     dx, dy = _edge_gaps(a, b)
     return float(((dx_weight * dx) ** 2 + dy**2) ** 0.5)
@@ -599,9 +573,7 @@ def _grow_name_lines(
         return []
 
     def seed_score(line: OcrLine) -> float:
-        score = _match_dist(anchor.box, _line_box(line), cfg.match_dx_weight) - 35 * min(
-            stack.get(id(line), 0), 3
-        )
+        score = _match_dist(anchor.box, _line_box(line), cfg.match_dx_weight) - 35 * min(stack.get(id(line), 0), 3)
         if cfg.seed_overlap_bonus > 0:
             overlap = min(line.right, anchor.box[2]) - max(line.x, anchor.box[0])
             if overlap > 0:
@@ -637,9 +609,7 @@ def _grow_name_lines(
     return sorted(selected, key=lambda z: (z.y, z.x))
 
 
-def _stack_counts(
-    cands: list[OcrLine], page_w: int, page_h: int, cfg: OcrStoreConfig
-) -> dict[int, int]:
+def _stack_counts(cands: list[OcrLine], page_w: int, page_h: int, cfg: OcrStoreConfig) -> dict[int, int]:
     """How many other candidates stack vertically with each candidate."""
     max_gap = cfg.block_y_gap_frac * page_h
     counts: dict[int, int] = {}
@@ -685,9 +655,7 @@ def _line_shares_content(line: str, fallback: str) -> bool:
     sa, sb = _squash(line), _squash(fallback)
     if not sa or not sb:
         return False
-    match = difflib.SequenceMatcher(None, sa, sb).find_longest_match(
-        0, len(sa), 0, len(sb)
-    )
+    match = difflib.SequenceMatcher(None, sa, sb).find_longest_match(0, len(sa), 0, len(sb))
     return match.size >= min(7, max(4, len(sa) - 1))
 
 
@@ -774,9 +742,7 @@ def segment_page(
     return _items_from_anchors(image, lines, cfg, anchors, page_url, page_number)
 
 
-def _merge_rate_pairs(
-    anchors: list[PriceAnchor], page_w: int
-) -> list[PriceAnchor]:
+def _merge_rate_pairs(anchors: list[PriceAnchor], page_w: int) -> list[PriceAnchor]:
     """Merge same-line headline+rate anchor pairs (Odessa).
 
     The catalogue prints the headline price and a smaller unit rate
@@ -787,15 +753,12 @@ def _merge_rate_pairs(
     anchor (the headline prints first); the merged anchors' price
     texts ride along as alt prices.
     """
+
     def paired(a: PriceAnchor, b: PriceAnchor) -> bool:
         y_overlap = min(a.box[3], b.box[3]) - max(a.box[1], b.box[1])
         smaller_h = min(a.box[3] - a.box[1], b.box[3] - b.box[1])
         x_gap = max(a.box[0] - b.box[2], b.box[0] - a.box[2])
-        return (
-            smaller_h > 0
-            and y_overlap >= 0.5 * smaller_h
-            and x_gap <= 0.30 * page_w
-        )
+        return smaller_h > 0 and y_overlap >= 0.5 * smaller_h and x_gap <= 0.30 * page_w
 
     groups: list[list[PriceAnchor]] = []
     for anchor in anchors:
@@ -813,11 +776,7 @@ def _merge_rate_pairs(
         host = min(group, key=lambda a: a.box[0])
         host.alt_texts = (
             *host.alt_texts,
-            *(
-                a.price_text
-                for a in sorted(group, key=lambda a: a.box[0])
-                if a is not host
-            ),
+            *(a.price_text for a in sorted(group, key=lambda a: a.box[0]) if a is not host),
         )
         merged.append(host)
     return merged
@@ -845,12 +804,7 @@ def _line_green_ink(image: Image.Image, ln: OcrLine) -> float:
     ink = (hsv[:, :, 2] < 205) | (hsv[:, :, 1] > 70)
     if not ink.any():
         return 0.0
-    green = (
-        (hsv[:, :, 0] >= 50)
-        & (hsv[:, :, 0] <= 95)
-        & (hsv[:, :, 1] >= 70)
-        & (hsv[:, :, 2] >= 35)
-    )
+    green = (hsv[:, :, 0] >= 50) & (hsv[:, :, 0] <= 95) & (hsv[:, :, 1] >= 70) & (hsv[:, :, 2] >= 35)
     return float((green & ink).sum() / max(int(ink.sum()), 1))
 
 
@@ -892,9 +846,7 @@ def _items_from_anchors(
             # the RIGHT of the price centre.
             anchor_cx = (anchor.box[0] + anchor.box[2]) / 2
             return [
-                ln
-                for ln in cands
-                if ln.bottom <= anchor.box[1] + 0.01 * page_h and ln.cx <= anchor_cx + 0.05 * page_w
+                ln for ln in cands if ln.bottom <= anchor.box[1] + 0.01 * page_h and ln.cx <= anchor_cx + 0.05 * page_w
             ]
         if cfg.name_position == "below":
             return [ln for ln in cands if ln.y >= anchor.box[3] - 0.01 * page_h]
@@ -917,13 +869,7 @@ def _items_from_anchors(
             item.price_value
             and anchor.value < item.price_value
             and 2.15 <= item.price_value / anchor.value <= 2.26
-            and (
-                item.price_unit == "kg"
-                or (
-                    box is not None
-                    and (anchor.box[3] - anchor.box[1]) > (box[3] - box[1])
-                )
-            )
+            and (item.price_unit == "kg" or (box is not None and (anchor.box[3] - anchor.box[1]) > (box[3] - box[1])))
         ):
             if item.price_text:
                 alts.append(item.price_text)
@@ -938,8 +884,7 @@ def _items_from_anchors(
         if not pool:
             return float("inf")
         return min(
-            _match_dist(anchor.box, _line_box(ln), cfg.match_dx_weight)
-            - 35 * min(stack.get(id(ln), 0), 3)
+            _match_dist(anchor.box, _line_box(ln), cfg.match_dx_weight) - 35 * min(stack.get(id(ln), 0), 3)
             for ln in pool
         )
 
@@ -957,11 +902,7 @@ def _items_from_anchors(
         if not grown:
             # Maybe a second price for an item already extracted (multibuy
             # or dual price sharing one name block): fold into alt prices.
-            near = [
-                ln
-                for ln in cands
-                if _edge_dist(anchor.box, _line_box(ln)) <= cfg.match_max_dist_frac * page_w
-            ]
+            near = [ln for ln in cands if _edge_dist(anchor.box, _line_box(ln)) <= cfg.match_max_dist_frac * page_w]
             for line in near:
                 owner = line_owner.get(id(line))
                 if owner is not None:
@@ -980,9 +921,7 @@ def _items_from_anchors(
         if cfg.name_case == "any":
             name = _name_from_lines_any(grown)
         else:
-            name = _name_from_text(
-                block_text, grown, verify_lines=cfg.name_lines_verify
-            )
+            name = _name_from_text(block_text, grown, verify_lines=cfg.name_lines_verify)
         if not name:
             continue
         # Dual-price fold: member + regular price in one badge grow
@@ -1006,11 +945,7 @@ def _items_from_anchors(
                         alts.append(dup_of.price_text)
                     dup_of.price_value = anchor.value
                     dup_of.price_text = anchor.price_text
-                    if (
-                        old_value
-                        and 2.15 <= old_value / anchor.value <= 2.26
-                        and dup_of.price_unit == "kg"
-                    ):
+                    if old_value and 2.15 <= old_value / anchor.value <= 2.26 and dup_of.price_unit == "kg":
                         # kg/lb dual pair: the smaller figure is $/lb.
                         dup_of.price_unit = anchor.unit or "lb"
                 else:
@@ -1143,9 +1078,7 @@ def _segment_name_cells(
     return items
 
 
-def _detect_board_boxes(
-    image: Image.Image, vmax: int
-) -> list[tuple[int, int, int, int]]:
+def _detect_board_boxes(image: Image.Image, vmax: int) -> list[tuple[int, int, int, int]]:
     """Dark chalkboard interiors on a PA Nature page.
 
     The boards are near-black rectangles (wood frame excluded); a
@@ -1221,9 +1154,7 @@ def _detect_board_boxes(
     return boxes
 
 
-def _board_tokens(
-    image: Image.Image, box: tuple[int, int, int, int], tag: str
-) -> list[tuple[str, float, str]]:
+def _board_tokens(image: Image.Image, box: tuple[int, int, int, int], tag: str) -> list[tuple[str, float, str]]:
     """OCR one chalkboard crop several ways; pool the tokens.
 
     The chalk digits are outline glyphs filled with hatching: plain
@@ -1257,9 +1188,7 @@ def _board_tokens(
     return tokens
 
 
-def _parse_board_tokens(
-    tokens: list[tuple[str, float, str]], box: tuple[int, int, int, int]
-) -> PriceAnchor | None:
+def _parse_board_tokens(tokens: list[tuple[str, float, str]], box: tuple[int, int, int, int]) -> PriceAnchor | None:
     """Vote the pooled board tokens into one price anchor.
 
     Multibuy boards print 'n/m$'; price boards print big dollar
@@ -1462,9 +1391,7 @@ def _parse_board_tokens(
     # rather than collapse to the cents figure. The two cents glyphs
     # themselves read as lone '9' tokens, so junk dollars votes made
     # only of the cents digit (or 0) do not disqualify the board.
-    junk_dollars_only = cents_mode is not None and all(
-        d in (0, cents_mode // 10) for d in dollar_votes
-    )
+    junk_dollars_only = cents_mode is not None and all(d in (0, cents_mode // 10) for d in dollar_votes)
     if not dollar_votes or junk_dollars_only:
         if cents_mode is not None and any("¢" in t or "%" in t for t, _c, _g in tokens):
             return PriceAnchor(
@@ -1475,13 +1402,9 @@ def _parse_board_tokens(
                 unit=unit,
             )
         return None
-    cents_ranked = sorted(
-        cents_votes.items(), key=lambda kv: (kv[1], separate_cents.get(kv[0], 0)), reverse=True
-    )
+    cents_ranked = sorted(cents_votes.items(), key=lambda kv: (kv[1], separate_cents.get(kv[0], 0)), reverse=True)
     cents = cents_ranked[0][0]
-    dollars = sorted(
-        dollar_votes.items(), key=lambda kv: (kv[1], primary_votes.get(kv[0], 0)), reverse=True
-    )[0][0]
+    dollars = sorted(dollar_votes.items(), key=lambda kv: (kv[1], primary_votes.get(kv[0], 0)), reverse=True)[0][0]
     # Pages with small superscript cents fuse the dollar digit with
     # the first cents glyph: '3.99' reads as dollars=39. When the
     # winning figure's second digit is the cents mode's first digit
@@ -1601,9 +1524,7 @@ def _name_blocks(
         pale = ((region[:, :, 2] >= 175) & (region[:, :, 1] <= 75)).mean()
         return bool(pale >= 0.45)
 
-    cands = [
-        ln for ln in _dedupe_candidates(name_candidates(lines, page_h, cfg)) if line_is_pale(ln)
-    ]
+    cands = [ln for ln in _dedupe_candidates(name_candidates(lines, page_h, cfg)) if line_is_pale(ln)]
     parent = list(range(len(cands)))
 
     def find(i: int) -> int:
@@ -1642,9 +1563,7 @@ def _name_blocks(
             # A lone line that (fuzzily) just says "biologique" is one
             # of the wooden signs hung on the photos, not a name.
             squashed = re.sub(r"[^a-z]", "", members[0].text.lower())
-            if _levenshtein(squashed, "biologique") <= 2 or _levenshtein(
-                squashed, "biologiques"
-            ) <= 2:
+            if _levenshtein(squashed, "biologique") <= 2 or _levenshtein(squashed, "biologiques") <= 2:
                 continue
         members.sort(key=lambda z: (z.y, z.x))
         box = (
@@ -1687,9 +1606,7 @@ def _segment_chalkboard(
     # Pin the working scale so production matches the tuning.
     if image.size[0] > 1700:
         factor = 1550 / image.size[0]
-        image = image.resize(
-            (1550, round(image.size[1] * factor)), Image.Resampling.LANCZOS
-        )
+        image = image.resize((1550, round(image.size[1] * factor)), Image.Resampling.LANCZOS)
         lines = [
             OcrLine(
                 x=ln.x * factor,
@@ -1772,10 +1689,7 @@ def _segment_chalkboard(
             (int(block_box[0]), int(block_box[1]), int(block_box[2]), int(block_box[3])),
             psm=cfg.tesseract_psm,
         )
-        if cfg.name_case == "any":
-            name = _name_from_lines_any(members)
-        else:
-            name = _name_from_text(block_text, members)
+        name = _name_from_lines_any(members) if cfg.name_case == "any" else _name_from_text(block_text, members)
         if not name:
             continue
         region = (
@@ -1829,9 +1743,11 @@ def _tess_mask_text(mask_img: Image.Image, psm: int) -> str:
     env.update(extra_env)
     try:
         proc = subprocess.run(
-            [binary, "stdin", "stdout", "--psm", str(psm),
-             "-c", "tessedit_char_whitelist=0123456789/$%."],
-            input=buf.getvalue(), capture_output=True, env=env, timeout=30,
+            [binary, "stdin", "stdout", "--psm", str(psm), "-c", "tessedit_char_whitelist=0123456789/$%."],
+            input=buf.getvalue(),
+            capture_output=True,
+            env=env,
+            timeout=30,
         )
     except (subprocess.SubprocessError, OSError):
         return ""
@@ -1853,11 +1769,7 @@ def _red_clusters(image: Image.Image) -> list[list[tuple[int, int, int, int]]]:
     arr = np.array(image.convert("RGB"))
     page_h, page_w = arr.shape[:2]
     hsv = cv2.cvtColor(arr, cv2.COLOR_RGB2HSV)
-    mask = (
-        ((hsv[..., 0] <= 12) | (hsv[..., 0] >= 168))
-        & (hsv[..., 1] >= 100)
-        & (hsv[..., 2] >= 70)
-    ).astype(np.uint8)
+    mask = (((hsv[..., 0] <= 12) | (hsv[..., 0] >= 168)) & (hsv[..., 1] >= 100) & (hsv[..., 2] >= 70)).astype(np.uint8)
     n, _lab, stats, _cent = cv2.connectedComponentsWithStats(mask * 255, connectivity=8)
     blobs: list[tuple[int, int, int, int]] = []
     for i in range(1, n):
@@ -1865,12 +1777,7 @@ def _red_clusters(image: Image.Image) -> list[list[tuple[int, int, int, int]]]:
         fill = area / (w * h) if w * h else 0.0
         # Glyph ink fills 25-92% of its box; photo regions and label
         # bars are near-solid and drop out here.
-        if (
-            6 <= h <= 0.035 * page_h
-            and 3 <= w <= 0.06 * page_w
-            and area >= 25
-            and 0.25 <= fill <= 0.92
-        ):
+        if 6 <= h <= 0.035 * page_h and 3 <= w <= 0.06 * page_w and area >= 25 and 0.25 <= fill <= 0.92:
             blobs.append((x, y, w, h))
     blobs.sort(key=lambda b: (b[1], b[0]))
     parent = list(range(len(blobs)))
@@ -1913,9 +1820,7 @@ def _mask_crop(mask: Any, blobs: list[tuple[int, int, int, int]], pad: int = 3) 
     return img.resize((img.width * 6, img.height * 6), Image.Resampling.LANCZOS)
 
 
-def _split_wide_blob(
-    mask: Any, blob: tuple[int, int, int, int]
-) -> list[tuple[int, int, int, int]]:
+def _split_wide_blob(mask: Any, blob: tuple[int, int, int, int]) -> list[tuple[int, int, int, int]]:
     """Split a fused two-digit blob at its palest vertical valley."""
     import numpy as np
 
@@ -1931,9 +1836,7 @@ def _split_wide_blob(
     return [(x, y, cut, h), (x + cut, y, w - cut, h)]
 
 
-def _read_digit_group(
-    mask: Any, blobs: list[tuple[int, int, int, int]], page_w: int
-) -> dict[str, int]:
+def _read_digit_group(mask: Any, blobs: list[tuple[int, int, int, int]], page_w: int) -> dict[str, int]:
     """Voted digit-string candidates for one glyph group.
 
     Sources: whole-group Tesseract crops (psm 7/8), a per-blob
@@ -2006,11 +1909,7 @@ def _segment_red_grid(
     page_w, page_h = image.size
     arr = np.array(image.convert("RGB"))
     hsv = cv2.cvtColor(arr, cv2.COLOR_RGB2HSV)
-    mask = (
-        ((hsv[..., 0] <= 12) | (hsv[..., 0] >= 168))
-        & (hsv[..., 1] >= 100)
-        & (hsv[..., 2] >= 70)
-    ).astype(np.uint8)
+    mask = (((hsv[..., 0] <= 12) | (hsv[..., 0] >= 168)) & (hsv[..., 1] >= 100) & (hsv[..., 2] >= 70)).astype(np.uint8)
 
     def kg_ref(box: tuple[float, float, float, float]) -> float | None:
         for ln in lines:
@@ -2091,18 +1990,14 @@ def _segment_red_grid(
     anchors: list[PriceAnchor] = []
     multibuy_clusters: list[tuple[tuple[int, int, int, int], int, float]] = []
     cluster_list = _red_clusters(image)
-    cluster_boxes = [
-        (min(b[0] for b in g), min(b[1] for b in g)) for g in cluster_list
-    ]
+    cluster_boxes = [(min(b[0] for b in g), min(b[1] for b in g)) for g in cluster_list]
     for blobs in cluster_list:
         x0 = min(b[0] for b in blobs)
         y0 = min(b[1] for b in blobs)
         x1 = max(b[0] + b[2] for b in blobs)
         y1 = max(b[1] + b[3] for b in blobs)
         box = (float(x0), float(y0), float(x1), float(y1))
-        whole = _tess_mask_text(_mask_crop(mask, blobs), 6) + " " + _tess_mask_text(
-            _mask_crop(mask, blobs), 11
-        )
+        whole = _tess_mask_text(_mask_crop(mask, blobs), 6) + " " + _tess_mask_text(_mask_crop(mask, blobs), 11)
         mb = _MULTIBUY_RE.search(whole)
         max_h = max(b[3] for b in blobs)
         base = max(b[1] + b[3] for b in blobs)
@@ -2112,11 +2007,7 @@ def _segment_red_grid(
         # bottom well above the baseline. Other short blobs (photo
         # labels bleeding into the cluster) fail one of the two tests.
         short = [
-            b
-            for b in blobs
-            if b not in tall
-            and b[1] <= tall_top + 0.55 * max_h
-            and b[1] + b[3] <= base - 0.12 * max_h
+            b for b in blobs if b not in tall and b[1] <= tall_top + 0.55 * max_h and b[1] + b[3] <= base - 0.12 * max_h
         ]
         short.sort(key=lambda b: b[0])
         if len(short) > 2:
@@ -2133,9 +2024,9 @@ def _segment_red_grid(
             c_votes[k] = c_votes.get(k, 0) + v
         # RapidOCR on the cropped cluster (the price glyphs at 3x):
         # a third read source, position-mapped like the page lines.
-        crop = image.crop(
-            (max(0, x0 - 4), max(0, y0 - 4), min(page_w, x1 + 4), min(page_h, y1 + 4))
-        ).resize(((x1 - x0 + 8) * 3, (y1 - y0 + 8) * 3), Image.Resampling.LANCZOS)
+        crop = image.crop((max(0, x0 - 4), max(0, y0 - 4), min(page_w, x1 + 4), min(page_h, y1 + 4))).resize(
+            ((x1 - x0 + 8) * 3, (y1 - y0 + 8) * 3), Image.Resampling.LANCZOS
+        )
         crop_mid = crop.width * (0.45 * (x1 - x0) + 4) / (x1 - x0 + 8)
         crop_lb = False
         for ln in detect_lines(crop):
@@ -2173,9 +2064,7 @@ def _segment_red_grid(
         }
         if pairs:
             if ref is not None:
-                matching = [
-                    p for p in pairs if abs((int(p[0]) + int(p[1]) / 100) * 2.2046 - ref) <= 0.06
-                ]
+                matching = [p for p in pairs if abs((int(p[0]) + int(p[1]) / 100) * 2.2046 - ref) <= 0.06]
                 if len(matching) == 1:
                     d_win, c_win = matching[0]
                     value = int(d_win) + int(c_win) / 100
@@ -2203,17 +2092,10 @@ def _segment_red_grid(
                     d_win, c_win = winners[0]
                     value = int(d_win) + int(c_win) / 100
         elif (
-            (
-                (len(short) == 1 and short[0][2] <= 0.016 * page_w)
-                or (
-                    not short
-                    and any(b[2] <= 0.016 * page_w for b in blobs if b not in tall)
-                )
-            )
-            and not any(
-                len(s) == 2 and s != _pick_digits({k: v for k, v in d_votes.items() if len(k) == 2})
-                for s in c_votes
-            )
+            (len(short) == 1 and short[0][2] <= 0.016 * page_w)
+            or (not short and any(b[2] <= 0.016 * page_w for b in blobs if b not in tall))
+        ) and not any(
+            len(s) == 2 and s != _pick_digits({k: v for k, v in d_votes.items() if len(k) == 2}) for s in c_votes
         ):
             # Cents-only price ('69¢'): the tall digits are the cents
             # and the single narrow short blob is the ¢ glyph itself.
@@ -2228,21 +2110,12 @@ def _segment_red_grid(
                 if implied_s in cand:
                     value = implied / 100
                 else:
-                    near = [
-                        s
-                        for s in cand
-                        if sum(a != b for a, b in zip(s, implied_s, strict=True)) == 1
-                    ]
+                    near = [s for s in cand if sum(a != b for a, b in zip(s, implied_s, strict=True)) == 1]
                     if len(near) == 1:
                         value = implied / 100
             elif picked is not None:
                 value = int(picked) / 100
-        if (
-            value is None
-            and ref is not None
-            and len(tall) == 1
-            and not any(int(k) <= 30 for k in d_votes)
-        ):
+        if value is None and ref is not None and len(tall) == 1 and not any(int(k) <= 30 for k in d_votes):
             # Single unreadable dollar glyph (fused with the photo
             # above it) but a clean per-kg reference whose implied
             # cents are corroborated by a cents read: the reference
@@ -2260,9 +2133,7 @@ def _segment_red_grid(
                 value = implied / 100
         if value is None:
             if mb and int(mb.group(1)) >= 2:
-                multibuy_clusters.append(
-                    ((x0, y0, x1, y1), int(mb.group(1)), float(mb.group(2).replace(",", ".")))
-                )
+                multibuy_clusters.append(((x0, y0, x1, y1), int(mb.group(1)), float(mb.group(2).replace(",", "."))))
             continue
         anchors.append(
             PriceAnchor(
@@ -2326,11 +2197,8 @@ def _prix_line_title(
     printed title ('Simplement chocolat chaud Carnation de Nestlé').
     Returns '' when no channel line anchors the block.
     """
-    band = [
-        ln
-        for ln in lines
-        if band_x0 <= ln.cx <= band_x1 and band_top <= ln.y < label.y
-    ]
+    band = [ln for ln in lines if band_x0 <= ln.cx <= band_x1 and band_top <= ln.y < label.y]
+
     def is_channel(text: str) -> bool:
         sq = _squash(text)
         # 'Entrepôt et en ligne' / 'En entrepôt seulement' — the plain
@@ -2375,9 +2243,7 @@ def _prix_line_title(
     # title's last line ('... pour homme F N° d'article 2040480-4',
     # 'Parja | paquet de 4'): cut the name at the detail markers and
     # drop trailing junk tokens (single letters, stray glyphs).
-    name = re.split(
-        r"\s*\|\s*|\s+n°\s*d|\s+valide\b|\s+paquet de \d+", name, flags=re.IGNORECASE
-    )[0]
+    name = re.split(r"\s*\|\s*|\s+n°\s*d|\s+valide\b|\s+paquet de \d+", name, flags=re.IGNORECASE)[0]
     tokens = name.split()
     while tokens and len([c for c in tokens[-1] if c.isalpha()]) < 2:
         tokens.pop()
@@ -2396,9 +2262,7 @@ def _segment_prix_line(
     patterns = DEFAULT_STOPLIST + cfg.stoplist
     items: list[FlyerItem] = []
     labels = [ln for ln in lines if ln.text.strip().lower() == "prix"]
-    amount_lines = [
-        ln for ln in lines if _AMOUNT_RE.search(ln.text) and not ln.text.strip().startswith("-")
-    ]
+    amount_lines = [ln for ln in lines if _AMOUNT_RE.search(ln.text) and not ln.text.strip().startswith("-")]
     all_amounts = [ln for ln in lines if _AMOUNT_RE.search(ln.text)]
     # Column tops for the name band: a cell's name lines lie between
     # the previous same-column 'Prix' label and this one. The old
@@ -2411,17 +2275,12 @@ def _segment_prix_line(
     for col_labels in labels_by_col.values():
         prev_bottom: float | None = None
         for lab in sorted(col_labels, key=lambda z: z.y):
-            band_top_of[id(lab)] = (
-                prev_bottom if prev_bottom is not None else lab.y - 0.30 * page_h
-            )
+            band_top_of[id(lab)] = prev_bottom if prev_bottom is not None else lab.y - 0.30 * page_h
             prev_bottom = lab.bottom
     derived = False
     for label in labels:
         row = [
-            a
-            for a in amount_lines
-            if abs(a.cy - label.cy) < 0.01 * page_h
-            and label.x < a.x <= label.x + 0.27 * page_w
+            a for a in amount_lines if abs(a.cy - label.cy) < 0.01 * page_h and label.x < a.x <= label.x + 0.27 * page_w
         ]
         derived = False
         if row:
@@ -2473,9 +2332,7 @@ def _segment_prix_line(
         cands.sort(key=lambda z: z.y)
         name = _prix_line_title(image, lines, band_x0, band_x1, band_top, label)
         if not name:
-            name_lines = [
-                ln.text.strip() for ln in cands if len(ln.text.strip()) > 12
-            ]
+            name_lines = [ln.text.strip() for ln in cands if len(ln.text.strip()) > 12]
             if not name_lines:
                 name_lines = [max(cands, key=lambda z: len(z.text)).text.strip()]
             name = re.sub(r"\s+", " ", " ".join(name_lines[:3])).strip()

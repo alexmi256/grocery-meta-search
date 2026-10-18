@@ -24,13 +24,8 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def _pa_items() -> list[Any]:
-    data: dict[str, Any] = json.loads(
-        (FIXTURES / "pa_nature_p1_lines.json").read_text(encoding="utf-8")
-    )
-    lines = [
-        OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"])
-        for d in data["lines"]
-    ]
+    data: dict[str, Any] = json.loads((FIXTURES / "pa_nature_p1_lines.json").read_text(encoding="utf-8"))
+    lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data["lines"]]
     image = Image.open(FIXTURES / "pa_nature_p1.jpg").convert("RGB")
     cfg = _official_ocr_config(load_official_configs()["pa-nature"])
     assert cfg.price_strategy == "chalkboard"
@@ -45,11 +40,7 @@ def test_pa_nature_page1_chalkboards() -> None:
     assert any("SAUMON" in n for n in names)
     assert any("AMANDES" in n for n in names)
     priced = sorted(
-        (
-            (round(it.price_value, 2), it.price_unit)
-            for it in items
-            if it.price_value is not None
-        ),
+        ((round(it.price_value, 2), it.price_unit) for it in items if it.price_value is not None),
         key=lambda p: (p[0], p[1] or ""),
     )
     # Multibuy anchors also carry their unit price (total / count).

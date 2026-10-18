@@ -180,9 +180,7 @@ def fetch_store_cc(
     return store_editions(conn, src, store_slug, editions, report)
 
 
-def get_official_source(
-    conn: sqlite3.Connection, store_slug: str, source_name: str
-) -> sqlite3.Row | None:
+def get_official_source(conn: sqlite3.Connection, store_slug: str, source_name: str) -> sqlite3.Row | None:
     row = conn.execute(
         "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = ? LIMIT 1",
         (store_slug, source_name),
@@ -243,9 +241,7 @@ def _official_ocr_config(cfg: OfficialConfig) -> OcrStoreConfig:
     return OcrStoreConfig(**{k: v for k, v in cfg.ocr.items() if k in valid})
 
 
-def fetch_store_official(
-    conn: sqlite3.Connection, store_slug: str, cfg: OfficialConfig
-) -> dict[str, Any]:
+def fetch_store_official(conn: sqlite3.Connection, store_slug: str, cfg: OfficialConfig) -> dict[str, Any]:
     """Fetch a store's flyer from its official platform (group 4)."""
     from datetime import date as date_cls
 
@@ -287,19 +283,13 @@ def fetch_store_official(
             # Many official flyers print their real validity on page 1; it
             # beats every fallback (fetch week, URL month).
             first_image = pages[0][1]
-            first_lines = (
-                detect_lines_banded(first_image)
-                if first_image.height > 2800
-                else detect_lines(first_image)
-            )
+            first_lines = detect_lines_banded(first_image) if first_image.height > 2800 else detect_lines(first_image)
             rng = parse_fr_validity(" ".join(ln.text for ln in first_lines), date_cls.today())
             if rng is not None:
                 valid_from, valid_to = rng[0].isoformat(), rng[1].isoformat()
         for page_number, (page_ref, image) in enumerate(pages, start=1):
             if page_number == 1 and first_lines is not None:
-                for item in segment_page(
-                    image, first_lines, ocr_cfg, page_url=page_ref, page_number=1
-                ):
+                for item in segment_page(image, first_lines, ocr_cfg, page_url=page_ref, page_number=1):
                     item.valid_from, item.valid_to = valid_from, valid_to
                     items.append(item)
             else:
@@ -392,10 +382,7 @@ def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
             try:
                 stats = harvest_store(conn, store_slug)
                 if stats["filled_size"] or stats["filled_unit"]:
-                    report["harvested"] = (
-                        f"+{stats['filled_size']} size, "
-                        f"+{stats['filled_unit']} unit (page harvest)"
-                    )
+                    report["harvested"] = f"+{stats['filled_size']} size, +{stats['filled_unit']} unit (page harvest)"
             except Exception as exc:  # noqa: BLE001 — report, never fail the fetch
                 report["harvest_error"] = str(exc)
     if not report.get("error"):
@@ -408,10 +395,7 @@ def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
             try:
                 mb_stats = multibuy_store(conn, store_slug)
                 if mb_stats["recovered"]:
-                    report["multibuy"] = (
-                        f"{mb_stats['recovered']} multibuy offers recovered"
-                        " (image recovery)"
-                    )
+                    report["multibuy"] = f"{mb_stats['recovered']} multibuy offers recovered (image recovery)"
             except Exception as exc:  # noqa: BLE001 — report, never fail the fetch
                 report["multibuy_error"] = str(exc)
     if not report.get("error"):
@@ -442,12 +426,9 @@ def _get_metrodigital_config(store_slug: str) -> MetroDigitalConfig | None:
     return _metrodigital_configs.get(store_slug)
 
 
-def get_or_create_metrodigital_source(
-    conn: sqlite3.Connection, cfg: MetroDigitalConfig
-) -> sqlite3.Row:
+def get_or_create_metrodigital_source(conn: sqlite3.Connection, cfg: MetroDigitalConfig) -> sqlite3.Row:
     row = conn.execute(
-        "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = 'metrodigital'"
-        " LIMIT 1",
+        "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = 'metrodigital' LIMIT 1",
         (cfg.slug,),
     ).fetchone()
     assert row is None or isinstance(row, sqlite3.Row)
@@ -464,17 +445,14 @@ def get_or_create_metrodigital_source(
     )
     conn.commit()
     created = conn.execute(
-        "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = 'metrodigital'"
-        " LIMIT 1",
+        "SELECT * FROM flyer_sources WHERE store_slug = ? AND name = 'metrodigital' LIMIT 1",
         (cfg.slug,),
     ).fetchone()
     assert isinstance(created, sqlite3.Row)
     return created
 
 
-def fetch_store_metrodigital(
-    conn: sqlite3.Connection, store_slug: str, cfg: MetroDigitalConfig
-) -> dict[str, Any]:
+def fetch_store_metrodigital(conn: sqlite3.Connection, store_slug: str, cfg: MetroDigitalConfig) -> dict[str, Any]:
     """Fetch a store's flyers from the Metro Digital platform API."""
     report: dict[str, Any] = {"store": store_slug, "editions": 0, "items": 0}
     src = get_or_create_metrodigital_source(conn, cfg)
@@ -600,9 +578,7 @@ def insert_items(
         # the DB boundary, so every source is covered.
         if item.price_value is not None:
             item.price_value = round(item.price_value, 2)
-        dept, sub, method, rule_id = classify_item(
-            item.name_fr, item.name_en, item.brand, store_slug
-        )
+        dept, sub, method, rule_id = classify_item(item.name_fr, item.name_en, item.brand, store_slug)
         if dept != UNCLASSIFIED and not is_grocery(dept, sub):
             if stats is not None:
                 stats["discarded"] = stats.get("discarded", 0) + 1
@@ -626,9 +602,7 @@ def insert_items(
                 continue
         label = UNCLASSIFIED if dept == UNCLASSIFIED else category_label(dept, sub)
         key = item_key(store_slug, item)
-        unit_quantity, unit_measurement = split_unit(
-            item.price_unit, multibuy_count(item.conditions)
-        )
+        unit_quantity, unit_measurement = split_unit(item.price_unit, multibuy_count(item.conditions))
         cur = conn.execute(
             """
             INSERT INTO flyer_items
@@ -657,8 +631,7 @@ def insert_items(
                 json.dumps(item.bbox, ensure_ascii=False) if item.bbox else None,
                 item.sku,
                 item.brand,
-                item.package_size
-                or extract_package_size(item.name_fr, item.name_en),
+                item.package_size or extract_package_size(item.name_fr, item.name_en),
                 json.dumps(item.conditions, ensure_ascii=False),
                 1 if item.loyalty_gated else 0,
                 json.dumps(item.raw, ensure_ascii=False),
@@ -707,9 +680,7 @@ def main() -> None:
     slugs = [s.strip() for s in args.slugs.split(",") if s.strip()]
     for report in run(args.db, slugs):
         err = f" ERROR: {report['error']}" if report.get("error") else ""
-        disc = (
-            f", {report['discarded']} discarded as non-grocery" if report.get("discarded") else ""
-        )
+        disc = f", {report['discarded']} discarded as non-grocery" if report.get("discarded") else ""
         if report.get("excluded"):
             disc += f", {report['excluded']} excluded (furniture/merch/garble)"
         if report.get("junk"):
@@ -717,10 +688,7 @@ def main() -> None:
         if report.get("harvested"):
             disc += f", {report['harvested']}"
         warn = f" WARNING: {report['thin_warning']}" if report.get("thin_warning") else ""
-        print(
-            f"{report['store']}: {report['editions']} editions, "
-            f"{report['items']} items{disc}{err}{warn}"
-        )
+        print(f"{report['store']}: {report['editions']} editions, {report['items']} items{disc}{err}{warn}")
 
 
 if __name__ == "__main__":

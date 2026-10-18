@@ -3793,8 +3793,17 @@ RULES: list[Rule] = [
     ),
 ]
 
-_FROZEN_MARKERS = {"surgele", "surgeles", "surgelee", "surgelees",
-                   "congele", "congeles", "congelee", "congelees", "frozen"}
+_FROZEN_MARKERS = {
+    "surgele",
+    "surgeles",
+    "surgelee",
+    "surgelees",
+    "congele",
+    "congeles",
+    "congelee",
+    "congelees",
+    "frozen",
+}
 
 # Dried markers (normalized TOKENS): a fresh-produce hit carrying
 # one of these is a dried product, not fresh (prunes dénoyautées,
@@ -3897,9 +3906,7 @@ def _token_match(name_token: str, phrase_token: str) -> bool:
 
 
 def _phrase_matches_at(name_tokens: list[str], start: int, phrase_tokens: tuple[str, ...]) -> bool:
-    return all(
-        _token_match(name_tokens[start + j], phrase_tokens[j]) for j in range(len(phrase_tokens))
-    )
+    return all(_token_match(name_tokens[start + j], phrase_tokens[j]) for j in range(len(phrase_tokens)))
 
 
 def _compile() -> dict[str, list[tuple[int, str, str, str, tuple[str, ...]]]]:
@@ -3959,32 +3966,81 @@ def classify_name(name: str) -> tuple[str, str, str] | None:
 # "service magasin", or containing "carte cadeau"/"vidange", is
 # also junk. These return Unclassified before any rule fires.
 _JUNK_EXACT = {
-    "special", "message important", "moi", "plus taxes", "pret a manger",
-    "fromages fins et charcuteries", "fromagerie et charcuterie",
-    "charcuterie et fromage supplementaire", "trousses de repas",
-    "decouvrez notre offre de fromages", "produits pour animaux de compagnie",
-    "iles de la madeleine magdalen islands", "quebec quebec", "suisse",
-    "style louisiane", "sauces incluses", "prixpour1", "prixpour2", "plus",
-    "selected products", "presque tout", "sur presque tout", "vous fumez",
-    "collection prestige", "jean coutu", "livraison 2h",
-    "cadeau avec achat", "multiples gammes", "france beaudoin",
+    "special",
+    "message important",
+    "moi",
+    "plus taxes",
+    "pret a manger",
+    "fromages fins et charcuteries",
+    "fromagerie et charcuterie",
+    "charcuterie et fromage supplementaire",
+    "trousses de repas",
+    "decouvrez notre offre de fromages",
+    "produits pour animaux de compagnie",
+    "iles de la madeleine magdalen islands",
+    "quebec quebec",
+    "suisse",
+    "style louisiane",
+    "sauces incluses",
+    "prixpour1",
+    "prixpour2",
+    "plus",
+    "selected products",
+    "presque tout",
+    "sur presque tout",
+    "vous fumez",
+    "collection prestige",
+    "jean coutu",
+    "livraison 2h",
+    "cadeau avec achat",
+    "multiples gammes",
+    "france beaudoin",
     "tous nos fruits et legumes sont certifies",
-    "tombez pour notre tarte aux pommes", "halal",
+    "tombez pour notre tarte aux pommes",
+    "halal",
     "trouvez l huitre qui vous ressemble trouvez l huitre qui vous ressemble",
-    "vietnam vietnam", "indonesie indonesia", "colombie colombia",
-    "argentine argentina", "ca roule pour moi", "cliquez ici",
-    "activer vos offres", "format econo", "ch ea", "triangle",
-    "scene timbres", "scene offre", "banner rollback", "banner walmart",
-    "metro ca", "metrogo", "metromd go", "ca roule du matin a l apres midi",
-    "en tout temps 1 d achat 1 point moi", "pts", "combo econo a prix d entrepot",
+    "vietnam vietnam",
+    "indonesie indonesia",
+    "colombie colombia",
+    "argentine argentina",
+    "ca roule pour moi",
+    "cliquez ici",
+    "activer vos offres",
+    "format econo",
+    "ch ea",
+    "triangle",
+    "scene timbres",
+    "scene offre",
+    "banner rollback",
+    "banner walmart",
+    "metro ca",
+    "metrogo",
+    "metromd go",
+    "ca roule du matin a l apres midi",
+    "en tout temps 1 d achat 1 point moi",
+    "pts",
+    "combo econo a prix d entrepot",
     "plus de rabais dans la circulaire numerique",
-    "l oktoberfest s invite a votre table", "mois du commerce equitable",
-    "prepare au canada", "prepareau canada", "fait au canada",
-    "produit du canada", "au canada", "c est local",
-    "les bas prix", "bas prix de tous les jours", "liquidation",
-    "economisez avec", "economisez avec irresistible", "en exclusivite chez metro",
-    "en savoir plus", "en savoir plus en magasin", "merci",
-    "carte cadeau", "gift card", "gift cards",
+    "l oktoberfest s invite a votre table",
+    "mois du commerce equitable",
+    "prepare au canada",
+    "prepareau canada",
+    "fait au canada",
+    "produit du canada",
+    "au canada",
+    "c est local",
+    "les bas prix",
+    "bas prix de tous les jours",
+    "liquidation",
+    "economisez avec",
+    "economisez avec irresistible",
+    "en exclusivite chez metro",
+    "en savoir plus",
+    "en savoir plus en magasin",
+    "merci",
+    "carte cadeau",
+    "gift card",
+    "gift cards",
     "huiles a moteur de qualite a prix avantageux au quotidien",
     "quality motor oil great value every day",
     "reduire le sucre defi accepte",
@@ -3994,16 +4050,74 @@ _JUNK_EXACT = {
 # (plus numbers) is junk; it gates the store prior, so a pharmacy
 # flyer's banner lines stop inheriting Personal Care.
 _JUNK_TOKENS = {
-    "special", "banner", "rollback", "cliquez", "ici", "en", "savoir", "plus",
-    "points", "point", "offres", "offre", "activer", "vos", "votre", "merci",
-    "rabais", "economisez", "save", "sale", "liquidation", "clearance",
-    "nouveau", "nouvelle", "taxes", "taxe", "prix", "bas", "chaque", "each",
-    "ch", "ea", "format", "econo", "moi", "scene", "timbres", "triangle",
-    "pts", "message", "important", "circulaire", "numerique", "exclusivite",
-    "magasin", "magasins", "ligne", "aujourd", "hui", "obtiens", "j",
-    "achat", "achats", "carte", "cadeau", "concours", "gagnez",
-    "offert", "offerte", "gratuite", "gratuit", "seulement", "des",
-    "maintenant", "profitez", "profite", "decouvrez", "trouvez",
+    "special",
+    "banner",
+    "rollback",
+    "cliquez",
+    "ici",
+    "en",
+    "savoir",
+    "plus",
+    "points",
+    "point",
+    "offres",
+    "offre",
+    "activer",
+    "vos",
+    "votre",
+    "merci",
+    "rabais",
+    "economisez",
+    "save",
+    "sale",
+    "liquidation",
+    "clearance",
+    "nouveau",
+    "nouvelle",
+    "taxes",
+    "taxe",
+    "prix",
+    "bas",
+    "chaque",
+    "each",
+    "ch",
+    "ea",
+    "format",
+    "econo",
+    "moi",
+    "scene",
+    "timbres",
+    "triangle",
+    "pts",
+    "message",
+    "important",
+    "circulaire",
+    "numerique",
+    "exclusivite",
+    "magasin",
+    "magasins",
+    "ligne",
+    "aujourd",
+    "hui",
+    "obtiens",
+    "j",
+    "achat",
+    "achats",
+    "carte",
+    "cadeau",
+    "concours",
+    "gagnez",
+    "offert",
+    "offerte",
+    "gratuite",
+    "gratuit",
+    "seulement",
+    "des",
+    "maintenant",
+    "profitez",
+    "profite",
+    "decouvrez",
+    "trouvez",
 }
 
 
@@ -4016,12 +4130,7 @@ def _is_junk(norm: str) -> bool:
     # product (round-2: a Pharmaprix how-to line classified as a
     # cereal bar via the bare "barres" phrase). "gift card" joins
     # "carte cadeau": a gift-card promo line is never the product.
-    return bool(
-        "carte cadeau" in norm
-        or "gift card" in norm
-        or "vidange" in norm
-        or "code barres" in norm
-    )
+    return bool("carte cadeau" in norm or "gift card" in norm or "vidange" in norm or "code barres" in norm)
 
 
 def _is_junk_for_prior(norm: str) -> bool:
@@ -4075,42 +4184,36 @@ def classify_item(
     # Guard remaps (2026-10-16 round-2 visual review): in each case a
     # flavour/format/context token outranked the actual product token.
     tokens = norm.split()
-    if (dept, sub) == ("Drinks", "Coffee") and (
-        "the infuse" in norm or "steeped tea" in norm
-    ):
+    if (dept, sub) == ("Drinks", "Coffee") and ("the infuse" in norm or "steeped tea" in norm):
         # K-Cup/Keurig format tokens fired Coffee on a steeped-tea pod.
         return "Drinks", "Tea & Hot Drinks", "guard-remap", rid
-    if (dept, sub) == ("Prepared Meals", "Sandwiches") and (
-        "steak" in tokens or "bifteck" in norm
-    ):
+    if (dept, sub) == ("Prepared Meals", "Sandwiches") and ("steak" in tokens or "bifteck" in norm):
         # "SANDWICH STEAK" is a beef cut, not a prepared sandwich.
         return "Meat", "Beef", "guard-remap", rid
-    if (dept, sub) == ("Fish & Seafood", "Shellfish") and "sauce" in norm and (
-        "huitre" in norm or "oyster" in norm
-    ):
+    if (dept, sub) == ("Fish & Seafood", "Shellfish") and "sauce" in norm and ("huitre" in norm or "oyster" in norm):
         # Oyster sauce is a condiment, not shellfish.
         return "Pantry", "Condiments", "guard-remap", rid
     if (dept, sub) == ("Meat", "Pork & Ham") and "cotes" in norm and "boeuf" in norm:
         # "Côtes levées de bœuf" (incl. the glued "deboeuf"): beef ribs.
         return "Meat", "Beef", "guard-remap", rid
-    if (dept, sub) == ("Pantry", "Dried Beans, Vegetables & Grains") and (
-        "cafe" in norm or "coffee" in norm
-    ):
+    if (dept, sub) == ("Pantry", "Dried Beans, Vegetables & Grains") and ("cafe" in norm or "coffee" in norm):
         # "Café en grains": the beans are coffee beans.
         return "Drinks", "Coffee", "guard-remap", rid
-    if (dept, sub) == ("Pantry", "Condiments") and (
-        "marinated" in norm or "marine" in norm
-    ) and ("crab" in tokens or "crabe" in tokens):
+    if (
+        (dept, sub) == ("Pantry", "Condiments")
+        and ("marinated" in norm or "marine" in norm)
+        and ("crab" in tokens or "crabe" in tokens)
+    ):
         # Soy-marinated crab is a seafood dish, not a sauce.
         return "Fish & Seafood", "Shellfish", "guard-remap", rid
-    if dept == "Household" and "halloween" in norm and any(
-        w in norm for w in ("bars", "barres", "chocolat", "bonbon", "candy", "friandise")
+    if (
+        dept == "Household"
+        and "halloween" in norm
+        and any(w in norm for w in ("bars", "barres", "chocolat", "bonbon", "candy", "friandise"))
     ):
         # Halloween candy bars are candy, not seasonal home goods.
         return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
-    if (dept, sub) == ("Dairy & Eggs", "Non-Dairy Milk Alternatives") and (
-        "yogurt" in tokens or "yogourt" in tokens
-    ):
+    if (dept, sub) == ("Dairy & Eggs", "Non-Dairy Milk Alternatives") and ("yogurt" in tokens or "yogourt" in tokens):
         # A yogurt named yogurt is yogurt, plant-based or not (Silk).
         return "Dairy & Eggs", "Yogurt", "guard-remap", rid
     if (
@@ -4150,19 +4253,13 @@ def classify_item(
         # loses its leading "courges", the word "spaghetti" drags it
         # into pasta (euro-marche review, 2026-10-17).
         return "Fruits & Vegetables", "Fresh Vegetables", "guard-remap", rid
-    if (dept, sub) == ("Fruits & Vegetables", "Fresh Fruits") and (
-        "shots" in norm
-    ):
+    if (dept, sub) == ("Fruits & Vegetables", "Fresh Fruits") and ("shots" in norm):
         # Bottled wellness/juice shots are drinks, not fruit (costco
         # review, 2026-10-17; GT verdict for the signature). Substring
         # on purpose: the OCR name glues it ("SHOTSWEBIEN-ETRE").
         return "Drinks", "Juice", "guard-remap", rid
     if (dept, sub) == ("Snacks, Chips & Candy", "Candy & Chocolate") and (
-        "shake" in tokens
-        and any(
-            w in norm
-            for w in ("tout-en-un", "tout en un", "all-in-one", "all in one")
-        )
+        "shake" in tokens and any(w in norm for w in ("tout-en-un", "tout en un", "all-in-one", "all in one"))
     ):
         # An all-in-one nutritional shake is a pharmacy/supplement
         # product; "fudge" drags it into candy (GT verdict).
@@ -4173,9 +4270,7 @@ def classify_item(
         # same word in a lens-solution name is Health & Beauty and
         # already correct there.
         return "Household", "Home Goods", "guard-remap", rid
-    if dept == "Fruits & Vegetables" and (
-        "lumiere" in norm or "lumieres" in norm or "noma" in norm
-    ):
+    if dept == "Fruits & Vegetables" and ("lumiere" in norm or "lumieres" in norm or "noma" in norm):
         # String lights named by colour ("lumières étoilées orange")
         # are not fruit (GT token-trap verdict).
         return "Household", "Home Goods", "guard-remap", rid
@@ -4186,9 +4281,7 @@ def classify_item(
         # word "jelly" (gelée) drags it into the pantry (brunet review,
         # 2026-10-17; GT token-trap verdicts agree).
         return "Health & Beauty", "Personal Care", "guard-remap", rid
-    if (dept, sub) == ("Pantry", "Honey, Syrups & Spreads") and (
-        "jelly belly" in norm
-    ):
+    if (dept, sub) == ("Pantry", "Honey, Syrups & Spreads") and ("jelly belly" in norm):
         # Jelly Belly is a candy brand, not a preserve (GT verdict).
         return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
     if (dept, sub) == ("Snacks, Chips & Candy", "Candy & Chocolate") and (
@@ -4198,32 +4291,53 @@ def classify_item(
         # leads the name, the candy phrase outranks the OTC rule's
         # "nicotine" (brunet review, 2026-10-17; GT verdicts agree).
         return "Health & Beauty", "Pharmacy", "guard-remap", rid
-    if (dept, sub) == ("Meat", "Kebabs & Marinated Meat") and "legumes" in tokens and not {
-        "boeuf", "poulet", "porc", "agneau", "veau", "dinde",
-        "beef", "chicken", "pork", "lamb", "turkey",
-    } & set(tokens):
+    if (
+        (dept, sub) == ("Meat", "Kebabs & Marinated Meat")
+        and "legumes" in tokens
+        and not {
+            "boeuf",
+            "poulet",
+            "porc",
+            "agneau",
+            "veau",
+            "dinde",
+            "beef",
+            "chicken",
+            "pork",
+            "lamb",
+            "turkey",
+        }
+        & set(tokens)
+    ):
         # Marinated VEGETABLE skewers carry no meat.
         return "Fruits & Vegetables", "Fresh Vegetables", "guard-remap", rid
-    if rid == "specific-protein-bars" and (
-        any(
-            w in norm
-            for w in (
-                "chocolat", "chocolate", "friandise",
-                "confiserie", "nougat", "hershey",
+    if (
+        rid == "specific-protein-bars"
+        and (
+            any(
+                w in norm
+                for w in (
+                    "chocolat",
+                    "chocolate",
+                    "friandise",
+                    "confiserie",
+                    "nougat",
+                    "hershey",
+                )
             )
+            or "mini barres" in norm
+            or "mini bars" in norm
         )
-        or "mini barres" in norm
-        or "mini bars" in norm
-    ) and "protein" not in norm and "proteine" not in norm:
+        and "protein" not in norm
+        and "proteine" not in norm
+    ):
         # The bare "barres"/"bars" phrases (round-2) also catch
         # "BARRES DE CHOCOLAT" and candy assortments; those are candy,
         # not breakfast bars. A bar that NAMES protein is a protein
         # bar even in chocolate flavour (familiprix review, 2026-10-17;
         # the Pure Protein signature's verdict is Cereal & Breakfast).
         return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
-    if rid == "specific-protein-bars" and any(
-        w in norm for w in ("creme glacee", "ice cream", "drumstick", "haagen")
-    ):
+    if rid == "specific-protein-bars" and any(w in norm for w in ("creme glacee", "ice cream", "drumstick", "haagen")):
         # Ice-cream bars ("barres de crème glacée", Drumstick) are
         # frozen desserts, not breakfast bars.
         return "Frozen Food", "Ice Cream & Frozen Desserts", "guard-remap", rid
@@ -4231,13 +4345,20 @@ def classify_item(
         # The ground-meat grade phrases ("hache maigre") are shared:
         # "VEAU HACHÉ MAIGRE" is veal, not beef.
         return "Meat", "Lamb & Veal", "guard-remap", rid
-    if (dept, sub) == ("Fruits & Vegetables", "Fresh Vegetables") and (
-        "citrouille" in norm or "pumpkin" in norm
-    ) and any(
-        w in norm
-        for w in (
-            "chocolat", "chocolate", "guimauve", "marshmallow",
-            "sucon", "lollipop", "freddo",
+    if (
+        (dept, sub) == ("Fruits & Vegetables", "Fresh Vegetables")
+        and ("citrouille" in norm or "pumpkin" in norm)
+        and any(
+            w in norm
+            for w in (
+                "chocolat",
+                "chocolate",
+                "guimauve",
+                "marshmallow",
+                "sucon",
+                "lollipop",
+                "freddo",
+            )
         )
     ):
         # Chocolate / marshmallow pumpkins are Halloween candy, not
@@ -4249,13 +4370,19 @@ def classify_item(
         # product. 'caramel' is deliberately NOT a marker: pumpkin-
         # spice coffee ("café caramel ou citrouille épicée") uses it.
         return "Snacks, Chips & Candy", "Candy & Chocolate", "guard-remap", rid
-    if (dept, sub) == ("Fruits & Vegetables", "Fresh Vegetables") and (
-        "citrouille" in norm or "pumpkin" in norm
-    ) and any(
-        w in norm
-        for w in (
-            "lanterne", "lantern", "gonflable", "inflatable",
-            "decoupe", "carving",
+    if (
+        (dept, sub) == ("Fruits & Vegetables", "Fresh Vegetables")
+        and ("citrouille" in norm or "pumpkin" in norm)
+        and any(
+            w in norm
+            for w in (
+                "lanterne",
+                "lantern",
+                "gonflable",
+                "inflatable",
+                "decoupe",
+                "carving",
+            )
         )
     ):
         # Pumpkin lanterns, inflatables and carving kits are seasonal

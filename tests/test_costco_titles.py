@@ -27,15 +27,8 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def test_costco_names_are_the_printed_titles() -> None:
-    data: list[dict[str, Any]] = json.loads(
-        (FIXTURES / "costco_p3_lines.json").read_text(encoding="utf-8")
-    )
-    lines = [
-        OcrLine(
-            x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]
-        )
-        for d in data
-    ]
+    data: list[dict[str, Any]] = json.loads((FIXTURES / "costco_p3_lines.json").read_text(encoding="utf-8"))
+    lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data]
     image = Image.open(FIXTURES / "costco_p3.jpg").convert("RGB")
     cfg = _cc_ocr_config("costco")
     assert cfg.price_strategy == "prix_line"

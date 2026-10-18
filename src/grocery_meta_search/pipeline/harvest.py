@@ -62,10 +62,7 @@ _LITRE_PAIR_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*l\b", re.IGNORECASE)
 
 
 def _harvest_size_ok(value: str) -> bool:
-    for qty in _LITRE_PAIR_RE.findall(value):
-        if float(qty.replace(",", ".")) > _HARVEST_LITRE_CAP:
-            return False
-    return True
+    return all(float(qty.replace(",", ".")) <= _HARVEST_LITRE_CAP for qty in _LITRE_PAIR_RE.findall(value))
 
 
 def load_harvest_configs() -> dict[str, dict[str, Any]]:
@@ -110,14 +107,8 @@ def _per_unit_denominators(line: str) -> set[str]:
     never the package size, and for a pack item it is not the price
     unit either (round-2 review, giant-tiger: a 12-pack's unit stored
     as 100g, a jam's size blocked by the reference's ambiguity)."""
-    denoms = {
-        _norm_size(f"{m.group(1)}{m.group(2)}")
-        for m in _PER_UNIT_RE.finditer(line)
-    }
-    denoms |= {
-        _norm_size(f"{m.group(1)}{m.group(2)}")
-        for m in _LE_UNIT_RE.finditer(line)
-    }
+    denoms = {_norm_size(f"{m.group(1)}{m.group(2)}") for m in _PER_UNIT_RE.finditer(line)}
+    denoms |= {_norm_size(f"{m.group(1)}{m.group(2)}") for m in _LE_UNIT_RE.finditer(line)}
     return denoms
 
 
@@ -126,9 +117,7 @@ def _per_unit_denominators(line: str) -> set[str]:
 _PRICE_TOKEN_RE = re.compile(r"\d+[.,]\d{2}\b|\d+\s*(?:¢|cents\b)|\$\s*\d+")
 
 
-def harvest_from_lines(
-    lines: list[str], want_size: bool, want_unit: bool
-) -> dict[str, str]:
+def harvest_from_lines(lines: list[str], want_size: bool, want_unit: bool) -> dict[str, str]:
     """Extraction policy over one cell's OCR lines (pure, testable)."""
     out: dict[str, str] = {}
     joined = " | ".join(lines)
@@ -159,9 +148,7 @@ def harvest_from_lines(
             # rivals ("400 g, 60 un." — a 400 g pack of 60 candies):
             # the weight is the package size.
             wv = [v for v in found.values() if _WV_HINT.search(v)]
-            if len(wv) == 1 and all(
-                v == wv[0] or not _WV_HINT.search(v) for v in found.values()
-            ):
+            if len(wv) == 1 and all(v == wv[0] or not _WV_HINT.search(v) for v in found.values()):
                 out["size"] = wv[0]
             # A single range is the offer's stated size ("836-888 g,
             # 4 un."): count rivals are the pack count, and a lone
@@ -180,9 +167,7 @@ def harvest_from_lines(
                     if v == rng or not _WV_HINT.search(v):
                         continue
                     nums = re.findall(r"\d+(?:[.,]\d+)?", v)
-                    if not nums or not lo <= float(
-                        nums[0].replace(",", ".")
-                    ) <= hi:
+                    if not nums or not lo <= float(nums[0].replace(",", ".")) <= hi:
                         consistent = False
                 if consistent:
                     out["size"] = rng
@@ -192,21 +177,15 @@ def harvest_from_lines(
                 # count-only (shrimp "60-70 UNITÉS" beside the pack's
                 # "907 g").
                 pick = extract_package_size(joined)
-                denoms_all = set().union(
-                    *(_per_unit_denominators(line) for line in lines)
-                )
+                denoms_all = set().union(*(_per_unit_denominators(line) for line in lines))
                 if (
                     pick
                     and _WV_HINT.search(pick)
                     and not _PER_UNIT_RE.search(pick)
                     and _norm_size(pick) not in denoms_all
                 ):
-                    rivals = [
-                        v for k, v in found.items() if k != _norm_size(pick)
-                    ]
-                    if rivals and all(
-                        not _WV_HINT.search(v) for v in rivals
-                    ):
+                    rivals = [v for k, v in found.items() if k != _norm_size(pick)]
+                    if rivals and all(not _WV_HINT.search(v) for v in rivals):
                         out["size"] = pick
     if want_unit:
         # A per-unit denominator is a price *reference* when the cell
@@ -214,17 +193,11 @@ def harvest_from_lines(
         # with no size anywhere it is the offer's own basis (weighed
         # goods priced "2,99/100 g") and stays a valid unit.
         pick_any = extract_package_size(joined)
-        denoms_all = (
-            set().union(*(_per_unit_denominators(line) for line in lines))
-            if lines
-            else set()
-        )
+        denoms_all = set().union(*(_per_unit_denominators(line) for line in lines)) if lines else set()
         # A "size" pick that is itself a rate denominator ("le 100 g")
         # is not package evidence — the cell is a weighed-good offer.
         size_evidence = bool(found) or (
-            pick_any is not None
-            and not _PER_UNIT_RE.search(pick_any)
-            and _norm_size(pick_any) not in denoms_all
+            pick_any is not None and not _PER_UNIT_RE.search(pick_any) and _norm_size(pick_any) not in denoms_all
         )
         units: set[str] = set()
         unmarked: set[str] = set()
@@ -361,9 +334,7 @@ def _refresh_row(
             unit_touched = field == "unit"
         if unit_touched:
             # Keep the split unit pair in sync with price_unit.
-            quantity, measurement = split_unit(
-                got.get("unit"), multibuy_count(row["conditions"])
-            )
+            quantity, measurement = split_unit(got.get("unit"), multibuy_count(row["conditions"]))
             sets.append("unit_quantity = ?")
             params.append(quantity)
             sets.append("unit_measurement = ?")
@@ -401,10 +372,16 @@ def harvest_store(
     """
     cfg = load_harvest_configs().get(slug)
     stats = {
-        "items": 0, "filled_size": 0, "filled_unit": 0,
-        "ambiguous": 0, "no_plan": 0, "no_image": 0,
-        "cleared_size": 0, "cleared_unit": 0,
-        "changed_size": 0, "changed_unit": 0,
+        "items": 0,
+        "filled_size": 0,
+        "filled_unit": 0,
+        "ambiguous": 0,
+        "no_plan": 0,
+        "no_image": 0,
+        "cleared_size": 0,
+        "cleared_unit": 0,
+        "changed_size": 0,
+        "changed_unit": 0,
     }
     if cfg is None:
         return stats
@@ -535,17 +512,13 @@ def harvest_store(
         if "unit" in got:
             sets.append("price_unit = ?")
             params.append(got["unit"])
-            quantity, measurement = split_unit(
-                got["unit"], multibuy_count(row["conditions"])
-            )
+            quantity, measurement = split_unit(got["unit"], multibuy_count(row["conditions"]))
             sets.append("unit_quantity = ?")
             params.append(quantity)
             sets.append("unit_measurement = ?")
             params.append(measurement)
         params.append(row["id"])
-        conn.execute(
-            f"UPDATE flyer_items SET {', '.join(sets)} WHERE id = ?", params
-        )
+        conn.execute(f"UPDATE flyer_items SET {', '.join(sets)} WHERE id = ?", params)
     if not dry_run:
         conn.commit()
     return stats
@@ -561,8 +534,7 @@ def main() -> None:
     parser.add_argument(
         "--refresh-harvested",
         action="store_true",
-        help="re-extract items already carrying harvest provenance, "
-        "retracting or updating the fields it set",
+        help="re-extract items already carrying harvest provenance, retracting or updating the fields it set",
     )
     args = parser.parse_args()
     conn = sqlite3.connect(args.db)
@@ -586,8 +558,7 @@ def main() -> None:
             f"{slug}: {stats['items']} candidates, "
             f"+{stats['filled_size']} size, +{stats['filled_unit']} unit{extra}, "
             f"{stats['ambiguous']} ambiguous/none, {stats['no_plan']} no-plan, "
-            f"{stats['no_image']} no-image"
-            + ("  [dry run]" if args.dry_run else "")
+            f"{stats['no_image']} no-image" + ("  [dry run]" if args.dry_run else "")
         )
     conn.close()
 

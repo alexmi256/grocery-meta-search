@@ -263,8 +263,7 @@ def item_from_product(
         unit = None
         conditions["multibuy"] = {"count": count, "total": total}
         alt = product.get("alternatePrice")
-        if price_text is not None and isinstance(alt, str) and alt.strip() \
-                and _SINGLE_RE.search(alt):
+        if price_text is not None and isinstance(alt, str) and alt.strip() and _SINGLE_RE.search(alt):
             price_text = f"{price_text} {alt.strip()}"
     if product.get("alternatePrice"):
         conditions["alternate_price"] = product["alternatePrice"]
@@ -337,8 +336,7 @@ class MetroDigitalClient:
                 return resp.json()
             except requests.RequestException as exc:
                 last_exc = exc
-                if isinstance(exc, requests.HTTPError) and exc.response is not None \
-                        and exc.response.status_code < 500:
+                if isinstance(exc, requests.HTTPError) and exc.response is not None and exc.response.status_code < 500:
                     raise
         assert last_exc is not None
         raise last_exc
@@ -360,9 +358,7 @@ class MetroDigitalClient:
             api_version=str(data.get("api_version") or "3.0"),
         )
 
-    def fetch_store_editions(
-        self, cfg: MetroDigitalConfig, today: date | None = None
-    ) -> list[FlyerEdition]:
+    def fetch_store_editions(self, cfg: MetroDigitalConfig, today: date | None = None) -> list[FlyerEdition]:
         app = self._app_config(cfg)
         headers = {
             **_UA,
@@ -392,9 +388,7 @@ class MetroDigitalClient:
                     headers,
                 )
             except requests.RequestException as exc:
-                raise MetroDigitalError(
-                    f"pages fetch failed for {title}: {exc}"
-                ) from exc
+                raise MetroDigitalError(f"pages fetch failed for {title}: {exc}") from exc
             if not isinstance(pages, list):
                 raise MetroDigitalError(f"pages payload for {title} is not a list")
             items = [

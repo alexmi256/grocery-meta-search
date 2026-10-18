@@ -74,38 +74,50 @@ def test_unit_normalization() -> None:
 
 def test_multibuy_single_from_alternate() -> None:
     item = item_from_product(
-        {"productFr": "pâtes Barilla", "salePrice": "5.0",
-         "priceQuantity": "3", "alternatePrice": "ou 1,67 l’unité"},
-        1, None, None)
+        {"productFr": "pâtes Barilla", "salePrice": "5.0", "priceQuantity": "3", "alternatePrice": "ou 1,67 l’unité"},
+        1,
+        None,
+        None,
+    )
     assert item.price_value == 1.67
     assert item.conditions["multibuy"] == {"count": 3, "total": 5.0}
 
 
 def test_multibuy_single_from_promo_unit_text() -> None:
     item = item_from_product(
-        {"productFr": "grosse mangue rouge", "salePrice": "5.0",
-         "priceQuantity": "2", "promoUnitFr": "ou 2,50 l'unité"},
-        1, None, None)
+        {
+            "productFr": "grosse mangue rouge",
+            "salePrice": "5.0",
+            "priceQuantity": "2",
+            "promoUnitFr": "ou 2,50 l'unité",
+        },
+        1,
+        None,
+        None,
+    )
     assert item.price_value == 2.50
     assert item.price_unit is None
     assert item.conditions["multibuy"] == {"count": 2, "total": 5.0}
 
 
 def test_multibuy_no_single_falls_back_to_total_over_count() -> None:
-    item = item_from_product(
-        {"productFr": "bières du monde", "salePrice": "28.0",
-         "priceQuantity": "2"},
-        1, None, None)
+    item = item_from_product({"productFr": "bières du monde", "salePrice": "28.0", "priceQuantity": "2"}, 1, None, None)
     assert item.price_value == 14.0
     assert item.conditions["multibuy"] == {"count": 2, "total": 28.0}
 
 
 def test_multibuy_case_price_phrase() -> None:
     item = item_from_product(
-        {"productFr": "bière Corona", "salePrice": "77.48",
-         "priceQuantity": "2",
-         "alternatePrice": "ou à partir de 43,29 +TX la caisse"},
-        1, None, None)
+        {
+            "productFr": "bière Corona",
+            "salePrice": "77.48",
+            "priceQuantity": "2",
+            "alternatePrice": "ou à partir de 43,29 +TX la caisse",
+        },
+        1,
+        None,
+        None,
+    )
     assert item.price_value == 43.29
     assert item.conditions["multibuy"] == {"count": 2, "total": 77.48}
 

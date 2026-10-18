@@ -22,12 +22,10 @@ def _db() -> sqlite3.Connection:
     for item_id in range(1, 41):  # 30 classified + 10 unclassified, current
         conn.execute("INSERT INTO flyer_items VALUES (?, 1, 's')", (item_id,))
         dept = "Pantry" if item_id <= 30 else "Unclassified"
-        conn.execute("INSERT INTO item_classifications VALUES (?, ?)",
-                     (item_id, dept))
+        conn.execute("INSERT INTO item_classifications VALUES (?, ?)", (item_id, dept))
     for item_id in range(41, 46):  # expired-flyer items, never sampled
         conn.execute("INSERT INTO flyer_items VALUES (?, 2, 's')", (item_id,))
-        conn.execute("INSERT INTO item_classifications VALUES (?, 'Pantry')",
-                     (item_id,))
+        conn.execute("INSERT INTO item_classifications VALUES (?, 'Pantry')", (item_id,))
     return conn
 
 

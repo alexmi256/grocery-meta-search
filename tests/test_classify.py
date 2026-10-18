@@ -211,61 +211,85 @@ def test_round2_traps() -> None:
     the product token, and the vocabulary the sample proved missing."""
     c = classify_item
     # Halloween pumpkin decorations and oyster tools are merchandise.
-    assert c(
-        "Citrouille lanterne avec œil d'araignée animée",
-        None,
-        None,
-        "canadian-tire",
-    )[0] == "Household"
+    assert (
+        c(
+            "Citrouille lanterne avec œil d'araignée animée",
+            None,
+            None,
+            "canadian-tire",
+        )[0]
+        == "Household"
+    )
     assert c("PLANCHE À HUÎTRES", None, None, "odessa-poissonnier")[0] == "Household"
     # Chocolate pumpkins are candy.
-    assert c(
-        "FREDDO, Citrouilles, Chocolat au lait avec centre de caramel, 390 g",
-        None,
-        "FREDDO",
-        "familiprix",
-    )[1] == "Candy & Chocolate"
+    assert (
+        c(
+            "FREDDO, Citrouilles, Chocolat au lait avec centre de caramel, 390 g",
+            None,
+            "FREDDO",
+            "familiprix",
+        )[1]
+        == "Candy & Chocolate"
+    )
     # Contact-lens solution is pharmacy, not dried beans.
-    assert c(
-        "Bausch + Lomb Biotrue solution pour lentilles cornéennes 300ml",
-        None,
-        None,
-        "familiprix",
-    )[1] == "Pharmacy"
+    assert (
+        c(
+            "Bausch + Lomb Biotrue solution pour lentilles cornéennes 300ml",
+            None,
+            None,
+            "familiprix",
+        )[1]
+        == "Pharmacy"
+    )
     # Laundry water is cleaning, not drinking water.
-    assert c(
-        "SOJA & CO. Eaux de linge choisies",
-        None,
-        None,
-        "jean-coutu",
-    )[1] == "Cleaning & Laundry"
+    assert (
+        c(
+            "SOJA & CO. Eaux de linge choisies",
+            None,
+            None,
+            "jean-coutu",
+        )[1]
+        == "Cleaning & Laundry"
+    )
     # A steeped-tea K-Cup is tea despite the coffee-pod format tokens.
-    assert c(
-        "Dosettes K-Cup® de thé infusé Tim Hortons, 30 un Keurig",
-        None,
-        "Keurig",
-        "canadian-tire",
-    )[1] == "Tea & Hot Drinks"
+    assert (
+        c(
+            "Dosettes K-Cup® de thé infusé Tim Hortons, 30 un Keurig",
+            None,
+            "Keurig",
+            "canadian-tire",
+        )[1]
+        == "Tea & Hot Drinks"
+    )
     # Juicing carrots (flyer typo included) are produce.
-    assert c(
-        "CARROTTES A JUS ECONOMIQUES BIO",
-        None,
-        None,
-        "coop-alentour",
-    )[1] == "Fresh Vegetables"
-    assert c(
-        "CAROTTES A JUS ECONOMIQUES BIO".replace("CAROTTES", "CARROTES"),
-        None,
-        None,
-        "coop-alentour",
-    )[1] == "Fresh Vegetables"
+    assert (
+        c(
+            "CARROTTES A JUS ECONOMIQUES BIO",
+            None,
+            None,
+            "coop-alentour",
+        )[1]
+        == "Fresh Vegetables"
+    )
+    assert (
+        c(
+            "CAROTTES A JUS ECONOMIQUES BIO".replace("CAROTTES", "CARROTES"),
+            None,
+            None,
+            "coop-alentour",
+        )[1]
+        == "Fresh Vegetables"
+    )
     # "Sandwich steak" is a beef cut; oyster sauce is a condiment.
-    assert c(
-        "BIFTECK ATTENDRI OU SANDWICH TENDERIZED OR SANDWICH STEAK",
-        None,
-        None,
-        "marche-bonichoix",
-    )[1] == "Beef"
+    assert (
+        c(
+            "BIFTECK ATTENDRI OU SANDWICH TENDERIZED OR SANDWICH STEAK",
+            None,
+            None,
+            "marche-bonichoix",
+        )[1]
+        == "Beef"
+    )
     assert c("Sauce aromatisee aux huitres panda", None, None, "marche-c-t")[1] == "Condiments"
     # Beef ribs (glued "deboeuf") are beef; coffee beans are coffee.
     assert c("Cotes levees deboeuf Decongelé", None, None, "marche-c-t")[1] == "Beef"
@@ -279,52 +303,73 @@ def test_round2_traps() -> None:
     # Soy-marinated crab is seafood.
     assert c("KOBON Soy Sauce Marinated Crab", None, None, "marche-korea")[1] == "Shellfish"
     # A yogurt named yogurt is yogurt, plant-based or not.
-    assert c(
-        "SILK YOGOURTABASEDEPLANTES PLANT BASED YOGURT",
-        None,
-        None,
-        "marches-tau",
-    )[1] == "Yogurt"
+    assert (
+        c(
+            "SILK YOGOURTABASEDEPLANTES PLANT BASED YOGURT",
+            None,
+            None,
+            "marches-tau",
+        )[1]
+        == "Yogurt"
+    )
     # Halloween candy bars are candy, not home goods.
-    assert c(
-        "MINTBARS D'HALLOWEEN SAVEURS MIXTES | UNREAL | X26",
-        None,
-        None,
-        "shop-sante",
-    )[1] == "Candy & Chocolate"
+    assert (
+        c(
+            "MINTBARS D'HALLOWEEN SAVEURS MIXTES | UNREAL | X26",
+            None,
+            None,
+            "shop-sante",
+        )[1]
+        == "Candy & Chocolate"
+    )
     # Takeout coffee boxes are paper goods.
-    assert c(
-        "BOÎTES CAFÉ EXPRESS EN KRAFT PE 8-32 OZ., 50 UN.",
-        None,
-        None,
-        "wholesale-club",
-    )[1] == "Paper & Storage"
+    assert (
+        c(
+            "BOÎTES CAFÉ EXPRESS EN KRAFT PE 8-32 OZ., 50 UN.",
+            None,
+            None,
+            "wholesale-club",
+        )[1]
+        == "Paper & Storage"
+    )
     # Vocabulary the round-2 sample proved missing.
     assert c("PÂTE PHYLLO LILAS", None, "LILAS", "adonis")[1] == "Baking Essentials"
-    assert c(
-        "PÂTE FILO SURGELÉE ELZYMI",
-        None,
-        "ELZYMI",
-        "adonis",
-    )[1] == "Frozen Bakery & Breakfast"
-    assert c(
-        "VOL-AU-VENT ST-HUBERT PASTRY SHELLS",
-        None,
-        None,
-        "marche-bonichoix",
-    )[1] == "Frozen Appetizers & Snacks"
-    assert c(
-        "RAVIOLI OU TORTELLINI VILLA RAVIOLI",
-        None,
-        None,
-        "marche-bonichoix",
-    )[1] == "Fresh Pasta & Sauce"
-    assert c(
-        "PÂTÉ ST-HUBERT | ST-HUBERT POT PIE",
-        None,
-        "ST-HUBERT",
-        "marche-richelieu",
-    )[1] == "Quiches & Pies"
+    assert (
+        c(
+            "PÂTE FILO SURGELÉE ELZYMI",
+            None,
+            "ELZYMI",
+            "adonis",
+        )[1]
+        == "Frozen Bakery & Breakfast"
+    )
+    assert (
+        c(
+            "VOL-AU-VENT ST-HUBERT PASTRY SHELLS",
+            None,
+            None,
+            "marche-bonichoix",
+        )[1]
+        == "Frozen Appetizers & Snacks"
+    )
+    assert (
+        c(
+            "RAVIOLI OU TORTELLINI VILLA RAVIOLI",
+            None,
+            None,
+            "marche-bonichoix",
+        )[1]
+        == "Fresh Pasta & Sauce"
+    )
+    assert (
+        c(
+            "PÂTÉ ST-HUBERT | ST-HUBERT POT PIE",
+            None,
+            "ST-HUBERT",
+            "marche-richelieu",
+        )[1]
+        == "Quiches & Pies"
+    )
     assert c("PÂTÉ, TERRINE OU MOUSSE, 125/150 G", None, None, "maxi")[1] == "Deli Meat"
     assert c("HACHE EXTRA MAIGRE", None, None, "marche-bkr")[1] == "Beef"
     assert c("DE BCEUF HACHE MI-MAIGRE", None, None, "marche-bonichoix")[1] == "Beef"
@@ -335,65 +380,92 @@ def test_round2_traps() -> None:
     assert c("SWEETCORN", None, None, "marche-sultan")[1] == "Fresh Vegetables"
     assert c("DEMLIK 40POSET", None, None, "marche-sultan")[1] == "Tea & Hot Drinks"
     assert c("Pâte de soja assaisonnée 500g", None, None, "marche-korea")[1] == "East Asian Foods"
-    assert c(
-        "BLOOM BOISSON ENERGETIQUE NATURELLE",
-        None,
-        None,
-        "marches-tau",
-    )[1] == "Sports & Energy"
-    assert c(
-        "LIFE SMART NATURALIA ALMOND BEVERAGE",
-        None,
-        None,
-        "metro",
-    )[1] == "Non-Dairy Milk Alternatives"
-    assert c(
-        "CHAUSSONS CHEF DUMAS | CHEF DUMAS TURNOVERS",
-        None,
-        None,
-        "metro",
-    )[1] == "Cookies, Muffins & Desserts"
-    assert c(
-        "DÎNER SELECTION | SELECTION FROZEN MEAL",
-        None,
-        None,
-        "metro",
-    )[1] == "Frozen Meals, Entrees & Sides"
-    assert c(
-        "BARRES GO PURE OU CHOCOMAX LECLERC",
-        None,
-        "Leclerc",
-        "maxi",
-    )[1] == "Cereal & Breakfast"
+    assert (
+        c(
+            "BLOOM BOISSON ENERGETIQUE NATURELLE",
+            None,
+            None,
+            "marches-tau",
+        )[1]
+        == "Sports & Energy"
+    )
+    assert (
+        c(
+            "LIFE SMART NATURALIA ALMOND BEVERAGE",
+            None,
+            None,
+            "metro",
+        )[1]
+        == "Non-Dairy Milk Alternatives"
+    )
+    assert (
+        c(
+            "CHAUSSONS CHEF DUMAS | CHEF DUMAS TURNOVERS",
+            None,
+            None,
+            "metro",
+        )[1]
+        == "Cookies, Muffins & Desserts"
+    )
+    assert (
+        c(
+            "DÎNER SELECTION | SELECTION FROZEN MEAL",
+            None,
+            None,
+            "metro",
+        )[1]
+        == "Frozen Meals, Entrees & Sides"
+    )
+    assert (
+        c(
+            "BARRES GO PURE OU CHOCOMAX LECLERC",
+            None,
+            "Leclerc",
+            "maxi",
+        )[1]
+        == "Cereal & Breakfast"
+    )
     assert c("TreStelle PARMIGIANO REGGIANO", None, None, "mayrand")[1] == "Cheese"
     assert c("BOISSON FRUITÉ | FRUITÉ DRINK", None, None, "super-c")[1] == "Juice"
     assert c("SAUCE FRANK'S REDHOT", None, None, "super-c")[1] == "Condiments"
-    assert c(
-        "BOISSON PÉTILLANTE FEVER-TREE | SPARKLING DRINK",
-        None,
-        None,
-        "metro-plus",
-    )[1] == "Soft Drinks"
-    assert c(
-        "CHAPELURE SELECTION | SELECTION BREADCRUMB",
-        None,
-        None,
-        "metro",
-    )[1] == "Baking Essentials"
+    assert (
+        c(
+            "BOISSON PÉTILLANTE FEVER-TREE | SPARKLING DRINK",
+            None,
+            None,
+            "metro-plus",
+        )[1]
+        == "Soft Drinks"
+    )
+    assert (
+        c(
+            "CHAPELURE SELECTION | SELECTION BREADCRUMB",
+            None,
+            None,
+            "metro",
+        )[1]
+        == "Baking Essentials"
+    )
     assert c("biscuit Lu pim's ou Pepito", None, None, "adonis")[1] == "Crackers & Cookies"
-    assert c(
-        "Cham Biscuit au Gingembre 250g",
-        None,
-        None,
-        "marche-korea",
-    )[1] == "Crackers & Cookies"
+    assert (
+        c(
+            "Cham Biscuit au Gingembre 250g",
+            None,
+            None,
+            "marche-korea",
+        )[1]
+        == "Crackers & Cookies"
+    )
     assert c("FRESHTODAY Real Carrot Bread", None, None, "marche-korea")[1] == "Bread"
-    assert c(
-        "Orville Redenbacher 492 g",
-        "Maïs à éclaté BoomChickaPop de Angie's 136 g",
-        "ORVILLE REDENBACHER",
-        "walmart",
-    )[1] == "Chips & Snacks"
+    assert (
+        c(
+            "Orville Redenbacher 492 g",
+            "Maïs à éclaté BoomChickaPop de Angie's 136 g",
+            "ORVILLE REDENBACHER",
+            "walmart",
+        )[1]
+        == "Chips & Snacks"
+    )
     # The sugar-reduction campaign banner is junk, not baking.
     dept, sub, method, _ = c("Réduire le sucre: défi accepté!", None, None, "avril")
     assert (dept, method) == ("Unclassified", "junk")
@@ -406,18 +478,24 @@ def test_round2_barres_collateral() -> None:
     assert c("VEAU HACHÉ MAIGRE", None, None, "iga")[1] == "Lamb & Veal"
     assert c("BARRES DE YOGOURT PC MENU BLEU, 6x80 mL", None, None, "maxi")[1] == "Yogurt"
     assert c("BARRES DE FROMAGE SAPUTO, 1 KG", None, None, "maxi")[1] == "Cheese"
-    assert c(
-        "Chapman's barres de crème glacée",
-        None,
-        None,
-        "walmart",
-    )[1] == "Ice Cream & Frozen Desserts"
-    assert c(
-        "BARRES DE CHOCOLAT NESTLÉ, 24 UN.",
-        None,
-        None,
-        "wholesale-club",
-    )[1] == "Candy & Chocolate"
+    assert (
+        c(
+            "Chapman's barres de crème glacée",
+            None,
+            None,
+            "walmart",
+        )[1]
+        == "Ice Cream & Frozen Desserts"
+    )
+    assert (
+        c(
+            "BARRES DE CHOCOLAT NESTLÉ, 24 UN.",
+            None,
+            None,
+            "wholesale-club",
+        )[1]
+        == "Candy & Chocolate"
+    )
     dept, sub, method, _ = c(
         "Étape 1: Enregistrer ce code-barres pour le scanner",
         None,
@@ -435,13 +513,11 @@ def test_pumpkin_candy_and_decorations_are_not_produce() -> None:
     coffee and pumpkin pie keep their existing shelves."""
     c = classify_item
     for name, brand, store in (
-        ("FREDDO, Citrouilles, Chocolat au lait avec centre de caramel, 390 g",
-         "FREDDO", "familiprix"),
+        ("FREDDO, Citrouilles, Chocolat au lait avec centre de caramel, 390 g", "FREDDO", "familiprix"),
         ("FREDDO Citrouilles en chocolat au caramel", "FREDDO", "jean-coutu"),
         ("CITROUILLES CHOCOLATÉES SELECTION", None, "metro"),
         ("BRANDS UNLIMITED, Citrouilles en guimauve, 50 unités", "BRANDS UNLIMITED", "familiprix"),
-        ("CARNABY SWEET Suçon en chocolat belge en forme de fantôme ou citrouille",
-         None, "pharmaprix"),
+        ("CARNABY SWEET Suçon en chocolat belge en forme de fantôme ou citrouille", None, "pharmaprix"),
         ("CONFISERIES REGAL Citrouilles en chocolat", None, "uniprix"),
         ("FREDDO Citrouilles", "FREDDO", "familiprix"),
     ):
@@ -463,7 +539,8 @@ def test_pumpkin_candy_and_decorations_are_not_produce() -> None:
         dept, sub, _, _ = c(name, None, None, store)
         assert (dept, sub) == ("Household", "Home Goods"), name
     # Not swept up: real pumpkins, pumpkin pie, pumpkin-spice coffee.
-    assert c("Grosse citrouille", None, None, "walmart")[:2] == (
-        "Fruits & Vegetables", "Fresh Vegetables")
-    assert c("Capsules K-Cup de café Starbucks caramel ou citrouille épicée",
-             None, "Starbucks", "walmart")[:2] == ("Drinks", "Coffee")
+    assert c("Grosse citrouille", None, None, "walmart")[:2] == ("Fruits & Vegetables", "Fresh Vegetables")
+    assert c("Capsules K-Cup de café Starbucks caramel ou citrouille épicée", None, "Starbucks", "walmart")[:2] == (
+        "Drinks",
+        "Coffee",
+    )

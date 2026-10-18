@@ -27,6 +27,7 @@ database without fetching:
 
     python -m grocery_meta_search.pipeline.guard --db data/grocery.db
 """
+
 from __future__ import annotations
 
 import argparse
@@ -68,9 +69,7 @@ def cycle_totals(conn: sqlite3.Connection, store_slug: str) -> list[tuple[str, s
     return [(str(r["vf"]), str(r["vt"]), int(r["n"])) for r in rows]
 
 
-def evaluate_store(
-    conn: sqlite3.Connection, store_slug: str, today: str | None = None
-) -> list[ThinEditionWarning]:
+def evaluate_store(conn: sqlite3.Connection, store_slug: str, today: str | None = None) -> list[ThinEditionWarning]:
     """Flag the store's still-valid cycles whose totals collapsed."""
     today = today or date.today().isoformat()
     cycles = cycle_totals(conn, store_slug)
@@ -105,9 +104,7 @@ def warning_text(w: ThinEditionWarning) -> str:
     )
 
 
-def record_warnings(
-    conn: sqlite3.Connection, warnings: list[ThinEditionWarning], today: str | None = None
-) -> None:
+def record_warnings(conn: sqlite3.Connection, warnings: list[ThinEditionWarning], today: str | None = None) -> None:
     """Stamp each flyer of a thin cycle's raw JSON with the guard record."""
     today = today or date.today().isoformat()
     for w in warnings:
@@ -136,15 +133,11 @@ def record_warnings(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Audit stored flyer cycles for thin (partially captured) editions."
-    )
+    parser = argparse.ArgumentParser(description="Audit stored flyer cycles for thin (partially captured) editions.")
     parser.add_argument("--db", required=True, type=Path)
     parser.add_argument("--slugs", default=None, help="comma-separated; default: all stores")
     parser.add_argument("--today", default=None, help="ISO date override (default: today)")
-    parser.add_argument(
-        "--stamp", action="store_true", help="also record flags in flyer raw JSON"
-    )
+    parser.add_argument("--stamp", action="store_true", help="also record flags in flyer raw JSON")
     args = parser.parse_args()
 
     from ..db import connect, init_schema
@@ -155,8 +148,7 @@ def main() -> None:
         slugs = [s.strip() for s in args.slugs.split(",") if s.strip()]
     else:
         slugs = [
-            str(r["store_slug"])
-            for r in conn.execute("SELECT DISTINCT store_slug FROM flyers ORDER BY store_slug")
+            str(r["store_slug"]) for r in conn.execute("SELECT DISTINCT store_slug FROM flyers ORDER BY store_slug")
         ]
     flagged = 0
     for slug in slugs:

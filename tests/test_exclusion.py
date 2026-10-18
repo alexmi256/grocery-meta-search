@@ -5,9 +5,7 @@ from grocery_meta_search.classify.exclusion import exclusion_reason
 
 def test_merch_phrase_fires() -> None:
     assert exclusion_reason("Pneu d'hiver Pirelli", None, None) == "merch:pneu"
-    assert exclusion_reason(None, "Paper Towels 6 rolls", None) == (
-        "merch:paper towels"
-    )
+    assert exclusion_reason(None, "Paper Towels 6 rolls", None) == ("merch:paper towels")
 
 
 def test_furniture_fires() -> None:
@@ -17,19 +15,14 @@ def test_furniture_fires() -> None:
 
 
 def test_supplement_form_fires_but_coffee_capsules_protected() -> None:
-    assert (
-        exclusion_reason("Vitamine D3 90 capsules", None, None) == "supplement-form"
-    )
+    assert exclusion_reason("Vitamine D3 90 capsules", None, None) == "supplement-form"
     # Coffee capsules are a grocery product: never excluded by dosage form.
     assert exclusion_reason("Capsules de café espresso", None, None) is None
     assert exclusion_reason("Nespresso capsules variées", None, None) is None
 
 
 def test_merged_garble_fires() -> None:
-    assert (
-        exclusion_reason("Essuietoutnettoyantmultiusage", None, None)
-        == "garble:merch-merged"
-    )
+    assert exclusion_reason("Essuietoutnettoyantmultiusage", None, None) == "garble:merch-merged"
 
 
 def test_empty_name() -> None:
@@ -49,17 +42,13 @@ def test_footer_boilerplate_excluded() -> None:
     # Bonanza review (2026-10-17): the flyer's legal footer formed an item.
     assert (
         exclusion_reason(
-            "LES PRODUITS SONT EN VENTE JUSQU'À EPUISEMENT DES STOCKS. "
-            "PAS DE VENTE AUX MARCHANDS.",
+            "LES PRODUITS SONT EN VENTE JUSQU'À EPUISEMENT DES STOCKS. PAS DE VENTE AUX MARCHANDS.",
             None,
             None,
         )
         == "furniture:footer"
     )
-    assert (
-        exclusion_reason("Valid while supplies last", None, None)
-        == "furniture:footer"
-    )
+    assert exclusion_reason("Valid while supplies last", None, None) == "furniture:footer"
 
 
 def test_payment_mark_furniture() -> None:

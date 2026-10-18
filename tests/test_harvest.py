@@ -28,9 +28,7 @@ def test_same_size_twice_is_one_distinct_value() -> None:
 
 
 def test_unit_capture_and_conflicts() -> None:
-    assert harvest_from_lines(["2,95 $/KG", "BOEUF HACHÉ"], False, True) == {
-        "unit": "kg"
-    }
+    assert harvest_from_lines(["2,95 $/KG", "BOEUF HACHÉ"], False, True) == {"unit": "kg"}
     assert harvest_from_lines(["CH/EA", "POMMES"], False, True) == {"unit": "each"}
     # two different units printed: ambiguous, no fill
     assert harvest_from_lines(["$/lb", "ou $/kg"], False, True) == {}
@@ -82,20 +80,23 @@ def test_harvest_per_unit_denominator() -> None:
     # Jam: real size range + a per-unit reference range.
     got = harvest_from_lines(
         ["Confiture Triple Fruits", "375-500 ml", "0,79-1,06/100 ml"],
-        want_size=True, want_unit=True,
+        want_size=True,
+        want_unit=True,
     )
     assert got.get("size") == "375-500 ml"
     # 12-pack: the '0,50/100 g' reference is not the pack's unit.
     got = harvest_from_lines(
         ["Barres 12 x 100 g", "5,96", "0,50/100 g"],
-        want_size=True, want_unit=True,
+        want_size=True,
+        want_unit=True,
     )
     assert "unit" not in got
     # Weighed goods: no package size anywhere, so the denominator
     # IS the price basis and the unit survives.
     got = harvest_from_lines(
         ["Poitrine de dinde", "2,99/100 g"],
-        want_size=True, want_unit=True,
+        want_size=True,
+        want_unit=True,
     )
     assert got.get("unit") == "100g"
     assert "size" not in got
@@ -107,10 +108,20 @@ def test_harvest_dual_rate_prefers_headline_100g() -> None:
     # denominator must not become the package size, and the unit is
     # the headline's 100g, not the equivalent's lb.
     lines = [
-        "EntreMont", "BRIE", "FRANCE", "DOUBLECREME",
-        "fromage brie double", "30%DERABAIS", "creme EntreMont",
-        "3", "49", "EntreMont double cream brie", "cheese",
-        "15,83/lb", "le100g", "reg.4,99le100g-22,64/b",
+        "EntreMont",
+        "BRIE",
+        "FRANCE",
+        "DOUBLECREME",
+        "fromage brie double",
+        "30%DERABAIS",
+        "creme EntreMont",
+        "3",
+        "49",
+        "EntreMont double cream brie",
+        "cheese",
+        "15,83/lb",
+        "le100g",
+        "reg.4,99le100g-22,64/b",
     ]
     assert harvest_from_lines(lines, True, True) == {"unit": "100g"}
 
@@ -118,8 +129,14 @@ def test_harvest_dual_rate_prefers_headline_100g() -> None:
 def test_harvest_slash_misread_kg() -> None:
     # Adonis tzatziki cell (item 7352): OCR reads "/KG" as "IKG".
     lines = [
-        "ALACHATDE 8006OUPIUS", "1390", "TZATZIKI STYLe", "IKG",
-        "GREC DELPHI", "REG.1690", "DELPHITZATZIKI", "6REEKSTYLE",
+        "ALACHATDE 8006OUPIUS",
+        "1390",
+        "TZATZIKI STYLe",
+        "IKG",
+        "GREC DELPHI",
+        "REG.1690",
+        "DELPHITZATZIKI",
+        "6REEKSTYLE",
     ]
     assert harvest_from_lines(lines, True, True) == {"unit": "kg"}
 

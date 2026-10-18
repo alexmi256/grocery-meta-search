@@ -29,15 +29,8 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def _palumbo_items() -> list[Any]:
-    data: list[dict[str, Any]] = json.loads(
-        (FIXTURES / "palumbo_p1_lines.json").read_text(encoding="utf-8")
-    )
-    lines = [
-        OcrLine(
-            x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]
-        )
-        for d in data
-    ]
+    data: list[dict[str, Any]] = json.loads((FIXTURES / "palumbo_p1_lines.json").read_text(encoding="utf-8"))
+    lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data]
     image = Image.open(FIXTURES / "palumbo_p1.jpg").convert("RGB")
     cfg = _cc_ocr_config("intermarche-palumbo")
     assert cfg.name_green_gate and cfg.name_lines_verify

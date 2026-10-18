@@ -39,15 +39,11 @@ from ..ocr.engine import detect_lines
 _CONFIG_PATH = Path(__file__).resolve().parent.parent / "sources" / "multibuy_config.json"
 _CACHE_DIR = Path("work/multibuy-cache")
 
-_BADGE_RE = re.compile(
-    r"(\d{1,2})\s*(?:POUR|FOR)\s*(\d{1,3}(?:[., ]\d{2,3})?)\s*\$?"
-)
+_BADGE_RE = re.compile(r"(\d{1,2})\s*(?:POUR|FOR)\s*(\d{1,3}(?:[., ]\d{2,3})?)\s*\$?")
 # Slash form ('2/4$'), the Metro/Loblaws house style; the trailing
 # $ is required so size fractions ('1/2') never match.
 _BADGE_SLASH_RE = re.compile(r"(\d{1,2})\s*/\s*(\d{1,3}(?:[.,]\d{2})?)\s*\$")
-_UNIT_RE = re.compile(
-    r"(\d{1,2})[.,](\d{2})\s*(?:/\s*(?:CH|EA)\b|L'UNITÉ|L'UNITE|\bEACH\b)"
-)
+_UNIT_RE = re.compile(r"(\d{1,2})[.,](\d{2})\s*(?:/\s*(?:CH|EA)\b|L'UNITÉ|L'UNITE|\bEACH\b)")
 # Spaced-decimal unit ('2 99 l'unité', '3 67 l'un.'), Metro style.
 _UNIT_SPACED_RE = re.compile(r"(\d{1,2})\s(\d{2})\s*(?:L'UNITÉ|L'UNITE|L'UN\.?)")
 
@@ -84,9 +80,7 @@ def _printed_unit(text: str) -> float | None:
     return None
 
 
-def extract_multibuy(
-    text: str, payload_price: float | None
-) -> tuple[float, int, float] | None:
+def extract_multibuy(text: str, payload_price: float | None) -> tuple[float, int, float] | None:
     """(unit_price, count, total) from a cell render's OCR text.
 
     The payload price is the bundle total by construction, so it
@@ -150,8 +144,7 @@ def multibuy_store(
     """
     cache_dir.mkdir(parents=True, exist_ok=True)
     rows = conn.execute(
-        "SELECT id, price_value, conditions, image_url, raw FROM flyer_items"
-        " WHERE store_slug = ?",
+        "SELECT id, price_value, conditions, image_url, raw FROM flyer_items WHERE store_slug = ?",
         (store_slug,),
     ).fetchall()
     recovered = 0
@@ -194,10 +187,8 @@ def multibuy_store(
             "total": total,
         }
         conn.execute(
-            "UPDATE flyer_items SET price_value = ?, conditions = ?, raw = ?"
-            " WHERE id = ?",
-            (unit, json.dumps(conditions, ensure_ascii=False),
-             json.dumps(raw_d, ensure_ascii=False), item_id),
+            "UPDATE flyer_items SET price_value = ?, conditions = ?, raw = ? WHERE id = ?",
+            (unit, json.dumps(conditions, ensure_ascii=False), json.dumps(raw_d, ensure_ascii=False), item_id),
         )
         # Commit per item: a full store pass OCRs hundreds of cell
         # renders and must stay resumable if interrupted.

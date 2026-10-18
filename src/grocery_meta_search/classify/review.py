@@ -150,9 +150,7 @@ def _fmt_conditions(raw: str | None) -> str:
     return " · ".join(bits)
 
 
-def generate(
-    db_path: str, out_path: Path, assets_dir: Path, seed: int, per_store: int
-) -> dict[str, int]:
+def generate(db_path: str, out_path: Path, assets_dir: Path, seed: int, per_store: int) -> dict[str, int]:
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     assets_dir.mkdir(parents=True, exist_ok=True)
@@ -168,9 +166,7 @@ def generate(
         """
     ).fetchall()
     total = conn.execute("SELECT count(*) FROM flyer_items").fetchone()[0]
-    classified = conn.execute(
-        "SELECT count(*) FROM flyer_items WHERE category != 'Unclassified'"
-    ).fetchone()[0]
+    classified = conn.execute("SELECT count(*) FROM flyer_items WHERE category != 'Unclassified'").fetchone()[0]
 
     lines: list[str] = []
     lines.append("# Classification review — PC Express taxonomy")

@@ -48,9 +48,7 @@ def reclassify(db_path: str, dry_run: bool = False) -> dict[str, object]:
     transitions: Counter[tuple[str, str]] = Counter()
     flips = 0
     for row in rows:
-        dept, sub, method, rule_id = classify_item(
-            row["name_fr"], row["name_en"], row["brand"], row["store_slug"]
-        )
+        dept, sub, method, rule_id = classify_item(row["name_fr"], row["name_en"], row["brand"], row["store_slug"])
         old = (row["department"], row["subcategory"])
         if (dept, sub) == old:
             continue
@@ -59,9 +57,7 @@ def reclassify(db_path: str, dry_run: bool = False) -> dict[str, object]:
         if dry_run:
             continue
         label = UNCLASSIFIED if dept == UNCLASSIFIED else category_label(dept, sub)
-        conn.execute(
-            "UPDATE flyer_items SET category = ? WHERE id = ?", (label, row["id"])
-        )
+        conn.execute("UPDATE flyer_items SET category = ? WHERE id = ?", (label, row["id"]))
         conn.execute(
             """
             UPDATE item_classifications
@@ -85,8 +81,7 @@ def main() -> None:
     result = reclassify(str(args.db), args.dry_run)
     transitions = result["transitions"]
     assert isinstance(transitions, Counter)
-    print(f"{result['total']} items, {result['flips']} flips"
-          + ("  [dry run]" if args.dry_run else ""))
+    print(f"{result['total']} items, {result['flips']} flips" + ("  [dry run]" if args.dry_run else ""))
     for (old, new), n in transitions.most_common(40):
         print(f"  {n:5}  {old}  ->  {new}")
 

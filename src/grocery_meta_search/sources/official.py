@@ -221,12 +221,8 @@ def images_source_ref(page_url: str, image_urls: list[str]) -> str:
 
 # ── Flyerify ──────────────────────────────────────────────────────────
 
-_OFFER_LINK_RE = re.compile(
-    r'href="(https://[a-z0-9-]+\.flyerify\.com/([a-z0-9-]+))"\s+title="([^"]+)"'
-)
-_RANGE_RE = re.compile(
-    r"([A-Za-z]+)\s+(\d{1,2})\s+to\s+(?:([A-Za-z]+)\s+)?(\d{1,2})", re.IGNORECASE
-)
+_OFFER_LINK_RE = re.compile(r'href="(https://[a-z0-9-]+\.flyerify\.com/([a-z0-9-]+))"\s+title="([^"]+)"')
+_RANGE_RE = re.compile(r"([A-Za-z]+)\s+(\d{1,2})\s+to\s+(?:([A-Za-z]+)\s+)?(\d{1,2})", re.IGNORECASE)
 
 
 def parse_offer_range(title: str, today: date) -> tuple[date, date] | None:
@@ -249,9 +245,7 @@ def parse_offer_range(title: str, today: date) -> tuple[date, date] | None:
     return start, end
 
 
-def flyerify_current_offer(
-    brand_html: str, region: str, today: date
-) -> tuple[str, str, date, date] | None:
+def flyerify_current_offer(brand_html: str, region: str, today: date) -> tuple[str, str, date, date] | None:
     """(offer_url, offer_slug, valid_from, valid_to) for the current offer."""
     best: tuple[str, str, date, date] | None = None
     for m in _OFFER_LINK_RE.finditer(brand_html):
@@ -344,9 +338,7 @@ class OfficialClient:
                 last_exc = exc
         raise OfficialError(f"GET {url}: {last_exc}")
 
-    def fetch_editions(
-        self, cfg: OfficialConfig, today: date | None = None
-    ) -> list[OfficialEdition]:
+    def fetch_editions(self, cfg: OfficialConfig, today: date | None = None) -> list[OfficialEdition]:
         today = today or date.today()
         if cfg.kind == "image_page":
             return [self._image_page(cfg, today)]
@@ -405,10 +397,7 @@ class OfficialClient:
     def _pdf_page(self, cfg: OfficialConfig, today: date) -> OfficialEdition:
         page_html = self._get(cfg.page_url).text
         pdfs = sorted(
-            {
-                html_lib.unescape(m.group(1))
-                for m in re.finditer(r'href="([^"]+\.pdf)"', page_html, re.IGNORECASE)
-            }
+            {html_lib.unescape(m.group(1)) for m in re.finditer(r'href="([^"]+\.pdf)"', page_html, re.IGNORECASE)}
         )
         if not pdfs:
             raise OfficialError(f"no PDF links at {cfg.page_url}")
@@ -521,9 +510,7 @@ class OfficialClient:
             directory_html = self._get(cfg.page_url).text
             resolved = resolve_flyers_do_url(directory_html, cfg.slug)
             if resolved is None:
-                raise OfficialError(
-                    f"no flyers.do link for {cfg.slug} at {cfg.page_url}"
-                )
+                raise OfficialError(f"no flyers.do link for {cfg.slug} at {cfg.page_url}")
             viewer_url = resolved
         viewer_url = viewer_url.replace("https://", "http://", 1)
         page_html = self._get(viewer_url).text
@@ -689,9 +676,7 @@ def parse_flyers_do(page_html: str) -> tuple[date, date, str] | None:
 _FLYERBOX_ID = re.compile(r"pageBrochureId\s*=\s*(\d+)")
 _FLYERBOX_PAGES = re.compile(r"maxPages\s*=\s*(\d+)")
 _FLYERBOX_VALID = re.compile(r"valid (\w{3,9}) (\d{1,2}), (\d{4}) - (\w{3,9}) (\d{1,2}), (\d{4})")
-_FLYERBOX_IMG = re.compile(
-    r"https://na\.leafletscdn\.com/thumbor/[^\"']+?/ca/data/\d+/\d+/\d+\.jpg(?:\?t=\d+)?"
-)
+_FLYERBOX_IMG = re.compile(r"https://na\.leafletscdn\.com/thumbor/[^\"']+?/ca/data/\d+/\d+/\d+\.jpg(?:\?t=\d+)?")
 _EN_MONTHS = {
     "jan": 1,
     "feb": 2,
@@ -754,16 +739,12 @@ def render_pdf_pages(pdf_bytes: bytes, dpi: int = 200) -> list[Any]:
 
 # ── French validity ranges printed on flyers ─────────────────────────
 
-_FR_RANGE_SAME_MONTH = re.compile(
-    r"(\d{1,2})\s*(?:er)?\s*au\s*(\d{1,2})\s*([a-z]+)\s*(\d{4})", re.IGNORECASE
-)
+_FR_RANGE_SAME_MONTH = re.compile(r"(\d{1,2})\s*(?:er)?\s*au\s*(\d{1,2})\s*([a-z]+)\s*(\d{4})", re.IGNORECASE)
 _FR_RANGE_TWO_MONTHS = re.compile(
     r"(\d{1,2})\s*(?:er)?\s*([a-z]+)\s*au\s*(\d{1,2})\s*([a-z]+)\s*(\d{4})",
     re.IGNORECASE,
 )
-_FR_RANGE_NO_YEAR = re.compile(
-    r"(\d{1,2})\s*(?:er)?\s+au\s+(\d{1,2})\s+([a-z]+)(?!\s+\d)", re.IGNORECASE
-)
+_FR_RANGE_NO_YEAR = re.compile(r"(\d{1,2})\s*(?:er)?\s+au\s+(\d{1,2})\s+([a-z]+)(?!\s+\d)", re.IGNORECASE)
 
 
 def parse_fr_validity(text: str, today: date) -> tuple[date, date] | None:
@@ -773,9 +754,7 @@ def parse_fr_validity(text: str, today: date) -> tuple[date, date] | None:
     Weekday names are stripped first: banners often print them
     ("du mercredi 14 octobre au mardi 20 octobre 2026")."""
     flat = _strip_accents(text).lower()
-    flat = re.sub(
-        r"\b(lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\b", " ", flat
-    )
+    flat = re.sub(r"\b(lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\b", " ", flat)
     squashed = flat.replace(" ", "")
     m = _FR_RANGE_TWO_MONTHS.search(flat) or _FR_RANGE_TWO_MONTHS.search(squashed)
     if m:

@@ -57,11 +57,7 @@ def _to_date(value: Any) -> str | None:
 
 
 def _bbox_of(product: dict[str, Any]) -> dict[str, Any] | None:
-    bbox = {
-        k: product[k]
-        for k in ("left", "top", "right", "bottom", "page")
-        if product.get(k) is not None
-    }
+    bbox = {k: product[k] for k in ("left", "top", "right", "bottom", "page") if product.get(k) is not None}
     return bbox or None
 
 
@@ -136,9 +132,7 @@ def edition_from_publication(pub: dict[str, Any]) -> FlyerEdition:
     )
 
 
-def item_from_product(
-    product: dict[str, Any], locale: str, default_program: str | None = None
-) -> FlyerItem:
+def item_from_product(product: dict[str, Any], locale: str, default_program: str | None = None) -> FlyerItem:
     name = (product.get("name") or "").strip() or None
     name_fr, name_en = split_bilingual_name(name)
     if name_en is None and name_fr is not None and not locale.startswith("fr"):
@@ -249,9 +243,7 @@ class FlyerKitClient:
             return []
         return _as_dict_list(data)
 
-    def get_products(
-        self, publication_id: int | str, cfg: BrandConfig, locale: str = "fr"
-    ) -> list[dict[str, Any]]:
+    def get_products(self, publication_id: int | str, cfg: BrandConfig, locale: str = "fr") -> list[dict[str, Any]]:
         params: dict[str, Any] = {
             "display_type": "all",
             "locale": locale,
@@ -266,9 +258,7 @@ class FlyerKitClient:
             return []
         return _as_dict_list(data)
 
-    def fetch_store_editions(
-        self, cfg: BrandConfig, locales: tuple[str, ...] = ("fr", "en")
-    ) -> list[FlyerEdition]:
+    def fetch_store_editions(self, cfg: BrandConfig, locales: tuple[str, ...] = ("fr", "en")) -> list[FlyerEdition]:
         """Fetch active publications and their products, merged across locales."""
         publications = self.get_publications(cfg, locales[0])
         if cfg.flyer_type_filter:

@@ -114,14 +114,10 @@ class CirculairesClubClient:
         """All edition page URLs from the sitemap (cached per client)."""
         if self._sitemap_cache is None:
             xml = self._get_text(SITEMAP_URL)
-            self._sitemap_cache = re.findall(
-                r"<loc>(https://circulaires\.club/circulaire/[^<]+)</loc>", xml
-            )
+            self._sitemap_cache = re.findall(r"<loc>(https://circulaires\.club/circulaire/[^<]+)</loc>", xml)
         return self._sitemap_cache
 
-    def editions_for(
-        self, cc_slugs: list[str], today: date, lookahead_days: int = 7
-    ) -> list[CCEdition]:
+    def editions_for(self, cc_slugs: list[str], today: date, lookahead_days: int = 7) -> list[CCEdition]:
         """Editions for the given cc slugs that are current or start soon.
 
         An edition qualifies when it has not ended before ``today`` and it
@@ -156,9 +152,7 @@ class CirculairesClubClient:
         edition.page_images = [pages[n] for n in sorted(pages)]
         return edition
 
-    def fetch_current_editions(
-        self, cc_slugs: list[str], today: date | None = None
-    ) -> list[CCEdition]:
+    def fetch_current_editions(self, cc_slugs: list[str], today: date | None = None) -> list[CCEdition]:
         today = today or date.today()
         editions = [self.fill_page_images(e) for e in self.editions_for(cc_slugs, today)]
         return [e for e in editions if e.page_images]

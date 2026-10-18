@@ -27,13 +27,8 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def _frutta_items() -> list[Any]:
-    data: dict[str, Any] = json.loads(
-        (FIXTURES / "frutta_p1_lines.json").read_text(encoding="utf-8")
-    )
-    lines = [
-        OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"])
-        for d in data["lines"]
-    ]
+    data: dict[str, Any] = json.loads((FIXTURES / "frutta_p1_lines.json").read_text(encoding="utf-8"))
+    lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data["lines"]]
     image = Image.open(FIXTURES / "frutta_p1.jpg").convert("RGB")
     cfg = _cc_ocr_config("frutta-si")
     assert cfg.price_strategy == "red_grid"
@@ -45,10 +40,41 @@ def test_frutta_page1_red_grid() -> None:
     assert len(items) == 35
     by_price = sorted(it.price_value for it in items if it.price_value is not None)
     assert by_price == [
-        0.69, 0.89, 1.49, 1.49, 1.99, 1.99, 2.49, 2.49, 2.99, 2.99,
-        3.49, 3.99, 3.99, 3.99, 3.99, 3.99, 3.99, 4.49, 4.49,
-        5.49, 5.99, 5.99, 6.6, 6.99, 7.99, 8.99, 9.99, 9.99, 10.99,
-        11.35, 11.99, 13.63, 13.99, 14.99, 19.99,
+        0.69,
+        0.89,
+        1.49,
+        1.49,
+        1.99,
+        1.99,
+        2.49,
+        2.49,
+        2.99,
+        2.99,
+        3.49,
+        3.99,
+        3.99,
+        3.99,
+        3.99,
+        3.99,
+        3.99,
+        4.49,
+        4.49,
+        5.49,
+        5.99,
+        5.99,
+        6.6,
+        6.99,
+        7.99,
+        8.99,
+        9.99,
+        9.99,
+        10.99,
+        11.35,
+        11.99,
+        13.63,
+        13.99,
+        14.99,
+        19.99,
     ]
     names = [it.name_fr or "" for it in items]
     assert any("Primo" in n for n in names)

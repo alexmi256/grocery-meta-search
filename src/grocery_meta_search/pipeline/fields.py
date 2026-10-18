@@ -23,9 +23,7 @@ import re
 # ("90 capsules", "24 un.", "40 comprimés") that carry no weight.
 _QTY = r"\d+(?:[.,]\d+)?(?:\s*/\s*\d+)?"
 _RANGE = rf"(?:{_QTY}\s*(?:[-–]|à|to)\s*)?"
-_WV_UNIT = (
-    r"(?:kg|mg|ml|cl|oz|lb|lbs|gr|g|l|grammes?|grams?|kilogrammes?|litres?|cm|mm|po)"
-)
+_WV_UNIT = r"(?:kg|mg|ml|cl|oz|lb|lbs|gr|g|l|grammes?|grams?|kilogrammes?|litres?|cm|mm|po)"
 _COUNT_UNIT = (
     r"(?:unit[ée]s?|units?|un\.|pi[èe]ces?|pcs|sachets?|douzaine|"
     r"capsules?|comprim[ée]s?|g[ée]lules?|caplets?|tablets?)"
@@ -54,26 +52,28 @@ _SKU_MIN_DIGITS = 6
 # PROTEIN": a size figure glued to a protein word (either side, with
 # only de/of/par between) is a per-portion nutrition claim, not the
 # package size (IGA skewers "23g" skewers, La Moisson seitan "14g").
-_PROTEIN_AFTER_RE = re.compile(
-    r"^\s*(?:de\s+|of\s+|par\s+|per\s+)?prot(?:[ée]ines?|eins?)\b", re.IGNORECASE
-)
-_PROTEIN_BEFORE_RE = re.compile(
-    r"prot(?:[ée]ines?|eins?)\s*(?:de\s+|of\s+)?$", re.IGNORECASE
-)
+_PROTEIN_AFTER_RE = re.compile(r"^\s*(?:de\s+|of\s+|par\s+|per\s+)?prot(?:[ée]ines?|eins?)\b", re.IGNORECASE)
+_PROTEIN_BEFORE_RE = re.compile(r"prot(?:[ée]ines?|eins?)\s*(?:de\s+|of\s+)?$", re.IGNORECASE)
 # Quantity plausibility caps per unit: no grocery package exceeds
 # these (harvest once stored juice sizes of "154 L"/"458l" stitched
 # from "1,54 L"). The litre cap stays high because hardware flyers
 # print real bin/cooler capacities up to ~110 L; the grocery-only
 # harvest stage applies a stricter litre bound of its own.
 _QTY_CAPS = {
-    "l": 120.0, "ml": 30000.0, "cl": 3000.0,
-    "kg": 100.0, "g": 40000.0, "gr": 40000.0,
-    "oz": 500.0, "lb": 250.0, "lbs": 250.0,
-    "cm": 300.0, "mm": 3000.0, "po": 120.0,
+    "l": 120.0,
+    "ml": 30000.0,
+    "cl": 3000.0,
+    "kg": 100.0,
+    "g": 40000.0,
+    "gr": 40000.0,
+    "oz": 500.0,
+    "lb": 250.0,
+    "lbs": 250.0,
+    "cm": 300.0,
+    "mm": 3000.0,
+    "po": 120.0,
 }
-_PAIR_RE = re.compile(
-    r"(\d+(?:[.,]\d+)?)\s*(kg|ml|cl|oz|lbs?|gr|g|l|cm|mm|po)\b", re.IGNORECASE
-)
+_PAIR_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(kg|ml|cl|oz|lbs?|gr|g|l|cm|mm|po)\b", re.IGNORECASE)
 
 
 def _protein_callout(text: str, start: int, end: int) -> bool:
@@ -117,9 +117,7 @@ def _iter_valid_sizes(text: str) -> list[re.Match[str]]:
     return out
 
 
-def _stored_size_rejected(
-    stored: str, *texts: str | None
-) -> bool:
+def _stored_size_rejected(stored: str, *texts: str | None) -> bool:
     """True when a stored size should be cleared under current policy:
     it fails the value-level guards outright, or it appears among the
     raw candidates of the item's own texts but the guarded iterator
@@ -132,15 +130,9 @@ def _stored_size_rejected(
     for text in texts:
         if not text:
             continue
-        raw = {
-            re.sub(r"\s+", " ", m.group("full")).strip(" ,.-").lower()
-            for m in _SIZE_RE.finditer(text)
-        }
+        raw = {re.sub(r"\s+", " ", m.group("full")).strip(" ,.-").lower() for m in _SIZE_RE.finditer(text)}
         if norm in raw:
-            valid = {
-                re.sub(r"\s+", " ", m.group("full")).strip(" ,.-").lower()
-                for m in _iter_valid_sizes(text)
-            }
+            valid = {re.sub(r"\s+", " ", m.group("full")).strip(" ,.-").lower() for m in _iter_valid_sizes(text)}
             return norm not in valid
     return False
 
@@ -165,14 +157,12 @@ def reprocess(db_path: str, dry_run: bool = False) -> dict[str, dict[str, int]]:
     init_schema(conn)
     stats: dict[str, dict[str, int]] = {}
     rows = conn.execute(
-        "SELECT id, store_slug, name_fr, name_en, raw, package_size, price_unit"
-        " FROM flyer_items"
+        "SELECT id, store_slug, name_fr, name_en, raw, package_size, price_unit FROM flyer_items"
     ).fetchall()
     for row in rows:
         st = stats.setdefault(
             row["store_slug"],
-            {"total": 0, "set": 0, "from_raw": 0, "from_name": 0,
-             "from_block": 0, "corrected": 0, "unit_set": 0},
+            {"total": 0, "set": 0, "from_raw": 0, "from_name": 0, "from_block": 0, "corrected": 0, "unit_set": 0},
         )
         st["total"] += 1
         if row["price_unit"]:
@@ -215,10 +205,10 @@ def reprocess(db_path: str, dry_run: bool = False) -> dict[str, dict[str, int]]:
                             (new_size, row["id"]),
                         )
                 elif new_size is None and _stored_size_rejected(
-                    row["package_size"], row["name_fr"], row["name_en"],
-                    str(raw_data["block_text"])
-                    if raw_data and raw_data.get("block_text")
-                    else None,
+                    row["package_size"],
+                    row["name_fr"],
+                    row["name_en"],
+                    str(raw_data["block_text"]) if raw_data and raw_data.get("block_text") else None,
                 ):
                     # The stored value is a candidate the current
                     # guards actively reject (SKU digits, protein
@@ -239,8 +229,7 @@ def reprocess(db_path: str, dry_run: bool = False) -> dict[str, dict[str, int]]:
                             del hv["size"]
                             raw_data["harvest"] = hv
                             conn.execute(
-                                "UPDATE flyer_items SET package_size=NULL, raw=?"
-                                " WHERE id=?",
+                                "UPDATE flyer_items SET package_size=NULL, raw=? WHERE id=?",
                                 (json.dumps(raw_data, ensure_ascii=False), row["id"]),
                             )
                         else:
@@ -283,8 +272,7 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     stats = reprocess(args.db, args.dry_run)
-    total = {"total": 0, "set": 0, "from_raw": 0, "from_name": 0,
-             "from_block": 0, "corrected": 0}
+    total = {"total": 0, "set": 0, "from_raw": 0, "from_name": 0, "from_block": 0, "corrected": 0}
     for slug in sorted(stats):
         st = stats[slug]
         for k in total:
@@ -297,10 +285,8 @@ def main() -> None:
     print(
         f"{'TOTAL':28} {total['set']:5}/{total['total']:<5} "
         f"(raw {total['from_raw']}, name {total['from_name']}, block {total['from_block']}, "
-        f"corrected {total['corrected']})"
-        + ("  [dry run]" if args.dry_run else "")
+        f"corrected {total['corrected']})" + ("  [dry run]" if args.dry_run else "")
     )
-
 
 
 def find_package_sizes(text: str | None) -> list[str]:
@@ -312,10 +298,7 @@ def find_package_sizes(text: str | None) -> list[str]:
     """
     if not text:
         return []
-    return [
-        re.sub(r"\s+", " ", m.group("full")).strip(" ,.-")
-        for m in _iter_valid_sizes(text)
-    ]
+    return [re.sub(r"\s+", " ", m.group("full")).strip(" ,.-") for m in _iter_valid_sizes(text)]
 
 
 def extract_package_size(*names: str | None) -> str | None:
@@ -345,6 +328,7 @@ def extract_package_size(*names: str | None) -> str | None:
         text = chosen.group("full")
         return re.sub(r"\s+", " ", text).strip(" ,.-")
     return None
+
 
 if __name__ == "__main__":
     main()

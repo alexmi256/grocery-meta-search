@@ -31,9 +31,7 @@ def test_parse_cross_month() -> None:
 
 
 def test_parse_cross_year() -> None:
-    parsed = parse_edition_url(
-        "https://circulaires.club/circulaire/circulaire-x-du-29-decembre-au-4-janvier-2027/"
-    )
+    parsed = parse_edition_url("https://circulaires.club/circulaire/circulaire-x-du-29-decembre-au-4-janvier-2027/")
     assert parsed is not None
     _, start, end = parsed
     assert start == date(2026, 12, 29)

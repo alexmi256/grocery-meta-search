@@ -140,11 +140,7 @@ def find_prices(spans: list[Span], min_size: float) -> list[Price]:
         s
         for s in spans
         if s.size >= min_size
-        and (
-            _DIGITS_RE.match(s.text.strip())
-            or _CENTS_ONLY_RE.match(s.text.strip())
-            or s.text.strip() == "¢"
-        )
+        and (_DIGITS_RE.match(s.text.strip()) or _CENTS_ONLY_RE.match(s.text.strip()) or s.text.strip() == "¢")
     ]
     prices: list[Price] = []
     used: set[int] = set()
@@ -168,9 +164,7 @@ def find_prices(spans: list[Span], min_size: float) -> list[Price]:
             prices.append(Price(int(m.group(1)) / 100, s.text.strip(), [s]))
             used.add(i)
     # Dollar spans: the largest size present among digit spans.
-    dollars = [
-        (i, s) for i, s in enumerate(big) if i not in used and _DIGITS_RE.match(s.text.strip())
-    ]
+    dollars = [(i, s) for i, s in enumerate(big) if i not in used and _DIGITS_RE.match(s.text.strip())]
     if dollars:
         top = max(s.size for _, s in dollars)
         cents_pool = [(i, s) for i, s in dollars if s.size < top]
@@ -204,10 +198,7 @@ def _axis_bounds(centers: list[float], limit: float) -> list[tuple[float, float]
     """Cell bounds along one axis from sorted anchor centers."""
     bounds: list[tuple[float, float]] = []
     for i, c in enumerate(centers):
-        if i == 0:
-            lo = 0.0 if len(centers) == 1 else max(0.0, c - (centers[1] - c) / 2)
-        else:
-            lo = (centers[i - 1] + c) / 2
+        lo = (0.0 if len(centers) == 1 else max(0.0, c - (centers[1] - c) / 2)) if i == 0 else (centers[i - 1] + c) / 2
         if i == len(centers) - 1:
             hi = limit if len(centers) == 1 else min(limit, c + (c - centers[i - 1]) / 2)
         else:
@@ -232,9 +223,7 @@ def _line_centers(counts: Any, threshold: float) -> list[float]:
     return centers
 
 
-def detect_grid_cells(
-    pdf_bytes: bytes, scale: float = 2.0
-) -> list[tuple[float, float, float, float]] | None:
+def detect_grid_cells(pdf_bytes: bytes, scale: float = 2.0) -> list[tuple[float, float, float, float]] | None:
     """Detect the product grid from the flyer's printed border
     lines: render page 1, find long red horizontal lines, then the
     vertical lines between them. Returns cell rects in points,
@@ -252,11 +241,7 @@ def detect_grid_cells(
     pix = page.get_pixmap(matrix=pymupdf.Matrix(scale, scale))  # type: ignore[no-untyped-call]
     img = Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
     arr = np.asarray(img).astype(int)
-    red = (
-        (arr[:, :, 0] >= 140)
-        & (arr[:, :, 0] - arr[:, :, 1] >= 55)
-        & (arr[:, :, 0] - arr[:, :, 2] >= 55)
-    )
+    red = (arr[:, :, 0] >= 140) & (arr[:, :, 0] - arr[:, :, 1] >= 55) & (arr[:, :, 0] - arr[:, :, 2] >= 55)
     height, width = red.shape
     h_lines = _line_centers(red.sum(axis=1), 0.5 * width)
     if len(h_lines) < 2:
@@ -334,9 +319,7 @@ def derive_cells(
     return cells
 
 
-def assemble_name(
-    spans: list[Span], cell: tuple[float, float, float, float], min_size: float
-) -> str:
+def assemble_name(spans: list[Span], cell: tuple[float, float, float, float], min_size: float) -> str:
     """Join the small-font spans inside a cell into a name, line by
     line in reading order. Unit tokens of the price itself are
     dropped; sizes and per-kg annotations stay (they are product
@@ -366,11 +349,7 @@ def assemble_name(
 def price_unit(spans: list[Span], price: Price) -> str:
     """'lb' when an lb. token sits right by the price, else 'each'."""
     for s in spans:
-        if (
-            s.text.strip() in ("lb.", "lb")
-            and abs(s.cx - price.cx) <= 60
-            and abs(s.cy - price.cy) <= 45
-        ):
+        if s.text.strip() in ("lb.", "lb") and abs(s.cx - price.cx) <= 60 and abs(s.cy - price.cy) <= 45:
             return "lb"
     return "each"
 

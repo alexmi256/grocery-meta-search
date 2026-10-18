@@ -44,22 +44,14 @@ def _no_tesseract(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 def _load(name: str) -> tuple[list[OcrLine], int, int]:
-    data: dict[str, Any] = json.loads(
-        (FIXTURES / f"cc_{name}_p1_lines.json").read_text(encoding="utf-8")
-    )
-    lines = [
-        OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"])
-        for d in data["lines"]
-    ]
+    data: dict[str, Any] = json.loads((FIXTURES / f"cc_{name}_p1_lines.json").read_text(encoding="utf-8"))
+    lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data["lines"]]
     return lines, int(data["page_w"]), int(data["page_h"])
 
 
 def _load_fixture(filename: str) -> tuple[list[OcrLine], int, int]:
     data: dict[str, Any] = json.loads((FIXTURES / filename).read_text(encoding="utf-8"))
-    lines = [
-        OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"])
-        for d in data["lines"]
-    ]
+    lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data["lines"]]
     return lines, int(data["page_w"]), int(data["page_h"])
 
 
@@ -124,13 +116,8 @@ def test_costco_prix_line_items() -> None:
 
 
 def _load_named(name: str) -> tuple[list[OcrLine], int, int]:
-    data: dict[str, Any] = json.loads(
-        (FIXTURES / f"cc_{name}_lines.json").read_text(encoding="utf-8")
-    )
-    lines = [
-        OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"])
-        for d in data["lines"]
-    ]
+    data: dict[str, Any] = json.loads((FIXTURES / f"cc_{name}_lines.json").read_text(encoding="utf-8"))
+    lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data["lines"]]
     return lines, int(data["page_w"]), int(data["page_h"])
 
 

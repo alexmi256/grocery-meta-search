@@ -4,6 +4,7 @@ The guard groups a store's flyers into cycles by valid_from and flags
 a still-valid cycle whose stored item total collapsed below half the
 median of the up-to-3 previous cycles (with a 10-item absolute floor).
 """
+
 import json
 import sqlite3
 
@@ -32,8 +33,7 @@ def _cycle(
     source_ref: str | None = None,
 ) -> None:
     cur = conn.execute(
-        "INSERT INTO flyers (store_slug, valid_from, valid_to, source_ref, raw) "
-        "VALUES ('s', ?, ?, ?, '{}')",
+        "INSERT INTO flyers (store_slug, valid_from, valid_to, source_ref, raw) VALUES ('s', ?, ?, ?, '{}')",
         (valid_from, valid_to, source_ref),
     )
     flyer_id = cur.lastrowid
@@ -110,9 +110,7 @@ def test_record_warnings_stamps_flyer_raw() -> None:
     _cycle(conn, "2026-10-15", "2026-10-21", 2)
     warnings = evaluate_store(conn, "s", today=TODAY)
     record_warnings(conn, warnings, today=TODAY)
-    raw = conn.execute(
-        "SELECT raw FROM flyers WHERE valid_from = '2026-10-15'"
-    ).fetchone()["raw"]
+    raw = conn.execute("SELECT raw FROM flyers WHERE valid_from = '2026-10-15'").fetchone()["raw"]
     stamp = json.loads(raw)["thin_edition_guard"]
     assert stamp["current"] == 2 and stamp["baseline"] == 40.0
     assert stamp["flagged_on"] == TODAY

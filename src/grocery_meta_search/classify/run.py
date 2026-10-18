@@ -34,9 +34,7 @@ def apply_classification(db_path: str) -> Counter[str]:
         )
         """
     )
-    rows = conn.execute(
-        "SELECT id, name_fr, name_en, brand, store_slug FROM flyer_items"
-    ).fetchall()
+    rows = conn.execute("SELECT id, name_fr, name_en, brand, store_slug FROM flyer_items").fetchall()
     now = datetime.now(UTC).isoformat(timespec="seconds")
     stats: Counter[str] = Counter()
     out_rows = []

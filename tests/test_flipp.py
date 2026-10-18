@@ -104,9 +104,7 @@ def test_loyalty_camembert_not_gated() -> None:
 
 
 def test_loyalty_scene_plus() -> None:
-    item = item_from_product(
-        {"name": "CRAQUELINS CHEEZ-IT", "pre_price_text": "Prix Membre Scène+"}, "fr"
-    )
+    item = item_from_product({"name": "CRAQUELINS CHEEZ-IT", "pre_price_text": "Prix Membre Scène+"}, "fr")
     assert item.loyalty_gated
     assert loyalty_program_of({"pre_price_text": "Prix Membre Scène+"}) == "Scène+"
 

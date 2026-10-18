@@ -132,9 +132,14 @@ def _to_jpg(src: Path, dest: Path) -> bool:
         return False
 
 
-def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
-             only_ids: set[int] | None = None,
-             sample_info: str | None = None) -> dict[str, int]:
+def generate(
+    db_path: str,
+    slug: str,
+    out_dir: Path,
+    latest_only: bool = False,
+    only_ids: set[int] | None = None,
+    sample_info: str | None = None,
+) -> dict[str, int]:
     from urllib.parse import urlparse
 
     conn = sqlite3.connect(db_path)
@@ -148,9 +153,7 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
     for d in (images_dir, pages_dir, raw_dir):
         d.mkdir(parents=True, exist_ok=True)
 
-    flyers = conn.execute(
-        "SELECT * FROM flyers WHERE store_slug=? ORDER BY valid_from", (slug,)
-    ).fetchall()
+    flyers = conn.execute("SELECT * FROM flyers WHERE store_slug=? ORDER BY valid_from", (slug,)).fetchall()
     if latest_only and flyers:
         flyers = [max(flyers, key=lambda f: (f["valid_to"], f["id"]))]
     intro = (
@@ -196,9 +199,7 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
             # PDF flyers (pdf_page sources) keep the PDF as image_url:
             # render the item's page; image pages convert directly.
             ok = _download(row["image_url"], raw) and (
-                _render_pdf_page(raw, page_no, page_jpg)
-                if _is_pdf(raw)
-                else _to_jpg(raw, page_jpg)
+                _render_pdf_page(raw, page_no, page_jpg) if _is_pdf(raw) else _to_jpg(raw, page_jpg)
             )
             if ok:
                 page_ref = f"pages/{page_jpg.name} (flyer page {page_no})"
@@ -315,9 +316,7 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
         )
         lines.append("")
         for flyer, row in pending_unc:
-            lines.append(
-                f"— from flyer {flyer['id']} (valid {flyer['valid_from']} → {flyer['valid_to']})"
-            )
+            lines.append(f"— from flyer {flyer['id']} (valid {flyer['valid_from']} → {flyer['valid_to']})")
             lines.append("")
             emit(row, flyer)
     stats["pages"] = len(list(pages_dir.glob("*.jpg")))

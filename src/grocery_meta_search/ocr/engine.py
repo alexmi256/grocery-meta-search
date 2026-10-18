@@ -79,9 +79,7 @@ def detect_lines(image: Image.Image) -> list[OcrLine]:
     return lines
 
 
-def detect_lines_banded(
-    image: Image.Image, band_h: int = 2000, overlap: int = 200
-) -> list[OcrLine]:
+def detect_lines_banded(image: Image.Image, band_h: int = 2000, overlap: int = 200) -> list[OcrLine]:
     """Detect lines on a very tall page by horizontal bands.
 
     RapidOCR downsamples large inputs internally, which makes small
@@ -137,9 +135,7 @@ def _tess_env_for(binary: Path) -> dict[str, str]:
     return env
 
 
-def upscale_for_ocr(
-    image: Image.Image, min_width: int = 1600, max_scale: float = 2.0
-) -> Image.Image:
+def upscale_for_ocr(image: Image.Image, min_width: int = 1600, max_scale: float = 2.0) -> Image.Image:
     """Upscale low-resolution flyer pages before OCR.
 
     Some circulaires.club pages are served at 800-1000px wide; the OCR

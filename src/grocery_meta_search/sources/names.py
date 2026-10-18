@@ -7,18 +7,45 @@ language is stored in its own field (Alex, 2026-10-17). The order in
 the payloads is French first in every observed case; a light language
 score guards against an English-first payload.
 """
+
 from __future__ import annotations
 
 import re
 import unicodedata
 
 _FR_WORDS = {
-    "de", "des", "du", "la", "le", "les", "au", "aux", "et", "à", "en",
-    "pour", "avec", "sans", "ou", "sur", "frais", "fraîche", "fraiche",
+    "de",
+    "des",
+    "du",
+    "la",
+    "le",
+    "les",
+    "au",
+    "aux",
+    "et",
+    "à",
+    "en",
+    "pour",
+    "avec",
+    "sans",
+    "ou",
+    "sur",
+    "frais",
+    "fraîche",
+    "fraiche",
 }
 _EN_WORDS = {
-    "the", "and", "with", "of", "or", "for", "fresh", "style", "size",
-    "original", "family",
+    "the",
+    "and",
+    "with",
+    "of",
+    "or",
+    "for",
+    "fresh",
+    "style",
+    "size",
+    "original",
+    "family",
 }
 _ACCENT_RE = re.compile(r"[àâäéèêëîïôöûüç]")
 _WORD_RE = re.compile(r"[a-zàâäéèêëîïôöûüç']+")

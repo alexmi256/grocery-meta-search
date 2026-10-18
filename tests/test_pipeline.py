@@ -43,9 +43,7 @@ def test_insert_items_and_observations() -> None:
     stats: dict = {}
     assert insert_items(conn, 1, "maxi", items, stats) == 2
     assert stats["discarded"] == 1
-    rows = conn.execute(
-        "SELECT name_fr, price_value, category, item_key FROM flyer_items ORDER BY id"
-    ).fetchall()
+    rows = conn.execute("SELECT name_fr, price_value, category, item_key FROM flyer_items ORDER BY id").fetchall()
     assert len(rows) == 2
     assert rows[0][0] == "Pommes" and rows[0][1] == 2.5
     assert rows[0][2] == "Fruits & Vegetables > Fresh Fruits"
@@ -87,16 +85,14 @@ def test_insert_items_exclusion_layer() -> None:
 def test_insert_items_unit_pair() -> None:
     conn = _conn()
     items = [
-        FlyerItem(name_fr="Fromage brie", price_text="3.49", price_value=3.49,
-                  price_unit="100g"),
-        FlyerItem(name_fr="Pommes", price_text="2/5$", price_value=2.5,
-                  conditions={"multibuy": {"count": 2, "total": 5.0}}),
+        FlyerItem(name_fr="Fromage brie", price_text="3.49", price_value=3.49, price_unit="100g"),
+        FlyerItem(
+            name_fr="Pommes", price_text="2/5$", price_value=2.5, conditions={"multibuy": {"count": 2, "total": 5.0}}
+        ),
         FlyerItem(name_fr="Lait", price_text="4.99", price_value=4.99),
     ]
     assert insert_items(conn, 1, "maxi", items) == 3
-    rows = conn.execute(
-        "SELECT name_fr, unit_quantity, unit_measurement FROM flyer_items ORDER BY id"
-    ).fetchall()
+    rows = conn.execute("SELECT name_fr, unit_quantity, unit_measurement FROM flyer_items ORDER BY id").fetchall()
     assert [tuple(r) for r in rows] == [
         ("Fromage brie", 100.0, "gram"),
         ("Pommes", 2.0, "multiple"),
