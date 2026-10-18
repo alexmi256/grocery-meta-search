@@ -133,7 +133,8 @@ def _to_jpg(src: Path, dest: Path) -> bool:
 
 
 def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
-             only_ids: set[int] | None = None) -> dict[str, int]:
+             only_ids: set[int] | None = None,
+             sample_info: str | None = None) -> dict[str, int]:
     from urllib.parse import urlparse
 
     conn = sqlite3.connect(db_path)
@@ -170,6 +171,8 @@ def generate(db_path: str, slug: str, out_dir: Path, latest_only: bool = False,
         f"Store slug: `{slug}`. Generated from `data/grocery.db`. " + intro,
         "",
     ]
+    if sample_info:
+        lines += [sample_info, ""]
     stats = {"items": 0, "crops": 0, "direct": 0, "missing": 0, "pages": 0}
 
     def emit(row: sqlite3.Row, flyer: sqlite3.Row) -> None:
