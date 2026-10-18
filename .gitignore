@@ -2,11 +2,19 @@ __pycache__/
 *.py[cod]
 .venv/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .coverage
 htmlcov/
-*.db
-*.db-journal
 .DS_Store
 
-work/cc-probe/
+# Local working data: database, backups, scratch files, caches.
+*.db
+*.db-journal
+data/*.bak-*
 work/
+
+# Review-pack archives and page-source dumps are local artifacts;
+# the Markdown notes under docs/research/ are the durable record.
+*.zip
+**/_downloads/
