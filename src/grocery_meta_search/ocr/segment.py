@@ -103,6 +103,12 @@ class OcrStoreConfig:
     merged_run_is_cents: bool = False  # "79¢" merged into one run "799" (3 Saisons)
     bare_int_anchor: bool = True  # False: a bare whole number is never a price (Odessa badges)
     ignore_below_frac: float = 1.0  # ignore name lines below this page fraction (legal footers)
+    name_green_gate: bool = False  # True: name candidates must be printed
+    # in green ink (Palumbo: display names are green, packaging label
+    # text sitting nearer the price is not)
+    name_lines_verify: bool = False  # True: drop re-OCR block lines that
+    # share no content with the detected lines (Palumbo: the WOW badge
+    # intrudes into the block crop and garbles its last line)
     stoplist: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
@@ -655,19 +661,49 @@ def _shares_content(a: str, b: str) -> bool:
     return match.size >= 7
 
 
-def _name_from_text(block_text: str | None, fallback_lines: list[OcrLine]) -> str:
+def _line_shares_content(line: str, fallback: str) -> bool:
+    """Per-line variant of _shares_content for the re-OCR verify: a
+    short line ('GRANDE', 6 chars) can never reach the 7-char bar, so
+    the bar scales with the line's own length — a short line must be
+    (nearly) fully contained in the detected lines, a long one needs
+    the usual long common run. 'G RAN DE Eh' squashes to 'grandeh':
+    its longest run in '...parmesanrapegrande' is 6 < 7, dropped."""
+    import difflib
+
+    sa, sb = _squash(line), _squash(fallback)
+    if not sa or not sb:
+        return False
+    match = difflib.SequenceMatcher(None, sa, sb).find_longest_match(
+        0, len(sa), 0, len(sb)
+    )
+    return match.size >= min(7, max(4, len(sa) - 1))
+
+
+def _name_from_text(
+    block_text: str | None,
+    fallback_lines: list[OcrLine],
+    *,
+    verify_lines: bool = False,
+) -> str:
     """Product name: leading all-caps run of the clean block text.
 
     Falls back to the detected lines when the re-OCR text shares no token
     with them (its crop picked up a neighbouring badge or photo text).
+    With verify_lines, that check applies per line: a re-OCR line
+    sharing no content with the detected lines is a badge/photo
+    intrusion and is dropped.
     """
     fallback = "\n".join(ln.text for ln in fallback_lines)
     source = block_text if block_text else fallback
+    dropped = False
     name_lines: list[str] = []
     for raw in source.splitlines():
         line = raw.strip()
         if not line:
             continue
+        if verify_lines and block_text and not _line_shares_content(line, fallback):
+            dropped = True
+            continue  # badge/photo intrusion in the re-OCR crop
         if not name_lines and not _is_caps(line):
             continue  # skip garbled/badge lead-in lines before the name
         if name_lines and (not _is_caps(line) or _DETAIL_LINE_RE.search(line)):
@@ -678,6 +714,12 @@ def _name_from_text(block_text: str | None, fallback_lines: list[OcrLine]) -> st
         if len(name_lines) >= 5:
             break
     name = re.sub(r"\s+", " ", " ".join(name_lines)).strip(" .|")
+    if block_text and dropped:
+        # The re-OCR crop was partly intruded on; the detected lines
+        # are the cleaner source for the whole name.
+        from_lines = _name_from_text(None, fallback_lines)
+        if from_lines:
+            return from_lines
     if block_text and name and not _shares_content(name, fallback):
         return _name_from_text(None, fallback_lines)
     return name
@@ -718,6 +760,37 @@ def segment_page(
     return _items_from_anchors(image, lines, cfg, anchors, page_url, page_number)
 
 
+def _line_green_ink(image: Image.Image, ln: OcrLine) -> float:
+    """Fraction of a line's ink pixels that are green.
+
+    Palumbo's display names print in the chain's dark green while
+    packaging label text (black, red, white-on-photo) sits nearer the
+    price and wins plain nearest-line seeding. Measured on the
+    2026-10-15 page: display lines score 0.64-0.94, label lines
+    0.00-0.05.
+    """
+    import cv2
+    import numpy as np
+
+    arr = np.asarray(image)
+    x0, y0 = max(0, int(ln.x)), max(0, int(ln.y))
+    x1 = min(arr.shape[1], int(ln.right))
+    y1 = min(arr.shape[0], int(ln.bottom))
+    if x1 <= x0 or y1 <= y0:
+        return 0.0
+    hsv = cv2.cvtColor(arr[y0:y1, x0:x1], cv2.COLOR_RGB2HSV)
+    ink = (hsv[:, :, 2] < 205) | (hsv[:, :, 1] > 70)
+    if not ink.any():
+        return 0.0
+    green = (
+        (hsv[:, :, 0] >= 50)
+        & (hsv[:, :, 0] <= 95)
+        & (hsv[:, :, 1] >= 70)
+        & (hsv[:, :, 2] >= 35)
+    )
+    return float((green & ink).sum() / ink.sum())
+
+
 def _items_from_anchors(
     image: Image.Image,
     lines: list[OcrLine],
@@ -731,6 +804,8 @@ def _items_from_anchors(
     from detected price boards instead of OCR lines)."""
     page_w, page_h = image.size
     cands = _dedupe_candidates(name_candidates(lines, page_h, cfg))
+    if cfg.name_green_gate:
+        cands = [ln for ln in cands if _line_green_ink(image, ln) >= 0.4]
     stack = _stack_counts(cands, page_w, page_h, cfg)
 
     claimed: set[int] = set()
@@ -842,7 +917,9 @@ def _items_from_anchors(
         if cfg.name_case == "any":
             name = _name_from_lines_any(grown)
         else:
-            name = _name_from_text(block_text, grown)
+            name = _name_from_text(
+                block_text, grown, verify_lines=cfg.name_lines_verify
+            )
         if not name:
             continue
         # Dual-price fold: member + regular price in one badge grow
