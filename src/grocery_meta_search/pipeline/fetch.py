@@ -396,6 +396,10 @@ def fetch_store(conn: sqlite3.Connection, store_slug: str) -> dict[str, Any]:
                 mb_stats = multibuy_store(conn, store_slug)
                 if mb_stats["recovered"]:
                     report["multibuy"] = f"{mb_stats['recovered']} multibuy offers recovered (image recovery)"
+                if mb_stats.get("reconciled"):
+                    report["multibuy_reconciled"] = (
+                        f"{mb_stats['reconciled']} multibuy rows reconciled (unit pair + price history)"
+                    )
             except Exception as exc:  # noqa: BLE001 — report, never fail the fetch
                 report["multibuy_error"] = str(exc)
     if not report.get("error"):

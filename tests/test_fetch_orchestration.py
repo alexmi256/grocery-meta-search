@@ -458,3 +458,20 @@ def test_fetch_store_multibuy_and_guard_wiring(monkeypatch: pytest.MonkeyPatch) 
     assert report["thin_warning"] == "warn:W1"
     assert recorded == ["W1"]
     conn.close()
+
+
+def test_fetch_store_reports_multibuy_reconciliation(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A store pass that only reconciled pre-existing rows (recovered
+    nothing) surfaces the reconciled count without a recovery line."""
+    conn = _conn()
+    _add_store(conn, "test-md")
+    _md_config(monkeypatch)
+    _FakeMetroDigitalClient.editions = [_edition()]
+    import grocery_meta_search.pipeline.multibuy as multibuy_mod
+
+    monkeypatch.setattr(multibuy_mod, "load_multibuy_configs", lambda: {"test-md": {}})
+    monkeypatch.setattr(multibuy_mod, "multibuy_store", lambda conn_, slug: {"recovered": 0, "reconciled": 3})
+    report = fetch_store(conn, "test-md")
+    assert "multibuy" not in report
+    assert report["multibuy_reconciled"] == "3 multibuy rows reconciled (unit pair + price history)"
+    conn.close()

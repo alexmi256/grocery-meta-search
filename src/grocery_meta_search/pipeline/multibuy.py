@@ -21,6 +21,23 @@ Anything else is left untouched. Per-store enablement lives in
 sources/multibuy_config.json (Kim Phat first: 15 of 137 items on
 flyer 125 carried badges, 13 with printed units, all validated
 against the campaign's hand corrections, zero false positives).
+
+The write-back keeps the price-bearing columns in step: flyer_items.
+price_value (the printed unit price), the derived unit pair
+(unit_quantity = count, unit_measurement = 'multiple' — the same split
+ingest applies to a multibuy condition), and the matching
+price_observations row, which is written once at ingest and would
+otherwise keep the collapsed bundle total (2026-10-19 review). The
+printed price_text is deliberately left as printed on both rows, so it
+still reads the collapse ("1.99") beside the corrected value (1.29).
+
+A store pass reconciles every row that already carries a multibuy
+condition — items recovered before this rule existed, and the
+campaign's hand-corrected offers — recomputing the unit pair and the
+price observation from the recorded count, without re-OCR. The CLI's
+--reconcile mode runs that repair on its own (no image recovery), so
+stores outside multibuy_config.json — which can carry hand-corrected
+multibuy rows but must not run image recovery — can be healed too.
 """
 
 from __future__ import annotations
@@ -35,6 +52,7 @@ from typing import Any
 from PIL import Image
 
 from ..ocr.engine import detect_lines
+from ..prices import multibuy_count, split_unit
 
 _CONFIG_PATH = Path(__file__).resolve().parent.parent / "sources" / "multibuy_config.json"
 _CACHE_DIR = Path("work/multibuy-cache")
@@ -107,14 +125,86 @@ def extract_multibuy(text: str, payload_price: float | None) -> tuple[float, int
     return None
 
 
-def _payload_price(raw: str | None) -> float | None:
-    if not raw:
+def _payload_price(raw: dict[str, Any]) -> float | None:
+    """The Flipp payload price carried inside the item's parsed raw JSON."""
+    value = raw.get("price")
+    if value is None:
         return None
     try:
-        value = json.loads(raw).get("price")
         return float(value)
-    except (TypeError, ValueError, AttributeError):
+    except (TypeError, ValueError):
         return None
+
+
+def _sync_observation(
+    conn: sqlite3.Connection,
+    item_key: str,
+    store_slug: str,
+    flyer_id: int,
+    price_value: float,
+) -> bool:
+    """Mirror a unit price into the item's price observation.
+
+    price_observations is written once at ingest (pipeline/fetch.py); a
+    write-back that changes flyer_items.price_value must carry the
+    history with it, or the two disagree for the offer's whole life
+    (2026-10-19 review). price_text is left as printed — flyer_items
+    keeps the printed text too.
+
+    The table carries no item id, so a row is addressed by
+    (item_key, store_slug, flyer_id). Two same-flyer items can share an
+    item_key (it hashes store + name + price_unit only), and then the
+    observation cannot be attributed to the recovered item: the update
+    is skipped rather than risk rewriting a sibling's history. Returns
+    True only when it writes.
+    """
+    rows = conn.execute(
+        "SELECT id, price_value FROM price_observations WHERE item_key = ? AND store_slug = ? AND flyer_id = ?",
+        (item_key, store_slug, flyer_id),
+    ).fetchall()
+    if len(rows) != 1:
+        return False
+    obs_id, current = rows[0]
+    if current is not None and abs(float(current) - price_value) <= 0.001:
+        return False
+    conn.execute("UPDATE price_observations SET price_value = ? WHERE id = ?", (price_value, obs_id))
+    return True
+
+
+def _reconcile_recovered(
+    conn: sqlite3.Connection,
+    *,
+    item_id: int,
+    item_key: str,
+    store_slug: str,
+    flyer_id: int,
+    price_value: float | None,
+    unit_quantity: float,
+    unit_measurement: str,
+    count: int | None,
+) -> bool:
+    """Repair an item whose price already reads as a unit price but whose
+    derived columns predate the write-back that keeps them in step.
+
+    Covers rows recovered under the old code and the campaign's
+    hand-corrected multibuy rows (both carry conditions.multibuy but may
+    keep the pre-correction unit pair). The item's own price is never
+    touched, so a hand correction stands. A count above 100 is OCR
+    garble, not an offer: the unit pair is left alone. Idempotent:
+    returns True only when it writes.
+    """
+    changed = False
+    if isinstance(count, int) and 1 < count <= 100:
+        quantity, measurement = split_unit(None, count)
+        if (unit_quantity, unit_measurement) != (quantity, measurement):
+            conn.execute(
+                "UPDATE flyer_items SET unit_quantity = ?, unit_measurement = ? WHERE id = ?",
+                (quantity, measurement, item_id),
+            )
+            changed = True
+    if price_value is not None and _sync_observation(conn, item_key, store_slug, flyer_id, price_value):
+        changed = True
+    return changed
 
 
 def _cell_text(image_path: Path) -> str:
@@ -135,22 +225,79 @@ def multibuy_store(
     store_slug: str,
     *,
     cache_dir: Path = _CACHE_DIR,
+    recover: bool = True,
 ) -> dict[str, int]:
     """Recover multibuy offers for one store's stored Flipp items.
 
     Only items whose stored price still equals the payload price and
     that carry no multibuy condition are candidates (idempotent; the
-    campaign's hand corrections are never overwritten).
+    campaign's hand corrections are never overwritten). Rows that
+    already carry a multibuy condition — recovered here before, or
+    hand-corrected — are reconciled in place instead (unit pair + price
+    observation), which heals rows written before the write-back synced
+    them.
+
+    With recover=False (the CLI's --reconcile mode) the candidate pass
+    is skipped entirely: only those already-multibuy rows are repaired,
+    so nothing is downloaded or OCR'd and stores not enabled for image
+    recovery can still be healed.
     """
-    cache_dir.mkdir(parents=True, exist_ok=True)
+    if recover:
+        cache_dir.mkdir(parents=True, exist_ok=True)
     rows = conn.execute(
-        "SELECT id, price_value, conditions, image_url, raw FROM flyer_items WHERE store_slug = ?",
+        "SELECT id, item_key, flyer_id, price_value, unit_quantity, unit_measurement,"
+        " conditions, image_url, raw FROM flyer_items WHERE store_slug = ?",
         (store_slug,),
     ).fetchall()
     recovered = 0
+    reconciled = 0
     for row in rows:
-        item_id, price_value, conditions_s, image_url, raw = row
-        payload = _payload_price(raw)
+        (
+            item_id,
+            item_key,
+            flyer_id,
+            price_value,
+            unit_quantity,
+            unit_measurement,
+            conditions_s,
+            image_url,
+            raw,
+        ) = row
+        try:
+            raw_d: dict[str, Any] = json.loads(raw) if raw else {}
+        except json.JSONDecodeError:
+            raw_d = {}
+        if not isinstance(raw_d, dict):
+            raw_d = {}
+        prov = raw_d.get("multibuy_recovery")
+        prov = prov if isinstance(prov, dict) else {}
+        count = multibuy_count(conditions_s)
+        if (not isinstance(count, int) or count < 2) and isinstance(prov.get("count"), int):
+            count = int(prov["count"])
+        # Rows already holding a multibuy condition are reconciled rather
+        # than re-examined: their stored price is a unit price, so the
+        # derived unit pair and the price observation must agree with it.
+        # That is every row this stage recovered, plus the campaign's
+        # hand-corrected offers (which carry the condition but no
+        # provenance, and predate the pair/history sync).
+        if (isinstance(count, int) and count > 1) or prov:
+            if _reconcile_recovered(
+                conn,
+                item_id=int(item_id),
+                item_key=str(item_key),
+                store_slug=store_slug,
+                flyer_id=int(flyer_id),
+                price_value=float(price_value) if price_value is not None else None,
+                unit_quantity=float(unit_quantity),
+                unit_measurement=str(unit_measurement),
+                count=count,
+            ):
+                conn.commit()
+                reconciled += 1
+            continue
+        if not recover:
+            continue
+        payload = _payload_price(raw_d)
         if payload is None or price_value is None:
             continue
         if abs(float(price_value) - payload) > 0.001:
@@ -179,22 +326,31 @@ def multibuy_store(
             continue
         unit, count, total = found
         conditions["multibuy"] = {"count": count, "total": total}
-        raw_d: dict[str, Any] = json.loads(raw) if raw else {}
         raw_d["multibuy_recovery"] = {
             "via": "image",
             "unit": unit,
             "count": count,
             "total": total,
         }
+        quantity, measurement = split_unit(None, count)
         conn.execute(
-            "UPDATE flyer_items SET price_value = ?, conditions = ?, raw = ? WHERE id = ?",
-            (unit, json.dumps(conditions, ensure_ascii=False), json.dumps(raw_d, ensure_ascii=False), item_id),
+            "UPDATE flyer_items SET price_value = ?, unit_quantity = ?, unit_measurement = ?,"
+            " conditions = ?, raw = ? WHERE id = ?",
+            (
+                unit,
+                quantity,
+                measurement,
+                json.dumps(conditions, ensure_ascii=False),
+                json.dumps(raw_d, ensure_ascii=False),
+                item_id,
+            ),
         )
+        _sync_observation(conn, str(item_key), store_slug, int(flyer_id), unit)
         # Commit per item: a full store pass OCRs hundreds of cell
         # renders and must stay resumable if interrupted.
         conn.commit()
         recovered += 1
-    return {"recovered": recovered}
+    return {"recovered": recovered, "reconciled": reconciled}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -203,15 +359,25 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--db", required=True)
     parser.add_argument("--slugs", required=True, help="comma-separated")
+    parser.add_argument(
+        "--reconcile",
+        action="store_true",
+        help="only repair rows that already carry a multibuy condition (unit pair + price history); "
+        "no image recovery, so stores outside multibuy_config.json are accepted",
+    )
     args = parser.parse_args(argv)
     conn = sqlite3.connect(args.db)
     configs = load_multibuy_configs()
     for slug in [s.strip() for s in args.slugs.split(",") if s.strip()]:
-        if slug not in configs:
+        if not args.reconcile and slug not in configs:
             print(f"{slug}: not enabled in multibuy_config.json, skipped")
             continue
-        stats = multibuy_store(conn, slug)
-        print(f"{slug}: {stats['recovered']} multibuy offers recovered")
+        stats = multibuy_store(conn, slug, recover=not args.reconcile)
+        if args.reconcile:
+            print(f"{slug}: {stats['reconciled']} multibuy rows reconciled")
+        else:
+            extra = f", {stats['reconciled']} reconciled" if stats["reconciled"] else ""
+            print(f"{slug}: {stats['recovered']} multibuy offers recovered{extra}")
     return 0
 
 
