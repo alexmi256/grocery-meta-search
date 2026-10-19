@@ -45,6 +45,16 @@ is verified visually, store by store, against the flyer images.
   classification disputes — read the verdicts, not just the
   corpus category field.
 
+## Environment
+
+The interpreter is pyenv-pinned to **Python 3.12** (`.python-version`,
+currently 3.12.15). The ceiling comes from `rapidocr-onnxruntime`,
+which declares `requires-python "<3.13"` on every release; the system
+interpreter is newer and will not resolve the dependencies. Run
+everything through the repo's `.venv` (built from the pinned 3.12).
+Rationale, setup and the revisit checklist live in
+`docs/development-environment.md`.
+
 ## Engineering gates
 
 Every change must pass, with exit codes checked unpiped

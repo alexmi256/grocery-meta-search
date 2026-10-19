@@ -7,6 +7,10 @@ pillow>=10.0
 pymupdf>=1.24
 numpy>=1.26
 # Notes:
+# - Python must be <3.13: rapidocr-onnxruntime declares
+#   requires-python "<3.13" on every release, so this file does not
+#   resolve on 3.13+. The project pins 3.12.15 via pyenv
+#   (.python-version); see docs/development-environment.md.
 # - OpenCV (cv2) is imported by the OCR code; it arrives as a
 #   dependency of rapidocr-onnxruntime (opencv-python).
 # - Tesseract 5 is a system binary, not a pip package: the OCR

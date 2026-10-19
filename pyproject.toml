@@ -3,7 +3,10 @@ name = "grocery-meta-search"
 version = "0.1.0"
 description = "Flipp-style grocery meta search engine for Montreal: flyer discovery, item scraping, and store product search."
 readme = "README.md"
-requires-python = ">=3.11"
+# Ceiling set by rapidocr-onnxruntime (<3.13); this metadata applies
+# to `pip install .`, not to the requirements-file flow — see
+# docs/development-environment.md before changing it.
+requires-python = ">=3.11,<3.13"
 dependencies = [
     "requests>=2.32",
     "PyYAML>=6.0",
