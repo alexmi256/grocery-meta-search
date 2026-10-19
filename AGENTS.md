@@ -88,9 +88,16 @@ run the full suite before calling a change done.
 ## Layout reminders
 
 - `data/` and `work/` are git-ignored working state (database,
-  backups, caches, scratch DBs). Don't commit images, page-source
-  dumps, or review-pack archives; the Markdown research notes in
-  `docs/research/` are the durable record.
+  backups, caches, scratch DBs). Flyer images harvested during
+  regular fetch/review runs, page-source dumps and review-pack
+  archives are local artifacts — don't commit them; the Markdown
+  research notes in `docs/research/` are the durable record.
+  Test fixtures are the exception: the page images under
+  `tests/fixtures/` are committed on purpose, because the per-store
+  OCR tests replay a real flyer page and those pages never change
+  week to week (see `tests/fixtures/README.md`). The rule is about
+  the ever-growing per-run harvest, not about small, fixed test
+  inputs.
 - Flyer research for a store lives in its YAML under
   `docs/research/`; narrative findings in the Markdown notes
   beside it. Update the note when a store's source or behaviour

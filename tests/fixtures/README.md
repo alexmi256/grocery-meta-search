@@ -12,13 +12,17 @@ The six per-store segmentation tests replay captured RapidOCR lines
 | `frutta_p1.jpg` | `test_frutta_red_grid.py` | Frutta Si, circulaires.club, *15–21 Oct 2026* (p. 1) |
 | `pa_nature_p1.jpg` | `test_pa_nature_chalkboard.py` | PA Nature (flyerbox), *12–25 Oct 2026* (p. 1) |
 
-The images are **not committed** (repo rule: no flyer images in git),
-so a fresh clone has none and the tests would error on a missing file.
-Instead each test **skips** with a clear reason when its image, or a
-toolchain piece it needs, is absent (`tests/ocr_fixtures.py`). Fetch
-the images below to actually run them.
+The images **are committed** (small, fixed test inputs — the
+no-commit-images rule in `AGENTS.md` is about the ever-growing
+per-run harvest, not about fixtures; see the *Layout reminders*
+section). Each test still **skips** with a clear reason when a
+requirement is unavailable: its image (a checkout that predates the
+fixtures), or a toolchain piece it needs — `cv2`, RapidOCR, or
+Tesseract's French data (`tests/ocr_fixtures.py`). On a provisioned
+machine none of them skip; the section below is what provisioning
+means, and how to regenerate an image if it is ever lost.
 
-## Fetching the images
+## Regenerating an image
 
 `circulaires.club` serves each edition's pages as
 `/images/<edition-slug>/<NN>.webp` (full resolution), where the edition
@@ -50,15 +54,19 @@ Exact production widths, which the captured line coordinates depend on:
 ## Toolchain requirements
 
 - **RapidOCR** — `red_grid` and `chalkboard` re-detect lines on crops.
-  Provided by `rapidocr-onnxruntime` (see `requirements.txt`).
+  Provided by `rapidocr-onnxruntime` (see `requirements.txt`), which
+  pins Python <3.13; on 3.13+ that strategy cannot run until the code
+  moves to the successor `rapidocr` package, so run the suite under
+  3.11/3.12.
 - **OpenCV (`cv2`)** — the colour-gated strategies (`name_cells`,
   `red_grid`, `chalkboard`, Palumbo's green-ink gate). Arrives with
   `rapidocr-onnxruntime`.
 - **Tesseract 5 with the French traineddata (`fra`)** — the name
   re-OCR runs `-l fra+eng`; without `fra` it silently returns `None`
-  and assembled names lose their accents. Install with
-  `apt install tesseract-ocr-fra`, or point `TESSDATA_PREFIX` at a
-  directory that holds `fra.traineddata`.
+  and assembled names lose their accents. Install the language pack
+  (`tesseract-data-fra` on Arch/EndeavourOS, `tesseract-ocr-fra` on
+  Debian/Ubuntu), or point `TESSDATA_PREFIX` at a directory that
+  holds `fra.traineddata`.
 
 These tests therefore also depend on the installed Tesseract model;
 a differently-provisioned machine can produce slightly different OCR
