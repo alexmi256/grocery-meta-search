@@ -60,10 +60,20 @@ store-specific strategies).
 
 ## Quick start
 
+The OCR stack caps the interpreter at **Python 3.12** (see
+[`docs/development-environment.md`](docs/development-environment.md));
+the project pins the latest 3.12 patch via pyenv. The system
+interpreter is newer and cannot resolve the dependencies, so use pyenv
+— and make sure pyenv is initialised in your shell first, or `python`
+below is the system 3.14 and the install fails (see the linked doc's
+"Shell setup"):
+
 ```bash
+pyenv install 3.12.15          # one-time; repo's .python-version selects it
+python --version               # -> Python 3.12.15
 python -m venv .venv
 .venv/bin/pip install -r requirements-dev.txt  # runtime + dev tools
-# (runtime only: pip install -r requirements.txt; or `uv sync`)
+# (runtime only: pip install -r requirements.txt)
 # Seed the store/source registry from the research files
 PYTHONPATH=src .venv/bin/python -m grocery_meta_search.seed \
   --db data/grocery.db \
@@ -83,7 +93,9 @@ review pack: sampled items + flyer crops for offline inspection).
 
 ## Engineering standards
 
-- Python 3.11+, SQLite, git; Markdown for all notes and research.
+- Python 3.12 (pyenv-pinned via `.python-version`; the OCR stack, not
+  the code, sets that ceiling), SQLite, git; Markdown for all notes and
+  research. See [docs/development-environment.md](docs/development-environment.md).
 - `ruff` (lint), `mypy --strict`, `pytest` — all three must pass.
 - Sample-first: scraper or classifier changes are validated on a
   sample (or a scratch database) before they touch the full pool.
