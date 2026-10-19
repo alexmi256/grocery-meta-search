@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from ocr_fixtures import fixture_image, require_cv2, require_french_ocr, require_rapidocr
 from PIL import Image
 
 from grocery_meta_search.ocr.engine import OcrLine
@@ -24,9 +25,12 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def _pa_items() -> list[Any]:
+    require_cv2()
+    require_rapidocr()
+    require_french_ocr()
     data: dict[str, Any] = json.loads((FIXTURES / "pa_nature_p1_lines.json").read_text(encoding="utf-8"))
     lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data["lines"]]
-    image = Image.open(FIXTURES / "pa_nature_p1.jpg").convert("RGB")
+    image = Image.open(fixture_image("pa_nature_p1.jpg")).convert("RGB")
     cfg = _official_ocr_config(load_official_configs()["pa-nature"])
     assert cfg.price_strategy == "chalkboard"
     return segment_page(image, lines, cfg, page_url="fixture://", page_number=1)

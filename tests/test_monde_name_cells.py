@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from ocr_fixtures import fixture_image, require_cv2, require_french_ocr
 from PIL import Image
 
 from grocery_meta_search.ocr.engine import OcrLine
@@ -21,9 +22,11 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def _monde_items() -> list[Any]:
+    require_cv2()
+    require_french_ocr()
     data: dict[str, Any] = json.loads((FIXTURES / "cc_monde_p2_lines.json").read_text(encoding="utf-8"))
     lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data["lines"]]
-    image = Image.open(FIXTURES / "monde_p2.webp").convert("RGB")
+    image = Image.open(fixture_image("monde_p2.webp")).convert("RGB")
     cfg = OcrStoreConfig(price_strategy="name_cells", bare_int_anchor=False)
     return segment_page(image, lines, cfg, page_url="fixture://", page_number=2)
 
