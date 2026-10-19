@@ -2,17 +2,18 @@
 
 Six per-store segmentation tests (Odessa, Costco, Monde au Naturel,
 Intermarche Palumbo, PA Nature, Frutta Si) replay captured RapidOCR
-lines over the real flyer *page image*. The images are not committed
-(the repo's rule: images stay out of git), and the strategies also
-need the OCR toolchain the pipeline uses — cv2 for the colour gates,
-Tesseract with the French traineddata for the name re-OCR, and
-RapidOCR for the red-grid/chalkboard vote passes.
+lines over the real flyer *page image*. The images are committed (see
+``AGENTS.md``: fixtures are the sanctioned exception to the
+no-images-in-git rule), and the strategies also need the OCR toolchain
+the pipeline uses — cv2 for the colour gates, Tesseract with the
+French traineddata for the name re-OCR, and RapidOCR for the
+red-grid/chalkboard vote passes.
 
 Each helper below skips with a clear reason when a requirement is
-missing, so the suite stays green on a fresh clone or a machine
-without the OCR stack instead of erroring on a missing file or
-import. ``tests/fixtures/README.md`` says where to get the images and
-how to provision the toolchain.
+missing, so the suite stays green on a checkout that predates the
+fixtures or a machine without the OCR stack instead of erroring on a
+missing file or import. ``tests/fixtures/README.md`` lists each
+fixture's source and how to provision the toolchain.
 """
 
 from __future__ import annotations

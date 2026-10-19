@@ -26,15 +26,18 @@ means, and how to regenerate an image if it is ever lost.
 
 `circulaires.club` serves each edition's pages as
 `/images/<edition-slug>/<NN>.webp` (full resolution), where the edition
-slug is the path segment of its sitemap URL. For example:
+slug is the path segment of its sitemap URL. Fetch the webp, then
+convert it to the fixture's `.jpg` (RGB, quality 92):
 
 ```bash
-curl -sL -o tests/fixtures/odessa_p2.jpg \
+curl -sL -o /tmp/odessa_02.webp \
   https://circulaires.club/images/circulaire-odessa-poissonnier-du-8-au-21-octobre-2026/02.webp
+python -c "from PIL import Image; \
+  Image.open('/tmp/odessa_02.webp').convert('RGB').save('tests/fixtures/odessa_p2.jpg', 'JPEG', quality=92)"
 ```
 
-The `.jpg` names are converted from the source webp (RGB, quality 92);
-PIL reads either format. PA Nature's page is discovered at runtime from
+`monde_p2.webp` is kept as the source webp (no conversion). PA
+Nature's page is discovered at runtime from
 the flyerbox listing (`sources/official.py: _flyerbox`); its page 1 is
 the first signed `na.leafletscdn.com/thumbor/…/ca/data/75/144988/0.jpg`
 URL, fetched with `curl` (the CDN rejects the stdlib HTTP client — see

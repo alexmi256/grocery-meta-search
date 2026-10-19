@@ -17,7 +17,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from ocr_fixtures import fixture_image, require_cv2, require_french_ocr, require_rapidocr
+from ocr_fixtures import fixture_image, require_cv2, require_rapidocr
 from PIL import Image
 
 from grocery_meta_search.ocr.engine import OcrLine
@@ -28,9 +28,14 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def _frutta_items() -> list[Any]:
+    # No Tesseract French data here: with `name_case: "any"` the names
+    # come from the detected lines (`_name_from_lines_any`), and the
+    # red-digit reads use `_tess_mask_text` (default language, digit
+    # whitelist) plus RapidOCR. `ocr_crop_text` is still called for
+    # `raw["block_text"]`, but its result is unused and its failure is
+    # swallowed, so a missing `fra` cannot change the outcome.
     require_cv2()
     require_rapidocr()
-    require_french_ocr()
     data: dict[str, Any] = json.loads((FIXTURES / "frutta_p1_lines.json").read_text(encoding="utf-8"))
     lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data["lines"]]
     image = Image.open(fixture_image("frutta_p1.jpg")).convert("RGB")
