@@ -23,6 +23,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from ocr_fixtures import fixture_image, require_french_ocr
 from PIL import Image
 
 from grocery_meta_search.ocr.engine import OcrLine, upscale_for_ocr
@@ -33,10 +34,11 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def _odessa_items(page: int) -> list[Any]:
+    require_french_ocr()
     data: list[dict[str, Any]] = json.loads((FIXTURES / f"odessa_p{page}_lines.json").read_text(encoding="utf-8"))
     lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data]
     image = upscale_for_ocr(
-        Image.open(FIXTURES / f"odessa_p{page}.jpg").convert("RGB"),
+        Image.open(fixture_image(f"odessa_p{page}.jpg")).convert("RGB"),
         min_width=1600,
     )
     cfg = _cc_ocr_config("odessa-poissonnier")

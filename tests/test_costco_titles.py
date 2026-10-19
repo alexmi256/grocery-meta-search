@@ -17,6 +17,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from ocr_fixtures import fixture_image, require_french_ocr
 from PIL import Image
 
 from grocery_meta_search.ocr.engine import OcrLine
@@ -27,9 +28,10 @@ FIXTURES = Path(__file__).with_name("fixtures")
 
 
 def test_costco_names_are_the_printed_titles() -> None:
+    require_french_ocr()
     data: list[dict[str, Any]] = json.loads((FIXTURES / "costco_p3_lines.json").read_text(encoding="utf-8"))
     lines = [OcrLine(x=d["x"], y=d["y"], w=d["w"], h=d["h"], text=d["text"], conf=d["conf"]) for d in data]
-    image = Image.open(FIXTURES / "costco_p3.jpg").convert("RGB")
+    image = Image.open(fixture_image("costco_p3.jpg")).convert("RGB")
     cfg = _cc_ocr_config("costco")
     assert cfg.price_strategy == "prix_line"
     items = segment_page(image, lines, cfg, page_url="fixture://", page_number=3)
